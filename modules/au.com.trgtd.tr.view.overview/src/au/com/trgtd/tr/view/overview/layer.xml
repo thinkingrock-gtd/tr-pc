@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE filesystem PUBLIC "-//NetBeans//DTD Filesystem 1.1//EN" "http://www.netbeans.org/dtds/filesystem-1_1.dtd">
+<filesystem>
+
+    <folder name="Overview">
+        <file name="overview.css" url="css/overview.css"/>
+    </folder>
+
+    <folder name="Actions">
+        <folder name="Help">
+            <file name="au-com-trgtd-tr-view-overview-OverviewAction.instance"/>
+        </folder>
+    </folder>
+    <folder name="Menu">
+        <folder name="Help">
+            <file name="OverviewAction.shadow">
+                <attr name="originalFile" stringvalue="Actions/Help/au-com-trgtd-tr-view-overview-OverviewAction.instance"/>
+                <attr name="position" intvalue="120"/>
+            </file>
+        </folder>
+    </folder>
+    <folder name="Services">
+        <folder name="JavaHelp">
+            <file name="overview-helpset.xml" url="overview-helpset.xml"/>
+        </folder>
+    </folder>
+    <folder name="Windows2">
+        <folder name="Components">
+            <file name="OverviewTopComponent.settings" url="OverviewTopComponentSettings.xml"/>
+        </folder>
+        <folder name="Modes">
+            <file name="overview.wsmode" url="OverviewWsmode.xml"/>
+            <folder name="overview"/>
+        </folder>
+    </folder>
+    <folder name="Toolbars">
+        <folder name="TR">
+            <attr name="position" intvalue="999100"/>
+            <file name="OverviewAction.shadow">
+                <attr name="originalFile" stringvalue="Actions/Help/au-com-trgtd-tr-view-overview-OverviewAction.instance"/>
+                <attr name="position" intvalue="110"/>
+            </file>
+        </folder>
+    </folder>
+    <folder name="Shortcuts">
+        <file name="D-S-O.shadow">
+            <attr name="originalFile" stringvalue="Actions/Help/au-com-trgtd-tr-view-overview-OverviewAction.instance"/>
+        </file>
+    </folder>
+</filesystem>

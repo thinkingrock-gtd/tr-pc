@@ -1,0 +1,41 @@
+<html>
+    <head>
+        <title>Android Sync Preferences</title>
+        <link rel="stylesheet" href="nbdocs:/tr/model/docs/ide.css" type="text/css">
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+    <body>
+        <h2>Android Sync Preferences</h2>
+        The following preferences can be changed for Android device synchronization.
+        <ul>
+            <li>
+                <b>Sync with Android devices</b> Allows you to specify whether 
+                data synchronization with Android devices should be attempted.
+            </li>
+            <li>
+                <b>WiFi Port</b> Allows you to specify the TCP port used for WiFi synchronization.<br>
+                The port number must be between 49152 and 65535 (defaults to 64641). <br>
+                It should not normally need to be changed.
+            </li>
+            <li>
+                <b>USB Port</b> Allows you to specify the TCP port used for USB synchronization.<br>
+                The port number must be between 49152 and 65535 (defaults to 64642). <br>
+                It should not normally need to be changed. If you do change it, be sure to also change
+                the setting in the Android application.
+            </li>
+            <li>
+                <b>ADB Program</b> Allows you to enter the file system path to the ADB program executable.
+                Alternatively you can use the "Browse" button to find it. <br><br>
+                To synchronize using USB you need to have an executable ADB (Android Debug Bridge) program 
+                on your computer and referenced in this field. <br><br>
+                This field should default to the ADB program provided. However this may not be executable or have
+                sufficient user privileges. If this is the case you will need to do one of the following: <br>
+                <ul>
+                    <li>set this program file as executable for your user account. </li>
+                    <li>download and install the <A href='http://developer.android.com/sdk/index.html'>Android SDK</A> 
+                        and set this field to the adb (or adb.exe) file in the platform-tools folder of the installation.</li>
+                </ul>
+            </li>
+        </ul>
+    </body>
+</html>

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE filesystem PUBLIC "-//NetBeans//DTD Filesystem 1.1//EN" "http://www.netbeans.org/dtds/filesystem-1_1.dtd">
+<filesystem>
+
+    <folder name="Actions">
+        <folder name="Setup">
+            <file name="au-com-trgtd-tr-view-delegates-ActorsAction.instance"/>
+        </folder>
+    </folder>
+    
+    <folder name="Menu">
+        <folder name="Setup">
+            <attr name="SystemFileSystem.localizingBundle" stringvalue="au.com.trgtd.tr.view.delegates.Bundle"/>
+            <file name="ActorsAction.shadow">
+                <attr name="position" intvalue="100"/>
+                <attr name="originalFile" stringvalue="Actions/Setup/au-com-trgtd-tr-view-delegates-ActorsAction.instance"/>
+            </file>
+        </folder>
+    </folder>
+       
+    <folder name="Services">
+        <folder name="JavaHelp">
+            <file name="actors-helpset.xml" url="actors-helpset.xml">
+                <attr name="position" intvalue="3491"/>
+            </file>
+        </folder>
+    </folder>
+    <folder name="Windows2">
+        <folder name="Modes">
+            <file name="Setup.wsmode" url="SetupWsmode.xml"/>
+            <folder name="Setup">
+            </folder>
+        </folder>
+    </folder>
+    
+    <folder name="Toolbars">
+        <folder name="TR Setup">
+            <attr name="position" intvalue="999600"/>
+            <file name="ActorsAction.shadow">
+                <attr name="position" intvalue="510"/>
+                <attr name="originalFile" stringvalue="Actions/Setup/au-com-trgtd-tr-view-delegates-ActorsAction.instance"/>
+            </file>
+        </folder>
+    </folder>
+    
+    <folder name="Shortcuts">
+        <file name="D-S-D.shadow">
+            <attr name="originalFile" stringvalue="Actions/Setup/au-com-trgtd-tr-view-delegates-ActorsAction.instance"/>
+        </file>
+    </folder>
+
+</filesystem>

@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project name="ThinkingRock" basedir=".">
+    <description>Builds trgtd distributions.</description>
+    <import file="nbproject/build-impl.xml"/>
+
+    <!-- Ant Contrib for IF -->
+    <taskdef resource="net/sf/antcontrib/antcontrib.properties">
+        <classpath>
+            <pathelement location="ant-contrib-0.6.jar"/>
+        </classpath>
+    </taskdef>    
+
+        
+    <target name="-bundle-osx" depends="build,build-launchers" description="Builds an application bundle for MacOSX.">
+
+        <!-- create app directories -->
+        <mkdir dir="${app.dir}"/>
+        <mkdir dir="${app.dir}/Contents"/>
+        <mkdir dir="${app.dir}/Contents/MacOS"/>
+        <mkdir dir="${app.dir}/Contents/Resources"/>
+        
+        <!-- app icon -->
+        <copy file="${app.icns}" tofile="${app.dir}/Contents/Resources/${app.name}.icns"/>
+
+        <!-- executable -->
+        <copy todir="${app.dir}/Contents/Resources/${app.name}/bin" 
+              file ="${build.launcher.dir}/bin/${app.name}">
+        </copy>
+        <chmod file="${app.dir}/Contents/Resources/${app.name}/bin/${app.name}" 
+               perm="755">
+        </chmod>
+        
+        <!-- app executable -->
+        <symlink link="${app.dir}/Contents/MacOS/${app.name}" 
+                 resource="../Resources/${app.name}/bin/${app.name}">
+        </symlink>
+        
+        <!-- etc -->
+        <copy todir="${app.dir}/Contents/Resources/${app.name}/etc">
+            <fileset dir="${build.launcher.dir}/etc/" />
+        </copy>
+        <copy tofile="${app.dir}/Contents/Resources/${app.name}/etc/${app.name}.conf"
+              file="${app.conf}"
+              overwrite="true">
+        </copy>
+
+        <!-- cluster -->        
+        <subant genericantfile="${harness.dir}/suite.xml" target="copy-cluster" inheritrefs="true">
+            <property name="dest.dir"   value="${app.dir}/Contents/Resources/${app.name}"/>
+            <property name="nbexec.dir" value="${app.dir}/Contents/Resources/${app.name}"/>
+            <property name="build.dir"  value="${suite.build.dir}"/>
+            <resources refid="zip.platform.clusters"/>
+        </subant>
+        <copy todir="${app.dir}/Contents/Resources/${app.name}/${app.name}">            
+            <fileset dir="${cluster}"/>
+        </copy>        
+        <!-- set execute permission for NB executer -->
+        <chmod dir="${app.dir}/Contents/Resources/${app.name}/platform/lib" 
+               includes="nbexec" 
+               perm="755">
+        </chmod>
+
+        <!-- bundle JRE? -->  
+        <if>
+            <equals arg1="${include.jre}" arg2="true" />
+            <then>
+                <echo message="Including JRE" />
+
+                <copy todir="${app.dir}/Contents/Resources/${app.name}/jre">
+                    <fileset dir="${jre.dir}" />
+                </copy>
+                <chmod dir="${app.dir}/Contents/Resources/${app.name}/jre/bin" includes="*" perm="755">
+                </chmod>
+                <!-- remove JFX files from JRE -->
+                <delete verbose="true">
+                    <fileset dir="${app.dir}/Contents/Resources/${app.name}/jre" includes="**/*jfx*.*"/>
+                </delete>            
+            </then>        
+            <else>
+                <echo message="Not including JRE" />
+            </else>
+        </if>        
+
+        <!-- app Info.plist -->
+        <copy file="${harness.dir}/etc/Info.plist" tofile="${app.dir}/Contents/Info.plist">
+            <filterchain>
+                <replacestring from="$${app.name}" to="${app.name}"/>
+                <replacestring from="$${app.version}" to="${app.version}"/>
+                <replacestring from="$${app.title}" to="${app.title}"/>
+                <replacestring from="$${app.icon}" to="master.png"/>
+                <replacestring from="$${branding.token}" to="${branding.token}"/>
+            </filterchain>
+        </copy>
+        
+        <!-- Remove unnecessary stuff -->
+        <!-- remove Windows exe and dll files -->
+        <delete verbose="true">
+            <fileset dir="${app.dir}/Contents/Resources/${app.name}" includes="**/*.exe,**/*.dll"/>
+        </delete>
+        
+    </target>  
+
+    <target name="-package-osx" depends="" description="Builds an application bundle for MacOSX.">
+
+        <!-- move dist/trgtd.app to dist/ThinkingRock/trgtd.app -->
+        <mkdir dir="${dst.dir}/${app.title}"/>
+        <!--<move file="${dst.dir}/${app.name}.app" tofile="${dst.dir}/${app.title}/${app.title}.app" verbose="true"/>-->        
+        <move file="${app.dir}" tofile="${dst.dir}/${app.title}/${app.title}.app" verbose="true"/>        
+        
+        <exec executable="/usr/bin/pkgbuild">
+            <arg value="--root"/>            
+            <arg value="${dst.dir}/${app.title}"/>
+            <arg value="--identifier"/>            
+            <arg value="${app.id}"/>
+            <arg value="--version"/>            
+            <arg value="${app.version}"/>            
+            <arg value="--install-location"/>            
+            <arg value="/Applications"/>            
+            <arg value="${dst.dir}/temp.pkg"/>            
+        </exec>                        
+        
+        <copy file="${pkg.dir}/productbuild/dist.xml" tofile="${dst.dir}/dist.xml" verbose="true"/>        
+
+        <exec dir="${dst.dir}" executable="/usr/bin/productbuild">
+            <arg value="--distribution"/>            
+            <arg value="dist.xml"/>
+            
+            <arg value="--resources"/>            
+            <arg value="${pkg.dir}/productbuild/resources"/>
+            <arg value="--version"/>            
+            <arg value="${app.version}"/>            
+                        
+            <arg value="--package-path"/>            
+            <arg value="temp.pkg"/>
+            <arg value="${pkg.name}.pkg"/>            
+        </exec>                        
+
+        <!-- Sign installer -->
+        <!-- productsign - -sign "Developer ID Installer: Avente Pty Ltd (VTLL493375)" my.pkg my-signed.pkg-->
+        <exec dir="${dst.dir}" executable="/usr/bin/productsign">
+            <arg value="--sign"/>            
+            <arg value="Developer ID Installer: Avente Pty Ltd (VTLL493375)"/>            
+            <arg value="${pkg.name}.pkg"/>            
+            <arg value="${pkg.name}-signed.pkg"/>            
+        </exec>                        
+
+
+        <!-- clean up -->
+        <delete dir="${dst.dir}/${app.title}"/>
+        <delete file="${dst.dir}/dist.xml"/>
+        <delete file="${dst.dir}/temp.pkg"/>
+                  
+        <echo>Created MacOSX package: ${dst.dir}/${pkg.name}.pkg</echo>                                                                                                                                
+    
+    </target>
+    
+    
+</project>

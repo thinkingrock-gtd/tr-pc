@@ -1,0 +1,332 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+/*
+ * The contents of this file are subject to the terms of the Common Development
+ * and Distribution License (the License). You may not use this file except in
+ * compliance with the License.
+ *
+ * You can get a copy of the License at http://www.thinkingrock.com.au/cddl.html
+ * or http://www.thinkingrock.com.au/cddl.txt.
+ *
+ * When distributing Covered Code, include this CDDL Header Notice in each file
+ * and include the License file at http://www.thinkingrock.com.au/cddl.txt.
+ * If applicable, add the following below the CDDL Header, with the fields
+ * enclosed by brackets [] replaced by your own identifying information:
+ * "Portions Copyright [year] [name of copyright owner]"
+ *
+ * The Original Software is ThinkingRock. The Initial Developer of the Original
+ * Software is Avente Pty Ltd, Australia.
+ *
+ * Portions Copyright 2006-2007 Avente Pty Ltd. All Rights Reserved.
+ */
+-->
+<xsl:stylesheet version="1.1" 
+                xmlns:xsl="http://www.w3.org/1999/XSL/Transform" 
+                xmlns:fo="http://www.w3.org/1999/XSL/Format" 
+                exclude-result-prefixes="fo"> 
+    
+    <xsl:output method="xml" 
+                version="1.0" 
+                omit-xml-declaration="no" 
+                indent="yes"/>
+    
+    <!--=====================================================================-->
+    <!-- Parameters                                                          -->	
+    <!--=====================================================================-->
+    <xsl:param name="font"/>
+    
+    <!--=====================================================================-->
+    <!-- Variables                                                           -->	
+    <!--=====================================================================-->
+    
+    <!--=====================================================================-->
+    <!-- Root element                                                        -->
+    <!--=====================================================================-->
+    <xsl:template match="actions-screen">        
+        <fo:root xmlns:fo="http://www.w3.org/1999/XSL/Format">
+            
+            <fo:layout-master-set>
+                <fo:simple-page-master master-name="A4Landscape"
+                                       page-height="210mm"
+                                       page-width="297mm"
+                                       margin-top="10mm"
+                                       margin-bottom="5mm"
+                                       margin-left="10mm"
+                                       margin-right="10mm">
+                    <fo:region-body margin-top="5mm" margin-bottom="10mm"/>
+                    <fo:region-before extent="10mm"/>
+                    <fo:region-after extent="10mm"/>
+                </fo:simple-page-master>
+            </fo:layout-master-set>
+            
+            <fo:page-sequence master-reference="A4Landscape">		
+                
+                <!-- Header -->
+                <fo:static-content flow-name="xsl-region-before">
+                    <fo:block font-family="{$font}" font-weight="bold" font-size="9pt">
+                        <fo:table table-layout="fixed" width="100%" border-collapse="collapse"
+                                  border-bottom-style="solid" border-bottom-width="0.5pt" border-bottom-color="lightgrey">
+                            <fo:table-column column-width="70%"/>
+                            <fo:table-column column-width="30%"/>
+                            <fo:table-body>
+                                <fo:table-row>
+                                    <fo:table-cell>
+                                        <fo:block>
+                                            <fo:inline><xsl:value-of select="title"/></fo:inline>				
+                                        </fo:block>
+                                    </fo:table-cell>
+                                    <fo:table-cell>
+                                        <fo:block text-align="end">
+                                            <fo:inline><xsl:value-of select="date"/></fo:inline>				
+                                        </fo:block>
+                                    </fo:table-cell>
+                                </fo:table-row>
+                            </fo:table-body>
+                        </fo:table>
+                    </fo:block>
+                </fo:static-content>
+                
+                <!-- Footer -->    		
+                <fo:static-content flow-name="xsl-region-after">
+                    <fo:block font-family="{$font}" 
+                              font-size="8pt"                               
+                              white-space-collapse="false"	
+                              linefeed-treatment="preserve" 
+                              white-space-treatment="preserve"> 		    			                        
+                        <fo:table table-layout="fixed" width="100%" border-collapse="collapse"
+                                  border-top-style="solid" border-top-width="0.5pt" border-top-color="lightgrey">
+                            <fo:table-column column-width="25%"/>
+                            <fo:table-column column-width="50%"/>
+                            <fo:table-column column-width="25%"/>
+                            <fo:table-body>
+                                <fo:table-row>
+                                    <fo:table-cell>
+                                        <fo:block>
+                                            <fo:inline>ThinkingRock (www.thinkingrock.com.au)</fo:inline>
+                                        </fo:block>
+                                    </fo:table-cell>
+                                    <fo:table-cell>
+                                        <fo:block text-align="center">
+                                            <fo:inline font-family="DejaVuSans">&#x2605; Do ASAP   &#x2606; Inactive   &#x261E; Delegated   &#x2637; Scheduled   &#x27F3; Recurrent   &#x26AA; Thought   &#x2630; Project</fo:inline>
+                                        </fo:block>
+                                    </fo:table-cell>
+                                    <fo:table-cell>
+                                        <fo:block text-align="end">Page <fo:page-number/> of <fo:page-number-citation ref-id="last-page"/></fo:block>
+                                    </fo:table-cell>
+                                </fo:table-row>
+                            </fo:table-body>
+                        </fo:table>
+                    </fo:block>
+                </fo:static-content>
+                
+                <!-- Body -->      
+                <fo:flow flow-name="xsl-region-body">
+                    <fo:block font-family="{$font}" font-size="8pt" 
+                              white-space-collapse="false"	
+                              linefeed-treatment="preserve" 
+                              white-space-treatment="preserve"> 		    			
+                        
+                        <xsl:apply-templates select="//filters"/>
+                        
+                        <fo:table width="100%"
+                                  table-layout="fixed" border-collapse="collapse" border="solid 0.5pt"            
+                                  border-left-style="solid" border-right-style="solid" border-top-style="solid" border-bottom-style="solid"
+                                  border-left-width="0.5pt" border-right-width="0.5pt" border-top-width="0.5pt" border-bottom-width="0.5pt"
+                                  border-left-color="lightgrey" border-right-color="lightgrey" border-top-color="lightgrey" border-bottom-color="lightgrey">                                      
+                            
+                            <xsl:apply-templates select="//table/widths"/>
+                            
+                            <fo:table-header>
+                                <fo:table-row font-weight="bold">                                    
+                                    <xsl:apply-templates select="//table/headings"/>
+                                </fo:table-row>
+                            </fo:table-header>                                          
+                            <fo:table-body>
+                                <xsl:call-template name="process"/> 		    			
+                            </fo:table-body>
+                        </fo:table>
+                    </fo:block>
+                    <fo:block id="last-page"/>                    
+                </fo:flow>
+                
+            </fo:page-sequence>
+        </fo:root>
+    </xsl:template>
+    
+    <xsl:template match="widths/column">        
+        <xsl:variable name="width" select="."/>        
+        <fo:table-column column-width="{$width}"/>        
+    </xsl:template>
+    
+    <xsl:template match="headings/column">        
+        <fo:table-cell border="0.5pt solid lightgrey" background-color="#F5F5F5">
+            <fo:block><xsl:value-of select="."/></fo:block>
+        </fo:table-cell>	        
+    </xsl:template>
+    
+    <xsl:template name="process">		 
+        <xsl:apply-templates select="//table/row"/>        
+        <fo:table-row><fo:table-cell><fo:block></fo:block></fo:table-cell></fo:table-row>               
+    </xsl:template>    
+    
+    <xsl:template match="row">
+        <fo:table-row height="10pt"><xsl:apply-templates select="col"/></fo:table-row>                        
+    </xsl:template>
+    
+    <xsl:template match="col">
+        <xsl:variable name="type" select="@type"/>  
+        <fo:table-cell border="0.5pt solid lightgrey" color="{@fg}" background-color="{@bg}">
+            <fo:block>                                        
+                <xsl:choose>
+                    <xsl:when test="$type='boolean'">
+                        <xsl:call-template name="checkbox">
+                            <xsl:with-param name="check" select="."/>
+                        </xsl:call-template>							                        
+                    </xsl:when>
+                    <xsl:when test="$type='icon'">
+                        <xsl:call-template name="write-symbol">
+                            <xsl:with-param name="symbol" select="@symbol"/>
+                        </xsl:call-template>							                        
+                    </xsl:when>
+                    <xsl:otherwise>                        
+                        <xsl:variable name="text-decoration">
+                            <xsl:choose>
+                                <xsl:when test="@strike='true'">line-through</xsl:when>
+                                <xsl:otherwise>none</xsl:otherwise>
+                            </xsl:choose>
+                        </xsl:variable>                        
+                        <fo:inline text-decoration="{$text-decoration}"><xsl:value-of select="."/></fo:inline>
+                    </xsl:otherwise>
+                </xsl:choose>                
+            </fo:block>
+        </fo:table-cell>
+    </xsl:template>
+    
+    <xsl:template match="filters">
+        <fo:block>&#xA0;</fo:block>
+        
+        <fo:block font-family="{$font}" 
+                  font-size="8pt"                               
+                  white-space-collapse="false"	
+                  linefeed-treatment="preserve" 
+                  white-space-treatment="preserve"> 		    			                        
+            <fo:table table-layout="fixed" width="100%" border-collapse="collapse"
+                      border-top-style="solid" border-top-width="0.5pt" border-top-color="lightgrey">
+                <fo:table-column column-width="15%"/>
+                <fo:table-column column-width="85%"/>                
+                <fo:table-header>
+                    <fo:table-row font-weight="bold">                                    
+                        <fo:table-cell border="0.5pt solid lightgrey" background-color="#F5F5F5">
+                            <fo:block>Filter</fo:block>
+                        </fo:table-cell>	        
+                        <fo:table-cell border="0.5pt solid lightgrey" background-color="#F5F5F5">
+                            <fo:block>Value</fo:block>
+                        </fo:table-cell>	        
+                    </fo:table-row>
+                </fo:table-header>                                          
+                <fo:table-body>
+                    <xsl:apply-templates select="filter"/>
+                </fo:table-body>
+            </fo:table>
+        </fo:block>
+        <fo:block>&#xA0;</fo:block>
+    </xsl:template>
+    
+    <xsl:template match="filter">     
+        <fo:table-row>
+            <fo:table-cell border="0.5pt solid lightgrey">
+                <fo:block><xsl:value-of select="label"/></fo:block>
+            </fo:table-cell>
+            <fo:table-cell border="0.5pt solid lightgrey">
+                <fo:block><xsl:value-of select="value"/></fo:block>
+            </fo:table-cell>
+        </fo:table-row>
+    </xsl:template>
+    
+    <!--
+    <xsl:template name="checkbox">
+        <xsl:param name="check"/>
+        <xsl:choose>
+            <xsl:when test="$check='true'">
+                <fo:inline text-decoration="none" font-family="DejaVuSans">&#x2611;</fo:inline>
+            </xsl:when>			
+            <xsl:otherwise>
+                <fo:inline text-decoration="none" font-family="DejaVuSans">&#x2610;</fo:inline>
+            </xsl:otherwise>							
+        </xsl:choose>			        
+    </xsl:template>
+    -->
+    <xsl:template name="checkbox">
+        <xsl:param name="check"/>
+        <xsl:choose>
+            <xsl:when test="$check='true'">
+                <fo:inline font-family="DejaVuSans">&#x2611;</fo:inline>
+            </xsl:when>			
+            <xsl:otherwise>
+                <fo:inline font-family="DejaVuSans">&#x2610;</fo:inline>
+            </xsl:otherwise>							
+        </xsl:choose>			        
+    </xsl:template>
+    
+    <!--
+    <xsl:template name="write-symbol">
+        <xsl:param name="symbol"/>
+        <xsl:choose>
+            <xsl:when test="$symbol='doasap'">
+                <fo:inline text-decoration="none" font-family="DejaVuSans">&#x26A1;</fo:inline>
+            </xsl:when>			
+            <xsl:when test="$symbol='delegated'">
+                <fo:inline text-decoration="none" font-family="DejaVuSans">&#x261E;</fo:inline>
+            </xsl:when>			
+            <xsl:when test="$symbol='scheduled'">
+                <fo:inline text-decoration="none" font-family="DejaVuSans">&#x2637;</fo:inline>
+            </xsl:when>			
+            <xsl:when test="$symbol='inactive'">
+                <fo:inline text-decoration="none" font-family="DejaVuSans">&#x2307;</fo:inline>
+            </xsl:when>			            
+            <xsl:when test="$symbol='thought'">
+                <fo:inline text-decoration="none" font-family="DejaVuSans">&#x26AA;</fo:inline>
+            </xsl:when>			
+            <xsl:when test="$symbol='project'">
+                <fo:inline text-decoration="none" font-family="DejaVuSans">&#x2630;</fo:inline>
+            </xsl:when>			            
+            <xsl:otherwise>
+            </xsl:otherwise>							
+        </xsl:choose>			        
+    </xsl:template>
+    -->
+    <xsl:template name="write-symbol">
+        <xsl:param name="symbol"/>
+        <xsl:choose>
+            <xsl:when test="$symbol='doasap'">
+                <!--fo:inline font-family="DejaVuSans">&#x26A1;</fo:inline-->
+                <fo:inline font-family="DejaVuSans">&#x2605;</fo:inline>
+            </xsl:when>			
+            <xsl:when test="$symbol='delegated'">
+                <fo:inline font-family="DejaVuSans">&#x261E;</fo:inline>
+            </xsl:when>			
+            <xsl:when test="$symbol='scheduled'">
+                <fo:inline font-family="DejaVuSans">&#x2637;</fo:inline>
+                <!--fo:inline font-family="DejaVuSans">&#x29C8;</fo:inline-->
+            </xsl:when>			
+            <xsl:when test="$symbol='recurrent'">
+                <!--fo:inline font-family="DejaVuSans">&#x29C7;</fo:inline-->
+                <fo:inline font-family="DejaVuSans">&#x27F3;</fo:inline>
+            </xsl:when>			
+            <xsl:when test="$symbol='inactive'">
+                <!--fo:inline font-family="DejaVuSans">&#x2307;</fo:inline-->
+                <!--fo:inline font-family="DejaVuSans">&#x20AA;</fo:inline-->
+                <fo:inline font-family="DejaVuSans">&#x2606;</fo:inline>
+            </xsl:when>			            
+            <xsl:when test="$symbol='thought'">
+                <fo:inline font-family="DejaVuSans">&#x26AA;</fo:inline>
+            </xsl:when>			
+            <xsl:when test="$symbol='project'">
+                <fo:inline font-family="DejaVuSans">&#x2630;</fo:inline>
+            </xsl:when>			            
+            <xsl:otherwise>
+            </xsl:otherwise>							
+        </xsl:choose>			        
+    </xsl:template>
+    
+</xsl:stylesheet>

@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE filesystem PUBLIC "-//NetBeans//DTD Filesystem 1.1//EN" "http://www.netbeans.org/dtds/filesystem-1_1.dtd">
+<filesystem>
+
+    <folder name="Actions">
+<!--
+        <folder name="Edit">
+            <file name="au-com-trgtd-tr-view-AddAction.instance"/>
+            <file name="au-com-trgtd-tr-view-DeleteAction.instance"/>
+            <file name="au-com-trgtd-tr-view-EditAction.instance"/>
+            <file name="au-com-trgtd-tr-view-ExpandAction.instance"/>
+            <file name="au-com-trgtd-tr-view-CollapseAction.instance"/>
+            <file name="au-com-trgtd-tr-view-ToggleHideDoneAction.instance"/>
+        </folder>
+-->
+        <folder name="Review">
+            <file name="au-com-trgtd-tr-view-goals-GoalsAction.instance"/>
+        </folder>
+        <folder name="Setup">
+            <file name="au-com-trgtd-tr-view-goals-levels-LevelsAction.instance"/>
+            <file name="au-com-trgtd-tr-view-goals-ChangeLevelAction.instance"/>
+        </folder>
+    </folder>
+
+    <folder name="Menu">
+        <folder name="Setup">
+            <file name="LevelsAction.shadow">
+                <attr name="position" intvalue="900"/>
+                <attr name="originalFile" stringvalue="Actions/Setup/au-com-trgtd-tr-view-goals-levels-LevelsAction.instance"/>
+            </file>
+        </folder>
+        <folder name="Review">
+            <file name="GoalsAction.shadow">
+                <attr name="position" intvalue="910"/>
+                <attr name="originalFile" stringvalue="Actions/Review/au-com-trgtd-tr-view-goals-GoalsAction.instance"/>
+            </file>
+        </folder>
+        <folder name="Help">
+            <folder name="Shortcuts">
+                <file name="ChangeLevelAction.shadow">
+                    <attr name="originalFile" stringvalue="Actions/Setup/au-com-trgtd-tr-view-goals-ChangeLevelAction.instance"/>
+                </file>
+            </folder>
+        </folder>
+    </folder>
+
+    <folder name="Services">
+        <folder name="JavaHelp">
+            <file name="goals-helpset.xml" url="goals-helpset.xml">
+                <attr name="position" intvalue="3372"/>
+            </file>
+        </folder>
+    </folder>
+
+    <folder name="Windows2">
+        <folder name="Components">
+            <file name="GoalsTopComponent.settings" url="GoalsTopComponentSettings.xml"/>
+        </folder>
+        <folder name="Modes">
+            <file name="Setup.wsmode" url="SetupWsmode.xml"/>
+            <folder name="Setup"/>
+
+            <file name="goals.wsmode" url="GoalsWsmode.xml"/>
+            <folder name="goals"/>
+            <file name="goal.wsmode" url="GoalWsmode.xml"/>
+            <folder name="goal"/>
+        </folder>
+    </folder>
+
+    <folder name="Toolbars">
+        <folder name="TR Goals">
+            <attr name="position" intvalue="999700"/>
+            <file name="LevelsAction.shadow">
+                <attr name="position" intvalue="10"/>
+                <attr name="originalFile" stringvalue="Actions/Setup/au-com-trgtd-tr-view-goals-levels-LevelsAction.instance"/>
+            </file>
+            <file name="GoalsAction.shadow">
+                <attr name="position" intvalue="20"/>
+                <attr name="originalFile" stringvalue="Actions/Review/au-com-trgtd-tr-view-goals-GoalsAction.instance"/>
+            </file>
+        </folder>
+    </folder>
+
+    <folder name="Shortcuts">
+        <file name="D-L.shadow">
+            <attr name="originalFile" stringvalue="Actions/Setup/au-com-trgtd-tr-view-goals-ChangeLevelAction.instance"/>
+        </file>                                
+        <file name="D-S-G.shadow">
+            <attr name="originalFile" stringvalue="Actions/Review/au-com-trgtd-tr-view-goals-GoalsAction.instance"/>
+        </file>
+        <file name="D-S-L.shadow">
+            <attr name="originalFile" stringvalue="Actions/Setup/au-com-trgtd-tr-view-goals-levels-LevelsAction.instance"/>
+        </file>
+<!--
+        <file name="D-N.shadow">
+            <attr name="originalFile" stringvalue="Actions/Edit/au-com-trgtd-tr-view-AddAction.instance"/>
+        </file>
+        <file name="DELETE.shadow">
+            <attr name="originalFile" stringvalue="Actions/Edit/au-com-trgtd-tr-view-DeleteAction.instance"/>
+        </file>
+        <file name="D-E.shadow">
+            <attr name="originalFile" stringvalue="Actions/Edit/au-com-trgtd-tr-view-ExpandAction.instance"/>
+        </file>
+        <file name="D-S-E.shadow">
+            <attr name="originalFile" stringvalue="Actions/Edit/au-com-trgtd-tr-view-CollapseAction.instance"/>
+        </file>
+-->
+    </folder>
+
+</filesystem>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE filesystem PUBLIC "-//NetBeans//DTD Filesystem 1.1//EN" "http://www.netbeans.org/dtds/filesystem-1_1.dtd">
+<filesystem>
+    
+    <folder name="Actions">
+        <folder name="Reports">
+            <file name="tr-extract-reports-projectdetails-ReportActionImplAll.instance"/>
+            <file name="tr-extract-reports-projectdetails-ReportActionImplCurrent.instance"/>
+        </folder>
+    </folder>
+    <folder name="Menu">        
+        <folder name="File">                
+            <folder name="Reports">        
+                <file name="tr-extract-reports-projectdetails-ReportActionImplCurrent.shadow">
+                    <attr name="originalFile" stringvalue="Actions/Reports/tr-extract-reports-projectdetails-ReportActionImplCurrent.instance"/>
+                </file>                        
+                <file name="tr-extract-reports-projectdetails-ReportActionImplAll.shadow">
+                    <attr name="originalFile" stringvalue="Actions/Reports/tr-extract-reports-projectdetails-ReportActionImplAll.instance"/>
+                </file>                        
+            </folder>                                                
+        </folder>    
+    </folder>    
+    
+    <folder name="Services">
+        <folder name="JavaHelp">
+            <file name="report-projectdetails-helpset.xml" url="report-projectdetails-helpset.xml"/>
+        </folder>
+    </folder>
+</filesystem>

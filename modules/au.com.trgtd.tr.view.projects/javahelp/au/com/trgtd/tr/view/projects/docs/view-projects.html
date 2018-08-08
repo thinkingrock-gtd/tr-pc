@@ -1,0 +1,452 @@
+<html>
+    <head>
+        <title>Review Projects</title>
+        <link rel="stylesheet" href="nbdocs:/tr/model/docs/ide.css" type="text/css">
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+    <body>
+        <h2>Review Projects</h2>
+        <ul>
+            <li><a href="#purp">Purpose</a>
+            <li><a href="#nav">Navigation</a>
+            <li><a href="#pt">Project Tree</a>
+            <li><a href="#pop">Project Operations</a>
+            <li><a href="#plan">Planning</a>
+            <li><a href="#action-operations">Action Operations</a>
+            <li><a href="#goals">Goals</a>
+            <li><a href="#notes">Notes field</a>
+        </ul>
+        <h3><a name="purp"/>Purpose</h3>
+        <p>
+            This screen is where you plan and review your projects. The screen is divided vertically
+            into two parts. The left part is the project tree (explorer) and the right part displays
+            the details of either a project/sub-project or an action depending on what is selected
+            on the tree. When expanded the project tree shows sub-projects and actions under each
+            project.
+        </p>
+        In the tree explorer, there are 4 tabs:
+        <ul>
+            <li>
+                Projects: contains all your current projects;
+            </li>
+
+            <li>
+                Single Actions: contains all your single actions, i.e. actions not part of a project;
+            </li>                
+            <li>
+                Future: contains <b>projects</b> that got delayed, put on the side for a while or
+                for which you decided to start the planning process in advance. It should not be 
+                confused with Someday/Maybe Items which are just thoughts you might do one day. When the 
+                project becomes current, you can cut and paste it to the Projects tab. You can 
+                also use the Start date to get the project moved automatically to the Projects 
+                tab (see below under Projects Operations, Edit);
+            </li>
+            <li>
+                Templates: contains project structures you want to re-use like 'Start Marketing 
+                Campaign for product X', 'Reply Offer To Tender Client Y', etc. To use a template
+                for a new project, just copy and paste it into the Projects Tab and update 
+                descriptions accordingly.
+            </li>
+
+        </ul>
+        <h3><a name="nav"/>Navigation</h3>
+        <p>
+            To navigate in the project tree, you can use the mouse or the up and down arrows keys. To
+            navigate in the detail part, you can use the mouse or the Tab, Shift+Tab keys. To navigate between the 2
+            parts, you can use the F5 key or the mouse.
+        </p>
+        <h3><a name="pt"/>Project Tree</h3>
+        <b><i>Order</i></b><br><br>
+        Initially the projects, sub-projects and actions are sorted in the order they were entered. You can change that order by:
+        <ul>
+            <li>
+                selecting the projects, sub-projects or actions and move them up and down using the Move operation;
+            </li>
+            <li>
+                using the drag and drop functionality.
+            </li>
+        </ul>
+        <b><i>Drag and Drop functionality</i></b><br>
+        <p>
+            To move sub-projects and actions to a different project, you can drag and drop them using the mouse. You can also change a
+            sub-project to be a stand alone project by dragging it under the All projects node. Similarly, you can drag a project under
+            another project, changing it to a sub-project. If you drag a project or sub-project, all subtasks are moved too.
+        </p>
+        <b><i>Add Action and Add Project</i></b><br>
+        <p>
+            Add Action and Add Project operations work from anywhere in the 2 parts. The action or project will be added within the
+            project the action or project previously selected is.
+        </p>
+        <p>
+            An action created under an existing project will take the priority of that project.
+            A sub-project created under an existing project will take the priority of that project.
+        </p>
+        <h3><a name="pop"/>Project Operations</h3>
+        <p>
+            To perform all operations except Add Action and Add Project, you need to select the project node and either use the right-click menu or the
+            <a href="nbdocs://tr.model/tr/model/docs/shortcuts.html">Shortcut Key</a>
+
+            assigned to the operation. You can also use the Add Action, Add Project or Show/Hide Done buttons.
+        </p>
+        <p>
+            Except for Edit, Add action and Add project, all other operations can be performed to more than one project at the time. Just hold
+            the Shift or Command key while selecting them.
+        </p>
+        <b><i>Edit</i></b><br>
+        <p>
+            Once you have selected a project, sub-project or action on the tree part, you can move to its description
+            by using the Edit menu option or the Enter key. The cursor is then positioned at the end of the
+            description.
+        </p>
+        The display of the following fields is configurable:
+        <ul>
+
+            <li>
+                Project sequencing, Due Date and Start Date: see
+                <a href="nbdocs://au.com.trgtd.tr.prefs.projects/au/com/trgtd/tr/prefs/projects/docs/projects-prefs.html">Project Preferences</a>
+            </li>
+            <li>
+                Priority, Time, Energy: see
+                <a href="nbdocs://au.com.trgtd.tr.view.criteria/au/com/trgtd/tr/view/criteria/docs/criteria.html">Criteria</a>.
+            </li>
+        </ul>
+        The following operations are possible:
+        <ul>
+            <li>
+                modify its description;
+            </li>
+            <li>
+                change its topic: when subtasks are created, the project topic is the default but can be overwritten;
+            </li>
+            <li>
+                maintain its priority;
+            </li>
+            <li>
+                plan the project/sub-project;
+            </li>
+            <li>
+                maintain Notes;
+            </li>
+            <li>
+                set up the sequencing method (see
+                <a href="nbdocs://au.com.trgtd.tr.prefs.projects/au/com/trgtd/tr/prefs/projects/docs/projects-prefs.html">Project Preferences</a>
+                . Please note that when a sub-project is created, its default method for sequencing is the project&#39;s one;
+            </li>
+            <li>
+                maintain the Created Date if required. This needs to be enabled, see
+                <a href="nbdocs://au.com.trgtd.tr.prefs.projects/au/com/trgtd/tr/prefs/projects/docs/projects-prefs.html">Project Preferences</a>;
+            </li>
+            <li>
+                enter a Start date. For future project, when the Start date is reached or has passed (in case
+                you don&#39;t run the application for a few days), the future project will be moved automatically
+                to the Projects tab.
+            </li>
+            <li>
+                enter a Due Date if appropriate;
+            </li>
+            <li>
+                set it to done: a warning message is displayed if any subtask is not set to done. In this case, you can either cancel 
+                (by selecting the No button) or continue (Yes button). If you continue the subtasks will be set to done automatically;
+            </li>
+            <li>
+                reset it to not done. If you are resetting a sub-project within a done project, the project is
+                automatically reset to not done.
+            </li>
+
+        </ul>
+        <p>
+            <b><i>Expand All/Collapse All: tree expansion</i></b><br>
+            The project/sub-project expands and the subtasks are listed under the project/sub-project. You can expand
+            all projects by selecting the top node &quot;Projects&quot;. To perform the same operation, you can also
+            click on the expansion symbol on the left of the project node.
+        </p>
+        <b><i>Show Done/Hide Done</i></b><br>
+        When you perform the Show Done operation, done actions and done sub-projets for the selected node are shown as well
+        as the undone ones. Perform Hide Done to only see the ones to be done.
+        <p>
+            <b><i>Add action</i></b><br>
+            This operation adds an inactive action under the selected subtask. You can change the default
+            status of that action under
+            <a href="nbdocs://au.com.trgtd.tr.prefs.projects/au/com/trgtd/tr/prefs/projects/docs/projects-prefs.html">Project Preferences</a>.
+            The whole action description is selected to allow you to type directly the action description.
+        </p>
+        <p>
+            <b><i>Add project</i></b><br>
+            This operation adds a sub-project under the selected subtask. The whole
+            project description is selected to allow you to type directly the project description.
+        </p>
+        <p>
+            <b><i>Copy, Cut and Paste functionality</i></b><br>
+            You can copy, cut and paste projects (and their actions) to a different project. You can also change a
+            sub-project to be a stand alone project by cutting and pasting it under the Projects node. Similarly,
+            you can cut and paste a project under another project, changing it to a sub-project. If you copy/cut and
+            paste a project or sub-project, all subtasks are copied/moved too. These operations can be done between
+            Tabs too.
+        </p>
+        <p>
+            <b><i>Move project</i></b><br>
+            You can move a project or sub-project by selecting it and using this operation to move it up or down
+            within the project it is in.
+        </p>
+        <p>
+            <b><i>Create Template</i></b><br>
+            This function allows you to create a template from a project or sub-project. This is useful when you need to 
+            repeat the project or do a similar project. The created template will appear in the Templates tab project tree.
+            All dates in the created template are cleared except the Created Date, which is set to the current date.
+            The Status of all Actions are set to Inactive. Notes are kept. 
+        </p>
+        <a name="export-template"/>
+        <p>
+            <b><i>Export Template</i></b><br>
+            This function exports the selected project or sub-project into a separate file.
+            You can then share this file with other TR users, within your team or with the
+            TR community through the TR website. A file with the extension .trpt is created. This is
+            the file the other users will need to import using the Import Project Template function.
+        </p>
+        <p>
+            <b><i>Export Project</i></b><br>
+            This function exports the selected project or sub-project into a separate file.
+            You can then share this file with other TR users or within your team. A file with the extension .trp
+            is created. This is the file the other users will need to import using the Import Project operation.
+        </p>
+        <p>
+            <b><i>Import Project</i></b><br>
+            This function lets you import a project created using the export project operation.
+            You need to select a project file (.trp extension). The project will
+            be added at the bottom of the selected project.<br>
+            <br>
+            If the contexts, topics and criteria values used in the project do not exist
+            in your data file, the default values for these fields are used: &#39;None&#39; for topics
+            and contexts, blank for criteria. So if you want to share projects within a team,
+            make sure every user has the same set of values for these fields.
+        <p>
+            <b><i>Others</i></b><br>
+            Change Topic: combo is displayed to select the new topic. <br>
+            Delete: you can delete a project or sub-project. A confirmation is required.
+        </p>
+        <h3 id="plan"><a name="plan"/>Planning</h3>
+        To plan the project/sub-project, there are five recommended steps:
+        <ol>
+            <li>
+                Enter the purpose: this is the &quot;why&quot; you are doing this project/sub-project. By defining
+                it, it will:
+                <ul>
+                    <li>
+                        create decision-making criteria;
+                    </li>
+                    <li>
+                        motivate;
+                    </li>
+                    <li>
+                        clarify your focus;
+                    </li>
+                    <li>
+                        expand options by getting you into creative thinking.
+                    </li>
+                </ul>
+            </li>
+            <li>
+                Try to visualise the results: view the project/sub-project beyond the completion date (capture
+                features, aspects, qualities you imagine in place);
+            </li>
+            <li>Brainstorming: just write all the ideas that come into your mind about this
+                project/sub-project, you will analyse them and organise them later. In addition to
+                capturing your original ideas, by brainstorming you will also have many new
+                ideas. Don&#39;t ignore any idea, they might prove interesting or useful later
+                on when you are developing your options. Also you will be more confident
+                about your choices;
+            </li>
+            <li>
+                Organising: a natural organisation will probably emerge during the
+                brainstorming step. You need to:
+                <ul>
+                    <li>
+                        identify the key steps;
+                    </li>
+                    <li>
+                        sort them out by component, sequences and priorities;
+                    </li>
+                    <li>
+
+                        detailed them to the right level.
+                    </li>
+                </ul>
+            </li>
+            <li>
+                Next actions: during this step, you will create the actions or sub-projects
+                required for this project/sub-project. You can either just enter the next subtask to get the
+                project/sub-project starting or continuing, or enter as many next subtasks you can think of at the moment about this
+                project/sub-project and decide which ones are active (i.e. to be done currently).
+            </li>
+        </ol>
+        <p>
+            Please note that there are no limits to sub-project nesting, i.e. a sub-project can include sub-projects,
+            etc. but it is recommended not to use more than a few levels.
+        </p>
+
+        <a name="action-operations"/>
+        <h3>Action Operations</h3>
+        <p>
+            To perform operations, you need to select the action node and either use the right-click menu or the
+            <a href="nbdocs://tr.model/tr/model/docs/shortcuts.html">Shortcut Key</a>
+            assigned to the operation. You can also use the Add Action, Add Project, Reprocess or Convert to Project buttons.
+        </p>
+        <p>
+            Except for Edit, all other operations can be performed to more than one
+            action at the time. Just hold the Shift or Command key while selecting them.
+        </p>
+        <b><i>Edit</i></b><br>
+        <br>
+        An action can be edited by selecting it from the project tree once the
+        project/sub-project has been expanded. You can then:
+        <ul>
+            <li>
+                maintain its description;
+            </li>
+            <li>
+                maintain its topic, default to the project&#39;s topic;
+            </li>
+            <li>
+
+                maintain its context;
+            </li>
+            <li>
+                maintain its priority, time or energy;
+            </li>
+            <li>
+                maintain its status (which type of action is it: Do ASAP, Delegated, Scheduled, or Inactive);
+            </li>
+            <li>
+                for scheduled actions only, you can enter
+                <a href="nbdocs://au.com.trgtd.tr.view.actns/au/com/trgtd/tr/view/actns/docs/recurrence.html">Recurrence</a> definition;
+            </li>
+            <li>
+                add notes to it: this notes field is useful for storing an agenda (if action is Prepare Meeting), a list of
+                questions (if action is Call Builder), for storing a list (if action is Get Christmas presents), etc;
+            </li>
+            <li>
+                maintain the Created Date if required. This needs to be enabled, see
+                <a href="nbdocs://au.com.trgtd.tr.view.actn/au/com/trgtd/tr/view/actn/docs/actions-prefs.html">Actions Preferences</a>;
+            </li>
+            <li>
+                set it to done: the done date is automatically set to today&#39;s date but can be modified;
+            </li>
+            <li>
+                reset it to not done. If the action was within a done project/sub-project, the project/sub-project is automatically
+                reset to not done;
+            </li>
+
+            <li>
+                enter a start date if appropriate;
+            </li>
+            <li>
+                enter a due date if appropriate.
+            </li>
+        </ul>
+        <p>
+            <b><i>Convert to project</i></b><br>
+            Use this operation if you decide that this action should be decomposed into more than one action. A project (if single action) or
+            a sub-project is then created automatically with the original action&#39;s description as the project/sub-project&#39;s description.
+            The action&#39;s notes, topic, priority and due date are also copied to the project/sub-project. The original action is the first action of
+            the project/sub-project.
+        </p>
+
+        <p>
+            <b><i>Reprocess</i></b><br>
+            The action will be sent back to the top of the unprocessed thoughts. If you select Reprocess Now, the application will navigate to the
+            <a href="nbdocs://au.com.trgtd.tr.view.process/au/com/trgtd/tr/view/process/docs/process.html">Process Thoughts</a>
+            screen with the initial thought for that action displayed.
+        </p>
+        <p>
+            <b><i>Copy and Cut functionality</i></b><br>
+            You can copy, cut and paste actions to a different project. These operations can be done between Tabs too. When you copy an action, the
+            original thought is not copied across to the new action.
+        </p>
+
+        <p>
+            <b><i>Add action</i></b><br>
+            This operation adds an inactive action under the selected subtask. You can change the default
+            status of that action under
+            <a href="nbdocs://au.com.trgtd.tr.prefs.projects/au/com/trgtd/tr/prefs/projects/docs/projects-prefs.html">Project Preferences</a>.
+            The whole action description is selected to allow you to type directly the action description.
+        </p>
+        <p>
+            <b><i>Add project</i></b><br>
+            This operation adds a sub-project under the selected subtask. The whole
+            project description is selected to allow you to type directly the project description.
+        </p>
+        <p>
+            <b><i>Set Done</i></b><br>
+            This function sets the action to done. It is very useful if you want to set multiple actions to done.
+        </p>
+        <p>
+            <b><i>Postpone Action Date</i></b><br>
+            This function increases the action date by the number of periods specified:
+        <ul>
+            <li>if action is Inactive, the start date is postponed;</li>
+            <li>if action is Do ASAP, the due date is postponed;</li>
+            <li>if action is Scheduled, the scheduled date is postponed;</li>
+            <li>if action is Delegated, the follow-up date is postponed.</li>
+        </ul>
+        If the action did not have an action date, the action date is calculated as the current date plus the postponement.
+        <p>
+            <b><i>Move action</i></b>
+            <br>
+            You can move an action by selecting it and using this operation to move it up or down within the project it is in.
+        </p>
+        <p>
+            <b><i>Others</i></b><br>
+            Change Topic: a dialog window is displayed to select the new topic. <br>
+            Change Context: a dialog window  is displayed to select the new context. <br>
+            Change Criteria: a dialog is displayed allowing you to select the criteria and the new value. <br>
+            Change Status: a dialog window is displayed allowing you to select the new status and relevant data. <br>
+            Change Project: a Choose Project window is displayed allowing you to select the new project. <br>
+            Delete: you can delete an action. A confirmation is required.
+        </p>
+        <h3><a name="goals"/>Goals</h3>
+        <p>
+            Projects can be linked to existing goals. A Goals folder exists for each project and sub-project.
+        </p>
+        <p>
+            To display the Goals folders, you need to use the Show/Hide Goals button or right-click menu option on a project node.
+        <p/>
+        <p>
+            When the Goals folder is displayed, you can then add a goal using the Add right-click menu option on the folder.
+            A pop-up window opens showing the goals to which projects can be linked (Goals Level setting). More than one project
+            can be linked to the same goal and a project can be linked to more than one goal.
+        </p>
+        <p>
+            Link to goals can be deleted by using the Delete right-click menu option on the goal node.
+        </p>
+        <p>
+            The goal can be updated by using the Edit right-click menu option on the goal node.
+        </p>
+
+        <h3><a name="notes"/>Notes field</h3>
+        The possible operations are described below in the order of the buttons from left to right. When insertion occurs, it happens at
+        the cursor position. Copy/Cut and paste of text can be done through the standard shortcut keys Command+C, Command+V and Command+P.
+        <ul>
+            <li>
+                You need to click on the pencil symbol button or double-click on the field, in order to start the
+                Edit mode before you can update the field;
+            </li>
+            <li>
+                You can insert a web address by typing it directly or using the web symbol button;
+            </li>
+            <li>
+                You can insert a file reference using the folder symbol button;
+            </li>
+            <li>
+                You can insert today's date using the calendar symbol button. You can also use the shortcut key Ctrl+Alt+D;
+            </li>
+            <li>
+                You can insert current time using the clock symbol button. You can also use the shortcut key Ctrl+Alt+T.
+            </li>
+            <li>
+                You can insert a link to a reference item using the reference symbol button or with the shortcut key: Ctrl+Alt+R.
+                A dialog box will open to let you select the reference item. You can filter the selection list using the search text field
+                and/or the topic chooser (located above the list). The items are ordered alphabetically by description.
+            </li>
+        </ul>
+    </body>
+</html>

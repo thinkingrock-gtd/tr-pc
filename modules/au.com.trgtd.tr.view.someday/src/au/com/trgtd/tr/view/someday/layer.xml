@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE filesystem PUBLIC "-//NetBeans//DTD Filesystem 1.1//EN" "http://www.netbeans.org/dtds/filesystem-1_1.dtd">
+<filesystem>
+    
+    <folder name="Actions">
+        <folder name="Review">
+            <file name="au-com-trgtd-tr-view-someday-FuturesAction.instance"/>
+        </folder>
+    </folder>
+    
+    <folder name="Menu">
+        <folder name="Review">            
+            <file name="tr-view-reference-sep825.instance">
+                <attr name="position" intvalue="825"/>                
+                <attr name="instanceClass" stringvalue="javax.swing.JSeparator"/>
+            </file>            
+            <file name="FuturesAction.shadow">
+                <attr name="position" intvalue="830"/>
+                <attr name="originalFile" stringvalue="Actions/Review/au-com-trgtd-tr-view-someday-FuturesAction.instance"/>
+            </file>
+        </folder>
+    </folder>
+    
+    <folder name="Services">
+        <folder name="JavaHelp">
+            <file name="review-future-helpset.xml" url="review-future-helpset.xml"/>
+        </folder>
+    </folder>
+    
+    <folder name="Windows2">        
+        <folder name="Modes">                        
+            <file name="futures.wsmode" url="FuturesWsmode.xml"/>
+        <folder name="futures"/>
+        <file name="future.wsmode" url="FutureWsmode.xml"/>
+            <folder name="future"/>
+        </folder>
+    </folder>                
+    
+    <folder name="Toolbars">
+        <folder name="TR">
+            <attr name="position" intvalue="999100"/>
+            <file name="FuturesAction.shadow">
+                <attr name="position" intvalue="330"/>
+                <attr name="originalFile" stringvalue="Actions/Review/au-com-trgtd-tr-view-someday-FuturesAction.instance"/>
+            </file>
+        </folder>
+    </folder>
+    
+     <folder name="Shortcuts">
+        <file name="D-S-S.shadow">
+            <attr name="originalFile" stringvalue="Actions/Review/au-com-trgtd-tr-view-someday-FuturesAction.instance"/>
+        </file>
+    </folder>        
+    
+</filesystem>

@@ -1,0 +1,5 @@
+Manifest-Version: 1.0
+OpenIDE-Module: au.com.trgtd.tr.task.messages
+OpenIDE-Module-Install: au/com/trgtd/tr/task/messages/Installer.class
+OpenIDE-Module-Localizing-Bundle: au/com/trgtd/tr/task/messages/Bundle.properties
+OpenIDE-Module-Specification-Version: 3.5.1.1

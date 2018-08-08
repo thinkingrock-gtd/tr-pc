@@ -1,0 +1,5 @@
+Manifest-Version: 1.0
+OpenIDE-Module: commons.logging
+OpenIDE-Module-Localizing-Bundle: commons/logging/Bundle.properties
+OpenIDE-Module-Specification-Version: 3.5.1
+

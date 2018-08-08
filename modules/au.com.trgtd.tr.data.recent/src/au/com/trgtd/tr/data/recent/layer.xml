@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE filesystem PUBLIC "-//NetBeans//DTD Filesystem 1.1//EN" "http://www.netbeans.org/dtds/filesystem-1_1.dtd">
+<filesystem>    
+    <folder name="Actions">
+        <folder name="File">
+            <file name="au-com-trgtd-tr-data-recent-RecentDataFilesAction.instance"/>
+            <file name="au-com-trgtd-tr-data-recent-RecentDataFilesClearAction.instance"/>
+        </folder>
+    </folder>
+    <folder name="Menu">        
+        <folder name="File">         
+            <file name="au-com-trgtd-tr-data-recent-RecentDataFiles.shadow">
+                <attr name="originalFile" stringvalue="Actions/File/au-com-trgtd-tr-data-recent-RecentDataFilesAction.instance"/>
+                <attr name="position" intvalue="220"/>                                
+            </file>            
+        </folder>
+    </folder>    
+</filesystem>

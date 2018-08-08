@@ -1,0 +1,308 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="ActionsDone" pageWidth="612" pageHeight="792" columnWidth="535" leftMargin="30" rightMargin="30" topMargin="20" bottomMargin="20">
+	<property name="ireport.scriptlethandling" value="0"/>
+	<property name="ireport.encoding" value="UTF-8"/>
+	<import value="net.sf.jasperreports.engine.*"/>
+	<import value="java.util.*"/>
+	<import value="net.sf.jasperreports.engine.data.*"/>
+	<parameter name="paramCriteria" class="java.lang.Boolean" isForPrompting="false">
+		<parameterDescription><![CDATA[Include criteria?]]></parameterDescription>
+		<defaultValueExpression><![CDATA[Boolean.TRUE]]></defaultValueExpression>
+	</parameter>
+	<parameter name="paramProject" class="java.lang.Boolean" isForPrompting="false">
+		<parameterDescription><![CDATA[Include Project/Thought?]]></parameterDescription>
+		<defaultValueExpression><![CDATA[Boolean.TRUE]]></defaultValueExpression>
+	</parameter>
+	<parameter name="paramSuccess" class="java.lang.Boolean" isForPrompting="false">
+		<parameterDescription><![CDATA[Include successful outcome?]]></parameterDescription>
+		<defaultValueExpression><![CDATA[Boolean.TRUE]]></defaultValueExpression>
+	</parameter>
+	<parameter name="paramNotes" class="java.lang.Boolean" isForPrompting="false">
+		<parameterDescription><![CDATA[Include notes?]]></parameterDescription>
+		<defaultValueExpression><![CDATA[Boolean.TRUE]]></defaultValueExpression>
+	</parameter>
+	<parameter name="paramFrom" class="java.lang.Long" isForPrompting="false">
+		<parameterDescription><![CDATA[From date time]]></parameterDescription>
+		<defaultValueExpression><![CDATA[Long.valueOf(0)]]></defaultValueExpression>
+	</parameter>
+	<parameter name="paramDateRangeText" class="java.lang.String" isForPrompting="false">
+		<parameterDescription><![CDATA[Date range text]]></parameterDescription>
+		<defaultValueExpression><![CDATA["From: the earliest To: the latest"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="paramTo" class="java.lang.Long" isForPrompting="false">
+		<parameterDescription><![CDATA[To date time]]></parameterDescription>
+		<defaultValueExpression><![CDATA[Long.valueOf(Long.MAX_VALUE)]]></defaultValueExpression>
+	</parameter>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["/Users/jmoore/Development/tr3/tr-reg/tr3/au.com.trgtd.tr.reports.done/release/resource/reports/"]]></defaultValueExpression>
+	</parameter>
+	<queryString language="xPath">
+		<![CDATA[/data/actions/action]]>
+	</queryString>
+	<field name="type" class="java.lang.String">
+		<fieldDescription><![CDATA[state/type]]></fieldDescription>
+	</field>
+	<sortField name="type"/>
+	<filterExpression><![CDATA[Boolean.TRUE]]></filterExpression>
+	<group name="DoASAP">
+		<groupHeader>
+			<band height="40" splitType="Stretch">
+				<subreport isUsingCache="false">
+					<reportElement mode="Opaque" x="0" y="0" width="552" height="40"/>
+					<subreportParameter name="REPORT_LOCALE"/>
+					<subreportParameter name="paramCriteria">
+						<subreportParameterExpression><![CDATA[$P{paramCriteria}]]></subreportParameterExpression>
+					</subreportParameter>
+					<subreportParameter name="REPORT_SCRIPTLET"/>
+					<subreportParameter name="paramNotes">
+						<subreportParameterExpression><![CDATA[$P{paramNotes}]]></subreportParameterExpression>
+					</subreportParameter>
+					<subreportParameter name="REPORT_PARAMETERS_MAP"/>
+					<subreportParameter name="REPORT_CONNECTION"/>
+					<subreportParameter name="paramFrom">
+						<subreportParameterExpression><![CDATA[$P{paramFrom}]]></subreportParameterExpression>
+					</subreportParameter>
+					<subreportParameter name="REPORT_DATA_SOURCE"/>
+					<subreportParameter name="SUBREPORT_DIR">
+						<subreportParameterExpression><![CDATA[$P{SUBREPORT_DIR}]]></subreportParameterExpression>
+					</subreportParameter>
+					<subreportParameter name="paramSuccess">
+						<subreportParameterExpression><![CDATA[$P{paramSuccess}]]></subreportParameterExpression>
+					</subreportParameter>
+					<subreportParameter name="paramTo">
+						<subreportParameterExpression><![CDATA[$P{paramTo}]]></subreportParameterExpression>
+					</subreportParameter>
+					<subreportParameter name="paramDateRangeText">
+						<subreportParameterExpression><![CDATA[$P{paramDateRangeText}]]></subreportParameterExpression>
+					</subreportParameter>
+					<subreportParameter name="XML_DATA_DOCUMENT">
+						<subreportParameterExpression><![CDATA[$P{XML_DATA_DOCUMENT}]]></subreportParameterExpression>
+					</subreportParameter>
+					<subreportParameter name="REPORT_MAX_COUNT"/>
+					<subreportParameter name="paramProject">
+						<subreportParameterExpression><![CDATA[$P{paramProject}]]></subreportParameterExpression>
+					</subreportParameter>
+					<subreportParameter name="REPORT_RESOURCE_BUNDLE"/>
+					<subreportExpression class="java.lang.String"><![CDATA[$P{SUBREPORT_DIR} + "ActionsDoneASAPLTR.jasper"]]></subreportExpression>
+				</subreport>
+			</band>
+		</groupHeader>
+	</group>
+	<group name="Delegated">
+		<groupHeader>
+			<band height="40" splitType="Stretch">
+				<subreport isUsingCache="false">
+					<reportElement mode="Transparent" x="0" y="0" width="552" height="40"/>
+					<subreportParameter name="REPORT_LOCALE"/>
+					<subreportParameter name="paramCriteria">
+						<subreportParameterExpression><![CDATA[$P{paramCriteria}]]></subreportParameterExpression>
+					</subreportParameter>
+					<subreportParameter name="REPORT_SCRIPTLET"/>
+					<subreportParameter name="paramNotes">
+						<subreportParameterExpression><![CDATA[$P{paramNotes}]]></subreportParameterExpression>
+					</subreportParameter>
+					<subreportParameter name="REPORT_PARAMETERS_MAP"/>
+					<subreportParameter name="REPORT_CONNECTION"/>
+					<subreportParameter name="paramFrom">
+						<subreportParameterExpression><![CDATA[$P{paramFrom}]]></subreportParameterExpression>
+					</subreportParameter>
+					<subreportParameter name="REPORT_DATA_SOURCE"/>
+					<subreportParameter name="SUBREPORT_DIR">
+						<subreportParameterExpression><![CDATA[$P{SUBREPORT_DIR}]]></subreportParameterExpression>
+					</subreportParameter>
+					<subreportParameter name="paramSuccess">
+						<subreportParameterExpression><![CDATA[$P{paramSuccess}]]></subreportParameterExpression>
+					</subreportParameter>
+					<subreportParameter name="paramTo">
+						<subreportParameterExpression><![CDATA[$P{paramTo}]]></subreportParameterExpression>
+					</subreportParameter>
+					<subreportParameter name="paramDateRangeText">
+						<subreportParameterExpression><![CDATA[$P{paramDateRangeText}]]></subreportParameterExpression>
+					</subreportParameter>
+					<subreportParameter name="XML_DATA_DOCUMENT">
+						<subreportParameterExpression><![CDATA[$P{XML_DATA_DOCUMENT}]]></subreportParameterExpression>
+					</subreportParameter>
+					<subreportParameter name="REPORT_MAX_COUNT"/>
+					<subreportParameter name="paramProject">
+						<subreportParameterExpression><![CDATA[$P{paramProject}]]></subreportParameterExpression>
+					</subreportParameter>
+					<subreportParameter name="REPORT_RESOURCE_BUNDLE"/>
+					<subreportExpression class="java.lang.String"><![CDATA[$P{SUBREPORT_DIR} + "ActionsDoneDelegatedLTR.jasper"]]></subreportExpression>
+				</subreport>
+			</band>
+		</groupHeader>
+		<groupFooter>
+			<band splitType="Stretch"/>
+		</groupFooter>
+	</group>
+	<group name="Inactive">
+		<groupHeader>
+			<band height="40" splitType="Stretch">
+				<subreport isUsingCache="false">
+					<reportElement mode="Transparent" x="0" y="0" width="552" height="40"/>
+					<subreportParameter name="REPORT_LOCALE"/>
+					<subreportParameter name="paramCriteria">
+						<subreportParameterExpression><![CDATA[$P{paramCriteria}]]></subreportParameterExpression>
+					</subreportParameter>
+					<subreportParameter name="REPORT_SCRIPTLET"/>
+					<subreportParameter name="REPORT_PARAMETERS_MAP"/>
+					<subreportParameter name="paramNotes">
+						<subreportParameterExpression><![CDATA[$P{paramNotes}]]></subreportParameterExpression>
+					</subreportParameter>
+					<subreportParameter name="REPORT_CONNECTION"/>
+					<subreportParameter name="paramFrom">
+						<subreportParameterExpression><![CDATA[$P{paramFrom}]]></subreportParameterExpression>
+					</subreportParameter>
+					<subreportParameter name="REPORT_DATA_SOURCE"/>
+					<subreportParameter name="paramSuccess">
+						<subreportParameterExpression><![CDATA[$P{paramSuccess}]]></subreportParameterExpression>
+					</subreportParameter>
+					<subreportParameter name="SUBREPORT_DIR">
+						<subreportParameterExpression><![CDATA[$P{SUBREPORT_DIR}]]></subreportParameterExpression>
+					</subreportParameter>
+					<subreportParameter name="paramTo">
+						<subreportParameterExpression><![CDATA[$P{paramTo}]]></subreportParameterExpression>
+					</subreportParameter>
+					<subreportParameter name="XML_DATA_DOCUMENT">
+						<subreportParameterExpression><![CDATA[$P{XML_DATA_DOCUMENT}]]></subreportParameterExpression>
+					</subreportParameter>
+					<subreportParameter name="paramDateRangeText">
+						<subreportParameterExpression><![CDATA[$P{paramDateRangeText}]]></subreportParameterExpression>
+					</subreportParameter>
+					<subreportParameter name="REPORT_MAX_COUNT"/>
+					<subreportParameter name="paramProject">
+						<subreportParameterExpression><![CDATA[$P{paramProject}]]></subreportParameterExpression>
+					</subreportParameter>
+					<subreportParameter name="REPORT_RESOURCE_BUNDLE"/>
+					<subreportExpression class="java.lang.String"><![CDATA[$P{SUBREPORT_DIR} + "ActionsDoneInactiveLTR.jasper"]]></subreportExpression>
+				</subreport>
+			</band>
+		</groupHeader>
+	</group>
+	<group name="Scheduledd">
+		<groupHeader>
+			<band height="40" splitType="Stretch">
+				<subreport isUsingCache="false">
+					<reportElement mode="Transparent" x="0" y="0" width="552" height="40"/>
+					<subreportParameter name="REPORT_LOCALE"/>
+					<subreportParameter name="paramCriteria">
+						<subreportParameterExpression><![CDATA[$P{paramCriteria}]]></subreportParameterExpression>
+					</subreportParameter>
+					<subreportParameter name="REPORT_SCRIPTLET"/>
+					<subreportParameter name="REPORT_PARAMETERS_MAP"/>
+					<subreportParameter name="paramNotes">
+						<subreportParameterExpression><![CDATA[$P{paramNotes}]]></subreportParameterExpression>
+					</subreportParameter>
+					<subreportParameter name="REPORT_CONNECTION"/>
+					<subreportParameter name="paramFrom">
+						<subreportParameterExpression><![CDATA[$P{paramFrom}]]></subreportParameterExpression>
+					</subreportParameter>
+					<subreportParameter name="REPORT_DATA_SOURCE"/>
+					<subreportParameter name="paramSuccess">
+						<subreportParameterExpression><![CDATA[$P{paramSuccess}]]></subreportParameterExpression>
+					</subreportParameter>
+					<subreportParameter name="SUBREPORT_DIR">
+						<subreportParameterExpression><![CDATA[$P{SUBREPORT_DIR}]]></subreportParameterExpression>
+					</subreportParameter>
+					<subreportParameter name="paramTo">
+						<subreportParameterExpression><![CDATA[$P{paramTo}]]></subreportParameterExpression>
+					</subreportParameter>
+					<subreportParameter name="XML_DATA_DOCUMENT">
+						<subreportParameterExpression><![CDATA[$P{XML_DATA_DOCUMENT}]]></subreportParameterExpression>
+					</subreportParameter>
+					<subreportParameter name="paramDateRangeText">
+						<subreportParameterExpression><![CDATA[$P{paramDateRangeText}]]></subreportParameterExpression>
+					</subreportParameter>
+					<subreportParameter name="REPORT_MAX_COUNT"/>
+					<subreportParameter name="paramProject">
+						<subreportParameterExpression><![CDATA[$P{paramProject}]]></subreportParameterExpression>
+					</subreportParameter>
+					<subreportParameter name="REPORT_RESOURCE_BUNDLE"/>
+					<subreportExpression class="java.lang.String"><![CDATA[$P{SUBREPORT_DIR} + "ActionsDoneScheduledLTR.jasper"]]></subreportExpression>
+				</subreport>
+			</band>
+		</groupHeader>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band splitType="Stretch"/>
+	</title>
+	<pageHeader>
+		<band height="30" splitType="Stretch">
+			<staticText>
+				<reportElement key="headingStaticText" x="2" y="6" width="94" height="18"/>
+				<textElement verticalAlignment="Bottom" rotation="None">
+					<font fontName="DejaVu Sans" size="10" isBold="true" isItalic="false" isUnderline="false" pdfFontName="DejaVuSansBold.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[Actions Done]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="96" y="6" width="323" height="18"/>
+				<textElement textAlignment="Center" verticalAlignment="Bottom" markup="styled">
+					<font fontName="DejaVu Sans" size="10" pdfFontName="DejaVuSans.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{paramDateRangeText}]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report" pattern="EEE dd MMM yyyy" isBlankWhenNull="false">
+				<reportElement key="dateTextField" positionType="FixRelativeToBottom" x="419" y="6" width="133" height="18"/>
+				<textElement textAlignment="Right" verticalAlignment="Bottom">
+					<font fontName="DejaVu Sans" size="10" isBold="true" pdfFontName="DejaVuSansBold.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<textFieldExpression class="java.util.Date"><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="0" y="26" width="550" height="1"/>
+			</line>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band splitType="Stretch"/>
+	</detail>
+	<columnFooter>
+		<band splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="18" splitType="Stretch">
+			<textField pattern="" isBlankWhenNull="false" hyperlinkType="Reference">
+				<reportElement key="homeTextField" x="3" y="6" width="156" height="12"/>
+				<textElement>
+					<font fontName="DejaVu Sans" size="8" pdfFontName="DejaVuSans.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA["www.thinkingrock.com.au"]]></textFieldExpression>
+				<hyperlinkReferenceExpression><![CDATA["http://www.thinkingrock.com.au"]]></hyperlinkReferenceExpression>
+			</textField>
+			<textField isBlankWhenNull="false">
+				<reportElement key="pageTextField" x="442" y="6" width="88" height="12"/>
+				<textElement textAlignment="Right">
+					<font fontName="DejaVu Sans" size="8" pdfFontName="DejaVuSans.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA["Page " + $V{PAGE_NUMBER} + " of "]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report" isBlankWhenNull="false">
+				<reportElement key="pageNbrTextField" x="530" y="6" width="20" height="12"/>
+				<textElement>
+					<font fontName="DejaVu Sans" size="8" pdfFontName="DejaVuSans.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[" " + $V{PAGE_NUMBER} + ""]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="0" y="2" width="552" height="1" forecolor="#CCCCCC"/>
+			</line>
+			<textField>
+				<reportElement x="159" y="6" width="283" height="12"/>
+				<textElement markup="styled">
+					<font fontName="DejaVu Sans" size="8" pdfFontName="DejaVuSans.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA["\u2302Topic @Context \u25F7Time \u26A1Energy \u2690Priority"]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>

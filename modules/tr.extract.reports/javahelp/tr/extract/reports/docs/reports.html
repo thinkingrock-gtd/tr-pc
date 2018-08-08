@@ -1,0 +1,125 @@
+<html>
+    <head>
+        <title>Reports (Jasper)</title>
+        <link rel="stylesheet" href="nbdocs:/tr/model/docs/ide.css" type="text/css">
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+    <body>
+        <h2>Reports (Jasper)</h2>
+        <h3>Introduction</h3>
+        <p>
+            The reports can be divided into three types: action reports, project reports and item reports. 
+            The action reports are for taking with you to do tasks and to review your short term work. 
+            The project reports are for reviewing and planning your work.  Item reports show your someday/maybe
+            list and your referenced information.
+        </p>
+        <p>
+            The reports are produced using JasperReports and can be saved in many 
+            formats, including PDF. All reports use the DejaVu serif font. This font and its size 
+            cannot be changed.
+        </p>
+        <p>
+            Most reports can be found under the Reports menu. In addition, the Project Outline, 
+            Project Detail and Action Detail reports can be run from the popup menu (using the right mouse button 
+            or control-key and mouse click) on any project or action in the project tree views.
+        </p>
+        <h3>Common parameters</h3>
+        <p>
+            Depending on the reports, the following parameters can be set:
+        <ul>
+            <li><b>Include time, energy and priority?</b>: if checked, the three criteria (time, energy and priority)
+                are displayed on the report;</li>
+            <li><b>Include successful outcome?</b>: if checked, the successful outcome of 
+                the action is displayed on the report in italic style;</li>
+            <li><b>Include project or thought?</b>: if checked, the thought description
+                is shown for single actions (between braces {}) or the project
+                path is shown (between square brackets []) for actions part of a project;</li>
+            <li><b>Include notes?</b>: if checked, the action notes are displayed on the 
+                report surrounded by a box;</li>
+            <li><b>Remember options</b>: if checked, the selected parameters
+                are saved and restored the next time the report is run.</li>
+        </ul>
+        <h3>Actions Reports</h3>
+        <p>
+            The action reports are:
+        <ul>
+            <li><b>Actions: Do ASAP</b>: this report lists all Do ASAP actions grouped by context.
+                Contexts are listed alphabetically and actions are
+                ordered alphabetically within context. You can change the order within context to be by
+                priority, energy or time. You can also select a specific context;</li>
+            <li><b>Actions: Delegated</b>: this report lists all Delegated actions within a specified
+                period, optionally grouped by Delegate. The order is by ascending Follow-up date;</li>
+            <li><b>Actions: Scheduled</b>: this report lists all Scheduled actions within a specified
+                period order by Scheduled date and time;</li>
+            <li><b>Actions: Done</b>: this report lists all Done actions within a specified
+                period. This report allows you to review whether due dates were met, which period was productive,
+                in which area you are the most productive, performance of team members, etc.
+                The actions are grouped into sections: Do ASAP (ordered by ascending Done date),
+                Delegated (grouped by Delegate, ordered by ascending Done date), Inactive (ordered by
+                ascending Done date) and Scheduled (ordered by ascending Done date);</li>
+            <li><b>PocketMod(1) and PocketMod(2)</b>: this report lists the actions corresponding to
+                the pages selected as parameters in the PocketMod format.
+                See the <a href="pocketmod.html">PocketMod report help</a> for more details. There are two entries
+                for this report in the Reports menu so that you can design two pocketmod reports by selecting the
+                pages and remembering the options;</li>
+            <li><b>Single actions</b>: this report lists all the actions which are not part of a
+                project. The Done State parameter allows you to select only current
+                actions (To do), or done actions or all. You can also choose a specific topic or context.
+                Four choices are available for the order;</li>
+            <li><b>Weekly Review</b>: this report lists the actions planned for today and this week.
+                You can include overdue actions or not. The start parameter allows you to produce
+                the report for today or tomorrow. If you select tomorrow, the report will list the
+                actions planned for tomorrow under the Today section and the week starting the day
+                after. The overdue actions are grouped into sections: Overdue Scheduled (ordered by ascending
+                Scheduled date and time), Overdue Do ASAP (ordered by ascending Due date), Overdue Delegated
+                (grouped by Delegate, ordered by ascending Follow-up date). In the Today section, the Scheduled
+                actions for today are first listed in ascending order of time, then the Do ASAP actions due today
+                grouped by context, then the Delegated actions to be followed up today group by delegate. In the This week
+                section, all actions are listed together ordered by ascending date (and time for scheduled actions);
+            </li>
+            <li><b>Action report</b>: this report lists all the details of the selected action. It is only
+                available through the Print option on actions in the project tree. To run the report for an action,
+                use the right mouse button to click on an action and choose Print from the popup menu. The paper size for the report
+                can be set under the
+                <a href="nbdocs://au.com.trgtd.tr.prefs.projects/au/com/trgtd/tr/prefs/projects/docs/projects-prefs.html">Project Preferences</a>.</li>
+        </ul>
+        <h3>Project Reports</h3>
+        <p>
+            The project reports are:
+        <ul>
+            <li><b>Project Outline</b>: this report lists a summary of your projects.
+                You can select a specific topic which will filter on the top level projects only. The
+                top-level projects Done State parameter allows you to select only current projects (To do), or done projects
+                (Done) or all projects (All). The parameter Sub-projects and actions Done State allows you
+                to do a similar selection for actions and sub-projects. If you only want a list of projects
+                and sub-projects, uncheck the Include Actions? parameter. Five choices are available for
+                the order of the top level projects, As listed corresponds to the order on the screen. The
+                order of the sub-projects and actions are the same as on the screen;</li>
+            <li><b>Project Outline for a report</b>: the Project Outline report is also available for a specific
+                project through the Print Outline option on projects in the project tree view.
+                It lists all sub-projects and actions. If the tree view is set to show done projects and actions, they will be included in the report.
+                The order is the same as on the screen. It can also be called for a Template or Future project. The paper size for the report
+                can be set under the
+                <a href="nbdocs://au.com.trgtd.tr.prefs.projects/au/com/trgtd/tr/prefs/projects/docs/projects-prefs.html">Project Preferences</a>;</li>
+            <li><b>Project Detail</b>: this report is only available through the Print Detail option on
+                projects in the project tree. It lists all the details of the selected project. If the tree view is set to show done projects and actions,
+                they will be included in the report. The order is the same as on the screen. It can also be called for a Template or Future project.
+                The paper size for the report can be set under the
+                <a href="nbdocs://au.com.trgtd.tr.prefs.projects/au/com/trgtd/tr/prefs/projects/docs/projects-prefs.html">Project Preferences</a>;</li>
+            <li><b>Future Projects</b>: this report lists a summary of the future projects.
+                You can select a specific topic which will filter on the top level projects only. If you only want a
+                list of projects and sub-projects, uncheck the Include Actions? parameter.
+                Four choices are available for the order of the top level projects, As listed corresponding
+                to the order on the screen. The order of the sub-projects and actions are the same as on the screen;</li>
+        </ul>
+        <h3>Items Reports</h3>
+        <p>
+            The item reports are:
+        <ul>
+            <li><b>Reference</b>: this report lists all the reference items. You can optionally group them by topic,
+                or select a specific topic. The items are ordered alphabetically by description;</li>
+            <li><b>Someday/Maybe</b>: this report lists all the someday/maybe items. You can optionally group them by topic,
+                or select a specific topic. The items are ordered alphabetically by description.</li>
+        </ul>
+    </body>
+</html>

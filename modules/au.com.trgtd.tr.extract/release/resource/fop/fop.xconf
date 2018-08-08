@@ -1,0 +1,34 @@
+<fop>
+    <base>nbinst:///resource/fop/</base>
+    <font-base>nbinst:///resource/fop/</font-base>
+    <renderers>
+        <renderer mime="application/pdf">
+            <fonts>
+                <font embed-url="DejaVuSans.ttf" kerning="yes" >
+                    <font-triplet name="DejaVuSans" style="normal" weight="normal"/>
+                </font>
+                <font embed-url="DejaVuSansBold.ttf" kerning="yes">
+                    <font-triplet name="DejaVuSans" style="normal" weight="bold"/>
+                </font>
+                <font embed-url="DejaVuSansOblique.ttf" kerning="yes">
+                    <font-triplet name="DejaVuSans" style="italic" weight="normal"/>
+                </font>
+                <font embed-url="DejaVuSansBoldOblique.ttf" kerning="yes">
+                    <font-triplet name="DejaVuSans" style="italic" weight="bold"/>
+                </font>
+                <font embed-url="DejaVuSerif.ttf" kerning="yes">
+                    <font-triplet name="DejaVuSerif" style="normal" weight="normal"/>
+                </font>
+                <font embed-url="DejaVuSerifBold.ttf" kerning="yes">
+                    <font-triplet name="DejaVuSerif" style="normal" weight="bold"/>
+                </font>
+                <font embed-url="DejaVuSerifItalic.ttf" kerning="yes">
+                    <font-triplet name="DejaVuSerif" style="italic" weight="normal"/>
+                </font>
+                <font embed-url="DejaVuSerifBoldItalic.ttf" kerning="yes">
+                    <font-triplet name="DejaVuSerif" style="italic" weight="bold"/>
+                </font>
+            </fonts>
+        </renderer>
+    </renderers>
+</fop>  

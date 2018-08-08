@@ -1,0 +1,6 @@
+Manifest-Version: 1.0
+AutoUpdate-Show-In-Client: true
+OpenIDE-Module: au.com.trgtd.tr.export.data
+OpenIDE-Module-Localizing-Bundle: au/com/trgtd/tr/export/data/Bundle.properties
+OpenIDE-Module-Specification-Version: 1.2
+

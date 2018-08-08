@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE filesystem PUBLIC "-//NetBeans//DTD Filesystem 1.1//EN" "http://www.netbeans.org/dtds/filesystem-1_1.dtd">
+<filesystem>
+    
+    <folder name="Actions">
+        <folder name="Setup">
+            <file name="au-com-trgtd-tr-view-contexts-ContextsAction.instance"/>
+        </folder>
+        <folder name="View">
+            <file name="au-com-trgtd-tr-view-contexts-ContextChangeAction.instance"/>
+        </folder>                
+    </folder>
+    
+    <folder name="Menu">        
+        <folder name="Setup">            
+            <attr name="SystemFileSystem.localizingBundle" stringvalue="au.com.trgtd.tr.view.contexts.Bundle"/>
+            <file name="ContextsAction.shadow">
+                <attr name="position" intvalue="100"/>
+                <attr name="originalFile" stringvalue="Actions/Setup/au-com-trgtd-tr-view-contexts-ContextsAction.instance"/>
+            </file>            
+        </folder>
+        <folder name="Help">
+            <folder name="Shortcuts">
+                <file name="ContextChangeAction.shadow">
+                    <attr name="originalFile" stringvalue="Actions/View/au-com-trgtd-tr-view-contexts-ContextChangeAction.instance"/>
+                </file>
+            </folder>
+        </folder>
+    </folder>
+    
+    <folder name="Services">
+        <folder name="JavaHelp">
+            <file name="contexts-helpset.xml" url="contexts-helpset.xml"/>
+        </folder>
+    </folder>
+    
+    <folder name="Windows2">
+        <folder name="Modes">                        
+            <file name="Setup.wsmode" url="SetupWsmode.xml"/>
+            <folder name="Setup">
+            </folder>
+        </folder>
+    </folder>            
+    
+    <folder name="Toolbars">
+        <folder name="TR Setup">
+            <attr name="position" intvalue="999600"/>
+            <file name="ContextsAction.shadow">
+                <attr name="position" intvalue="510"/>                
+                <attr name="originalFile" stringvalue="Actions/Setup/au-com-trgtd-tr-view-contexts-ContextsAction.instance"/>
+            </file>
+        </folder>                
+    </folder>
+    
+    <folder name="Shortcuts">        
+        <file name="D-S-C.shadow">
+            <attr name="originalFile" stringvalue="Actions/Setup/au-com-trgtd-tr-view-contexts-ContextsAction.instance"/>
+        </file>        
+        <file name="D-Y.shadow">
+            <attr name="originalFile" stringvalue="Actions/View/au-com-trgtd-tr-view-contexts-ContextChangeAction.instance"/>
+        </file>                                        
+    </folder>            
+
+</filesystem>

@@ -1,0 +1,35 @@
+<html>
+    <head>
+        <title>Sequencing</title>
+        <link rel="stylesheet" href="nbdocs:/tr/model/docs/ide.css" type="text/css">
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+    <body>
+        <h2>Automatic Sequencing</h2>
+        <p>
+            Within a project, in order to get an action set from Inactive to Do ASAP automatically when the previous Do ASAP action is set to
+            done, you need to set the sequencing on at the project level. If the sequencing fields do not appear on
+            the project details panel, please check your
+            <a href="nbdocs://au.com.trgtd.tr.prefs.projects/au/com/trgtd/tr/prefs/projects/docs/projects-prefs.html">Project Preferences</a>.
+        </p>
+        <p>
+            There are three options for automatic sequencing:
+            <ul>
+                <li>Include sub-projects: the sequencing will go into a sub-project to select the next action when the
+                    action before the sub-project is set to done. For example: a user has a project with several actions that are sequenced and then a certain
+                    action needs to be broken down into sub-tasks so the user converts the action to a sub-project. When the last action BEFORE the sub-project
+                    is done, it will sequence INTO the sub-project. Similarly when the last action of a sub-project is set to done, it sequences onto the next higher
+                level action or even into the next sub-project if it sits in sequence.</li>
+                <li>Scheduled: if unchecked, scheduled actions will be ignored in sequencing.  Therefore, when a Do ASAP action is set to done, the next inactive action
+                    is changed to Do ASAP even if there are scheduled actions.
+                </li>
+                <li>Delegated: if unchecked, delegated actions will be ignored in sequencing.  Therefore, when a Do ASAP action is set to done, the next inactive action
+                    is changed to Do ASAP even if there are delegated actions.
+                </li>
+            </ul>
+        </p>
+        <p>
+            When creating a sub-project, the sequencing options of the parent project are used by default.
+        </p>
+    </body>
+</html>

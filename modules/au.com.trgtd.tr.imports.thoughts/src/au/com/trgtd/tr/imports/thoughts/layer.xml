@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE filesystem PUBLIC "-//NetBeans//DTD Filesystem 1.1//EN" "http://www.netbeans.org/dtds/filesystem-1_1.dtd">
+<filesystem>    
+    <folder name="OptionsDialog">
+        <folder name="Advanced">
+            <file name="au-com-trgtd-tr-imports-thoughts-prefs-ImportThoughtsAdvancedOption.instance"/>
+        </folder>
+    </folder>
+    <folder name="Actions">
+        <folder name="File">            
+            <file name="au-com-trgtd-tr-imports-thoughts-ImportThoughtsAction.instance"/>
+        </folder>
+    </folder>
+    <folder name="Menu">        
+        <folder name="File">        
+            <folder name="Import">
+                <file name="au-com-trgtd-tr-imports-thoughts-ImportThoughts.shadow">
+                    <attr name="originalFile" stringvalue="Actions/File/au-com-trgtd-tr-imports-thoughts-ImportThoughtsAction.instance"/>
+                    <attr name="position" intvalue="10"/>                                                
+                </file>                        
+            </folder>                                    
+        </folder>    
+    </folder>    
+    <folder name="Services">
+        <folder name="JavaHelp">
+            <file name="helpset-import-thoughts.xml" url="helpset-import-thoughts.xml"/>
+            <file name="helpset-import-thoughts-prefs.xml" url="helpset-import-thoughts-prefs.xml"/>
+        </folder>
+    </folder>
+    <folder name="Shortcuts">
+        <file name="D-S-0.shadow">
+            <attr name="originalFile" stringvalue="Actions/File/au-com-trgtd-tr-imports-thoughts-ImportThoughtsAction.instance"/>
+        </file>
+    </folder>    
+</filesystem>

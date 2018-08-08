@@ -1,0 +1,66 @@
+/*
+* Copyright 2006 by Avente PTY LTD (Australia). All rights reserved.
+*
+* Cascading Style Sheet (CSS) for the Overview Scalable Vector Graphic (SVG). 
+* 
+* Author: Jeremy Moore
+*/
+
+text                    { fill:#000000; font-weight:normal; font-size:11px; font-family: Arial,Helvetica,sans-serif; stroke:white; stroke-width:0.1; }
+
+rect.main-area			{ fill:gray; stroke:none; fill-opacity:0.2; }
+
+/* rect.icon-rect                  { fill:white; } */
+
+rect.setup-area			{ fill:#CC3333; stroke:none; }
+rect.setup-box			{ fill:#AA2222; stroke:none; }
+text.setup-box-text-large	{ fill:white; font-weight:normal; font-size:16px; font-family: sans-serif; } 
+
+rect.new			{ fill:#AA2222; stroke:white; stroke-width:1.0; }
+text.new-text	 		{ fill:white; font-weight:normal; font-size:11px; font-family: sans-serif; } 
+rect.contexts			{ fill:#AA2222; stroke:white; stroke-width:1.0; }
+text.contexts-text 		{ fill:white; font-weight:normal; font-size:11px; font-family: sans-serif; } 
+rect.topics			{ fill:#AA2222; stroke:white; stroke-width:1.0; }
+text.topics-text 		{ fill:white; font-weight:normal; font-size:11px; font-family: sans-serif; } 
+rect.criteria			{ fill:#AA2222; stroke:white; stroke-width:1.0; }
+text.criteria-text 		{ fill:white; font-weight:normal; font-size:11px; font-family: sans-serif; } 
+
+rect.collect-area 		{ fill:#669966; stroke:none; }
+rect.collect-box		{ fill:#336633; stroke:none; }
+text.collect-box-text-large	{ fill:white; font-weight:normal; font-size:16px; font-family: sans-serif; } 
+text.collect-box-text-small	{ fill:white; font-weight:normal; font-size:11px; font-family: sans-serif; } 
+rect.collect			{ fill:#336633; stroke:white; stroke-width:1.0; }
+text.collect-text 		{ fill:white; font-weight:normal; font-size:11px; font-family: sans-serif; } 
+
+rect.process-area 		{ fill:#CCCC99; stroke:none; }
+rect.process-box		{ fill:#999966; stroke:none; }
+text.process-box-text-large	{ fill:white; font-weight:normal; font-size:16px; font-family: sans-serif; } 
+text.process-box-text-small	{ fill:white; font-weight:normal; font-size:11px; font-family: sans-serif; } 
+rect.process			{ fill:#999966; stroke:white; stroke-width:1.0; }
+text.process-text 		{ fill:white; font-weight:normal; font-size:11px; font-family: sans-serif; } 
+rect.info			{ fill:#999966; stroke:white; stroke-width:1.0; }
+text.info-text	 		{ fill:white; font-weight:normal; font-size:11px; font-family: sans-serif; } 
+rect.future			{ fill:#999966; stroke:white; stroke-width:1.0; }
+text.future-text 		{ fill:white; font-weight:normal; font-size:11px; font-family: sans-serif; } 
+
+rect.review-area 		{ fill:#6699CC; stroke:none; }
+rect.review-box			{ fill:#336699; stroke:none; }
+text.review-box-text-large	{ fill:white; font-weight:normal; font-size:16px; font-family: sans-serif; } 
+rect.actions			{ fill:#336699; stroke:white; stroke-width:1.0; }
+text.actions-text 		{ fill:white; font-weight:normal; font-size:11px; font-family: sans-serif; } 
+rect.projects			{ fill:#336699; stroke:white; stroke-width:1.0; }
+text.projects-text 		{ fill:white; font-weight:normal; font-size:11px; font-family: sans-serif; } 
+rect.doasap			{ fill:#336699; stroke:white; stroke-width:1.0; }
+text.doasap-text 		{ fill:white; font-weight:normal; font-size:11px; font-family: sans-serif; } 
+rect.delegated			{ fill:#336699; stroke:white; stroke-width:1.0; }
+text.delegated-text 		{ fill:white; font-weight:normal; font-size:11px; font-family: sans-serif; } 
+rect.scheduled			{ fill:#336699; stroke:white; stroke-width:1.0; }
+text.scheduled-text		{ fill:white; font-weight:normal; font-size:11px; font-family: sans-serif; } 
+rect.done			{ fill:#336699; stroke:white; stroke-width:1.0; }
+text.done-text			{ fill:white; font-weight:normal; font-size:11px; font-family: sans-serif; } 
+
+path.arrow-head 		{ fill:#515151; }
+path.arrow-line 		{ fill:none; stroke:#515151; stroke-width:2.0; }
+path.connection			{ fill:none; stroke:#FFFFFF; stroke-width:2.0; }
+
+image.logo			{ opacity:0.6; }

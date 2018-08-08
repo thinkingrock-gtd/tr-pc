@@ -1,0 +1,353 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="ProjectDetail" pageWidth="612" pageHeight="792" columnWidth="535" leftMargin="30" rightMargin="30" topMargin="20" bottomMargin="20">
+	<property name="ireport.scriptlethandling" value="0"/>
+	<property name="ireport.encoding" value="UTF-8"/>
+	<import value="net.sf.jasperreports.engine.*"/>
+	<import value="java.util.*"/>
+	<import value="net.sf.jasperreports.engine.data.*"/>
+	<queryString language="xPath">
+		<![CDATA[/data/item]]>
+	</queryString>
+	<field name="index" class="java.lang.String">
+		<fieldDescription><![CDATA[index]]></fieldDescription>
+	</field>
+	<field name="type" class="java.lang.String">
+		<fieldDescription><![CDATA[type]]></fieldDescription>
+	</field>
+	<field name="indent" class="java.lang.String">
+		<fieldDescription><![CDATA[indent]]></fieldDescription>
+	</field>
+	<field name="descr" class="java.lang.String">
+		<fieldDescription><![CDATA[descr]]></fieldDescription>
+	</field>
+	<field name="check" class="java.lang.String">
+		<fieldDescription><![CDATA[check]]></fieldDescription>
+	</field>
+	<field name="due-date" class="java.lang.String">
+		<fieldDescription><![CDATA[due-date]]></fieldDescription>
+	</field>
+	<field name="priority" class="java.lang.String">
+		<fieldDescription><![CDATA[priority]]></fieldDescription>
+	</field>
+	<field name="state" class="java.lang.String">
+		<fieldDescription><![CDATA[state]]></fieldDescription>
+	</field>
+	<field name="start-date" class="java.lang.String">
+		<fieldDescription><![CDATA[start-date]]></fieldDescription>
+	</field>
+	<field name="notes" class="java.lang.String">
+		<fieldDescription><![CDATA[notes]]></fieldDescription>
+	</field>
+	<field name="topic" class="java.lang.String">
+		<fieldDescription><![CDATA[topic]]></fieldDescription>
+	</field>
+	<field name="purpose" class="java.lang.String">
+		<fieldDescription><![CDATA[purpose]]></fieldDescription>
+	</field>
+	<field name="brainstorming" class="java.lang.String">
+		<fieldDescription><![CDATA[brainstorming]]></fieldDescription>
+	</field>
+	<field name="organising" class="java.lang.String">
+		<fieldDescription><![CDATA[organising]]></fieldDescription>
+	</field>
+	<field name="success" class="java.lang.String">
+		<fieldDescription><![CDATA[success]]></fieldDescription>
+	</field>
+	<field name="indent2" class="java.lang.String">
+		<fieldDescription><![CDATA[indent]]></fieldDescription>
+	</field>
+	<filterExpression><![CDATA[Boolean.TRUE]]></filterExpression>
+	<group name="Project">
+		<groupHeader>
+			<band height="47" splitType="Stretch">
+				<printWhenExpression><![CDATA[Boolean.valueOf(Integer.parseInt($F{index}) == 0)]]></printWhenExpression>
+				<textField isBlankWhenNull="true">
+					<reportElement x="2" y="1" width="550" height="12" isRemoveLineWhenBlank="true">
+						<printWhenExpression><![CDATA[Boolean.TRUE]]></printWhenExpression>
+					</reportElement>
+					<textElement markup="styled">
+						<font fontName="DejaVu Sans" size="9" isBold="true" pdfFontName="DejaVuSans.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+					</textElement>
+					<textFieldExpression class="java.lang.String"><![CDATA[$F{check} + " " + $F{descr} +
+($F{start-date} == null ? "" : " Start: " + $F{start-date}) +
+($F{due-date} == null ? "" : " Due: " + $F{due-date}) +
+($F{priority} == null ? "" : " " + $F{priority})]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="10" y="15" width="542" height="12"/>
+					<textElement markup="styled">
+						<font size="9"/>
+					</textElement>
+					<textFieldExpression class="java.lang.String"><![CDATA["\u2302" + $F{topic}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement x="10" y="32" width="542" height="12"/>
+					<textElement markup="styled">
+						<font fontName="DejaVu Sans" size="9" isBold="false"/>
+					</textElement>
+					<textFieldExpression class="java.lang.String"><![CDATA[($F{purpose} == null ? "" : "Purpose:\n" + $F{purpose} + "\n\n") +
+($F{success} == null ? "" : "Vision:\n" + $F{success} + "\n\n") +
+($F{brainstorming} == null ? "" : "Brainstorming:\n" + $F{brainstorming} + "\n\n") +
+($F{organising} == null ? "" : "Organising:\n" + $F{organising} + "\n\n") +
+($F{notes} == null ? "" : "\u270DNotes:\n" + $F{notes})]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupHeader>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band splitType="Stretch"/>
+	</title>
+	<pageHeader>
+		<band height="30" splitType="Stretch">
+			<staticText>
+				<reportElement key="headingStaticText" x="2" y="6" width="110" height="18"/>
+				<textElement verticalAlignment="Bottom">
+					<font fontName="DejaVu Sans" size="10" isBold="true" isItalic="false" isUnderline="false" pdfFontName="DejaVuSansBold.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[Project Detail
+
+
+                ]]></text>
+			</staticText>
+			<textField pattern="EEE dd MMM yyyy" isBlankWhenNull="false">
+				<reportElement key="dateTextField" x="402" y="6" width="150" height="18"/>
+				<textElement textAlignment="Right" verticalAlignment="Bottom">
+					<font fontName="DejaVu Sans" size="10" isBold="true" pdfFontName="DejaVuSansBold.ttf" isPdfEmbedded="true"/>
+				</textElement>
+				<textFieldExpression class="java.util.Date"><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="0" y="26" width="552" height="1"/>
+			</line>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="26" splitType="Stretch">
+			<textField isBlankWhenNull="true">
+				<reportElement x="10" y="1" width="535" height="12" isRemoveLineWhenBlank="true">
+					<printWhenExpression><![CDATA[Boolean.valueOf(Integer.parseInt($F{indent}) == 1 && $F{type}.equals("P"))]]></printWhenExpression>
+				</reportElement>
+				<textElement markup="styled">
+					<font fontName="DejaVu Sans" size="9" isBold="true" pdfFontName="DejaVuSans.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{check} + " " + $F{descr} +
+($F{start-date} == null ? "" : " Start: " + $F{start-date}) +
+($F{due-date} == null ? "" : " Due: " + $F{due-date}) +
+($F{priority} == null ? "" : " " + $F{priority})]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="10" y="1" width="535" height="12" isRemoveLineWhenBlank="true">
+					<printWhenExpression><![CDATA[Boolean.valueOf(Integer.parseInt($F{indent}) == 1 && $F{type}.equals("A"))]]></printWhenExpression>
+				</reportElement>
+				<textElement markup="styled">
+					<font fontName="DejaVu Sans" size="9" pdfFontName="DejaVuSans.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{check} + " " + $F{descr} + " " + $F{state}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement x="20" y="13" width="535" height="12" isRemoveLineWhenBlank="true">
+					<printWhenExpression><![CDATA[Boolean.valueOf(Integer.parseInt($F{indent}) == 1 && $F{notes} != null)]]></printWhenExpression>
+				</reportElement>
+				<textElement markup="styled">
+					<font fontName="DejaVu Sans" size="9" pdfFontName="DejaVuSans.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA["\u270D " + $F{notes}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="20" y="1" width="525" height="12" isRemoveLineWhenBlank="true">
+					<printWhenExpression><![CDATA[Boolean.valueOf(Integer.parseInt($F{indent}) == 2 && $F{type}.equals("P"))]]></printWhenExpression>
+				</reportElement>
+				<textElement markup="styled">
+					<font fontName="DejaVu Sans" size="9" isBold="true" pdfFontName="DejaVuSans.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{check} + " " + $F{descr} +
+($F{start-date} == null ? "" : " Start: " + $F{start-date}) +
+($F{due-date} == null ? "" : " Due: " + $F{due-date}) +
+($F{priority} == null ? "" : " " + $F{priority})]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="20" y="1" width="525" height="12" isRemoveLineWhenBlank="true">
+					<printWhenExpression><![CDATA[Boolean.valueOf(Integer.parseInt($F{indent}) == 2 && $F{type}.equals("A"))]]></printWhenExpression>
+				</reportElement>
+				<textElement markup="styled">
+					<font fontName="DejaVu Sans" size="9" pdfFontName="DejaVuSans.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{check} + " " + $F{descr} + " " + $F{state}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement x="30" y="13" width="525" height="12" isRemoveLineWhenBlank="true">
+					<printWhenExpression><![CDATA[Boolean.valueOf(Integer.parseInt($F{indent}) == 2 && $F{notes} != null)]]></printWhenExpression>
+				</reportElement>
+				<textElement markup="styled">
+					<font fontName="DejaVu Sans" size="9" pdfFontName="DejaVuSans.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA["\u270D " + $F{notes}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="30" y="1" width="515" height="12" isRemoveLineWhenBlank="true">
+					<printWhenExpression><![CDATA[Boolean.valueOf(Integer.parseInt($F{indent}) == 3 && $F{type}.equals("P"))]]></printWhenExpression>
+				</reportElement>
+				<textElement markup="styled">
+					<font fontName="DejaVu Sans" size="9" isBold="true" pdfFontName="DejaVuSans.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{check} + " " + $F{descr} +
+($F{start-date} == null ? "" : " Start: " + $F{start-date}) +
+($F{due-date} == null ? "" : " Due: " + $F{due-date}) +
+($F{priority} == null ? "" : " " + $F{priority})]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="30" y="1" width="515" height="12" isRemoveLineWhenBlank="true">
+					<printWhenExpression><![CDATA[Boolean.valueOf(Integer.parseInt($F{indent}) == 3 && $F{type}.equals("A"))]]></printWhenExpression>
+				</reportElement>
+				<textElement markup="styled">
+					<font fontName="DejaVu Sans" size="9" pdfFontName="DejaVuSans.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{check} + " " + $F{descr} + " " + $F{state}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement x="40" y="13" width="515" height="12" isRemoveLineWhenBlank="true">
+					<printWhenExpression><![CDATA[Boolean.valueOf(Integer.parseInt($F{indent}) == 3 && $F{notes} != null)]]></printWhenExpression>
+				</reportElement>
+				<textElement markup="styled">
+					<font fontName="DejaVu Sans" size="9" pdfFontName="DejaVuSans.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA["\u270D " + $F{notes}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="40" y="1" width="505" height="12" isRemoveLineWhenBlank="true">
+					<printWhenExpression><![CDATA[Boolean.valueOf(Integer.parseInt($F{indent}) == 4 && $F{type}.equals("P"))]]></printWhenExpression>
+				</reportElement>
+				<textElement markup="styled">
+					<font fontName="DejaVu Sans" size="9" isBold="true" pdfFontName="DejaVuSans.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{check} + " " + $F{descr} +
+($F{start-date} == null ? "" : " Start: " + $F{start-date}) +
+($F{due-date} == null ? "" : " Due: " + $F{due-date}) +
+($F{priority} == null ? "" : " " + $F{priority})]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="40" y="1" width="505" height="12" isRemoveLineWhenBlank="true">
+					<printWhenExpression><![CDATA[Boolean.valueOf(Integer.parseInt($F{indent}) == 4 && $F{type}.equals("A"))]]></printWhenExpression>
+				</reportElement>
+				<textElement markup="styled">
+					<font fontName="DejaVu Sans" size="9" pdfFontName="DejaVuSans.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{check} + " " + $F{descr} + " " + $F{state}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement x="50" y="13" width="505" height="12" isRemoveLineWhenBlank="true">
+					<printWhenExpression><![CDATA[Boolean.valueOf(Integer.parseInt($F{indent}) == 4 && $F{notes} != null)]]></printWhenExpression>
+				</reportElement>
+				<textElement markup="styled">
+					<font fontName="DejaVu Sans" size="9" pdfFontName="DejaVuSans.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA["\u270D " + $F{notes}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="50" y="1" width="495" height="12" isRemoveLineWhenBlank="true">
+					<printWhenExpression><![CDATA[Boolean.valueOf(Integer.parseInt($F{indent}) == 5 && $F{type}.equals("P"))]]></printWhenExpression>
+				</reportElement>
+				<textElement markup="styled">
+					<font fontName="DejaVu Sans" size="9" isBold="true" pdfFontName="DejaVuSans.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{check} + " " + $F{descr} +
+($F{start-date} == null ? "" : " Start: " + $F{start-date}) +
+($F{due-date} == null ? "" : " Due: " + $F{due-date}) +
+($F{priority} == null ? "" : " " + $F{priority})]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="50" y="1" width="495" height="12" isRemoveLineWhenBlank="true">
+					<printWhenExpression><![CDATA[Boolean.valueOf(Integer.parseInt($F{indent}) == 5 && $F{type}.equals("A"))]]></printWhenExpression>
+				</reportElement>
+				<textElement markup="styled">
+					<font fontName="DejaVu Sans" size="9" pdfFontName="DejaVuSans.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{check} + " " + $F{descr} + " " + $F{state}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement x="60" y="13" width="495" height="12" isRemoveLineWhenBlank="true">
+					<printWhenExpression><![CDATA[Boolean.valueOf(Integer.parseInt($F{indent}) == 5 && $F{notes} != null)]]></printWhenExpression>
+				</reportElement>
+				<textElement markup="styled">
+					<font fontName="DejaVu Sans" size="9" pdfFontName="DejaVuSans.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA["\u270D " + $F{notes}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="60" y="1" width="485" height="12" isRemoveLineWhenBlank="true">
+					<printWhenExpression><![CDATA[Boolean.valueOf(Integer.parseInt($F{indent}) > 5 && $F{type}.equals("P"))]]></printWhenExpression>
+				</reportElement>
+				<textElement markup="styled">
+					<font fontName="DejaVu Sans" size="9" isBold="true" pdfFontName="DejaVuSans.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{check} + " " + $F{descr} +
+($F{start-date} == null ? "" : " Start: " + $F{start-date}) +
+($F{due-date} == null ? "" : " Due: " + $F{due-date}) +
+($F{priority} == null ? "" : " " + $F{priority})]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="60" y="1" width="485" height="12" isRemoveLineWhenBlank="true">
+					<printWhenExpression><![CDATA[Boolean.valueOf(Integer.parseInt($F{indent}) > 5 && $F{type}.equals("A"))]]></printWhenExpression>
+				</reportElement>
+				<textElement markup="styled">
+					<font fontName="DejaVu Sans" size="9" pdfFontName="DejaVuSans.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{check} + " " + $F{descr} + " " + $F{state}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement x="70" y="13" width="485" height="12" isRemoveLineWhenBlank="true">
+					<printWhenExpression><![CDATA[Boolean.valueOf(Integer.parseInt($F{indent}) > 5 && $F{notes} != null)]]></printWhenExpression>
+				</reportElement>
+				<textElement markup="styled">
+					<font fontName="DejaVu Sans" size="9" pdfFontName="DejaVuSans.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA["\u270D " + $F{notes}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="28" splitType="Stretch">
+			<textField pattern="" isBlankWhenNull="false" hyperlinkType="Reference">
+				<reportElement key="homeTextField" x="2" y="19" width="157" height="9"/>
+				<textElement textAlignment="Left">
+					<font fontName="DejaVu Sans" size="7" pdfFontName="DejaVuSans.ttf" isPdfEmbedded="true"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA["www.thinkingrock.com.au"]]></textFieldExpression>
+				<hyperlinkReferenceExpression><![CDATA["http://www.thinkingrock.com.au"]]></hyperlinkReferenceExpression>
+			</textField>
+			<textField isBlankWhenNull="false">
+				<reportElement key="pageTextField" x="443" y="4" width="88" height="12"/>
+				<textElement textAlignment="Right">
+					<font fontName="DejaVu Sans" size="8" pdfFontName="DejaVuSans.ttf" isPdfEmbedded="true"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA["Page " + $V{PAGE_NUMBER} + " of "]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report" isBlankWhenNull="false">
+				<reportElement key="pageNbrTextField" x="531" y="4" width="21" height="12"/>
+				<textElement>
+					<font fontName="DejaVu Sans" size="8" pdfFontName="DejaVuSans.ttf" isPdfEmbedded="true"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[" " + $V{PAGE_NUMBER} + ""]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="0" y="1" width="552" height="1" forecolor="#CCCCCC"/>
+			</line>
+			<textField>
+				<reportElement x="2" y="4" width="441" height="12"/>
+				<textElement markup="styled">
+					<font fontName="DejaVu Sans" size="8" pdfFontName="DejaVuSans.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA["Key: \u2605Do ASAP \u2606Inactive \u261EDelegated \u2637Scheduled \u27F3Recurring \u2690Priority \u270DNotes"]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>

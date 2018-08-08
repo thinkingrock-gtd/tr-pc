@@ -1,0 +1,5 @@
+Manifest-Version: 1.0
+OpenIDE-Module: au.com.trgtd.tr.swing
+OpenIDE-Module-Localizing-Bundle: au/com/trgtd/tr/swing/Bundle.properties
+OpenIDE-Module-Specification-Version: 3.5.1
+

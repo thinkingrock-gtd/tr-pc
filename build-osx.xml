@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="tr-build" basedir="." default="pkg-osx">
+
+    <property name="pkg.dir" location="nbproject/packaging/macosx"/>  
+    <property name="dst.dir" location="dist"/>       
+    <property name="jre.dir" value="${pkg.dir}/jre1.8.0"/>            
+    <property name="app.version" value="3.7.0"/>   
+    <property name="app.title"   value="ThinkingRock"/>   
+    <property name="app.name"    value="trgtd"/>        
+    <property name="app.id"      value="au.com.trgtd.tr"/>        
+    <property name="app.icns"    value="${pkg.dir}/${app.name}.icns"/>        
+    
+    <target name="pkg-osx-trial-include-jre">
+        <antcall target="-pkg-osx">
+            <param name="include.jre" value="true"/>
+            <param name="jre.dir"     value="${jre.dir}"/>
+            <param name="conf.dir"    value="${pkg.dir}/etc-include-jre"/>  
+            <param name="pkg.prefix"  value="tr-${app.version}-trial-jre"/>
+        </antcall>        
+    </target>
+
+    <target name="pkg-osx-trial-exclude-jre">
+        <antcall target="-pkg-osx">
+            <param name="include.jre" value="false"/>
+            <param name="jre.dir"     value=""/>
+            <param name="conf.dir"    value="${pkg.dir}/etc-exclude-jre"/>  
+            <param name="pkg.prefix"  value="tr-${app.version}-trial"/>
+        </antcall>        
+    </target>
+    
+    <target name="pkg-osx-include-jre">
+        <antcall target="-pkg-osx">
+            <param name="include.jre" value="true"/>
+            <param name="jre.dir"     value="${jre.dir}"/>
+            <param name="conf.dir"    value="${pkg.dir}/etc-include-jre"/>  
+            <param name="pkg.prefix"  value="tr-${app.version}-jre"/>
+        </antcall>        
+    </target>
+
+    <target name="pkg-osx-exclude-jre">
+        <antcall target="-pkg-osx">
+            <param name="include.jre" value="false"/>
+            <param name="jre.dir"     value=""/>
+            <param name="conf.dir"    value="${pkg.dir}/etc-exclude-jre"/>  
+            <param name="pkg.prefix"  value="tr-${app.version}"/>
+        </antcall>        
+    </target>
+    
+    <target name="-pkg-osx">
+        <!-- clean -->        
+        <delete dir="${dst.dir}"/>
+        <ant antfile="./build.xml" target="clean" inheritAll="false" >
+            <property name="dist.dir" value="${dst.dir}"/>       
+        </ant>
+        <mkdir dir="${dst.dir}"/>
+        
+        <!-- build enUK OSX app -->
+        <ant antfile="./build.xml" target="-bundle-osx" inheritAll="false" >
+            <property name="include.jre"    value="${include.jre}"/>
+            <property name="jre.dir"        value="${jre.dir}"/>
+            <property name="app.icns"       value="${app.icns}"/>        
+            <property name="app.version"    value="${app.version}"/>        
+            <property name="app.conf"       value="${conf.dir}/${app.name}.conf"/>
+            <property name="app.dir"        value="${dst.dir}/${app.name}.app"/>
+        </ant>
+        <!-- create enUK OSX package -->
+        <ant antfile="./build.xml" target="-package-osx" inheritAll="false" >
+            <property name="dst.dir"     value="${dst.dir}"/>       
+            <property name="app.title"   value="${app.title}"/>        
+            <property name="app.id"      value="${app.id}"/>        
+            <property name="app.version" value="${app.version}"/>        
+            <property name="app.dir"     value="${dst.dir}/${app.name}.app"/>        
+            <property name="pkg.dir"     value="${pkg.dir}"/>
+            <property name="pkg.name"    value="${pkg.prefix}-uk"/>
+        </ant>
+
+        <!-- build enUS OSX app -->
+        <ant antfile="./build.xml" target="-bundle-osx" inheritAll="false" >
+            <property name="include.jre"    value="${include.jre}"/>
+            <property name="jre.dir"        value="${jre.dir}"/>
+            <property name="app.icns"       value="${app.icns}"/>        
+            <property name="app.version"    value="${app.version}"/>        
+            <property name="app.conf"       value="${conf.dir}/${app.name}-enUS.conf"/>
+            <property name="app.dir"        value="${dst.dir}/${app.name}-enUS.app"/>
+        </ant>
+        <!-- create enUS OSX package -->
+        <ant antfile="./build.xml" target="-package-osx" inheritAll="false" >
+            <property name="dst.dir"     value="${dst.dir}"/>       
+            <property name="app.title"   value="${app.title}"/>        
+            <property name="app.id"      value="${app.id}"/>        
+            <property name="app.version" value="${app.version}"/>        
+            <property name="app.dir"     value="${dst.dir}/${app.name}-enUS.app"/>        
+            <property name="pkg.dir"     value="${pkg.dir}"/>
+            <property name="pkg.name"    value="${pkg.prefix}-us"/>
+        </ant>
+            
+        <!-- build deDE OSX app -->
+        <ant antfile="./build.xml" target="-bundle-osx" inheritAll="false" >
+            <property name="include.jre"    value="${include.jre}"/>
+            <property name="jre.dir"        value="${jre.dir}"/>
+            <property name="app.icns"       value="${app.icns}"/>        
+            <property name="app.version"    value="${app.version}"/>        
+            <property name="app.conf"       value="${conf.dir}/${app.name}-deDE.conf"/>
+            <property name="app.dir"        value="${dst.dir}/${app.name}-deDE.app"/>
+        </ant>
+        <!-- create deDE OSX package -->
+        <ant antfile="./build.xml" target="-package-osx" inheritAll="false" >
+            <property name="dst.dir"        value="${dst.dir}"/>       
+            <property name="app.title"      value="${app.title}"/>        
+            <property name="app.id"         value="${app.id}"/>        
+            <property name="app.version"    value="${app.version}"/>        
+            <property name="app.dir"        value="${dst.dir}/${app.name}-deDE.app"/>
+            <property name="pkg.dir"        value="${pkg.dir}"/>
+            <property name="pkg.name"       value="${pkg.prefix}-de"/>
+        </ant>
+
+        <!-- build frFR OSX app -->
+        <ant antfile="./build.xml" target="-bundle-osx" inheritAll="false" >
+            <property name="include.jre"    value="${include.jre}"/>
+            <property name="jre.dir"        value="${jre.dir}"/>
+            <property name="app.icns"       value="${app.icns}"/>        
+            <property name="app.version"    value="${app.version}"/>        
+            <property name="app.conf"       value="${conf.dir}/${app.name}-frFR.conf"/>
+            <property name="app.dir"        value="${dst.dir}/${app.name}-frFR.app"/>
+        </ant>
+        <!-- create frFR OSX package -->
+        <ant antfile="./build.xml" target="-package-osx" inheritAll="false" >
+            <property name="dst.dir"        value="${dst.dir}"/>       
+            <property name="app.title"      value="${app.title}"/>        
+            <property name="app.id"         value="${app.id}"/>        
+            <property name="app.version"    value="${app.version}"/>        
+            <property name="app.dir"        value="${dst.dir}/${app.name}-frFR.app"/>
+            <property name="pkg.dir"        value="${pkg.dir}"/>
+            <property name="pkg.name"       value="${pkg.prefix}-fr"/>
+        </ant>
+
+        <!-- build esES OSX app -->
+        <ant antfile="./build.xml" target="-bundle-osx" inheritAll="false" >
+            <property name="include.jre"    value="${include.jre}"/>
+            <property name="jre.dir"        value="${jre.dir}"/>
+            <property name="app.icns"       value="${app.icns}"/>        
+            <property name="app.version"    value="${app.version}"/>        
+            <property name="app.conf"       value="${conf.dir}/${app.name}-esES.conf"/>
+            <property name="app.dir"        value="${dst.dir}/${app.name}-esES.app"/>
+        </ant>
+        <!-- create esES OSX package -->
+        <ant antfile="./build.xml" target="-package-osx" inheritAll="false" >
+            <property name="dst.dir"        value="${dst.dir}"/>       
+            <property name="app.title"      value="${app.title}"/>        
+            <property name="app.id"         value="${app.id}"/>        
+            <property name="app.version"    value="${app.version}"/>        
+            <property name="app.dir"        value="${dst.dir}/${app.name}-esES.app"/>
+            <property name="pkg.dir"        value="${pkg.dir}"/>
+            <property name="pkg.name"       value="${pkg.prefix}-es"/>
+        </ant>
+                                        
+        <echo>Created OSX packages for TR in ${dst.dir}.</echo>
+                                                                                                                                                                                                                                                                                                                                                                            
+    </target>
+
+</project>

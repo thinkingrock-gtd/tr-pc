@@ -1,0 +1,5 @@
+Manifest-Version: 1.0
+OpenIDE-Module: au.com.trgtd.tr.report.project.outline
+OpenIDE-Module-Layer: au/com/trgtd/tr/report/project/outline/layer.xml
+OpenIDE-Module-Localizing-Bundle: au/com/trgtd/tr/report/project/outline/Bundle.properties
+OpenIDE-Module-Specification-Version: 3.5.1

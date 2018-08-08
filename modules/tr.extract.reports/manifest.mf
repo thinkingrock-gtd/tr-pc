@@ -1,0 +1,7 @@
+Manifest-Version: 1.0
+OpenIDE-Module: tr.extract.reports
+OpenIDE-Module-Layer: tr/extract/reports/layer.xml
+OpenIDE-Module-Localizing-Bundle: tr/extract/reports/Bundle.properties
+OpenIDE-Module-Requires: org.netbeans.api.javahelp.Help
+OpenIDE-Module-Specification-Version: 3.5.1
+

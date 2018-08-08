@@ -1,0 +1,19 @@
+/*
+ * To change this template, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package au.com.trgtd.tr.view.calendar;
+
+import au.com.trgtd.tr.cal.ctlr.DateCtlr;
+
+/**
+ * Singleton to hold a single dateCtlr for the day and week views.
+ */
+public class Singleton {
+    
+    public static final DateCtlr dateCtlr = new DateCtlr();
+    
+    private Singleton() {        
+    }
+    
+}

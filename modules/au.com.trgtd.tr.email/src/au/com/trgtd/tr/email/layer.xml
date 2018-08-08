@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE filesystem PUBLIC "-//NetBeans//DTD Filesystem 1.1//EN" "http://www.netbeans.org/dtds/filesystem-1_1.dtd">
+<filesystem>
+    <folder name="Actions">
+        <folder name="File">
+            <file name="au-com-trgtd-tr-email-RetrieveEmailAction.instance"/>
+        </folder>
+    </folder>
+    <folder name="Menu">
+        <folder name="File">
+            <file name="au-com-trgtd-tr-email-RetrieveEmailAction-separatorAfter.instance">
+                <attr name="instanceClass" stringvalue="javax.swing.JSeparator"/>
+                <attr name="position" intvalue="477"/>
+            </file>
+            <file name="au-com-trgtd-tr-email-RetrieveEmailAction-separatorBefore.instance">
+                <attr name="instanceClass" stringvalue="javax.swing.JSeparator"/>
+                <attr name="position" intvalue="452"/>
+            </file>
+            <file name="au-com-trgtd-tr-email-RetrieveEmailAction.shadow">
+                <attr name="originalFile" stringvalue="Actions/File/au-com-trgtd-tr-email-RetrieveEmailAction.instance"/>
+                <attr name="position" intvalue="465"/>
+            </file>
+        </folder>
+    </folder>
+    <folder name="OptionsDialog">
+        <folder name="Advanced">
+            <file name="au-com-trgtd-tr-email-prefs-EmailAdvancedOption.instance"/>
+            <file name="au-com-trgtd-tr-email-prefs-SMTPAdvancedOption.instance"/>
+        </folder>
+    </folder>
+    <folder name="Services">
+        <folder name="JavaHelp">
+            <file name="helpset-import-email.xml" url="helpset-import-email.xml"/>
+            <file name="helpset-import-email-prefs.xml" url="helpset-import-email-prefs.xml"/>
+        </folder>
+    </folder>
+</filesystem>

@@ -1,0 +1,5 @@
+Manifest-Version: 1.0
+OpenIDE-Module: au.com.trgtd.tr.reports.weekly
+OpenIDE-Module-Layer: au/com/trgtd/tr/reports/weekly/layer.xml
+OpenIDE-Module-Localizing-Bundle: au/com/trgtd/tr/reports/weekly/Bundle.properties
+OpenIDE-Module-Specification-Version: 3.5.1

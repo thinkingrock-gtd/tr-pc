@@ -1,0 +1,4 @@
+Manifest-Version: 1.0
+OpenIDE-Module: commons.lang
+OpenIDE-Module-Localizing-Bundle: org/apache/commons/lang/Bundle.properties
+OpenIDE-Module-Specification-Version: 3.5.1

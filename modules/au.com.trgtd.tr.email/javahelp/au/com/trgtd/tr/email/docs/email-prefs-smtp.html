@@ -1,0 +1,43 @@
+<html>
+    <head>
+        <title>Email SMTP Preferences</title>
+        <link rel="stylesheet" href="nbdocs:/tr/model/docs/ide.css" type="text/css">
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+    <body>
+        <h2>Email SMTP</h2>
+        <p>            
+            A SMTP (Simple Mail Transfer Protocol) server account is needed for sending
+            email. This is required for the team delegation and response functionality.
+            You should use an account from a provider such as Gmail. Your provider should
+            publish the appropriate settings to use.            
+        </p>
+        Set the SMTP account details:
+        <dl>
+            <dt>SMTP Server</dt>
+            <dd>The host name of the outgoing SMTP server, such as smtp.gmail.com.</dd>
+            <dt>Username</dt>
+            <dd>Your account username</dd>
+            <dt>Password</dt>
+            <dd>Your account password</dd>            
+            <dt>Port</dt>
+            <dd>The port number used by the outgoing mail server. Common port numbers for outgoing mail are 25, 465, and 587.</dd>
+            <dt>SSL</dt>
+            <dd>Does the outgoing mail server support SSL (Secure Sockets Layer) or TLS (Transport Layer Security)?</dd>
+        </dl>
+        <p>
+            Test connection to the SMTP server using the aptly named button. A check or cross icon will appear indicating success or failure.
+        </p>
+        <p>
+            Set the desired method for sending delegation and response email:
+        </p>            
+        <dl>
+            <dt>Email client</dt>
+            <dd>Always use the default system email client application
+            <dt>Direct send</dt>
+            <dd>Always directly send email (using SMTP)</dd>
+            <dt>Direct send to team only</dt>
+            <dd>Directly send email to team members only and use the email client for non-team delegates</dd>
+        </dl>
+    </body>
+</html>

@@ -1,0 +1,149 @@
+package au.com.trgtd.tr.view.criteria.screen;
+
+import au.com.trgtd.tr.util.Observable;
+import au.com.trgtd.tr.util.Observer;
+import java.beans.PropertyVetoException;
+import java.util.Collections;
+import java.util.List;
+import org.openide.explorer.ExplorerManager;
+import org.openide.explorer.view.OutlineView;
+import org.openide.nodes.Children;
+import org.openide.nodes.Index;
+import org.openide.nodes.Node;
+import org.openide.util.Exceptions;
+import tr.model.Data;
+import tr.model.DataLookup;
+import tr.model.criteria.Value;
+import tr.model.util.Manager;
+
+public class EnergyChildren extends Children.Keys<Value> implements Observer {
+
+    private final static List<Value> EMPTY = Collections.emptyList();
+    private final OutlineView view;
+    private final ExplorerManager em;
+    
+    private final Manager<Value> values;
+    private final Index index;
+    private boolean reordering;
+
+    public EnergyChildren(OutlineView view, ExplorerManager em) {
+        this.view = view;
+        
+        this.em = em;
+        Data data = (Data) DataLookup.instance().lookup(Data.class);
+        this.values = (data == null) ? null : data.getEnergyCriterion().values;
+        this.index = new IndexImpl();
+    }
+
+    @Override
+    protected void addNotify() {
+        if (values != null) {
+            values.addObserver(this);
+        }
+        this.setKeys();
+        super.addNotify();
+    }
+
+    @Override
+    protected void removeNotify() {
+        if (values != null) {
+            values.removeObserver(this);
+        }
+        super.setKeys(EMPTY);
+        super.removeNotify();
+    }
+
+    private void setKeys() {
+        super.setKeys(null == values ? EMPTY : values.list());
+    }
+
+    @Override
+    protected Node[] createNodes(Value value) {
+        return new Node[]{new EnergyNode(value)};
+    }
+
+    @Override
+    public void update(Observable observable, Object arguement) {
+        if (reordering) {
+            return;
+        }
+        this.setKeys();
+        super.refresh();
+    }
+
+    public Index getIndex() {
+        return index;
+    }
+
+    private class IndexImpl extends Index.Support {
+
+        @Override
+        public Node[] getNodes() {
+            return EnergyChildren.this.getNodes();
+        }
+
+        @Override
+        public int getNodesCount() {
+            return getNodes().length;
+        }
+
+        @Override
+        public void moveDown(final int i) {
+            if (null == values) {
+                return;
+            }
+            if (i < 0 || i > values.size() - 2) {
+                return;
+            }
+
+            Node[] nodes = em.getSelectedNodes();
+            
+            
+            reordering = true;
+            
+            Value value = values.get(i);
+            values.set(i, values.get(i + 1));
+            values.set(i + 1, value);
+
+            setKeys();
+            
+            reordering = false;
+            
+                //            view.getOutline().requestFocusInWindow();
+                //            view.getOutline().setRowSelectionInterval(i + 1, i + 1);
+            
+            try {
+                em.setSelectedNodes(nodes);
+            } catch (PropertyVetoException ex) {
+            }
+        }
+
+        @Override
+        public void moveUp(final int i) {
+            if (values == null) {
+                return;
+            }
+            if (i < 1 || i > values.size() - 1) {
+                return;
+            }
+            
+            reordering = true;
+
+            Value value = values.get(i);
+            values.set(i, values.get(i - 1));
+            values.set(i - 1, value);
+
+            setKeys();
+            
+            reordering = false;
+            
+            view.getOutline().requestFocusInWindow();
+            view.getOutline().setRowSelectionInterval(i - 1, i - 1);
+        }
+
+        @Override
+        public void reorder(int[] perm) {
+        }
+    };
+    
+}

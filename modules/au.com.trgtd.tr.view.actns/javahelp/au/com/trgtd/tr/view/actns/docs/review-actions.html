@@ -1,0 +1,201 @@
+<html>
+    <head>
+        <title>Review Actions</title>
+        <link rel="stylesheet" href="nbdocs:/tr/model/docs/ide.css" type="text/css">
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+    <body>
+        <h2>Review Actions</h2>
+        
+        <h3>Purpose</h3>
+        <p>
+            This feature is for reviewing your actions. It is composed of five pre-defined tabs: Actions, 
+            Done, Do ASAP, Scheduled and Delegated. A counter indicates how many actions are selected within
+            each tab. You can defined new Tabs or modified existing ones.  
+        </p>
+        <p>
+            Each tab is divided horizontally into two parts. The top part contains the actions as per your 
+            selection in a table. When an action is selected, the bottom part will display the details of the
+            action (action panel) and the project (project tree panel) it is in (if any). The navigation and 
+            functionality of the bottom half of the screen are the same as in the 
+            <a href="nbdocs://au.com.trgtd.tr.view.projects/au/com/trgtd/tr/view/projects/docs/view-projects.html">Review Projects</a> screen.
+        </p>
+        <p>            
+            Please note that all settings are kept when you exit the application, including the position of the 
+            panels separation bars (one setting for all tabs). All settings, except the bars position, will be saved in a separate file 
+            called ReviewAction.xml and can be shared between different platforms. The file will be saved under the same 
+            folder as the data file. We recommend that you do a backup of that file in a different directory.
+            <p>
+                
+            </p>
+            <h3>Tabs</h3>
+            <p>                        
+                You can maintain these tabs in the <a href="prefs-actions-screens.html">Action Screens preferences</a>:
+                <ul>
+                    <li>new Tabs can be created with user defined name. e.g. you could create a Today tab to only actions 
+                        with the action date set to the current date), a Calls tab for all actions to be done using a Phone 
+                    context, a Personal tab for all actions to be done belonging to personal topics;</li>
+                    <li>
+                        existing tabs can be renamed;
+                    </li>
+                    
+                    <li>
+                        existing tabs can be removed;
+                    </li>
+                    <li>
+                        tabs order can be modified.
+                    </li>
+                </ul>
+            </p>
+            
+            
+            <h3>Toolbar</h3>
+            <p>
+                The buttons are described from left to right.
+            </p>
+            <b><i>Print Screen</i></b><br>
+            <p>
+                For each Tab, you can print the actions listed in the Tab. Click the Print Screen to PDF document button (first from the left). 
+                On the report, the actions are listed in the same order as on the screen and the columns width is set proportionally as per screen. 
+                The text is wrapped in each column. A symbol indicates the action status (see the legend in the report footer).
+            </p>
+            <p>    
+                The following options can be set-up under Preferences/Options/Miscellaneous/Actions Screens:
+                <ul>
+                    <li>
+                        which font to use;
+                    </li>
+                    <li>
+                        if you want the colour printed or not. The colour meaning will be the same as on the screen: topic colour and dates in red if past, 
+                        blue if today and green if next week;
+                    </li>    
+                    <li>
+                        
+                        if you want to print done actions with strike out font or not.
+                    </li>  
+                </ul>     
+            </p>
+            <b><i>Columns</i></b><br>
+            <p>
+                For each Tab, you can decide which fields to display or not as a column in the table part. Click the Edit Columns 
+                button (second from the left) and check or unchecked the fields in the Table Columns window accordingly. 
+            </p>
+            <p>
+                By changing the layout on the screen, you can change:
+                <ul>
+                    
+                    <li>
+                        the column order;
+                    </li>
+                    <li>
+                        the column width.
+                    </li>
+                </ul>
+            </p>
+            <p>
+                The action date is set as follows: 
+                <ul>
+                    
+                    <li> Do ASAP action: Due Date;</li>
+                    <li> Inactive action: the earliest date between Start Date and Due Date;</li>
+                    <li> Scheduled action: Scheduled Date;</li>
+                    <li> Delegated action: the earliest date between Follow-Up Date and Due Date.</li>
+                    
+                </ul>
+            </p> 
+            <b><i>Filters</i></b><br>
+            <p>            
+                For each Tab, you can change the filtering. Click the Edit Fiters button (third from the left). The Selection 
+                Filters window opens where you can: 
+                <ul>
+                    <li>
+                        Use check box: set which filter to use or not;
+                    </li>
+                    <li>
+                        
+                        Show check box: set if the filter should be displayed or not;
+                    </li>
+                    <li>
+                        Values combo: set the initial value for the filter. If the filter is shown on the tab, the user 
+                        can change this initial value.
+                    </li>
+                    <li>
+                        Exclude if Null check box: if set, the actions with a null value in that field will not be listed. This setting is only 
+                        available for the criteria and the dates fields. Please note that if you choose the value 'All' for the criteria fields
+                        or don't select a date for the date fields, the actions with a null value will be included even if the box is checked.
+                    </li>
+                </ul>
+            </p>
+            
+            <p>
+                When there is more than one filter, data relevant for all filters is displayed (corresponding to logical 
+                AND operation).
+            </p>
+            <p>
+                The Search filter allows you to enter a text. Once you press the Enter key, all actions which have the text 
+                in their notes, description, immediate project description, or delegated to fields are listed.
+            </p>
+            <p>
+                For the Status, Topic, Context or Criteria combos, All, Multiple values or a specific value can be selected.
+            </p>
+            <p>
+                Using the Done filter, you can either show all actions or only the ones which have to be done or only the ones 
+            which have been completed.</p>
+            <p>
+                The dates filters let you choose how far in the future or the past you want to review. 
+            </p>
+            
+        </p>
+        <b><i>Show Filters line</i></b><br>
+        <p>            
+            For each Tab, you can show the filters line or not. Click the Show/Hide Filters button (fourth from the left) to toggle ON/OFF the 
+            display. By default, the setting is to show the line.
+        </p> 
+        <b><i>Action operations</i></b><br>
+        <p>
+            You can perform the following operations on actions selected on the list: Reprocess, Postpone, Change Context, Change Topic,
+            Change Criteria, Change Status, Change Project, Set to Done and Delete. You need to select the action and press the toolbar button.
+            The operations can be performed on more than one action at the time. Just hold the Shift or Command key while selecting them or use
+            Command key+A to select all the actions on the list displayed.
+        </p>
+        <p>
+            The operations are described in <a href="nbdocs://au.com.trgtd.tr.view.projects/au/com/trgtd/tr/view/projects/docs/view-projects.html#action-operations">Review Projects</a> screen.
+        </p>
+        <h3>Table Order</h3>
+        <ul>
+            <li>
+                You can sort the actions by clicking once on the header of the column you wish to sort by. To order on more than one column,
+                click once on the other column(s). To select a new first column for the ordering, <b>double-click</b> on that column;
+                
+            </li> 
+            <li>
+                
+                Each mouse click on a column changes the sort order and cycles through ascending/descending alphabetical 
+                sort order.
+            </li> 
+            <li>
+                The Action Date and Due Date columns are ordered as follows: first, date <= today, then null, then date > today.
+            </li> 
+        </ul>
+        <h3>Table Operations</h3>
+        The following operations can be performed on the table:       
+        <ul> 
+            <li>
+                Navigate: to navigate between rows, you can use the mouse or the arrows keys;
+            </li>
+            
+            <li>
+                Edit (Enter key): move focus to the Action panel to update the item. The cursor is positioned at the end of 
+                the action description;
+            </li> 
+            <li>
+                Set action to Done: check the Done box.
+            </li> 
+        </ul>
+        <h3>Tree Operations</h3>
+        <p>
+            Refer to the <a href="nbdocs://au.com.trgtd.tr.view.projects/au/com/trgtd/tr/view/projects/docs/view-projects.html">Review Projects</a> screen.
+        </p>    
+    </body>
+    
+</html>

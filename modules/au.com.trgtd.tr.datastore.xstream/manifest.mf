@@ -1,0 +1,6 @@
+Manifest-Version: 1.0
+OpenIDE-Module: au.com.trgtd.tr.datastore.xstream
+OpenIDE-Module-Install: au/com/trgtd/tr/datastore/xstream/Installer.class
+OpenIDE-Module-Localizing-Bundle: au/com/trgtd/tr/datastore/xstream/Bundle.properties
+OpenIDE-Module-Specification-Version: 3.5.1
+

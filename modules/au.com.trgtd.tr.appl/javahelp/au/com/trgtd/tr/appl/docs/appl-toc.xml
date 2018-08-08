@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE toc PUBLIC "-//Sun Microsystems Inc.//DTD JavaHelp TOC Version 2.0//EN" "http://java.sun.com/products/javahelp/toc_2_0.dtd">
+<toc version="2.0">
+    <!--tocitem text="ThinkingRock Application" mergetype="javax.help.SortMerge"-->
+    <tocitem text="ThinkingRock Application">
+        <tocitem text="01. Overview"/>
+        <tocitem text="02. Setup"/>
+        <tocitem text="03. Collect"/>
+        <tocitem text="04. Process"/>
+        <tocitem text="05. Review"/>
+        <tocitem text="06. Import"/>
+        <tocitem text="07. Export"/>
+        <tocitem text="08. Reports"/>
+        <tocitem text="09. Options/Preferences">
+            <tocitem text="About" target="prefs.about"/>
+            <tocitem text="Miscellaneous">
+                <tocitem text="Application" target="tr.prefs.appl"/>
+            </tocitem>
+        </tocitem>
+        <tocitem text="10. Archive"/>
+        <tocitem text="11. Background Tasks"/>
+        <tocitem text="12. Shortcuts"/>
+        <tocitem text="13. Find"/>
+    </tocitem>
+</toc>

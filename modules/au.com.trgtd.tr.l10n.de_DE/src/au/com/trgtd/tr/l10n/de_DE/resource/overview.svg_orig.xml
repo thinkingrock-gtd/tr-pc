@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="overview.css" type="text/css"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" clip-rule="evenodd" stroke-miterlimit="10" viewBox="0 0 820.00 580.00">
+    <desc>ThinkingRock Overview SVG</desc>
+    <defs/>
+    <g>
+        <rect class="main-area"    width="810.0" height="560.0" x="6.0"  y="6.0"/>
+        <rect class="setup-area"   width="765.0" height="96.0"  x="28.0" y="31.0"/>
+        <rect class="collect-area" width="765.0" height="94.0"  x="28.0" y="130.0"/>
+        <rect class="process-area" width="765.0" height="130.0" x="28.0" y="227.0"/>
+        <rect class="review-area"  width="765.0" height="170.0" x="28.0" y="360.0"/>
+        <rect id="new" class="new" x="264.50" y="55.0" width="85.0" height="51.0"/>
+        <image id="new-icon" x="298.5" y="87.0" width="16px" height="16px" xlink:href="DataNew.png"/>
+        <rect id="contexts" class="contexts" x="354.50" y="55.0" width="85.0" height="51.0"/>
+        <image id="contexts-icon" x="388.50" y="87.0" width="16px" height="16px" xlink:href="Context.png"/>        
+        <rect id="criteria" class="criteria" x="445.50" y="55.0" width="85.0" height="51.0"/>
+        <image id="criteria-icon" x="479.5" y="87.0" width="16px" height="16px" xlink:href="Criteria.png"/>
+        <rect id="topics" class="topics" x="536.5" y="55.0" width="85.0" height="51.0"/>
+        <image id="topics-icon" x="570.5" y="87.0" width="16px" height="16px" xlink:href="Topic.png"/>
+        <text id="new-text" class="new-text" xml:space="preserve">
+            <!--tspan x="274.5" y="67.5">Erstellen</tspan-->
+            <!--tspan x="274.5" y="81.5"> Datei</tspan-->
+            <tspan x="280.0" y="67.5"> Erstellen</tspan>
+            <tspan x="280.0" y="81.5">   Datei</tspan>
+        </text>
+        <text id="contexts-text" class="contexts-text" xml:space="preserve">
+            <!--tspan x="371.5" y="67.5">Definieren</tspan-->
+            <tspan x="360.0" y="67.5">  Definieren</tspan>
+            <tspan x="360.0" y="81.5">   Kontext</tspan>
+        </text>
+        
+        <text id="criteria-text" class="criteria-text" xml:space="preserve">
+            <!--tspan x="470.0" y="67.5">Definieren</tspan-->
+            <tspan x="460.0" y="67.5">Definieren</tspan>
+            <tspan x="468.0" y="81.5">Kriterien</tspan>
+        </text>
+        <text id="topics-text" class="topics-text" xml:space="preserve">
+            <tspan x="554.0" y="67.5">Definieren</tspan>
+            <tspan x="548.0" y="81.5">Gegenstände</tspan>
+        </text>
+        
+        <rect id="collect"  class="collect" x="416.0" y="145.0" width="85.0" height="57.0"/>
+        <image id="collect-icon" x="450.0" y="184.0" width="16px" height="16px" xlink:href="Collect.png"/>
+        <g>
+            <path class="arrow-head" d="M 515.74 167.50 L 535.74 177.50 L 535.74 157.50 L 515.74 167.50 Z M 515.74 167.50"/>
+            <path class="arrow-line" d="M 589.50 167.50 L 535.74 167.50"/>
+        </g>
+        <rect id="process" class="process" x="416.0" y="273.0" width="85.00" height="57.00"/>
+        <image id="process-icon" x="450.00" y="312.00" width="16px" height="16px" xlink:href="Process.png"/>
+        <rect id="info" class="info" x="269.00" y="273.00" width="85.00" height="57.00"/>
+        <image id="info-icon" x="303.00" y="312.00" width="16px" height="16px" xlink:href="Reference.png"/>
+        <rect id="future"  class="future" x="564.00" y="273.00" width="85.00" height="57.00"/>
+        <image id="future-icon" x="598.00" y="312.00" width="16px" height="16px" xlink:href="SomedayMaybe.png"/>
+        <rect id="projects" class="projects" x="479.00" y="388.00" width="158.00" height="46.00"/>
+        <image id="projects-icon" x="545.00" y="415.00" width="16px" height="16px" xlink:href="Projects.png"/>
+        <rect id="actions" class="actions" x="309.00" y="388.00" width="158.00" height="46.00"/>
+        <image id="actions-icon" x="375.00" y="415.00" width="16px" height="16px" xlink:href="Actions.png"/>
+        <rect id="doasap" class="doasap" x="264.50" y="462.50" width="85.00" height="57.00"/>
+        <image id="doasap-icon" x="298.50" y="500.50" width="16px" height="16px" xlink:href="ActionDoASAP.png"/>
+        <rect id="delegated" class="delegated" x="354.50" y="462.50" width="85.00" height="57.00"/>
+        <image id="delegated-icon" x="388.50" y="500.50" width="16px" height="16px" xlink:href="ActionDelegated.png"/>
+        <rect id="scheduled" class="scheduled" x="445.50" y="462.50" width="85.00" height="57.00"/>
+        <image id="scheduled-icon" x="479.50" y="500.50" width="16px" height="16px" xlink:href="ActionScheduled.png"/>
+        <rect id="done" class="done" x="536.50" y="462.50" width="85.00" height="57.00"/>
+        <image id="done-icon" x="570.50" y="500.50" width="16px" height="16px" xlink:href="ActionDone.png"/>
+        <text id="projects-text" class="projects-text" xml:space="preserve">
+            <tspan x="527.50" y="404.50"> Projekte
+            </tspan>
+        </text>
+        <text id="actions-text" class="actions-text" xml:space="preserve">
+            <tspan x="358.0" y="404.50">Aktionen
+            </tspan>
+        </text>
+        <text id="doasap-text" class="doasap-text" xml:space="preserve">
+            <tspan x="264.0" y="482.50">Sofort erledigen
+            </tspan>
+        </text>
+        <text id="delegated-text" class="delegated-text" xml:space="preserve">
+            <tspan x="371.50" y="482.50">Delegiert
+            </tspan>
+        </text>
+        <text id="scheduled-text" class="scheduled-text" xml:space="preserve">
+            <tspan x="456.50" y="482.50">  Geplant
+            </tspan>
+        </text>
+        <text id="done-text" class="done-text" xml:space="preserve">
+            <tspan x="553.50" y="482.50"> Erledigt
+            </tspan>
+        </text>
+        <g>
+            <path class="arrow-head" d="M 390.67 381.45 L 405.71 377.30 L 396.37 366.93 L 390.67 381.45 Z M 390.67 381.45"/>
+            <path class="arrow-line" d="M 439.50 337.50 L 401.04 372.11"/>
+        </g>
+        <g>
+            <path class="arrow-head" d="M 530.36 381.41 L 525.10 366.68 L 515.42 376.79 L 530.36 381.41 Z M 530.36 381.41"/>
+            <path class="arrow-line" d="M 484.50 337.50 L 520.26 371.74"/>
+        </g>
+        <path class="connection" d="M 332.50 433.50 L 332.50 462.50"/>
+        <path class="connection" d="M 394.50 433.50 L 394.50 462.50"/>
+        <path class="connection" d="M 456.50 433.50 L 456.50 462.50"/>
+        <g>
+            <path class="arrow-head" d="M 456.50 267.26 L 466.50 247.26 L 446.50 247.26 L 456.50 267.26 Z M 456.50 267.26 "/>
+            <path class="arrow-line" d="M 456.50 207.50 L 456.50 247.26"/>
+        </g>
+        <g>
+            <path class="arrow-head" d="M 410.05 303.50 L 397.05 297.00 L 397.05 310.00 L 410.05 303.50 Z M 410.05 303.50"/>
+            <path class="arrow-head" d="M 361.96 303.50 L 374.95 310.00 L 374.95 297.00 L 361.96 303.50 Z M 361.96 303.50"/>
+            <path class="arrow-line" d="M 397.05 303.50 L 374.95 303.50"/>
+        </g>
+        <g>
+            <path class="arrow-head" d="M 508.95 303.50 L 521.95 310.00 L 521.95 297.00 L 508.95 303.50 Z M 508.95 303.50"/>
+            <path class="arrow-head" d="M 557.04 303.50 L 544.05 297.00 L 544.05 310.00 L 557.04 303.50 Z M 557.04 303.50"/>
+            <path class="arrow-line" d="M 521.95 303.50 L 544.05 303.50"/>
+        </g>
+        <text id="future-text" class="future-text">
+            <tspan x="576.0" y="292.50">Irgendwann</tspan>
+            <tspan x="576.0" y="306.50">Vielleicht</tspan>
+        </text>
+        <text id="info-text" class="info-text">
+            <tspan x="290.0" y="292.50">Quelle
+            </tspan>
+        </text>
+        <text id="process-text" class="process-text" xml:space="preserve">
+            <tspan x="417.0" y="291.50">Ablauf erstellen</tspan>
+            <tspan x="432.50" y="305.50">   Ideen
+            </tspan>
+        </text>
+        <text id="collect-text" class="collect-text" xml:space="preserve">
+            <tspan x="432.50" y="159.50"> Sammeln
+            </tspan>
+            <tspan x="432.50" y="173.50">   Ideen
+            </tspan>
+        </text>
+        <g>
+            <path class="arrow-head" d="M 402.26 168.50 L 382.26 158.50 L 382.26 178.50 L 402.26 168.50 Z M 402.26 168.50"/>
+            <path class="arrow-line" d="M 328.50 168.50 L 382.26 168.50"/>
+        </g>
+        <rect class="setup-box"   width="158.76" height="68.99" x="34.02" y="45.36"/>
+        <rect class="collect-box" width="158.76" height="68.99" x="34.02" y="141.75"/>
+        <rect class="process-box" width="158.76" height="68.99" x="34.02" y="260.82"/>
+        <rect class="review-box"  width="158.76" height="68.99" x="34.02" y="385.56"/>
+        <text class="setup-box-text-large">
+            <!--tspan x="58.0" y="82.5">EINSTELLUNGEN</tspan-->
+            <tspan x="48.0" y="82.5">EINSTELLUNGEN</tspan>
+        </text>
+        <text class="collect-box-text-large">
+            <tspan x="69.5" y="170.5">SAMMELN
+            </tspan>
+        </text>
+        <text class="collect-box-text-small">
+            <tspan x="60.0" y="195.5">  Ideen loswerden
+            </tspan>
+        </text>
+        <text class="process-box-text-large">
+            <!--tspan x="69.50" y="288.50">ABLAUF ERSTELLEN</tspan-->
+            <tspan x="40.0" y="288.50">ABLAUF ERSTELLEN</tspan>
+        </text>
+        <text class="process-box-text-small" xml:space="preserve">
+            <tspan x="60.50" y="306.50">Was ist es?
+            </tspan>
+            <tspan x="60.50" y="320.50">Ist es ausführbar?
+            </tspan>
+        </text>
+        <text class="review-box-text-large" xml:space="preserve">
+            <tspan x="60.0" y="405.50">ORGANISIERE
+            </tspan>
+            <tspan x="60.0" y="425.50">DURCHSICHT
+            </tspan>
+            <tspan x="60.0" y="445.50">ERLEDIGEN
+            </tspan>
+        </text>
+        <image class="logo" x="40.00" y="488.00" width="2cm" height="2cm" xlink:href="logo.png"/>
+    </g>
+</svg>

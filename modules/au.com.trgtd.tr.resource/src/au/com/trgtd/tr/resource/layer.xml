@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE filesystem PUBLIC "-//NetBeans//DTD Filesystem 1.1//EN" "http://www.netbeans.org/dtds/filesystem-1_1.dtd">
+<filesystem>
+    <folder name="Overview">
+        <file name="overview.svg" url="icons/overview.svg.xml"/>
+        <file name="overview.css" url="icons/overview.css"/>
+        <file name="DataNew.png" url="icons/DataNew24.png"/>
+        <file name="Context.png" url="icons/Context24.png"/>
+        <file name="Topic.png" url="icons/Topic24.png"/>
+        <file name="Criteria.png" url="icons/Criteria24.png"/>
+        <file name="Process.png" url="icons/ProcessThoughts24.png"/>        
+        <file name="Collect.png" url="icons/Collect24.png"/>
+        <file name="SomedayMaybe.png" url="icons/SomedayMaybe24.png"/>
+        <file name="Reference.png" url="icons/References24.png"/>
+        <file name="Projects.png" url="icons/Projects24.png"/>
+        <file name="Actions.png" url="icons/Actions24.png"/>
+        <file name="ActionDoASAP.png" url="icons/ActionDoASAP24.png"/>
+        <file name="ActionDelegated.png" url="icons/ActionDelegated24.png"/>
+        <file name="ActionScheduled.png" url="icons/ActionScheduled24.png"/>
+        <file name="ActionDone.png" url="icons/ActionDone24.png"/>
+        <file name="logo.png" url="icons/logo.png"/>
+    </folder>
+</filesystem>
+

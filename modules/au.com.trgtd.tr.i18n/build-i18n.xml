@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="tr-build-i18n" basedir=".">
+
+    <property name="tr.dir"     location="${basedir}/.."/>
+    <property name="omegat.dir" location="${basedir}/../../i18n/omegat"/>
+    
+    <target name="i18n-prepare-omegat-source" description="Prepare OmegaT projects source">
+        <ant antfile="./build.xml" target="-i18n-prepare-omegat-source" inheritAll="true" >
+            <property name="omegat.project.dir" value="${omegat.dir}/deDE.omegat/project"/>
+        </ant>
+        <ant antfile="./build.xml" target="-i18n-prepare-omegat-source" inheritAll="true" >
+            <property name="omegat.project.dir" value="${omegat.dir}/enUS.omegat/project"/>
+        </ant>
+        <ant antfile="./build.xml" target="-i18n-prepare-omegat-source" inheritAll="true" >
+            <property name="omegat.project.dir" value="${omegat.dir}/esES.omegat/project"/>
+        </ant>
+        <ant antfile="./build.xml" target="-i18n-prepare-omegat-source" inheritAll="true" >
+            <property name="omegat.project.dir" value="${omegat.dir}/frFR.omegat/project"/>
+        </ant>
+        <ant antfile="./build.xml" target="-i18n-prepare-omegat-source" inheritAll="true" >
+            <property name="omegat.project.dir" value="${omegat.dir}/nlNL.omegat/project"/>
+        </ant>
+        <echo>OmegaT projects are ready for language translations.</echo>
+    </target>
+
+
+    <target name="i18n-transfer-omegat-target" description="Transfer OmegaT projects target">
+        <ant antfile="./build.xml" target="-i18n-transfer-omegat-target" inheritAll="true" >
+            <property name="l10n.code" value="deDE"/>
+            <property name="omegat.dir" value="${omegat.dir}"/>
+        </ant>
+    </target>
+    
+</project>

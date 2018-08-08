@@ -1,0 +1,7 @@
+Manifest-Version: 1.0
+OpenIDE-Module: au.com.trgtd.tr.sync.iphone
+OpenIDE-Module-Install: au/com/trgtd/tr/sync/dropbox/Installer.class
+OpenIDE-Module-Layer: au/com/trgtd/tr/sync/iphone/layer.xml
+OpenIDE-Module-Localizing-Bundle: au/com/trgtd/tr/sync/iphone/Bundle.properties
+OpenIDE-Module-Specification-Version: 3.5.1
+

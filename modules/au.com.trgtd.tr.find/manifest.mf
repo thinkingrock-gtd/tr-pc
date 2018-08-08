@@ -1,0 +1,6 @@
+Manifest-Version: 1.0
+OpenIDE-Module: au.com.trgtd.tr.find
+OpenIDE-Module-Layer: au/com/trgtd/tr/find/layer.xml
+OpenIDE-Module-Localizing-Bundle: au/com/trgtd/tr/find/Bundle.properties
+OpenIDE-Module-Requires: org.netbeans.api.javahelp.Help, org.openide.windows.WindowManager
+OpenIDE-Module-Specification-Version: 3.5.1

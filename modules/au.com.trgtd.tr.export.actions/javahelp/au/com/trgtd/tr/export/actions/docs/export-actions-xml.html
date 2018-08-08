@@ -1,0 +1,42 @@
+<html>
+    <head>
+        <title>Export Actions (XML)</title>
+        <link rel="stylesheet" href="nbdocs:/tr/model/docs/ide.css" type="text/css">
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+    <body>
+        
+        <h2>Export Actions (XML)</h2>
+        <p>
+            You can export Actions to an XML file.  You can choose which actions to include: Inactive, Do ASAP, 
+            Delegated and/or Scheduled. You can choose to include or not actions which are done and filter 
+            according to the context and/or topic. The &quot;Up to&quot; selection lets you choose how far in 
+            the future you want to export. 
+        </p>
+        <h3>Set-up</h3>
+        <p>
+            You can specify the output folder and the character encoding (e.g. UTF-8) of the exported file under 
+            <a href="nbdocs://au.com.trgtd.tr.extract/au/com/trgtd/tr/extract/docs/prefs-extract.html">Exports and Reports Preferences</a>.
+        </p>
+        <h3>Parameters</h3>
+        <ul>
+            <li>Topic list: you can select a topic or choose All topics. Topics are ordered alphabetically;</li>            
+            <li>Context list: you can select a context or choose All contexts. Contexts are ordered alphabetically;</li>
+            <li>Up to list: this selection let you choose how far in the future delegated and scheduled actions should be included;</li>
+            <li>Include Done?: if checked, all done actions for the selection are included;</li>
+            <li>Include Inactive?: if checked, all inactive actions for the selected context and topic are included;</li>
+            <li>Include Do ASAP?: if checked, all Do ASAP actions for the selected context and topic are included;</li>
+            <li>Include Scheduled?: if checked, all scheduled actions for the selected context, topic and Up to date are included;</li>
+            <li>Include Delegated?: if checked, all delegated actions for the selected context, topic and Up to date are included;</li>
+            <li>Date Format: you can select the date format for date fields;</li>
+            <li>Fields 1 - 20: you can select which fields are output;</li>            
+            <li>Remember these options: if checked, the parameters for this export are saved until the user changes them and saves them.</li>
+        </ul>
+        <h3>Output</h3>
+        <p>
+            The file is saved in the folder specified within the user preferences (see Set-up).
+            Current date and time are used to build the file name to make it unique. The output file is opened using 
+            the default system application for XML files. 
+        </p>
+    </body>
+</html>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE filesystem PUBLIC "-//NetBeans//DTD Filesystem 1.1//EN" "http://www.netbeans.org/dtds/filesystem-1_1.dtd">
+<filesystem>
+    <folder name="Actions">
+        <folder name="Reports">
+            <file name="au-com-trgtd-tr-report-projects-future-ReportActionImpl.instance"/>
+        </folder>
+    </folder>
+    <folder name="Menu">
+        <folder name="Reports">
+            <attr name="position" intvalue="790"/>
+            <file name="au-com-trgtd-tr-report-projects-future-ReportActionImpl.shadow">
+                <attr name="originalFile" stringvalue="Actions/Reports/au-com-trgtd-tr-report-projects-future-ReportActionImpl.instance"/>
+                <attr name="position" intvalue="630"/>                                
+            </file>
+        </folder>
+    </folder>
+</filesystem>

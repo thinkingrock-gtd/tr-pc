@@ -1,0 +1,7 @@
+Manifest-Version: 1.0
+OpenIDE-Module: au.com.trgtd.tr.email
+OpenIDE-Module-Install: au/com/trgtd/tr/email/Installer.class
+OpenIDE-Module-Layer: au/com/trgtd/tr/email/layer.xml
+OpenIDE-Module-Localizing-Bundle: au/com/trgtd/tr/email/Bundle.properties
+OpenIDE-Module-Specification-Version: 3.6.1
+OpenIDE-Module-Requires: org.netbeans.api.javahelp.Help

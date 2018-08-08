@@ -1,0 +1,254 @@
+<html>
+    <head>
+        <title>Process Thoughts</title>
+        <link rel="stylesheet" href="nbdocs:/tr/model/docs/ide.css" type="text/css">
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+    <body>
+        <h2>Process Thoughts</h2>
+
+        <h3>Purpose</h3>
+        <p>
+            The thoughts collected through the
+            <a href="nbdocs://au.com.trgtd.tr.view.collect/au/com/trgtd/tr/view/collect/docs/collect.html">Collect Thoughts</a>
+            screen are displayed one by one, in the same order as entered. A counter indicates how many
+            thoughts still need to be processed. If this screen has been called when re-processing an Item
+            or Action, or if any &quot;tickled&quot; Someday/Maybe items need to be looked at, the corresponding
+            thought will be displayed first.
+        </p>
+        <p>
+
+            This screen is where you decide what to do with a thought. You can delete it, transform it to one action, transform it to 
+            many actions, or keep it as a Someday/Maybe item, Reference Item or Goal.</br>
+
+            First of all, you need to decide if the thought is actionable or not. The default is actionable.
+        </p>
+        <h3>Actionable</h3>
+        <p>
+            <i>Single action or Project?</i>
+        </p>
+        <p>
+            We recommend that you first think about the thought and enter the successful outcome for this
+            activity. The display of the successful outcome field is configurable (see
+            <a href="nbdocs://au.com.trgtd.tr.view.actn/au/com/trgtd/tr/view/actn/docs/actions-prefs.html">Actions Preferences</a>).
+            It is then easier to decide:
+        <ul>
+
+            <li>
+                whether it will take more than one action to achieve this result (and therefore require
+                a project), or if one single action will achieve the thought;
+            </li>
+            <li>
+                if the thought is related to an existing project or sub-project;
+            </li>
+            <li>
+                if more than one action need to be entered for that thought.
+            </li>
+        </ul>
+        If a new project is required, you can create the project as a top project or as belonging to an
+        existing project or sub-project.
+        <p>
+            You must enter the description of the next physical action that should be done. The description
+            is defaulted to the thought description but it can be overwritten.
+        </p>
+        <p>If you are creating multiple actions for one thought, the description and notes will be reset to null 
+            between actions entry. If a project was selected, it will be kept as it is likely that all actions for one thought 
+            belong to the same project. If you created a project for the first action, that new project will be the default.
+        </p>
+        A context for this action can also be selected. You can also enter notes for that action. The
+        display of the following fields is configurable:
+        <ul>
+            <li>
+                Due Date and Start Date: see <a href="nbdocs://au.com.trgtd.tr.view.actn/au/com/trgtd/tr/view/actn/docs/actions-prefs.html">Actions Preferences</a>
+            </li>
+            <li>
+                Priority, Time, Energy: see <a href="nbdocs://au.com.trgtd.tr.view.criteria/au/com/trgtd/tr/view/criteria/docs/criteria.html">Criteria</a>
+            </li>
+        </ul>
+        <p>
+            <i>Action Status</i>
+        </p>
+        You now have five choices for this action as follows.
+        <ol>
+            <li>
+
+                If the action will take less than two minutes to do, you should do it
+                straight away and then check the done check box;
+            </li>
+            <li>
+                If the action should not be done yet but you wish to record it, then select the
+                &quot;Inactive&quot; Status. The Start date can be entered. When the Start date is
+                reached or has passed (in case you don&#39;t run the application for a few days),
+                the action will become a &quot;Do ASAP&quot; one automatically;
+            </li>
+            <li>
+
+                If the action should be done as soon as possible, then select the &quot;Do ASAP&quot; Status;
+            </li>
+            <li>
+                If the action only occurs at a particular date and time, select the &quot;Scheduled&quot;
+                Status.  Then click the button along side to select a date, then enter the time (24 hours
+                format: 7 o'clock in the evening should be entered as 19:00) and duration if applicable. You
+                can also create a <a href="nbdocs://au.com.trgtd.tr.view.actns/au/com/trgtd/tr/view/actns/docs/recurrence.html">recurrence</a>
+                definition;
+            </li>
+            <li>
+                If you wish to delegate the action to someone else, select the &quot;Delegated&quot; Status
+                and enter who you are delegating to (enter free text, select a name from the list or Add a New Delegate)
+                and a date to &quot;Follow-up&quot; whether it has been done.  To inform the person you are delegating to, you can send an email by
+                pressing the &quot;Email&quot; button. Addressee is set to the Delegate Email if filled in or to the Delegate Name otherwise,
+                subject is set to the Action Description and the email text is set to the Notes.
+                With this implementation users can choose if they prefer to maintain their email addresses in TR or only in one place, their email software....
+                <p>
+                    There are two user options for this delegation emailing in <a href="nbdocs://au.com.trgtd.tr.view.actn/au/com/trgtd/tr/view/actn/docs/actions-prefs.html">Actions Preferences</a>
+                    as follows:</p>
+                <p>- you can opt to append the following string to the end of the notes field: current date and time followed by
+                    the text &quot;Email sent&quot; and the selected Delegate.</p>
+                <p>- you can change the character encoding. You may need to do this if your particular email client program does not
+                    properly accept the details passed to it.</p>
+                <p>
+                    Please note that to use the email functionality on Linux, a proper email address (containing a
+                    &quot;@&quot;) needs to be entered.
+                </p>
+            </li>
+        </ol>
+        <p>
+            <i>Project</i>
+        </p>
+        <p>
+            Based on your decisions at the beginning, check the project check box if a new project is required. A new project will be created automatically.
+            The project description is defaulted to the thought description but it can be overwritten.  If
+            the action does not have a thought, or if you leave the project name blank, the action description will be used.
+        </p>
+        <p>
+            If the thought is related to an existing project (current or future), press the button to select it. 
+            A pop-up window opens with two tabs: Projects and Future Projects.
+            From the appropriate tree, select the project (or sub-project) the action(s) (and possibly the new project) belongs to. In the tree, a project can be expanded
+            or not and you can change the order to alphabetic using the buttons above the project tree.</br>
+            The previously selected project is kept as a default, user just needs to check the box to select it.
+        </p>
+        <p>
+            <i>Notes field transfer</i>
+
+        </p>
+        <p>
+            If Notes were entered for the thought, they will be copied into the first action&#39;s notes and to the project&#39;s notes
+            (if applicable).
+        </p>
+        <p>
+            <i>Priority field</i>
+        </p>
+        <p>
+            An action created under an existing project will take the priority of that project, unless the user has entered a
+            priority for that action. A sub-project created under an existing project will take the priority of that project.
+        </p>
+
+        <p>
+            Lastly you press:
+    <li> either the <i>Process Thought</i> button (or its <a href="nbdocs://tr.model/tr/model/docs/shortcuts.html">Shortcut Key</a>) 
+
+        The next thought is then displayed at the top and the entry fields are reset.</li>
+    <li>or the <i>Add Action</i> button if more than one action need to be entered for that thought.
+        The same thought is still displayed at the top and the entry fields are reset except the project field.</li>
+
+
+</p>
+
+<h3>Not actionable</h3>
+<p>
+    If the thought is not actionable, you can do one of the following:
+<ul>
+    <li>
+        decide you don&#39;t need to do anything for that thought and delete it;
+    </li>
+    <li>
+        keep it for later (Someday/Maybe Items). A tickle date can be entered to get reminded about the Someday/Maybe Item.
+        When the tickle date is reached or has passed (in case you don&#39;t run the application for a few days),
+        the Someday/Maybe Item will be sent back to your unprocessed thoughts box and will re-appear at the top of
+        unprocessed thoughts the next time you call the Process Thoughts screen;
+    </li>
+
+    <li>
+        keep it as reference (Reference Items).
+    </li>
+
+    <li>
+        create a goal for it.  The goal level must be entered. To add the new goal as a subgoal of an existing goal,
+        press the Parent Goal button. A pop-up window opens with the tree of existing goals. In the tree, a goal can be expanded
+        or not.
+    </li>
+
+
+</ul>
+<p>
+    You then press the <i>Process Thought</i> button (or its
+    <a href="nbdocs://tr.model/tr/model/docs/shortcuts.html">Shortcut Key</a>).
+
+    The next thought is then displayed at the top and the entry fields are reset.
+</p>
+
+<h3>Team version</h3>
+<p><b>Delegated Action</b>
+    When you process a thought describing an action delegated to you by another TR user, the following fields with be populated: Action Description, Notes, Successful Outcome, Start Date, Due Date, Topic, Priority, Time and Energy. 
+    You can create one action, multiple actions and a project for that action as for any other thought. If you decide that the action should not be delegated to you, you can enter your reasoning in the notes and set the action to done.
+    When you set the action or last action (if you created multiple actions) to done, an email will be sent to the person who delegated the action automatically with your notes.  
+</p>
+<p><b>Delegation Response</b>
+    When you process a thought describing a response to an action you delegated to another TR user, there will be two action panels displayed:
+</p>
+<ul>
+    <li>The one on the left is read only and shows the action sent back by the delegate with its notes and its done date </li>
+    <li>The one on the right is the original delegated action</li>
+</ul>
+<p>
+    If you decide that the action was done properly by the delegate, you can just set it to done. The action from the delegate will be saved under the delegated action 
+    in the project hierarchy. If you think it still needs some work, just update the notes and re-send it to the delegate. 
+</p>
+<h3>Others</h3>
+
+
+<p>
+    For &#39;tickled&#39; Someday/Maybe items, the word &#39;Tickled&#39; + tickle date will be appended at the
+    beginning of the thought description.
+</p>
+
+<p>
+    For any date selection: the calendar window &quot;Select Date&quot; will open, allowing you to Select a
+    date, Clear it or Cancel. You can select a date by double-clicking on it. You can also enter the date directly. You
+    can set the date format and what is the first day of your week (Sunday or Monday):
+    see <a href="nbdocs://au.com.trgtd.tr.prefs.dates/au/com/trgtd/tr/prefs/dates/docs/dates.html">Dates</a>.
+</p>
+
+<h3>Notes field</h3>
+The operations you can do are described below in the order of the buttons from left to right. When insertion occurs, it happens at
+the cursor position. Copy/Cut and paste of text can be done through the standard shortcut keys Command+C, Command+V and Command+P.
+<ul>
+    <li>
+        You need to click on the pencil symbol button or double-click on the field, in order to start the
+        Edit mode before you can update the field;
+    </li>
+    <li>
+        You can insert a website address by typing it directly or using the web symbol button;
+    </li>
+    <li>
+        You can insert a file reference using the folder symbol button;
+    </li>
+    <li>
+
+        You can insert today's date using the calendar symbol button. You can also use the shortcut key Ctrl+Alt+D;
+    </li>
+    <li>
+        You can insert current time using the clock symbol button. You can also use the shortcut key Ctrl+Alt+T.
+    </li>
+    <li>
+        You can insert a link to a reference item using the reference symbol button or with the shortcut key: Ctrl+Alt+R.
+        A dialog box will open to let you select the reference item. You can filter the selection list using the search text field
+        and/or the topic chooser (located above the list). The items are ordered alphabetically by description.
+    </li>
+</ul>
+
+
+
+</body>
+</html>
+

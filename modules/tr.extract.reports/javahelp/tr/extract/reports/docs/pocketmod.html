@@ -1,0 +1,77 @@
+<html>
+    <head>
+        <title>PocketMod Report (Jasper)</title>
+        <link rel="stylesheet" href="nbdocs:/tr/model/docs/ide.css" type="text/css">
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+    <body>
+        <h2>PocketMod Report (Jasper)</h2>
+        <p>
+            You can produce a report listing overdue actions, do ASAP actions without due date, 
+            actions for today or this week in the PocketMod format.<br>
+            <OBJECT CLASSID="java:org.netbeans.modules.javahelp.BrowserDisplayer">
+                <PARAM name="content" value="http://www.pocketmod.com">
+                <PARAM name="text" value="&lt;HTML&gt;&lt;U&gt;See the PocketMod web site&lt;/U&gt;&lt;/HTML&gt;">
+                <PARAM name="textColor" value="blue">
+            </OBJECT>
+        </p>
+        <p>
+            The report has been designed for A4 page format. A letter format design will become 
+            available soon.
+        </p>
+        <h3>Parameters</h3>
+        <ul>
+            <li><b>Print for</b>: this parameter allows you to produce 
+            the report for today or tomorrow. If you select tomorrow, the report will list the 
+            actions planned for tomorrow under the Today section and the week starting the day 
+            after;</li>
+            <li><b>Include time, energy and priority?</b>: if checked, the three criteria (time, energy and priority)
+            are displayed for each action;</li>
+            <li><b>Include project or thought?</b>: if checked, the thought description
+            is shown for single actions (between braces {}) or the project 
+            path is shown (between square brackets []) for actions part a project;</li>
+            <li><b>Pages</b>: there are eight pages which correspond to the eight 
+            sections of the PocketMod printout. For each type of actions, 
+            you can select 8 pages of them. Each page lists 31 actions maximum. For example, 
+            you could produce a pocketmod report with 8 pages of do ASAP actions (if you have 
+            that many on your list);</li>
+            <li><b>Remember these options</b>: if checked, the selected parameters
+            are saved and restored the next time the report is run.</li>
+        </ul>
+        <h3>Layout</h3>
+        The selected pages are listed in the PocketMod booklet order. The page 
+        options are as follows:
+        <ul>
+            <li><b>Do ASAP (all)</b>: all do ASAP actions are listed grouped by
+            context. Contexts are listed alphabetically (except for None which is first). 
+            Within context, first the actions without due date are listed in  
+            alphabetical order, then the ones with a due date ordered by ascending due date. 
+            In this section the overdue do ASAP actions are included;</li>
+            <li><b>Do ASAP (Due)</b>: do ASAP actions due today or next week are listed 
+            ordered by ascending due date;</li>
+            <li><b>Do ASAP (No due date)</b>: all do ASAP actions without due date are listed 
+            grouped by context. Contexts are listed alphabetically (except for None which is first). 
+            Within context the actions are listed in alphabetical order;</li>
+            <li><b>Overdue</b>: all overdue do ASAP, scheduled and delegated actions are listed 
+            ordered by action date;</li>
+            <li><b>Today</b>: do ASAP, scheduled and delegated actions with an action date for today
+            are listed ordered by time;</li>
+            <li><b>Scheduled</b>: actions scheduled for today or next week are listed 
+            ordered by ascending date and time;</li>
+            <li><b>Delegated</b>: actions delegated to be followed-up today or next week are listed 
+            ordered by ascending date. When actions are to be followed-up on the same day, 
+            they are grouped by delegate;</li>
+            <li><b>This Week</b>: inactive, do ASAP, scheduled and delegated actions with an action date
+            within a week from today are listed ordered by date and time;</li> 
+            <li><b>Overdue</b>: do ASAP, scheduled and delegated actions with an action date
+            prior to today are listed ordered by date and time;</li>
+            <li><b>Blank</b>: a blank pocketmod page is inserted;</li>
+            <li><b>New Thoughts</b>: a pocketmod page with lines to write down your new thoughts 
+            is inserted;</li>
+            <li><b>New Thoughts (spaced)</b>: same as previously with more space between 
+            the lines;</li>
+            <li><b>Thoughts</b>: all unprocessed thoughts are listed in the FIFO order.</li>
+        </ul>
+        <p>
+    </body>
+</html>

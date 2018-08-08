@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- You may freely edit this file. See harness/README in the NetBeans platform -->
+<!-- for some information on what you could do (e.g. targets to override). -->
+<!-- If you delete this file and reopen the project it will be recreated. -->
+<project basedir="." default="netbeans" name="au.com.trgtd.tr.i18n">
+    <description>Builds, tests, and runs the project au.com.trgtd.tr.i18n.</description>
+    <import file="nbproject/build-impl.xml"/>
+    
+    <target name="-i18n-prepare-omegat-source">
+        <!--
+         Purpose: Prepare OmegaT projects for manual translations of tr suite.
+            
+         Actions:
+         - clean OmegaT source dir
+         - clean OmegaT target dir
+         - copy Bundle.properties files from tr suite modules to OmegaT 
+           source dir (except for modules that just wrap external libraries).
+        
+         Properties:
+         - tr.dir                // path of tr project
+         - omegat.project.dir    // OmegaT project dir
+        -->
+        <echo>Cleaning Omega source dir: ${omegat.project.dir}/source</echo>
+        <delete includeEmptyDirs="true" verbose="false">
+            <fileset defaultexcludes="no"
+                dir="${omegat.project.dir}/source" includes="**/*"/>
+        </delete>
+        <echo>Cleaning Omega target dir: ${omegat.project.dir}/target</echo>
+        <delete includeEmptyDirs="true" verbose="false">
+            <fileset defaultexcludes="no"
+                dir="${omegat.project.dir}/target" includes="**/*"/>
+        </delete>
+        <echo>Copying Bundle.properties files from tr suite modules to Omega source</echo>
+        <copy todir="${omegat.project.dir}/source" verbose="true">
+            <fileset dir="${tr.dir}">
+                <include name="**/src/**/Bundle.properties"/>
+            </fileset>
+            <!-- Only au.com.* and tr.* projects and remove project and src 
+            directories from output path. -->
+            <mapper from="^(au\.com\..*|tr\..*)/src(/.*)" to="\2" type="regexp"/>
+        </copy>
+    </target>
+    <target name="-i18n-transfer-omegat-target">
+        <echo>Jar Omega target directories</echo>
+        <jar compress="true" jarfile="${basedir}/release/modules/locale/tr-i18n.jar">
+            <fileset dir="${omegat.dir}/deDE.omegat/project/target"/>
+            <fileset dir="${omegat.dir}/enUS.omegat/project/target"/>
+            <fileset dir="${omegat.dir}/esES.omegat/project/target"/>
+            <fileset dir="${omegat.dir}/frFR.omegat/project/target"/>
+            <fileset dir="${omegat.dir}/nlNL.omegat/project/target"/>
+        </jar>
+    </target>
+    <target
+        depends="init,netbeans,-nbm-prompt-for-storepass,-init-executables"
+        description="Build NBM archive." name="nbm">
+        <!-- OVERRIDDEN To change code signing -->
+        <mkdir dir="${build.dir}"/>
+        <property name="nbm.target.cluster" value=""/>
+        <!-- fallback -->
+        <property name="license.file.override" value="${license.file}"/>
+        <property name="use.pack200" value="true"/>
+        <property name="pack200.excludes" value=""/>
+        <property name="nbm.locales" value="${locales}"/>
+        <makenbm distribution="${nbm.distribution}"
+            file="${build.dir}/${nbm}" global="${nbm.is.global}"
+            homepage="${nbm.homepage}" locales="${nbm.locales}"
+            module="${module.jar}" moduleauthor="${nbm.module.author}"
+            needsrestart="${nbm.needs.restart}"
+            pack200excludes="${pack200.excludes}"
+            preferredupdate="${nbm.is.preferredupdate}"
+            productdir="${cluster}" releasedate="${nbm.release.date}"
+            targetcluster="${nbm.target.cluster}" usepack200="${use.pack200}">
+            <license file="${license.file.override}"/>
+            <!--REMOVE Original signing -->
+            <!--<signature keystore="${keystore}" storepass="${storepass}" alias="${nbm_alias}"/>-->
+            <!--END REMOVE -->
+            <updaterjar>
+                <pathfileset>
+                    <path refid="cluster.path.id"/>
+                    <filename name="modules/ext/updater.jar"/>
+                </pathfileset>
+            </updaterjar>
+            <executables refid="module.executable.files"/>
+        </makenbm>
+        <!--INCLUDE New Code Signing -->
+        <signjar alias="1" jar="${build.dir}/${nbm}"
+            keystore="${keystore}" storepass="${storepass}"
+            tsaurl="http://timestamp.globalsign.com/scripts/timestamp.dll" verbose="false"/>
+        <!--END INCLUDE -->
+    </target>
+    <target
+        depends="init,netbeans,-nbm-prompt-for-storepass,-init-executables"
+        description="Build NBM archive." name="nbm">
+        <!-- OVERRIDDEN To change code signing -->
+        <mkdir dir="${build.dir}"/>
+        <property name="nbm.target.cluster" value=""/>
+        <!-- fallback -->
+        <property name="license.file.override" value="${license.file}"/>
+        <property name="use.pack200" value="true"/>
+        <property name="pack200.excludes" value=""/>
+        <property name="nbm.locales" value="${locales}"/>
+        <makenbm distribution="${nbm.distribution}"
+            file="${build.dir}/${nbm}" global="${nbm.is.global}"
+            homepage="${nbm.homepage}" locales="${nbm.locales}"
+            module="${module.jar}" moduleauthor="${nbm.module.author}"
+            needsrestart="${nbm.needs.restart}"
+            pack200excludes="${pack200.excludes}"
+            preferredupdate="${nbm.is.preferredupdate}"
+            productdir="${cluster}" releasedate="${nbm.release.date}"
+            targetcluster="${nbm.target.cluster}" usepack200="${use.pack200}">
+            <license file="${license.file.override}"/>
+            <!--REMOVE Original signing -->
+            <!--<signature keystore="${keystore}" storepass="${storepass}" alias="${nbm_alias}"/>-->
+            <!--END REMOVE -->
+            <updaterjar>
+                <pathfileset>
+                    <path refid="cluster.path.id"/>
+                    <filename name="modules/ext/updater.jar"/>
+                </pathfileset>
+            </updaterjar>
+            <executables refid="module.executable.files"/>
+        </makenbm>
+        <!--INCLUDE New Code Signing -->
+        <signjar alias="1" jar="${build.dir}/${nbm}"
+            keystore="${keystore}" storepass="${storepass}"
+            tsaurl="http://timestamp.globalsign.com/scripts/timestamp.dll" verbose="false"/>
+        <!--END INCLUDE -->
+    </target>
+</project>

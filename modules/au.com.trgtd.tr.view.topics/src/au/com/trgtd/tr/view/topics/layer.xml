@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE filesystem PUBLIC "-//NetBeans//DTD Filesystem 1.1//EN" "http://www.netbeans.org/dtds/filesystem-1_1.dtd">
+<filesystem>
+
+    <folder name="Actions">
+        <folder name="Setup">
+            <file name="au-com-trgtd-tr-view-topics-TopicsAction.instance"/>
+        </folder>
+        <folder name="View">
+            <file name="au-com-trgtd-tr-view-topics-TopicChangeAction.instance"/>
+        </folder>
+    </folder>
+
+    <folder name="Menu">
+        <folder name="Setup">
+            <file name="TopicsAction.shadow">
+                <attr name="position" intvalue="300"/>
+                <attr name="originalFile" stringvalue="Actions/Setup/au-com-trgtd-tr-view-topics-TopicsAction.instance"/>
+            </file>
+        </folder>
+        <folder name="Help">
+            <folder name="Shortcuts">
+                <attr name="position" intvalue="999"/>
+                <file name="TopicChangeAction.shadow">
+                    <attr name="originalFile" stringvalue="Actions/View/au-com-trgtd-tr-view-topics-TopicChangeAction.instance"/>
+                </file>
+            </folder>
+        </folder>
+    </folder>
+
+    <folder name="Services">
+        <folder name="JavaHelp">
+            <file name="topics-helpset.xml" url="topics-helpset.xml"/>
+        </folder>
+    </folder>
+
+    <folder name="Windows2">
+        <folder name="Modes">
+            <file name="Setup.wsmode" url="SetupWsmode.xml"/>
+            <folder name="Setup">
+            </folder>
+        </folder>
+    </folder>
+
+    <folder name="Toolbars">
+        <folder name="TR Setup">
+            <attr name="position" intvalue="999600"/>
+            <file name="TopicsAction.shadow">
+                <attr name="position" intvalue="530"/>
+                <attr name="originalFile" stringvalue="Actions/Setup/au-com-trgtd-tr-view-topics-TopicsAction.instance"/>
+            </file>
+        </folder>
+    </folder>
+
+    <folder name="Shortcuts">
+        <file name="D-S-T.shadow">
+            <attr name="originalFile" stringvalue="Actions/Setup/au-com-trgtd-tr-view-topics-TopicsAction.instance"/>
+        </file>
+        <file name="D-T.shadow">
+            <attr name="originalFile" stringvalue="Actions/View/au-com-trgtd-tr-view-topics-TopicChangeAction.instance"/>
+        </file>
+    </folder>
+
+</filesystem>

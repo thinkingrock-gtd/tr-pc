@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE filesystem PUBLIC "-//NetBeans//DTD Filesystem 1.1//EN" "http://www.netbeans.org/dtds/filesystem-1_1.dtd">
+<filesystem>
+    
+    <folder name="Actions">
+        <folder name="Export">
+            <file name="au-com-trgtd-tr-export-someday-ExportTextAction.instance"/>
+            <file name="au-com-trgtd-tr-export-someday-ExportXMLAction.instance"/>
+        </folder>
+    </folder>
+    <folder name="Menu">        
+        <folder name="File">                
+            <folder name="Export">        
+                <file name="au-com-trgtd-tr-export-someday-ExportTextAction.shadow">
+                    <attr name="originalFile" stringvalue="Actions/Export/au-com-trgtd-tr-export-someday-ExportTextAction.instance"/>
+                </file>                        
+                <file name="au-com-trgtd-tr-export-someday-ExportXMLAction.shadow">
+                    <attr name="originalFile" stringvalue="Actions/Export/au-com-trgtd-tr-export-someday-ExportXMLAction.instance"/>
+                </file>                        
+            </folder>                                                
+        </folder>    
+    </folder>        
+
+    <folder name="Services">
+        <folder name="JavaHelp">
+            <file name="helpset-export-someday.xml" url="helpset-export-someday.xml"/>
+        </folder>
+    </folder>
+</filesystem>

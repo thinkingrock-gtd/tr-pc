@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE filesystem PUBLIC "-//NetBeans//DTD Filesystem 1.1//EN" "http://www.netbeans.org/dtds/filesystem-1_1.dtd">
+<filesystem>
+    <folder name="Actions">
+        <folder name="Collect">
+            <file name="au-com-trgtd-tr-view-collect-CollectThoughtsAction.instance"/>
+            <file name="au-com-trgtd-tr-view-collect-AddThoughtsAction.instance"/>
+            <file name="au-com-trgtd-tr-view-collect-EditThoughtAction.instance"/>
+            <file name="au-com-trgtd-tr-view-collect-DeleteThoughtAction.instance"/>
+        </folder>
+    </folder>
+    <folder name="Menu">
+        <folder name="Collect">
+            <attr name="SystemFileSystem.localizingBundle" stringvalue="au.com.trgtd.tr.view.collect.Bundle" />
+            <file name="CollectThoughtsAction.shadow">
+                <attr name="position" intvalue="100"/>
+                <attr name="originalFile" stringvalue="Actions/Collect/au-com-trgtd-tr-view-collect-CollectThoughtsAction.instance"/>
+            </file>            
+            <file name="AddThoughtsAction.shadow">
+                <attr name="position" intvalue="200"/>                
+                <attr name="originalFile" stringvalue="Actions/Collect/au-com-trgtd-tr-view-collect-AddThoughtsAction.instance"/>
+            </file>
+            <file name="EditThoughtAction.shadow">
+                <attr name="position" intvalue="300"/>                
+                <attr name="originalFile" stringvalue="Actions/Collect/au-com-trgtd-tr-view-collect-EditThoughtAction.instance"/>
+            </file>
+            <file name="DeleteThoughtAction.shadow">
+                <attr name="position" intvalue="400"/>                
+                <attr name="originalFile" stringvalue="Actions/Collect/au-com-trgtd-tr-view-collect-DeleteThoughtAction.instance"/>
+            </file>
+        </folder>
+    </folder>
+    <folder name="Services">
+        <folder name="JavaHelp">
+            <file name="collect-helpset.xml" url="collect-helpset.xml"/>
+        </folder>
+    </folder>
+    <folder name="Windows2">
+        <folder name="Components">
+            <file name="CollectThoughtsTopComponent.settings" url="CollectThoughtsTopComponentSettings.xml"/>
+        </folder>
+        <folder name="Modes">                        
+            <file name="CollectThoughts.wsmode" url="CollectThoughtsWsmode.xml"/>
+            <folder name="CollectThoughts">
+                <file name="CollectThoughtsTopComponent.wstcref" url="CollectThoughtsTopComponentWstcref.xml"/>
+            </folder>
+        </folder>
+    </folder>            
+    <folder name="Toolbars">
+        <folder name="TR">
+            <attr name="position" intvalue="999100"/>            
+            <file name="CollectThoughtsAction.shadow">
+                <attr name="position" intvalue="210"/>                
+                <attr name="originalFile" stringvalue="Actions/Collect/au-com-trgtd-tr-view-collect-CollectThoughtsAction.instance"/>
+            </file>
+        </folder>                
+    </folder>
+    <folder name="Shortcuts">
+        <file name="F6.shadow">
+            <attr name="originalFile" stringvalue="Actions/Collect/au-com-trgtd-tr-view-collect-AddThoughtsAction.instance"/>
+        </file>
+        <file name="D-S-1.shadow">
+            <attr name="originalFile" stringvalue="Actions/Collect/au-com-trgtd-tr-view-collect-CollectThoughtsAction.instance"/>
+        </file>
+    </folder>            
+</filesystem>

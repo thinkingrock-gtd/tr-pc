@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE filesystem PUBLIC "-//NetBeans//DTD Filesystem 1.1//EN" "http://www.netbeans.org/dtds/filesystem-1_1.dtd">
+<filesystem>
+    
+    <folder name="Actions">
+        <folder name="Review">
+            <file name="au-com-trgtd-tr-view-reference-ReferencesAction.instance"/>
+        </folder>
+    </folder>
+    
+    <folder name="Menu">
+        <folder name="Review">
+            <file name="ReferenceAction.shadow">
+                <attr name="position" intvalue="840"/>                
+                <attr name="originalFile" stringvalue="Actions/Review/au-com-trgtd-tr-view-reference-ReferencesAction.instance"/>
+            </file>
+        </folder>
+    </folder>
+    
+    <folder name="Services">
+        <folder name="JavaHelp">
+            <file name="review-reference-helpset.xml" url="review-reference-helpset.xml"/>
+        </folder>
+    </folder>
+    
+    <folder name="Windows2">        
+        <folder name="Modes">                        
+            <file name="references.wsmode" url="ReferencesWsmode.xml"/>
+            <folder name="references"/>
+            <file name="reference.wsmode" url="ReferenceWsmode.xml"/>
+            <folder name="reference"/>
+        </folder>
+    </folder>                
+    
+    <folder name="Toolbars">
+        <folder name="TR">
+            <attr name="position" intvalue="999100"/>            
+            <file name="ReferencesAction.shadow">
+                <attr name="position" intvalue="340"/>
+                <attr name="originalFile" stringvalue="Actions/Review/au-com-trgtd-tr-view-reference-ReferencesAction.instance"/>
+            </file>
+        </folder>
+    </folder>
+    
+     <folder name="Shortcuts">
+        <file name="D-S-R.shadow">
+            <attr name="originalFile" stringvalue="Actions/Review/au-com-trgtd-tr-view-reference-ReferencesAction.instance"/>
+        </file>
+    </folder>        
+    
+</filesystem>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE filesystem PUBLIC "-//NetBeans//DTD Filesystem 1.1//EN" "http://www.netbeans.org/dtds/filesystem-1_1.dtd">
+<filesystem>
+    <folder name="Actions">
+        <folder name="Reports">
+            <file name="au-com-trgtd-tr-reports-pocketmod-ReportActionImpl1.instance"/>
+            <file name="au-com-trgtd-tr-reports-pocketmod-ReportActionImpl2.instance"/>
+        </folder>
+    </folder>
+    <folder name="Menu">
+        <folder name="Reports">
+            <attr name="position" intvalue="790"/>
+            <file name="au-com-trgtd-tr-report-project-500.instance">
+                <attr name="instanceClass" stringvalue="javax.swing.JSeparator"/>
+                <attr name="position" intvalue="500"/>                                
+            </file>                                    
+            <file name="au-com-trgtd-tr-reports-pocketmod-ReportActionImpl1.shadow">
+                <attr name="originalFile" stringvalue="Actions/Reports/au-com-trgtd-tr-reports-pocketmod-ReportActionImpl1.instance"/>
+                <attr name="position" intvalue="510"/>                                
+            </file>
+            <file name="au-com-trgtd-tr-reports-pocketmod-ReportActionImpl2.shadow">
+                <attr name="originalFile" stringvalue="Actions/Reports/au-com-trgtd-tr-reports-pocketmod-ReportActionImpl2.instance"/>
+                <attr name="position" intvalue="511"/>                                
+            </file>
+        </folder>
+    </folder>
+</filesystem>

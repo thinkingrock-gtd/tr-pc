@@ -1,0 +1,299 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE filesystem PUBLIC "-//NetBeans//DTD Filesystem 1.2//EN" "http://www.netbeans.org/dtds/filesystem-1_2.dtd">
+<filesystem>
+    <attr name="Menu\View\org-netbeans-core-actions-LogAction.instance\name" stringvalue="Log File"/>
+
+    <!-- 1. Overview -->
+    <attr intvalue="1" name="Services\JavaHelp\overview-helpset.xml\position"/>
+
+    <!-- 2. Setup -->
+    <attr intvalue="20" name="Services\JavaHelp\contexts-helpset.xml\position"/>
+    <attr intvalue="21" name="Services\JavaHelp\criteria-helpset.xml\position"/>
+    <attr intvalue="22" name="Services\JavaHelp\topics-helpset.xml\position"/>
+
+    <!-- 3. Collect -->
+    <attr intvalue="31" name="Services\JavaHelp\collect-helpset.xml\position"/>
+
+    <!-- 4. Process -->
+    <attr intvalue="41" name="Services\JavaHelp\process-helpset.xml\position"/>
+
+    <!-- 5. Review -->
+    <attr intvalue="50" name="Services\JavaHelp\helpset-review-actions.xml\position"/>
+    <attr intvalue="51" name="Services\JavaHelp\helpset-review-projects.xml\position"/>
+    <attr intvalue="52" name="Services\JavaHelp\sequencing-helpset.xml\position"/>
+    <attr intvalue="53" name="Services\JavaHelp\review-future-helpset.xml\position"/>
+    <attr intvalue="54" name="Services\JavaHelp\review-reference-helpset.xml\position"/>
+
+    <!-- 6. Import -->
+    <attr intvalue="60" name="Services\JavaHelp\helpset-import.xml\position"/>
+    <attr intvalue="61" name="Services\JavaHelp\helpset-import-thoughts.xml\position"/>
+    <attr intvalue="62" name="Services\JavaHelp\helpset-import-project-templates.xml\position"/>
+    <attr intvalue="63" name="Services\JavaHelp\helpset-import-email.xml\position"/>
+
+    <!-- 7. Export -->
+    <attr intvalue="70" name="Services\JavaHelp\helpset-export.xml\position"/>
+    <attr intvalue="71" name="Services\JavaHelp\helpset-export-actions.xml\position"/>
+    <attr intvalue="72" name="Services\JavaHelp\helpset-export-someday.xml\position"/>
+    <attr intvalue="73" name="Services\JavaHelp\helpset-export-references.xml\position"/>
+
+    <!-- 8. Reports -->
+    <attr intvalue="80" name="Services\JavaHelp\helpset-reports.xml\position"/>
+    <attr intvalue="81" name="Services\JavaHelp\report-actionsbycontext-helpset.xml\position"/>
+    <attr intvalue="82" name="Services\JavaHelp\report-actionsbydate-helpset.xml\position"/>
+    <attr intvalue="83" name="Services\JavaHelp\report-nextactions-helpset.xml\position"/>
+    <attr intvalue="84" name="Services\JavaHelp\report-pocketmod-helpset.xml\position"/>
+    <attr intvalue="85" name="Services\JavaHelp\report-projectdetails-helpset.xml\position"/>
+    <attr intvalue="86" name="Services\JavaHelp\report-projectoutline-helpset.xml\position"/>
+
+    <!-- 9. Preferences/Options -->
+    <attr intvalue="91" name="Services\JavaHelp\helpset-prefs.xml\position"/>
+    <attr intvalue="92" name="Services\JavaHelp\helpset-actions-screens-prefs.xml\position"/>
+
+    <!--    Miscellaneous -->
+    <attr intvalue="94" name="Services\JavaHelp\helpset-appl-prefs.xml\position"/>
+    <attr intvalue="95" name="Services\JavaHelp\helpset-action-prefs.xml\position"/>
+    <attr intvalue="96" name="Services\JavaHelp\helpset-calendar-prefs.xml\position"/>
+    <attr intvalue="97" name="Services\JavaHelp\helpset-data-prefs.xml\position"/>
+    <attr intvalue="98" name="Services\JavaHelp\helpset-date-prefs.xml\position"/>
+    <attr intvalue="99" name="Services\JavaHelp\helpset-import-email-prefs.xml\position"/>
+    <attr intvalue="100" name="Services\JavaHelp\helpset-extract-prefs.xml\position"/>
+    <attr intvalue="101" name="Services\JavaHelp\helpset-extract-clean.xml\position"/>
+    <attr intvalue="102" name="Services\JavaHelp\helpset-member.xml\position"/>
+    <attr intvalue="103" name="Services\JavaHelp\helpset-ui-prefs.xml\position"/>
+    <attr intvalue="104" name="Services\JavaHelp\helpset-language-prefs.xml\position"/>
+    <attr intvalue="105" name="Services\JavaHelp\helpset-import-thoughts-prefs.xml\position"/>
+    <attr intvalue="106" name="Services\JavaHelp\helpset-project-prefs.xml\position"/>
+    <attr intvalue="107" name="Services\JavaHelp\helpset-recurrence-prefs.xml\position"/>
+    <attr intvalue="108" name="Services\JavaHelp\helpset-review-actions-prefs.xml\position"/>
+
+    <!-- 10. Archiving -->
+    <attr intvalue="110" name="Services\JavaHelp\helpset-archive.xml\position"/>
+
+    <!-- 11. Background Tasks -->
+    <attr intvalue="121" name="Services\JavaHelp\helpset-task-activation.xml\position"/>
+    <attr intvalue="122" name="Services\JavaHelp\helpset-task-recurrence.xml\position"/>
+
+    <!-- 12. Shortcuts -->
+    <attr intvalue="131" name="Services\JavaHelp\helpset-shortcuts.xml\position"/>
+
+    <!-- 13. Find -->
+    <attr intvalue="141" name="Services\JavaHelp\helpset-find.xml\position"/>
+
+
+    <folder name="Actions">
+        <folder name="Edit">
+            <file name="org-openide-actions-GotoAction.instance_hidden"/>
+            <file name="org-openide-actions-ReplaceAction.instance_hidden"/>
+        </folder>
+        <folder name="File">
+            <file name="tr-view-PrintAction.instance_hidden"/>
+        </folder>
+        <file name="Other_hidden"/>
+        <folder name="System">
+            <file name="org-netbeans-core-actions-JumpNextAction.instance_hidden"/>
+            <file name="org-netbeans-core-actions-JumpPrevAction.instance_hidden"/>
+            <file name="org-netbeans-modules-favorites-templates-TemplatesAction.instance_hidden"/>
+            <file name="org-netbeans-progress-module-CancelAction.instance_hidden"/>
+            <file name="org-openide-actions-EditAction.instance_hidden"/>
+            <file name="org-openide-actions-FileSystemRefreshAction.instance_hidden"/>
+            <file name="org-openide-actions-InstantiateAction.instance_hidden"/>
+            <file name="org-openide-actions-PageSetupAction.instance_hidden"/>
+            <file name="org-openide-actions-PopupAction.instance_hidden"/>
+            <file name="org-openide-actions-PrintAction.instance_hidden"/>
+            <file name="org-openide-actions-ReorderAction.instance_hidden"/>
+        </folder>
+        <!--file name="Window_hidden"/-->
+    </folder>
+    <folder name="Keymaps">
+        <file name="Eclipse_hidden"/>
+        <file name="Emacs_hidden"/>
+        <file name="Idea_hidden"/>
+        <file name="NetBeans55_hidden"/>
+        <file name="NetBeans_hidden"/>
+        <folder name="ThinkingRock"/>
+    </folder>
+    <folder name="Menu">
+        <folder name="File">
+            <attr name="position" intvalue="100"/>
+            <folder name="Import">
+                <attr name="displayName" bundlevalue="au.com.trgtd.tr.appl.Bundle#Menu/File/Import"/>
+                <attr name="position" intvalue="500"/>
+            </folder>
+            <file name="org-netbeans-modules-editor-ExportHtmlAction.shadow_hidden"/>
+            <file name="org-netbeans-modules-kenai-ui-OpenKenaiProjectAction.shadow_hidden"/>
+            <file name="org-netbeans-modules-openfile-OpenFileAction.shadow_hidden"/>
+            <file name="org-netbeans-modules-openfile-RecentFileAction.shadow_hidden"/>
+            <file name="org-netbeans-modules-print-action-PageSetupAction.shadow_hidden"/>
+            <file name="org-netbeans-modules-print-action-PrintAction.shadow_hidden"/>
+            <file name="org-netbeans-modules-project-ui-CloseProject.shadow_hidden"/>
+            <file name="org-netbeans-modules-project-ui-CustomizeProject.shadow_hidden"/>
+            <file name="org-netbeans-modules-project-ui-NewFile.shadow_hidden"/>
+            <file name="org-netbeans-modules-project-ui-NewProject.shadow_hidden"/>
+            <file name="org-netbeans-modules-project-ui-OpenProject.shadow_hidden"/>
+            <file name="org-netbeans-modules-project-ui-RecentProjects.shadow_hidden"/>
+            <file name="org-netbeans-modules-project-ui-groups-GroupsMenu.shadow_hidden"/>
+            <file name="org-openide-actions-SaveAction.shadow_hidden"/>
+            <file name="org-openide-actions-SaveAllAction.shadow_hidden"/>
+            <file name="separator-after-import.instance">
+                <attr name="instanceClass" stringvalue="javax.swing.JSeparator"/>
+                <attr name="position" intvalue="599"/>
+            </file>
+            <folder name="Export">
+                <attr name="displayName" bundlevalue="au.com.trgtd.tr.appl.Bundle#Menu/File/Export"/>
+                <attr name="position" intvalue="600"/>
+            </folder>
+            <file name="separator-after-export.instance">
+                <attr name="instanceClass" stringvalue="javax.swing.JSeparator"/>
+                <attr name="position" intvalue="699"/>
+            </file>
+            <folder name="Reports">
+                <attr name="displayName" bundlevalue="au.com.trgtd.tr.appl.Bundle#Menu/File/Reports"/>
+                <attr name="position" intvalue="700"/>
+            </folder>
+            <file name="separator-after-reports.instance">
+                <attr name="instanceClass" stringvalue="javax.swing.JSeparator"/>
+                <attr name="position" intvalue="799"/>
+            </file>
+            <file name="org-openide-actions-SaveAction.instance_hidden"/>
+            <file name="org-openide-actions-SaveAsAction.instance_hidden"/>
+            <file name="org-openide-actions-SaveAsAction.shadow_hidden"/>
+            <file name="org-openide-actions-SaveAllAction.instance_hidden"/>
+            <file name="org-openide-actions-PageSetupAction.instance_hidden"/>
+            <file name="org-openide-actions-PrintAction.instance_hidden"/>
+        </folder>
+        <folder name="Edit">
+            <attr name="position" intvalue="200"/>
+            <file name="WhereUsedAction.shadow_hidden"/>
+            <file name="org-netbeans-modules-editor-MainMenuAction$FindNextAction.instance_hidden"/>
+            <file name="org-netbeans-modules-editor-MainMenuAction$FindPreviousAction.instance_hidden"/>
+            <file name="org-netbeans-modules-editor-MainMenuAction$FindSelectionAction.instance_hidden"/>
+            <file name="org-netbeans-modules-editor-MainMenuAction$PasteFormattedAction.instance_hidden"/>
+            <file name="org-netbeans-modules-editor-MainMenuAction$SelectAllAction.instance_hidden"/>
+            <file name="org-netbeans-modules-editor-MainMenuAction$SelectIdentifierAction.instance_hidden"/>
+            <file name="org-netbeans-modules-editor-MainMenuAction$StartMacroRecordingAction.instance_hidden"/>
+            <file name="org-netbeans-modules-editor-MainMenuAction$StopMacroRecordingAction.instance_hidden"/>
+            <file name="org-netbeans-modules-search-FindInFilesAction.shadow_hidden"/>
+            <file name="org-netbeans-modules-search-ReplaceInFilesAction.shadow_hidden"/>
+            <file name="org-openide-actions-FindAction.shadow_hidden"/>
+            <file name="org-openide-actions-RedoAction.shadow_hidden"/>
+            <file name="org-openide-actions-ReplaceAction.instance_hidden"/>
+            <file name="org-netbeans-core-actions-JumpNextAction.shadow_hidden"/>
+            <file name="org-netbeans-core-actions-JumpPrevAction.shadow_hidden"/>
+            <file name="Separator3.instance_hidden"/>
+            <file name="org-openide-actions-ReplaceAction.shadow_hidden"/>
+            <file name="org-openide-actions-UndoAction.shadow_hidden"/>
+        </folder>
+        <folder name="View">
+            <attr name="position" intvalue="300"/>
+            <!--
+            <file name="org-netbeans-core-actions-HTMLViewAction.instance_hidden"/>
+            <file name="org-netbeans-core-windows-actions-ToolbarsListAction.instance_hidden"/>
+            -->
+        </folder>
+        <file name="GoTo_hidden"/>
+        <folder name="Setup">
+            <attr name="position" intvalue="400"/>
+        </folder>
+        <folder name="Collect">
+            <attr name="position" intvalue="500"/>
+        </folder>
+        <folder name="Process">
+            <attr name="position" intvalue="600"/>
+        </folder>
+        <folder name="Review">
+            <attr name="position" intvalue="700"/>
+        </folder>
+        <folder name="Reports">
+            <attr name="displayName" bundlevalue="au.com.trgtd.tr.appl.Bundle#Menu/Reports"/>
+            <attr name="position" intvalue="800"/>
+        </folder>
+        <folder name="Window_hidden"/>
+        <folder name="Tools">
+            <attr name="position" intvalue="900"/>
+            <file name="org-netbeans-modules-favorites-templates-TemplatesAction.instance_hidden"/>
+        </folder>
+        <folder name="Help">
+            <attr name="position" intvalue="1000"/>
+        </folder>
+        <file name="org-netbeans-modules-quicksearch-QuickSearchAction.shadow_hidden"/>
+    </folder>
+
+    <folder name="OptionsDialog">
+        <folder name="Advanced">
+            <file name="JavaScript.instance_hidden"/>
+            <file name="Spellchecker.instance_hidden"/>
+            <file name="Versioning.instance_hidden"/>
+            <file name="au-com-trgtd-tr-appl-prefs-ApplicationAdvancedOption.instance"/>
+            <file name="Appearance.instance_hidden"/>
+            <file name="Files.instance_hidden"/>
+            <file name="IssueTracking.instance_hidden"/>
+            <file name="Diff.instance_hidden"/>
+            <file name="TermAdvancedOption.instance_hidden"/>
+            <file name="ToDo.instance_hidden"/>
+            <file name="org-netbeans-core-ui-options-filetypes-FileAssociationsAdvancedOption.instance_hidden"/>
+            <file name="org-netbeans-core-ui-options-filetypes-FileAssociationsOptionsPanelController.instance_hidden"/>
+            <file name="org-netbeans-core-windows-options-WinSysAdvancedOption.instance_hidden"/>
+            <file name="org-netbeans-core-windows-options-WinSysOptionsPanelController.instance_hidden"/>
+            <file name="org-netbeans-modules-bugtracking-util-BugtrackingOptions.instance_hidden"/>
+            <file name="org-netbeans-modules-javascript-editing-options-JsOptionsController.instance_hidden"/>
+            <file name="org-netbeans-modules-spellchecker-options-SpellcheckerOptionsPanelController.instance_hidden"/>
+            <file name="org-netbeans-modules-versioning-util-VcsAdvancedOptions.instance_hidden"/>
+        </folder>
+    </folder>
+
+    <file name="QuickSearch_hidden"/>
+    <folder name="Shortcuts">
+        <file name="A-F2.shadow_hidden"/>
+        <file name="AC-F2.shadow_hidden"/>
+        <file name="AS-F2.shadow_hidden"/>
+        <file name="AS-Y.shadow_hidden"/>
+        <file name="C-D.shadow_hidden"/>
+        <file name="C-F2.shadow_hidden"/>
+        <file name="CS-F2.shadow_hidden"/>
+        <file name="CS-R.shadow_hidden"/>
+        <file name="D-4.shadow_hidden"/>
+        <file name="D-F12.shadow_hidden"/>
+        <file name="D-F9.shadow_hidden"/>
+        <file name="D-I.shadow_hidden"/>
+        <file name="DS-DELETE.shadow_hidden"/>
+        <file name="DS-J.shadow_hidden"/>
+        <file name="DS-U.shadow_hidden"/>
+        <file name="O-F12.shadow_hidden"/>
+        <file name="OS-ENTER.shadow_hidden"/>
+        <file name="S-F1.shadow_hidden"/>
+        <file name="S-F2.shadow_hidden"/>
+        <file name="S-F9.shadow_hidden"/>
+        <file name="SD-F12.shadow_hidden"/>
+        <file name="SO-4.shadow_hidden"/>
+        <file name="SO-9.shadow_hidden"/>
+        <file name="SO-F12.shadow_hidden"/>
+        <file name="SO-T.shadow_hidden"/>
+    </folder>
+
+    <folder name="Toolbars">
+        <file name="QuickSearch_hidden"/> 
+<!--    <file name="Standard.xml" url="standard-tr.xml"/>-->
+    </folder>
+
+    <folder name="Services">
+        <folder name="AutoupdateType">
+            <file name="au_com_trgtd_tr_appl_update_center.instance">
+                <attr name="displayName" bundlevalue="au.com.trgtd.tr.appl.Bundle#Services/AutoupdateType/au_com_trgtd_tr_appl_update_center.instance"/>
+                <attr name="enabled" boolvalue="true"/>
+                <attr name="instanceCreate" methodvalue="org.netbeans.modules.autoupdate.updateprovider.AutoupdateCatalogFactory.createUpdateProvider"/>
+                <attr name="instanceOf" stringvalue="org.netbeans.spi.autoupdate.UpdateProvider"/>
+                <attr name="url" bundlevalue="au.com.trgtd.tr.appl.Bundle#au_com_trgtd_tr_appl_update_center"/>
+            </file>
+        </folder>
+        
+        <folder name="JavaHelp">
+            <file name="helpset-appl-prefs.xml" url="helpset-appl-prefs.xml"/>
+        </folder>
+        <file name="org-openide-text-PrintSettings.settings_hidden"/>
+    </folder>
+    
+    <folder name="UI">
+        <file name="Services_hidden"/>
+    </folder>
+
+</filesystem>

@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE filesystem PUBLIC "-//NetBeans//DTD Filesystem 1.1//EN" "http://www.netbeans.org/dtds/filesystem-1_1.dtd">
+<filesystem>        
+    <folder name="Actions">
+        <folder name="File">
+            <file name="au-com-trgtd-tr-view-PrintAction.instance"/>
+        </folder>
+        <folder name="Edit">
+            <!--
+            <file name="org-openide-actions-CopyAction.instance"/>
+            <file name="org-openide-actions-CutAction.instance"/>
+            <file name="org-openide-actions-PasteAction.instance"/>
+            <file name="org-openide-actions-DeleteAction.instance"/>
+            -->
+            <file name="au-com-trgtd-tr-view-AddAction.instance"/>
+            <file name="au-com-trgtd-tr-view-EditAction.instance"/>
+            <file name="au-com-trgtd-tr-view-ExpandAction.instance"/>
+            <file name="au-com-trgtd-tr-view-CollapseAction.instance"/>
+            <file name="au-com-trgtd-tr-view-ToggleHideDoneAction.instance"/>
+        </folder>
+        <folder name="View">
+            <file name="au-com-trgtd-tr-view-ReprocessAction.instance"/>
+        </folder>
+        <folder name="Help">
+            <file name="au-com-trgtd-tr-view-HomePageAction.instance"/>
+        </folder>
+        <folder name="Actions">
+            <file name="au-com-trgtd-tr-view-CriteriaChangeAction.instance"/>
+            <file name="au-com-trgtd-tr-view-ProjectChangeAction.instance"/>
+            <file name="au-com-trgtd-tr-view-ChangeStatusAction.instance"/>
+        </folder>
+    </folder>
+
+    <folder name="Menu">
+        <folder name="Help">
+            <file name="HomePage.shadow">
+                <attr name="originalFile" stringvalue="Actions/Help/au-com-trgtd-tr-view-HomePageAction.instance"/>
+                <attr name="position" intvalue="130"/>
+            </file>
+            <folder name="Shortcuts">
+                <attr name="position" intvalue="999"/>
+
+                <file name="ExpandAction.shadow">
+                    <attr name="originalFile" stringvalue="Actions/Edit/au-com-trgtd-tr-view-ExpandAction.instance"/>
+                </file>
+                <file name="CollapseAction.shadow">
+                    <attr name="originalFile" stringvalue="Actions/Edit/au-com-trgtd-tr-view-CollapseAction.instance"/>
+                </file>
+                <file name="ToggleHideDoneAction.shadow">
+                    <attr name="originalFile" stringvalue="Actions/Edit/au-com-trgtd-tr-view-ToggleHideDoneAction.instance"/>
+                </file>
+                <file name="MoveUpAction.shadow">
+                    <attr name="originalFile" stringvalue="Actions/System/org-openide-actions-MoveUpAction.instance"/>
+                </file>
+                <file name="MoveDownAction.shadow">
+                    <attr name="originalFile" stringvalue="Actions/System/org-openide-actions-MoveDownAction.instance"/>
+                </file>
+                <file name="ReprocessAction.shadow">
+                    <attr name="originalFile" stringvalue="Actions/View/au-com-trgtd-tr-view-ReprocessAction.instance"/>
+                </file>
+            </folder>
+        </folder>
+    </folder>
+
+    <folder name="Shortcuts">
+        <file name="D-C.shadow">
+            <attr name="originalFile" stringvalue="Actions/Edit/org-openide-actions-CopyAction.instance"/>
+        </file>
+        <file name="D-X.shadow">
+            <attr name="originalFile" stringvalue="Actions/Edit/org-openide-actions-CutAction.instance"/>
+        </file>
+        <file name="D-V.shadow">
+            <attr name="originalFile" stringvalue="Actions/Edit/org-openide-actions-PasteAction.instance"/>
+        </file>
+        <file name="DELETE.shadow">
+            <attr name="originalFile" stringvalue="Actions/Edit/org-openide-actions-DeleteAction.instance"/>
+        </file>
+        <file name="D-P.shadow">
+            <attr name="originalFile" stringvalue="Actions/File/au-com-trgtd-tr-view-PrintAction.instance"/>
+        </file>
+        <file name="D-N.shadow">
+            <attr name="originalFile" stringvalue="Actions/Edit/au-com-trgtd-tr-view-AddAction.instance"/>
+        </file>
+        <file name="D-E.shadow">
+            <attr name="originalFile" stringvalue="Actions/Edit/au-com-trgtd-tr-view-ExpandAction.instance"/>
+        </file>
+        <file name="D-S-E.shadow">
+            <attr name="originalFile" stringvalue="Actions/Edit/au-com-trgtd-tr-view-CollapseAction.instance"/>
+        </file>
+        <file name="CS-W.shadow">
+            <attr name="originalFile" stringvalue="Actions/View/au-com-trgtd-tr-view-ReprocessAction.instance"/>
+        </file>
+        <file name="D-D.shadow">
+            <attr name="originalFile" stringvalue="Actions/Edit/au-com-trgtd-tr-view-ToggleHideDoneAction.instance"/>
+        </file>
+    </folder>
+</filesystem>

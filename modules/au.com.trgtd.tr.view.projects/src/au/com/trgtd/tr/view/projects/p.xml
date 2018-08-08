@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<trproject version="1.0">
+    <project>
+        <id>6031</id>
+        <created>1181351252938</created>
+        <thought>Screenshots website</thought>
+        <parent-id>1</parent-id>
+        <topic>Thinking Rock</topic>
+        <descr>Update website</descr>
+        <purpose></purpose>
+        <success></success>
+        <brainstorming></brainstorming>
+        <organising></organising>
+        <notes></notes>
+        <done>false</done>
+        <sequence>true</sequence>
+        <seq-projects>true</seq-projects>
+        <seq-scheduled>false</seq-scheduled>
+        <seq-delegated>false</seq-delegated>
+        <child type='action'>
+            <id>6030</id>
+            <created>1181351232645</created>
+            <thought>Screenshots website</thought>
+            <parent-id>6031</parent-id>
+            <descr>Screenshots website</descr>
+            <success></success>
+            <topic>Thinking Rock</topic>
+            <context>None</context>
+            <notes>Done on SourceForge</notes>
+            <done>true</done>
+            <done-date>1182904923620</done-date>
+            <state type='DELEGATED'>
+                <delegate>Jeremy</delegate>
+            </state>
+        </child>
+        <child type='action'>
+            <id>6032</id>
+            <created>1181351252941</created>
+            <thought>Demos website</thought>
+            <parent-id>6031</parent-id>
+            <descr>Demos website</descr>
+            <success></success>
+            <topic>Thinking Rock</topic>
+            <context>None</context>
+            <notes></notes>
+            <priority>Must</priority>
+            <done>false</done>
+            <state type='INACTIVE'></state>
+        </child>
+        <child type='action'>
+            <id>6033</id>
+            <created>1181351258222</created>
+            <thought>New on-line manual</thought>
+            <parent-id>6031</parent-id>
+            <descr>On-line manual for 2.0</descr>
+            <success></success>
+            <topic>Thinking Rock</topic>
+            <context>None</context>
+            <notes></notes>
+            <priority>Could</priority>
+            <done>true</done>
+            <done-date>1206334800000</done-date>
+            <state type='DOASAP'></state>
+        </child>
+        <child type='action'>
+            <id>6034</id>
+            <created>1181351261318</created>
+            <thought>Move issue 2.0 to 2.1</thought>
+            <parent-id>6031</parent-id>
+            <descr>Move issue 2.0 to 2.1</descr>
+            <success></success>
+            <topic>Thinking Rock</topic>
+            <context>None</context>
+            <notes></notes>
+            <done>true</done>
+            <done-date>1181351267041</done-date>
+            <state type='DOASAP'></state>
+        </child>
+        <child type='action'>
+            <id>28149</id>
+            <created>1226367522084</created>
+            <thought>FAQ about the search filter</thought>
+            <parent-id>6031</parent-id>
+            <descr>FAQ about the search filter</descr>
+            <success></success>
+            <topic>None</topic>
+            <context>None</context>
+            <notes></notes>
+            <done>false</done>
+            <state type='SCHEDULED'>
+                <date>1254706200000</date>
+                <duration-hrs>0</duration-hrs>
+                <duration-mins>45</duration-mins>
+                <recurrence>
+                    <id>29375</id>
+                    <descr>FAQ about the search filter</descr>
+                    <topic>None</topic>
+                    <context>None</context>
+                    <schedule-hrs>12</schedule-hrs>
+                    <schedule-mins>30</schedule-mins>
+                    <duration-hrs>0</duration-hrs>
+                    <duration-mins>45</duration-mins>
+                    <basis-id>1</basis-id>
+                    <start-date>1254661200000</start-date>
+                    <frequency>1</frequency>
+                    <advance-nbr>1</advance-nbr>
+                    <end-nbr>null</end-nbr>
+                    <gen-nbr>0</gen-nbr>
+                    <gen-to-date>1257125400000</gen-to-date>
+                    <success></success>
+                    <notes></notes>
+                    <period type='4'>
+                        <option>OnThe</option>
+                        <days>
+5
+                        </days>
+                        <on-the-nth>First</on-the-nth>
+                        <on-the-day>Monday</on-the-day>
+                    </period>
+                </recurrence>
+            </state>
+        </child>
+        <child type='action'>
+            <id>28150</id>
+            <created>1226367559912</created>
+            <thought>FAQ about release notes</thought>
+            <parent-id>6031</parent-id>
+            <descr>FAQ about release notes</descr>
+            <success></success>
+            <topic>None</topic>
+            <context>None</context>
+            <notes></notes>
+            <done>false</done>
+            <state type='DOASAP'></state>
+        </child>
+        <child type='project'>
+            <id>7336</id>
+            <created>1185500199488</created>
+            <thought>Goals settings</thought>
+            <parent-id>6031</parent-id>
+            <topic>Personal</topic>
+            <descr>Goals settings</descr>
+            <purpose></purpose>
+            <success></success>
+            <brainstorming>The ones I will like to think about:
+- loose weight, without it dominating my life;
+- become unconditionally constructive in everything I say;
+- design a lifestyle that makes me incredibly happy;
+- improve my communication skills so people respond in kind;
+- eliminate or reduce stress in my life so I don&apos;t burn myself and others out;
+- feel better about myself and my family;
+- reduce the amount of conflict in my life so I can relax more.
+            </brainstorming>
+            <organising></organising>
+            <notes></notes>
+            <done>true</done>
+            <done-date>1256206786656</done-date>
+            <sequence>true</sequence>
+            <seq-projects>true</seq-projects>
+            <seq-scheduled>false</seq-scheduled>
+            <seq-delegated>false</seq-delegated>
+            <child type='action'>
+                <id>7335</id>
+                <created>1185499870772</created>
+                <thought>Goals settings</thought>
+                <parent-id>7336</parent-id>
+                <descr>Goals settings</descr>
+                <success></success>
+                <topic>Personal</topic>
+                <context>None</context>
+                <notes>Wed 30 Jan 2008</notes>
+                <done>true</done>
+                <done-date>1206334800000</done-date>
+                <state type='INACTIVE'></state>
+            </child>
+        </child>
+        <child type='action'>
+            <id>29376</id>
+            <created>1256206868531</created>
+            <parent-id>6031</parent-id>
+            <descr>FAQ about the search filter</descr>
+            <success></success>
+            <topic>None</topic>
+            <context>None</context>
+            <notes></notes>
+            <done>false</done>
+            <state type='SCHEDULED'>
+                <date>1257125400000</date>
+                <duration-hrs>0</duration-hrs>
+                <duration-mins>45</duration-mins>
+                <recurrence>
+                    <id>29375</id>
+                    <descr>FAQ about the search filter</descr>
+                    <topic>None</topic>
+                    <context>None</context>
+                    <schedule-hrs>12</schedule-hrs>
+                    <schedule-mins>30</schedule-mins>
+                    <duration-hrs>0</duration-hrs>
+                    <duration-mins>45</duration-mins>
+                    <basis-id>1</basis-id>
+                    <start-date>1254661200000</start-date>
+                    <frequency>1</frequency>
+                    <advance-nbr>1</advance-nbr>
+                    <end-nbr>null</end-nbr>
+                    <gen-nbr>0</gen-nbr>
+                    <gen-to-date>1257125400000</gen-to-date>
+                    <success></success>
+                    <notes></notes>
+                    <period type='4'>
+                        <option>OnThe</option>
+                        <days>
+5
+                        </days>
+                        <on-the-nth>First</on-the-nth>
+                        <on-the-day>Monday</on-the-day>
+                    </period>
+                </recurrence>
+            </state>
+        </child>
+    </project>
+</trproject>

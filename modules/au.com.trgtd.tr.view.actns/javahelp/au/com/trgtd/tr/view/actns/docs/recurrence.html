@@ -1,0 +1,68 @@
+<html>
+    <head>
+        <title>Recurrence Functionality</title>
+        <link rel="stylesheet" href="nbdocs:/tr/model/docs/ide.css" type="text/css">
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+    <body>
+        <h2>Recurrence</h2>
+        <p>This functionality is available for scheduled actions to automatically repeat an action periodically. 
+        </p>
+        <h3>Recurence generation</h3>
+        <p>
+            There are two types of recurrency: regular and subsequent.
+        </p>
+        <p>
+            <i>Regular</i><br> 
+            When the recurrence information is entered, a number of actions are created using the frequency pattern and the start date.  
+            If the start date is in the past, actions are created to catch up to today, then actions in the future are generated to reach
+            the specified number of periods in advance (i.e. from today). The start date defaults to the scheduled date of the action. It 
+            can be modified to a future date.<br>
+            A background <a href="nbdocs://au.com.trgtd.tr.task.recurrence/au/com/trgtd/tr/task/recurrence/docs/tasks-recurrence.html">recurrence task</a>
+            runs periodically to check if new actions should be created. 
+        </p>
+        <p> 
+            <i>Subsequent</i><br>
+            The next action is only created when the current action is set to done. The frequency pattern is 
+            used to calculate the new date from the <b>done date</b>.
+        </p>
+        <h3>Frequency pattern fields definition</h3> 
+        <ul>
+            <li>the frequency pattern: daily, weekdays, weekly, monthly or yearly and how many periods;</li>
+            <li>for regular recurrency: for how many periods in the future should actions be created. A default value per 
+            frequency (daily, weekdays, weekly, monthly or yearly) is set but can be changed under Preferences/Miscellaneous/Recurrence;</li>
+            <li>ending options: never, after a number of periods, end date.</li> 
+        </ul>
+        <h3>Note on the Start Date</h3>
+        <p>
+            The start date cannot be prior to the scheduled date of the action selected. If you need an earlier start date, you need to 
+            update the scheduled date of the action prior to modify the recurrency.
+        </p>
+        <h3>Update Recurrency</h3>
+        <ul>
+            <li>if you update one of the action in the action panel, the other actions in the series will not be affected;</li>
+            <li>if you want to modify the recurrency actions details, press the Modify recurrency button, Change Action choice. The 
+            actions in the series after the specified date will be modified;</li>
+            <li>if you want to modify the recurrency pattern details, press the Modify recurrency button, Change Recurrence choice.
+                The actions in the series after the specified date will be deleted and new actions following the updated pattern will 
+            be created;</li>
+            <li>if you want to change the project in which the actions are generated, press the Modify recurrency button, Change Project choice.
+                The actions prior to the selected date will not be linked to the recurrency anymore. The actions on and after the selected date will
+            be moved to the new project. Any action created afterwards will be in the new project.</li>
+        </ul>
+        <h3>Change Recurrence type</h3>
+        <ul>
+            <li>if you change from regular to subsequent, the actions prior to the selected date will not be linked to the recurrency anymore.
+            The actions after the selected date will be deleted. The subsequent recurrency will be applied to the selected action;</li>
+            <li>if you change from subsequent to regular, the application behaves as when you create a regular recurrency starting from the 
+            specified date.</li>
+        </ul>
+        <h3>Stop Recurrency</h3>
+        <ul>
+            <li>to stop actions to be generated for a recurrency, press the Modify recurrency button, Change Recurrence choice and 
+            either enter a maximum number of period (if you know it) or an end date;<\li>
+            <li>to remove all recurrency information on the actions, press the Modify recurrency button, Remove Recurrence choice. This 
+            stops the generation of new actions but does not delete the already created actions. This has to be done manually.</li>
+        </ul>
+    </body>
+</html>

@@ -1,0 +1,7 @@
+Manifest-Version: 1.0
+OpenIDE-Module: au.com.trgtd.tr.view.actn
+OpenIDE-Module-Layer: au/com/trgtd/tr/view/actn/layer.xml
+OpenIDE-Module-Localizing-Bundle: au/com/trgtd/tr/view/actn/Bundle.properties
+OpenIDE-Module-Requires: org.netbeans.api.javahelp.Help
+OpenIDE-Module-Specification-Version: 3.6.1
+

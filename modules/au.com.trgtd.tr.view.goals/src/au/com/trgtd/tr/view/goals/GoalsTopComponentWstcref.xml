@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<tc-ref version="2.1" >
+    <module name="au.com.trgtd.tr.view.goals" spec="1.0"/>
+    <tc-id id="GoalsTopComponent"/>
+    <state opened="false"/>
+</tc-ref>

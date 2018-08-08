@@ -1,0 +1,450 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Weekly" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="30" rightMargin="30" topMargin="20" bottomMargin="20" whenResourceMissingType="Empty">
+	<property name="ireport.scriptlethandling" value="0"/>
+	<property name="ireport.encoding" value="UTF-8"/>
+	<import value="net.sf.jasperreports.engine.*"/>
+	<import value="java.util.*"/>
+	<import value="net.sf.jasperreports.engine.data.*"/>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["/Users/jmoore/Development/tr3/tr-reg/tr3/au.com.trgtd.tr.reports.weekly/release/resource/reports/"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="paramTodayStart" class="java.lang.Long" isForPrompting="false">
+		<parameterDescription><![CDATA[Start of today date time]]></parameterDescription>
+		<defaultValueExpression><![CDATA[Long.valueOf(Long.MAX_VALUE)]]></defaultValueExpression>
+	</parameter>
+	<parameter name="paramTodayEnd" class="java.lang.Long" isForPrompting="false">
+		<parameterDescription><![CDATA[End of today date time]]></parameterDescription>
+		<defaultValueExpression><![CDATA[Long.valueOf(Long.MAX_VALUE)]]></defaultValueExpression>
+	</parameter>
+	<parameter name="paramOverdue" class="java.lang.Boolean" isForPrompting="false">
+		<parameterDescription><![CDATA[Include overdue?]]></parameterDescription>
+		<defaultValueExpression><![CDATA[Boolean.TRUE]]></defaultValueExpression>
+	</parameter>
+	<parameter name="paramProject" class="java.lang.Boolean" isForPrompting="false">
+		<parameterDescription><![CDATA[Include Project/Thought?]]></parameterDescription>
+		<defaultValueExpression><![CDATA[Boolean.TRUE]]></defaultValueExpression>
+	</parameter>
+	<parameter name="paramSuccess" class="java.lang.Boolean" isForPrompting="false">
+		<parameterDescription><![CDATA[Include successful outcome?]]></parameterDescription>
+		<defaultValueExpression><![CDATA[Boolean.TRUE]]></defaultValueExpression>
+	</parameter>
+	<parameter name="paramNotes" class="java.lang.Boolean" isForPrompting="false">
+		<parameterDescription><![CDATA[Include notes?]]></parameterDescription>
+		<defaultValueExpression><![CDATA[Boolean.TRUE]]></defaultValueExpression>
+	</parameter>
+	<parameter name="paramCriteria" class="java.lang.Boolean" isForPrompting="false">
+		<defaultValueExpression><![CDATA[Boolean.TRUE]]></defaultValueExpression>
+	</parameter>
+	<parameter name="paramWeekStart" class="java.lang.Long" isForPrompting="false">
+		<parameterDescription><![CDATA[Week start]]></parameterDescription>
+	</parameter>
+	<parameter name="paramWeekEnd" class="java.lang.Long" isForPrompting="false">
+		<parameterDescription><![CDATA[Week end]]></parameterDescription>
+	</parameter>
+	<parameter name="paramDate" class="java.util.Date" isForPrompting="false">
+		<defaultValueExpression><![CDATA[new Date()]]></defaultValueExpression>
+	</parameter>
+	<queryString language="xPath">
+		<![CDATA[/data/actions/action]]>
+	</queryString>
+	<field name="type" class="java.lang.String">
+		<fieldDescription><![CDATA[state/type]]></fieldDescription>
+	</field>
+	<sortField name="type"/>
+	<filterExpression><![CDATA[Boolean.TRUE]]></filterExpression>
+	<group name="OverdueScheduled">
+		<groupHeader>
+			<band height="44" splitType="Stretch">
+				<printWhenExpression><![CDATA[$P{paramOverdue}]]></printWhenExpression>
+				<subreport isUsingCache="false">
+					<reportElement x="0" y="0" width="535" height="44">
+						<printWhenExpression><![CDATA[$P{paramOverdue}]]></printWhenExpression>
+					</reportElement>
+					<subreportParameter name="REPORT_LOCALE"/>
+					<subreportParameter name="paramCriteria">
+						<subreportParameterExpression><![CDATA[$P{paramCriteria}]]></subreportParameterExpression>
+					</subreportParameter>
+					<subreportParameter name="paramTodayEnd">
+						<subreportParameterExpression><![CDATA[$P{paramTodayEnd}]]></subreportParameterExpression>
+					</subreportParameter>
+					<subreportParameter name="REPORT_SCRIPTLET"/>
+					<subreportParameter name="paramNotes">
+						<subreportParameterExpression><![CDATA[$P{paramNotes}]]></subreportParameterExpression>
+					</subreportParameter>
+					<subreportParameter name="REPORT_PARAMETERS_MAP"/>
+					<subreportParameter name="REPORT_CONNECTION"/>
+					<subreportParameter name="REPORT_DATA_SOURCE"/>
+					<subreportParameter name="paramSuccess">
+						<subreportParameterExpression><![CDATA[$P{paramSuccess}]]></subreportParameterExpression>
+					</subreportParameter>
+					<subreportParameter name="SUBREPORT_DIR">
+						<subreportParameterExpression><![CDATA[$P{SUBREPORT_DIR}]]></subreportParameterExpression>
+					</subreportParameter>
+					<subreportParameter name="XML_DATA_DOCUMENT">
+						<subreportParameterExpression><![CDATA[$P{XML_DATA_DOCUMENT}]]></subreportParameterExpression>
+					</subreportParameter>
+					<subreportParameter name="REPORT_MAX_COUNT"/>
+					<subreportParameter name="paramOverdue">
+						<subreportParameterExpression><![CDATA[$P{paramOverdue}]]></subreportParameterExpression>
+					</subreportParameter>
+					<subreportParameter name="paramProject">
+						<subreportParameterExpression><![CDATA[$P{paramProject}]]></subreportParameterExpression>
+					</subreportParameter>
+					<subreportParameter name="REPORT_RESOURCE_BUNDLE"/>
+					<subreportParameter name="paramTodayStart">
+						<subreportParameterExpression><![CDATA[$P{paramTodayStart}]]></subreportParameterExpression>
+					</subreportParameter>
+					<subreportExpression class="java.lang.String"><![CDATA[$P{SUBREPORT_DIR} + "OverdueScheduled.jasper"]]></subreportExpression>
+				</subreport>
+			</band>
+		</groupHeader>
+	</group>
+	<group name="OverdueDoASAP">
+		<groupHeader>
+			<band height="50" splitType="Stretch">
+				<printWhenExpression><![CDATA[$P{paramOverdue}]]></printWhenExpression>
+				<subreport isUsingCache="false">
+					<reportElement x="0" y="0" width="535" height="50">
+						<printWhenExpression><![CDATA[$P{paramOverdue}]]></printWhenExpression>
+					</reportElement>
+					<subreportParameter name="REPORT_LOCALE"/>
+					<subreportParameter name="paramCriteria">
+						<subreportParameterExpression><![CDATA[$P{paramCriteria}]]></subreportParameterExpression>
+					</subreportParameter>
+					<subreportParameter name="paramTodayEnd">
+						<subreportParameterExpression><![CDATA[$P{paramTodayEnd}]]></subreportParameterExpression>
+					</subreportParameter>
+					<subreportParameter name="REPORT_SCRIPTLET"/>
+					<subreportParameter name="paramNotes">
+						<subreportParameterExpression><![CDATA[$P{paramNotes}]]></subreportParameterExpression>
+					</subreportParameter>
+					<subreportParameter name="REPORT_PARAMETERS_MAP"/>
+					<subreportParameter name="REPORT_CONNECTION"/>
+					<subreportParameter name="REPORT_DATA_SOURCE"/>
+					<subreportParameter name="paramSuccess">
+						<subreportParameterExpression><![CDATA[$P{paramSuccess}]]></subreportParameterExpression>
+					</subreportParameter>
+					<subreportParameter name="SUBREPORT_DIR">
+						<subreportParameterExpression><![CDATA[$P{SUBREPORT_DIR}]]></subreportParameterExpression>
+					</subreportParameter>
+					<subreportParameter name="XML_DATA_DOCUMENT">
+						<subreportParameterExpression><![CDATA[$P{XML_DATA_DOCUMENT}]]></subreportParameterExpression>
+					</subreportParameter>
+					<subreportParameter name="REPORT_MAX_COUNT"/>
+					<subreportParameter name="paramOverdue">
+						<subreportParameterExpression><![CDATA[$P{paramOverdue}]]></subreportParameterExpression>
+					</subreportParameter>
+					<subreportParameter name="paramProject">
+						<subreportParameterExpression><![CDATA[$P{paramProject}]]></subreportParameterExpression>
+					</subreportParameter>
+					<subreportParameter name="REPORT_RESOURCE_BUNDLE"/>
+					<subreportParameter name="paramTodayStart">
+						<subreportParameterExpression><![CDATA[$P{paramTodayStart}]]></subreportParameterExpression>
+					</subreportParameter>
+					<subreportExpression class="java.lang.String"><![CDATA[$P{SUBREPORT_DIR} + "OverdueDoASAP.jasper"]]></subreportExpression>
+				</subreport>
+			</band>
+		</groupHeader>
+	</group>
+	<group name="OverdueDelegated">
+		<groupHeader>
+			<band height="50" splitType="Stretch">
+				<printWhenExpression><![CDATA[$P{paramOverdue}]]></printWhenExpression>
+				<subreport isUsingCache="false">
+					<reportElement x="0" y="0" width="535" height="50">
+						<printWhenExpression><![CDATA[$P{paramOverdue}]]></printWhenExpression>
+					</reportElement>
+					<subreportParameter name="REPORT_LOCALE"/>
+					<subreportParameter name="paramCriteria">
+						<subreportParameterExpression><![CDATA[$P{paramCriteria}]]></subreportParameterExpression>
+					</subreportParameter>
+					<subreportParameter name="paramTodayEnd">
+						<subreportParameterExpression><![CDATA[$P{paramTodayEnd}]]></subreportParameterExpression>
+					</subreportParameter>
+					<subreportParameter name="REPORT_SCRIPTLET"/>
+					<subreportParameter name="paramNotes">
+						<subreportParameterExpression><![CDATA[$P{paramNotes}]]></subreportParameterExpression>
+					</subreportParameter>
+					<subreportParameter name="REPORT_PARAMETERS_MAP"/>
+					<subreportParameter name="REPORT_CONNECTION"/>
+					<subreportParameter name="REPORT_DATA_SOURCE"/>
+					<subreportParameter name="paramSuccess">
+						<subreportParameterExpression><![CDATA[$P{paramSuccess}]]></subreportParameterExpression>
+					</subreportParameter>
+					<subreportParameter name="SUBREPORT_DIR">
+						<subreportParameterExpression><![CDATA[$P{SUBREPORT_DIR}]]></subreportParameterExpression>
+					</subreportParameter>
+					<subreportParameter name="XML_DATA_DOCUMENT">
+						<subreportParameterExpression><![CDATA[$P{XML_DATA_DOCUMENT}]]></subreportParameterExpression>
+					</subreportParameter>
+					<subreportParameter name="REPORT_MAX_COUNT"/>
+					<subreportParameter name="paramOverdue">
+						<subreportParameterExpression><![CDATA[$P{paramOverdue}]]></subreportParameterExpression>
+					</subreportParameter>
+					<subreportParameter name="paramProject">
+						<subreportParameterExpression><![CDATA[$P{paramProject}]]></subreportParameterExpression>
+					</subreportParameter>
+					<subreportParameter name="REPORT_RESOURCE_BUNDLE"/>
+					<subreportParameter name="paramTodayStart">
+						<subreportParameterExpression><![CDATA[$P{paramTodayStart}]]></subreportParameterExpression>
+					</subreportParameter>
+					<subreportExpression class="java.lang.String"><![CDATA[$P{SUBREPORT_DIR} + "OverdueDelegated.jasper"]]></subreportExpression>
+				</subreport>
+			</band>
+		</groupHeader>
+	</group>
+	<group name="TodayScheduled">
+		<groupHeader>
+			<band height="50" splitType="Stretch">
+				<subreport isUsingCache="false">
+					<reportElement x="0" y="0" width="535" height="50"/>
+					<subreportParameter name="REPORT_LOCALE"/>
+					<subreportParameter name="paramCriteria">
+						<subreportParameterExpression><![CDATA[$P{paramCriteria}]]></subreportParameterExpression>
+					</subreportParameter>
+					<subreportParameter name="paramTodayEnd">
+						<subreportParameterExpression><![CDATA[$P{paramTodayEnd}]]></subreportParameterExpression>
+					</subreportParameter>
+					<subreportParameter name="REPORT_SCRIPTLET"/>
+					<subreportParameter name="paramNotes">
+						<subreportParameterExpression><![CDATA[$P{paramNotes}]]></subreportParameterExpression>
+					</subreportParameter>
+					<subreportParameter name="REPORT_PARAMETERS_MAP"/>
+					<subreportParameter name="REPORT_CONNECTION"/>
+					<subreportParameter name="REPORT_DATA_SOURCE"/>
+					<subreportParameter name="paramSuccess">
+						<subreportParameterExpression><![CDATA[$P{paramSuccess}]]></subreportParameterExpression>
+					</subreportParameter>
+					<subreportParameter name="SUBREPORT_DIR">
+						<subreportParameterExpression><![CDATA[$P{SUBREPORT_DIR}]]></subreportParameterExpression>
+					</subreportParameter>
+					<subreportParameter name="XML_DATA_DOCUMENT">
+						<subreportParameterExpression><![CDATA[$P{XML_DATA_DOCUMENT}]]></subreportParameterExpression>
+					</subreportParameter>
+					<subreportParameter name="REPORT_MAX_COUNT"/>
+					<subreportParameter name="paramOverdue">
+						<subreportParameterExpression><![CDATA[$P{paramOverdue}]]></subreportParameterExpression>
+					</subreportParameter>
+					<subreportParameter name="paramProject">
+						<subreportParameterExpression><![CDATA[$P{paramProject}]]></subreportParameterExpression>
+					</subreportParameter>
+					<subreportParameter name="REPORT_RESOURCE_BUNDLE"/>
+					<subreportParameter name="paramTodayStart">
+						<subreportParameterExpression><![CDATA[$P{paramTodayStart}]]></subreportParameterExpression>
+					</subreportParameter>
+					<subreportExpression class="java.lang.String"><![CDATA[$P{SUBREPORT_DIR} + "TodayScheduled.jasper"]]></subreportExpression>
+				</subreport>
+			</band>
+		</groupHeader>
+	</group>
+	<group name="TodayDoASAP">
+		<groupHeader>
+			<band height="50" splitType="Stretch">
+				<subreport isUsingCache="false">
+					<reportElement x="0" y="0" width="535" height="50"/>
+					<subreportParameter name="REPORT_LOCALE"/>
+					<subreportParameter name="paramCriteria">
+						<subreportParameterExpression><![CDATA[$P{paramCriteria}]]></subreportParameterExpression>
+					</subreportParameter>
+					<subreportParameter name="paramTodayEnd">
+						<subreportParameterExpression><![CDATA[$P{paramTodayEnd}]]></subreportParameterExpression>
+					</subreportParameter>
+					<subreportParameter name="REPORT_SCRIPTLET"/>
+					<subreportParameter name="paramNotes">
+						<subreportParameterExpression><![CDATA[$P{paramNotes}]]></subreportParameterExpression>
+					</subreportParameter>
+					<subreportParameter name="REPORT_PARAMETERS_MAP"/>
+					<subreportParameter name="REPORT_CONNECTION"/>
+					<subreportParameter name="REPORT_DATA_SOURCE"/>
+					<subreportParameter name="paramSuccess">
+						<subreportParameterExpression><![CDATA[$P{paramSuccess}]]></subreportParameterExpression>
+					</subreportParameter>
+					<subreportParameter name="SUBREPORT_DIR">
+						<subreportParameterExpression><![CDATA[$P{SUBREPORT_DIR}]]></subreportParameterExpression>
+					</subreportParameter>
+					<subreportParameter name="XML_DATA_DOCUMENT">
+						<subreportParameterExpression><![CDATA[$P{XML_DATA_DOCUMENT}]]></subreportParameterExpression>
+					</subreportParameter>
+					<subreportParameter name="REPORT_MAX_COUNT"/>
+					<subreportParameter name="paramOverdue">
+						<subreportParameterExpression><![CDATA[$P{paramOverdue}]]></subreportParameterExpression>
+					</subreportParameter>
+					<subreportParameter name="paramProject">
+						<subreportParameterExpression><![CDATA[$P{paramProject}]]></subreportParameterExpression>
+					</subreportParameter>
+					<subreportParameter name="REPORT_RESOURCE_BUNDLE"/>
+					<subreportParameter name="paramTodayStart">
+						<subreportParameterExpression><![CDATA[$P{paramTodayStart}]]></subreportParameterExpression>
+					</subreportParameter>
+					<subreportExpression class="java.lang.String"><![CDATA[$P{SUBREPORT_DIR} + "TodayDoASAP.jasper"]]></subreportExpression>
+				</subreport>
+			</band>
+		</groupHeader>
+	</group>
+	<group name="TodayDelegated">
+		<groupHeader>
+			<band height="50" splitType="Stretch">
+				<subreport isUsingCache="false">
+					<reportElement x="0" y="0" width="535" height="50"/>
+					<subreportParameter name="REPORT_LOCALE"/>
+					<subreportParameter name="paramCriteria">
+						<subreportParameterExpression><![CDATA[$P{paramCriteria}]]></subreportParameterExpression>
+					</subreportParameter>
+					<subreportParameter name="paramTodayEnd">
+						<subreportParameterExpression><![CDATA[$P{paramTodayEnd}]]></subreportParameterExpression>
+					</subreportParameter>
+					<subreportParameter name="REPORT_SCRIPTLET"/>
+					<subreportParameter name="paramNotes">
+						<subreportParameterExpression><![CDATA[$P{paramNotes}]]></subreportParameterExpression>
+					</subreportParameter>
+					<subreportParameter name="REPORT_PARAMETERS_MAP"/>
+					<subreportParameter name="REPORT_CONNECTION"/>
+					<subreportParameter name="REPORT_DATA_SOURCE"/>
+					<subreportParameter name="paramSuccess">
+						<subreportParameterExpression><![CDATA[$P{paramSuccess}]]></subreportParameterExpression>
+					</subreportParameter>
+					<subreportParameter name="SUBREPORT_DIR">
+						<subreportParameterExpression><![CDATA[$P{SUBREPORT_DIR}]]></subreportParameterExpression>
+					</subreportParameter>
+					<subreportParameter name="XML_DATA_DOCUMENT">
+						<subreportParameterExpression><![CDATA[$P{XML_DATA_DOCUMENT}]]></subreportParameterExpression>
+					</subreportParameter>
+					<subreportParameter name="REPORT_MAX_COUNT"/>
+					<subreportParameter name="paramOverdue">
+						<subreportParameterExpression><![CDATA[$P{paramOverdue}]]></subreportParameterExpression>
+					</subreportParameter>
+					<subreportParameter name="paramProject">
+						<subreportParameterExpression><![CDATA[$P{paramProject}]]></subreportParameterExpression>
+					</subreportParameter>
+					<subreportParameter name="REPORT_RESOURCE_BUNDLE"/>
+					<subreportParameter name="paramTodayStart">
+						<subreportParameterExpression><![CDATA[$P{paramTodayStart}]]></subreportParameterExpression>
+					</subreportParameter>
+					<subreportExpression class="java.lang.String"><![CDATA[$P{SUBREPORT_DIR} + "TodayDelegated.jasper"]]></subreportExpression>
+				</subreport>
+			</band>
+		</groupHeader>
+	</group>
+	<group name="ThisWeek">
+		<groupHeader>
+			<band height="50" splitType="Stretch">
+				<subreport isUsingCache="false">
+					<reportElement x="0" y="0" width="535" height="50"/>
+					<subreportParameter name="REPORT_LOCALE"/>
+					<subreportParameter name="paramCriteria">
+						<subreportParameterExpression><![CDATA[$P{paramCriteria}]]></subreportParameterExpression>
+					</subreportParameter>
+					<subreportParameter name="paramTodayEnd">
+						<subreportParameterExpression><![CDATA[$P{paramTodayEnd}]]></subreportParameterExpression>
+					</subreportParameter>
+					<subreportParameter name="REPORT_SCRIPTLET"/>
+					<subreportParameter name="paramNotes">
+						<subreportParameterExpression><![CDATA[$P{paramNotes}]]></subreportParameterExpression>
+					</subreportParameter>
+					<subreportParameter name="REPORT_PARAMETERS_MAP"/>
+					<subreportParameter name="REPORT_CONNECTION"/>
+					<subreportParameter name="paramWeekEnd">
+						<subreportParameterExpression><![CDATA[$P{paramWeekEnd}]]></subreportParameterExpression>
+					</subreportParameter>
+					<subreportParameter name="REPORT_DATA_SOURCE"/>
+					<subreportParameter name="SUBREPORT_DIR">
+						<subreportParameterExpression><![CDATA[$P{SUBREPORT_DIR}]]></subreportParameterExpression>
+					</subreportParameter>
+					<subreportParameter name="paramSuccess">
+						<subreportParameterExpression><![CDATA[$P{paramSuccess}]]></subreportParameterExpression>
+					</subreportParameter>
+					<subreportParameter name="XML_DATA_DOCUMENT">
+						<subreportParameterExpression><![CDATA[$P{XML_DATA_DOCUMENT}]]></subreportParameterExpression>
+					</subreportParameter>
+					<subreportParameter name="REPORT_MAX_COUNT"/>
+					<subreportParameter name="paramWeekStart">
+						<subreportParameterExpression><![CDATA[$P{paramWeekStart}]]></subreportParameterExpression>
+					</subreportParameter>
+					<subreportParameter name="paramOverdue">
+						<subreportParameterExpression><![CDATA[$P{paramOverdue}]]></subreportParameterExpression>
+					</subreportParameter>
+					<subreportParameter name="paramProject">
+						<subreportParameterExpression><![CDATA[$P{paramProject}]]></subreportParameterExpression>
+					</subreportParameter>
+					<subreportParameter name="REPORT_RESOURCE_BUNDLE"/>
+					<subreportParameter name="paramTodayStart">
+						<subreportParameterExpression><![CDATA[$P{paramTodayStart}]]></subreportParameterExpression>
+					</subreportParameter>
+					<subreportExpression class="java.lang.String"><![CDATA[$P{SUBREPORT_DIR} + "ThisWeek.jasper"]]></subreportExpression>
+				</subreport>
+			</band>
+		</groupHeader>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band splitType="Stretch"/>
+	</title>
+	<pageHeader>
+		<band height="30" splitType="Stretch">
+			<staticText>
+				<reportElement key="headingStaticText" x="2" y="6" width="108" height="18"/>
+				<textElement verticalAlignment="Bottom" rotation="None">
+					<font fontName="DejaVu Sans" size="10" isBold="true" isItalic="false" isUnderline="false" pdfFontName="DejaVuSansBold.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[Weekly Review]]></text>
+			</staticText>
+			<textField evaluationTime="Report" pattern="EEE dd MMM yyyy" isBlankWhenNull="false">
+				<reportElement key="dateTextField" positionType="FixRelativeToBottom" x="364" y="6" width="171" height="18"/>
+				<textElement textAlignment="Right" verticalAlignment="Bottom">
+					<font fontName="DejaVu Sans" size="10" isBold="true" pdfFontName="DejaVuSansBold.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<textFieldExpression class="java.util.Date"><![CDATA[$P{paramDate}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="3" y="26" width="532" height="1"/>
+			</line>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band splitType="Stretch"/>
+	</columnHeader>
+	<columnFooter>
+		<band splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="34" splitType="Stretch">
+			<textField pattern="" isBlankWhenNull="false" hyperlinkType="Reference">
+				<reportElement key="homeTextField" x="0" y="22" width="156" height="12"/>
+				<textElement>
+					<font fontName="DejaVu Sans" size="8" pdfFontName="DejaVuSans.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA["www.thinkingrock.com.au"]]></textFieldExpression>
+				<hyperlinkReferenceExpression><![CDATA["http://www.thinkingrock.com.au"]]></hyperlinkReferenceExpression>
+			</textField>
+			<textField isBlankWhenNull="false">
+				<reportElement key="pageTextField" x="422" y="6" width="88" height="12"/>
+				<textElement textAlignment="Right">
+					<font fontName="DejaVu Sans" size="8" pdfFontName="DejaVuSans.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA["Page " + $V{PAGE_NUMBER} + " of "]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report" isBlankWhenNull="false">
+				<reportElement key="pageNbrTextField" x="510" y="6" width="20" height="12"/>
+				<textElement>
+					<font fontName="DejaVu Sans" size="8" pdfFontName="DejaVuSans.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[" " + $V{PAGE_NUMBER} + ""]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="3" y="2" width="527" height="1" forecolor="#CCCCCC"/>
+			</line>
+			<textField>
+				<reportElement x="0" y="6" width="425" height="12"/>
+				<textElement markup="styled">
+					<font fontName="DejaVu Sans" size="8" pdfFontName="DejaVuSans.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA["Key: \u2605ASAP \u2606Inactive \u261EDelegated \u2637Scheduled \u27F3Recurring @Context \u2302Topic \u25F7Time \u26A1Energy \u2690Priority"]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>

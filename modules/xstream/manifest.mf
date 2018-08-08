@@ -1,0 +1,4 @@
+Manifest-Version: 1.0
+OpenIDE-Module: com.thoughtworks.xstream
+OpenIDE-Module-Localizing-Bundle: com/thoughtworks/xstream/Bundle.properties
+OpenIDE-Module-Specification-Version: 3.5.1

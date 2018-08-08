@@ -1,0 +1,133 @@
+package au.com.trgtd.tr.view.calendar;
+
+import au.com.trgtd.tr.appl.Constants;
+import au.com.trgtd.tr.cal.ctlr.DateCtlr;
+import au.com.trgtd.tr.cal.ctlr.WeekPanelCtlr;
+import au.com.trgtd.tr.cal.model.CalModel;
+import au.com.trgtd.tr.cal.view.DateChangerPanel;
+import au.com.trgtd.tr.cal.view.DateDisplayPanel;
+import au.com.trgtd.tr.cal.view.Period;
+import au.com.trgtd.tr.cal.view.WeekPanel;
+import au.com.trgtd.tr.view.ViewUtils;
+import java.awt.BorderLayout;
+import java.awt.Component;
+import java.awt.Dimension;
+import java.beans.PropertyChangeEvent;
+import java.beans.PropertyChangeListener;
+import java.util.Date;
+import javax.swing.JPanel;
+import javax.swing.JToggleButton;
+import net.miginfocom.swing.MigLayout;
+import org.openide.util.ImageUtilities;
+import org.openide.util.NbBundle;
+import org.openide.windows.Mode;
+import org.openide.windows.TopComponent;
+import org.openide.windows.WindowManager;
+
+
+public final class WeekTopComponent extends TopComponent {
+
+    private final static String ICON_PATH = "au/com/trgtd/tr/view/calendar/resource/week.png";
+    private final DateCtlr dateCtlr = Singleton.dateCtlr;
+    private ShowHideDoneAction showDoneAction;
+    
+    /**
+     * Creates a new instance.
+     */
+    public WeekTopComponent() {
+        setName(NbBundle.getMessage(WeekTopComponent.class, "CTL_WeekTopComponent"));
+        setIcon(ImageUtilities.loadImage(ICON_PATH, true));
+        putClientProperty(TopComponent.PROP_CLOSING_DISABLED, Boolean.TRUE);
+        putClientProperty(TopComponent.PROP_DRAGGING_DISABLED, Boolean.TRUE);
+        putClientProperty(TopComponent.PROP_MAXIMIZATION_DISABLED, Boolean.TRUE);
+        putClientProperty(TopComponent.PROP_UNDOCKING_DISABLED, Boolean.TRUE);
+        this.initComponents();
+    }
+
+    private void initComponents() {
+        setLayout(new BorderLayout());
+        setOpaque(true);
+        setBackground(ViewUtils.COLOR_PANEL_BG);
+
+        TrCalModel calModel = new TrCalModel();
+        
+        showDoneAction = new ShowHideDoneAction(calModel, dateCtlr);
+
+        WeekPanelCtlr weekPanelCtlr = new WeekPanelCtlr(calModel, dateCtlr, 0, 23);
+        WeekPanel weekPanel = weekPanelCtlr.getWeekPanel();
+        weekPanel.addDayListener(new PropertyChangeListener() {
+            @Override
+            public void propertyChange(PropertyChangeEvent pce) {
+                Object newValue = pce.getNewValue();
+                if (newValue instanceof Date) {
+                    dateCtlr.setDate((Date)newValue);
+                    activateDayView();                                        
+                }
+            }            
+        });
+        
+        weekPanel.setOpaque(true);
+        weekPanel.setBackground(ViewUtils.COLOR_PANEL_BG);
+
+        DateDisplayPanel dateDisplayPanel = new DateDisplayPanel(dateCtlr, Period.Week);
+        dateDisplayPanel.setOpaque(true);
+        dateDisplayPanel.setBackground(ViewUtils.COLOR_PANEL_BG);
+
+        DateChangerPanel dateChangerPanel = new DateChangerPanel(dateCtlr, Period.Week);
+        dateChangerPanel.setOpaque(true);
+        dateChangerPanel.setBackground(ViewUtils.COLOR_PANEL_BG);
+
+//        JPanel northPanel = new JPanel(new MigLayout("fill", "6[grow]6[grow]6", "0[]0"));
+        JPanel northPanel = new JPanel(new MigLayout("fill", "6[grow]6[]6[]6", "0[]0"));
+        northPanel.add(dateDisplayPanel, "align left");
+        northPanel.add(getShowDoneButton(), "align right");
+        northPanel.add(dateChangerPanel, "align right, wrap");
+        northPanel.setOpaque(true);
+        northPanel.setBackground(ViewUtils.COLOR_PANEL_BG);
+
+        add(northPanel, BorderLayout.NORTH);
+        add(weekPanel, BorderLayout.CENTER);
+    }
+
+
+    private Component getShowDoneButton() {
+        JToggleButton button = new JToggleButton(showDoneAction);
+        Dimension buttonSize = Constants.TOOLBAR_BUTTON_SIZE;
+        button.setPreferredSize(buttonSize);
+        button.setMinimumSize(buttonSize);
+        button.setMaximumSize(buttonSize);
+        button.setText("");
+        button.setFocusable(false);
+//      button.doClick();
+        return button;
+    }
+
+    private void activateDayView() {
+        TopComponent tc = WindowManager.getDefault().findTopComponent("DayTopComponent");
+        if (null == tc) {
+            tc = new DayTopComponent();
+        }
+        Mode mode = WindowManager.getDefault().findMode("editor");
+        if (mode != null) {
+            mode.dockInto(tc);
+        }
+        tc.open();
+        tc.requestActive();
+    }
+
+    @Override
+    protected void componentOpened() {
+        dateCtlr.fireChange();
+    }
+    
+    @Override
+    public int getPersistenceType() {
+        return TopComponent.PERSISTENCE_NEVER;
+    }
+
+    @Override
+    protected String preferredID() {
+        return "WeekTopComponent";
+    }
+
+}

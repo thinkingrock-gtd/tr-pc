@@ -1,0 +1,5 @@
+Manifest-Version: 1.0
+OpenIDE-Module: au.com.trgtd.tr.l10n.de_DE
+OpenIDE-Module-Layer: au/com/trgtd/tr/l10n/de_DE/layer.xml
+OpenIDE-Module-Localizing-Bundle: au/com/trgtd/tr/l10n/de_DE/Bundle.properties
+OpenIDE-Module-Specification-Version: 3.5.1

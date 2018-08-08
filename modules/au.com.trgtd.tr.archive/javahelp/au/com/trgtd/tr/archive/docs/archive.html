@@ -1,0 +1,74 @@
+<html>
+    <head>
+        <title>Archive</title>
+        <link rel="stylesheet" href="nbdocs:/tr/model/docs/ide.css" type="text/css">
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>    
+    <body>
+        <h2>Archive</h2>
+        <p>The archive process first saves a backup copy of your data file and
+            then removes from the data file, all single actions and projects
+            completed on or before a specified archive date. An archive file is
+            created containing the archived single actions and projects.
+        </p>
+        The archive process is called from the File menu. &nbsp;You will need to enter:
+        <ul>
+            <li>the Archive Folder in which the archive file should be saved:
+                we recommend you use a different folder to that of your data file;</li>
+            <li>the Archive Date: the last archived date (if any) is
+                displayed;</li>
+            <li>check box Archive Done projects only: if checked, the whole top level project needs to
+                have been completed by the archive date for actions to be archived. If unchecked, the 
+                archiving is done on current projects or on projects completed after the archived date
+                as long as the actions have been set to done before or on the archive date.</li>
+        </ul>
+
+        <p>Press the Archive button to start the process. A message is displayed
+            when the process has finished.
+        </p>
+        The following is a detailed description of the archiving process:
+        <ol>
+            <li>First a backup copy of the current data file is made, named
+                {datafile-name}-{current-date}-{current-time}-backup.xml
+                (e.g. thinking-rock-20070514-205057123.backup.xml)</li>
+            <li>A second copy of the current data file is made, named:
+                {datafile-name}-{archive-date}-{current-time}-archive.xml &nbsp;From this copy,
+                the process removes:
+                <ul>
+                    <li>all single actions with no Done date or Done Date after
+                        the Archived Date;</li>
+                    <li>all unprocessed thoughts, Someday/Maybe Items and Reference
+                        Items;</li>
+                    <li>if archiving on done projects only: all top level Projects and
+                        associated sub-projects and actions where the Project&#39;s with no Done Date
+                        or Project&#39;s Completed Date after the Archived Date;</li>
+                    <li>if archiving on all projects: all actions with no Done Date
+                        or Done Date after the Archived Date. The project hierarchy is kept so
+                        you might have a project appearing in both the current and archived data files;</li>
+                    <li>all projects under the Future Tab;</li>
+                    <li>all projects under the Templates Tab.</li>
+                </ul>
+            </li>
+            <li>From the current data file, the application removes:
+                <ul>
+                    <li>single actions with Done Date on or before the Archived Date;</li>
+                    <li>if archiving on done projects only: all top Projects and associated
+                        sub-projects and actions where the Project Completed Date is on or before
+                        the Archive Date;</li>
+                    <li>if archiving on all projects: all actions and sub-projects with Done Date or
+                        Completed Date on or before the Archived Date.</li>
+                </ul>
+            </li>
+        </ol>
+
+        <b>Notes</b>
+        <ul>
+            <li>Projects and actions under the Future Projects and Template
+                Projects Tab are never archived;</li>
+            <li>Contexts, Topics and Criteria values are saved in the archived
+                file;</li>
+            <li>You can review archived data by opening the data file using
+                ThinkingRock.</li>
+        </ul>
+    </body>
+</html>

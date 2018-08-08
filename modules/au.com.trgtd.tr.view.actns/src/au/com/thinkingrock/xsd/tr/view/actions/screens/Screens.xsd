@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            targetNamespace="http://thinkingrock.com.au/xsd/tr/view/actions/screens"
+            xmlns:tns="http://thinkingrock.com.au/xsd/tr/view/actions/screens"
+            elementFormDefault="qualified">
+    
+    <xsd:element name="screens" type="tns:Screens"/>
+    <xsd:element name="screen" type="tns:Screen"/>
+    <xsd:element name="columns" type="tns:Columns"/>
+    <xsd:element name="column" type="tns:Column"/>
+    <xsd:element name="columnID" type="tns:ColumnID"/>
+    <xsd:element name="sortColumns" type="tns:SortColumns"/>
+    <xsd:element name="sortColumn" type="tns:SortColumn"/>
+    <xsd:element name="filters" type="tns:Filters"/>
+    <xsd:element name="filter" type="tns:Filter"/>
+    <xsd:element name="filterID" type="tns:FilterID"/>
+    
+    <xsd:complexType name="Screens">
+        <xsd:sequence minOccurs="0" maxOccurs="unbounded">
+            <xsd:element ref="tns:screen"/>
+        </xsd:sequence>
+    </xsd:complexType>    
+    
+    <xsd:complexType name="Screen">
+        <xsd:sequence minOccurs="1" maxOccurs="1">
+            <xsd:element ref="tns:columns"/>
+            <xsd:element ref="tns:sortColumns"/>
+            <xsd:element ref="tns:filters"/>
+        </xsd:sequence>
+        <xsd:attribute name="name" type="xsd:string"/>
+    </xsd:complexType>        
+    
+    <xsd:complexType name="Columns">
+        <xsd:sequence minOccurs="0" maxOccurs="unbounded">
+            <xsd:element ref="tns:column"/>            
+        </xsd:sequence>
+    </xsd:complexType>    
+
+    <xsd:complexType name="Column">
+        <xsd:attribute name="columnID" type="tns:ColumnID" use="required"/>
+        <xsd:attribute name="width" type="xsd:int"/>
+    </xsd:complexType>
+    
+    <xsd:complexType name="SortColumns">
+        <xsd:sequence minOccurs="0" maxOccurs="unbounded">
+            <xsd:element ref="tns:sortColumn"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="SortColumn">
+        <xsd:attribute name="columnID" type="tns:ColumnID" use="required"/>
+        <xsd:attribute name="descending" type="xsd:boolean"/>
+    </xsd:complexType>    
+    
+    <xsd:complexType name="Filters">
+        <xsd:sequence minOccurs="0" maxOccurs="unbounded">
+            <xsd:element ref="tns:filter"/>
+        </xsd:sequence>
+        <xsd:attribute name="show" type="xsd:boolean"/>
+    </xsd:complexType>    
+
+    <xsd:complexType name="Filter">
+        <xsd:sequence minOccurs="0" maxOccurs="unbounded">
+            <xsd:element name="value" type="xsd:string"/>
+        </xsd:sequence>        
+        <xsd:attribute name="filterID" type="tns:FilterID"/>
+        <xsd:attribute name="visible" type="xsd:boolean"/>
+    </xsd:complexType>
+    
+    <xsd:simpleType name="FilterID">
+        <xsd:restriction base="xsd:string">
+            <xsd:enumeration value="search"/>
+            <xsd:enumeration value="topic"/>
+            <xsd:enumeration value="done"/>
+            <xsd:enumeration value="status"/>
+            <xsd:enumeration value="context"/>
+            <xsd:enumeration value="time"/>
+            <xsd:enumeration value="energy"/>
+            <xsd:enumeration value="priority"/>
+            <xsd:enumeration value="created-from"/>
+            <xsd:enumeration value="created-to"/>
+            <xsd:enumeration value="done-from"/>
+            <xsd:enumeration value="done-to"/>
+            <xsd:enumeration value="action-from"/>
+            <xsd:enumeration value="action-to"/>
+            <xsd:enumeration value="start-from"/>
+            <xsd:enumeration value="start-to"/>
+            <xsd:enumeration value="due-from"/>
+            <xsd:enumeration value="due-to"/>
+            <xsd:enumeration value="followup-from"/>
+            <xsd:enumeration value="followup-to"/>
+            <xsd:enumeration value="schedule-from"/>
+            <xsd:enumeration value="schedule-to"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+    
+    <xsd:simpleType name="ColumnID">
+        <xsd:restriction base="xsd:string">
+            <xsd:enumeration value="icon"/>
+            <xsd:enumeration value="done"/>
+            <xsd:enumeration value="descr"/>
+            <xsd:enumeration value="delegated-to"/>
+            <xsd:enumeration value="created-date"/>
+            <xsd:enumeration value="done-date"/>
+            <xsd:enumeration value="action-date"/>
+            <xsd:enumeration value="context"/>
+            <xsd:enumeration value="time"/>
+            <xsd:enumeration value="energy"/>
+            <xsd:enumeration value="priority"/>
+            <xsd:enumeration value="topic"/>
+            <xsd:enumeration value="from-icon"/>
+            <xsd:enumeration value="from-descr"/>
+            <xsd:enumeration value="from-topic"/>
+            <xsd:enumeration value="start-date"/>
+            <xsd:enumeration value="due-date"/>
+            <xsd:enumeration value="followup-date"/>
+            <xsd:enumeration value="schedule-date"/>
+            <xsd:enumeration value="schedule-duration"/>
+            <xsd:enumeration value="project-path"/>
+            <xsd:enumeration value="top-project"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+
+</xsd:schema>

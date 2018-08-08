@@ -1,0 +1,8 @@
+Manifest-Version: 1.0
+OpenIDE-Module: au.com.trgtd.tr.view.calendar
+OpenIDE-Module-Install: au/com/trgtd/tr/view/calendar/Installer.class
+OpenIDE-Module-Layer: au/com/trgtd/tr/view/calendar/layer.xml
+OpenIDE-Module-Localizing-Bundle: au/com/trgtd/tr/view/calendar/Bundle.properties
+OpenIDE-Module-Requires: org.openide.windows.WindowManager
+OpenIDE-Module-Specification-Version: 3.5.1
+

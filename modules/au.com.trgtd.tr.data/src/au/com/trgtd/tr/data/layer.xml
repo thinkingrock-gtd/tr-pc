@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE filesystem PUBLIC "-//NetBeans//DTD Filesystem 1.1//EN" "http://www.netbeans.org/dtds/filesystem-1_1.dtd">
+<filesystem>
+    <folder name="Actions">
+        <folder name="File">
+            <file name="au-com-trgtd-tr-data-NewAction.instance"/>
+            <file name="au-com-trgtd-tr-data-OpenAction.instance"/>
+            <file name="au-com-trgtd-tr-data-SaveAction.instance"/>
+            <file name="au-com-trgtd-tr-data-SaveAsAction.instance"/>
+            <file name="au-com-trgtd-tr-data-SaveToAction.instance"/>
+        </folder>
+        <folder name="Help">
+            <file name="au-com-trgtd-tr-data-HelpCSAction.instance"/>
+            <file name="au-com-trgtd-tr-data-HelpAction.instance"/>
+        </folder>
+    </folder>
+    <folder name="Menu">        
+        <folder name="File">                        
+            <file name="au-com-trgtd-tr-data-New.shadow">
+                <attr name="originalFile" stringvalue="Actions/File/au-com-trgtd-tr-data-NewAction.instance"/>
+                <attr name="position" intvalue="100"/>                
+            </file>                        
+            <file name="au-com-trgtd-tr-data-Open.shadow">
+                <attr name="originalFile" stringvalue="Actions/File/au-com-trgtd-tr-data-OpenAction.instance"/>
+                <attr name="position" intvalue="200"/>                
+            </file>                                    
+            <file name="au-com-trgtd-tr-data-sep300.instance">
+                <attr name="instanceClass" stringvalue="javax.swing.JSeparator"/>
+                <attr name="position" intvalue="300"/>                                
+            </file>            
+            <file name="au-com-trgtd-tr-data-Save.shadow">
+                <attr name="originalFile" stringvalue="Actions/File/au-com-trgtd-tr-data-SaveAction.instance"/>
+                <attr name="position" intvalue="400"/>                
+            </file>            
+            <file name="au-com-trgtd-tr-data-SaveAs.shadow">
+                <attr name="originalFile" stringvalue="Actions/File/au-com-trgtd-tr-data-SaveAsAction.instance"/>
+                <attr name="position" intvalue="420"/>                
+            </file>            
+            <file name="au-com-trgtd-tr-data-SaveTo.shadow">
+                <attr name="originalFile" stringvalue="Actions/File/au-com-trgtd-tr-data-SaveToAction.instance"/>
+                <attr name="position" intvalue="440"/>                
+            </file>                        
+            <file name="au-com-trgtd-tr-data-sep500.instance">
+                <attr name="instanceClass" stringvalue="javax.swing.JSeparator"/>
+                <attr name="position" intvalue="490"/>                                
+            </file>            
+        </folder>
+        
+        <folder name="Help">               
+            <!--
+            <file name="HelpAction.shadow">
+                <attr name="originalFile" stringvalue="Actions/Help/tr-data-HelpAction.instance"/>
+                <attr name="position" intvalue="100"/>                                                
+            </file>                        
+            -->
+            <file name="HelpCSAction.shadow">
+                <attr name="originalFile" stringvalue="Actions/Help/au-com-trgtd-tr-data-HelpCSAction.instance"/>
+                <attr name="position" intvalue="110"/>                                                
+            </file>                        
+            <file name="tr-data-sep115.instance">
+                <attr name="instanceClass" stringvalue="javax.swing.JSeparator"/>
+                <attr name="position" intvalue="115"/>                                
+            </file>            
+        </folder>                           
+    </folder>
+    
+    <folder name="Shortcuts">
+        <file name="D-O.shadow">
+            <attr name="originalFile" stringvalue="Actions/File/au-com-trgtd-tr-data-OpenAction.instance"/>
+        </file>
+        <file name="D-S.shadow">
+            <attr name="originalFile" stringvalue="Actions/File/au-com-trgtd-tr-data-SaveAction.instance"/>
+        </file>
+        <file name="F1.shadow">
+            <attr name="originalFile" stringvalue="Actions/Help/au-com-trgtd-tr-data-HelpCSAction.instance"/>
+        </file>        
+    </folder>
+    
+    <folder name="Toolbars">
+        
+        <folder name="File">            
+            <file name="org-openide-actions-SaveAction.instance_hidden"/>
+            <file name="org-openide-actions-SaveAllAction.instance_hidden"/>
+            <file name="org-openide-actions-PageSetupAction.instance_hidden"/>
+            <file name="org-openide-actions-PrintAction.instance_hidden"/>            
+            <file name="au-com-trgtd-tr-data-New.shadow">
+                <attr name="position" intvalue="100"/>                                
+                <attr name="originalFile" stringvalue="Actions/File/au-com-trgtd-tr-data-NewAction.instance"/>
+            </file>                        
+            <file name="au-com-trgtd-tr-data-Open.shadow">
+                <attr name="position" intvalue="200"/>                
+                <attr name="originalFile" stringvalue="Actions/File/au-com-trgtd-tr-data-OpenAction.instance"/>
+            </file>                        
+            <file name="au-com-trgtd-tr-data-Save.shadow">
+                <attr name="position" intvalue="300"/>                
+                <attr name="originalFile" stringvalue="Actions/File/au-com-trgtd-tr-data-SaveAction.instance"/>
+            </file>            
+        </folder>
+
+        <folder name="TR Help">
+            <attr name="position" intvalue="999900"/>
+            <file name="HelpCSAction.shadow">
+                <attr name="position" intvalue="999900"/>
+                <attr name="originalFile" stringvalue="Actions/Help/au-com-trgtd-tr-data-HelpCSAction.instance"/>
+            </file>       
+        </folder>
+    </folder>
+    
+</filesystem>
