@@ -38,23 +38,49 @@ public class DatesPrefs {
     public static final int MMDDYY = 0;
     /** Date order for day first. */
     public static final int DDMMYY = 1;
+    /** Date order for Japanese. */
+    public static final int YYMMDD = 2;
+    
     /* Date order default. */
-    private static final int DEF_DATE_ORDER = (Locale.getDefault().getCountry().equals(Locale.US.getCountry())) ? MMDDYY : DDMMYY;
-
+    private static final int DEF_DATE_ORDER;
+    static {
+        final String country = Locale.getDefault().getCountry();
+        if (country.equals(Locale.US.getCountry())) {
+            DEF_DATE_ORDER = MMDDYY;
+        } else if (country.equals(Locale.JAPAN.getCountry())) {
+            DEF_DATE_ORDER = YYMMDD;            
+        } else {
+            DEF_DATE_ORDER = DDMMYY;                        
+        }
+    }
+    
     /** Date format type for long format. */
     public static final int DF_LONG = 0;
-    /** Date format type for medium format. */
-    public static final int DF_MEDIUM = 2;
     /** Date format type for short format. */
     public static final int DF_SHORT = 1;
-
+    /** Date format type for medium format. */
+    public static final int DF_MEDIUM = 2;
+    
     /**
      * Date formats for the date picker and also for formatting dates, e.g.
      * DateFormats[MMDDYY][DF_LONG]
      */
-    public static final String[][] DATE_FORMATS = new String[][] {
-        {"EEE MMM d yyyy", "M/d/yy", "MM/dd/yyyy"},
-        {"EEE d MMM yyyy", "d/M/yy", "dd/MM/yyyy"},
+    public static final DateFormat[][] DATE_FORMATS = new DateFormat[][] {
+        {
+            new SimpleDateFormat("EEE MMM d yyyy"), 
+            new SimpleDateFormat("M/d/yy"), 
+            new SimpleDateFormat("MM/dd/yyyy")
+        },
+        { 
+            new SimpleDateFormat("EEE d MMM yyyy"), 
+            new SimpleDateFormat("d/M/yy"), 
+            new SimpleDateFormat("MM/dd/yyyy")
+        },
+        {
+            DateFormat.getDateInstance(DateFormat.LONG, Locale.JAPANESE), 
+            DateFormat.getDateInstance(DateFormat.SHORT, Locale.JAPANESE), 
+            DateFormat.getDateInstance(DateFormat.MEDIUM, Locale.JAPANESE)
+        }
     };
 
     public static final Preferences getPrefs() {
@@ -68,9 +94,7 @@ public class DatesPrefs {
      * @return the formatted date.
      */
     public static final String formatLong(Date date) {
-        int order = getDateOrder();
-        DateFormat df = new SimpleDateFormat(DATE_FORMATS[order][0]);
-        return df.format(date);
+        return format(date, 0);
     }
     
     /**
@@ -80,9 +104,7 @@ public class DatesPrefs {
      * @return the formatted date.
      */
     public static final String formatMedium(Date date) {
-        int order = getDateOrder();
-        DateFormat df = new SimpleDateFormat(DATE_FORMATS[order][2]);
-        return df.format(date);
+        return format(date, 2);
     }
     
     /**
@@ -95,10 +117,16 @@ public class DatesPrefs {
         return format(date, 1);
     }
     
-    private static String format(Date date, int type) {
+    public static String format(Date date, int type) {
+        return getDateFormat(type).format(date);
+    }
+    
+    public static DateFormat getDateFormat(int type) throws IllegalArgumentException {
+        if (type < 0 || type > 2) {
+            throw new IllegalArgumentException("Argument type must be one of [0 = long, 1 = short, 2 = medium]");
+        }
         int order = getDateOrder();
-        DateFormat df = new SimpleDateFormat(DATE_FORMATS[order][type]);
-        return df.format(date);
+        return DATE_FORMATS[order][type];
     }
     
     /**
@@ -135,7 +163,7 @@ public class DatesPrefs {
      * @param value The value [DDMMYY|MMDDYY].
      */
     public static final void setDateOrder(int value) {
-        if (value == DDMMYY || value == MMDDYY) {
+        if (value == DDMMYY || value == MMDDYY || value == YYMMDD) {
             PREFS.putInt(KEY_DATE_ORDER, value);
             flush();
         }

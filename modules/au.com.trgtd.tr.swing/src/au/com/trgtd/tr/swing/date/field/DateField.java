@@ -41,21 +41,20 @@ public class DateField extends JComponent implements ActionListener, FocusListen
 
     private static final Dimension SIZE = new Dimension(110, 23);
     
-    private static final String TEXT_FORMAT = NbBundle.getMessage(DateField.class, "format");
+    private static final String FORMAT = NbBundle.getMessage(DateField.class, "format");
     
-    private static final String INPUT_PATTERN_DDMMYY = "dd/MM/yy";
-    private static final String INPUT_PATTERN_MMDDYY = "MM/dd/yy";
-    
-    private static final String DISPLAY_PATTERN_DDMMYY = "dd/MM/yyyy";
-    private static final String DISPLAY_PATTERN_MMDDYY = "MM/dd/yyyy";
-    
-    private static final String TOOL_TIP_DDMMYY = TEXT_FORMAT + ": DD/MM/YYYY";
-    private static final String TOOL_TIP_MMDDYY = TEXT_FORMAT + ": MM/DD/YYYY";
-
-    public static final DateFormat DATE_FORMAT_FIXED = new SimpleDateFormat("EEE, d MMM yyyy");
+    private static final String[] TOOL_TIPS = {
+        FORMAT + ": DD/MM/YYYY",
+        FORMAT + ": MM/DD/YYYY",
+        FORMAT + ": YYYY/MM/DD"
+    };
     
     private static final char PLACEHOLDER = '_';
-    private static final String MASK = "##/##/####";
+    private static final String[] MASKS = {
+        "##/##/####",
+        "##/##/####",
+        "####/##/##"
+    };
     
     private static DateFormat DISPLAY_FORMAT = getDisplayFormat();
     private static DateFormat INPUT_FORMAT = getInputFormat();
@@ -70,21 +69,25 @@ public class DateField extends JComponent implements ActionListener, FocusListen
     private Date date;
     
     private static DateFormat getInputFormat() {
-        String pattern = (DatesPrefs.getDateOrder() == DatesPrefs.MMDDYY) ?
-            INPUT_PATTERN_MMDDYY : INPUT_PATTERN_DDMMYY;
-        DateFormat inputFormat = new SimpleDateFormat(pattern);
+        DateFormat inputFormat = DatesPrefs.getDateFormat(DatesPrefs.DF_SHORT);
         inputFormat.setLenient(false);
         return inputFormat;
     }
     
-    
     private static DateFormat getDisplayFormat() {
-        String pattern = (DatesPrefs.getDateOrder() == DatesPrefs.MMDDYY) ?
-            DISPLAY_PATTERN_MMDDYY : DISPLAY_PATTERN_DDMMYY;
-        DateFormat displayFormat = new SimpleDateFormat(pattern);
+        DateFormat displayFormat = DatesPrefs.getDateFormat(DatesPrefs.DF_MEDIUM);
         displayFormat.setLenient(false);
         return displayFormat;
     }
+
+    private static String getMask() {
+        return MASKS[DatesPrefs.getDateOrder()];
+    }
+  
+    private static String getToolTip() {
+        return TOOL_TIPS[DatesPrefs.getDateOrder()];
+    }
+  
 
     public DateField() {
         this.ftf = new FTF(getMaskFormatter());
@@ -108,7 +111,7 @@ public class DateField extends JComponent implements ActionListener, FocusListen
     
     private static MaskFormatter getMaskFormatter() {
         try {
-            MaskFormatter maskFormatter = new DateMaskFormatter(MASK);
+            MaskFormatter maskFormatter = new DateMaskFormatter(getMask());
             maskFormatter.setPlaceholderCharacter(PLACEHOLDER);
             return maskFormatter;
         } catch (ParseException e) {
@@ -290,19 +293,19 @@ public class DateField extends JComponent implements ActionListener, FocusListen
     }
     
     private void setToolTipText() {
-        if (ftf == null) return;
-        
-        String tttEntry = (DatesPrefs.getDateOrder() == DatesPrefs.MMDDYY) ? TOOL_TIP_MMDDYY : TOOL_TIP_DDMMYY;
-        
+        if (ftf == null) {
+            return;
+        }        
         if (date == null) {
-            ftf.setToolTipText(tttEntry);
+            ftf.setToolTipText(getToolTip());
         } else {
-            ftf.setToolTipText(DATE_FORMAT_FIXED.format(date) + " (" + tttEntry + ")");
+            ftf.setToolTipText(DatesPrefs.formatLong(date) + " (" + getToolTip() + ")");
         }
     }
     
     /**
      * Set value into formatted text field.
+     * @param date The date
      */
     protected void setValueDate(Date date) {
         ftf.setValue(date == null ? null : DISPLAY_FORMAT.format(date));
@@ -331,6 +334,7 @@ public class DateField extends JComponent implements ActionListener, FocusListen
      * changes is done before focus events
      */
     private final class ValueDateGuard implements PropertyChangeListener {
+        @Override
         public void propertyChange(PropertyChangeEvent evt) {
             setInternalDate(getTextDate());
         }

@@ -98,6 +98,7 @@ final class DatesOptionsPanel extends JPanel {
         orders = new Vector<ComboItem>();
         orders.add(new ComboItem(NbBundle.getMessage(getClass(), "MMDDYY"), DatesPrefs.MMDDYY));
         orders.add(new ComboItem(NbBundle.getMessage(getClass(), "DDMMYY"), DatesPrefs.DDMMYY));
+        orders.add(new ComboItem(NbBundle.getMessage(getClass(), "YYMMDD"), DatesPrefs.YYMMDD));
     }
 
     void store() {
@@ -126,6 +127,7 @@ final class DatesOptionsPanel extends JPanel {
         public String toString() {
             return label;
         }
+        @Override
         public int compareTo(ComboItem item) {
             return item.label.compareToIgnoreCase(label);
         }

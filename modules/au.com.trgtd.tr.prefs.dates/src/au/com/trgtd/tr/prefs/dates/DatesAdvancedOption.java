@@ -4,7 +4,7 @@ import org.netbeans.spi.options.AdvancedOption;
 import org.netbeans.spi.options.OptionsPanelController;
 import org.openide.util.NbBundle;
 
-public final class DatesAdvancedOption extends AdvancedOption {
+final class DatesAdvancedOption extends AdvancedOption {
     
     @Override
     public String getDisplayName() {

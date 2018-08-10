@@ -201,18 +201,8 @@ public class ProjectGoalPanel extends JScrollPane {
         panel.repaint();
     }
     
-    private static final String DISPLAY_PATTERN_DDMMYY = "dd/MM/yyyy";
-    private static final String DISPLAY_PATTERN_MMDDYY = "MM/dd/yyyy";     
-    private static DateFormat getDateFormat() {
-        String pattern = (DatesPrefs.getDateOrder() == DatesPrefs.MMDDYY) ?
-            DISPLAY_PATTERN_MMDDYY : DISPLAY_PATTERN_DDMMYY;
-        DateFormat displayFormat = new SimpleDateFormat(pattern);
-        displayFormat.setLenient(false);
-        return displayFormat;
-    }
-
     private String format(Date date) {
-        return date == null ? " " : getDateFormat().format(date);
+        return date == null ? " " : DatesPrefs.formatMedium(date);
     }
 
     public GoalCtrl getModel() {
