@@ -104,7 +104,8 @@ public class SpinnerCycleNumber extends JSpinner {
     
     /**
      * Determines whether or not a given value if it is valid.
-     * @return true iff the value is valid.
+     * @param value The value.
+     * @return true if and only if the value is valid.
      */
     public boolean isValidValue(int value) {
         return (value >= min && value <= max);
@@ -118,7 +119,6 @@ public class SpinnerCycleNumber extends JSpinner {
     /**
      * Sets the value if it is valid.
      * @param value The new value.
-     * @return true if the value was valid and set.
      */
     public void setVal(int value) {
         if (isValidValue(value)) {

@@ -1,2 +1,5 @@
+private/
+build/
 /nbproject/distribution/
 /nbproject/packaging/
+.DS_Store

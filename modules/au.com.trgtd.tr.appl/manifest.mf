@@ -1,5 +1,6 @@
 Manifest-Version: 1.0
 OpenIDE-Module: au.com.trgtd.tr.appl
+OpenIDE-Module-Install: au/com/trgtd/tr/appl/Installer.class
 OpenIDE-Module-Layer: au/com/trgtd/tr/appl/layer.xml
 OpenIDE-Module-Localizing-Bundle: au/com/trgtd/tr/appl/Bundle.properties
 OpenIDE-Module-Requires: org.netbeans.api.javahelp.Help
