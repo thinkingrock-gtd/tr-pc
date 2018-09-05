@@ -7,35 +7,11 @@
             <suite-component/>
             <module-dependencies>
                 <dependency>
-                    <code-name-base>au.com.trgtd.tr.util</code-name-base>
-                    <build-prerequisite/>
-                    <compile-dependency/>
-                    <run-dependency>
-                        <specification-version>3.7.2.1</specification-version>
-                    </run-dependency>
-                </dependency>
-                <dependency>
                     <code-name-base>miglayout</code-name-base>
                     <build-prerequisite/>
                     <compile-dependency/>
                     <run-dependency>
                         <specification-version>4.0</specification-version>
-                    </run-dependency>
-                </dependency>
-                <dependency>
-                    <code-name-base>org.jdesktop.layout</code-name-base>
-                    <build-prerequisite/>
-                    <compile-dependency/>
-                    <run-dependency>
-                        <release-version>1</release-version>
-                        <specification-version>1.33.1</specification-version>
-                    </run-dependency>
-                </dependency>
-                <dependency>
-                    <code-name-base>org.netbeans.core.windows</code-name-base>
-                    <run-dependency>
-                        <release-version>2</release-version>
-                        <specification-version>2.8.1.1</specification-version>
                     </run-dependency>
                 </dependency>
                 <dependency>
@@ -66,7 +42,7 @@
                     <build-prerequisite/>
                     <compile-dependency/>
                     <run-dependency>
-                        <specification-version>8.6.1</specification-version>
+                        <specification-version>9.7.1</specification-version>
                     </run-dependency>
                 </dependency>
                 <dependency>
@@ -82,7 +58,15 @@
                     <build-prerequisite/>
                     <compile-dependency/>
                     <run-dependency>
-                        <specification-version>9.4.1</specification-version>
+                        <specification-version>9.6.1</specification-version>
+                    </run-dependency>
+                </dependency>
+                <dependency>
+                    <code-name-base>org.openide.windows</code-name-base>
+                    <build-prerequisite/>
+                    <compile-dependency/>
+                    <run-dependency>
+                        <specification-version>6.75.1</specification-version>
                     </run-dependency>
                 </dependency>
             </module-dependencies>

@@ -4,8 +4,7 @@ import java.util.logging.Logger;
 import java.util.prefs.BackingStoreException;
 import java.util.prefs.Preferences;
 import au.com.trgtd.tr.appl.Constants;
-import au.com.trgtd.tr.appl.tasks.idlequit.IdleQuitTaskScheduler;
-import au.com.trgtd.tr.util.DateUtils;
+import au.com.trgtd.tr.appl.InactivityDetector;
 import java.util.Date;
 import java.util.logging.Level;
 
@@ -27,6 +26,9 @@ public class ApplicationPrefs {
     public static final int VERSION_CHECK_PERIOD_MONTH = 4;
     public static final int VERSION_CHECK_PERIOD_NEVER = 5;
 
+    public static final int MS_PER_MIN = 60000;     // 1000 * 60
+    public static final int MS_PER_HR = 3600000;    // 1000 * 60 * 60 
+    
     private static final String KEY_LICENSE_ACCEPTED = "license.accepted";
     private static final boolean DEF_LICENSE_ACCEPTED = false;
     private static final String KEY_VERSION_CHECK_LAST_TIME = "version.check.last.time";
@@ -35,7 +37,7 @@ public class ApplicationPrefs {
     private static final int DEF_VERSION_CHECK_PERIOD = VERSION_CHECK_PERIOD_FORTNIGHT;
     private static final String KEY_MESSAGE_CHECK_LAST_TIME = "message.check.last.time";
     private static final long DEF_MESSAGE_CHECK_LAST_TIME = 0;
-    private static final String KEY_IDLE_QUIT_MS = "idle.quit.ms";
+    private static final String KEY_INACTIVITY_MS = "inactivity.ms";
 
     /**
      * Gets the value for the user has accepted the license preference.
@@ -114,80 +116,79 @@ public class ApplicationPrefs {
     }
 
     /**
-     * Gets the idle quit preference value as total milliseconds.
+     * Gets the allowed inactivity preference value as milliseconds.
      *
-     * @return The number of milliseconds (0 if not used).
+     * @return The total number of milliseconds (0 if not used).
      */
-    public static final long getIdleQuitMs() {
-        return PREFS.getLong(KEY_IDLE_QUIT_MS, 0);
+    public static final int getInactivityMs() {
+        return PREFS.getInt(KEY_INACTIVITY_MS, 0);
     }
 
     /** 
-     * Gets the idle quit preference value minutes (excluding hours).
+     * Gets the allowed inactivity preference number of minutes (excluding whole hours).
      *
      * @return The number of minutes (0 if not used).
      */
-    public static final int getIdleQuitMins() {
-        return (int)((getIdleQuitMs() % DateUtils.MS_PER_HR) / DateUtils.MS_PER_MIN);
+    public static final int getInactivityMinutes() {
+        return (getInactivityMs() % MS_PER_HR) / MS_PER_MIN;
     }
 
     /**
-     * Gets the idle quit preference value hours.
+     * Gets the allowed inactivity preference number of whole hours.
      *
-     * @return The number of hours (0 if not used).
+     * @return The number of whole hours (0 if not used).
      */
-    public static final int getIdleQuitHrs() {
-        return (int)(getIdleQuitMs() / DateUtils.MS_PER_HR);
+    public static final int getInactivityHours() {
+        return getInactivityMs() / MS_PER_HR;
     }
 
-    /**
-     * Sets the idle quit preference value as total milliseconds.
+    /*
+     * Sets the allowed inactivity preference value.
      *
-     * @param ms The total number of milliseconds (0 if not used).
+     * @param ms The number of milliseconds (0 if not used).
      */
-    public static final void setIdleQuitMs(long ms) {
-        long oldValue = getIdleQuitMs();
-        long newValue = ms < 0 ? 0 : ms;
+    private static void setInactivityMs(int ms) {
+        int oldValue = getInactivityMs();
+        int newValue = ms < 0 ? 0 : ms;
         if (newValue == oldValue) {
             return;
         }
         
-        PREFS.putLong(KEY_IDLE_QUIT_MS, newValue);
+        PREFS.putInt(KEY_INACTIVITY_MS, newValue);
         flush();
         
-        if (newValue == 0) {
-            IdleQuitTaskScheduler.instance().stop();
-        } else {
-            IdleQuitTaskScheduler.instance().start(newValue);
+        if (oldValue > 0) {
+            InactivityDetector.stop();            
+        }
+        if (newValue > 0) {
+            InactivityDetector.start(newValue);
         }        
     }
 
     /**
-     * Sets the idle quit preference value.
+     * Sets the allowed inactivity preference value as hours and minutes.
      *
-     * @param hrs The number of hours (0 if not used).
-     * @param mins The number of minutes (0 if not used).
+     * @param hrs The number of whole hours (0 if not used).
+     * @param mins The number of additional minutes (0 if not used).
      */
-    public static final void setIdleQuit(int hrs, int mins) {
-        hrs = hrs < 0 ? 0 : hrs;
-        mins = mins < 0 ? 0 : mins;        
-        setIdleQuitMs(hrs * DateUtils.MS_PER_HR + mins * DateUtils.MS_PER_MIN);
+    public static final void setInactivity(int hrs, int mins) {
+        setInactivityMs(hrs * MS_PER_HR + mins * MS_PER_MIN);
     }
 
     /**
-     * Is the idle quit preference used?
+     * Is the allowed inactivity preference used?
      *
      * @return true if the number of milliseconds is greater than 0.
      */
-    public static final boolean isIdleQuitUsed() {
-        return PREFS.getLong(KEY_IDLE_QUIT_MS, 0) > 0;
+    public static final boolean isInactivityUsed() {
+        return PREFS.getInt(KEY_INACTIVITY_MS, 0) > 0;
     }
 
     /**
-     * Set the idle quit preference as not used.
+     * Set the allowed inactivity preference as not used.
      */
-    public static final void setIdleQuitNotUsed() {
-        setIdleQuitMs(0);
+    public static final void setInactivityNotUsed() {
+        setInactivityMs(0);
     }
     
     private static void flush() {

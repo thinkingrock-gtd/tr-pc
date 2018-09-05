@@ -44,19 +44,19 @@ final class ApplicationPanel extends javax.swing.JPanel {
         versionCheckCombo.setSelectedIndex(index);        
         versionCheckCombo.setEnabled(used);
         
-        used = ApplicationPrefs.isIdleQuitUsed();
+        used = ApplicationPrefs.isInactivityUsed();
         idleCheckBox.setSelected(used);
-        idleHoursLabel.setEnabled(used);
-        idleHoursSpinner.setValue(ApplicationPrefs.getIdleQuitHrs());
-        idleHoursSpinner.setEnabled(used);
-        idleMinsLabel.setEnabled(used);
-        idleMinsSpinner.setValue(ApplicationPrefs.getIdleQuitMins());
-        idleMinsSpinner.setEnabled(used);
+        inactiveHrsLabel.setEnabled(used);
+        inactiveHrsSpinner.setValue(ApplicationPrefs.getInactivityHours());
+        inactiveHrsSpinner.setEnabled(used);
+        inactiveMinsLabel.setEnabled(used);
+        inactiveMinsSpinner.setValue(ApplicationPrefs.getInactivityMinutes());
+        inactiveMinsSpinner.setEnabled(used);
     }
 
     void store() {
         ApplicationPrefs.setVersionCheckPeriod(versionCheckCombo.getSelectedIndex());        
-        ApplicationPrefs.setIdleQuit((Integer)idleHoursSpinner.getModel().getValue(), (Integer)idleMinsSpinner.getModel().getValue());
+        ApplicationPrefs.setInactivity((Integer)inactiveHrsSpinner.getModel().getValue(), (Integer)inactiveMinsSpinner.getModel().getValue());
     }
 
     boolean valid() {
@@ -80,32 +80,32 @@ final class ApplicationPanel extends javax.swing.JPanel {
         });
         versionCheckCombo = new JComboBox(new DefaultComboBoxModel(PERIODS));
         versionCheckCombo.setMaximumRowCount(PERIODS.length);
-        idleCheckBox = new JCheckBox(msg("prefs.idle.quit.label"));
+        idleCheckBox = new JCheckBox(msg("prefs.inactive.quit.label"));
         idleCheckBox.setHorizontalTextPosition(SwingConstants.TRAILING);
         idleCheckBox.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent evt) {
                 boolean selected = idleCheckBox.isSelected();
                 if (!selected) {
-                    idleHoursSpinner.setValue(0);
-                    idleMinsSpinner.setValue(0);                    
+                    inactiveHrsSpinner.setValue(0);
+                    inactiveMinsSpinner.setValue(0);                    
                 }
-                idleHoursLabel.setEnabled(selected);
-                idleHoursSpinner.setEnabled(selected);
-                idleMinsLabel.setEnabled(selected);
-                idleMinsSpinner.setEnabled(selected);
+                inactiveHrsLabel.setEnabled(selected);
+                inactiveHrsSpinner.setEnabled(selected);
+                inactiveMinsLabel.setEnabled(selected);
+                inactiveMinsSpinner.setEnabled(selected);
             }
         });
-        idleHoursLabel = new JLabel(msg("prefs.idle.hours.label"));
-        idleMinsLabel = new JLabel(msg("prefs.idle.mins.label"));
-        idleHoursSpinner = new JSpinner(new SpinnerNumberModel(0, 0, 24, 1));
-        idleMinsSpinner = new JSpinner(new SpinnerNumberModel(0, 0, 59, 5));
+        inactiveHrsLabel = new JLabel(msg("prefs.inactive.hrs.label"));
+        inactiveMinsLabel = new JLabel(msg("prefs.inactive.mins.label"));
+        inactiveHrsSpinner = new JSpinner(new SpinnerNumberModel(0, 0, 24, 1));
+        inactiveMinsSpinner = new JSpinner(new SpinnerNumberModel(0, 0, 59, 5));
 
         JPanel idleQuitPanel = new JPanel(new MigLayout("", "0[]2[]2[]2[]0"/*cols*/, "0[]0"/*rows*/));
-        idleQuitPanel.add(idleHoursSpinner, "align left");
-        idleQuitPanel.add(idleHoursLabel, "align left");
-        idleQuitPanel.add(idleMinsSpinner, "align left");
-        idleQuitPanel.add(idleMinsLabel, "align left");
+        idleQuitPanel.add(inactiveHrsSpinner, "align left");
+        idleQuitPanel.add(inactiveHrsLabel, "align left");
+        idleQuitPanel.add(inactiveMinsSpinner, "align left");
+        idleQuitPanel.add(inactiveMinsLabel, "align left");
 
         JPanel mainPanel = new JPanel(new MigLayout("", "2[]2[]2"/*cols*/, "2[]8[]2"/*rows*/));
         mainPanel.add(versionCheckBox, "align left");
@@ -122,10 +122,10 @@ final class ApplicationPanel extends javax.swing.JPanel {
     private JCheckBox versionCheckBox;
     private JComboBox versionCheckCombo;
     private JCheckBox idleCheckBox;
-    private JLabel idleHoursLabel;
-    private JLabel idleMinsLabel;
-    private JSpinner idleHoursSpinner;
-    private JSpinner idleMinsSpinner;
+    private JLabel inactiveHrsLabel;
+    private JLabel inactiveMinsLabel;
+    private JSpinner inactiveHrsSpinner;
+    private JSpinner inactiveMinsSpinner;
 
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
