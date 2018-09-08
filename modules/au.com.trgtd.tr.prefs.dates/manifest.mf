@@ -3,4 +3,4 @@ OpenIDE-Module: au.com.trgtd.tr.prefs.dates
 OpenIDE-Module-Layer: au/com/trgtd/tr/prefs/dates/layer.xml
 OpenIDE-Module-Localizing-Bundle: au/com/trgtd/tr/prefs/dates/Bundle.properties
 OpenIDE-Module-Requires: org.netbeans.api.javahelp.Help
-OpenIDE-Module-Specification-Version: 3.5.1
+OpenIDE-Module-Specification-Version: 3.7.2.1
