@@ -1,4 +1,4 @@
 # ThinkingRock
 
-Netbeans (8.2) project
+NetBeans (8.2) project
 
