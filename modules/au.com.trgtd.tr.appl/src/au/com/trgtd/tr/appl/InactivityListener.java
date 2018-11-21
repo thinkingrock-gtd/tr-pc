@@ -140,7 +140,7 @@ public final class InactivityListener implements ActionListener, AWTEventListene
     public void eventDispatched(AWTEvent e) {
         if (timer.isRunning()) {
             timer.restart();
-            LOGGER.log(Level.INFO, "{0} Restarted. User activity observed.", new Date());
+//          LOGGER.log(Level.INFO, "{0} Restarted. User activity observed.", new Date());
         }
     }
 

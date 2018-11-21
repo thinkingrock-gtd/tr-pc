@@ -4,4 +4,4 @@ OpenIDE-Module-Install: au/com/trgtd/tr/appl/Installer.class
 OpenIDE-Module-Layer: au/com/trgtd/tr/appl/layer.xml
 OpenIDE-Module-Localizing-Bundle: au/com/trgtd/tr/appl/Bundle.properties
 OpenIDE-Module-Requires: org.netbeans.api.javahelp.Help
-OpenIDE-Module-Specification-Version: 3.7.2.1
+OpenIDE-Module-Specification-Version: 3.7.2.2

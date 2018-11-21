@@ -4,5 +4,5 @@ OpenIDE-Module-Install: au/com/trgtd/tr/view/actns/Installer.class
 OpenIDE-Module-Layer: au/com/trgtd/tr/view/actns/layer.xml
 OpenIDE-Module-Localizing-Bundle: au/com/trgtd/tr/view/actns/Bundle.properties
 OpenIDE-Module-Requires: org.netbeans.api.javahelp.Help
-OpenIDE-Module-Specification-Version: 3.5.1
+OpenIDE-Module-Specification-Version: 3.7.2.1
 
