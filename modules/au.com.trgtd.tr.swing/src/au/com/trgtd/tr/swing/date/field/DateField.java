@@ -17,7 +17,6 @@ import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.text.DateFormat;
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeEvent;
@@ -35,7 +34,7 @@ import javax.swing.SwingUtilities;
 import javax.swing.text.MaskFormatter;
 import org.openide.util.NbBundle;
 import au.com.trgtd.tr.util.Utils;
-
+import javax.swing.text.DefaultFormatterFactory;
 
 public class DateField extends JComponent implements ActionListener, FocusListener {
 
@@ -59,7 +58,7 @@ public class DateField extends JComponent implements ActionListener, FocusListen
     private static DateFormat DISPLAY_FORMAT = getDisplayFormat();
     private static DateFormat INPUT_FORMAT = getInputFormat();
     
-    private static Icon icon = new ImageIcon(DateField.class.getResource("/au/com/trgtd/tr/swing/date/field/Down16.gif"));
+    private static final Icon icon = new ImageIcon(DateField.class.getResource("/au/com/trgtd/tr/swing/date/field/Down16.gif"));
     
     private final JFormattedTextField ftf;
     private final JButton btn;
@@ -88,7 +87,6 @@ public class DateField extends JComponent implements ActionListener, FocusListen
         return TOOL_TIPS[DatesPrefs.getDateOrder()];
     }
   
-
     public DateField() {
         this.ftf = new FTF(getMaskFormatter());
         this.btn = createButton();
@@ -103,10 +101,6 @@ public class DateField extends JComponent implements ActionListener, FocusListen
             }
         });
         initialise();
-
-        setPreferredSize(SIZE);
-        setMinimumSize(SIZE);
-        setMaximumSize(SIZE);
     }
     
     private static MaskFormatter getMaskFormatter() {
@@ -133,14 +127,24 @@ public class DateField extends JComponent implements ActionListener, FocusListen
         this.add(Box.createHorizontalGlue());
         this.add(btn);
         
+        final DateField self = this;
+        
         DatesPrefs.getPrefs().addPreferenceChangeListener(new PreferenceChangeListener() {
+            @Override
             public void preferenceChange(PreferenceChangeEvent evt) {
                 if (evt.getKey().equals(DatesPrefs.KEY_DATE_ORDER)) {
                     INPUT_FORMAT = getInputFormat();
                     DISPLAY_FORMAT = getDisplayFormat();
+                    MaskFormatter dmf = DateField.getMaskFormatter();
+                    ftf.setFormatterFactory(new DefaultFormatterFactory(dmf));  
+                    resetDate();
                 }
             }
         });
+        
+        setPreferredSize(SIZE);
+        setMinimumSize(SIZE);
+        setMaximumSize(SIZE);
     }
     
     private JButton createButton() {
@@ -179,6 +183,7 @@ public class DateField extends JComponent implements ActionListener, FocusListen
      *
      * @param ae ActionEvent process event fired by the button
      */
+    @Override
     public void actionPerformed(ActionEvent ae) {
         if (ae.getSource().equals(btn)) {
             popupCalendar();
@@ -192,6 +197,7 @@ public class DateField extends JComponent implements ActionListener, FocusListen
      *
      * @param fe FocusEvent focus event
      */
+    @Override
     public void focusGained(FocusEvent fe) {
     }
     
@@ -199,6 +205,7 @@ public class DateField extends JComponent implements ActionListener, FocusListen
      * Process focus lost events
      * @param fe FocusEvent focus event
      */
+    @Override
     public void focusLost(FocusEvent fe) {
         if (fe.getSource().equals(ftf) && !fe.isTemporary()) {
             setDate(getTextDate());
@@ -212,6 +219,7 @@ public class DateField extends JComponent implements ActionListener, FocusListen
     /**
      * Validate date in dateField.
      * return Date if the date was valid or null if it was invalid.
+     * @return 
      */
     protected final Date getTextDate() {
         try {
@@ -231,6 +239,7 @@ public class DateField extends JComponent implements ActionListener, FocusListen
     
     /**
      * Get value from formatted text field.
+     * @return 
      */
     protected Date getValueDate() {
         try {
@@ -253,9 +262,7 @@ public class DateField extends JComponent implements ActionListener, FocusListen
         }
         DateChooserDialog dialog = dateChooser.getDialog();
         Date newDate = dialog.select(date, this);
-        if (dialog.cancelled()) {
-            return;
-        } else {
+        if (!dialog.cancelled()) {
             setDate(newDate);
             ftf.transferFocus();
         }
@@ -274,6 +281,12 @@ public class DateField extends JComponent implements ActionListener, FocusListen
         setInternalDate(date);
         setValueDate(date);
         setToolTipText();
+    }
+    
+    private void resetDate() {
+        setValueDate(this.date);
+        setToolTipText();
+        firePropertyChange("value", null, this.date);
     }
     
     @Override

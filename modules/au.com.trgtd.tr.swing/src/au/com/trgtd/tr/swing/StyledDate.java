@@ -79,6 +79,7 @@ public class StyledDate extends StyledString implements Comparable {
      * @return -1, 0, 1 if this.date is less than, equal to or greater than
      * o.date respectively.
      */
+    @Override
     public int compareTo(Object object) {
         if ( ! (object instanceof StyledDate)) {
             return -1;

@@ -74,7 +74,7 @@ public class DatesPrefs {
         { 
             new SimpleDateFormat("EEE d MMM yyyy"), 
             new SimpleDateFormat("d/M/yy"), 
-            new SimpleDateFormat("MM/dd/yyyy")
+            new SimpleDateFormat("dd/MM/yyyy")
         },
         {
             DateFormat.getDateInstance(DateFormat.LONG, Locale.JAPANESE), 
