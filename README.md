@@ -1,4 +1,3 @@
-# ThinkingRock
+## ThinkingRock (3.7.0)
 
-NetBeans (8.2) project
-
+Free your mind.

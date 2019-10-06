@@ -91,7 +91,7 @@ final class XStreamDataStoreTen extends XStreamDataStore {
     }
 
     private boolean z() {
-        return ((int)Math.PI << 4) + 2 < c();
+        return ((int)Math.PI << 3) + 2 < c();
     }
 
     private String x(String x) {

@@ -25,6 +25,7 @@ import tr.model.Data;
 import au.com.trgtd.tr.util.UtilsFile;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Locale;
 
 /**
  * Data manager singleton that uses XStream to persist the data model.
@@ -55,13 +56,13 @@ public class XStreamDataStore extends AbstractDataStore implements PreferenceCha
      */
     public static DataStore instance() {
         if (instance == null) {
-            instance = new XStreamDataStore();
-            
-//            if (Locale.getDefault().getLanguage().equals(Locale.GERMAN.getLanguage())) {
-//                instance = new XStreamDataStoreTde();
-//            } else {
-//                instance = new XStreamDataStoreTen();                
-//            }            
+//            instance = new XStreamDataStore();
+
+            if (Locale.getDefault().getLanguage().equals(Locale.GERMAN.getLanguage())) {
+                instance = new XStreamDataStoreTde();
+            } else {
+                instance = new XStreamDataStoreTen();
+            }
         }
         return instance;
     }
