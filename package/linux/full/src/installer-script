@@ -1,0 +1,55 @@
+#!/usr/bin/env bash
+
+set -o errexit
+set -o pipefail
+set -o nounset
+#set -o xtrace
+
+APP="${HOME}/trgtd"
+CFG="${HOME}/.thinkingrock"
+EXT="${CFG}/ext"
+JRE="${CFG}/jre"
+
+function _mkdir {
+  if [ ! -d $1 ]; then
+    mkdir $1
+  fi
+}
+
+function _rmdir {
+  if [ -d $1 ]; then
+    rm -rf $1
+  fi
+}
+
+# Initialise directories
+echo "Initialising, please wait"
+_rmdir ${EXT}
+_rmdir ${JRE}
+_rmdir ${APP}
+_mkdir ${CFG}
+
+# Locate archive (at end of this file)
+archive=$(grep --text --line-number 'ARCHIVE:$' $0 | grep -o -E '[0-9]+')
+# Extract archive
+tail -n +$((archive + 1)) $0 | gzip -vdc - | tar -xvf - > /dev/null
+# Move extract dir to config dir
+mv ext ${EXT}
+# change to config dir
+cd ${CFG}
+
+# Extract JRE archive and install
+tar zxvf ${EXT}/jre.tar.gz &>/dev/null
+mv jre* ${JRE}
+
+# Run app installer using JRE
+${EXT}/tr-install.sh --javahome ${JRE}
+
+# Cleanup
+_rmdir ${EXT}
+
+echo "Done!"
+
+exit 0
+
+ARCHIVE:
