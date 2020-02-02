@@ -6,6 +6,7 @@
         <folder name="Review">
             <file name="au-com-trgtd-tr-view-calendar-DayViewAction.instance"/>
             <file name="au-com-trgtd-tr-view-calendar-WeekViewAction.instance"/>
+            <file name="au-com-trgtd-tr-view-calendar-WeekPlanViewAction.instance"/>
             <file name="au-com-trgtd-tr-view-calendar-MonthViewAction.instance"/>
             <file name="au-com-trgtd-tr-view-calendar-YearViewAction.instance"/>
         </folder>
@@ -14,12 +15,16 @@
     <folder name="Menu">
         <folder name="Review">
             <file name="DayViewAction.shadow">
-                <attr name="position" intvalue="666"/>
+                <attr name="position" intvalue="665"/>
                 <attr name="originalFile" stringvalue="Actions/Review/au-com-trgtd-tr-view-calendar-DayViewAction.instance"/>
             </file>
             <file name="WeekViewAction.shadow">
-                <attr name="position" intvalue="667"/>
+                <attr name="position" intvalue="666"/>
                 <attr name="originalFile" stringvalue="Actions/Review/au-com-trgtd-tr-view-calendar-WeekViewAction.instance"/>
+            </file>
+            <file name="WeekPlanViewAction.shadow">
+                <attr name="position" intvalue="667"/>
+                <attr name="originalFile" stringvalue="Actions/Review/au-com-trgtd-tr-view-calendar-WeekPlanViewAction.instance"/>
             </file>
             <file name="MonthViewAction.shadow">
                 <attr name="position" intvalue="668"/>
@@ -35,12 +40,16 @@
     <folder name="Toolbars">
         <folder name="TR Review">
             <file name="DayViewAction.shadow">
-                <attr name="position" intvalue="6"/>
+                <attr name="position" intvalue="5"/>
                 <attr name="originalFile" stringvalue="Actions/Review/au-com-trgtd-tr-view-calendar-DayViewAction.instance"/>
             </file>
             <file name="WeekViewAction.shadow">
-                <attr name="position" intvalue="7"/>
+                <attr name="position" intvalue="6"/>
                 <attr name="originalFile" stringvalue="Actions/Review/au-com-trgtd-tr-view-calendar-WeekViewAction.instance"/>
+            </file>
+            <file name="WeekPlanViewAction.shadow">
+                <attr name="position" intvalue="7"/>
+                <attr name="originalFile" stringvalue="Actions/Review/au-com-trgtd-tr-view-calendar-WeekPlanViewAction.instance"/>
             </file>
             <file name="MonthViewAction.shadow">
                 <attr name="position" intvalue="8"/>
@@ -54,11 +63,14 @@
     </folder>
 
     <folder name="Shortcuts">
-        <file name="DS-6.shadow">
+        <file name="DS-5.shadow">
             <attr name="originalFile" stringvalue="Actions/Review/au-com-trgtd-tr-view-calendar-DayViewAction.instance"/>
         </file>
-        <file name="DS-7.shadow">
+        <file name="DS-6.shadow">
             <attr name="originalFile" stringvalue="Actions/Review/au-com-trgtd-tr-view-calendar-WeekViewAction.instance"/>
+        </file>
+        <file name="DS-7.shadow">
+            <attr name="originalFile" stringvalue="Actions/Review/au-com-trgtd-tr-view-calendar-WeekPlanViewAction.instance"/>
         </file>
         <file name="DS-8.shadow">
             <attr name="originalFile" stringvalue="Actions/Review/au-com-trgtd-tr-view-calendar-MonthViewAction.instance"/>

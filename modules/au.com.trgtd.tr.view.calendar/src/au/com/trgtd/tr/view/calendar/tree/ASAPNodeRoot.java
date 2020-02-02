@@ -1,7 +1,6 @@
 package au.com.trgtd.tr.view.calendar.tree;
 
 import au.com.trgtd.tr.cal.ctlr.DateCtlr;
-import au.com.trgtd.tr.view.calendar.DayViewTree;
 import au.com.trgtd.tr.view.calendar.TrCalModel;
 import org.openide.nodes.AbstractNode;
 import org.openide.util.NbBundle;
@@ -15,17 +14,19 @@ import org.openide.util.lookup.InstanceContent;
  */
 public class ASAPNodeRoot extends AbstractNode {
 
-    private final static String DOASAP_DUE = NbBundle.getMessage(DayViewTree.class, "doasap.due");
-    private final static String DOASAP_STARTING = NbBundle.getMessage(DayViewTree.class, "doasap.starting");
+    private final static String DOASAP_DUE = NbBundle.getMessage(TrCalModel.class, "doasap.due");
+    private final static String DOASAP_STARTING = NbBundle.getMessage(TrCalModel.class, "doasap.starting");
+    private final static String DOASAP_OVERDUE = NbBundle.getMessage(TrCalModel.class, "doasap.overdue");
 
     public enum Type {
-        Starting, Due
+        Starting, Due, Overdue
     }
     private final Type type;
     private final InstanceContent content;
 
     /**
      * Constructs a new instance.
+     *
      * @param Action The action.
      */
     public ASAPNodeRoot(DateCtlr dateCtlr, TrCalModel calModel, Type type) {
@@ -47,6 +48,13 @@ public class ASAPNodeRoot extends AbstractNode {
 
     @Override
     public String getName() {
-        return type == Type.Due ? DOASAP_DUE : DOASAP_STARTING;
+        switch (type) {
+            case Starting:
+                return DOASAP_STARTING;
+            case Overdue:
+                return DOASAP_OVERDUE;
+            default:
+                return DOASAP_DUE;
+        }
     }
 }

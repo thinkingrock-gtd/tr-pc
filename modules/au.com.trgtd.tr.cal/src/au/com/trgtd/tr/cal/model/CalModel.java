@@ -29,16 +29,32 @@ public interface CalModel {
     public Map<Date, List<CalEvent>> getCalEventsMap();
 
     /**
-     * Gets the calendar events (excluding all-day events) for on a given day.
-     * @return a list of calendar events which may be empty but never null.
+     * Gets the calendar events for a given day that have a specific time 
+     * (not all-day events). 
+     * @param day The day.
+     * @return a list of calendar events. Can be empty but not null.
      */    
-    public List<CalEvent> getCalEvents(Day day);
+    public List<CalEvent> getEventsWithTime(Day day);
 
     /**
      * Gets the "all-day" calendar events for a given day.
+     * @param day The day.
      * @return a list of calendar events which may be empty but never null.
      */    
-    public List<CalEvent> getCalEventsAllDay(Day day);
+    public List<CalEvent> getEventsAllDay(Day day);    
+
+    // FOR Week planning:
+    public List<CalEvent> getEventsDelegatedFollowupOn(Day day);
+    public List<CalEvent> getEventsDelegatedFollowupBefore(Day day);
+    public List<CalEvent> getEventsDelegatedStartOn(Day day);
+    public List<CalEvent> getEventsDelegatedStartBefore(Day day);
+    public List<CalEvent> getEventsDelegatedDueOn(Day day);
+    public List<CalEvent> getEventsDelegatedOverdue(Day day);
+    public List<CalEvent> getEventsDoASAPDueOn(Day day);
+    public List<CalEvent> getEventsDoASAPOverdue(Day day);
+    public List<CalEvent> getEventsDoASAPStartOn(Day day);
+    public List<CalEvent> getEventsDoASAPStartBefore(Day day);
+    // END
     
     /**
      * Add a list of calendar events.

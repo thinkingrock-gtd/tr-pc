@@ -56,13 +56,13 @@ public class XStreamDataStore extends AbstractDataStore implements PreferenceCha
      */
     public static DataStore instance() {
         if (instance == null) {
-//            instance = new XStreamDataStore();
+            instance = new XStreamDataStore();
 
-            if (Locale.getDefault().getLanguage().equals(Locale.GERMAN.getLanguage())) {
-                instance = new XStreamDataStoreTde();
-            } else {
-                instance = new XStreamDataStoreTen();
-            }
+//            if (Locale.getDefault().getLanguage().equals(Locale.GERMAN.getLanguage())) {
+//                instance = new XStreamDataStoreTde();
+//            } else {
+//                instance = new XStreamDataStoreTen();
+//            }
         }
         return instance;
     }

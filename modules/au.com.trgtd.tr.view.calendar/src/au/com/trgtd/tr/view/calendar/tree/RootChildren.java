@@ -24,9 +24,10 @@ public class RootChildren extends Children.Keys<Node> {
     }
 
     private List<Node> getItems() {
-        List<Node> items = new ArrayList<Node>();
-        items.add(new ASAPNodeRoot(dateCtlr, calModel, Type.Due));
+        List<Node> items = new ArrayList<>();
         items.add(new ASAPNodeRoot(dateCtlr, calModel, Type.Starting));
+        items.add(new ASAPNodeRoot(dateCtlr, calModel, Type.Due));
+        items.add(new ASAPNodeRoot(dateCtlr, calModel, Type.Overdue));
         items.add(new DelegatedNodeRoot(dateCtlr, calModel));
         return items;
     }

@@ -1,7 +1,6 @@
 package au.com.trgtd.tr.view.calendar.tree;
 
 import au.com.trgtd.tr.cal.ctlr.DateCtlr;
-import au.com.trgtd.tr.view.calendar.DayViewTree;
 import au.com.trgtd.tr.view.calendar.TrCalModel;
 import org.openide.nodes.AbstractNode;
 import org.openide.util.NbBundle;
@@ -39,7 +38,7 @@ public class DelegatedNodeRoot extends AbstractNode {
 
     @Override
     public String getName() {
-        return NbBundle.getMessage(DayViewTree.class, "delegated.followup");
+        return NbBundle.getMessage(TrCalModel.class, "delegated.followup");
     }
     
 }

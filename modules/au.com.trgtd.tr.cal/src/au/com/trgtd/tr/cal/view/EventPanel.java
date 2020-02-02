@@ -111,9 +111,6 @@ public class EventPanel extends JPanel {
         timeLabel.setHorizontalAlignment(SwingConstants.LEFT);
 //      timeLabel.setVerticalAlignment(SwingConstants.TOP);
         
-        
-        
-
         textLabel.setBorder(null);
         textLabel.setFont(Fonts.EVENT_TEXT.deriveFont(Font.BOLD));
         textLabel.setHorizontalAlignment(SwingConstants.LEFT);

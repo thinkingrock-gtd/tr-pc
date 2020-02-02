@@ -15,12 +15,12 @@ import org.openide.windows.WindowManager;
 import tr.model.Data;
 import tr.model.DataLookup;
 
-public final class WeekViewAction extends CallableSystemAction implements InitialAction {
+public final class WeekPlanViewAction extends CallableSystemAction implements InitialAction {
 
-    public WeekViewAction() {
+    public WeekPlanViewAction() {
         super();
         enableDisable();
-        Lookup.Result<Data> r = DataLookup.instance().lookup(new Lookup.Template<Data>(Data.class));
+        Lookup.Result<Data> r = DataLookup.instance().lookup(new Lookup.Template<>(Data.class));
         r.addLookupListener(new LookupListener() {
             @Override
             public void resultChanged(LookupEvent lookupEvent) {
@@ -31,12 +31,12 @@ public final class WeekViewAction extends CallableSystemAction implements Initia
 
     @Override
     protected String iconResource() {
-        return "au/com/trgtd/tr/view/calendar/resource/week.png";
+        return "au/com/trgtd/tr/view/calendar/resource/weekplan.png";
     }
 
     @Override
     public String getName() {
-        return NbBundle.getMessage(getClass(), "CTL_WeekAction");
+        return NbBundle.getMessage(getClass(), "CTL_WeekPlanAction");
     }
 
     private void enableDisable() {
@@ -49,10 +49,9 @@ public final class WeekViewAction extends CallableSystemAction implements Initia
         });
     }
 
-    /** Gets the action identifier. */
     @Override
     public String getID() {
-        return "week.view";
+        return "week.plan.view";
     }
 
     @Override
@@ -60,9 +59,9 @@ public final class WeekViewAction extends CallableSystemAction implements Initia
         EventQueue.invokeLater(new Runnable() {
             @Override
             public void run() {
-                TopComponent tc = WindowManager.getDefault().findTopComponent("WeekTopComponent");
+                TopComponent tc = WindowManager.getDefault().findTopComponent("WeekPlanTopComponent");
                 if (null == tc) {
-                    tc = new WeekTopComponent();
+                    tc = new WeekPlanTopComponent();
                 }
                 WindowUtils.closeWindows();
                 Mode mode = WindowManager.getDefault().findMode("editor");

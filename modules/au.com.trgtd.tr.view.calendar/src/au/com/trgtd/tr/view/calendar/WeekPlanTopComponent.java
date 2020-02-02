@@ -2,13 +2,14 @@ package au.com.trgtd.tr.view.calendar;
 
 import au.com.trgtd.tr.appl.Constants;
 import au.com.trgtd.tr.cal.ctlr.DateCtlr;
-import au.com.trgtd.tr.cal.ctlr.WeekPanelCtlr;
+import au.com.trgtd.tr.cal.ctlr.WeekPlanPanelCtlr;
 import au.com.trgtd.tr.cal.view.DateChangerPanel;
 import au.com.trgtd.tr.cal.view.DateDisplayPanel;
 import au.com.trgtd.tr.cal.view.Period;
-import au.com.trgtd.tr.cal.view.WeekPanel;
+import au.com.trgtd.tr.cal.view.WeekPlanPanel;
 import au.com.trgtd.tr.view.ViewUtils;
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.Component;
 import java.awt.Dimension;
 import java.beans.PropertyChangeEvent;
@@ -23,19 +24,22 @@ import org.openide.windows.Mode;
 import org.openide.windows.TopComponent;
 import org.openide.windows.WindowManager;
 
+public final class WeekPlanTopComponent extends TopComponent {
 
-public final class WeekTopComponent extends TopComponent {
+    private final static String ICON_PATH = "au/com/trgtd/tr/view/calendar/resource/weekplan.png";
 
-    private final static String ICON_PATH = "au/com/trgtd/tr/view/calendar/resource/week.png";
+    private final TrCalModel calModel = new TrCalModel();
     private final DateCtlr dateCtlr = Singleton.dateCtlr;
-    private ShowHideDoneAction showDoneAction;
-    
-    /**
-     * Creates a new instance.
-     */
-    public WeekTopComponent() {
-        setName(NbBundle.getMessage(WeekTopComponent.class, "CTL_WeekTopComponent"));
+    private final WeekPlanPanelCtlr weekPlanPanelCtlr = new WeekPlanPanelCtlr(calModel, dateCtlr);
+
+    private final ShowHideDoneAction showDoneAction = new ShowHideDoneAction(calModel, dateCtlr);
+
+    public WeekPlanTopComponent() {
+        setName(NbBundle.getMessage(WeekPlanTopComponent.class, "CTL_WeekPlanTopComponent"));
         setIcon(ImageUtilities.loadImage(ICON_PATH, true));
+        setBackground(ViewUtils.COLOR_PANEL_BG);
+        setLayout(new BorderLayout());
+        setOpaque(true);
         putClientProperty(TopComponent.PROP_CLOSING_DISABLED, Boolean.TRUE);
         putClientProperty(TopComponent.PROP_DRAGGING_DISABLED, Boolean.TRUE);
         putClientProperty(TopComponent.PROP_MAXIMIZATION_DISABLED, Boolean.TRUE);
@@ -44,30 +48,6 @@ public final class WeekTopComponent extends TopComponent {
     }
 
     private void initComponents() {
-        setLayout(new BorderLayout());
-        setOpaque(true);
-        setBackground(ViewUtils.COLOR_PANEL_BG);
-
-        TrCalModel calModel = new TrCalModel();
-        
-        showDoneAction = new ShowHideDoneAction(calModel, dateCtlr);
-
-        WeekPanelCtlr weekPanelCtlr = new WeekPanelCtlr(calModel, dateCtlr, 0, 23);
-        WeekPanel weekPanel = weekPanelCtlr.getWeekPanel();
-        weekPanel.addDayListener(new PropertyChangeListener() {
-            @Override
-            public void propertyChange(PropertyChangeEvent pce) {
-                Object newValue = pce.getNewValue();
-                if (newValue instanceof Date) {
-                    dateCtlr.setDate((Date)newValue);
-                    activateDayView();                                        
-                }
-            }            
-        });
-        
-        weekPanel.setOpaque(true);
-        weekPanel.setBackground(ViewUtils.COLOR_PANEL_BG);
-
         DateDisplayPanel dateDisplayPanel = new DateDisplayPanel(dateCtlr, Period.Week);
         dateDisplayPanel.setOpaque(true);
         dateDisplayPanel.setBackground(ViewUtils.COLOR_PANEL_BG);
@@ -83,10 +63,23 @@ public final class WeekTopComponent extends TopComponent {
         northPanel.setOpaque(true);
         northPanel.setBackground(ViewUtils.COLOR_PANEL_BG);
 
-        add(northPanel, BorderLayout.NORTH);
-        add(weekPanel, BorderLayout.CENTER);
-    }
+        WeekPlanPanel weekPlanPanel = weekPlanPanelCtlr.getWeekPanel();
+        weekPlanPanel.setOpaque(true);
+        weekPlanPanel.setBackground(ViewUtils.COLOR_PANEL_BG);
+        weekPlanPanel.addDayListener(new PropertyChangeListener() {
+            @Override
+            public void propertyChange(PropertyChangeEvent pce) {
+                Object newValue = pce.getNewValue();
+                if (newValue instanceof Date) {
+                    dateCtlr.setDate((Date) newValue);
+                    activateDayView();
+                }
+            }
+        });
 
+        add(northPanel, BorderLayout.NORTH);
+        add(weekPlanPanel, BorderLayout.CENTER);
+    }
 
     private Component getShowDoneButton() {
         JToggleButton button = new JToggleButton(showDoneAction);
@@ -116,7 +109,7 @@ public final class WeekTopComponent extends TopComponent {
     protected void componentOpened() {
         dateCtlr.fireChange();
     }
-    
+
     @Override
     public int getPersistenceType() {
         return TopComponent.PERSISTENCE_NEVER;
@@ -124,7 +117,7 @@ public final class WeekTopComponent extends TopComponent {
 
     @Override
     protected String preferredID() {
-        return "WeekTopComponent";
+        return "WeekPlanTopComponent";
     }
 
 }

@@ -150,7 +150,7 @@ public final class DayGridCtlr {
     
     private void initEventMap() {
         eventMap.clear();
-        for (CalEvent event : calModel.getCalEvents(dateCtlr.getDay())) {
+        for (CalEvent event : calModel.getEventsWithTime(dateCtlr.getDay())) {
             eventMap.put(event.getCalEventID(), new EventPanel(dateCtlr.getDate(), event));            
         }
     }

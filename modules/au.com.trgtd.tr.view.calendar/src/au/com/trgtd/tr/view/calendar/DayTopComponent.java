@@ -20,8 +20,6 @@ import javax.swing.JToggleButton;
 import javax.swing.border.Border;
 import javax.swing.text.DefaultEditorKit;
 import net.miginfocom.swing.MigLayout;
-//import org.netbeans.api.settings.ConvertAsProperties;
-//import org.openide.awt.ActionID;
 import org.openide.explorer.ExplorerManager;
 import org.openide.explorer.ExplorerUtils;
 import org.openide.explorer.view.BeanTreeView;
@@ -93,8 +91,6 @@ public final class DayTopComponent extends TopComponent
         treePanel.add(treeView, BorderLayout.CENTER);
 
         
-//        DayPanelCtlr dayPanelCtlr = new DayPanelCtlr(calModel, dateCtlr, 0, 23);
-//        DayPanel dayPanel = dayPanelCtlr.getPanel();
         DayPanelCtlr dayPanelCtlr = new DayPanelCtlr(calModel, dateCtlr, 0, 23);        
         DayPanel dayPanel = dayPanelCtlr.getPanel();
         
