@@ -1,5 +1,6 @@
-package au.com.trgtd.tr.cal.ctlr;
+package au.com.trgtd.tr.view.cal;
 
+import au.com.trgtd.tr.cal.ctlr.DateCtlr;
 import au.com.trgtd.tr.cal.model.CalEvent;
 import au.com.trgtd.tr.cal.model.CalModel;
 import au.com.trgtd.tr.cal.model.Day;

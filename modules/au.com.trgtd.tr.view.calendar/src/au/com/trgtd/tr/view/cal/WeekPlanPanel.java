@@ -1,7 +1,8 @@
-package au.com.trgtd.tr.cal.view;
+package au.com.trgtd.tr.view.cal;
 
 import au.com.trgtd.tr.cal.model.Day;
 import au.com.trgtd.tr.cal.utils.DateUtils;
+import au.com.trgtd.tr.cal.view.DayListPanel;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.GridLayout;

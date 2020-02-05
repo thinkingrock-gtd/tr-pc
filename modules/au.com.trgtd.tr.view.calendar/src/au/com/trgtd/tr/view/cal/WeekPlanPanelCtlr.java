@@ -1,11 +1,11 @@
-package au.com.trgtd.tr.cal.ctlr;
+package au.com.trgtd.tr.view.cal;
 
+import au.com.trgtd.tr.cal.ctlr.DateCtlr;
 import au.com.trgtd.tr.cal.model.CalEvent;
 import au.com.trgtd.tr.cal.model.CalModel;
 import au.com.trgtd.tr.cal.model.Day;
 import au.com.trgtd.tr.cal.utils.DateUtils;
 import au.com.trgtd.tr.cal.view.DayListPanel;
-import au.com.trgtd.tr.cal.view.WeekPlanPanel;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 
@@ -111,8 +111,7 @@ public final class WeekPlanPanelCtlr {
         weekPlanPanel.updateDayHeadings(start, end);
     }
 
-    // Fire date change events for each day to force grids to update for changed 
-    // calendar events.
+    // Fire date change events for each day, to force grids to update for changed calendar events.
     private void fireDateChanges() {
         for (DateCtlr dc : dateCtlrs) {
             dc.fireChange();

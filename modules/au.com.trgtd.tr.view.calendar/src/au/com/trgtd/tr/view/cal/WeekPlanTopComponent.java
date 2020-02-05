@@ -2,17 +2,10 @@ package au.com.trgtd.tr.view.cal;
 
 import au.com.trgtd.tr.appl.Constants;
 import au.com.trgtd.tr.cal.ctlr.DateCtlr;
-import au.com.trgtd.tr.cal.ctlr.WeekPlanPanelCtlr;
 import au.com.trgtd.tr.cal.view.DateChangerPanel;
 import au.com.trgtd.tr.cal.view.DateDisplayPanel;
 import au.com.trgtd.tr.cal.view.Period;
-import au.com.trgtd.tr.cal.view.WeekPlanPanel;
 import au.com.trgtd.tr.view.ViewUtils;
-import au.com.trgtd.tr.view.cal.DayTopComponent;
-import au.com.trgtd.tr.view.cal.ShowHideDoneAction;
-import au.com.trgtd.tr.view.cal.Singleton;
-import au.com.trgtd.tr.view.cal.CalModelImp;
-import au.com.trgtd.tr.view.cal.WeekPlanAction;
 import java.awt.BorderLayout;
 import java.awt.Component;
 import java.awt.Dimension;

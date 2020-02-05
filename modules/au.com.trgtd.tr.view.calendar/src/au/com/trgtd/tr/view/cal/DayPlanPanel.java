@@ -1,5 +1,6 @@
-package au.com.trgtd.tr.cal.view;
+package au.com.trgtd.tr.view.cal;
 
+import au.com.trgtd.tr.cal.view.DayListPanel;
 import javax.swing.JPanel;
 import net.miginfocom.swing.MigLayout;
 
