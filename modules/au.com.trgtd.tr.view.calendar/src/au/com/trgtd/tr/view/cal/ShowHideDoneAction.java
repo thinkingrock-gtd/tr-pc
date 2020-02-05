@@ -1,4 +1,4 @@
-package au.com.trgtd.tr.view.calendar;
+package au.com.trgtd.tr.view.cal;
 
 import au.com.trgtd.tr.cal.ctlr.DateCtlr;
 import au.com.trgtd.tr.resource.Icons;
@@ -15,10 +15,10 @@ import org.openide.util.NbBundle;
  */
 public class ShowHideDoneAction extends AbstractAction {
 
-    private final TrCalModel model;
+    private final CalModelImp model;
     private final DateCtlr dateCtlr;
 
-    public ShowHideDoneAction(TrCalModel model, DateCtlr dateCtlr) {
+    public ShowHideDoneAction(CalModelImp model, DateCtlr dateCtlr) {
         putValue(Action.NAME, NbBundle.getMessage(getClass(), "show.hide.done"));
         putValue(SMALL_ICON, Icons.ShowDone);
         this.model = model;

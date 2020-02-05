@@ -1,4 +1,4 @@
-package au.com.trgtd.tr.view.calendar;
+package au.com.trgtd.tr.view.cal;
 
 import au.com.trgtd.tr.appl.InitialAction;
 import au.com.trgtd.tr.prefs.ui.utils.WindowUtils;
@@ -15,12 +15,12 @@ import org.openide.windows.WindowManager;
 import tr.model.Data;
 import tr.model.DataLookup;
 
-public final class YearViewAction extends CallableSystemAction implements InitialAction {
+public final class WeekAction extends CallableSystemAction implements InitialAction {
 
-    public YearViewAction() {
+    public WeekAction() {
         super();
         enableDisable();
-        Lookup.Result<Data> r = DataLookup.instance().lookupResult(Data.class);
+        Lookup.Result<Data> r = DataLookup.instance().lookup(new Lookup.Template<Data>(Data.class));
         r.addLookupListener(new LookupListener() {
             @Override
             public void resultChanged(LookupEvent lookupEvent) {
@@ -31,12 +31,12 @@ public final class YearViewAction extends CallableSystemAction implements Initia
 
     @Override
     protected String iconResource() {
-        return "au/com/trgtd/tr/view/calendar/resource/year.png";
+        return "au/com/trgtd/tr/view/calendar/resource/week.png";
     }
 
     @Override
     public String getName() {
-        return NbBundle.getMessage(getClass(), "CTL_YearAction");
+        return NbBundle.getMessage(getClass(), "CTL_WeekAction");
     }
 
     private void enableDisable() {
@@ -52,7 +52,7 @@ public final class YearViewAction extends CallableSystemAction implements Initia
     /** Gets the action identifier. */
     @Override
     public String getID() {
-        return "year.view";
+        return "week.view";
     }
 
     @Override
@@ -60,9 +60,9 @@ public final class YearViewAction extends CallableSystemAction implements Initia
         EventQueue.invokeLater(new Runnable() {
             @Override
             public void run() {
-                TopComponent tc = WindowManager.getDefault().findTopComponent("YearTopComponent");
+                TopComponent tc = WindowManager.getDefault().findTopComponent("WeekTopComponent");
                 if (null == tc) {
-                    tc = new YearTopComponent();
+                    tc = new WeekTopComponent();
                 }
                 WindowUtils.closeWindows();
                 Mode mode = WindowManager.getDefault().findMode("editor");

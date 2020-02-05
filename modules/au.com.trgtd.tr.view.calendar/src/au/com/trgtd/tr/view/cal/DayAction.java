@@ -1,4 +1,4 @@
-package au.com.trgtd.tr.view.calendar;
+package au.com.trgtd.tr.view.cal;
 
 import au.com.trgtd.tr.appl.InitialAction;
 import au.com.trgtd.tr.prefs.ui.utils.WindowUtils;
@@ -15,9 +15,9 @@ import org.openide.windows.WindowManager;
 import tr.model.Data;
 import tr.model.DataLookup;
 
-public final class DayViewAction extends CallableSystemAction implements InitialAction {
+public final class DayAction extends CallableSystemAction implements InitialAction {
 
-    public DayViewAction() {
+    public DayAction() {
         super();
         enableDisable();
         Lookup.Result<Data> r = DataLookup.instance().lookup(new Lookup.Template<Data>(Data.class));

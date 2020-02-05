@@ -1,7 +1,7 @@
-package au.com.trgtd.tr.view.calendar.tree;
+package au.com.trgtd.tr.view.cal.tree;
 
 import au.com.trgtd.tr.cal.ctlr.DateCtlr;
-import au.com.trgtd.tr.view.calendar.TrCalModel;
+import au.com.trgtd.tr.view.cal.CalModelImp;
 import org.openide.nodes.AbstractNode;
 import org.openide.util.NbBundle;
 import org.openide.util.lookup.AbstractLookup;
@@ -14,9 +14,9 @@ import org.openide.util.lookup.InstanceContent;
  */
 public class ASAPNodeRoot extends AbstractNode {
 
-    private final static String DOASAP_DUE = NbBundle.getMessage(TrCalModel.class, "doasap.due");
-    private final static String DOASAP_STARTING = NbBundle.getMessage(TrCalModel.class, "doasap.starting");
-    private final static String DOASAP_OVERDUE = NbBundle.getMessage(TrCalModel.class, "doasap.overdue");
+    private final static String DOASAP_DUE = NbBundle.getMessage(CalModelImp.class, "doasap.due");
+    private final static String DOASAP_STARTING = NbBundle.getMessage(CalModelImp.class, "doasap.starting");
+    private final static String DOASAP_OVERDUE = NbBundle.getMessage(CalModelImp.class, "doasap.overdue");
 
     public enum Type {
         Starting, Due, Overdue
@@ -29,7 +29,7 @@ public class ASAPNodeRoot extends AbstractNode {
      *
      * @param Action The action.
      */
-    public ASAPNodeRoot(DateCtlr dateCtlr, TrCalModel calModel, Type type) {
+    public ASAPNodeRoot(DateCtlr dateCtlr, CalModelImp calModel, Type type) {
         this(new ASAPChildren(dateCtlr, calModel, type), new InstanceContent(), type);
     }
 

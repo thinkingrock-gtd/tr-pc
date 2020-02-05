@@ -1,4 +1,4 @@
-package au.com.trgtd.tr.view.calendar;
+package au.com.trgtd.tr.view.cal;
 
 import au.com.trgtd.tr.appl.InitialAction;
 import au.com.trgtd.tr.prefs.ui.utils.WindowUtils;
@@ -15,9 +15,9 @@ import org.openide.windows.WindowManager;
 import tr.model.Data;
 import tr.model.DataLookup;
 
-public final class WeekViewAction extends CallableSystemAction implements InitialAction {
+public final class MonthAction extends CallableSystemAction implements InitialAction {
 
-    public WeekViewAction() {
+    public MonthAction() {
         super();
         enableDisable();
         Lookup.Result<Data> r = DataLookup.instance().lookup(new Lookup.Template<Data>(Data.class));
@@ -31,12 +31,12 @@ public final class WeekViewAction extends CallableSystemAction implements Initia
 
     @Override
     protected String iconResource() {
-        return "au/com/trgtd/tr/view/calendar/resource/week.png";
+        return "au/com/trgtd/tr/view/calendar/resource/month.png";
     }
 
     @Override
     public String getName() {
-        return NbBundle.getMessage(getClass(), "CTL_WeekAction");
+        return NbBundle.getMessage(getClass(), "CTL_MonthAction");
     }
 
     private void enableDisable() {
@@ -52,7 +52,7 @@ public final class WeekViewAction extends CallableSystemAction implements Initia
     /** Gets the action identifier. */
     @Override
     public String getID() {
-        return "week.view";
+        return "month.view";
     }
 
     @Override
@@ -60,9 +60,9 @@ public final class WeekViewAction extends CallableSystemAction implements Initia
         EventQueue.invokeLater(new Runnable() {
             @Override
             public void run() {
-                TopComponent tc = WindowManager.getDefault().findTopComponent("WeekTopComponent");
+                TopComponent tc = WindowManager.getDefault().findTopComponent("MonthTopComponent");
                 if (null == tc) {
-                    tc = new WeekTopComponent();
+                    tc = new MonthTopComponent();
                 }
                 WindowUtils.closeWindows();
                 Mode mode = WindowManager.getDefault().findMode("editor");

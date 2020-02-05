@@ -1,4 +1,4 @@
-package au.com.trgtd.tr.view.calendar;
+package au.com.trgtd.tr.view.cal;
 
 import au.com.trgtd.tr.cal.model.CalEvent;
 import au.com.trgtd.tr.cal.model.CalEvent.Type;
@@ -9,7 +9,7 @@ import au.com.trgtd.tr.cal.model.EventIDFactory;
 import au.com.trgtd.tr.cal.model.EventUtils;
 import au.com.trgtd.tr.services.Services;
 import au.com.trgtd.tr.util.DateUtils;
-import au.com.trgtd.tr.view.calendar.dialog.ActionEditDialog;
+import au.com.trgtd.tr.view.cal.dialog.ActionEditDialog;
 import java.awt.Color;
 import java.beans.PropertyChangeListener;
 import java.util.*;
@@ -19,11 +19,11 @@ import tr.model.action.ActionStateDelegated;
 import tr.model.action.ActionStateScheduled;
 
 /**
- * Calendar model (CalModel) implementation for scheduled actions.
+ * Calendar model implementation.
  *
  * @author Jeremy Moore
  */
-public class TrCalModel implements CalModel {
+public class CalModelImp implements CalModel {
 
     private final static char CHAR_DO_ASAP = '\u2605';
     private final static char CHAR_INACTIVE = '\u2606';
@@ -32,7 +32,7 @@ public class TrCalModel implements CalModel {
 
     private boolean showDone = false;
 
-    public TrCalModel() {
+    public CalModelImp() {
     }
 
     public boolean isShowDone() {

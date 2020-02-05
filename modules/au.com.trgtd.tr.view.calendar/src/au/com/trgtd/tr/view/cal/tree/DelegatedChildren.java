@@ -1,8 +1,8 @@
-package au.com.trgtd.tr.view.calendar.tree;
+package au.com.trgtd.tr.view.cal.tree;
 
 import au.com.trgtd.tr.cal.ctlr.DateCtlr;
 import au.com.trgtd.tr.cal.model.CalEvent;
-import au.com.trgtd.tr.view.calendar.TrCalModel;
+import au.com.trgtd.tr.view.cal.CalModelImp;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.util.Collections;
@@ -16,9 +16,9 @@ import org.openide.nodes.Node;
 public class DelegatedChildren extends Children.Keys<CalEvent> { 
 
     private final DateCtlr dateCtlr;
-    private final TrCalModel calModel;
+    private final CalModelImp calModel;
     
-    public DelegatedChildren(DateCtlr dateCtlr, TrCalModel calModel) {
+    public DelegatedChildren(DateCtlr dateCtlr, CalModelImp calModel) {
         this.dateCtlr = dateCtlr;
         this.calModel = calModel;
     }

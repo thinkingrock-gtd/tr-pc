@@ -1,12 +1,12 @@
-package au.com.trgtd.tr.view.calendar;
+package au.com.trgtd.tr.view.cal;
 
 import au.com.trgtd.tr.appl.Constants;
 import au.com.trgtd.tr.cal.ctlr.DateCtlr;
+import au.com.trgtd.tr.cal.ctlr.WeekPanelCtlr;
 import au.com.trgtd.tr.cal.view.DateChangerPanel;
 import au.com.trgtd.tr.cal.view.DateDisplayPanel;
-import au.com.trgtd.tr.cal.view.DayViewer;
-import au.com.trgtd.tr.cal.view.MonthPanel;
 import au.com.trgtd.tr.cal.view.Period;
+import au.com.trgtd.tr.cal.view.WeekPanel;
 import au.com.trgtd.tr.view.ViewUtils;
 import java.awt.BorderLayout;
 import java.awt.Component;
@@ -17,47 +17,30 @@ import java.util.Date;
 import javax.swing.JPanel;
 import javax.swing.JToggleButton;
 import net.miginfocom.swing.MigLayout;
-import org.openide.util.Exceptions;
 import org.openide.util.ImageUtilities;
 import org.openide.util.NbBundle;
 import org.openide.windows.Mode;
 import org.openide.windows.TopComponent;
 import org.openide.windows.WindowManager;
 
-/**
- * Calendar month view top component.
- */
-public final class MonthTopComponent extends TopComponent implements DayViewer {
 
-    private final static String ICON_PATH = "au/com/trgtd/tr/view/calendar/resource/month.png";
-    private final DateCtlr dateCtlr;
-    private final TrCalModel calModel;
-    private final JPanel monthPanel;
-    private final ShowHideDoneAction showDoneAction;
+public final class WeekTopComponent extends TopComponent {
 
+    private final static String ICON_PATH = "au/com/trgtd/tr/view/calendar/resource/week.png";
+    private final DateCtlr dateCtlr = Singleton.dateCtlr;
+    private ShowHideDoneAction showDoneAction;
+    
     /**
      * Creates a new instance.
      */
-    public MonthTopComponent() {
-        setName(NbBundle.getMessage(MonthTopComponent.class, "CTL_MonthTopComponent"));
+    public WeekTopComponent() {
+        setName(NbBundle.getMessage(WeekTopComponent.class, "CTL_WeekTopComponent"));
         setIcon(ImageUtilities.loadImage(ICON_PATH, true));
         putClientProperty(TopComponent.PROP_CLOSING_DISABLED, Boolean.TRUE);
         putClientProperty(TopComponent.PROP_DRAGGING_DISABLED, Boolean.TRUE);
         putClientProperty(TopComponent.PROP_MAXIMIZATION_DISABLED, Boolean.TRUE);
         putClientProperty(TopComponent.PROP_UNDOCKING_DISABLED, Boolean.TRUE);
-        this.dateCtlr = Singleton.dateCtlr;
-        this.calModel = new TrCalModel();
-        this.monthPanel = new MonthPanel(dateCtlr, calModel, this);
-        this.showDoneAction = new ShowHideDoneAction(calModel, dateCtlr);
         this.initComponents();
-    }
-
-    private void snooze() {
-        try {
-            Thread.sleep(200);
-        } catch (InterruptedException ex) {
-            Exceptions.printStackTrace(ex);
-        }
     }
 
     private void initComponents() {
@@ -65,19 +48,31 @@ public final class MonthTopComponent extends TopComponent implements DayViewer {
         setOpaque(true);
         setBackground(ViewUtils.COLOR_PANEL_BG);
 
-        dateCtlr.addPropertyChangeListener(new PropertyChangeListener() {
+        CalModelImp calModel = new CalModelImp();
+        
+        showDoneAction = new ShowHideDoneAction(calModel, dateCtlr);
+
+        WeekPanelCtlr weekPanelCtlr = new WeekPanelCtlr(calModel, dateCtlr, 0, 23);
+        WeekPanel weekPanel = weekPanelCtlr.getWeekPanel();
+        weekPanel.addDayListener(new PropertyChangeListener() {
             @Override
             public void propertyChange(PropertyChangeEvent pce) {
-                revalidate();
-                repaint();
-            }
+                Object newValue = pce.getNewValue();
+                if (newValue instanceof Date) {
+                    dateCtlr.setDate((Date)newValue);
+                    activateDayView();                                        
+                }
+            }            
         });
+        
+        weekPanel.setOpaque(true);
+        weekPanel.setBackground(ViewUtils.COLOR_PANEL_BG);
 
-        DateDisplayPanel dateDisplayPanel = new DateDisplayPanel(dateCtlr, Period.Month);
+        DateDisplayPanel dateDisplayPanel = new DateDisplayPanel(dateCtlr, Period.Week);
         dateDisplayPanel.setOpaque(true);
         dateDisplayPanel.setBackground(ViewUtils.COLOR_PANEL_BG);
 
-        DateChangerPanel dateChangerPanel = new DateChangerPanel(dateCtlr, Period.Month);
+        DateChangerPanel dateChangerPanel = new DateChangerPanel(dateCtlr, Period.Week);
         dateChangerPanel.setOpaque(true);
         dateChangerPanel.setBackground(ViewUtils.COLOR_PANEL_BG);
 
@@ -89,8 +84,9 @@ public final class MonthTopComponent extends TopComponent implements DayViewer {
         northPanel.setBackground(ViewUtils.COLOR_PANEL_BG);
 
         add(northPanel, BorderLayout.NORTH);
-        add(monthPanel, BorderLayout.CENTER);
+        add(weekPanel, BorderLayout.CENTER);
     }
+
 
     private Component getShowDoneButton() {
         JToggleButton button = new JToggleButton(showDoneAction);
@@ -100,29 +96,7 @@ public final class MonthTopComponent extends TopComponent implements DayViewer {
         button.setMaximumSize(buttonSize);
         button.setText("");
         button.setFocusable(false);
-//      button.doClick();
         return button;
-    }
-
-    @Override
-    protected void componentOpened() {
-        dateCtlr.fireChange();
-    }
-
-    @Override
-    public int getPersistenceType() {
-        return TopComponent.PERSISTENCE_NEVER;
-    }
-
-    @Override
-    protected String preferredID() {
-        return "MonthTopComponent";
-    }
-
-    @Override
-    public void showDayView(Date date) {
-        activateDayView();
-        dateCtlr.setDate(date);
     }
 
     private void activateDayView() {
@@ -137,4 +111,20 @@ public final class MonthTopComponent extends TopComponent implements DayViewer {
         tc.open();
         tc.requestActive();
     }
+
+    @Override
+    protected void componentOpened() {
+        dateCtlr.fireChange();
+    }
+    
+    @Override
+    public int getPersistenceType() {
+        return TopComponent.PERSISTENCE_NEVER;
+    }
+
+    @Override
+    protected String preferredID() {
+        return "WeekTopComponent";
+    }
+
 }

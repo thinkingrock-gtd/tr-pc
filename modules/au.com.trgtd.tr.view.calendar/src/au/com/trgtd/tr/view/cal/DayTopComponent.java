@@ -1,11 +1,11 @@
-package au.com.trgtd.tr.view.calendar;
+package au.com.trgtd.tr.view.cal;
 
 import au.com.trgtd.tr.appl.Constants;
 import au.com.trgtd.tr.cal.ctlr.DateCtlr;
 import au.com.trgtd.tr.cal.ctlr.DayPanelCtlr;
 import au.com.trgtd.tr.cal.view.*;
 import au.com.trgtd.tr.view.ViewUtils;
-import au.com.trgtd.tr.view.calendar.tree.RootNode;
+import au.com.trgtd.tr.view.cal.tree.RootNode;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Component;
@@ -52,7 +52,7 @@ public final class DayTopComponent extends TopComponent
     }
 
     private void initComponents() {
-        TrCalModel calModel = new TrCalModel();
+        CalModelImp calModel = new CalModelImp();
 
         showDoneAction = new ShowHideDoneAction(calModel, dateCtlr);
         

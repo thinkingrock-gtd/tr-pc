@@ -1,15 +1,14 @@
-package au.com.trgtd.tr.view.calendar;
+package au.com.trgtd.tr.view.cal;
 
 import au.com.trgtd.tr.appl.Constants;
 import au.com.trgtd.tr.cal.ctlr.DateCtlr;
-import au.com.trgtd.tr.cal.ctlr.WeekPlanPanelCtlr;
 import au.com.trgtd.tr.cal.view.DateChangerPanel;
 import au.com.trgtd.tr.cal.view.DateDisplayPanel;
+import au.com.trgtd.tr.cal.view.DayViewer;
+import au.com.trgtd.tr.cal.view.MonthPanel;
 import au.com.trgtd.tr.cal.view.Period;
-import au.com.trgtd.tr.cal.view.WeekPlanPanel;
 import au.com.trgtd.tr.view.ViewUtils;
 import java.awt.BorderLayout;
-import java.awt.Color;
 import java.awt.Component;
 import java.awt.Dimension;
 import java.beans.PropertyChangeEvent;
@@ -18,41 +17,67 @@ import java.util.Date;
 import javax.swing.JPanel;
 import javax.swing.JToggleButton;
 import net.miginfocom.swing.MigLayout;
+import org.openide.util.Exceptions;
 import org.openide.util.ImageUtilities;
 import org.openide.util.NbBundle;
 import org.openide.windows.Mode;
 import org.openide.windows.TopComponent;
 import org.openide.windows.WindowManager;
 
-public final class WeekPlanTopComponent extends TopComponent {
+/**
+ * Calendar month view top component.
+ */
+public final class MonthTopComponent extends TopComponent implements DayViewer {
 
-    private final static String ICON_PATH = "au/com/trgtd/tr/view/calendar/resource/weekplan.png";
+    private final static String ICON_PATH = "au/com/trgtd/tr/view/calendar/resource/month.png";
+    private final DateCtlr dateCtlr;
+    private final CalModelImp calModel;
+    private final JPanel monthPanel;
+    private final ShowHideDoneAction showDoneAction;
 
-    private final TrCalModel calModel = new TrCalModel();
-    private final DateCtlr dateCtlr = Singleton.dateCtlr;
-    private final WeekPlanPanelCtlr weekPlanPanelCtlr = new WeekPlanPanelCtlr(calModel, dateCtlr);
-
-    private final ShowHideDoneAction showDoneAction = new ShowHideDoneAction(calModel, dateCtlr);
-
-    public WeekPlanTopComponent() {
-        setName(NbBundle.getMessage(WeekPlanTopComponent.class, "CTL_WeekPlanTopComponent"));
+    /**
+     * Creates a new instance.
+     */
+    public MonthTopComponent() {
+        setName(NbBundle.getMessage(MonthTopComponent.class, "CTL_MonthTopComponent"));
         setIcon(ImageUtilities.loadImage(ICON_PATH, true));
-        setBackground(ViewUtils.COLOR_PANEL_BG);
-        setLayout(new BorderLayout());
-        setOpaque(true);
         putClientProperty(TopComponent.PROP_CLOSING_DISABLED, Boolean.TRUE);
         putClientProperty(TopComponent.PROP_DRAGGING_DISABLED, Boolean.TRUE);
         putClientProperty(TopComponent.PROP_MAXIMIZATION_DISABLED, Boolean.TRUE);
         putClientProperty(TopComponent.PROP_UNDOCKING_DISABLED, Boolean.TRUE);
+        this.dateCtlr = Singleton.dateCtlr;
+        this.calModel = new CalModelImp();
+        this.monthPanel = new MonthPanel(dateCtlr, calModel, this);
+        this.showDoneAction = new ShowHideDoneAction(calModel, dateCtlr);
         this.initComponents();
     }
 
+    private void snooze() {
+        try {
+            Thread.sleep(200);
+        } catch (InterruptedException ex) {
+            Exceptions.printStackTrace(ex);
+        }
+    }
+
     private void initComponents() {
-        DateDisplayPanel dateDisplayPanel = new DateDisplayPanel(dateCtlr, Period.Week);
+        setLayout(new BorderLayout());
+        setOpaque(true);
+        setBackground(ViewUtils.COLOR_PANEL_BG);
+
+        dateCtlr.addPropertyChangeListener(new PropertyChangeListener() {
+            @Override
+            public void propertyChange(PropertyChangeEvent pce) {
+                revalidate();
+                repaint();
+            }
+        });
+
+        DateDisplayPanel dateDisplayPanel = new DateDisplayPanel(dateCtlr, Period.Month);
         dateDisplayPanel.setOpaque(true);
         dateDisplayPanel.setBackground(ViewUtils.COLOR_PANEL_BG);
 
-        DateChangerPanel dateChangerPanel = new DateChangerPanel(dateCtlr, Period.Week);
+        DateChangerPanel dateChangerPanel = new DateChangerPanel(dateCtlr, Period.Month);
         dateChangerPanel.setOpaque(true);
         dateChangerPanel.setBackground(ViewUtils.COLOR_PANEL_BG);
 
@@ -63,22 +88,8 @@ public final class WeekPlanTopComponent extends TopComponent {
         northPanel.setOpaque(true);
         northPanel.setBackground(ViewUtils.COLOR_PANEL_BG);
 
-        WeekPlanPanel weekPlanPanel = weekPlanPanelCtlr.getWeekPanel();
-        weekPlanPanel.setOpaque(true);
-        weekPlanPanel.setBackground(ViewUtils.COLOR_PANEL_BG);
-        weekPlanPanel.addDayListener(new PropertyChangeListener() {
-            @Override
-            public void propertyChange(PropertyChangeEvent pce) {
-                Object newValue = pce.getNewValue();
-                if (newValue instanceof Date) {
-                    dateCtlr.setDate((Date) newValue);
-                    activateDayView();
-                }
-            }
-        });
-
         add(northPanel, BorderLayout.NORTH);
-        add(weekPlanPanel, BorderLayout.CENTER);
+        add(monthPanel, BorderLayout.CENTER);
     }
 
     private Component getShowDoneButton() {
@@ -89,20 +100,8 @@ public final class WeekPlanTopComponent extends TopComponent {
         button.setMaximumSize(buttonSize);
         button.setText("");
         button.setFocusable(false);
+//      button.doClick();
         return button;
-    }
-
-    private void activateDayView() {
-        TopComponent tc = WindowManager.getDefault().findTopComponent("DayTopComponent");
-        if (null == tc) {
-            tc = new DayTopComponent();
-        }
-        Mode mode = WindowManager.getDefault().findMode("editor");
-        if (mode != null) {
-            mode.dockInto(tc);
-        }
-        tc.open();
-        tc.requestActive();
     }
 
     @Override
@@ -117,7 +116,25 @@ public final class WeekPlanTopComponent extends TopComponent {
 
     @Override
     protected String preferredID() {
-        return "WeekPlanTopComponent";
+        return "MonthTopComponent";
     }
 
+    @Override
+    public void showDayView(Date date) {
+        activateDayView();
+        dateCtlr.setDate(date);
+    }
+
+    private void activateDayView() {
+        TopComponent tc = WindowManager.getDefault().findTopComponent("DayTopComponent");
+        if (null == tc) {
+            tc = new DayTopComponent();
+        }
+        Mode mode = WindowManager.getDefault().findMode("editor");
+        if (mode != null) {
+            mode.dockInto(tc);
+        }
+        tc.open();
+        tc.requestActive();
+    }
 }

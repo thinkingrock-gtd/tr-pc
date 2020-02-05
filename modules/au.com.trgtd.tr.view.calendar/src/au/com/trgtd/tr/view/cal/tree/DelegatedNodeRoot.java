@@ -1,7 +1,7 @@
-package au.com.trgtd.tr.view.calendar.tree;
+package au.com.trgtd.tr.view.cal.tree;
 
 import au.com.trgtd.tr.cal.ctlr.DateCtlr;
-import au.com.trgtd.tr.view.calendar.TrCalModel;
+import au.com.trgtd.tr.view.cal.CalModelImp;
 import org.openide.nodes.AbstractNode;
 import org.openide.util.NbBundle;
 import org.openide.util.lookup.AbstractLookup;
@@ -20,7 +20,7 @@ public class DelegatedNodeRoot extends AbstractNode {
      * @param dateCtlr The date controller.
      * @param calModel The calendar model.
      */
-    public DelegatedNodeRoot(DateCtlr dateCtlr, TrCalModel calModel) {
+    public DelegatedNodeRoot(DateCtlr dateCtlr, CalModelImp calModel) {
         this(new DelegatedChildren(dateCtlr, calModel), new InstanceContent());
     }
 
@@ -38,7 +38,7 @@ public class DelegatedNodeRoot extends AbstractNode {
 
     @Override
     public String getName() {
-        return NbBundle.getMessage(TrCalModel.class, "delegated.followup");
+        return NbBundle.getMessage(CalModelImp.class, "delegated.followup");
     }
     
 }

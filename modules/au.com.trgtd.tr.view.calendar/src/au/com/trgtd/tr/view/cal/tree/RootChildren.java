@@ -1,8 +1,8 @@
-package au.com.trgtd.tr.view.calendar.tree;
+package au.com.trgtd.tr.view.cal.tree;
 
 import au.com.trgtd.tr.cal.ctlr.DateCtlr;
-import au.com.trgtd.tr.view.calendar.TrCalModel;
-import au.com.trgtd.tr.view.calendar.tree.ASAPNodeRoot.Type;
+import au.com.trgtd.tr.view.cal.CalModelImp;
+import au.com.trgtd.tr.view.cal.tree.ASAPNodeRoot.Type;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -16,9 +16,9 @@ import org.openide.nodes.Node;
 public class RootChildren extends Children.Keys<Node> { 
 
     private final DateCtlr dateCtlr;
-    private final TrCalModel calModel;
+    private final CalModelImp calModel;
     
-    public RootChildren(DateCtlr dateCtlr, TrCalModel calModel) {
+    public RootChildren(DateCtlr dateCtlr, CalModelImp calModel) {
         this.dateCtlr = dateCtlr;
         this.calModel = calModel;
     }

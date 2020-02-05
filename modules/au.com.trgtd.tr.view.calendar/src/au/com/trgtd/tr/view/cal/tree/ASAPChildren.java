@@ -1,9 +1,9 @@
-package au.com.trgtd.tr.view.calendar.tree;
+package au.com.trgtd.tr.view.cal.tree;
 
 import au.com.trgtd.tr.cal.ctlr.DateCtlr;
 import au.com.trgtd.tr.cal.model.CalEvent;
-import au.com.trgtd.tr.view.calendar.TrCalModel;
-import au.com.trgtd.tr.view.calendar.tree.ASAPNodeRoot.Type;
+import au.com.trgtd.tr.view.cal.CalModelImp;
+import au.com.trgtd.tr.view.cal.tree.ASAPNodeRoot.Type;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.util.Collections;
@@ -18,9 +18,9 @@ public class ASAPChildren extends Children.Keys<CalEvent> {
 
     private final DateCtlr dateCtlr;
     private final Type type;
-    private final TrCalModel calModel;
+    private final CalModelImp calModel;
 
-    public ASAPChildren(DateCtlr dateCtlr, TrCalModel calModel, Type type) {
+    public ASAPChildren(DateCtlr dateCtlr, CalModelImp calModel, Type type) {
         this.dateCtlr = dateCtlr;
         this.calModel = calModel;
         this.type = type;

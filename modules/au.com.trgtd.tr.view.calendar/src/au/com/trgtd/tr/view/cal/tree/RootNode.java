@@ -1,7 +1,7 @@
-package au.com.trgtd.tr.view.calendar.tree;
+package au.com.trgtd.tr.view.cal.tree;
 
 import au.com.trgtd.tr.cal.ctlr.DateCtlr;
-import au.com.trgtd.tr.view.calendar.TrCalModel;
+import au.com.trgtd.tr.view.cal.CalModelImp;
 import org.openide.nodes.AbstractNode;
 
 /**
@@ -11,7 +11,7 @@ import org.openide.nodes.AbstractNode;
 public class RootNode extends AbstractNode {
 
     /** Constructs a new instance. */
-    public RootNode(DateCtlr dateCtlr, TrCalModel model) {
+    public RootNode(DateCtlr dateCtlr, CalModelImp model) {
         super(new RootChildren(dateCtlr, model));
     }
     

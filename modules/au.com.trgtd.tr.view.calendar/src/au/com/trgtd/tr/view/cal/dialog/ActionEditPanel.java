@@ -1,4 +1,4 @@
-package au.com.trgtd.tr.view.calendar.dialog;
+package au.com.trgtd.tr.view.cal.dialog;
 
 import au.com.trgtd.tr.appl.Constants;
 import au.com.trgtd.tr.prefs.actions.ActionPrefs;

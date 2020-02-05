@@ -1,4 +1,4 @@
-package au.com.trgtd.tr.view.calendar.dialog;
+package au.com.trgtd.tr.view.cal.dialog;
 
 import java.awt.BorderLayout;
 import java.awt.Dimension;
