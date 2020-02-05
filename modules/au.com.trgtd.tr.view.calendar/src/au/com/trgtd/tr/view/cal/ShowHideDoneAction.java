@@ -23,7 +23,6 @@ public class ShowHideDoneAction extends AbstractAction {
         putValue(SMALL_ICON, Icons.ShowDone);
         this.model = model;
         this.dateCtlr = dateCtlr;
-
     }
     
     @Override

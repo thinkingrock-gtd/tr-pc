@@ -32,7 +32,7 @@ import org.openide.windows.TopComponent;
 public final class DayTopComponent extends TopComponent
         implements ExplorerManager.Provider, Lookup.Provider, LookupListener {
 
-    private final static String ICON_PATH = "au/com/trgtd/tr/view/calendar/resource/day.png";
+    private final static String ICON_PATH = "au/com/trgtd/tr/view/cal/resource/day.png";
     private final ExplorerManager manager = new ExplorerManager();
     private final DateCtlr dateCtlr = Singleton.dateCtlr;
     private BeanTreeView treeView;

@@ -3,7 +3,6 @@ package au.com.trgtd.tr.view.cal;
 import au.com.trgtd.tr.cal.ctlr.DateCtlr;
 import au.com.trgtd.tr.cal.model.CalModel;
 import au.com.trgtd.tr.cal.view.DayListPanel;
-import au.com.trgtd.tr.view.cal.DayPlanPanel;
 
 /**
  * Controller for a day plan panel with calendar event model. 

@@ -20,7 +20,7 @@ public final class DayAction extends CallableSystemAction implements InitialActi
     public DayAction() {
         super();
         enableDisable();
-        Lookup.Result<Data> r = DataLookup.instance().lookup(new Lookup.Template<Data>(Data.class));
+        Lookup.Result<Data> r = DataLookup.instance().lookup(new Lookup.Template<>(Data.class));
         r.addLookupListener(new LookupListener() {
             @Override
             public void resultChanged(LookupEvent lookupEvent) {
@@ -31,7 +31,7 @@ public final class DayAction extends CallableSystemAction implements InitialActi
 
     @Override
     protected String iconResource() {
-        return "au/com/trgtd/tr/view/calendar/resource/day.png";
+        return "au/com/trgtd/tr/view/cal/resource/day.png";
     }
 
     @Override

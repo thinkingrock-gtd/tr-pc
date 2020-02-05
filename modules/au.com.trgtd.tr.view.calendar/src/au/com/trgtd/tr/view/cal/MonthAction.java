@@ -20,7 +20,7 @@ public final class MonthAction extends CallableSystemAction implements InitialAc
     public MonthAction() {
         super();
         enableDisable();
-        Lookup.Result<Data> r = DataLookup.instance().lookup(new Lookup.Template<Data>(Data.class));
+        Lookup.Result<Data> r = DataLookup.instance().lookup(new Lookup.Template<>(Data.class));
         r.addLookupListener(new LookupListener() {
             @Override
             public void resultChanged(LookupEvent lookupEvent) {
@@ -31,7 +31,7 @@ public final class MonthAction extends CallableSystemAction implements InitialAc
 
     @Override
     protected String iconResource() {
-        return "au/com/trgtd/tr/view/calendar/resource/month.png";
+        return "au/com/trgtd/tr/view/cal/resource/month.png";
     }
 
     @Override

@@ -31,7 +31,7 @@ public final class YearAction extends CallableSystemAction implements InitialAct
 
     @Override
     protected String iconResource() {
-        return "au/com/trgtd/tr/view/calendar/resource/year.png";
+        return "au/com/trgtd/tr/view/cal/resource/year.png";
     }
 
     @Override

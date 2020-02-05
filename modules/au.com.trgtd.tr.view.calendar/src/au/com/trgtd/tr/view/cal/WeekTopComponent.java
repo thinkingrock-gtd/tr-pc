@@ -26,7 +26,7 @@ import org.openide.windows.WindowManager;
 
 public final class WeekTopComponent extends TopComponent {
 
-    private final static String ICON_PATH = "au/com/trgtd/tr/view/calendar/resource/week.png";
+    private final static String ICON_PATH = "au/com/trgtd/tr/view/cal/resource/week.png";
     private final DateCtlr dateCtlr = Singleton.dateCtlr;
     private ShowHideDoneAction showDoneAction;
     

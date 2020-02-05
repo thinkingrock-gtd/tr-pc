@@ -29,7 +29,7 @@ import org.openide.windows.WindowManager;
  */
 public final class MonthTopComponent extends TopComponent implements DayViewer {
 
-    private final static String ICON_PATH = "au/com/trgtd/tr/view/calendar/resource/month.png";
+    private final static String ICON_PATH = "au/com/trgtd/tr/view/cal/resource/month.png";
     private final DateCtlr dateCtlr;
     private final CalModelImp calModel;
     private final JPanel monthPanel;

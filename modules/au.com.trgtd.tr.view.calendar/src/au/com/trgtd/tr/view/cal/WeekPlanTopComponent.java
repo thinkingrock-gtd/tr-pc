@@ -23,7 +23,7 @@ import org.openide.windows.WindowManager;
 
 public final class WeekPlanTopComponent extends TopComponent {
 
-    private final static String ICON_PATH = "au/com/trgtd/tr/view/calendar/resource/weekplan.png";
+    private final static String ICON_PATH = "au/com/trgtd/tr/view/cal/resource/weekplan.png";
 
     private final CalModelImp calModel = new CalModelImp();
     private final DateCtlr dateCtlr = Singleton.dateCtlr;

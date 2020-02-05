@@ -1,7 +1,3 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package au.com.trgtd.tr.view.cal;
 
 import au.com.trgtd.tr.cal.ctlr.DateCtlr;

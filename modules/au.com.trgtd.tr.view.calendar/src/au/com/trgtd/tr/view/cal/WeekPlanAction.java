@@ -31,7 +31,7 @@ public final class WeekPlanAction extends CallableSystemAction implements Initia
 
     @Override
     protected String iconResource() {
-        return "au/com/trgtd/tr/view/calendar/resource/weekplan.png";
+        return "au/com/trgtd/tr/view/cal/resource/weekplan.png";
     }
 
     @Override

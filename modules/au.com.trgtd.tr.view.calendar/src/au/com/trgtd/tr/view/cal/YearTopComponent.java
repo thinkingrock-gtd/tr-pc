@@ -31,7 +31,7 @@ import org.openide.windows.WindowManager;
  */
 public final class YearTopComponent extends TopComponent implements MonthViewer, WeekViewer, DayViewer {
 
-    private final static String ICON_PATH = "au/com/trgtd/tr/view/calendar/resource/year.png";
+    private final static String ICON_PATH = "au/com/trgtd/tr/view/cal/resource/year.png";
     private final static Color BG = ViewUtils.COLOR_PANEL_BG;
 
     private final DateCtlr dateCtlr;
