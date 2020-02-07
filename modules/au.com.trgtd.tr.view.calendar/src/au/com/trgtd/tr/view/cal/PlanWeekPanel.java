@@ -2,21 +2,26 @@ package au.com.trgtd.tr.view.cal;
 
 import au.com.trgtd.tr.cal.model.Day;
 import au.com.trgtd.tr.cal.utils.DateUtils;
-import au.com.trgtd.tr.cal.view.DayListPanel;
+import au.com.trgtd.tr.cal.view.AllDayPanel;
+
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
+
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.UIManager;
+
 import net.miginfocom.swing.MigLayout;
 
 /**
@@ -24,14 +29,16 @@ import net.miginfocom.swing.MigLayout;
  *
  * @author Jeremy Moore
  */
-public class WeekPlanPanel extends JPanel {
+public class PlanWeekPanel extends JPanel {
 
     private interface Fonts {
+
         Font DATE_NORMAL = UIManager.getFont("Label.font").deriveFont(Font.PLAIN).deriveFont(12.0f);
         Font DATE_TODAY = UIManager.getFont("Label.font").deriveFont(Font.PLAIN).deriveFont(12.0f);
     }
 
     private interface Colors {
+
         Color BLUE_3 = new Color(0, 104, 139);
         Color DATE_NORMAL = Color.GRAY;
         Color DATE_TODAY = BLUE_3;
@@ -43,8 +50,7 @@ public class WeekPlanPanel extends JPanel {
     private final JPanel panelDates;
     private final JPanel panelLists;
 
-//  public WeekPlanPanel(DayTimePanel panelTimes, DayGridPanel[] gridPanels, DayListPanel[] listPanels) {
-    public WeekPlanPanel(DayListPanel[] listPanels) {
+    public PlanWeekPanel(AllDayPanel[] allDayPanels) {
 
         this.pcs = new PropertyChangeSupport(this);
 
@@ -59,10 +65,10 @@ public class WeekPlanPanel extends JPanel {
             dateLabels[i] = new DateLabel();
             dateLabels[i].addMouseListener(dateLabelMouseListener);
             panelDates.add(dateLabels[i]);
-            panelLists.add(listPanels[i]);
+            panelLists.add(allDayPanels[i]);
         }
-        
-       initComponents();
+
+        initComponents();
     }
 
     private void initComponents() {

@@ -6,7 +6,7 @@ import au.com.trgtd.tr.cal.model.CalModel;
 import au.com.trgtd.tr.cal.model.Day;
 import au.com.trgtd.tr.cal.model.EventID;
 import au.com.trgtd.tr.cal.utils.DateUtils;
-import au.com.trgtd.tr.cal.view.DayListPanel;
+import au.com.trgtd.tr.cal.view.AllDayPanel;
 import au.com.trgtd.tr.cal.view.EventLabel;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
@@ -27,7 +27,7 @@ public final class DayPlanListCtlr {
     private final Map<EventID, EventLabel> eventMap;
     private final CalModel calModel;
     private final DateCtlr dateCtlr;
-    private final DayListPanel dayListPanel;
+    private final AllDayPanel dayListPanel;
     private final boolean isFirstDayOfWeek;
 
     /**
@@ -57,12 +57,12 @@ public final class DayPlanListCtlr {
         this.eventMap = new HashMap<>();
         this.initEventMap();
         
-        this.dayListPanel = new DayListPanel(dateCtlr);
+        this.dayListPanel = new AllDayPanel(dateCtlr);
         this.dayListPanel.resetEvents(getEventLabels());
 
     }
 
-    public DayListPanel getPanel() {
+    public AllDayPanel getPanel() {
         
         return dayListPanel;
     }

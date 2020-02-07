@@ -15,6 +15,9 @@ import java.util.Date;
  */
 public class DateCtlr {
 
+    /** Default singleton instance with current date and time. */
+    public final static DateCtlr DEFAULT = new DateCtlr();
+
     public final static String PROP_DATE = "date";    
     
     private final PropertyChangeSupport pcs;

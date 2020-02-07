@@ -15,9 +15,9 @@ import org.openide.windows.WindowManager;
 import tr.model.Data;
 import tr.model.DataLookup;
 
-public final class WeekPlanAction extends CallableSystemAction implements InitialAction {
+public final class PlanWeekAction extends CallableSystemAction implements InitialAction {
 
-    public WeekPlanAction() {
+    public PlanWeekAction() {
         super();
         enableDisable();
         Lookup.Result<Data> r = DataLookup.instance().lookup(new Lookup.Template<>(Data.class));
@@ -61,7 +61,7 @@ public final class WeekPlanAction extends CallableSystemAction implements Initia
             public void run() {
                 TopComponent tc = WindowManager.getDefault().findTopComponent("WeekPlanTopComponent");
                 if (null == tc) {
-                    tc = new WeekPlanTopComponent();
+                    tc = new PlanWeekTopComponent();
                 }
                 WindowUtils.closeWindows();
                 Mode mode = WindowManager.getDefault().findMode("editor");

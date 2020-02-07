@@ -1,9 +1,9 @@
 package au.com.trgtd.tr.view.cal.dialog;
 
+import au.com.trgtd.tr.cal.ctlr.DateCtlr;
 import au.com.trgtd.tr.resource.Icons;
 import au.com.trgtd.tr.services.Services;
 import au.com.trgtd.tr.util.DateUtils;
-import au.com.trgtd.tr.view.cal.Singleton;
 import java.util.Calendar;
 import java.util.Date;
 import javax.swing.ImageIcon;
@@ -436,7 +436,7 @@ public class ActionCtlr {
         }
         
         // force views to update for changes
-        Singleton.dateCtlr.fireChange();
+        DateCtlr.DEFAULT.fireChange();
     }
     
     private boolean hasStateChanged() {

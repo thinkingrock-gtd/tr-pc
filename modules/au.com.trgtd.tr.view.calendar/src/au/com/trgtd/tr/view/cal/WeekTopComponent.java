@@ -3,8 +3,8 @@ package au.com.trgtd.tr.view.cal;
 import au.com.trgtd.tr.appl.Constants;
 import au.com.trgtd.tr.cal.ctlr.DateCtlr;
 import au.com.trgtd.tr.cal.ctlr.WeekPanelCtlr;
-import au.com.trgtd.tr.cal.view.DateChangerPanel;
-import au.com.trgtd.tr.cal.view.DateDisplayPanel;
+import au.com.trgtd.tr.cal.view.DateChangePanel;
+import au.com.trgtd.tr.cal.view.DatePanel;
 import au.com.trgtd.tr.cal.view.Period;
 import au.com.trgtd.tr.cal.view.WeekPanel;
 import au.com.trgtd.tr.view.ViewUtils;
@@ -27,7 +27,7 @@ import org.openide.windows.WindowManager;
 public final class WeekTopComponent extends TopComponent {
 
     private final static String ICON_PATH = "au/com/trgtd/tr/view/cal/resource/week.png";
-    private final DateCtlr dateCtlr = Singleton.dateCtlr;
+    private final DateCtlr dateCtlr = DateCtlr.DEFAULT;
     private ShowHideDoneAction showDoneAction;
     
     /**
@@ -68,11 +68,11 @@ public final class WeekTopComponent extends TopComponent {
         weekPanel.setOpaque(true);
         weekPanel.setBackground(ViewUtils.COLOR_PANEL_BG);
 
-        DateDisplayPanel dateDisplayPanel = new DateDisplayPanel(dateCtlr, Period.Week);
+        DatePanel dateDisplayPanel = new DatePanel(dateCtlr, Period.Week);
         dateDisplayPanel.setOpaque(true);
         dateDisplayPanel.setBackground(ViewUtils.COLOR_PANEL_BG);
 
-        DateChangerPanel dateChangerPanel = new DateChangerPanel(dateCtlr, Period.Week);
+        DateChangePanel dateChangerPanel = new DateChangePanel(dateCtlr, Period.Week);
         dateChangerPanel.setOpaque(true);
         dateChangerPanel.setBackground(ViewUtils.COLOR_PANEL_BG);
 

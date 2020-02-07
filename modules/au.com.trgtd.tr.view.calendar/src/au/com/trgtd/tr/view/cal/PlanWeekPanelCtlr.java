@@ -5,7 +5,7 @@ import au.com.trgtd.tr.cal.model.CalEvent;
 import au.com.trgtd.tr.cal.model.CalModel;
 import au.com.trgtd.tr.cal.model.Day;
 import au.com.trgtd.tr.cal.utils.DateUtils;
-import au.com.trgtd.tr.cal.view.DayListPanel;
+import au.com.trgtd.tr.cal.view.AllDayPanel;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 
@@ -15,14 +15,14 @@ import java.beans.PropertyChangeListener;
  *
  * @author Jeremy Moore
  */
-public final class WeekPlanPanelCtlr {
+public final class PlanWeekPanelCtlr {
 
     private final CalModel calModel;
     private final DateCtlr dateCtlr;
     private final DateCtlr[] dateCtlrs;
-    private final DayPlanListCtlr[] dayPlanListCtlrs;
-    private final DayListPanel[] dayListPanels;
-    private final WeekPlanPanel weekPlanPanel;
+    private final DayPlanListCtlr[] dayCtlrs;
+    private final AllDayPanel[] dayPanels;
+    private final PlanWeekPanel weekPanel;
 
     /**
      * Constructor.
@@ -30,7 +30,7 @@ public final class WeekPlanPanelCtlr {
      * @param calModel The calendar model.
      * @param dateCtlr The date controller.
      */
-    public WeekPlanPanelCtlr(CalModel calModel, DateCtlr dateCtlr) {
+    public PlanWeekPanelCtlr(CalModel calModel, DateCtlr dateCtlr) {
         if (null == calModel) {
             throw new IllegalArgumentException("Calendar model can not be null.");
         }
@@ -40,19 +40,19 @@ public final class WeekPlanPanelCtlr {
         this.dateCtlr = dateCtlr;
         this.calModel = calModel;
         this.dateCtlrs = new DateCtlr[7];
-        this.dayListPanels = new DayListPanel[7];
-        this.dayPlanListCtlrs = new DayPlanListCtlr[7];
+        this.dayPanels = new AllDayPanel[7];
+        this.dayCtlrs = new DayPlanListCtlr[7];
         Day dayFirst = dateCtlr.getWeekStart();
         Day dayLast = dateCtlr.getWeekEnd();
         int index = 0;
         for (Day dd = dayFirst; !dd.after(dayLast); dd = dd.next()) {
             boolean isFirstDayOfWeek = index == 0;
             dateCtlrs[index] = new DateCtlr(dd.getDate());
-            dayPlanListCtlrs[index] = new DayPlanListCtlr(calModel, dateCtlrs[index], isFirstDayOfWeek);
-            dayListPanels[index] = dayPlanListCtlrs[index].getPanel();
+            dayCtlrs[index] = new DayPlanListCtlr(calModel, dateCtlrs[index], isFirstDayOfWeek);
+            dayPanels[index] = dayCtlrs[index].getPanel();
             index++;
         }
-        this.weekPlanPanel = new WeekPlanPanel(dayListPanels);
+        this.weekPanel = new PlanWeekPanel(dayPanels);
         this.dateCtlr.addPropertyChangeListener(pclDate);
 
         this.initDates(dayFirst, dayLast);
@@ -63,8 +63,8 @@ public final class WeekPlanPanelCtlr {
      *
      * @return the panel.
      */
-    public WeekPlanPanel getWeekPanel() {
-        return weekPlanPanel;
+    public PlanWeekPanel getWeekPanel() {
+        return weekPanel;
     }
 
     /**
@@ -94,7 +94,7 @@ public final class WeekPlanPanelCtlr {
         public void propertyChange(PropertyChangeEvent pce) {
             // see if already showing correct week days for the date            
             final Day start = dateCtlr.getWeekStart();
-            final Day end = dateCtlr.getWeekStart();
+            final Day end = dateCtlr.getWeekEnd();
             if (DateUtils.isSameDay(start.getDate(), dateCtlrs[0].getDate())) {
                 fireDateChanges();
             } else {
@@ -108,7 +108,7 @@ public final class WeekPlanPanelCtlr {
         for (Day day = start; !day.after(end); day = day.next()) {
             dateCtlrs[index++].setDate(day.getDate());
         }
-        weekPlanPanel.updateDayHeadings(start, end);
+        weekPanel.updateDayHeadings(start, end);
     }
 
     // Fire date change events for each day, to force grids to update for changed calendar events.

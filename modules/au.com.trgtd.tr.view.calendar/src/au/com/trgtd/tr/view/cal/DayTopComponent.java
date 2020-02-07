@@ -19,11 +19,15 @@ import javax.swing.JPanel;
 import javax.swing.JToggleButton;
 import javax.swing.border.Border;
 import javax.swing.text.DefaultEditorKit;
-import net.miginfocom.swing.MigLayout;
+import net.miginfocom.swing.MigLayout; 
 import org.openide.explorer.ExplorerManager;
 import org.openide.explorer.ExplorerUtils;
 import org.openide.explorer.view.BeanTreeView;
-import org.openide.util.*;
+import org.openide.util.ImageUtilities;
+import org.openide.util.Lookup;
+import org.openide.util.LookupEvent;
+import org.openide.util.LookupListener;
+import org.openide.util.NbBundle;
 import org.openide.windows.TopComponent;
 
 /**
@@ -34,7 +38,7 @@ public final class DayTopComponent extends TopComponent
 
     private final static String ICON_PATH = "au/com/trgtd/tr/view/cal/resource/day.png";
     private final ExplorerManager manager = new ExplorerManager();
-    private final DateCtlr dateCtlr = Singleton.dateCtlr;
+    private final DateCtlr dateCtlr = DateCtlr.DEFAULT;
     private BeanTreeView treeView;
     private ShowHideDoneAction showDoneAction;
 
@@ -94,13 +98,13 @@ public final class DayTopComponent extends TopComponent
         DayPanelCtlr dayPanelCtlr = new DayPanelCtlr(calModel, dateCtlr, 0, 23);        
         DayPanel dayPanel = dayPanelCtlr.getPanel();
         
-        DateDisplayPanel dateDisplayPanel = new DateDisplayPanel(dateCtlr);
+        DatePanel dateDisplayPanel = new DatePanel(dateCtlr);
         dateDisplayPanel.setBackground(ViewUtils.COLOR_PANEL_BG);
 
         DayOfMonthChooserPanel dayOfMonthPanel = new DayOfMonthChooserPanel(dateCtlr);
         dayOfMonthPanel.setBackground(ViewUtils.COLOR_PANEL_BG);
 
-        DateChangerPanel dateChangerPanel = new DateChangerPanel(dateCtlr, Period.Day);
+        DateChangePanel dateChangerPanel = new DateChangePanel(dateCtlr, Period.Day);
         dateChangerPanel.setBackground(ViewUtils.COLOR_PANEL_BG);
 
         JPanel leftPanel = new JPanel(new MigLayout("fill", "6[grow]6[]20", "8[]0[grow]6"));

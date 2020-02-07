@@ -1,6 +1,6 @@
 package au.com.trgtd.tr.view.cal;
 
-import au.com.trgtd.tr.cal.view.DayListPanel;
+import au.com.trgtd.tr.cal.view.AllDayPanel;
 import javax.swing.JPanel;
 import net.miginfocom.swing.MigLayout;
 
@@ -11,9 +11,9 @@ import net.miginfocom.swing.MigLayout;
  */
 public class DayPlanPanel extends JPanel {
 
-    private final DayListPanel dayListPanel;        
+    private final AllDayPanel dayListPanel;        
     
-    public DayPlanPanel(DayListPanel dayListPanel) {
+    public DayPlanPanel(AllDayPanel dayListPanel) {
         this.dayListPanel = dayListPanel;
         initComponents();
     }

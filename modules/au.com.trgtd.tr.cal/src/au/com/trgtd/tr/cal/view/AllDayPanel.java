@@ -11,11 +11,11 @@ import java.util.Collection;
 import javax.swing.*;
 
 /**
- * Day list panel lists all-day events.
+ * Panel to list all-day events.
  * 
  * @author Jeremy Moore
  */
-public class DayListPanel extends JPanel {
+public final class AllDayPanel extends JPanel {
 
     private interface Colors {
         Color AZURE_X = new Color(241, 255, 255);
@@ -30,7 +30,7 @@ public class DayListPanel extends JPanel {
     private final JPanel listPanel;    
     private final JScrollPane scrollPane;
     
-    public DayListPanel(final DateCtlr dateCtlr) {
+    public AllDayPanel(final DateCtlr dateCtlr) {
         setLayout(new BorderLayout());
         setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Colors.BRDR_LINE));
         setOpaque(false);

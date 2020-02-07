@@ -20,7 +20,7 @@ import org.openide.util.NbBundle;
  *
  * @author Jeremy Moore
  */
-public final class DateDisplayPanel extends JPanel {
+public final class DatePanel extends JPanel {
 
     private interface Fonts {
         final Font PLAIN = UIManager.getFont("Label.font").deriveFont(Font.PLAIN);
@@ -30,12 +30,11 @@ public final class DateDisplayPanel extends JPanel {
         final Color DATE = Color.DARK_GRAY;
     }
 
-    private final static String MSG_WEEK = NbBundle.getMessage(DateDisplayPanel.class, "week").toLowerCase();
+    private final static String MSG_WEEK = NbBundle.getMessage(DatePanel.class, "week").toLowerCase();
 
     private final static DateFormat DF_DAY = DateFormat.getDateInstance(DateFormat.FULL);
     private final static DateFormat DF_WEEK_SSM = new SimpleDateFormat("d - ");
     private final static DateFormat DF_WEEK_SDM = new SimpleDateFormat("d MMMM - ");    
-//  private final static DateFormat DF_WEEK_END = new SimpleDateFormat("d MMMM yyyy '(" + MSG_WEEK + " '" + "w" + "')'");
     private final static DateFormat DF_WEEK_END = new SimpleDateFormat("d MMMM yyyy ");
     private final static DateFormat DF_WEEK_NBR = new SimpleDateFormat("w");
     private final static DateFormat DF_MONTH  = new SimpleDateFormat("MMMM yyyy");
@@ -45,11 +44,11 @@ public final class DateDisplayPanel extends JPanel {
     private final JLabel dateLabel = new JLabel();
     private final DateCtlr dateCtlr;
 
-    public DateDisplayPanel(DateCtlr dateCtlr) {
+    public DatePanel(DateCtlr dateCtlr) {
         this(dateCtlr, Period.Day);
     }
         
-    public DateDisplayPanel(DateCtlr dateCtlr, Period period) {
+    public DatePanel(DateCtlr dateCtlr, Period period) {
         this.period = period;
         this.dateCtlr = dateCtlr;
         this.dateCtlr.addPropertyChangeListener(new PropertyChangeListener() {

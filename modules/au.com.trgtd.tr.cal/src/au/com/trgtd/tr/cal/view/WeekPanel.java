@@ -39,7 +39,7 @@ public class WeekPanel extends JPanel {
     private final PropertyChangeSupport pcs;
     private final DateLabel[] dateLabels;
     
-    public WeekPanel(DayTimePanel panelTimes, DayGridPanel[] gridPanels, DayListPanel[] listPanels) {
+    public WeekPanel(DayTimePanel panelTimes, DayGridPanel[] gridPanels, AllDayPanel[] listPanels) {
         
         this.pcs = new PropertyChangeSupport(this);
 

@@ -2,7 +2,7 @@ package au.com.trgtd.tr.view.cal;
 
 import au.com.trgtd.tr.cal.ctlr.DateCtlr;
 import au.com.trgtd.tr.cal.model.CalModel;
-import au.com.trgtd.tr.cal.view.DayListPanel;
+import au.com.trgtd.tr.cal.view.AllDayPanel;
 
 /**
  * Controller for a day plan panel with calendar event model. 
@@ -11,7 +11,7 @@ public final class DayPlanPanelCtlr {
 
     private final DayPlanListCtlr dayPlanListCtlr;    
     private final DayPlanPanel dayPanel;
-    private final DayListPanel dayListPanel;
+    private final AllDayPanel dayListPanel;
     
     /**
      * Constructor.

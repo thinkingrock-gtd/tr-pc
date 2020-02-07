@@ -16,9 +16,9 @@ import org.openide.util.NbBundle;
  *
  * @author Jeremy Moore
  */
-public class DateChangerPanel extends JPanel {
+public class DateChangePanel extends JPanel {
 
-    private final static String MSG_TODAY = NbBundle.getMessage(DateChangerPanel.class, "today");
+    private final static String MSG_TODAY = NbBundle.getMessage(DateChangePanel.class, "today");
     private final DateCtlr dateCtlr;
     private Period period;
 
@@ -27,7 +27,7 @@ public class DateChangerPanel extends JPanel {
      * @param dateCtlr The date controller.
      * @param period The period for next/previous changes.
      */
-    public DateChangerPanel(DateCtlr dateCtlr, Period period) {
+    public DateChangePanel(DateCtlr dateCtlr, Period period) {
         this.period = period;
         this.dateCtlr = dateCtlr;
         initPanel();

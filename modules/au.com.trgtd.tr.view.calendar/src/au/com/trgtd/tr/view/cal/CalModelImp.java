@@ -35,10 +35,12 @@ public class CalModelImp implements CalModel {
     public CalModelImp() {
     }
 
+    @Override
     public boolean isShowDone() {
         return showDone;
     }
 
+    @Override
     public void setShowDone(boolean showDone) {
         this.showDone = showDone;
     }

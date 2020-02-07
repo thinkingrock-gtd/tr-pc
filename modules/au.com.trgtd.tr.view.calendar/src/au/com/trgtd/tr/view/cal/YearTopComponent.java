@@ -2,8 +2,8 @@ package au.com.trgtd.tr.view.cal;
 
 import au.com.trgtd.tr.appl.Constants;
 import au.com.trgtd.tr.cal.ctlr.DateCtlr;
-import au.com.trgtd.tr.cal.view.DateChangerPanel;
-import au.com.trgtd.tr.cal.view.DateDisplayPanel;
+import au.com.trgtd.tr.cal.view.DateChangePanel;
+import au.com.trgtd.tr.cal.view.DatePanel;
 import au.com.trgtd.tr.cal.view.DayViewer;
 import au.com.trgtd.tr.cal.view.MonthViewer;
 import au.com.trgtd.tr.cal.view.Period;
@@ -51,7 +51,7 @@ public final class YearTopComponent extends TopComponent implements MonthViewer,
         putClientProperty(TopComponent.PROP_DRAGGING_DISABLED, Boolean.TRUE);
         putClientProperty(TopComponent.PROP_MAXIMIZATION_DISABLED, Boolean.TRUE);
         putClientProperty(TopComponent.PROP_UNDOCKING_DISABLED, Boolean.TRUE);
-        this.dateCtlr = Singleton.dateCtlr;
+        this.dateCtlr = DateCtlr.DEFAULT;
         this.calModel = new CalModelImp();
         this.yearPanel = new YearPanel(dateCtlr, calModel, this, this, BG);
         this.showDoneAction = new ShowHideDoneAction(calModel, dateCtlr);
@@ -67,11 +67,11 @@ public final class YearTopComponent extends TopComponent implements MonthViewer,
             }
         });
 
-        DateDisplayPanel dateDisplayPanel = new DateDisplayPanel(dateCtlr, Period.Year);
+        DatePanel dateDisplayPanel = new DatePanel(dateCtlr, Period.Year);
         dateDisplayPanel.setOpaque(true);
         dateDisplayPanel.setBackground(ViewUtils.COLOR_PANEL_BG);
 
-        DateChangerPanel dateChangerPanel = new DateChangerPanel(dateCtlr, Period.Year);
+        DateChangePanel dateChangerPanel = new DateChangePanel(dateCtlr, Period.Year);
         dateChangerPanel.setOpaque(true);
         dateChangerPanel.setBackground(ViewUtils.COLOR_PANEL_BG);
 

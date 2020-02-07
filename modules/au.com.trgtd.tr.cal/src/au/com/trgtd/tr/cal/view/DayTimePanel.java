@@ -12,7 +12,7 @@ import org.openide.util.NbBundle;
  *
  * @author Jeremy Moore
  */
-public class DayTimePanel extends JPanel {
+public final class DayTimePanel extends JPanel {
 
     private final static String MSG_NOON = NbBundle.getMessage(DayTimePanel.class, "noon");
 
