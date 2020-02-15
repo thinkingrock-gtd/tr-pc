@@ -15,6 +15,10 @@ public interface CalModel {
     public String PROP_INSERT = "insert-cal-event";
     public String PROP_REMOVE = "remove-cal-event";
 
+    public boolean isShowDone();
+
+    public void setShowDone(boolean showDone);
+
     /**
      * Gets all calendar events.
      * @return a list containing all events.
