@@ -15,7 +15,7 @@ import javax.swing.*;
  * 
  * @author Jeremy Moore
  */
-public class DayListPanel extends JPanel {
+public final class DayListPanel extends JPanel {
 
     private interface Colors {
         Color AZURE_X = new Color(241, 255, 255);
@@ -36,6 +36,12 @@ public class DayListPanel extends JPanel {
         setOpaque(false);
         
         this.dateCtlr = dateCtlr;
+        this.dateCtlr.addPropertyChangeListener(new PropertyChangeListener() {
+            @Override
+            public void propertyChange(PropertyChangeEvent pce) {
+                setBackground();                        
+            }            
+        });
 
         listPanel = new JPanel();
         listPanel.setOpaque(true);
@@ -48,12 +54,6 @@ public class DayListPanel extends JPanel {
        
         add(scrollPane, BorderLayout.CENTER);
         
-        dateCtlr.addPropertyChangeListener(new PropertyChangeListener() {
-            @Override
-            public void propertyChange(PropertyChangeEvent pce) {
-                setBackground();                        
-            }            
-        });
         
         setBackground();          
         

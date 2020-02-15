@@ -1,4 +1,4 @@
-package au.com.trgtd.tr.view.calendar;
+package au.com.trgtd.tr.view.calendar.wp;
 
 import au.com.trgtd.tr.appl.Constants;
 import au.com.trgtd.tr.cal.ctlr.DateCtlr;
@@ -8,8 +8,13 @@ import au.com.trgtd.tr.cal.view.DateDisplayPanel;
 import au.com.trgtd.tr.cal.view.Period;
 import au.com.trgtd.tr.cal.view.WeekPlanPanel;
 import au.com.trgtd.tr.view.ViewUtils;
+import au.com.trgtd.tr.view.actns.screens.ActionsScreen;
+import au.com.trgtd.tr.view.actns.screens.ReviewActionsTopComponent;
+import au.com.trgtd.tr.view.calendar.DayTopComponent;
+import au.com.trgtd.tr.view.calendar.ShowHideDoneAction;
+import au.com.trgtd.tr.view.calendar.Singleton;
+import au.com.trgtd.tr.view.calendar.TrCalModel;
 import java.awt.BorderLayout;
-import java.awt.Color;
 import java.awt.Component;
 import java.awt.Dimension;
 import java.beans.PropertyChangeEvent;
@@ -31,39 +36,40 @@ public final class WeekPlanTopComponent extends TopComponent {
     private final TrCalModel calModel = new TrCalModel();
     private final DateCtlr dateCtlr = Singleton.dateCtlr;
     private final WeekPlanPanelCtlr weekPlanPanelCtlr = new WeekPlanPanelCtlr(calModel, dateCtlr);
-
     private final ShowHideDoneAction showDoneAction = new ShowHideDoneAction(calModel, dateCtlr);
 
+    private final DateDisplayPanel dateDisplayPanel;
+    private final DateChangerPanel dateChangerPanel;
+    private final JPanel weekDatePanel;
+    private final WeekPlanPanel weekPlanPanel;
+    
     public WeekPlanTopComponent() {
-        setName(NbBundle.getMessage(WeekPlanTopComponent.class, "CTL_WeekPlanTopComponent"));
-        setIcon(ImageUtilities.loadImage(ICON_PATH, true));
-        setBackground(ViewUtils.COLOR_PANEL_BG);
-        setLayout(new BorderLayout());
-        setOpaque(true);
         putClientProperty(TopComponent.PROP_CLOSING_DISABLED, Boolean.TRUE);
         putClientProperty(TopComponent.PROP_DRAGGING_DISABLED, Boolean.TRUE);
         putClientProperty(TopComponent.PROP_MAXIMIZATION_DISABLED, Boolean.TRUE);
         putClientProperty(TopComponent.PROP_UNDOCKING_DISABLED, Boolean.TRUE);
-        this.initComponents();
-    }
 
-    private void initComponents() {
-        DateDisplayPanel dateDisplayPanel = new DateDisplayPanel(dateCtlr, Period.Week);
+        setName(NbBundle.getMessage(WeekPlanTopComponent.class, "CTL_WeekPlanTopComponent"));
+        setIcon(ImageUtilities.loadImage(ICON_PATH, true));
+        setBackground(ViewUtils.COLOR_PANEL_BG);
+        setOpaque(true);
+
+        dateDisplayPanel = new DateDisplayPanel(dateCtlr, Period.Week);
         dateDisplayPanel.setOpaque(true);
         dateDisplayPanel.setBackground(ViewUtils.COLOR_PANEL_BG);
 
-        DateChangerPanel dateChangerPanel = new DateChangerPanel(dateCtlr, Period.Week);
+        dateChangerPanel = new DateChangerPanel(dateCtlr, Period.Week);
         dateChangerPanel.setOpaque(true);
         dateChangerPanel.setBackground(ViewUtils.COLOR_PANEL_BG);
 
-        JPanel northPanel = new JPanel(new MigLayout("fill", "6[grow]6[]6[]6", "0[]0"));
-        northPanel.add(dateDisplayPanel, "align left");
-        northPanel.add(getShowDoneButton(), "align right");
-        northPanel.add(dateChangerPanel, "align right, wrap");
-        northPanel.setOpaque(true);
-        northPanel.setBackground(ViewUtils.COLOR_PANEL_BG);
+        weekDatePanel = new JPanel(new MigLayout("fill", "6[grow]6[]6[]6", "0[]0"));
+        weekDatePanel.add(dateDisplayPanel, "align left");
+        weekDatePanel.add(getShowDoneButton(), "align right");
+        weekDatePanel.add(dateChangerPanel, "align right, wrap");
+        weekDatePanel.setOpaque(true);
+        weekDatePanel.setBackground(ViewUtils.COLOR_PANEL_BG);
 
-        WeekPlanPanel weekPlanPanel = weekPlanPanelCtlr.getWeekPanel();
+        weekPlanPanel = weekPlanPanelCtlr.getWeekPanel();
         weekPlanPanel.setOpaque(true);
         weekPlanPanel.setBackground(ViewUtils.COLOR_PANEL_BG);
         weekPlanPanel.addDayListener(new PropertyChangeListener() {
@@ -77,10 +83,24 @@ public final class WeekPlanTopComponent extends TopComponent {
             }
         });
 
-        add(northPanel, BorderLayout.NORTH);
+        setLayout(new BorderLayout());
+        add(weekDatePanel, BorderLayout.NORTH);
         add(weekPlanPanel, BorderLayout.CENTER);
     }
 
+    private TopComponent[] getDayComponents() {
+        final TopComponent[] cs = new TopComponent[7];
+        
+        for (int i = 0; i < cs.length; i++) {
+            cs[i] = ReviewActionsTopComponent.createInstance(ActionsScreen.create("day:" + i));            
+        }
+        
+        return cs;
+    }
+    
+    
+    
+    
     private Component getShowDoneButton() {
         JToggleButton button = new JToggleButton(showDoneAction);
         Dimension buttonSize = Constants.TOOLBAR_BUTTON_SIZE;

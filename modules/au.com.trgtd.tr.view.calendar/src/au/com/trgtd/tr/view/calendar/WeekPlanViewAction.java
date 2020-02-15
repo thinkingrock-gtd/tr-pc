@@ -2,6 +2,7 @@ package au.com.trgtd.tr.view.calendar;
 
 import au.com.trgtd.tr.appl.InitialAction;
 import au.com.trgtd.tr.prefs.ui.utils.WindowUtils;
+import au.com.trgtd.tr.view.calendar.wp.WeekPlanTopComponent;
 import java.awt.EventQueue;
 import org.openide.util.HelpCtx;
 import org.openide.util.Lookup;
