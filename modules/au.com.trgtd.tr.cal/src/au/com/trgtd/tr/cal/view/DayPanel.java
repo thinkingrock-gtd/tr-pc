@@ -13,11 +13,11 @@ public final class DayPanel extends JPanel {
 
     private final DayGridPanel dayGridPanel;
 
-    public DayPanel(AllDayPanel dayListPanel, DayTimePanel dayTimePanel, DayGridPanel dayGridPanel) {
+    public DayPanel(AllDayPanel allDayPanel, DayTimePanel dayTimePanel, DayGridPanel dayGridPanel) {
         this.dayGridPanel = dayGridPanel;
         setOpaque(false);
         setLayout(new MigLayout("fill", "0[40!]0[grow]0", "0[grow]3[grow]0"));
-        add(dayListPanel, "skip, grow, wrap");
+        add(allDayPanel, "skip, grow, wrap");
         add(dayTimePanel, "align right, growy");
         add(dayGridPanel, "grow");
     }

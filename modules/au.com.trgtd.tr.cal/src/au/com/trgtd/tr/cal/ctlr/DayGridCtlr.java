@@ -46,7 +46,7 @@ public final class DayGridCtlr {
         this.firstHr = firstHr;
         this.lastHr = lastHr;
         this.dayGridPanel = new DayGridPanel(firstHr, lastHr, dateCtlr, this);
-        this.eventMap = new HashMap<EventID, EventPanel>();        
+        this.eventMap = new HashMap<>();        
         this.initEventMap();
         this.calModel.addPropertyChangeListener(CalModel.PROP_INSERT, pclInsert);
         this.calModel.addPropertyChangeListener(CalModel.PROP_REMOVE, pclRemove);        

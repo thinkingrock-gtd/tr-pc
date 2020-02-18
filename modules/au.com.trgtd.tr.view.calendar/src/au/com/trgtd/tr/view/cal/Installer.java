@@ -12,7 +12,6 @@ public class Installer extends ModuleInstall {
     public void restored() {
         InitialActionLookup.instance().add(new DayAction());
         InitialActionLookup.instance().add(new WeekAction());
-        InitialActionLookup.instance().add(new PlanWeekAction());
         InitialActionLookup.instance().add(new MonthAction());
         InitialActionLookup.instance().add(new YearAction());
     }
