@@ -17,7 +17,7 @@ import javax.swing.JToggleButton;
 import net.miginfocom.swing.MigLayout;
 import org.openide.util.ImageUtilities;
 import org.openide.util.NbBundle;
-import org.openide.windows.Mode;
+import org.openide.windows.Mode; 
 import org.openide.windows.TopComponent;
 import org.openide.windows.WindowManager;
 
@@ -64,7 +64,7 @@ public final class PlanWeekTopComponent extends TopComponent {
         northPanel.setOpaque(true);
         northPanel.setBackground(ViewUtils.COLOR_PANEL_BG);
 
-        PlanWeekPanel planPanel = new PlanWeekPanelCtlr(calModel, DateCtlr.DEFAULT).getWeekPanel();
+        PlanWeekPanel planPanel = new PlanWeekCtlr(DateCtlr.DEFAULT).getWeekPanel();
         planPanel.setOpaque(true);
         planPanel.setBackground(ViewUtils.COLOR_PANEL_BG);
         planPanel.addDayListener(new PropertyChangeListener() {

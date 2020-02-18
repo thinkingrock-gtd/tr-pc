@@ -2,7 +2,6 @@ package au.com.trgtd.tr.view.cal;
 
 import au.com.trgtd.tr.cal.model.Day;
 import au.com.trgtd.tr.cal.utils.DateUtils;
-import au.com.trgtd.tr.cal.view.AllDayPanel;
 
 import java.awt.Color;
 import java.awt.Font;
@@ -10,14 +9,11 @@ import java.awt.GridLayout;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
-
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
-
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.UIManager;
@@ -29,7 +25,7 @@ import net.miginfocom.swing.MigLayout;
  *
  * @author Jeremy Moore
  */
-public class PlanWeekPanel extends JPanel {
+final class PlanWeekPanel extends JPanel {
 
     private interface Fonts {
 
@@ -50,7 +46,7 @@ public class PlanWeekPanel extends JPanel {
     private final JPanel panelDates;
     private final JPanel panelLists;
 
-    public PlanWeekPanel(AllDayPanel[] allDayPanels) {
+    PlanWeekPanel(PlanWeekDayPanel[] dayPanels) {
 
         this.pcs = new PropertyChangeSupport(this);
 
@@ -65,13 +61,9 @@ public class PlanWeekPanel extends JPanel {
             dateLabels[i] = new DateLabel();
             dateLabels[i].addMouseListener(dateLabelMouseListener);
             panelDates.add(dateLabels[i]);
-            panelLists.add(allDayPanels[i]);
+            panelLists.add(dayPanels[i]);
         }
 
-        initComponents();
-    }
-
-    private void initComponents() {
         setOpaque(false);
         setLayout(new MigLayout("fill", "0[40!]0[fill, grow]0", "0[]0[grow]3[grow]0"));
         add(panelDates, "skip, grow, wrap");
