@@ -31,6 +31,7 @@ import au.com.trgtd.tr.util.Utils;
 import au.com.trgtd.tr.view.actns.screens.columns.ActionsColumn;
 import au.com.trgtd.tr.view.actns.screens.filters.ActionsFilter;
 import au.com.trgtd.tr.view.actns.screens.filters.FilterFactory;
+import java.util.MissingResourceException;
  
 /**
  * Actions screen definition.
@@ -62,6 +63,7 @@ public class ActionsScreen extends ObservableImpl implements Observable, Observe
     /**
      * Creates and returns an instance.
      * @param key The name or properties key.
+     * @return The action screen.
      */
     public static ActionsScreen create(String key) {
         ActionsScreen screen = new ActionsScreen(key);
@@ -104,7 +106,7 @@ public class ActionsScreen extends ObservableImpl implements Observable, Observe
     public String toString() {
         try {
             return NbBundle.getMessage(getClass(), key);
-        } catch (Exception ex) {
+        } catch (MissingResourceException e) {
             return key;
         }
     }
