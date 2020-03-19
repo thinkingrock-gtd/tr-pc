@@ -28,7 +28,7 @@ class ParserUpdAction implements IParser {
             boolean done;
             Date doneDate;
             Long doneTime = matcher.group(2) == null ? null : Long.valueOf(matcher.group(2));
-            if (doneTime == null) {
+            if (doneTime == null || doneTime == 0) {
                 done = false;
                 doneDate = null;
             } else {
