@@ -206,95 +206,95 @@ public class CalModelImp implements CalModel {
         return events;
     }
 
-    @Override
-    public List<CalEvent> getEventsDelegatedFollowupBefore(Day day) {
-        List<CalEvent> events = new ArrayList<>();
-        for (Action action : Services.instance.getAllActions()) {
-            if (!action.isStateDelegated()) {
-                continue;
-            }
-            if (action.isDone() && !showDone) {
-                continue;
-            }
-            DelegatedItem delegatedItem = new DelegatedItem(action);
-            if (delegatedItem.isFollowupBefore(day.getDate())) {
-                events.add(new DelegatedEvent(action));
-            }
-        }
-        return events;
-    }
+//    @Override
+//    public List<CalEvent> getEventsDelegatedFollowupBefore(Day day) {
+//        List<CalEvent> events = new ArrayList<>();
+//        for (Action action : Services.instance.getAllActions()) {
+//            if (!action.isStateDelegated()) {
+//                continue;
+//            }
+//            if (action.isDone() && !showDone) {
+//                continue;
+//            }
+//            DelegatedItem delegatedItem = new DelegatedItem(action);
+//            if (delegatedItem.isFollowupBefore(day.getDate())) {
+//                events.add(new DelegatedEvent(action));
+//            }
+//        }
+//        return events;
+//    }
 
-    @Override
-    public List<CalEvent> getEventsDelegatedStartOn(Day day) {
-        List<CalEvent> events = new ArrayList<>();
-        for (Action action : Services.instance.getAllActions()) {
-            if (!action.isStateDelegated()) {
-                continue;
-            }
-            if (action.isDone() && !showDone) {
-                continue;
-            }
-            DelegatedItem delegatedItem = new DelegatedItem(action);
-            if (delegatedItem.isStartOn(day.getDate())) {
-                events.add(new DelegatedEvent(action));
-            }
-        }
-        return events;
-    }
+//    @Override
+//    public List<CalEvent> getEventsDelegatedStartOn(Day day) {
+//        List<CalEvent> events = new ArrayList<>();
+//        for (Action action : Services.instance.getAllActions()) {
+//            if (!action.isStateDelegated()) {
+//                continue;
+//            }
+//            if (action.isDone() && !showDone) {
+//                continue;
+//            }
+//            DelegatedItem delegatedItem = new DelegatedItem(action);
+//            if (delegatedItem.isStartOn(day.getDate())) {
+//                events.add(new DelegatedEvent(action));
+//            }
+//        }
+//        return events;
+//    }
 
-    @Override
-    public List<CalEvent> getEventsDelegatedStartBefore(Day day) {
-        List<CalEvent> events = new ArrayList<>();
-        for (Action action : Services.instance.getAllActions()) {
-            if (!action.isStateDelegated()) {
-                continue;
-            }
-            if (action.isDone() && !showDone) {
-                continue;
-            }
-            DelegatedItem delegatedItem = new DelegatedItem(action);
-            if (delegatedItem.isStartBefore(day.getDate())) {
-                events.add(new DelegatedEvent(action));
-            }
-        }
-        return events;
-    }
+//    @Override
+//    public List<CalEvent> getEventsDelegatedStartBefore(Day day) {
+//        List<CalEvent> events = new ArrayList<>();
+//        for (Action action : Services.instance.getAllActions()) {
+//            if (!action.isStateDelegated()) {
+//                continue;
+//            }
+//            if (action.isDone() && !showDone) {
+//                continue;
+//            }
+//            DelegatedItem delegatedItem = new DelegatedItem(action);
+//            if (delegatedItem.isStartBefore(day.getDate())) {
+//                events.add(new DelegatedEvent(action));
+//            }
+//        }
+//        return events;
+//    }
 
-    @Override
-    public List<CalEvent> getEventsDelegatedDueOn(Day day) {
-        List<CalEvent> events = new ArrayList<>();
-        for (Action action : Services.instance.getAllActions()) {
-            if (!action.isStateDelegated()) {
-                continue;
-            }
-            if (action.isDone() && !showDone) {
-                continue;
-            }
-            DelegatedItem delegatedItem = new DelegatedItem(action);
-            if (delegatedItem.isDueOn(day.getDate())) {
-                events.add(new DelegatedEvent(action));
-            }
-        }
-        return events;
-    }
+//    @Override
+//    public List<CalEvent> getEventsDelegatedDueOn(Day day) {
+//        List<CalEvent> events = new ArrayList<>();
+//        for (Action action : Services.instance.getAllActions()) {
+//            if (!action.isStateDelegated()) {
+//                continue;
+//            }
+//            if (action.isDone() && !showDone) {
+//                continue;
+//            }
+//            DelegatedItem delegatedItem = new DelegatedItem(action);
+//            if (delegatedItem.isDueOn(day.getDate())) {
+//                events.add(new DelegatedEvent(action));
+//            }
+//        }
+//        return events;
+//    }
 
-    @Override
-    public List<CalEvent> getEventsDelegatedOverdue(Day day) {
-        List<CalEvent> events = new ArrayList<>();
-        for (Action action : Services.instance.getAllActions()) {
-            if (!action.isStateDelegated()) {
-                continue;
-            }
-            if (action.isDone() && !showDone) {
-                continue;
-            }
-            DelegatedItem delegatedItem = new DelegatedItem(action);
-            if (delegatedItem.isDueBefore(day.getDate())) {
-                events.add(new DelegatedEvent(action));
-            }
-        }
-        return events;
-    }
+//    @Override
+//    public List<CalEvent> getEventsDelegatedOverdue(Day day) {
+//        List<CalEvent> events = new ArrayList<>();
+//        for (Action action : Services.instance.getAllActions()) {
+//            if (!action.isStateDelegated()) {
+//                continue;
+//            }
+//          if (action.isDone() && !showDone) {
+//                continue;
+//            }
+//            DelegatedItem delegatedItem = new DelegatedItem(action);
+//            if (delegatedItem.isDueBefore(day.getDate())) {
+//                events.add(new DelegatedEvent(action));
+//            }
+//        }
+//        return events;
+//    }
 
     @Override
     public List<CalEvent> getEventsDoASAPDueOn(Day day) {
@@ -321,7 +321,8 @@ public class CalModelImp implements CalModel {
             if (!action.isStateASAP()) {
                 continue;
             }
-            if (action.isDone() && !showDone) {
+//          if (action.isDone() && !showDone) {
+            if (action.isDone()) {
                 continue;
             }
             ASAPItem asapItem = new ASAPItem(action);
@@ -350,23 +351,23 @@ public class CalModelImp implements CalModel {
         return events;
     }
 
-    @Override
-    public List<CalEvent> getEventsDoASAPStartBefore(Day day) {
-        List<CalEvent> events = new ArrayList<>();
-        for (Action action : Services.instance.getAllActions()) {
-            if (!action.isStateASAP()) {
-                continue;
-            }
-            if (action.isDone() && !showDone) {
-                continue;
-            }
-            ASAPItem asapItem = new ASAPItem(action);
-            if (asapItem.isStartBefore(day.getDate())) {
-                events.add(new DoASAPEvent(action));
-            }
-        }
-        return events;
-    }
+//    @Override
+//    public List<CalEvent> getEventsDoASAPStartBefore(Day day) {
+//        List<CalEvent> events = new ArrayList<>();
+//        for (Action action : Services.instance.getAllActions()) {
+//            if (!action.isStateASAP()) {
+//                continue;
+//            }
+//            if (action.isDone() && !showDone) {
+//                continue;
+//            }
+//            ASAPItem asapItem = new ASAPItem(action);
+//            if (asapItem.isStartBefore(day.getDate())) {
+//                events.add(new DoASAPEvent(action));
+//            }
+//        }
+//        return events;
+//    }
 
     @Override
     public void add(List<CalEvent> events) {
@@ -398,6 +399,36 @@ public class CalModelImp implements CalModel {
 
     @Override
     public void removePropertyChangeListener(String prop, PropertyChangeListener l) {
+    }
+
+    @Override
+    public List<CalEvent> getEventsDelegatedFollowupBefore(Day day) {
+        throw new UnsupportedOperationException("Not supported yet."); 
+    }
+
+    @Override
+    public List<CalEvent> getEventsDelegatedStartOn(Day day) {
+        throw new UnsupportedOperationException("Not supported yet."); 
+    }
+
+    @Override
+    public List<CalEvent> getEventsDelegatedStartBefore(Day day) {
+        throw new UnsupportedOperationException("Not supported yet."); 
+    }
+
+    @Override
+    public List<CalEvent> getEventsDelegatedDueOn(Day day) {
+        throw new UnsupportedOperationException("Not supported yet."); 
+    }
+
+    @Override
+    public List<CalEvent> getEventsDelegatedOverdue(Day day) {
+        throw new UnsupportedOperationException("Not supported yet."); 
+    }
+
+    @Override
+    public List<CalEvent> getEventsDoASAPStartBefore(Day day) {
+        throw new UnsupportedOperationException("Not supported yet."); 
     }
 
     /* Inner class for Do ASAP action list item. */

@@ -51,7 +51,7 @@ public class ASAPChildren extends Children.Keys<CalEvent> {
 
     @Override
     protected void removeNotify() {
-        setKeys(Collections.EMPTY_LIST);
+        setKeys(new CalEvent[0]);
         dateCtlr.removePropertyChangeListener(pcl);
         super.removeNotify();
     }
