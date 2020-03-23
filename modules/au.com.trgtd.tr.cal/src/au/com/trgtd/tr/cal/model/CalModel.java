@@ -23,14 +23,14 @@ public interface CalModel {
      * Gets all calendar events.
      * @return a list containing all events.
      */    
-    public List<CalEvent> getCalEvents();
+    public List<CalEvent> getEventsScheduled();
 
     /**
      * Gets all calendar events as a map from date to event list.
      * @return a map relating each date (that has events on it) to the list of
      * events on that date.
      */
-    public Map<Date, List<CalEvent>> getCalEventsMap();
+    public Map<Date, List<CalEvent>> getEventsMap();
 
     /**
      * Gets the calendar events for a given day that have a specific time 
@@ -38,14 +38,14 @@ public interface CalModel {
      * @param day The day.
      * @return a list of calendar events. Can be empty but not null.
      */    
-    public List<CalEvent> getEventsWithTime(Day day);
+    public List<CalEvent> getEventsScheduledTime(Day day);
 
     /**
      * Gets the "all-day" calendar events for a given day.
      * @param day The day.
      * @return a list of calendar events which may be empty but never null.
      */    
-    public List<CalEvent> getEventsAllDay(Day day);    
+    public List<CalEvent> getEventsScheduledAllDay(Day day);    
 
     // FOR Week planning:
     public List<CalEvent> getEventsDelegatedFollowupOn(Day day);

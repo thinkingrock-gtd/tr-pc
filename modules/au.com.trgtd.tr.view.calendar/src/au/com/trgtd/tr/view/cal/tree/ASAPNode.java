@@ -4,12 +4,16 @@ import au.com.trgtd.tr.services.Services;
 import au.com.trgtd.tr.view.EditAction;
 import au.com.trgtd.tr.view.EditCookie;
 import au.com.trgtd.tr.view.cal.dialog.ActionEditDialog;
+
+import tr.model.action.Action;
+
 import java.awt.Color;
 import java.awt.Image;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
+
 import org.apache.commons.lang.StringEscapeUtils;
 import org.openide.nodes.AbstractNode;
 import org.openide.nodes.Children;
@@ -17,7 +21,6 @@ import org.openide.nodes.Node;
 import org.openide.util.actions.SystemAction;
 import org.openide.util.lookup.AbstractLookup;
 import org.openide.util.lookup.InstanceContent;
-import tr.model.action.Action;
 
 /**
  * Node for a Do ASAP action.

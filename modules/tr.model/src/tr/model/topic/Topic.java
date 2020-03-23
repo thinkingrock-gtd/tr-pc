@@ -1,42 +1,45 @@
-/*
- * The contents of this file are subject to the terms of the Common Development
- * and Distribution License (the License). You may not use this file except in
- * compliance with the License.
- *
- * You can get a copy of the License at http://www.thinkingrock.com.au/cddl.html
- * or http://www.thinkingrock.com.au/cddl.txt.
- *
- * When distributing Covered Code, include this CDDL Header Notice in each file
- * and include the License file at http://www.thinkingrock.com.au/cddl.txt.
- * If applicable, add the following below the CDDL Header, with the fields
- * enclosed by brackets [] replaced by your own identifying information:
- * "Portions Copyright [year] [name of copyright owner]"
- *
- * The Original Software is ThinkingRock. The Initial Developer of the Original
- * Software is Avente Pty Ltd, Australia.
- *
- * Portions Copyright 2006-2007 Avente Pty Ltd. All Rights Reserved.
- */
 package tr.model.topic;
 
 import au.com.trgtd.tr.appl.Constants;
-import static au.com.trgtd.tr.appl.Constants.ID_DEFAULT_TOPIC;
-import java.awt.Color;
-
-import org.openide.util.NbBundle;
 import au.com.trgtd.tr.util.ObservableImpl;
+import java.awt.Color;
+import java.util.Objects;
+import org.openide.util.NbBundle;
 
 /**
- * Class that represents a topic.  A topic is a subject that an action or
- * project relates to and is used for categorization.
+ * Class that represents a topic. A topic is a subject that an action or project
+ * relates to and is used for categorization.
  *
  * @author Jeremy Moore
  */
 public class Topic extends ObservableImpl implements Comparable<Topic> {
 
+    private static final String DEF_NAME = "None";
+    private static final String DEF_NAME_I18N = NbBundle.getMessage(Topic.class, DEF_NAME);
+    private static final String DEF_DESC_I18N = NbBundle.getMessage(Topic.class, "No_topic");
+
+    public static final Topic DEFAULT;
+
+    static {
+        DEFAULT = new Topic(Constants.ID_DEFAULT_TOPIC);
+        DEFAULT.name = DEF_NAME;
+        DEFAULT.description = DEF_DESC_I18N;
+    }
+
+    public static final boolean isDefault(Topic t) {
+        return null == t
+                || null == t.id
+                || null == t.name
+                || 0 == t.name.trim().length()
+                || DEFAULT.id.equals(t.id)
+                || DEFAULT.name.equals(t.name);
+    }
+
+    public static Topic getDefault() {
+        return DEFAULT;
+    }
+
     private static final long serialVersionUID = 989435278L;
-    private static final String DEFAULT_NAME = "None";
-    private static Topic def;
 
     private String name = "";
     private String description = "";
@@ -49,6 +52,8 @@ public class Topic extends ObservableImpl implements Comparable<Topic> {
 
     /**
      * Constructs a new instance.
+     *
+     * @param id
      */
     public Topic(int id) {
         this.id = id;
@@ -61,51 +66,38 @@ public class Topic extends ObservableImpl implements Comparable<Topic> {
     }
 
     public int getID() {
-        // fudge to fix default id
-//      return id;
-        if (id == null || id == ID_DEFAULT_TOPIC) {
-            return ID_DEFAULT_TOPIC;
-        }        
-        return DEFAULT_NAME.equals(name) ? Constants.ID_DEFAULT_TOPIC : id;
+        return isDefault(this) ? DEFAULT.id : id;
     }
 
     /**
      * Gets the name value.
+     *
      * @return the name value
      */
     public String getName() {
-        if (name.equals(DEFAULT_NAME)) {
-            return NbBundle.getMessage(Topic.class, DEFAULT_NAME);
-        } else {
-            return name;
-        }
+        return isDefault(this) ? DEF_NAME_I18N : name;
     }
 
     /**
      * Sets the name value.
+     *
      * @param name The name to set.
      */
     public void setName(String name) {
-        if (name == null) {
-            // can not set to null
-            return;
-        }
-        if (name.equals(this.name)) {
-            // no change
-            return;
-        }
-        if (name.equals(DEFAULT_NAME)) {
-            // can not set to default topic name
+        String s = (null == name) ? "" : name.trim();
+
+        if (s.length() == 0 || s.equals(DEFAULT.name) || s.equals(this.name)) {
             return;
         }
 
-        this.name = name;
+        this.name = s;
 
         notifyObservers(this);
     }
 
     /**
      * Gets the description value.
+     *
      * @return the description value.
      */
     public String getDescription() {
@@ -114,6 +106,7 @@ public class Topic extends ObservableImpl implements Comparable<Topic> {
 
     /**
      * Sets the description value.
+     *
      * @param description The description value to set.
      */
     public void setDescription(String description) {
@@ -128,6 +121,7 @@ public class Topic extends ObservableImpl implements Comparable<Topic> {
 
     /**
      * Gets the foreground color value.
+     *
      * @return The color value.
      */
     public Color getForeground() {
@@ -136,6 +130,7 @@ public class Topic extends ObservableImpl implements Comparable<Topic> {
 
     /**
      * Gets the foreground color value.
+     *
      * @param color The color value to set.
      */
     public void setForeground(Color color) {
@@ -149,6 +144,7 @@ public class Topic extends ObservableImpl implements Comparable<Topic> {
 
     /**
      * Gets the background color value.
+     *
      * @return The color value.
      */
     public Color getBackground() {
@@ -157,7 +153,8 @@ public class Topic extends ObservableImpl implements Comparable<Topic> {
 
     /**
      * Gets the background color value.
-     * @param color The color value to set.
+     *
+     * @param background
      */
     public void setBackground(Color background) {
         if (background == null || background.equals(this.background)) {
@@ -170,57 +167,48 @@ public class Topic extends ObservableImpl implements Comparable<Topic> {
     }
 
     /**
-     * Gets the default topic.
-     * @return the default topic.
-     */
-    public static Topic getDefault() {
-        if (def == null) {
-            def = new Topic(Constants.ID_DEFAULT_TOPIC);
-//          def.setName(NbBundle.getMessage(Topic.class, "None"));
-            def.name = DEFAULT_NAME;
-            def.description = NbBundle.getMessage(Topic.class, "No_topic");
-        }
-        return def;
-    }
-
-    /**
      * Gets the string representation.
+     *
      * @return The name.
      */
     @Override
     public String toString() {
-//      return name;
         return getName();
     }
 
     /**
      * Override equals to compare this topic with another object for equality,
-     * @return true if the object is a topic with equal name, description
-     * and color.
+     *
+     * @param that
+     * @return true if the object is a topic with equal name.
      */
-    public boolean equals(Object object) {
-        return (object instanceof Topic && name.equals(((Topic)object).name));
+    @Override
+    public boolean equals(Object that) {
+        return (that instanceof Topic && name.equals(((Topic) that).name));
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 5;
+        hash = 89 * hash + Objects.hashCode(this.name);
+        return hash;
     }
 
     /**
-     * Implement Comparable to provide case insensitive alpabetic ordering.
-     * @param topic The Topic to compare to.
+     * Implement Comparable to provide case insensitive alphabetic ordering.
+     *
+     * @param that The Topic to compare to.
      * @return -1, 0, 1 if this.toString() is less than, equal to or greater
      * than topic.toString() respectively.
      */
-    public int compareTo(Topic topic) {
-        if (topic == null || topic.name == null) {
-            return -1;
+    @Override
+    public int compareTo(Topic that) {
+        if (isDefault(this)) {
+            return isDefault(that) ? 0 : -1;
         }
-        if (name.equals(getDefault().name)) {
-            if (topic.name.equals(getDefault().name)) {
-                return 0;
-            }
-            return -1;
-        }
-        if (topic.name.equals(getDefault().name)) {
+        if (isDefault(that)) {
             return 1;
-        }
-        return name.compareToIgnoreCase(topic.name);
+        }        
+        return name.compareToIgnoreCase(that.name);
     }
 }

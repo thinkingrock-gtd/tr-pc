@@ -71,8 +71,8 @@ public class DateUtils {
     
     /**
      * <p>Checks if a calendar date is today.</p>
-     * @param cal  the calendar, not altered, not null
-     * @return true if cal date is today
+     * @param cal the calendar, not altered, not null
+     * @return true if calendar date is today
      * @throws IllegalArgumentException if the calendar is <code>null</code>
      */
     public static boolean isToday(Calendar cal) {
