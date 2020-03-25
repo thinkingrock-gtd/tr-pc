@@ -4,7 +4,5 @@
 **/dist/
 **/private/
 
-genfiles.properties
-tr-updates.zip
-
 nbproject/packaging/
+nbproject/**/tr-updates.zip
