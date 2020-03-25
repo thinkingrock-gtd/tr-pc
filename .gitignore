@@ -1,8 +1,11 @@
-private/
-build/
-/nbproject/distribution/updates/tr-updates.zip
-/nbproject/packaging/
 .DS_Store
-/dist/
 
-modules/au.com.trgtd.tr.cal/nbproject/genfiles.properties
+**/build/
+**/dist/
+**/private/
+
+genfiles.properties
+tr-updates.zip
+
+nbproject/packaging/
+# modules/au.com.trgtd.tr.cal/nbproject/genfiles.properties
