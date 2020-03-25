@@ -4,6 +4,7 @@ import au.com.trgtd.tr.sync.device.Constants;
 import au.com.trgtd.tr.sync.device.SyncUtils;
 import au.com.trgtd.tr.sync.device.exception.ParserException;
 import static au.com.trgtd.tr.sync.device.v100.message.fields.Fields.Receive.UpdAction.*;
+
 import au.com.trgtd.tr.sync.device.v100.message.receive.RecvMsg;
 import au.com.trgtd.tr.sync.device.v100.message.receive.RecvMsgAction;
 import java.text.ParseException;
@@ -28,7 +29,7 @@ class ParserUpdAction implements IParser {
             boolean done;
             Date doneDate;
             Long doneTime = matcher.group(2) == null ? null : Long.valueOf(matcher.group(2));
-            if (doneTime == null) {
+            if (doneTime == null || doneTime == 0) {
                 done = false;
                 doneDate = null;
             } else {
