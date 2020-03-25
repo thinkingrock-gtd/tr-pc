@@ -71,7 +71,7 @@ public class MonthPanel extends JPanel {
     }
 
     private void initGridDates() {
-        eventsMap = calModel.getCalEventsMap();
+        eventsMap = calModel.getEventsMap();
         
         final int weekStartDayNbr = dateCtlr.getFirstDayOfWeek();
         final Day monthStartDay = dateCtlr.getMonthStart();

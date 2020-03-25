@@ -5,28 +5,47 @@ import au.com.trgtd.tr.cal.model.CalEvent;
 import au.com.trgtd.tr.view.cal.CalModelImp;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
-import java.util.Collections;
+import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 import org.openide.nodes.Children;
 import org.openide.nodes.Node;
+import tr.model.action.Action;
 
 /**
  * Children for delegated actions.
  */
-public class DelegatedChildren extends Children.Keys<CalEvent> { 
+public class DelegatedChildren extends Children.Keys<CalEvent> {
+
+    private static final Comparator<CalEvent> COMPARATOR = new Comparator<CalEvent>() {
+        @Override
+        public int compare(CalEvent e1, CalEvent e2) {
+            Action a1 = e1.getAction();
+            Action a2 = e2.getAction();
+            int c = a1.getTopic().compareTo(a2.getTopic());
+            if (c == 0) {
+                c = a1.getDescription().compareToIgnoreCase(a2.getDescription());
+            }
+            return c;
+        }
+    };
 
     private final DateCtlr dateCtlr;
     private final CalModelImp calModel;
-    
+
     public DelegatedChildren(DateCtlr dateCtlr, CalModelImp calModel) {
         this.dateCtlr = dateCtlr;
         this.calModel = calModel;
     }
 
     private List<CalEvent> getItems() {
-        return calModel.getEventsDelegatedFollowupOn(dateCtlr.getDay());
+        List<CalEvent> items = new ArrayList<>();
+        items.addAll(calModel.getEventsDelegatedFollowupOn(dateCtlr.getDay()));
+        items.addAll(calModel.getEventsDelegatedFollowupBefore(dateCtlr.getDay()));
+        items.sort(COMPARATOR);
+        return items;
     }
-    
+
     @Override
     protected Node[] createNodes(CalEvent item) {
         return new Node[]{new DelegatedNode(item.getAction())};
@@ -41,7 +60,7 @@ public class DelegatedChildren extends Children.Keys<CalEvent> {
 
     @Override
     protected void removeNotify() {
-        setKeys(Collections.EMPTY_LIST);
+        this.setKeys(new CalEvent[0]);
         dateCtlr.removePropertyChangeListener(pcl);
         super.removeNotify();
     }
@@ -52,5 +71,5 @@ public class DelegatedChildren extends Children.Keys<CalEvent> {
             setKeys(getItems());
         }
     };
-    
+
 }

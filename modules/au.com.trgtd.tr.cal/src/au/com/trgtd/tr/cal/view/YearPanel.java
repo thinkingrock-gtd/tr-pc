@@ -60,7 +60,7 @@ public class YearPanel extends JPanel {
     }
     
     private void initGrid() {
-        eventsMap = calModel.getCalEventsMap();
+        eventsMap = calModel.getEventsMap();
 
         monthsPanel.removeAll();
 

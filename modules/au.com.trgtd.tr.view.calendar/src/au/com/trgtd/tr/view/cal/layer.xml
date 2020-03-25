@@ -6,7 +6,6 @@
         <folder name="Review">
             <file name="au-com-trgtd-tr-view-cal-DayAction.instance"/>
             <file name="au-com-trgtd-tr-view-cal-WeekAction.instance"/>
-            <file name="au-com-trgtd-tr-view-cal-PlanWeekAction.instance"/>
             <file name="au-com-trgtd-tr-view-cal-MonthAction.instance"/>
             <file name="au-com-trgtd-tr-view-cal-YearAction.instance"/>
         </folder>
@@ -46,10 +45,6 @@
             <file name="WeekViewAction.shadow">
                 <attr name="position" intvalue="6"/>
                 <attr name="originalFile" stringvalue="Actions/Review/au-com-trgtd-tr-view-cal-WeekAction.instance"/>
-            </file>
-            <file name="WeekPlanViewAction.shadow">
-                <attr name="position" intvalue="7"/>
-                <attr name="originalFile" stringvalue="Actions/Review/au-com-trgtd-tr-view-cal-PlanWeekAction.instance"/>
             </file>
             <file name="MonthViewAction.shadow">
                 <attr name="position" intvalue="8"/>
