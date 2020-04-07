@@ -1,3 +1,1 @@
-## ThinkingRock (3.7.0)
-
-Free your mind.
+## ThinkingRock for Personal Computer (i.e. any Desktop or Laptop computer)
