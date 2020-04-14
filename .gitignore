@@ -1,7 +1,8 @@
-private/
-build/
-/nbproject/distribution/updates/tr-updates.zip
-/nbproject/packaging/
 .DS_Store
-/dist/
 
+**/build/
+**/dist/
+**/private/
+
+nbproject/packaging/
+nbproject/**/tr-updates.zip

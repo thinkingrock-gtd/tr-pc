@@ -2,7 +2,7 @@ package au.com.trgtd.tr.cal.ctlr;
 
 import au.com.trgtd.tr.cal.model.CalModel;
 import au.com.trgtd.tr.cal.view.DayGridPanel;
-import au.com.trgtd.tr.cal.view.DayListPanel;
+import au.com.trgtd.tr.cal.view.AllDayPanel;
 import au.com.trgtd.tr.cal.view.DayTimePanel;
 import au.com.trgtd.tr.cal.view.DayPanel;
 
@@ -17,7 +17,7 @@ public final class DayPanelCtlr {
     private final DayGridCtlr dayGridCtlr;
     private final DayListCtlr dayListCtlr;
     
-    private final DayListPanel dayListPanel;
+    private final AllDayPanel dayListPanel;
     private final DayTimePanel dayTimePanel;
     private final DayGridPanel dayGridPanel;
     

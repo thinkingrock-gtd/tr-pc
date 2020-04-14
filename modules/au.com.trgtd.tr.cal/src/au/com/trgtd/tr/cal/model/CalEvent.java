@@ -100,13 +100,13 @@ public interface CalEvent extends Comparable<CalEvent> {
         
     /**
      * Sets the background color.
-     * @parap color the color.
+     * @param color the color.
      */
     public void setCalEventBg(Color color);
     
     /**
      * Sets the foreground color.
-     * @parap color the color.
+     * @param color the color.
      */
     public void setCalEventFg(Color color);
     

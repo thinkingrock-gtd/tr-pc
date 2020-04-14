@@ -5,7 +5,7 @@ import au.com.trgtd.tr.cal.model.CalModel;
 import au.com.trgtd.tr.cal.model.Day;
 import au.com.trgtd.tr.cal.utils.DateUtils;
 import au.com.trgtd.tr.cal.view.DayGridPanel;
-import au.com.trgtd.tr.cal.view.DayListPanel;
+import au.com.trgtd.tr.cal.view.AllDayPanel;
 import au.com.trgtd.tr.cal.view.DayTimePanel;
 import au.com.trgtd.tr.cal.view.WeekPanel;
 import java.beans.PropertyChangeEvent;
@@ -23,7 +23,7 @@ public final class WeekPanelCtlr {
     private final CalModel calModel;
     private final DateCtlr dateCtlr;    
     private final DayTimePanel dayTimePanel;
-    private final DayListPanel[] dayListPanels;
+    private final AllDayPanel[] dayListPanels;
     private final DayListCtlr[] dayListCtlrs;    
     private final DayGridPanel[] dayGridPanels;
     private final DayGridCtlr[] dayGridCtlrs;    
@@ -34,6 +34,8 @@ public final class WeekPanelCtlr {
      * Constructor.
      * @param calModel The calendar model.
      * @param dateCtlr The date controller.
+     * @param firstHr
+     * @param lastHr
      */
     public WeekPanelCtlr(CalModel calModel, DateCtlr dateCtlr, int firstHr, int lastHr) {
         if (null == calModel) {
@@ -46,7 +48,7 @@ public final class WeekPanelCtlr {
         this.calModel = calModel;        
         this.dayTimePanel = new DayTimePanel(firstHr, lastHr);
         this.dateCtlrs = new DateCtlr[7];
-        this.dayListPanels = new DayListPanel[7];
+        this.dayListPanels = new AllDayPanel[7];
         this.dayListCtlrs = new DayListCtlr[7];        
         this.dayGridPanels = new DayGridPanel[7];
         this.dayGridCtlrs = new DayGridCtlr[7];        

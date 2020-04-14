@@ -15,30 +15,50 @@ public interface CalModel {
     public String PROP_INSERT = "insert-cal-event";
     public String PROP_REMOVE = "remove-cal-event";
 
+    public boolean isShowDone();
+
+    public void setShowDone(boolean showDone);
+
     /**
      * Gets all calendar events.
      * @return a list containing all events.
      */    
-    public List<CalEvent> getCalEvents();
+    public List<CalEvent> getEventsScheduled();
 
     /**
      * Gets all calendar events as a map from date to event list.
      * @return a map relating each date (that has events on it) to the list of
      * events on that date.
      */
-    public Map<Date, List<CalEvent>> getCalEventsMap();
+    public Map<Date, List<CalEvent>> getEventsMap();
 
     /**
-     * Gets the calendar events (excluding all-day events) for on a given day.
-     * @return a list of calendar events which may be empty but never null.
+     * Gets the calendar events for a given day that have a specific time 
+     * (not all-day events). 
+     * @param day The day.
+     * @return a list of calendar events. Can be empty but not null.
      */    
-    public List<CalEvent> getCalEvents(Day day);
+    public List<CalEvent> getEventsScheduledTime(Day day);
 
     /**
      * Gets the "all-day" calendar events for a given day.
+     * @param day The day.
      * @return a list of calendar events which may be empty but never null.
      */    
-    public List<CalEvent> getCalEventsAllDay(Day day);
+    public List<CalEvent> getEventsScheduledAllDay(Day day);    
+
+    // FOR Week planning:
+    public List<CalEvent> getEventsDelegatedFollowupOn(Day day);
+    public List<CalEvent> getEventsDelegatedFollowupBefore(Day day);
+    public List<CalEvent> getEventsDelegatedStartOn(Day day);
+    public List<CalEvent> getEventsDelegatedStartBefore(Day day);
+    public List<CalEvent> getEventsDelegatedDueOn(Day day);
+    public List<CalEvent> getEventsDelegatedOverdue(Day day);
+    public List<CalEvent> getEventsDoASAPDueOn(Day day);
+    public List<CalEvent> getEventsDoASAPOverdue(Day day);
+    public List<CalEvent> getEventsDoASAPStartOn(Day day);
+    public List<CalEvent> getEventsDoASAPStartBefore(Day day);
+    // END
     
     /**
      * Add a list of calendar events.

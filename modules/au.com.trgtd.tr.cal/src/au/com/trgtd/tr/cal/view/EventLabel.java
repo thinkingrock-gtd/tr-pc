@@ -16,7 +16,7 @@ import javax.swing.SwingConstants;
  *
  * @author Jeremy Moore
  */
-public class EventLabel extends JLabel {
+public final class EventLabel extends JLabel {
 
     private final static int ALPHA_NORMAL = 150;
     private final static int ALPHA_SELECT = 200;
@@ -36,6 +36,7 @@ public class EventLabel extends JLabel {
     
     public EventLabel(CalEvent event) {
         super();
+        
         if (null == event) {
             throw new IllegalArgumentException("Event can not be null.");
         }
@@ -68,8 +69,9 @@ public class EventLabel extends JLabel {
     }
 
     private void init() {
-        setOpaque(false);
-        setFocusable(true);
+        setOpaque(true);
+        setFocusable(false);
+        
         setFont(FONT);
         setBorder(BorderFactory.createEmptyBorder(1, 2, 1, 2));
         setHorizontalAlignment(SwingConstants.LEFT);
@@ -107,10 +109,14 @@ public class EventLabel extends JLabel {
 
     private void initValues() {
         Color c = event.getCalEventBg();
+        
         bgNormal = new Color(c.getRed(), c.getGreen(), c.getBlue(), ALPHA_NORMAL);
         bgSelect = new Color(c.getRed(), c.getGreen(), c.getBlue(), ALPHA_SELECT);
         fgNormal = event.getCalEventFg();
         setForeground(fgNormal);        
+        
+        setBackground(bgNormal);
+        
         setText(getTextString());
         setToolTipText(getToolTipString());
     }
