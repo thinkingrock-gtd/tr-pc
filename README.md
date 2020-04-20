@@ -1,7 +1,7 @@
 ## ThinkingRock - PC Edition
 
-ThinkingRock edition for all desktop or laptop personal computers (including Mac OSX desktop and laptop computers).
+ThinkingRock edition for desktop and laptop personal computers (including Mac OS X).
 
 Requirements: 
-* Java 1.8
+* Java 1.8 from Oracle (NOT Open-JDK)
 
