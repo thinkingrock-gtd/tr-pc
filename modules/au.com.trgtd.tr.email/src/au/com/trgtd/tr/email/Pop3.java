@@ -428,7 +428,7 @@ public class Pop3 {
         if (SSL) {
             // add new provider
             try {
-                Security.addProvider(new com.sun.net.ssl.internal.ssl.Provider());
+                    Security.addProvider(Security.getProvider("SunJSSE"));
             } catch (SecurityException se) {
                 throw new MessagingException("" + se);
             }

@@ -101,7 +101,7 @@ public class ReferencesPanel extends JPanel implements ListSelectionListener, Ob
         
         refsTable = new JXTable(refsTableModel);
         refsTable.getTableHeader().setDefaultRenderer(new JTableHeader().getDefaultRenderer());
-        refsTable.getSelectionMapper().setEnabled(false);
+        //refsTable.getSelectionMapper().setEnabled(false);
         refsTable.setSortable(false);
         refsTable.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
         refsTable.setColumnControlVisible(true);

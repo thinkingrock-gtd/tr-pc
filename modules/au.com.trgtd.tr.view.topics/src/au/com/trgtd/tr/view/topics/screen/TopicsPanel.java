@@ -93,7 +93,7 @@ public class TopicsPanel extends JPanel implements ListSelectionListener, Observ
         topicTable = new JXTable(topicEventTableModel);
         topicTable.getActionMap().remove("find");
         topicTable.getTableHeader().setDefaultRenderer(new JTableHeader().getDefaultRenderer());
-        topicTable.getSelectionMapper().setEnabled(false);
+        //topicTable.getSelectionMapper().setEnabled(false);
         topicTable.setSortable(false);
         topicTable.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
         topicTable.setColumnControlVisible(true);

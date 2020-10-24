@@ -1,4 +1,5 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?><project xmlns="http://www.netbeans.org/ns/project/1">
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://www.netbeans.org/ns/project/1">
     <type>org.netbeans.modules.apisupport.project</type>
     <configuration>
         <data xmlns="http://www.netbeans.org/ns/nb-module-project/3">
@@ -164,6 +165,7 @@
                 <package>jp.gr.xml.relax.sax</package>
                 <package>jp.gr.xml.relax.swift</package>
                 <package>jp.gr.xml.relax.xml</package>
+                <package>org.apache.xerces.jaxp.datatype</package>
                 <package>org.iso_relax.catalog</package>
                 <package>org.iso_relax.dispatcher</package>
                 <package>org.iso_relax.dispatcher.impl</package>
@@ -190,20 +192,24 @@
                 <package>org.relaxng.datatype.helpers</package>
             </public-packages>
             <class-path-extension>
-                <runtime-relative-path>ext/jaxb-xjc.jar</runtime-relative-path>
-                <binary-origin>release/modules/ext/jaxb-xjc.jar</binary-origin>
-            </class-path-extension>
-            <class-path-extension>
-                <runtime-relative-path>ext/jsr173_1.0_api.jar</runtime-relative-path>
-                <binary-origin>release/modules/ext/jsr173_1.0_api.jar</binary-origin>
+                <runtime-relative-path>ext/jaxb-impl.jar</runtime-relative-path>
+                <binary-origin>release/modules/ext/jaxb-impl.jar</binary-origin>
             </class-path-extension>
             <class-path-extension>
                 <runtime-relative-path>ext/jaxb1-impl.jar</runtime-relative-path>
                 <binary-origin>release/modules/ext/jaxb1-impl.jar</binary-origin>
             </class-path-extension>
             <class-path-extension>
-                <runtime-relative-path>ext/jaxb-impl.jar</runtime-relative-path>
-                <binary-origin>release/modules/ext/jaxb-impl.jar</binary-origin>
+                <runtime-relative-path>ext/jaxb-xjc.jar</runtime-relative-path>
+                <binary-origin>release/modules/ext/jaxb-xjc.jar</binary-origin>
+            </class-path-extension>
+            <class-path-extension>
+                <runtime-relative-path>ext/jaxp-datatype.jar</runtime-relative-path>
+                <binary-origin>release/modules/ext/jaxp-datatype.jar</binary-origin>
+            </class-path-extension>
+            <class-path-extension>
+                <runtime-relative-path>ext/jsr173_1.0_api.jar</runtime-relative-path>
+                <binary-origin>release/modules/ext/jsr173_1.0_api.jar</binary-origin>
             </class-path-extension>
             <class-path-extension>
                 <runtime-relative-path>ext/jaxb-api.jar</runtime-relative-path>

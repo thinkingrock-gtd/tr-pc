@@ -151,7 +151,7 @@ public class ReviewActionsPanel extends JPanel implements ListSelectionListener,
         actionsTable.getActionMap().remove("find");
         actionsTable.setModel(actionsTableModel);
 
-        actionsTable.getSelectionMapper().setEnabled(false);
+        //actionsTable.getSelectionMapper().setEnabled(false);
         actionsTable.setSortable(false);
 
 //      actionsTable.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);

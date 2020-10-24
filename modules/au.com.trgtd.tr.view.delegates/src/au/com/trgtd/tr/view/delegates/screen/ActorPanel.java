@@ -76,7 +76,7 @@ public class ActorPanel extends JPanel implements ListSelectionListener, Observe
         actorTable = new JXTable(actorEventTableModel);
         actorTable.getActionMap().remove("find");
         actorTable.getTableHeader().setDefaultRenderer(new JTableHeader().getDefaultRenderer());
-        actorTable.getSelectionMapper().setEnabled(false);
+        //actorTable.getSelectionMapper().setEnabled(false);
         actorTable.setSortable(false);
         actorTable.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
         actorTable.setColumnControlVisible(true);

@@ -35,7 +35,6 @@ import java.util.Iterator;
 import java.util.Vector;
 import java.util.logging.Logger;
 import au.com.trgtd.tr.extract.Extract.FormatType;
-import sun.rmi.runtime.Log;
 import tr.model.Data;
 import tr.model.Item.Item;
 import tr.model.action.Action;

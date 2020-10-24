@@ -32,6 +32,7 @@
     </folder>
 
     <folder name="Menu">
+        <file name="BuildProject_hidden"/>
         <folder name="Help">
             <file name="HomePage.shadow">
                 <attr name="originalFile" stringvalue="Actions/Help/au-com-trgtd-tr-view-HomePageAction.instance"/>
@@ -60,6 +61,12 @@
                 </file>
             </folder>
         </folder>
+        <file name="Refactoring_hidden"/>
+        <file name="RunProject_hidden"/>
+        <file name="Source_hidden"/>
+        <file name="Tools_hidden"/>
+        <file name="Versioning_hidden"/>
+        <file name="View_hidden"/>
     </folder>
 
     <folder name="Shortcuts">
@@ -93,5 +100,16 @@
         <file name="D-D.shadow">
             <attr name="originalFile" stringvalue="Actions/Edit/au-com-trgtd-tr-view-ToggleHideDoneAction.instance"/>
         </file>
+    </folder>
+    <folder name="Toolbars">
+        <file name="Build_hidden"/>
+        <file name="Debug_hidden"/>
+        <folder name="File">
+            <file name="org-netbeans-modules-project-ui-NewFile.shadow_hidden"/>
+            <file name="org-netbeans-modules-project-ui-NewProject.shadow_hidden"/>
+            <file name="org-netbeans-modules-project-ui-OpenProject.shadow_hidden"/>
+        </folder>
+        <file name="Memory_hidden"/>
+        <file name="UndoRedo_hidden"/>
     </folder>
 </filesystem>
