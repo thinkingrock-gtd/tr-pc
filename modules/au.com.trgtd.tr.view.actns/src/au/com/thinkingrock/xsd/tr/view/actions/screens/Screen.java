@@ -4,8 +4,6 @@
 // Any modifications to this file will be lost upon recompilation of the source schema.
 // Generated on: 2008.03.06 at 09:14:48 AM EST
 //
-
-
 package au.com.thinkingrock.xsd.tr.view.actions.screens;
 
 import javax.xml.bind.annotation.XmlAccessType;

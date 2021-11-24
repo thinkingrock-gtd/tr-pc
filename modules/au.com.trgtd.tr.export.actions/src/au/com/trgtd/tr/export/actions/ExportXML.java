@@ -1,4 +1,4 @@
-    /*
+/*
  * ThinkingRock, a project management tool for Personal Computers. 
  * Copyright (C) 2006 Avente Pty Ltd
  * 
@@ -15,7 +15,6 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
-
 package au.com.trgtd.tr.export.actions;
 
 import java.io.File;

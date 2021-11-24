@@ -1,4 +1,4 @@
-    /*
+/*
  * ThinkingRock, a project management tool for Personal Computers. 
  * Copyright (C) 2006 Avente Pty Ltd
  * 

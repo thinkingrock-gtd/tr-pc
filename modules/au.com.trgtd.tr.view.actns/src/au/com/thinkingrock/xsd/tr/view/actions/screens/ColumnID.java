@@ -4,8 +4,6 @@
 // Any modifications to this file will be lost upon recompilation of the source schema.
 // Generated on: 2008.02.14 at 10:19:02 AM EST
 //
-
-
 package au.com.thinkingrock.xsd.tr.view.actions.screens;
 
 import java.util.HashMap;
