@@ -52,4 +52,14 @@ public class FormatTypeXmlEscapeTest {
         String ascii = "<foo;bar>";
         assertEquals("&lt;foo;bar&gt;", xml.escape(ascii));
     }
+
+    @Test
+    public void escapingSmiley_returnsInvalidXml() {
+        String ascii = "I’ll give you an update in few weeks 😉";
+        // &#55357 is invalid XML TODO fix
+        assertEquals(
+                "I&#8217;ll give you an update in few weeks &#55357;&#56841;",
+                xml.escape(ascii)
+        );
+    }
 }
