@@ -54,12 +54,9 @@ public class FormatTypeXmlEscapeTest {
     }
 
     @Test
-    public void escapingSmiley_returnsInvalidXml() {
-        String ascii = "I’ll give you an update in few weeks 😉";
-        // &#55357 is invalid XML TODO fix
-        assertEquals(
-                "I&#8217;ll give you an update in few weeks &#55357;&#56841;",
-                xml.escape(ascii)
+    public void escapingSmiley_returnsValidXml() {
+        String smiley = "I’ll give you an update in few weeks 😉";
+        assertEquals(smiley, xml.escape(smiley)
         );
     }
 }
