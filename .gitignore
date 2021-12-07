@@ -6,3 +6,6 @@
 
 nbproject/packaging/
 nbproject/**/tr-updates.zip
+
+.idea/
+**/*.iml
