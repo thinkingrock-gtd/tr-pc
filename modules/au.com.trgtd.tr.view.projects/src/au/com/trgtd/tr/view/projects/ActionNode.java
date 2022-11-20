@@ -21,11 +21,8 @@ import au.com.trgtd.tr.prefs.projects.ProjectsPrefs;
 import au.com.trgtd.tr.util.Utils;
 import au.com.trgtd.tr.view.*;
 import au.com.trgtd.tr.view.contexts.ContextChangeAction;
-import au.com.trgtd.tr.view.projects.EditAction;
 import au.com.trgtd.tr.view.projects.PostponeActionAction.Periods;
-import au.com.trgtd.tr.view.projects.PrintAction;
 import au.com.trgtd.tr.view.topics.TopicChangeAction;
-import java.awt.Color;
 import java.awt.Image;
 import java.awt.datatransfer.Transferable;
 import java.awt.dnd.DnDConstants;
@@ -37,7 +34,7 @@ import java.util.Date;
 import java.util.logging.Logger;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
-import org.apache.commons.lang.StringEscapeUtils;
+import org.apache.commons.text.StringEscapeUtils;
 import org.openide.actions.DeleteAction;
 import org.openide.actions.*;
 import org.openide.cookies.ViewCookie;
@@ -128,7 +125,7 @@ public class ActionNode extends AbstractNode implements EditCookie,
     }
 
     private String escapeHTML(String str) {
-        str = StringEscapeUtils.escapeXml(str);
+        str = StringEscapeUtils.escapeXml10(str);
         return str.replace("&apos;", "'");
     }
 
