@@ -29,7 +29,7 @@ import java.util.logging.Logger;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.filechooser.FileFilter;
-import org.apache.commons.lang.StringEscapeUtils;
+import org.apache.commons.text.StringEscapeUtils;
 import org.openide.filesystems.FileUtil;
 import org.openide.util.NbBundle;
 import org.openide.windows.WindowManager;
@@ -409,6 +409,6 @@ public class ExportProject {
      * @return The escaped string.
      */
     private String escape(String string) {
-        return StringEscapeUtils.escapeXml(string);
+        return StringEscapeUtils.escapeXml10(string);
     }
 }
