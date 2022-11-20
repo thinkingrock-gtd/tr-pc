@@ -67,7 +67,7 @@ import javax.swing.JToolBar;
 import javax.swing.Timer;
 import javax.swing.table.TableColumn;
 import javax.swing.table.TableColumnModel;
-import org.apache.commons.lang.StringEscapeUtils;
+import org.apache.commons.text.StringEscapeUtils;
 import org.openide.awt.Toolbar;
 import org.openide.util.HelpCtx;
 import org.openide.util.Lookup;
@@ -552,7 +552,7 @@ public final class ReviewActionsTopComponent extends Window implements ActionsPr
     }
 
     private String escape(String string) {
-        return StringEscapeUtils.escapeXml(string);
+        return StringEscapeUtils.escapeXml10(string);
     }
 
     private String getType(Action action) {
