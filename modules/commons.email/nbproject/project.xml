@@ -29,8 +29,8 @@
                 <package>org.apache.commons.mail.util</package>
             </public-packages>
             <class-path-extension>
-                <runtime-relative-path>ext/commons-email-1.4.jar</runtime-relative-path>
-                <binary-origin>release/modules/ext/commons-email-1.4.jar</binary-origin>
+                <runtime-relative-path>ext/commons-email-1.5.jar</runtime-relative-path>
+                <binary-origin>release/modules/ext/commons-email-1.5.jar</binary-origin>
             </class-path-extension>
         </data>
     </configuration>
