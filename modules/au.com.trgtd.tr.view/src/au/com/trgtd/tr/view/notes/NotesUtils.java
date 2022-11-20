@@ -25,7 +25,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-import org.apache.commons.lang.StringEscapeUtils;
+import org.apache.commons.text.StringEscapeUtils;
 
 /**
  * Static utility methods.
@@ -63,7 +63,7 @@ public class NotesUtils {
      */
     public static String text2html(String text) {
         text = (text == null) ? "" : text;
-        text = StringEscapeUtils.escapeXml(text);
+        text = StringEscapeUtils.escapeXml10(text);
         text = convertURLs(text);
         text = preserveWhitespace(text);
         text = fixProblems(text);
