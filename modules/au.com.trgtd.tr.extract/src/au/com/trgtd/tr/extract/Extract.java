@@ -24,7 +24,7 @@ import java.io.File;
 import java.net.URL; 
 import java.util.Calendar;
 import java.util.List;
-import org.apache.commons.lang.StringEscapeUtils;
+import org.apache.commons.text.StringEscapeUtils;
 import org.openide.util.NbBundle;
 import au.com.trgtd.tr.extract.prefs.ExtractPrefs;
 import tr.model.Data;
@@ -51,14 +51,14 @@ public abstract class Extract {
             }
             if (this == XML) {
                 string = string.replace("&", "&#38;");
-                return StringEscapeUtils.escapeXml(string);
+                return StringEscapeUtils.escapeXml10(string);
             }
             if (this == CSV) {
                 /* Replace quotation marks (") by double quotation marks ("")
                  * and surround with quotation marks. */
 //              return "\"" + string.replace("\"", "\"\"") + "\"";
                 string = "\"" + string.replace("\"", "\"\"") + "\"";
-                return StringEscapeUtils.escapeXml(string);
+                return StringEscapeUtils.escapeXml10(string);
             }
             return string;
         }
