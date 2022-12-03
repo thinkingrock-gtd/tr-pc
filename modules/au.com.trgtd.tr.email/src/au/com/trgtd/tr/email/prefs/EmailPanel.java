@@ -139,7 +139,7 @@ public class EmailPanel extends javax.swing.JPanel {
     }
 
     private JComponent getView() {
-        JPanel panel = new JPanel(new MigLayout("", "0[]2[grow]0", "0[]2[]2[]2[]2[]2[]2[]2[]2[]2[]2[]2[]0"));
+        JPanel panel = new JPanel(new MigLayout("", "0[]2[grow]0", "0[]2[]2[]2[]2[]2[]2[]2[]2[]2[]2[]2[]2[]0"));
 
         panel.add(descrLabel, "align right");
         panel.add(descrField, "align left, growx, wrap");
@@ -201,7 +201,11 @@ public class EmailPanel extends javax.swing.JPanel {
 
         portField = new JFormattedTextField();
         sslCheck = new JCheckBox(getMsg("email-account-ssl"));
+        sslCheck.addActionListener((java.awt.event.ActionEvent evt) -> {
+            enableDisableFields();
+        });
         sslProtocolsLabel = new JLabel(getMsg("email-account-ssl-protocols"));
+        sslProtocolsField = new JFormattedTextField();
         passwordField = new JPasswordField();
         usernameField = new JTextField();
         serverField = new JTextField();
