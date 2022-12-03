@@ -81,16 +81,18 @@ public class Email extends Thread {
             String popserver = EmailPrefs.getEmailServer();
             int port = EmailPrefs.getPort();
             boolean ssl = EmailPrefs.isSSL();
+            String sslProtocols = EmailPrefs.getSslProtocols();
 
             LOG.log(Level.INFO, "Username:{0}", username);
             LOG.log(Level.INFO, "POP Server:{0}", popserver);
             LOG.log(Level.INFO, "Port:{0}", port);
             LOG.log(Level.INFO, "SSL:{0}", ssl);
+            LOG.log(Level.INFO, "Protocols:{0}", sslProtocols);
 
             email.setUserPass(username, password);
             email.setServer(popserver);
             email.setPort(port);
-            email.setUseSSL(ssl);
+            email.setUseSSL(ssl, sslProtocols);
             email.connect();
             email.openFolder("INBOX", true);
 
@@ -134,16 +136,18 @@ public class Email extends Thread {
             String popserver = EmailPrefs.getEmailServer();
             int port = EmailPrefs.getPort();
             boolean ssl = EmailPrefs.isSSL();
+            String sslProtocols = EmailPrefs.getSslProtocols();
 
             LOG.log(Level.INFO, "Username:{0}", username);
             LOG.log(Level.INFO, "POP Server:{0}", popserver);
             LOG.log(Level.INFO, "Port:{0}", port);
             LOG.log(Level.INFO, "SSL:{0}", ssl);
+            LOG.log(Level.INFO, "Protocols:{0}", sslProtocols);
 
             email.setUserPass(username, password);
             email.setServer(popserver);
             email.setPort(port);
-            email.setUseSSL(ssl);
+            email.setUseSSL(ssl, sslProtocols);
             email.connect();
 
             Folder folder = email.openFolder("INBOX", false);
