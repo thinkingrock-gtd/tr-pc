@@ -38,7 +38,6 @@ import org.openide.windows.WindowManager;
 import java.io.File;
 import java.awt.Component;
 import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
@@ -213,10 +212,8 @@ public class EmailPanel extends javax.swing.JPanel {
         descrField = new JTextField();
         fetchAtStartupCheck = new JCheckBox(getMsg("fetch.at.startup"));
         fetchScheduleCheck = new JCheckBox(getMsg("fetch.schedule"));
-        fetchScheduleCheck.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                enableDisableFields();
-            }
+        fetchScheduleCheck.addActionListener((java.awt.event.ActionEvent evt) -> {
+            enableDisableFields();
         });
         daysField = new JSpinner();
         daysField.setModel(new SpinnerNumberModel(Long.valueOf(0L), Long.valueOf(0L), Long.valueOf(99L), Long.valueOf(1L)));
@@ -230,20 +227,16 @@ public class EmailPanel extends javax.swing.JPanel {
         fetchKeepCheck = new JCheckBox(getMsg("fetch.keep"));
 
         saveAttachmentsCheck = new JCheckBox(getMsg("save.attachments"));
-        saveAttachmentsCheck.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                enableDisableFields();
-            }
+        saveAttachmentsCheck.addActionListener((java.awt.event.ActionEvent evt) -> {
+            enableDisableFields();
         });
         attachmentsFolderLabel = new JLabel(getMsg("path.attachments"));
         attachmentsFolderField = new JTextField();
         attachmentsFolderField.getDocument().addDocumentListener(new FolderDocumentListener());
 
         browseButton = new JButton(getMsg("browse"));
-        browseButton.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent evt) {
-                browse();
-            }
+        browseButton.addActionListener((ActionEvent evt) -> {
+            browse();
         });
     }
 
