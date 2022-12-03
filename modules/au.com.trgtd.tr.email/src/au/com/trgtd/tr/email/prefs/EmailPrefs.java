@@ -43,6 +43,7 @@ public class EmailPrefs {
     private static final String KEY_EMAIL_SRVR = "email.server";
     private static final String KEY_EMAIL_PORT = "email.port";
     private static final String KEY_EMAIL_SSL = "email.ssl";
+    private static final String KEY_EMAIL_SSL_PROTOCOLS = "email.ssl.protocols";
     private static final String KEY_FETCH_AT_STARTUP = "fetch.at.startup";
     private static final String KEY_FETCH_SCHEDULE = "fetch.schedule";
     private static final String KEY_FETCH_MS_INTERVAL = "fetch.ms.interval";
@@ -50,6 +51,7 @@ public class EmailPrefs {
     private static final String KEY_LAST_MSG_UID = "fetch.last.uid";
     private static final int DEF_EMAIL_PORT = 110;
     private static final boolean DEF_EMAIL_SSL = false;
+    private static final String DEF_EMAIL_SSL_PROTOCOLS = "TLSv1.3 TLSv1.2";
     private static final boolean DEF_FETCH_AT_STARTUP = false;
     private static final boolean DEF_FETCH_SCHEDULE = false;
     private static final long DEF_FETCH_MS_INTERVAL = 0;
@@ -206,6 +208,25 @@ public class EmailPrefs {
      */
     public static final void setSSL(boolean value) {
         PREFS.putBoolean(KEY_EMAIL_SSL, value);
+        flush();
+    }
+
+    /**
+     * Gets the value for the ssl protocols
+     *
+     * @return The value.
+     */
+    public static final String getSslProtocols() {
+        return PREFS.get(KEY_EMAIL_SSL_PROTOCOLS, DEF_EMAIL_SSL_PROTOCOLS);
+    }
+
+    /**
+     * Sets the value for the email ssl protocols
+     *
+     * @param protocols The protocols, space delimited
+     */
+    public static final void setSslProtocols(String protocols) {
+        PREFS.put(KEY_EMAIL_SSL_PROTOCOLS, protocols);
         flush();
     }
 

@@ -65,6 +65,7 @@ public class EmailPanel extends javax.swing.JPanel {
         serverField.setText(EmailPrefs.getEmailServer());
         portField.setValue(EmailPrefs.getPort());
         sslCheck.setSelected(EmailPrefs.isSSL());
+        sslProtocolsField.setText(EmailPrefs.getSslProtocols());
         fetchAtStartupCheck.setSelected(EmailPrefs.isEmailFetchAtStartup());
         fetchScheduleCheck.setSelected(EmailPrefs.isEmailFetchSchedule());
         final long ms = EmailPrefs.getEmailFetchIntervalMS();
@@ -88,6 +89,7 @@ public class EmailPanel extends javax.swing.JPanel {
         } catch (NumberFormatException ex) {
         }            
         EmailPrefs.setSSL(sslCheck.isSelected());
+        EmailPrefs.setSslProtocols(sslProtocolsField.getText());
         EmailPrefs.setEmailFetchAtStartup(fetchAtStartupCheck.isSelected());
         EmailPrefs.setEmailFetchSchedule(fetchScheduleCheck.isSelected());
         long days = getValue(daysField);
@@ -126,6 +128,8 @@ public class EmailPanel extends javax.swing.JPanel {
         minsField.setEnabled(schedule);
         attachmentsFolderField.setEnabled(saveAttachmentsCheck.isSelected());
         attachmentsFolderLabel.setEnabled(saveAttachmentsCheck.isSelected());
+        sslProtocolsField.setEnabled(sslCheck.isSelected());
+        sslProtocolsLabel.setEnabled(sslCheck.isSelected());
     }
 
     private void initForm() {
@@ -155,6 +159,9 @@ public class EmailPanel extends javax.swing.JPanel {
         panel.add(portLabel, "align right");
         panel.add(portField, "align left, span, split 2");
         panel.add(sslCheck,  "align right, wrap");
+
+        panel.add(sslProtocolsLabel, "align right");
+        panel.add(sslProtocolsField, "align left, growx, wrap");
 
         panel.add(fetchAtStartupCheck, "align left, span, wrap");
 
@@ -194,6 +201,7 @@ public class EmailPanel extends javax.swing.JPanel {
 
         portField = new JFormattedTextField();
         sslCheck = new JCheckBox(getMsg("email-account-ssl"));
+        sslProtocolsLabel = new JLabel(getMsg("email-account-ssl-protocols"));
         passwordField = new JPasswordField();
         usernameField = new JTextField();
         serverField = new JTextField();
@@ -295,6 +303,8 @@ public class EmailPanel extends javax.swing.JPanel {
     private JLabel serverLabel;
     private JTextField serverField;
     private JCheckBox sslCheck;
+    private JLabel sslProtocolsLabel;
+    private JTextField sslProtocolsField;
     private JLabel usernameLabel;
     private JTextField usernameField;
     private JCheckBox fetchKeepCheck;
