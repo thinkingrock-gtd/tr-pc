@@ -69,6 +69,8 @@ public final class XStreamWrapper {
         super();
         xstream = new XStream();
         
+        xstream.allowTypesByWildcard(new String[] {"tr.model.**"});
+
 //      xstream.setMode(XStream.XPATH_RELATIVE_REFERENCES);        
         xstream.setMode(XStream.XPATH_ABSOLUTE_REFERENCES);        
         
