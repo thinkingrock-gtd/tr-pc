@@ -17,9 +17,10 @@
  */
 package tr.model.goals.data;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class Goal {
+public class Goal implements Serializable {
 
     private final Integer id;               // manditory
     private Integer levelID;                // manditory except root goal
