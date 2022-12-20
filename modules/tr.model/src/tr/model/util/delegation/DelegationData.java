@@ -18,7 +18,7 @@
 package tr.model.util.delegation;
 
 import java.util.Date;
-import org.apache.commons.lang.StringUtils;
+import org.apache.commons.lang3.StringUtils;
 
 /**
  * Defines an object to hold data sent via email when an action is delegated or

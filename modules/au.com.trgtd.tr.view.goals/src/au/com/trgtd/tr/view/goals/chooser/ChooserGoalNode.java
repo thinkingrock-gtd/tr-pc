@@ -21,7 +21,7 @@ import java.awt.Color;
 import java.awt.Image;
 import javax.swing.AbstractButton;
 import javax.swing.Action;
-import org.apache.commons.lang.StringEscapeUtils;
+import org.apache.commons.text.StringEscapeUtils;
 import org.openide.nodes.AbstractNode;
 import org.openide.nodes.Children;
 import org.openide.util.actions.SystemAction;
@@ -92,7 +92,7 @@ public class ChooserGoalNode extends AbstractNode implements SelectCookie {
     }
 
     protected String escapeHTML(String str) {
-        str = StringEscapeUtils.escapeXml(str);
+        str = StringEscapeUtils.escapeXml10(str);
         return str.replace("&apos;", "'");
     }
 

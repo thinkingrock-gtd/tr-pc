@@ -17,7 +17,7 @@
  */
 package tr.model.util.delegation;
 
-import org.apache.commons.lang.StringUtils;
+import org.apache.commons.lang3.StringUtils;
 
 /**
  * SMTP fields.

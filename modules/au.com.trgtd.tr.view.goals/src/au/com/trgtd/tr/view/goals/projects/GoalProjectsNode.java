@@ -22,7 +22,7 @@ import au.com.trgtd.tr.view.project.chooser.ProjectChooserDialog;
 import java.awt.Frame;
 import java.awt.Image;
 import javax.swing.Action;
-import org.apache.commons.lang.StringEscapeUtils;
+import org.apache.commons.text.StringEscapeUtils;
 import org.openide.actions.PasteAction;
 import org.openide.nodes.AbstractNode;
 import org.openide.nodes.Children;
@@ -79,7 +79,7 @@ public class GoalProjectsNode extends AbstractNode
     }
 
     private String escapeHTML(String str) {
-        str = StringEscapeUtils.escapeXml(str);
+        str = StringEscapeUtils.escapeXml10(str);
         return str.replace("&apos;", "'");
     }
 

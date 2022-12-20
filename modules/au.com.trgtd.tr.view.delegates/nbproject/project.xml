@@ -71,14 +71,6 @@
                     </run-dependency>
                 </dependency>
                 <dependency>
-                    <code-name-base>commons.lang</code-name-base>
-                    <build-prerequisite/>
-                    <compile-dependency/>
-                    <run-dependency>
-                        <specification-version>3.5.1</specification-version>
-                    </run-dependency>
-                </dependency>
-                <dependency>
                     <code-name-base>miglayout</code-name-base>
                     <build-prerequisite/>
                     <compile-dependency/>
