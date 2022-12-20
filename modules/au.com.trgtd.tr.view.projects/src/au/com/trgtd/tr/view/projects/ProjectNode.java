@@ -31,7 +31,7 @@ import java.util.logging.Logger;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
-import org.apache.commons.lang.StringEscapeUtils;
+import org.apache.commons.text.StringEscapeUtils;
 import org.openide.cookies.ViewCookie;
 import org.openide.explorer.ExplorerManager;
 import org.openide.explorer.view.TreeView;
@@ -136,7 +136,7 @@ public class ProjectNode extends AbstractNode implements Observer, EditCookie,
     }
 
     private String escapeHTML(String str) {
-        str = StringEscapeUtils.escapeXml(str);
+        str = StringEscapeUtils.escapeXml10(str);
         return str.replace("&apos;", "'");
     }
 
