@@ -98,7 +98,8 @@ public class SomedaysPanel extends JPanel implements ListSelectionListener, Obse
         futuresTable = new JXTable(refsTableModel);
         futuresTable.getActionMap().remove("find");
         futuresTable.getTableHeader().setDefaultRenderer(new JTableHeader().getDefaultRenderer());
-        //futuresTable.getSelectionMapper().setEnabled(false);
+        futuresTable.setAutoCreateRowSorter(false);
+        futuresTable.setRowSorter(null);
         futuresTable.setSortable(false);
 
 //      futuresTable.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);

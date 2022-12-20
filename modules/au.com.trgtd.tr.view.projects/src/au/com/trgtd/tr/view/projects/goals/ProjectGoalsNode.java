@@ -27,7 +27,7 @@ import java.awt.Image;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import javax.swing.Action;
-import org.apache.commons.lang.StringEscapeUtils;
+import org.apache.commons.text.StringEscapeUtils;
 import org.openide.actions.PasteAction;
 import org.openide.nodes.AbstractNode;
 import org.openide.nodes.Children;
@@ -75,7 +75,7 @@ public class ProjectGoalsNode extends AbstractNode implements AddCookie, EditCoo
     }
 
     private String escapeHTML(String str) {
-        str = StringEscapeUtils.escapeXml(str);
+        str = StringEscapeUtils.escapeXml10(str);
         return str.replace("&apos;", "'");
     }
 

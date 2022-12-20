@@ -35,7 +35,7 @@ import java.util.logging.Logger;
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.Marshaller;
 import javax.xml.bind.Unmarshaller;
-import org.apache.commons.lang.StringEscapeUtils;
+import org.apache.commons.text.StringEscapeUtils;
 
 /**
  * Actions screens DAO using JAXB.
@@ -151,7 +151,7 @@ final class ScreensDAOJAXB implements ScreensDAO {
 
         for (ActionsScreen as : actionScreens.getScreens().list()) {
 
-            String name = StringEscapeUtils.escapeXml(as.getKey());
+            String name = StringEscapeUtils.escapeXml10(as.getKey());
 
             Screen screen = new Screen(name);
 

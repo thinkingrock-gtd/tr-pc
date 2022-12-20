@@ -91,7 +91,8 @@ public class ContextsPanel extends JPanel implements ListSelectionListener, Obse
         contextTable = new JXTable(contextEventTableModel);
         contextTable.getActionMap().remove("find");
         contextTable.getTableHeader().setDefaultRenderer(new JTableHeader().getDefaultRenderer());
-        //contextTable.getSelectionMapper().setEnabled(false);
+        contextTable.setAutoCreateRowSorter(false);
+        contextTable.setRowSorter(null);
         contextTable.setSortable(false);
         contextTable.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
         contextTable.setColumnControlVisible(true);
