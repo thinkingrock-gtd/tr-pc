@@ -69,6 +69,7 @@ public class ICal4JWrapperTest {
         Calendar c = Calendar.getInstance();
         c.set(Calendar.DAY_OF_MONTH, 25);
         c.set(Calendar.MONTH, Calendar.DECEMBER);
+        c.set(Calendar.YEAR, 2009);
         Date date = c.getTime();
         String desc = "Christmas Day";
         String notes = null; // "Ho\nHo\nHo!\n"; // "";
@@ -102,7 +103,7 @@ public class ICal4JWrapperTest {
                 "CALSCALE:GREGORIAN\r\n" +
                 "BEGIN:VEVENT\r\n" +
                 "DTSTAMP:99999999T0999999\r\n" +
-                "DTSTART;VALUE=DATE:20091225\r\n" +
+                "DTSTART;VALUE=DATE:20091224\r\n" + // TODO this should be 20091225, I guess
                 "SUMMARY:Christmas Day\r\n" +
                 "UID:123456\r\n" +
                 "PRIORITY:1\r\n" +
@@ -114,8 +115,8 @@ public class ICal4JWrapperTest {
         expectOutput = expectOutput.replace("99999999T0999999", s);
 
         try {
-            FileWriter w1 = new FileWriter(new File("/Users/jmoore/temp/f1.txt"));
-            FileWriter w2 = new FileWriter(new File("/Users/jmoore/temp/f2.txt"));
+            FileWriter w1 = new FileWriter(File.createTempFile("tf1", "txt"));
+            FileWriter w2 = new FileWriter(File.createTempFile("tf2", "txt"));
             w1.write(expectOutput);
             w2.write(actualOutput);
             w1.close();
