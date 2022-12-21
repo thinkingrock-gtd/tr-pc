@@ -38,7 +38,6 @@ import org.openide.windows.WindowManager;
 import java.io.File;
 import java.awt.Component;
 import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
@@ -65,6 +64,7 @@ public class EmailPanel extends javax.swing.JPanel {
         serverField.setText(EmailPrefs.getEmailServer());
         portField.setValue(EmailPrefs.getPort());
         sslCheck.setSelected(EmailPrefs.isSSL());
+        sslProtocolsField.setText(EmailPrefs.getSslProtocols());
         fetchAtStartupCheck.setSelected(EmailPrefs.isEmailFetchAtStartup());
         fetchScheduleCheck.setSelected(EmailPrefs.isEmailFetchSchedule());
         final long ms = EmailPrefs.getEmailFetchIntervalMS();
@@ -88,6 +88,7 @@ public class EmailPanel extends javax.swing.JPanel {
         } catch (NumberFormatException ex) {
         }            
         EmailPrefs.setSSL(sslCheck.isSelected());
+        EmailPrefs.setSslProtocols(sslProtocolsField.getText());
         EmailPrefs.setEmailFetchAtStartup(fetchAtStartupCheck.isSelected());
         EmailPrefs.setEmailFetchSchedule(fetchScheduleCheck.isSelected());
         long days = getValue(daysField);
@@ -126,6 +127,8 @@ public class EmailPanel extends javax.swing.JPanel {
         minsField.setEnabled(schedule);
         attachmentsFolderField.setEnabled(saveAttachmentsCheck.isSelected());
         attachmentsFolderLabel.setEnabled(saveAttachmentsCheck.isSelected());
+        sslProtocolsField.setEnabled(sslCheck.isSelected());
+        sslProtocolsLabel.setEnabled(sslCheck.isSelected());
     }
 
     private void initForm() {
@@ -135,7 +138,7 @@ public class EmailPanel extends javax.swing.JPanel {
     }
 
     private JComponent getView() {
-        JPanel panel = new JPanel(new MigLayout("", "0[]2[grow]0", "0[]2[]2[]2[]2[]2[]2[]2[]2[]2[]2[]2[]0"));
+        JPanel panel = new JPanel(new MigLayout("", "0[]2[grow]0", "0[]2[]2[]2[]2[]2[]2[]2[]2[]2[]2[]2[]2[]0"));
 
         panel.add(descrLabel, "align right");
         panel.add(descrField, "align left, growx, wrap");
@@ -155,6 +158,9 @@ public class EmailPanel extends javax.swing.JPanel {
         panel.add(portLabel, "align right");
         panel.add(portField, "align left, span, split 2");
         panel.add(sslCheck,  "align right, wrap");
+
+        panel.add(sslProtocolsLabel, "align right");
+        panel.add(sslProtocolsField, "align left, growx, wrap");
 
         panel.add(fetchAtStartupCheck, "align left, span, wrap");
 
@@ -194,6 +200,11 @@ public class EmailPanel extends javax.swing.JPanel {
 
         portField = new JFormattedTextField();
         sslCheck = new JCheckBox(getMsg("email-account-ssl"));
+        sslCheck.addActionListener((java.awt.event.ActionEvent evt) -> {
+            enableDisableFields();
+        });
+        sslProtocolsLabel = new JLabel(getMsg("email-account-ssl-protocols"));
+        sslProtocolsField = new JFormattedTextField();
         passwordField = new JPasswordField();
         usernameField = new JTextField();
         serverField = new JTextField();
@@ -201,10 +212,8 @@ public class EmailPanel extends javax.swing.JPanel {
         descrField = new JTextField();
         fetchAtStartupCheck = new JCheckBox(getMsg("fetch.at.startup"));
         fetchScheduleCheck = new JCheckBox(getMsg("fetch.schedule"));
-        fetchScheduleCheck.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                enableDisableFields();
-            }
+        fetchScheduleCheck.addActionListener((java.awt.event.ActionEvent evt) -> {
+            enableDisableFields();
         });
         daysField = new JSpinner();
         daysField.setModel(new SpinnerNumberModel(Long.valueOf(0L), Long.valueOf(0L), Long.valueOf(99L), Long.valueOf(1L)));
@@ -218,20 +227,16 @@ public class EmailPanel extends javax.swing.JPanel {
         fetchKeepCheck = new JCheckBox(getMsg("fetch.keep"));
 
         saveAttachmentsCheck = new JCheckBox(getMsg("save.attachments"));
-        saveAttachmentsCheck.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                enableDisableFields();
-            }
+        saveAttachmentsCheck.addActionListener((java.awt.event.ActionEvent evt) -> {
+            enableDisableFields();
         });
         attachmentsFolderLabel = new JLabel(getMsg("path.attachments"));
         attachmentsFolderField = new JTextField();
         attachmentsFolderField.getDocument().addDocumentListener(new FolderDocumentListener());
 
         browseButton = new JButton(getMsg("browse"));
-        browseButton.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent evt) {
-                browse();
-            }
+        browseButton.addActionListener((ActionEvent evt) -> {
+            browse();
         });
     }
 
@@ -295,6 +300,8 @@ public class EmailPanel extends javax.swing.JPanel {
     private JLabel serverLabel;
     private JTextField serverField;
     private JCheckBox sslCheck;
+    private JLabel sslProtocolsLabel;
+    private JTextField sslProtocolsField;
     private JLabel usernameLabel;
     private JTextField usernameField;
     private JCheckBox fetchKeepCheck;

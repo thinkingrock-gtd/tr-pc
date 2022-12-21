@@ -46,6 +46,7 @@ public class EmailUtils {
     private String username;
     private String password;
     private boolean useSSL;
+    private String sslProtocols;
     private int port;
     private Folder folder;
 
@@ -61,8 +62,11 @@ public class EmailUtils {
         this.password = password;
     }
 
-    public void setUseSSL(boolean useSSL) {
+    public void setUseSSL(boolean useSSL, String sslProdocols) {
         this.useSSL = useSSL;
+        if (useSSL) {
+            this.sslProtocols = sslProdocols;
+        }
     }
 
     public void setPort(int port) {
@@ -79,9 +83,9 @@ public class EmailUtils {
         if (useSSL && port > 0) {
             pop3Props.setProperty("mail.pop3.socketFactory.class", SSL_FACTORY);
             pop3Props.setProperty("mail.pop3.socketFactory.fallback", "false");
+            pop3Props.setProperty("mail.pop3.ssl.protocols", sslProtocols);
             pop3Props.setProperty("mail.pop3.port", Integer.toString(port));
             pop3Props.setProperty("mail.pop3.socketFactory.port", Integer.toString(port));
-
             URLName url = new URLName("pop3", server, port, "", username, password);
             session = Session.getInstance(pop3Props, null);
             store = new POP3SSLStore(session, url);
