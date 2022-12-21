@@ -18,10 +18,6 @@
 package tr.model.util.delegation;
 
 import java.util.Date;
-import org.junit.After;
-import org.junit.AfterClass;
-import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
 import static tr.model.util.delegation.DelegationData.Type.DELEGATION;
@@ -33,25 +29,6 @@ import static tr.model.util.delegation.DelegationData.Type.RESPONSE;
  * @author Jeremy Moore
  */
 public class DelegationUtilsTest {
-
-    public DelegationUtilsTest() {
-    }
-
-    @BeforeClass
-    public static void setUpClass() {
-    }
-
-    @AfterClass
-    public static void tearDownClass() {
-    }
-
-    @Before
-    public void setUp() {
-    }
-
-    @After
-    public void tearDown() {
-    }
 
     private static final DelegationData TEST_DD_ALL_VALUES
             = new DelegationDataBuilder(DELEGATION)

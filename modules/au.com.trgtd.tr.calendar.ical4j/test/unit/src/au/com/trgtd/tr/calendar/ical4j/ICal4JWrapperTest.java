@@ -17,7 +17,6 @@
  */
 package au.com.trgtd.tr.calendar.ical4j;
 
-import au.com.trgtd.tr.calendar.ical4j.ICal4JWrapper;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -26,10 +25,6 @@ import java.util.Calendar;
 import java.util.Date;
 import net.fortuna.ical4j.data.CalendarOutputter;
 import net.fortuna.ical4j.model.ValidationException;
-import org.junit.After;
-import org.junit.AfterClass;
-import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
@@ -38,25 +33,6 @@ import static org.junit.Assert.*;
  * @author Jeremy Moore
  */
 public class ICal4JWrapperTest {
-
-    public ICal4JWrapperTest() {
-    }
-
-    @BeforeClass
-    public static void setUpClass() throws Exception {
-    }
-
-    @AfterClass
-    public static void tearDownClass() throws Exception {
-    }
-
-    @Before
-    public void setUp() {
-    }
-
-    @After
-    public void tearDown() {
-    }
 
     /**
      * Test of createAllDayEvent method, of class ICal4JWrapper.
@@ -146,6 +122,7 @@ public class ICal4JWrapperTest {
 //        fail("The test case is a prototype.");
 //    }
 //
+
     /**
      * Test of createToDo method, of class ICal4JWrapper.
      */
@@ -199,7 +176,7 @@ public class ICal4JWrapperTest {
                 "PRIORITY:1\r\n" +
                 "END:VTODO\r\n" +
                 "END:VCALENDAR\r\n";
-        
+
         int p = actualOutput.indexOf("DTSTAMP:");
         String s = actualOutput.substring(p + 8, p + 24);
         expectOutput = expectOutput.replace("99999999T0999999", s);
@@ -216,17 +193,6 @@ public class ICal4JWrapperTest {
         }
 
         assertEquals(expectOutput.trim(), actualOutput.trim());
-
-
-
-
-
-
-
-
-
-
-
 
     }
 //
