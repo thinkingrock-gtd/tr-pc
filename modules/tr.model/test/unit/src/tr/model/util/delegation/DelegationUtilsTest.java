@@ -121,14 +121,25 @@ public class DelegationUtilsTest {
     
     
     @Test
-    public void testSomething() {
-        
-        String ss = "{\"reply\":\"trstufftest@gmail.com\",\"time\":\"10 min\",\"priority\":\"MIT\",\"topic\":\"None\",\"id\":139398}";
-        
-        System.out.println(DelegationUtils.serialize(DelegationUtils.deserialize(ss)));
-        
-        
-        
+    public void canSerializeAndDeserializeTypeDelegation() {
+        String ss = "{\"reply\":\"trstufftest@gmail.com\",\"type\":0,\"time\":\"10 min\",\"priority\":\"MIT\",\"topic\":\"None\",\"id\":139398}";
+        DelegationData dd = DelegationUtils.deserialize(ss);
+        String out = DelegationUtils.serialize(dd);
+        assertEquals(ss, out);
     }
 
+    @Test
+    public void canSerializeAndDeserializeTypeResponse() {
+        String ss = "{\"reply\":\"trstufftest@gmail.com\",\"type\":1,\"done\":599999,\"id\":139398}";
+        DelegationData dd = DelegationUtils.deserialize(ss);
+        String out = DelegationUtils.serialize(dd);
+        assertEquals(ss, out);
+    }
+
+    @Test
+    public void cannotDeserializeWithMissingType() {
+        String ss = "{\"reply\":\"trstufftest@gmail.com\",\"done\":599999,\"id\":139398}";
+        DelegationData dd = DelegationUtils.deserialize(ss);
+        assertNull(dd);
+    }
 }
