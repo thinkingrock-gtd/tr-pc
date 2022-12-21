@@ -501,7 +501,7 @@ public class GoalNode extends AbstractNode
             return false;
         }
         // no warning if goal should not have projects assigned
-        if (!goalCtrl.getLevel().isGoalsHaveProjects()) {
+        if (goalCtrl.getLevel() != null && !goalCtrl.getLevel().isGoalsHaveProjects()) {
             return false;
         }        
         GoalsCtrl goalsCtrl = GoalsCtrlLookup.getGoalsCtrl();

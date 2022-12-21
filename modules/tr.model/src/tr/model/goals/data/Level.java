@@ -17,7 +17,9 @@
  */
 package tr.model.goals.data;
 
-public class Level {
+import java.io.Serializable;
+
+public class Level implements Serializable {
 
     private final Integer id;
     private String descr;
