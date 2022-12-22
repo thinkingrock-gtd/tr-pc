@@ -18,10 +18,6 @@
 package tr.model.util.delegation;
 
 import java.util.Date;
-import org.junit.After;
-import org.junit.AfterClass;
-import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
 import static tr.model.util.delegation.DelegationData.Type.DELEGATION;
@@ -33,25 +29,6 @@ import static tr.model.util.delegation.DelegationData.Type.RESPONSE;
  * @author Jeremy Moore
  */
 public class DelegationUtilsTest {
-
-    public DelegationUtilsTest() {
-    }
-
-    @BeforeClass
-    public static void setUpClass() {
-    }
-
-    @AfterClass
-    public static void tearDownClass() {
-    }
-
-    @Before
-    public void setUp() {
-    }
-
-    @After
-    public void tearDown() {
-    }
 
     private static final DelegationData TEST_DD_ALL_VALUES
             = new DelegationDataBuilder(DELEGATION)
@@ -121,14 +98,25 @@ public class DelegationUtilsTest {
     
     
     @Test
-    public void testSomething() {
-        
-        String ss = "{\"reply\":\"trstufftest@gmail.com\",\"time\":\"10 min\",\"priority\":\"MIT\",\"topic\":\"None\",\"id\":139398}";
-        
-        System.out.println(DelegationUtils.serialize(DelegationUtils.deserialize(ss)));
-        
-        
-        
+    public void canSerializeAndDeserializeTypeDelegation() {
+        String ss = "{\"reply\":\"trstufftest@gmail.com\",\"type\":0,\"time\":\"10 min\",\"priority\":\"MIT\",\"topic\":\"None\",\"id\":139398}";
+        DelegationData dd = DelegationUtils.deserialize(ss);
+        String out = DelegationUtils.serialize(dd);
+        assertEquals(ss, out);
     }
 
+    @Test
+    public void canSerializeAndDeserializeTypeResponse() {
+        String ss = "{\"reply\":\"trstufftest@gmail.com\",\"type\":1,\"done\":599999,\"id\":139398}";
+        DelegationData dd = DelegationUtils.deserialize(ss);
+        String out = DelegationUtils.serialize(dd);
+        assertEquals(ss, out);
+    }
+
+    @Test
+    public void cannotDeserializeWithMissingType() {
+        String ss = "{\"reply\":\"trstufftest@gmail.com\",\"done\":599999,\"id\":139398}";
+        DelegationData dd = DelegationUtils.deserialize(ss);
+        assertNull(dd);
+    }
 }
