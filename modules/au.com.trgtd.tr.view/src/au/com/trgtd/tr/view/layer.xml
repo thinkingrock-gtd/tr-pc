@@ -6,12 +6,6 @@
             <file name="au-com-trgtd-tr-view-PrintAction.instance"/>
         </folder>
         <folder name="Edit">
-            <!--
-            <file name="org-openide-actions-CopyAction.instance"/>
-            <file name="org-openide-actions-CutAction.instance"/>
-            <file name="org-openide-actions-PasteAction.instance"/>
-            <file name="org-openide-actions-DeleteAction.instance"/>
-            -->
             <file name="au-com-trgtd-tr-view-AddAction.instance"/>
             <file name="au-com-trgtd-tr-view-EditAction.instance"/>
             <file name="au-com-trgtd-tr-view-ExpandAction.instance"/>
