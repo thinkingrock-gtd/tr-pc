@@ -4,6 +4,8 @@
     <folder name="Actions">
         <folder name="File">
             <file name="au-com-trgtd-tr-view-PrintAction.instance"/>
+            <file name="org-netbeans-modules-project-ui-actions-CloseAllProjectsAction.instance_hidden"/>
+            <file name="org-netbeans-modules-project-ui-actions-CloseOtherProjectsAction.instance_hidden"/>
         </folder>
         <folder name="Edit">
             <file name="au-com-trgtd-tr-view-AddAction.instance"/>
@@ -26,6 +28,10 @@
     </folder>
 
     <folder name="Menu">
+        <folder name="Edit">
+            <file name="clipboard-lines.shadow_hidden"/>   
+            <file name="clipboard-history.shadow_hidden"/>             
+          </folder>
         <file name="BuildProject_hidden"/>
         <folder name="Help">
             <file name="HomePage.shadow">
