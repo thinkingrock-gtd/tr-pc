@@ -4,14 +4,6 @@
     <description>Builds trgtd distributions.</description>
     <import file="nbproject/build-impl.xml"/>
 
-    <!-- Ant Contrib for IF -->
-    <taskdef resource="net/sf/antcontrib/antcontrib.properties">
-        <classpath>
-            <pathelement location="ant-contrib-0.6.jar"/>
-        </classpath>
-    </taskdef>    
-
-        
     <target name="-bundle-osx" depends="build,build-launchers" description="Builds an application bundle for MacOSX.">
 
         <!-- create app directories -->
@@ -60,27 +52,6 @@
                includes="nbexec" 
                perm="755">
         </chmod>
-
-        <!-- bundle JRE? -->  
-        <if>
-            <equals arg1="${include.jre}" arg2="true" />
-            <then>
-                <echo message="Including JRE" />
-
-                <copy todir="${app.dir}/Contents/Resources/${app.name}/jre">
-                    <fileset dir="${jre.dir}" />
-                </copy>
-                <chmod dir="${app.dir}/Contents/Resources/${app.name}/jre/bin" includes="*" perm="755">
-                </chmod>
-                <!-- remove JFX files from JRE -->
-                <delete verbose="true">
-                    <fileset dir="${app.dir}/Contents/Resources/${app.name}/jre" includes="**/*jfx*.*"/>
-                </delete>            
-            </then>        
-            <else>
-                <echo message="Not including JRE" />
-            </else>
-        </if>        
 
         <!-- app Info.plist -->
         <copy file="${harness.dir}/etc/Info.plist" tofile="${app.dir}/Contents/Info.plist">
