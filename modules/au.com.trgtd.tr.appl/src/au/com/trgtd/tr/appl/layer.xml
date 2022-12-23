@@ -240,6 +240,9 @@
             <file name="org-netbeans-modules-spellchecker-options-SpellcheckerOptionsPanelController.instance_hidden"/>
             <file name="org-netbeans-modules-versioning-util-VcsAdvancedOptions.instance_hidden"/>
         </folder>
+        <file name="Editor.instance_hidden"/>
+        <file name="FontsAndColors.instance_hidden"/>
+        <file name="Team.instance_hidden"/>
     </folder>
 
     <file name="QuickSearch_hidden"/>
