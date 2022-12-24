@@ -234,11 +234,15 @@
             <file name="org-netbeans-core-ui-options-filetypes-FileAssociationsOptionsPanelController.instance_hidden"/>
             <file name="org-netbeans-core-windows-options-WinSysAdvancedOption.instance_hidden"/>
             <file name="org-netbeans-core-windows-options-WinSysOptionsPanelController.instance_hidden"/>
+            <file name="org-netbeans-janitor-JanitorSettings.instance_hidden"/>
             <file name="org-netbeans-modules-bugtracking-util-BugtrackingOptions.instance_hidden"/>
             <file name="org-netbeans-modules-javascript-editing-options-JsOptionsController.instance_hidden"/>
             <file name="org-netbeans-modules-spellchecker-options-SpellcheckerOptionsPanelController.instance_hidden"/>
             <file name="org-netbeans-modules-versioning-util-VcsAdvancedOptions.instance_hidden"/>
         </folder>
+        <file name="Editor.instance_hidden"/>
+        <file name="FontsAndColors.instance_hidden"/>
+        <file name="Team.instance_hidden"/>
     </folder>
 
     <file name="QuickSearch_hidden"/>
