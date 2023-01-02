@@ -27,7 +27,7 @@ You have opened the tr-pc project in Netbeans
 - you will find a zip file *trgtd.zip* inside the folder *dist*. Unzip it, navigate inside into the bin and start the respective binary for your OS.
 > Note: It seems to be necessary to have opened the project with Netbeans once. Netbeans installs some dependencies that are also used if to build the project using ant only.
 
-### Compilation Using NetBeans
+### Run From NetBeans
 - Menu File -> Open Project. Navigate to the local git clone of tr-pc.
 
 ![Project](/docs/images/readme_project.png)
