@@ -19,7 +19,7 @@ Before starting ThinkinRock from sources, ensure you have a backup of your produ
 - Java is installed
 - [Netbeans](https://netbeans.apache.org/download/index.html) is installed
 - [Apache Ant](https://ant.apache.org/manual/install.html) is installed
-You have opened the tr-pc project in Netbeans
+- You have opened the tr-pc project in Netbeans
 
 ### Compilation from a Terminal
 - open a terminal window (Xterm, Konsole, Dos prompt, PowerShell...) and navigate to the root of the git clone tr-pc
