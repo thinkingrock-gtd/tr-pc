@@ -6,6 +6,8 @@
 
 nbproject/packaging/
 nbproject/**/tr-updates.zip
+netbeans-plat/
 
 .idea/
 **/*.iml
+
