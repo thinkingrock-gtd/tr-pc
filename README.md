@@ -1,5 +1,5 @@
 [![License](https://img.shields.io/github/license/thinkingrock-gtd/tr-pc)](https://github.com/thinkingrock-gtd/tr-pc/blob/master/LICENSE)
-[![Build](https://img.shields.io/github/actions/workflow/status/thinkingrock-gtd/tr-pc/build.yml?branch=main)](https://github.com/thinkingrock-gtd/tr-pc/actions?query=workflow%3AJavaCI+branch%3Amain)
+[![Build](https://img.shields.io/github/actions/workflow/status/ursjoss/tr-pc/build.yml?branch=main)](https://github.com/ursjoss/tr-pc/actions?query=workflow%3AJavaCI+branch%3Amain)
 
 ## ThinkingRock for Personal Computer (i.e. any Desktop or Laptop computer)
 
