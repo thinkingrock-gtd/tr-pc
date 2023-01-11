@@ -37,5 +37,8 @@ jobs:
           java-version: '17'
           distribution: 'adopt'
 
-      - name:  Build with Ant
-        run: ant -noinput test -Dnbplatform.default.netbeans.dest.dir=/home/runner/work/tr-pc/tr-pc/netbeans-plat/16/ide
+      - name: Install just
+        uses: taiki-e/install-action@just
+
+      - name: Run headless tests, using ant via just recipe
+        run: just verify-ci
