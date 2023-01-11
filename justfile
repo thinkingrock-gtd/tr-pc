@@ -20,6 +20,9 @@ verify-module module: build
 # Verifies modules with headless tests
 verify-headless: verify-tr verify-deps
 
+# Verifies all modules - including UI tests
+verify: verify-headless verify-ui
+
 # Verifies thinking rock modules (only headless)
 verify-tr:
     just verify-module au.com.trgtd.tr.archive
