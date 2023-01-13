@@ -79,7 +79,7 @@ public class ICal4JWrapperTest {
                 "CALSCALE:GREGORIAN\r\n" +
                 "BEGIN:VEVENT\r\n" +
                 "DTSTAMP:99999999T0999999\r\n" +
-                "DTSTART;VALUE=DATE:20091225\r\n" +
+                "DTSTART;VALUE=DATE:20091225\r\n" + // TODO #26 this is flaky, maybe dependent on time-zone (...20091224 in my laptop)
                 "SUMMARY:Christmas Day\r\n" +
                 "UID:123456\r\n" +
                 "PRIORITY:1\r\n" +
