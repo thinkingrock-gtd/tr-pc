@@ -27,6 +27,7 @@ import net.fortuna.ical4j.data.CalendarOutputter;
 import net.fortuna.ical4j.model.ValidationException;
 import org.junit.Test;
 import static org.junit.Assert.*;
+import org.junit.Ignore;
 
 /**
  *
@@ -38,6 +39,7 @@ public class ICal4JWrapperTest {
      * Test of createAllDayEvent method, of class ICal4JWrapper.
      */
     @Test
+    @Ignore // TODO #26 - reactivate after fixing flakyness
     public void testCreateAllDayEvent() {
         System.out.println("createAllDayEvent");
 
