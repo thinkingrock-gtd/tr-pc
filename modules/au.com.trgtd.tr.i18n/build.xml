@@ -88,42 +88,4 @@
             tsaurl="http://timestamp.globalsign.com/scripts/timestamp.dll" verbose="false"/>
         <!--END INCLUDE -->
     </target>
-    <target
-        depends="init,netbeans,-nbm-prompt-for-storepass,-init-executables"
-        description="Build NBM archive." name="nbm">
-        <!-- OVERRIDDEN To change code signing -->
-        <mkdir dir="${build.dir}"/>
-        <property name="nbm.target.cluster" value=""/>
-        <!-- fallback -->
-        <property name="license.file.override" value="${license.file}"/>
-        <property name="use.pack200" value="true"/>
-        <property name="pack200.excludes" value=""/>
-        <property name="nbm.locales" value="${locales}"/>
-        <makenbm distribution="${nbm.distribution}"
-            file="${build.dir}/${nbm}" global="${nbm.is.global}"
-            homepage="${nbm.homepage}" locales="${nbm.locales}"
-            module="${module.jar}" moduleauthor="${nbm.module.author}"
-            needsrestart="${nbm.needs.restart}"
-            pack200excludes="${pack200.excludes}"
-            preferredupdate="${nbm.is.preferredupdate}"
-            productdir="${cluster}" releasedate="${nbm.release.date}"
-            targetcluster="${nbm.target.cluster}" usepack200="${use.pack200}">
-            <license file="${license.file.override}"/>
-            <!--REMOVE Original signing -->
-            <!--<signature keystore="${keystore}" storepass="${storepass}" alias="${nbm_alias}"/>-->
-            <!--END REMOVE -->
-            <updaterjar>
-                <pathfileset>
-                    <path refid="cluster.path.id"/>
-                    <filename name="modules/ext/updater.jar"/>
-                </pathfileset>
-            </updaterjar>
-            <executables refid="module.executable.files"/>
-        </makenbm>
-        <!--INCLUDE New Code Signing -->
-        <signjar alias="1" jar="${build.dir}/${nbm}"
-            keystore="${keystore}" storepass="${storepass}"
-            tsaurl="http://timestamp.globalsign.com/scripts/timestamp.dll" verbose="false"/>
-        <!--END INCLUDE -->
-    </target>
 </project>
