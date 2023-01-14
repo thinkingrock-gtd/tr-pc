@@ -50,7 +50,7 @@ public class HomePageAction extends AbstractAction {
     
     public void actionPerformed(ActionEvent e) {
         try {
-            Open.open(new URL("http://www.thinkingrock.com.au"));
+            Open.open(new URL("https://trgtd.com.au"));
         } catch (Exception ex) {
         }
     }
