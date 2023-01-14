@@ -229,23 +229,10 @@ public final class NotesEditorPanel extends JPanel {
             String urlText = dialog.getURL().trim();
             String urlDesc = dialog.getLinkText().trim();
             
-            // default protocol to HTTP if there isn't one
-//            if (!urlText.contains("://")) {
-//                urlText = "http://" + urlText;
-//            }
-            
+            // default protocol to HTTPS if there isn't one
             if (!urlText.contains(":")) {
-                urlText = "http://" + urlText;
+                urlText = "https://" + urlText;
             }
-            
-            // validate URL
-//            try {
-//                URL url = new URL(urlText);
-//            } catch (MalformedURLException ex) {
-//                LOG.severe(ex.getMessage());
-//                requestFocusInWindow();
-//                return;
-//            }
             
             // Changed to use URI to allow for other links e.g. notes://... 
             try {
