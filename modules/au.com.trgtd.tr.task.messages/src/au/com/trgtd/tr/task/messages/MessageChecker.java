@@ -31,6 +31,7 @@ import java.util.logging.Logger;
 import au.com.trgtd.tr.task.messages.MessageParser.Message;
 import java.io.IOException;
 import java.util.logging.Level;
+import org.netbeans.api.annotations.common.NonNull;
 
 /**
  * Message check thread.
@@ -78,6 +79,7 @@ final class MessageChecker {
         return true; // assume all 3.0.x users are members
     }
 
+    @NonNull
     private String getMessagesFromWebSite() throws Exception {
         try {
             URL url = new URL(Constants.MESSAGES_FILE_URL);

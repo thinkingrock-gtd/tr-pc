@@ -26,6 +26,7 @@ import java.util.Date;
 import java.util.List;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.DocumentBuilder;
+import org.netbeans.api.annotations.common.NonNull;
 import org.w3c.dom.*;
 
 public class MessageParser {
@@ -50,8 +51,9 @@ public class MessageParser {
         }
     }
 
-    public List<Message> parse(String str, Date from, boolean member) throws Exception {
-        List<Message> messages = new ArrayList<Message>();
+    @NonNull
+    public List<Message> parse(@NonNull String str, Date from, boolean member) throws Exception {
+        List<Message> messages = new ArrayList<>();
 
         DocumentBuilderFactory docBuilderFactory = DocumentBuilderFactory.newInstance();
         DocumentBuilder docBuilder = docBuilderFactory.newDocumentBuilder();
