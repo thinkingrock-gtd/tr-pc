@@ -199,8 +199,8 @@
 				<textElement>
 					<font fontName="DejaVu Sans" size="8" pdfFontName="DejaVuSans.ttf" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
 				</textElement>
-				<textFieldExpression class="java.lang.String"><![CDATA["www.thinkingrock.com.au"]]></textFieldExpression>
-				<hyperlinkReferenceExpression><![CDATA["http://www.thinkingrock.com.au"]]></hyperlinkReferenceExpression>
+				<textFieldExpression class="java.lang.String"><![CDATA["trgtd.com.au"]]></textFieldExpression>
+				<hyperlinkReferenceExpression><![CDATA["https://trgtd.com.au"]]></hyperlinkReferenceExpression>
 			</textField>
 			<textField isBlankWhenNull="false">
 				<reportElement key="pageTextField" x="442" y="6" width="68" height="12"/>
