@@ -65,7 +65,7 @@ public class Constants {
     /**
      * String URL of the file on the web site that contains messages.
      */
-    public static final String MESSAGES_FILE_URL = "http://trgtd.com.au/messages.xml";
+    public static final String MESSAGES_FILE_URL = "https://trgtd.com.au/messages.xml";
 
     /**
      * Get the full path for some preferences. Note that the preferences version

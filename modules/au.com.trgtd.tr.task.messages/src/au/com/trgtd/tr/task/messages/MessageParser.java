@@ -52,7 +52,7 @@ public class MessageParser {
     }
 
     @NonNull
-    public List<Message> parse(@NonNull String str, Date from, boolean member) throws Exception {
+    public List<Message> parse(@NonNull String str, @NonNull Date from, boolean member) throws Exception {
         List<Message> messages = new ArrayList<>();
 
         DocumentBuilderFactory docBuilderFactory = DocumentBuilderFactory.newInstance();

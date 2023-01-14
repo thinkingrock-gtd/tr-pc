@@ -16,11 +16,7 @@ public class MessageCheckerTest {
 
     @Test
     public void canFetchMessagesFromSite() throws Exception {
-        try {
-            List<Message> messages = checker.getMessages();
-            assertTrue(!messages.isEmpty());
-        } catch (Exception ex) {
-            // currently fails -> should pass
-        }
+        List<Message> messages = checker.getMessages();
+        assertTrue(!messages.isEmpty());
     }
 }
