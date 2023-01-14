@@ -24,8 +24,8 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
 import org.netbeans.api.annotations.common.NonNull;
 import org.w3c.dom.*;
 
@@ -33,17 +33,20 @@ public class MessageParser {
 
     private static final DateFormat DF = new SimpleDateFormat("yyyy/MM/dd");
 
-    public static class Message implements Comparable<Message>{
+    public static class Message implements Comparable<Message> {
+
         public final Date date;
         public final String type;
         public final String href;
         public final String text;
+
         public Message(Date date, String type, String href, String text) {
             this.date = date;
             this.type = type.toLowerCase();
             this.href = href;
             this.text = text;
         }
+
         @Override
         public int compareTo(Message other) {
             int c = date.compareTo(other.date);
@@ -83,12 +86,11 @@ public class MessageParser {
                 String text = msgElement.getTextContent().trim();
 
 //              System.out.println("Message: date=" + date + " type=" + type + " href=" + href + " text=" + text);
-
                 messages.add(new Message(date, type, href, text));
             }
         }
 
         return messages;
     }
-    
+
 }
