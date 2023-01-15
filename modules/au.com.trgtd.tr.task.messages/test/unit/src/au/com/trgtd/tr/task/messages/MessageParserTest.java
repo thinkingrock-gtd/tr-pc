@@ -44,7 +44,7 @@ public class MessageParserTest {
     }
 
     @Test
-    public void parsingXml1_withDateBeforeBoth_returnsBothMessages() throws Exception {
+    public void parsingSampleMessagesA_withDateBeforeBoth_returnsBothMessages() throws Exception {
         List<Message> messages = parse(sampleMessagesA, dateBeforeMessages);
         assertTrue(messages.size() == 2);
         assertMessageA1(messages.get(0));
@@ -52,14 +52,14 @@ public class MessageParserTest {
     }
 
     @Test
-    public void parsingXml1_withDateAfterFirstButBeforeSecond_returnsNewMessage() throws Exception {
+    public void parsingSampleMessagesA_withDateAfterFirstButBeforeSecond_returnsNewerMessage() throws Exception {
         List<Message> messages = parse(sampleMessagesA, dateBeforeMessages.plusDays(2));
         assertTrue(messages.size() == 1);
         assertMessageA2(messages.get(0));
     }
 
     @Test
-    public void parsingXml2asMember_returnsMemberMsg() throws Exception {
+    public void parsingSampleMessagesB_asMember_returnsMemberMessageOnly() throws Exception {
         Boolean isMember = true;
         List<Message> messages = parse(sampleMessagesB, dateBeforeMessages, isMember);
         assertTrue(messages.size() == 1);
@@ -67,7 +67,7 @@ public class MessageParserTest {
     }
 
     @Test
-    public void parsingXml2asNonMember_returnsNonMemberMsg() throws Exception {
+    public void parsingSampleMessagesB_asNonMember_returnsNonMemberMessageOnly() throws Exception {
         Boolean isMember = false;
         List<Message> messages = parse(sampleMessagesB, dateBeforeMessages, isMember);
         assertTrue(messages.size() == 1);
