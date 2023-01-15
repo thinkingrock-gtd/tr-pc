@@ -21,9 +21,9 @@ public class MessageParserTest {
 
     private final MessageParser parser = new MessageParser();
 
-    private final LocalDate dateMessage1 = LocalDate.of(2014, Month.MARCH, 27);
-    private final LocalDate dateMessage2 = LocalDate.of(2014, Month.MARCH, 30);
-    private final LocalDate dateBeforeMessages = LocalDate.of(2014, Month.MARCH, 26);
+    private final LocalDate dateOfMessage1 = LocalDate.of(2014, Month.MARCH, 27);
+    private final LocalDate dateOfMessage2 = LocalDate.of(2014, Month.MARCH, 30);
+    private final LocalDate dateBeforeFirstMessage = LocalDate.of(2014, Month.MARCH, 26);
 
     // valid XML with two member-independent messages of different dates
     private final String sampleMessagesA = "<msgs>"
@@ -40,12 +40,12 @@ public class MessageParserTest {
 
     @Test
     public void parsingValidButEmptyXml_returnsNoMessages() throws Exception {
-        assertTrue(parse("<msgs/>", dateBeforeMessages).isEmpty());
+        assertTrue(parse("<msgs/>", dateBeforeFirstMessage).isEmpty());
     }
 
     @Test
     public void parsingSampleMessagesA_withDateBeforeBoth_returnsBothMessages() throws Exception {
-        List<Message> messages = parse(sampleMessagesA, dateBeforeMessages);
+        List<Message> messages = parse(sampleMessagesA, dateBeforeFirstMessage);
         assertTrue(messages.size() == 2);
         assertMessageA1(messages.get(0));
         assertMessageA2(messages.get(1));
@@ -53,15 +53,21 @@ public class MessageParserTest {
 
     @Test
     public void parsingSampleMessagesA_withDateAfterFirstButBeforeSecond_returnsNewerMessage() throws Exception {
-        List<Message> messages = parse(sampleMessagesA, dateBeforeMessages.plusDays(2));
+        List<Message> messages = parse(sampleMessagesA, dateBeforeFirstMessage.plusDays(2));
         assertTrue(messages.size() == 1);
         assertMessageA2(messages.get(0));
     }
 
     @Test
+    public void parsingSampleMessagesA_withDateAfterSecond_returnsNoMessages() throws Exception {
+        List<Message> messages = parse(sampleMessagesA, dateBeforeFirstMessage.plusDays(20));
+        assertTrue(messages.isEmpty());
+    }
+
+    @Test
     public void parsingSampleMessagesB_asMember_returnsMemberMessageOnly() throws Exception {
         Boolean isMember = true;
-        List<Message> messages = parse(sampleMessagesB, dateBeforeMessages, isMember);
+        List<Message> messages = parse(sampleMessagesB, dateBeforeFirstMessage, isMember);
         assertTrue(messages.size() == 1);
         assertMessageB2(messages.get(0));
     }
@@ -69,7 +75,7 @@ public class MessageParserTest {
     @Test
     public void parsingSampleMessagesB_asNonMember_returnsNonMemberMessageOnly() throws Exception {
         Boolean isMember = false;
-        List<Message> messages = parse(sampleMessagesB, dateBeforeMessages, isMember);
+        List<Message> messages = parse(sampleMessagesB, dateBeforeFirstMessage, isMember);
         assertTrue(messages.size() == 1);
         assertMessageB1(messages.get(0));
     }
@@ -77,9 +83,9 @@ public class MessageParserTest {
     @Test
     public void parseFile() throws Exception {
         String xml = readFromResourceAsString("messages.xml");
-        List<Message> messages = parse(xml, dateBeforeMessages);
+        List<Message> messages = parse(xml, dateBeforeFirstMessage);
         assertTrue(messages.size() == 1);
-        assertMessage(messages.get(0), dateMessage1, "a", null);
+        assertMessage(messages.get(0), dateOfMessage1, "a", null);
         String text = messages.get(0).text;
         assertEquals(LENGTH_OF_SAMPLE_MESSAGE_TEXT, text.length());
         assertTrue(text.contains("ThinkingRock"));
@@ -112,7 +118,7 @@ public class MessageParserTest {
 
     private void assertThrows(String xml) {
         try {
-            parse(xml, dateBeforeMessages);
+            parse(xml, dateBeforeFirstMessage);
             fail("Should have thrown");
         } catch (Exception ex) {
             // Exception successfully thrown
@@ -120,19 +126,19 @@ public class MessageParserTest {
     }
 
     private void assertMessageA1(Message m) {
-        assertMessage(m, dateMessage1, "a", "message1");
+        assertMessage(m, dateOfMessage1, "a", "message1");
     }
 
     private void assertMessageA2(Message m) {
-        assertMessage(m, dateMessage2, "b", "message2");
+        assertMessage(m, dateOfMessage2, "b", "message2");
     }
 
     private void assertMessageB1(Message m) {
-        assertMessage(m, dateMessage1, "n", "nonMemberMessage");
+        assertMessage(m, dateOfMessage1, "n", "nonMemberMessage");
     }
 
     private void assertMessageB2(Message m) {
-        assertMessage(m, dateMessage2, "m", "memberMessage");
+        assertMessage(m, dateOfMessage2, "m", "memberMessage");
     }
 
     private void assertMessage(Message m, LocalDate localDate, String type, String msg) {
