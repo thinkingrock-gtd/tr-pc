@@ -1,6 +1,7 @@
 package au.com.trgtd.tr.task.messages;
 
 import au.com.trgtd.tr.task.messages.MessageParser.Message;
+import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -13,65 +14,80 @@ import org.junit.Test;
 
 public class MessageParserTest {
 
-    private MessageParser parser = new MessageParser();
-    private LocalDate localDate = LocalDate.of(2014, Month.MARCH, 26);
+    // The message text stored in the sample messages.xml (pulled from the
+    // https://trgtd.com.au/messages.xml on 2023-01-14) is too long and
+    // cumbersome to validate verbatim.Simply verifying the length instead.
+    private static final int LENGTH_OF_SAMPLE_MESSAGE_TEXT = 431;
 
-    final String xml1 = "<msgs>"
+    private final MessageParser parser = new MessageParser();
+
+    private final LocalDate dateMessage1 = LocalDate.of(2014, Month.MARCH, 27);
+    private final LocalDate dateMessage2 = LocalDate.of(2014, Month.MARCH, 30);
+    private final LocalDate dateBeforeMessages = LocalDate.of(2014, Month.MARCH, 26);
+
+    // valid XML with two member-independent messages of different dates
+    private final String sampleMessagesA = "<msgs>"
             + "<msg date='2014/03/27' type='A'>message1</msg>"
             + "<msg date='2014/03/30' type='B'>message2</msg>"
             + "</msgs>";
 
-    final String xml2 = "<msgs>"
+    // valid XML with two messages - each intended for either members or non-members.
+    // the first for non-members (type='N'), the second for members (type = 'M')
+    private final String sampleMessagesB = "<msgs>"
             + "<msg date='2014/03/27' type='N'>nonMemberMessage</msg>"
             + "<msg date='2014/03/30' type='M'>memberMessage</msg>"
             + "</msgs>";
 
     @Test
     public void parsingValidButEmptyXml_returnsNoMessages() throws Exception {
-        assertTrue(parse("<msgs/>", localDate).isEmpty());
+        assertTrue(parse("<msgs/>", dateBeforeMessages).isEmpty());
     }
 
     @Test
     public void parsingXml1_withDateBeforeBoth_returnsBothMessages() throws Exception {
-        List<Message> messages = parse(xml1, localDate);
+        List<Message> messages = parse(sampleMessagesA, dateBeforeMessages);
         assertTrue(messages.size() == 2);
-        assertMessage(messages.get(0), LocalDate.of(2014, Month.MARCH, 27), "a", "message1");
-        assertMessage(messages.get(1), LocalDate.of(2014, Month.MARCH, 30), "b", "message2");
+        assertMessageA1(messages.get(0));
+        assertMessageA2(messages.get(1));
     }
 
     @Test
     public void parsingXml1_withDateAfterFirstButBeforeSecond_returnsNewMessage() throws Exception {
-        List<Message> messages = parse(xml1, localDate.plusDays(2));
+        List<Message> messages = parse(sampleMessagesA, dateBeforeMessages.plusDays(2));
         assertTrue(messages.size() == 1);
-        assertMessage(messages.get(0), LocalDate.of(2014, Month.MARCH, 30), "b", "message2");
+        assertMessageA2(messages.get(0));
     }
 
     @Test
     public void parsingXml2asMember_returnsMemberMsg() throws Exception {
         Boolean isMember = true;
-        List<Message> messages = parse(xml2, localDate, isMember);
+        List<Message> messages = parse(sampleMessagesB, dateBeforeMessages, isMember);
         assertTrue(messages.size() == 1);
-        assertMessage(messages.get(0), LocalDate.of(2014, Month.MARCH, 30), "m", "memberMessage");
+        assertMessageB2(messages.get(0));
     }
 
     @Test
     public void parsingXml2asNonMember_returnsNonMemberMsg() throws Exception {
         Boolean isMember = false;
-        List<Message> messages = parse(xml2, localDate, isMember);
+        List<Message> messages = parse(sampleMessagesB, dateBeforeMessages, isMember);
         assertTrue(messages.size() == 1);
-        assertMessage(messages.get(0), LocalDate.of(2014, Month.MARCH, 27), "n", "nonMemberMessage");
+        assertMessageB1(messages.get(0));
     }
 
     @Test
     public void parseFile() throws Exception {
-        Path path = Paths.get(getClass().getResource("messages.xml").getPath());
-        String xml = new String(Files.readAllBytes(path));
-        List<Message> messages = parse(xml, localDate);
+        String xml = readFromResourceAsString("messages.xml");
+        List<Message> messages = parse(xml, dateBeforeMessages);
         assertTrue(messages.size() == 1);
-        assertMessage(messages.get(0), LocalDate.of(2014, Month.MARCH, 27), "a", null);
+        assertMessage(messages.get(0), dateMessage1, "a", null);
         String text = messages.get(0).text;
-        assertEquals(431, text.length());
+        assertEquals(LENGTH_OF_SAMPLE_MESSAGE_TEXT, text.length());
         assertTrue(text.contains("ThinkingRock"));
+    }
+
+    private String readFromResourceAsString(String fileName) throws IOException {
+        Path path = Paths.get(getClass().getResource(fileName).getPath());
+        return new String(Files.readAllBytes(path));
     }
 
     @Test
@@ -96,11 +112,27 @@ public class MessageParserTest {
 
     private void assertThrows(String xml) {
         try {
-            parse(xml, localDate);
+            parse(xml, dateBeforeMessages);
             fail("Should have thrown");
         } catch (Exception ex) {
             // Exception successfully thrown
         }
+    }
+
+    private void assertMessageA1(Message m) {
+        assertMessage(m, dateMessage1, "a", "message1");
+    }
+
+    private void assertMessageA2(Message m) {
+        assertMessage(m, dateMessage2, "b", "message2");
+    }
+
+    private void assertMessageB1(Message m) {
+        assertMessage(m, dateMessage1, "n", "nonMemberMessage");
+    }
+
+    private void assertMessageB2(Message m) {
+        assertMessage(m, dateMessage2, "m", "memberMessage");
     }
 
     private void assertMessage(Message m, LocalDate localDate, String type, String msg) {
