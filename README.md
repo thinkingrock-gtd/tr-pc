@@ -13,11 +13,11 @@ See [LICENSE](https://github.com/thinkingrock-gtd/tr-pc/blob/master/LICENSE) to 
 ## How to build a project
 Following is the proven way how to build and run the application from source code.
 Please beware, we do not have any prior experiences with Ant and NetBeans.
-There may be better ways to launch ThinkinRock.
+There may be better ways to launch ThinkingRock.
 Any help and experience are highly welcomed.
 
 ### Warning
-Before starting ThinkinRock from sources, ensure you have a backup of your production data.
+Before starting ThinkingRock from sources, ensure you have a backup of your production data.
 We haven't yet figured out the configuration to cleanly separate the dev environment from the production configuration or data.
 This includes ReviewActions.xml as well.
 This issue will be solved in #33.
