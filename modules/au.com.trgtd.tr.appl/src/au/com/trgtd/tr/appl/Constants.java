@@ -42,7 +42,7 @@ public class Constants {
     /**
      * String value for the web site address.
      */
-    public static final String WEB_SITE = "http://trgtd.com.au";
+    public static final String WEB_SITE = "https://trgtd.com.au";
     /**
      * Application version. For all versions that are not pre-release, the
      * format is: major.minor.revision with revision greater than 0, e.g. 2.0.1
@@ -60,7 +60,7 @@ public class Constants {
     /**
      * String URL of the file on the web site that contains the latest version.
      */
-    public static final String VERSION_FILE_URL = "http://trgtd.com.au/version.php";
+    public static final String VERSION_FILE_URL = "https://trgtd.com.au/version.php";
 
     /**
      * String URL of the file on the web site that contains messages.

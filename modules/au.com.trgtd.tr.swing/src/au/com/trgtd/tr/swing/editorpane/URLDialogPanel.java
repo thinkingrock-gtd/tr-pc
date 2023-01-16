@@ -119,7 +119,7 @@ final public class URLDialogPanel extends JPanel {
     private javax.swing.JTextField urlTextField;
     // End of variables declaration//GEN-END:variables
     
-//  public final static String DEFAULT_START = "http://www.";    
+//  public final static String DEFAULT_START = "https://www.";
     public final static String DEFAULT_START = "";    
     
 }

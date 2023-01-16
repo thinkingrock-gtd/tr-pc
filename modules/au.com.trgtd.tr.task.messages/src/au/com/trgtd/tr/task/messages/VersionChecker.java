@@ -119,7 +119,7 @@ final class VersionChecker {
             if (isNewer(latestVersion, Constants.VERSION)) {
                 Date date = new Date();
                 String type = "A";
-                String href = "http://www.trgtd.com.au/index.php?option=com_content&view=article&id=45&Itemid=58";
+                String href = "https://www.trgtd.com.au/index.php/download-versions";
                 String text = NbBundle.getMessage(getClass(), "messages.version", latestVersion);
                 return new Message(date, type, href, text);
             } else {

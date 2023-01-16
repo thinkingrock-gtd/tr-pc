@@ -115,8 +115,8 @@ $F{check} + " " + $F{descr} + " " + $F{state}]]></textFieldExpression>
 				<textElement textAlignment="Left">
 					<font fontName="DejaVu Sans" size="7" pdfFontName="DejaVuSans.ttf" isPdfEmbedded="true"/>
 				</textElement>
-				<textFieldExpression class="java.lang.String"><![CDATA["www.thinkingrock.com.au"]]></textFieldExpression>
-				<hyperlinkReferenceExpression><![CDATA["http://www.thinkingrock.com.au"]]></hyperlinkReferenceExpression>
+				<textFieldExpression class="java.lang.String"><![CDATA["trgtd.com.au"]]></textFieldExpression>
+				<hyperlinkReferenceExpression><![CDATA["https://trgtd.com.au"]]></hyperlinkReferenceExpression>
 			</textField>
 			<textField isBlankWhenNull="false">
 				<reportElement key="pageTextField" x="443" y="4" width="88" height="12"/>
