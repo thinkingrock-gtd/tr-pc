@@ -32,7 +32,7 @@ public class FormatTypeXmlEscapeTest {
 
     @Test
     public void escapingBlank_returnsBlank() {
-        assertEquals("", xml.escape("BOOM"));
+        assertEquals("", xml.escape(""));
     }
 
     @Test
