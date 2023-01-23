@@ -55,7 +55,8 @@ public class Constants {
 //  public static final String VERSION = "3.4.2";
 //  public static final String VERSION = "3.5.1";
 //  public static final String VERSION = "3.6.0";
-    public static final String VERSION = "3.7.0";
+//  public static final String VERSION = "3.7.0";
+    public static final String VERSION = "4.0.0-beta.1";
 
     /**
      * String URL of the file on the web site that contains the latest version.
