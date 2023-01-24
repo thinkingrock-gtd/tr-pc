@@ -45,9 +45,17 @@ public class Constants {
     public static final String WEB_SITE = "https://trgtd.com.au";
     /**
      * Application version. For all versions that are not pre-release, the
-     * format is: major.minor.revision with revision greater than 0, e.g. 2.0.1
-     * For all pre-release versions it is in format: major.minor.revision.type.n
-     * where revision is 0, e.g. 2.0.0.beta.1
+     * format is:
+     *
+     * major.minor.revision
+     *
+     * e.g. 2.0.0.
+     *
+     * For all pre-release versions it is in format:
+     *
+     * major.minor.revision.type.n
+     *
+     * e.g. 2.0.0.beta.1
      */
 //  public static final String VERSION = "3.0.3";
 //  public static final String VERSION = "3.1.2";
@@ -55,7 +63,8 @@ public class Constants {
 //  public static final String VERSION = "3.4.2";
 //  public static final String VERSION = "3.5.1";
 //  public static final String VERSION = "3.6.0";
-    public static final String VERSION = "3.7.0";
+//  public static final String VERSION = "3.7.0";
+    public static final String VERSION = "4.0.0.beta.1";
 
     /**
      * String URL of the file on the web site that contains the latest version.
