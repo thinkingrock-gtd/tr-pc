@@ -36,7 +36,7 @@ public class ProcessToSomedayAction extends CookieAction {
 
     @Override
     protected String iconResource() {
-        return "ProcessToSomeday.png";
+        return "au/com/trgtd/tr/view/collect/screen/ProcessToSomeday.png";
     }
     
     @Override
