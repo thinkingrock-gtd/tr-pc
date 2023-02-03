@@ -38,7 +38,6 @@ import ca.odell.glazedlists.EventList;
 import ca.odell.glazedlists.FilterList;
 import ca.odell.glazedlists.SortedList;
 import ca.odell.glazedlists.event.ListEvent;
-import ca.odell.glazedlists.event.ListEventListener;
 import ca.odell.glazedlists.gui.TableFormat;
 import ca.odell.glazedlists.matchers.CompositeMatcherEditor;
 import ca.odell.glazedlists.matchers.MatcherEditor;
@@ -125,12 +124,10 @@ public class ReviewActionsPanel extends JPanel implements ListSelectionListener,
         actionsEventList = new BasicEventList<Action>();
         actionsEventList.addAll(actionsList);
         actionsFilterList = new FilterList(actionsEventList, filters.getMatcherEditor());
-        actionsFilterList.addListEventListener(new ListEventListener() {
-            public void listChanged(ListEvent e) {
-                itemCountShower.showItemCount(e.getSourceList().size());
-                // fix problem of number of selected rows increasing by clearing 
-                selectionModel.clearSelection();
-            }
+        actionsFilterList.addListEventListener((ListEvent e) -> {
+            itemCountShower.showItemCount(e.getSourceList().size());
+            // fix problem of number of selected rows increasing by clearing
+            selectionModel.clearSelection();
         });
 
         itemCountShower.showItemCount(actionsFilterList.size());
