@@ -18,7 +18,6 @@
 package tr.model.topic;
 
 import au.com.trgtd.tr.util.Observable;
-import au.com.trgtd.tr.util.Observer;
 import java.util.HashMap;
 import org.openide.util.Lookup;
 import org.openide.util.LookupEvent;
@@ -74,13 +73,10 @@ public class TopicMap {
             for (Topic topic : data.getTopicManager().list()) {
                 map.put(topic.getID(), topic);
             }
-            data.getTopicManager().addObserver(new Observer() {
-                @Override
-                public void update(Observable obs, Object arg) {
-                    // if manager changed (add, remove, etc), not topic change
-                    if (arg instanceof Manager.Event) {
-                        initialise();
-                    }
+            data.getTopicManager().addObserver((Observable obs, Object arg) -> {
+                // if manager changed (add, remove, etc), not topic change
+                if (arg instanceof Manager.Event) {
+                    initialise();
                 }
             });
         }

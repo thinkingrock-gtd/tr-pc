@@ -1065,11 +1065,8 @@ if (ass.getDate() == null) {
         };
         ActionPrefs.getPrefs().addPreferenceChangeListener(prefsChangeListener);
 
-        criteriaObserver = new Observer() {
-            @Override
-            public void update(Observable obs, Object arg) {
-                changedCriteria();
-            }
+        criteriaObserver = (Observable obs, Object arg) -> {
+            changedCriteria();
         };
         Data data = getData();
         if (data != null) {

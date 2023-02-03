@@ -91,10 +91,8 @@ public final class ProjectPanel extends JPanel { // implements Observer {
             return;
         }
         if (observerCriterion == null) {
-            observerCriterion = new Observer() {
-                public void update(Observable observable, Object arguement) {
-                    showHideCriteria();
-                }
+            observerCriterion = (Observable observable, Object arguement) -> {
+                showHideCriteria();
             };
         }
         getData().getPriorityCriterion().addObserver(observerCriterion);

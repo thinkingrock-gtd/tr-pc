@@ -115,15 +115,11 @@ public final class OverviewTopComponent extends Window {
     private Observer observer;    
     
     private void addListeners() {        
-        observer = new  Observer() {
-            public void update(Observable observable, final Object screen) {
-                if (screen instanceof Overview.Screen) {
-                    SwingUtilities.invokeLater(new Runnable() {
-                        public void run() {
-                            switchScreen((Screen)screen);
-                        }
-                    });
-                }
+        observer = (Observable observable, final Object screen) -> {
+            if (screen instanceof Overview.Screen) {
+                SwingUtilities.invokeLater(() -> {
+                    switchScreen((Screen)screen);
+                });
             }
         };
         overview.addObserver(observer);        

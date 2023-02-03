@@ -514,11 +514,8 @@ public final class ProcessPanel extends JPanel implements Observer, ProcessCooki
         };
         ActionPrefs.getPrefs().addPreferenceChangeListener(prefsChangeListener);
 
-        criteriaObserver = new Observer() {
-            @Override
-            public void update(Observable observable, Object arguement) {
-                changedCriteria();
-            }
+        criteriaObserver = (Observable observable, Object arguement) -> {
+            changedCriteria();
         };
 
         data.getTimeCriterion().addObserver(criteriaObserver);
