@@ -124,7 +124,7 @@ public class ReviewActionsPanel extends JPanel implements ListSelectionListener,
         actionsEventList = new BasicEventList<Action>();
         actionsEventList.addAll(actionsList);
         actionsFilterList = new FilterList(actionsEventList, filters.getMatcherEditor());
-        actionsFilterList.addListEventListener((ListEvent e) -> {
+        actionsFilterList.addListEventListener((ListEvent<Action> e) -> {
             itemCountShower.showItemCount(e.getSourceList().size());
             // fix problem of number of selected rows increasing by clearing
             selectionModel.clearSelection();
