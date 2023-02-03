@@ -29,7 +29,6 @@ import javax.swing.ListSelectionModel;
 import javax.swing.SwingUtilities;
 import javax.swing.border.EmptyBorder;
 import javax.swing.event.ListSelectionEvent;
-import javax.swing.event.ListSelectionListener;
 import javax.swing.table.TableColumn;
 import org.jdesktop.swingx.JXTable;
 import tr.model.Data;
@@ -97,11 +96,9 @@ public class CollectThoughtsPanel extends JPanel {
             }
         });
         ListSelectionModel rowSM = table.getSelectionModel();
-        rowSM.addListSelectionListener(new ListSelectionListener() {
-            public void valueChanged(ListSelectionEvent e) {
-                if (!e.getValueIsAdjusting()) {
-                    rowSelectionChanged();
-                }
+        rowSM.addListSelectionListener((ListSelectionEvent e) -> {
+            if (!e.getValueIsAdjusting()) {
+                rowSelectionChanged();
             }
         });
         for (int i = 0; i < CollectThoughtsTableModel.CLASSES.length; i++) {
