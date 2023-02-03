@@ -24,7 +24,6 @@ import java.util.prefs.PreferenceChangeListener;
 import org.openide.util.HelpCtx;
 import org.openide.util.Lookup;
 import org.openide.util.LookupEvent;
-import org.openide.util.LookupListener;
 import org.openide.util.NbBundle;
 import org.openide.util.actions.CallableSystemAction;
 import org.openide.windows.WindowManager;
@@ -37,11 +36,8 @@ public final class SyncAction extends CallableSystemAction {
     public SyncAction() {
         super();
         Lookup.Result r = DataLookup.instance().lookupResult(Data.class);
-        r.addLookupListener(new LookupListener() {
-            @Override
-            public void resultChanged(LookupEvent lookupEvent) {
-                enableDisable();
-            }
+        r.addLookupListener((LookupEvent lookupEvent) -> {
+            enableDisable();
         });
         SyncPrefs.addListener(new PreferenceChangeListener() {
             @Override

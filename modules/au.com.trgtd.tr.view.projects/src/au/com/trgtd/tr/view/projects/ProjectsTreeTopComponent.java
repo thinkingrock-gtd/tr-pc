@@ -100,12 +100,9 @@ public class ProjectsTreeTopComponent extends TopComponent
 
         // data lookup listener to force re-initialisation if data changes
         if (dataResult == null) {
-            dataResult = DataLookup.instance().lookup(new Lookup.Template(Data.class));
-            dataResult.addLookupListener(new LookupListener() {
-                @Override
-                public void resultChanged(LookupEvent lookupEvent) {
-                    initialised = false;
-                }
+            dataResult = DataLookup.instance().lookupResult(Data.class);
+            dataResult.addLookupListener((LookupEvent lookupEvent) -> {
+                initialised = false;
             });
         }
 
@@ -170,7 +167,7 @@ public class ProjectsTreeTopComponent extends TopComponent
     }
 
     private void addItemListener() {
-        itemResult = getLookup().lookup(new Lookup.Template(Item.class));
+        itemResult = getLookup().lookupResult(Item.class);
         itemResult.addLookupListener(this);
         itemResult.allInstances();
     }

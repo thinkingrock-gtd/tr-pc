@@ -35,12 +35,9 @@ public class PrioritiesAction extends CallableSystemAction {
     public PrioritiesAction() {
         super();
         enableDisable();
-        Lookup.Result<Data> r = DataLookup.instance().lookup(new Lookup.Template<Data>(Data.class));
-        r.addLookupListener(new LookupListener() {
-            @Override
-            public void resultChanged(LookupEvent lookupEvent) {
-                enableDisable();
-            }
+        Lookup.Result<Data> r = DataLookup.instance().lookupResult(Data.class);
+        r.addLookupListener((LookupEvent lookupEvent) -> {
+            enableDisable();
         });
     }
 

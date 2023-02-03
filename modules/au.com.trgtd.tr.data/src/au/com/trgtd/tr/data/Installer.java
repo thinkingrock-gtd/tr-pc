@@ -88,16 +88,16 @@ public class Installer extends ModuleInstall {
             });
         });
     }
-    
+
     @Override
     public boolean closing() {
         WindowUtils.closeWindows();
         return super.closing();
     }
-    
+
     @Override
     public void close() {
-        DataStore ds = (DataStore)DataStoreLookup.instance().lookup(DataStore.class);
+        DataStore ds = (DataStore) DataStoreLookup.instance().lookup(DataStore.class);
         if (ds != null) {
             ds.stopDaemon();
             try {
@@ -106,7 +106,7 @@ public class Installer extends ModuleInstall {
                 LOG.log(Level.SEVERE, "Data store could not store data. {0}", ex.getMessage()); // No I18N
             }
         }
-        super.close();        
+        super.close();
     }
-    
+
 }

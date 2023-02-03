@@ -22,7 +22,6 @@ import java.awt.event.ActionEvent;
 import org.openide.util.HelpCtx;
 import org.openide.util.Lookup;
 import org.openide.util.LookupEvent;
-import org.openide.util.LookupListener;
 import org.openide.util.actions.SystemAction;
 import org.openide.windows.Mode;
 import org.openide.windows.TopComponent;
@@ -42,12 +41,9 @@ public class TabAction extends SystemAction {
     public TabAction() {
         super();
 //      setIcon(Resources.ICON_G_ADD_ACTION);
-        result = DataLookup.instance().lookup(new Lookup.Template(Data.class));
-        result.addLookupListener(new LookupListener() {
-            @Override
-            public void resultChanged(LookupEvent lookupEvent) {
-                setEnabled(result.allInstances().size() > 0);
-            }
+        result = DataLookup.instance().lookupResult(Data.class);
+        result.addLookupListener((LookupEvent lookupEvent) -> {
+            setEnabled(result.allInstances().size() > 0);
         });
     }
     

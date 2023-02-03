@@ -77,11 +77,9 @@ class ProjectsComboBoxModel extends DefaultComboBoxModel implements Observer {
 
         // need to re-initialise if the data model changes
         if (result == null) {
-            result = DataLookup.instance().lookup(new Lookup.Template(Data.class));
-            result.addLookupListener(new LookupListener() {
-                public void resultChanged(LookupEvent lookupEvent) {
-                    update(null, null);
-                }
+            result = DataLookup.instance().lookupResult(Data.class);
+            result.addLookupListener((LookupEvent lookupEvent) -> {
+                update(null, null);
             });
         }     
         

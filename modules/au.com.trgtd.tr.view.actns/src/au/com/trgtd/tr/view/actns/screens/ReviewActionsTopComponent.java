@@ -72,7 +72,6 @@ import org.openide.awt.Toolbar;
 import org.openide.util.HelpCtx;
 import org.openide.util.Lookup;
 import org.openide.util.LookupEvent;
-import org.openide.util.LookupListener;
 import org.openide.util.NbBundle;
 import org.openide.util.actions.SystemAction;
 import org.openide.util.lookup.AbstractLookup;
@@ -163,11 +162,9 @@ public final class ReviewActionsTopComponent extends Window implements ActionsPr
 
         // data lookup listener to save panel if data changes
         if (dataLookupResult == null) {
-            dataLookupResult = DataLookup.instance().lookup(new Lookup.Template(Data.class));
-            dataLookupResult.addLookupListener(new LookupListener() {
-                public void resultChanged(LookupEvent lookupEvent) {
-                    panel.save();
-                }
+            dataLookupResult = DataLookup.instance().lookupResult(Data.class);
+            dataLookupResult.addLookupListener((LookupEvent lookupEvent) -> {
+                panel.save();
             });
         }
     }

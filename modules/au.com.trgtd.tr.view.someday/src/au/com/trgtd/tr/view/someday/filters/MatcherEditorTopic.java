@@ -30,7 +30,6 @@ import java.util.Vector;
 import javax.swing.DefaultComboBoxModel;
 import org.openide.util.Lookup;
 import org.openide.util.LookupEvent;
-import org.openide.util.LookupListener;
 import org.openide.util.NbBundle;
 import org.openide.util.Utilities;
 import tr.model.Data;
@@ -185,11 +184,9 @@ public class MatcherEditorTopic extends MatcherEditorBase implements PropertyCha
             }
             // data lookup listener to force panel initialisation if data changes
             if (result == null) {
-                result = DataLookup.instance().lookup(new Lookup.Template(Data.class));
-                result.addLookupListener(new LookupListener() {
-                    public void resultChanged(LookupEvent lookupEvent) {
-                        update(null, null);
-                    }
+                result = DataLookup.instance().lookupResult(Data.class);
+                result.addLookupListener((LookupEvent lookupEvent) -> {
+                    update(null, null);
                 });
             }
         }

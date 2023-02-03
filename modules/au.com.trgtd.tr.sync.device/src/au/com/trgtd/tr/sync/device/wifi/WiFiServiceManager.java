@@ -27,7 +27,6 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import org.openide.util.Lookup;
 import org.openide.util.LookupEvent;
-import org.openide.util.LookupListener;
 import tr.model.Data;
 import tr.model.DataLookup;
 
@@ -70,13 +69,10 @@ public final class WiFiServiceManager {
         });
         
         // listen for data file change to reset service
-        Lookup.Result<Data> r = DataLookup.instance().lookup(new Lookup.Template<Data>(Data.class));
-        r.addLookupListener(new LookupListener() {
-            @Override
-            public void resultChanged(LookupEvent lookupEvent) {
-                LOG.info("Data source has changed - resetting WiFi service.");
-                resetServices();
-            }
+        Lookup.Result<Data> r = DataLookup.instance().lookupResult(Data.class);
+        r.addLookupListener((LookupEvent lookupEvent) -> {
+            LOG.info("Data source has changed - resetting WiFi service.");
+            resetServices();
         });        
     }
 

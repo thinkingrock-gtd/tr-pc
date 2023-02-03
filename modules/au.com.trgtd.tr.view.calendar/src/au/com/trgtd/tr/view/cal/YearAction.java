@@ -23,7 +23,6 @@ import java.awt.EventQueue;
 import org.openide.util.HelpCtx;
 import org.openide.util.Lookup;
 import org.openide.util.LookupEvent;
-import org.openide.util.LookupListener;
 import org.openide.util.NbBundle;
 import org.openide.util.actions.CallableSystemAction;
 import org.openide.windows.Mode;
@@ -38,11 +37,8 @@ public final class YearAction extends CallableSystemAction implements InitialAct
         super();
         enableDisable();
         Lookup.Result<Data> r = DataLookup.instance().lookupResult(Data.class);
-        r.addLookupListener(new LookupListener() {
-            @Override
-            public void resultChanged(LookupEvent lookupEvent) {
-                enableDisable();
-            }
+        r.addLookupListener((LookupEvent lookupEvent) -> {
+            enableDisable();
         });
     }
 

@@ -176,14 +176,11 @@ public final class PrioritiesTopComponent extends Window implements ExplorerMana
         }
 
         // data lookup listener to force re-initialisation if data changes
-        Lookup.Result<Data> dataResult = DataLookup.instance().lookup(new Lookup.Template(Data.class));
-        dataResult.addLookupListener(new LookupListener() {
-            @Override
-            public void resultChanged(LookupEvent lookupEvent) {
-                Data data = DataLookup.instance().lookup(Data.class);
-                if (data != null) {
-                    explorerManager.setRootContext(new PriorityNodeRoot(new PriorityChildren(outlineView, explorerManager)));
-                }
+        Lookup.Result<Data> dataResult = DataLookup.instance().lookupResult(Data.class);
+        dataResult.addLookupListener((LookupEvent lookupEvent) -> {
+            Data data1 = DataLookup.instance().lookup(Data.class);
+            if (data1 != null) {
+                explorerManager.setRootContext(new PriorityNodeRoot(new PriorityChildren(outlineView, explorerManager)));
             }
         });
         

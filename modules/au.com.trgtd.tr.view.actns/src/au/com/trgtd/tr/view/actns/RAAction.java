@@ -25,7 +25,6 @@ import java.util.logging.Logger;
 import org.openide.util.HelpCtx;
 import org.openide.util.Lookup;
 import org.openide.util.LookupEvent;
-import org.openide.util.LookupListener;
 import org.openide.util.NbBundle;
 import org.openide.util.actions.CallableSystemAction;
 import org.openide.windows.Mode;
@@ -61,12 +60,10 @@ public class RAAction extends CallableSystemAction implements InitialAction {
         super();
 //        putValue(SMALL_ICON, Resources.ICON_ACTIONS);
         enableDisable();
-        result = DataLookup.instance().lookup(new Lookup.Template<Data>(Data.class));
-        result.addLookupListener(new LookupListener() {
-            public void resultChanged(LookupEvent lookupEvent) {
-                LOG.fine("DataLookup Data.class result changed.");
-                enableDisable();
-            }
+        result = DataLookup.instance().lookupResult(Data.class);
+        result.addLookupListener((LookupEvent lookupEvent) -> {
+            LOG.fine("DataLookup Data.class result changed.");
+            enableDisable();
         });
         instance = this;
     }

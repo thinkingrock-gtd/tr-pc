@@ -91,11 +91,9 @@ public final class FutureTopComponent extends Window
         
         // data lookup listener to force re-initialisation if data changes
         if (dataResult == null) {
-            dataResult = DataLookup.instance().lookup(new Lookup.Template(Data.class));
-            dataResult.addLookupListener(new LookupListener() {
-                public void resultChanged(LookupEvent lookupEvent) {
-                    initialised = false;
-                }
+            dataResult = DataLookup.instance().lookupResult(Data.class);
+            dataResult.addLookupListener((LookupEvent lookupEvent) -> {
+                initialised = false;
             });
         }
         

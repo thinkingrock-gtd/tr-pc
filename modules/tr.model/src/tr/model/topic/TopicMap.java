@@ -22,7 +22,6 @@ import au.com.trgtd.tr.util.Observer;
 import java.util.HashMap;
 import org.openide.util.Lookup;
 import org.openide.util.LookupEvent;
-import org.openide.util.LookupListener;
 import tr.model.Data;
 import tr.model.DataLookup;
 import tr.model.util.Manager;
@@ -54,12 +53,9 @@ public class TopicMap {
     private HashMap<Integer, Topic> map;
 
     private TopicMap() {
-        Lookup.Result dlr = DataLookup.instance().lookup(new Lookup.Template(Data.class));
-        dlr.addLookupListener(new LookupListener() {
-            @Override
-            public void resultChanged(LookupEvent lookupEvent) {
-                initialise();
-            }
+        Lookup.Result dlr = DataLookup.instance().lookupResult(Data.class);
+        dlr.addLookupListener((LookupEvent lookupEvent) -> {
+            initialise();
         });
         initialise();
     }

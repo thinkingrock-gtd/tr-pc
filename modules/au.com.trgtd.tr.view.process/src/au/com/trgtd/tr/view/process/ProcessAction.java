@@ -34,12 +34,9 @@ public class ProcessAction extends CookieAction {
     public ProcessAction() {
         super();
         enableDisable();
-        Lookup.Result r = DataLookup.instance().lookup(new Lookup.Template(Data.class));
-        r.addLookupListener(new LookupListener() {
-            @Override
-            public void resultChanged(LookupEvent lookupEvent) {
-                enableDisable();
-            }
+        Lookup.Result r = DataLookup.instance().lookupResult(Data.class);
+        r.addLookupListener((LookupEvent lookupEvent) -> {
+            enableDisable();
         });
     }
 

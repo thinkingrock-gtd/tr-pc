@@ -22,7 +22,6 @@ import au.com.trgtd.tr.appl.InitialAction;
 import org.openide.util.HelpCtx;
 import org.openide.util.Lookup;
 import org.openide.util.LookupEvent;
-import org.openide.util.LookupListener;
 import org.openide.util.NbBundle;
 import org.openide.util.actions.CallableSystemAction;
 import tr.model.Data;
@@ -37,11 +36,9 @@ public class AddThoughtsAction extends CallableSystemAction implements InitialAc
     public AddThoughtsAction() {
         super();
         enableDisable();
-        Lookup.Result result = DataLookup.instance().lookup(new Lookup.Template(Data.class));
-        result.addLookupListener(new LookupListener() {
-            public void resultChanged(LookupEvent lookupEvent) {
-                enableDisable();
-            }
+        Lookup.Result result = DataLookup.instance().lookupResult(Data.class);
+        result.addLookupListener((LookupEvent lookupEvent) -> {
+            enableDisable();
         });
     }
 

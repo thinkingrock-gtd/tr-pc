@@ -36,12 +36,9 @@ public class EnergyAddAction extends CallableSystemAction {
     public EnergyAddAction() {
         super();
         setIcon(Icons.Add);
-        result = DataLookup.instance().lookup(new Lookup.Template<Data>(Data.class));
-        result.addLookupListener(new LookupListener() {
-            @Override
-            public void resultChanged(LookupEvent lookupEvent) {
-                setEnabled(result.allInstances().size() > 0);
-            }
+        result = DataLookup.instance().lookupResult(Data.class);
+        result.addLookupListener((LookupEvent lookupEvent) -> {
+            setEnabled(!result.allInstances().isEmpty());
         });
     }
 

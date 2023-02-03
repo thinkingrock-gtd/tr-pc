@@ -88,11 +88,9 @@ public final class TemplatesTopComponent extends Window
         
         // data lookup listener to force re-initialisation if data changes
         if (dataResult == null) {
-            dataResult = DataLookup.instance().lookup(new Lookup.Template(Data.class));
-            dataResult.addLookupListener(new LookupListener() {
-                public void resultChanged(LookupEvent lookupEvent) {
-                    initialised = false;
-                }
+            dataResult = DataLookup.instance().lookupResult(Data.class);
+            dataResult.addLookupListener((LookupEvent lookupEvent) -> {
+                initialised = false;
             });
         }
         
@@ -170,7 +168,7 @@ public final class TemplatesTopComponent extends Window
 //      ExplorerUtils.activateActions(manager, true);
         
         // add listener for item selection in the tree
-        itemResult = getLookup().lookup(new Lookup.Template(Item.class));
+        itemResult = getLookup().lookupResult(Item.class);
         itemResult.addLookupListener(this);
         itemResult.allInstances();
         

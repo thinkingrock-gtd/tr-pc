@@ -24,7 +24,6 @@ import java.awt.EventQueue;
 import org.openide.util.HelpCtx;
 import org.openide.util.Lookup;
 import org.openide.util.LookupEvent;
-import org.openide.util.LookupListener;
 import org.openide.util.NbBundle;
 import org.openide.util.actions.CallableSystemAction;
 import tr.model.Data;
@@ -39,12 +38,9 @@ public final class SaveAction extends CallableSystemAction implements Observer {
         super();
         setEnabled(false);
         dataChanged();
-        Lookup.Result r = DataLookup.instance().lookup(new Lookup.Template(Data.class));
-        r.addLookupListener(new LookupListener() {
-            @Override
-            public void resultChanged(LookupEvent lookupEvent) {
-                dataChanged();
-            }
+        Lookup.Result r = DataLookup.instance().lookupResult(Data.class);
+        r.addLookupListener((LookupEvent lookupEvent) -> {
+            dataChanged();
         });
     }
     

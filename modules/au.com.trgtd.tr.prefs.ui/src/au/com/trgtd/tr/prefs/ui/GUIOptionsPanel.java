@@ -98,7 +98,7 @@ final class GUIOptionsPanel extends JPanel {
     private void initActions() {
         actions = new Vector<ComboItem>();
         actions.add(new ComboItem(INITIAL_NONE, GUIPrefs.INITIAL_ACTION_ID_NONE));
-        Lookup.Result r = InitialActionLookup.instance().lookup(new Lookup.Template(InitialAction.class));
+        Lookup.Result r = InitialActionLookup.instance().lookupResult(InitialAction.class);
         Collection c = r.allInstances();
         for (Iterator iter = c.iterator(); iter.hasNext(); ) {
             InitialAction action = (InitialAction)iter.next();

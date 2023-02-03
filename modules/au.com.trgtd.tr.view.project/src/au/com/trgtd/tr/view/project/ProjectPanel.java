@@ -39,7 +39,6 @@ import javax.swing.event.DocumentListener;
 import net.miginfocom.swing.MigLayout;
 import org.openide.util.Lookup;
 import org.openide.util.LookupEvent;
-import org.openide.util.LookupListener;
 import org.openide.util.NbBundle;
 import org.openide.windows.WindowManager;
 import tr.model.Data;
@@ -79,11 +78,9 @@ public final class ProjectPanel extends JPanel { // implements Observer {
         super();
         initPanel();
         initModel(null);
-        result = DataLookup.instance().lookup(new Lookup.Template(Data.class));
-        result.addLookupListener(new LookupListener() {
-            public void resultChanged(LookupEvent lookupEvent) {
-                dataChanged();
-            }
+        result = DataLookup.instance().lookupResult(Data.class);
+        result.addLookupListener((LookupEvent lookupEvent) -> {
+            dataChanged();
         });
         dataChanged();
     }

@@ -237,13 +237,11 @@ public class LevelsDAOImpl extends DAOImpl implements LevelsDAO {
 
     private LevelsDAOImpl() {
         data = (Data) DataLookup.instance().lookup(Data.class);
-        Lookup.Result dlr = DataLookup.instance().lookup(new Lookup.Template(Data.class));
-        dlr.addLookupListener(new LookupListener() {
-            public void resultChanged(LookupEvent lookupEvent) {
-                data = (Data)DataLookup.instance().lookup(Data.class);
-                initialise();
-                firePropertyChange(PROP_DATA, 0, 1);
-            }
+        Lookup.Result dlr = DataLookup.instance().lookupResult(Data.class);
+        dlr.addLookupListener((LookupEvent lookupEvent) -> {
+            data = (Data)DataLookup.instance().lookup(Data.class);
+            initialise();
+            firePropertyChange(PROP_DATA, 0, 1);
         });
         initialise();
     }

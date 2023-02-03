@@ -22,7 +22,6 @@ import au.com.trgtd.tr.util.Observer;
 import javax.swing.DefaultComboBoxModel;
 import org.openide.util.Lookup;
 import org.openide.util.LookupEvent;
-import org.openide.util.LookupListener;
 import tr.model.Data;
 import tr.model.DataLookup;
 import tr.model.criteria.Criterion;
@@ -59,12 +58,9 @@ public class TimeComboBoxModel extends DefaultComboBoxModel implements Observer 
         criterion.addObserver(this);
 
         if (result == null) {
-            result = DataLookup.instance().lookup(new Lookup.Template(Data.class));
-            result.addLookupListener(new LookupListener() {
-                @Override
-                public void resultChanged(LookupEvent lookupEvent) {
-                    update(null, null);
-                }
+            result = DataLookup.instance().lookupResult(Data.class);
+            result.addLookupListener((LookupEvent lookupEvent) -> {
+                update(null, null);
             });
         }
     }

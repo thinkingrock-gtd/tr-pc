@@ -21,7 +21,6 @@ import java.util.List;
 import java.util.Vector;
 import org.openide.util.Lookup;
 import org.openide.util.LookupEvent;
-import org.openide.util.LookupListener;
 import tr.model.Data;
 import tr.model.DataLookup;
 import tr.model.criteria.Value;
@@ -43,11 +42,9 @@ public class ValueIDsProviderEnergy implements ValueIDsProvider, Observer {
     
     private ValueIDsProviderEnergy() {
         initialise();
-        lookupResult = DataLookup.instance().lookup(new Lookup.Template(Data.class));
-        lookupResult.addLookupListener(new LookupListener() {
-            public void resultChanged(LookupEvent lookupEvent) {
-                initialise();
-            }
+        lookupResult = DataLookup.instance().lookupResult(Data.class);
+        lookupResult.addLookupListener((LookupEvent lookupEvent) -> {
+            initialise();
         });
     }
     
