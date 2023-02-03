@@ -36,7 +36,7 @@ public class ProcessToReferenceAction extends CookieAction {
 
     @Override
     protected String iconResource() {
-        return "ProcessToReference.png";
+        return "au/com/trgtd/tr/view/collect/screen/ProcessToReference.png";
     }
     
     @Override
