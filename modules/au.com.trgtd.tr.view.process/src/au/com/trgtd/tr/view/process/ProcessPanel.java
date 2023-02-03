@@ -512,11 +512,8 @@ public final class ProcessPanel extends JPanel implements Observer, ProcessCooki
         };
         supergoalButton.addActionListener(supergoalButtonListener);
 
-        prefsChangeListener = new PreferenceChangeListener() {
-            @Override
-            public void preferenceChange(PreferenceChangeEvent e) {
-                changedPrefs(e);
-            }
+        prefsChangeListener = (PreferenceChangeEvent e) -> {
+            changedPrefs(e);
         };
         ActionPrefs.getPrefs().addPreferenceChangeListener(prefsChangeListener);
 

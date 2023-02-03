@@ -1060,11 +1060,8 @@ if (ass.getDate() == null) {
     }
 
     private void addExternalListeners() {
-        prefsChangeListener = new PreferenceChangeListener() {
-            @Override
-            public void preferenceChange(PreferenceChangeEvent evt) {
-                changedPrefs(evt);
-            }
+        prefsChangeListener = (PreferenceChangeEvent evt) -> {
+            changedPrefs(evt);
         };
         ActionPrefs.getPrefs().addPreferenceChangeListener(prefsChangeListener);
 

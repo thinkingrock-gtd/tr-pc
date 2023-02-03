@@ -20,7 +20,6 @@ package au.com.trgtd.tr.sync.iphone;
 import java.awt.EventQueue;
 import java.awt.Frame;
 import java.util.prefs.PreferenceChangeEvent;
-import java.util.prefs.PreferenceChangeListener;
 import org.openide.util.HelpCtx;
 import org.openide.util.Lookup;
 import org.openide.util.LookupEvent;
@@ -39,11 +38,8 @@ public final class SyncAction extends CallableSystemAction {
         r.addLookupListener((LookupEvent lookupEvent) -> {
             enableDisable();
         });
-        SyncPrefs.addListener(new PreferenceChangeListener() {
-            @Override
-            public void preferenceChange(PreferenceChangeEvent evt) {
-                enableDisable();
-            }
+        SyncPrefs.addListener((PreferenceChangeEvent evt) -> {
+            enableDisable();
         });
         enableDisable();
     }

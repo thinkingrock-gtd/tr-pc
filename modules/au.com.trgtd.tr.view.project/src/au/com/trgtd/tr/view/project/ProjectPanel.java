@@ -255,10 +255,8 @@ public final class ProjectPanel extends JPanel { // implements Observer {
 
     private void addListeners() {
 
-        prefsChangeListener = new PreferenceChangeListener() {
-            public void preferenceChange(PreferenceChangeEvent arg0) {
-                changedPrefs();
-            }
+        prefsChangeListener = (PreferenceChangeEvent arg0) -> {
+            changedPrefs();
         };
         ProjectsPrefs.getPrefs().addPreferenceChangeListener(prefsChangeListener);
 
