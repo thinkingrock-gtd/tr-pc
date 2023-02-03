@@ -466,11 +466,8 @@ public final class ProcessPanel extends JPanel implements Observer, ProcessCooki
         doneDateField.addPropertyChangeListener("value", doneDatePropertyChangeListener);
 
         // status
-        statusListener = new ItemListener() {
-            @Override
-            public void itemStateChanged(ItemEvent e) {
-                changedStatus();
-            }
+        statusListener = (ItemEvent e) -> {
+            changedStatus();
         };
         statusCombo.addItemListener(statusListener);
 
