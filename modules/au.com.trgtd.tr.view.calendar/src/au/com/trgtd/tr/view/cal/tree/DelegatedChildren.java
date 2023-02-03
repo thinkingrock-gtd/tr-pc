@@ -34,17 +34,14 @@ import tr.model.action.Action;
  */
 public class DelegatedChildren extends Children.Keys<CalEvent> {
 
-    private static final Comparator<CalEvent> COMPARATOR = new Comparator<CalEvent>() {
-        @Override
-        public int compare(CalEvent e1, CalEvent e2) {
-            Action a1 = e1.getAction();
-            Action a2 = e2.getAction();
-            int c = a1.getTopic().compareTo(a2.getTopic());
-            if (c == 0) {
-                c = a1.getDescription().compareToIgnoreCase(a2.getDescription());
-            }
-            return c;
+    private static final Comparator<CalEvent> COMPARATOR = (CalEvent e1, CalEvent e2) -> {
+        Action a1 = e1.getAction();
+        Action a2 = e2.getAction();
+        int c = a1.getTopic().compareTo(a2.getTopic());
+        if (c == 0) {
+            c = a1.getDescription().compareToIgnoreCase(a2.getDescription());
         }
+        return c;
     };
 
     private final DateCtlr dateCtlr;

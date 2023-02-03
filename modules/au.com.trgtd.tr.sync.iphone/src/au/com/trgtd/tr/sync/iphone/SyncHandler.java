@@ -126,12 +126,8 @@ public abstract class SyncHandler {
         return references;
     }
     
-    private final Comparator<Information> referencesComparator = new Comparator<Information>() {
-        @Override
-        public int compare(Information t1, Information t2) {
-            return t1.getDescription().compareToIgnoreCase(t2.getDescription());
-        }
-    };
+    private final Comparator<Information> referencesComparator = (Information t1, Information t2) ->
+            t1.getDescription().compareToIgnoreCase(t2.getDescription());
     
     private List<Project> projects;
     protected List<Project> getProjects() {

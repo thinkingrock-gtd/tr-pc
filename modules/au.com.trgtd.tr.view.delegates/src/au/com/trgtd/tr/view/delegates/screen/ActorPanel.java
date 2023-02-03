@@ -303,11 +303,7 @@ public class ActorPanel extends JPanel implements ListSelectionListener, Observe
     private TableComparatorChooser<Actor> tableSorter;
     private ActorDialog actorDialog;
 
-    private final Comparator<Actor> actorComparator = new Comparator<Actor>() {
-        @Override
-        public int compare(Actor a1, Actor a2) {
-            return a1.getName().compareToIgnoreCase(a2.getName());
-        }
-    };
+    private final Comparator<Actor> actorComparator = (Actor a1, Actor a2) ->
+            a1.getName().compareToIgnoreCase(a2.getName());
 
 }

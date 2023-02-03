@@ -110,45 +110,32 @@ public class ExtractProjectOutline {
         }
     }
     
-    private static final Comparator<Project> descrComparator = new Comparator<Project>() {
-        @Override
-        public int compare(Project p1, Project p2) {
+    private static final Comparator<Project> descrComparator = (Project p1, Project p2) ->
+            p1.getDescription().compareToIgnoreCase(p2.getDescription());
+    
+    private static final Comparator<Project> priorityComparator = (Project p1, Project p2) -> {
+        String s1 = ExtractUtils.getPriorityIndex(p1.getPriority());
+        String s2 = ExtractUtils.getPriorityIndex(p2.getPriority());
+        int r = compareWithNulls(s1, s2, false);
+        if (r == 0) {
             return p1.getDescription().compareToIgnoreCase(p2.getDescription());
         }
+        return r;
+    };
+    private static final Comparator<Project> dueDateComparator = (Project p1, Project p2) -> {
+        int r = compareWithNulls(p1.getDueDate(), p2.getDueDate(), false);
+        if (r == 0) {
+            return p1.getDescription().compareToIgnoreCase(p2.getDescription());
+        }
+        return r;
     };
     
-    private static final Comparator<Project> priorityComparator = new Comparator<Project>() {
-        @Override
-        public int compare(Project p1, Project p2) {
-            String s1 = ExtractUtils.getPriorityIndex(p1.getPriority());
-            String s2 = ExtractUtils.getPriorityIndex(p2.getPriority());            
-            int r = compareWithNulls(s1, s2, false);
-            if (r == 0) {
-                return p1.getDescription().compareToIgnoreCase(p2.getDescription());                
-            }
-            return r;
+    private static final Comparator<Project> topicComparator = (Project p1, Project p2) -> {
+        int r = compareWithNulls(p1.getTopic(), p2.getTopic(), false);
+        if (r == 0) {
+            return p1.getDescription().compareToIgnoreCase(p2.getDescription());
         }
-    };
-    private static final Comparator<Project> dueDateComparator = new Comparator<Project>() {
-        @Override
-        public int compare(Project p1, Project p2) {
-            int r = compareWithNulls(p1.getDueDate(), p2.getDueDate(), false);
-            if (r == 0) {
-                return p1.getDescription().compareToIgnoreCase(p2.getDescription());                
-            }
-            return r;
-        }
-    };
-    
-    private static final Comparator<Project> topicComparator = new Comparator<Project>() {
-        @Override
-        public int compare(Project p1, Project p2) {
-            int r = compareWithNulls(p1.getTopic(), p2.getTopic(), false);
-            if (r == 0) {
-                return p1.getDescription().compareToIgnoreCase(p2.getDescription());                
-            }
-            return r;
-        }
+        return r;
     };    
 
     public static int compareWithNulls(Comparable c1, Comparable c2, boolean isNullFirst) {
