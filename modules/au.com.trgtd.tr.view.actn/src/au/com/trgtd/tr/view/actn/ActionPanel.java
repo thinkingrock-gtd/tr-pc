@@ -1483,29 +1483,17 @@ if (ass.getDate() == null) {
         propertyListenerScheduledDate = (PropertyChangeEvent e) -> {
             changedScheduledDate((Date) e.getNewValue());
         };
-        changeListenerScheduledHour = new ChangeListener() {
-            @Override
-            public void stateChanged(ChangeEvent evt) {
-                changedScheduledHour();
-            }
+        changeListenerScheduledHour = (ChangeEvent evt) -> {
+            changedScheduledHour();
         };
-        changeListenerScheduledMinute = new ChangeListener() {
-            @Override
-            public void stateChanged(ChangeEvent evt) {
-                changedScheduledMinute();
-            }
+        changeListenerScheduledMinute = (ChangeEvent evt) -> {
+            changedScheduledMinute();
         };
-        changeListenerDurationHour = new ChangeListener() {
-            @Override
-            public void stateChanged(ChangeEvent evt) {
-                changedDurationHours();
-            }
+        changeListenerDurationHour = (ChangeEvent evt) -> {
+            changedDurationHours();
         };
-        changeListenerDurationMinute = new ChangeListener() {
-            @Override
-            public void stateChanged(ChangeEvent evt) {
-                changedDurationMinutes();
-            }
+        changeListenerDurationMinute = (ChangeEvent evt) -> {
+            changedDurationMinutes();
         };
         actionListenerRecurrence = (ActionEvent evt) -> {
             recurrenceActionPerformed();

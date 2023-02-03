@@ -36,7 +36,6 @@ import javax.swing.JTextArea;
 import javax.swing.SpinnerNumberModel;
 import javax.swing.UIManager;
 import javax.swing.event.ChangeEvent;
-import javax.swing.event.ChangeListener;
 import net.miginfocom.swing.MigLayout;
 import org.openide.util.NbBundle;
 import tr.model.action.Period;
@@ -153,10 +152,8 @@ public final class RecurrenceSubsequentPanelModify extends JPanel {
         createLabel = new JLabel(getMsg("create.subsequent.action.in"));
         freqSpinner = new JSpinner(new SpinnerNumberModel(1, 1, null, 1));
         freqSpinner.setPreferredSize(new Dimension(50, 23));
-        freqSpinner.addChangeListener(new ChangeListener() {
-            public void stateChanged(ChangeEvent evt) {
-                frequencySpinnerStateChanged();
-            }
+        freqSpinner.addChangeListener((ChangeEvent evt) -> {
+            frequencySpinnerStateChanged();
         });
         periodCombo = new PeriodTypeComboBox();
         periodCombo.addActionListener((ActionEvent evt) -> {
@@ -164,27 +161,21 @@ public final class RecurrenceSubsequentPanelModify extends JPanel {
         });
         endLabel = new JLabel(getMsg("terminate"));
         endNeverRadio = new JRadioButton(getMsg("never"));
-        endNeverRadio.addChangeListener(new ChangeListener() {
-            public void stateChanged(ChangeEvent evt) {
-                endNeverRadioButtonStateChanged();
-            }
+        endNeverRadio.addChangeListener((ChangeEvent evt) -> {
+            endNeverRadioButtonStateChanged();
         });
         endNbrRadio = new JRadioButton(getMsg("after"));
         endNbrRadio.addActionListener((ActionEvent evt) -> {
             endNbrRadioButtonActionPerformed();
         });
         endNbrSpinner = new JSpinner(new SpinnerNumberModel(2, 2, null, 1));
-        endNbrSpinner.addChangeListener(new ChangeListener() {
-            public void stateChanged(ChangeEvent evt) {
-                endNbrSpinnerStateChanged();
-            }
+        endNbrSpinner.addChangeListener((ChangeEvent evt) -> {
+            endNbrSpinnerStateChanged();
         });
 
         endDateRadio = new JRadioButton(getMsg("after"));
-        endDateRadio.addChangeListener(new ChangeListener() {
-            public void stateChanged(ChangeEvent evt) {
-                endDateRadioButtonStateChanged();
-            }
+        endDateRadio.addChangeListener((ChangeEvent evt) -> {
+            endDateRadioButtonStateChanged();
         });
         endDateField = new DateField();
         endDateField.addPropertyChangeListener(this::endDateFieldPropertyChange);

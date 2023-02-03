@@ -420,38 +420,24 @@ public final class ActionEditPanel extends JPanel {
         };
         scheduledDateField.addPropertyChangeListener("value", propertyListenerScheduledDate);
 
-        changeListenerScheduledHour = new ChangeListener() {
-
-            @Override
-            public void stateChanged(ChangeEvent evt) {
-                changedScheduledHour();
-            }
+        changeListenerScheduledHour = (ChangeEvent evt) -> {
+            changedScheduledHour();
         };
 
         scheduledHourSpinner.addChangeListener(changeListenerScheduledHour);
 
-        changeListenerScheduledMinute = new ChangeListener() {
-
-            @Override
-            public void stateChanged(ChangeEvent evt) {
-                changedScheduledMinute();
-            }
+        changeListenerScheduledMinute = (ChangeEvent evt) -> {
+            changedScheduledMinute();
         };
         scheduledMinuteSpinner.addChangeListener(changeListenerScheduledMinute);
 
-        changeListenerDurationHour = new ChangeListener() {
-            @Override
-            public void stateChanged(ChangeEvent evt) {
-                changedDurationHours();
-            }
+        changeListenerDurationHour = (ChangeEvent evt) -> {
+            changedDurationHours();
         };
         durationHourSpinner.addChangeListener(changeListenerDurationHour);
 
-        changeListenerDurationMinute = new ChangeListener() {
-            @Override
-            public void stateChanged(ChangeEvent evt) {
-                changedDurationMinutes();
-            }
+        changeListenerDurationMinute = (ChangeEvent evt) -> {
+            changedDurationMinutes();
         };
         durationMinuteSpinner.addChangeListener(changeListenerDurationMinute);
 
