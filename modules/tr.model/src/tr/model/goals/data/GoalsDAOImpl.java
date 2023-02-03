@@ -18,7 +18,6 @@
 package tr.model.goals.data;
 
 import au.com.trgtd.tr.appl.Constants;
-import java.util.Arrays;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;

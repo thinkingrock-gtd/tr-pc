@@ -19,7 +19,6 @@ package au.com.trgtd.tr.view.cal.dialog;
 
 import au.com.trgtd.tr.appl.Constants;
 import au.com.trgtd.tr.prefs.actions.ActionPrefs;
-import au.com.trgtd.tr.runtime.Email;
 import au.com.trgtd.tr.swing.*;
 import au.com.trgtd.tr.swing.date.field.DateField;
 import au.com.trgtd.tr.swing.document.LazyDocumentListener;
@@ -56,7 +55,6 @@ import javax.swing.event.ChangeListener;
 import javax.swing.event.DocumentListener;
 import net.miginfocom.swing.MigLayout;
 import org.openide.util.NbBundle;
-import org.openide.util.Utilities;
 import tr.model.Data;
 import tr.model.DataLookup;
 import tr.model.Item.Notable;

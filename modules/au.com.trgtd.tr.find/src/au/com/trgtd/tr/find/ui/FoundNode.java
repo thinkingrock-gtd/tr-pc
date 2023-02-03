@@ -122,7 +122,7 @@ public class FoundNode extends AbstractNode implements ViewCookie {
 
     @Override
     public Action[] getActions(boolean popup) {
-        return new Action[] { 
+        return new Action[]{
             SystemAction.get(ViewAction.class)
         };
     }
@@ -153,6 +153,7 @@ public class FoundNode extends AbstractNode implements ViewCookie {
     }
 
     private ProjectsAction projectsAction;
+
     private ProjectsAction getProjectsAction() {
         if (projectsAction == null) {
             projectsAction = SystemAction.get(ProjectsAction.class);

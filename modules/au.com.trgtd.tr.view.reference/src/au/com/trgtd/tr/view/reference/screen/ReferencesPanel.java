@@ -34,7 +34,6 @@ import java.awt.event.MouseEvent;
 import java.io.Serializable;
 import java.util.Collection;
 import java.util.List;
-import java.util.Vector;
 import java.util.logging.Logger;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
