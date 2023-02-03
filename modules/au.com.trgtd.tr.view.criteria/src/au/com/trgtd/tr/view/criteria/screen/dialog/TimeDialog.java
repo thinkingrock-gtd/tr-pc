@@ -61,19 +61,13 @@ public class TimeDialog extends JDialog {
     }
 
     private void construct() {
-        ActionListener cancelListener = new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                cancel();
-            }
+        ActionListener cancelListener = (ActionEvent e) -> {
+            cancel();
         };
         cancelButton = new JButton(NbBundle.getMessage(getClass(), "cancel"));
         cancelButton.addActionListener(cancelListener);
-        ActionListener submitListener = new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                submit();
-            }
+        ActionListener submitListener = (ActionEvent e) -> {
+            submit();
         };
         submitButton = new JButton(); 
         submitButton.addActionListener(submitListener);

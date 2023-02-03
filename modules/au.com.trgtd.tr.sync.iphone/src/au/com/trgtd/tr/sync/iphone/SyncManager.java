@@ -65,18 +65,12 @@ public class SyncManager {
         propertyChangeSupport = new PropertyChangeSupport(this);
         
         state = new SyncState();
-        state.addPropertyChangeListener(new PropertyChangeListener() {
-            @Override
-            public void propertyChange(PropertyChangeEvent evt) {
-                propertyChangeSupport.firePropertyChange(evt.getPropertyName(), evt.getOldValue(), evt.getNewValue());
-            }
+        state.addPropertyChangeListener((PropertyChangeEvent evt) -> {
+            propertyChangeSupport.firePropertyChange(evt.getPropertyName(), evt.getOldValue(), evt.getNewValue());
         });
         progress = new SyncProgress();
-        progress.addPropertyChangeListener(new PropertyChangeListener() {
-            @Override
-            public void propertyChange(PropertyChangeEvent evt) {
-                propertyChangeSupport.firePropertyChange(evt.getPropertyName(), evt.getOldValue(), evt.getNewValue());
-            }
+        progress.addPropertyChangeListener((PropertyChangeEvent evt) -> {
+            propertyChangeSupport.firePropertyChange(evt.getPropertyName(), evt.getOldValue(), evt.getNewValue());
         });
     }
 

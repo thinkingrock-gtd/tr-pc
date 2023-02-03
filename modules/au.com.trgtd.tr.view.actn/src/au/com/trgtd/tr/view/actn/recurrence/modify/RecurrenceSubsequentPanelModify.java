@@ -23,9 +23,7 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.beans.PropertyChangeEvent;
-import java.beans.PropertyChangeListener;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
@@ -38,7 +36,6 @@ import javax.swing.JTextArea;
 import javax.swing.SpinnerNumberModel;
 import javax.swing.UIManager;
 import javax.swing.event.ChangeEvent;
-import javax.swing.event.ChangeListener;
 import net.miginfocom.swing.MigLayout;
 import org.openide.util.NbBundle;
 import tr.model.action.Period;
@@ -155,49 +152,33 @@ public final class RecurrenceSubsequentPanelModify extends JPanel {
         createLabel = new JLabel(getMsg("create.subsequent.action.in"));
         freqSpinner = new JSpinner(new SpinnerNumberModel(1, 1, null, 1));
         freqSpinner.setPreferredSize(new Dimension(50, 23));
-        freqSpinner.addChangeListener(new ChangeListener() {
-            public void stateChanged(ChangeEvent evt) {
-                frequencySpinnerStateChanged();
-            }
+        freqSpinner.addChangeListener((ChangeEvent evt) -> {
+            frequencySpinnerStateChanged();
         });
         periodCombo = new PeriodTypeComboBox();
-        periodCombo.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent evt) {
-                periodComboBoxActionPerformed();
-            }
+        periodCombo.addActionListener((ActionEvent evt) -> {
+            periodComboBoxActionPerformed();
         });
         endLabel = new JLabel(getMsg("terminate"));
         endNeverRadio = new JRadioButton(getMsg("never"));
-        endNeverRadio.addChangeListener(new ChangeListener() {
-            public void stateChanged(ChangeEvent evt) {
-                endNeverRadioButtonStateChanged();
-            }
+        endNeverRadio.addChangeListener((ChangeEvent evt) -> {
+            endNeverRadioButtonStateChanged();
         });
         endNbrRadio = new JRadioButton(getMsg("after"));
-        endNbrRadio.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent evt) {
-                endNbrRadioButtonActionPerformed();
-            }
+        endNbrRadio.addActionListener((ActionEvent evt) -> {
+            endNbrRadioButtonActionPerformed();
         });
         endNbrSpinner = new JSpinner(new SpinnerNumberModel(2, 2, null, 1));
-        endNbrSpinner.addChangeListener(new ChangeListener() {
-            public void stateChanged(ChangeEvent evt) {
-                endNbrSpinnerStateChanged();
-            }
+        endNbrSpinner.addChangeListener((ChangeEvent evt) -> {
+            endNbrSpinnerStateChanged();
         });
 
         endDateRadio = new JRadioButton(getMsg("after"));
-        endDateRadio.addChangeListener(new ChangeListener() {
-            public void stateChanged(ChangeEvent evt) {
-                endDateRadioButtonStateChanged();
-            }
+        endDateRadio.addChangeListener((ChangeEvent evt) -> {
+            endDateRadioButtonStateChanged();
         });
         endDateField = new DateField();
-        endDateField.addPropertyChangeListener(new PropertyChangeListener() {
-            public void propertyChange(PropertyChangeEvent evt) {
-                endDateFieldPropertyChange(evt);
-            }
-        });
+        endDateField.addPropertyChangeListener(this::endDateFieldPropertyChange);
         changeMessage = new JTextArea(getMsg("changing.recurrence.type.from.regular.to.subsequent"));
         changeMessage.setFont(changeMessage.getFont().deriveFont(Font.ITALIC));
         changeMessage.setBackground(UIManager.getDefaults().getColor("Panel.background"));

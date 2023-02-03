@@ -195,13 +195,11 @@ public final class ContextsTopComponent extends Window implements ContextNodePro
     }
     
     public void provide(final Collection<ContextNode> contextNodes) {
-        EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                if (panel == null || contextNodes == null) {
-                    getInstanceContent().set(Collections.EMPTY_LIST, null);
-                } else {
-                    getInstanceContent().set(contextNodes, null);
-                }
+        EventQueue.invokeLater(() -> {
+            if (panel == null || contextNodes == null) {
+                getInstanceContent().set(Collections.EMPTY_LIST, null);
+            } else {
+                getInstanceContent().set(contextNodes, null);
             }
         });
     }

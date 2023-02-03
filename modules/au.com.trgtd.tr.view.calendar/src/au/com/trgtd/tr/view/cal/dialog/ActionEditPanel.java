@@ -19,7 +19,6 @@ package au.com.trgtd.tr.view.cal.dialog;
 
 import au.com.trgtd.tr.appl.Constants;
 import au.com.trgtd.tr.prefs.actions.ActionPrefs;
-import au.com.trgtd.tr.runtime.Email;
 import au.com.trgtd.tr.swing.*;
 import au.com.trgtd.tr.swing.date.field.DateField;
 import au.com.trgtd.tr.swing.document.LazyDocumentListener;
@@ -56,7 +55,6 @@ import javax.swing.event.ChangeListener;
 import javax.swing.event.DocumentListener;
 import net.miginfocom.swing.MigLayout;
 import org.openide.util.NbBundle;
-import org.openide.util.Utilities;
 import tr.model.Data;
 import tr.model.DataLookup;
 import tr.model.Item.Notable;
@@ -180,11 +178,8 @@ public final class ActionEditPanel extends JPanel {
         setEnabled(true);
 
         // force scroll to top
-        SwingUtilities.invokeLater(new Runnable() {
-            @Override
-            public void run() {
-                scrollpane.getViewport().setViewPosition(new Point(0, 0));
-            }
+        SwingUtilities.invokeLater(() -> {
+            scrollpane.getViewport().setViewPosition(new Point(0, 0));
         });
     }
 
@@ -407,64 +402,40 @@ public final class ActionEditPanel extends JPanel {
         };
         successText.getDocument().addDocumentListener(docListenerSuccess);
 
-        actionListenerTopic = new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent evt) {
-                changedTopic(evt);
-            }
+        actionListenerTopic = (ActionEvent evt) -> {
+            changedTopic(evt);
         };
         topicCombo.addActionListener(actionListenerTopic);
 
-        actionListenerContext = new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent evt) {
-                changedContext(evt);
-            }
+        actionListenerContext = (ActionEvent evt) -> {
+            changedContext(evt);
         };
         contextCombo.addActionListener(actionListenerContext);
 
         // Scheduled
-        propertyListenerScheduledDate = new PropertyChangeListener() {
-
-            @Override
-            public void propertyChange(PropertyChangeEvent e) {
-                changedScheduledDate((Date) e.getNewValue());
-            }
+        propertyListenerScheduledDate = (PropertyChangeEvent e) -> {
+            changedScheduledDate((Date) e.getNewValue());
         };
         scheduledDateField.addPropertyChangeListener("value", propertyListenerScheduledDate);
 
-        changeListenerScheduledHour = new ChangeListener() {
-
-            @Override
-            public void stateChanged(ChangeEvent evt) {
-                changedScheduledHour();
-            }
+        changeListenerScheduledHour = (ChangeEvent evt) -> {
+            changedScheduledHour();
         };
 
         scheduledHourSpinner.addChangeListener(changeListenerScheduledHour);
 
-        changeListenerScheduledMinute = new ChangeListener() {
-
-            @Override
-            public void stateChanged(ChangeEvent evt) {
-                changedScheduledMinute();
-            }
+        changeListenerScheduledMinute = (ChangeEvent evt) -> {
+            changedScheduledMinute();
         };
         scheduledMinuteSpinner.addChangeListener(changeListenerScheduledMinute);
 
-        changeListenerDurationHour = new ChangeListener() {
-            @Override
-            public void stateChanged(ChangeEvent evt) {
-                changedDurationHours();
-            }
+        changeListenerDurationHour = (ChangeEvent evt) -> {
+            changedDurationHours();
         };
         durationHourSpinner.addChangeListener(changeListenerDurationHour);
 
-        changeListenerDurationMinute = new ChangeListener() {
-            @Override
-            public void stateChanged(ChangeEvent evt) {
-                changedDurationMinutes();
-            }
+        changeListenerDurationMinute = (ChangeEvent evt) -> {
+            changedDurationMinutes();
         };
         durationMinuteSpinner.addChangeListener(changeListenerDurationMinute);
 
@@ -476,102 +447,64 @@ public final class ActionEditPanel extends JPanel {
 //        };
 //        recurrenceButton.addActionListener(actionListenerRecurrence);
 
-        propertyListenerDelegateCombo = new PropertyChangeListener() {
-
-            @Override
-            public void propertyChange(PropertyChangeEvent e) {
-                changedDelegate(e.getNewValue());
-            }
+        propertyListenerDelegateCombo = (PropertyChangeEvent e) -> {
+            changedDelegate(e.getNewValue());
         };
         delegateCombo.addPropertyChangeListener(ActorsComboBox.PROP_SELECTED, propertyListenerDelegateCombo);
 
-        actionListenerEmail = new ActionListener() {
-
-            @Override
-            public void actionPerformed(ActionEvent evt) {
-                emailActionPerformed(evt);
-            }
+        actionListenerEmail = (ActionEvent evt) -> {
+            emailActionPerformed(evt);
         };
         emailButton.addActionListener(actionListenerEmail);
 
-        actionListenerStatusCombo = new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent evt) {
-                changedStatus();
-            }
+        actionListenerStatusCombo = (ActionEvent evt) -> {
+            changedStatus();
         };
         statusCombo.addActionListener(actionListenerStatusCombo);
 
-        actionListenerPriorityCombo = new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent evt) {
-                ctlr.setPriority((Value)priorityCombo.getSelectedItem());
-            }
+        actionListenerPriorityCombo = (ActionEvent evt) -> {
+            ctlr.setPriority((Value)priorityCombo.getSelectedItem());
         };
         priorityCombo.addActionListener(actionListenerPriorityCombo);
 
-        actionListenerEnergyCombo = new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent evt) {
-                ctlr.setEnergy((Value)energyCombo.getSelectedItem());
-            }
+        actionListenerEnergyCombo = (ActionEvent evt) -> {
+            ctlr.setEnergy((Value)energyCombo.getSelectedItem());
         };
         energyCombo.addActionListener(actionListenerEnergyCombo);
 
-        actionListenerTimeCombo = new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent evt) {
-                ctlr.setTime((Value)timeCombo.getSelectedItem());
-            }
+        actionListenerTimeCombo = (ActionEvent evt) -> {
+            ctlr.setTime((Value)timeCombo.getSelectedItem());
         };
         timeCombo.addActionListener(actionListenerTimeCombo);
 
-        propertyListenerFollowupDate = new PropertyChangeListener() {
-            @Override
-            public void propertyChange(PropertyChangeEvent e) {
-                ctlr.setDelegateDate((Date) e.getNewValue());
-            }
+        propertyListenerFollowupDate = (PropertyChangeEvent e) -> {
+            ctlr.setDelegateDate((Date) e.getNewValue());
         };
         followupField.addPropertyChangeListener("value", propertyListenerFollowupDate);
 
-        propertyListenerCreatedDate = new PropertyChangeListener() {
-            @Override
-            public void propertyChange(PropertyChangeEvent e) {
-                changedCreatedDate((Date) e.getNewValue());
-            }
+        propertyListenerCreatedDate = (PropertyChangeEvent e) -> {
+            changedCreatedDate((Date) e.getNewValue());
         };
         createdDateField.addPropertyChangeListener("value", propertyListenerCreatedDate);
 
-        propertyListenerStartDate = new PropertyChangeListener() {
-            @Override
-            public void propertyChange(PropertyChangeEvent e) {
-                changedStartDate((Date) e.getNewValue());
-            }
+        propertyListenerStartDate = (PropertyChangeEvent e) -> {
+            changedStartDate((Date) e.getNewValue());
         };
         startDateField.addPropertyChangeListener("value", propertyListenerStartDate);
 
-        propertyListenerDueDate = new PropertyChangeListener() {
-            @Override
-            public void propertyChange(PropertyChangeEvent e) {
-                changedDueDate((Date) e.getNewValue());
-            }
+        propertyListenerDueDate = (PropertyChangeEvent e) -> {
+            changedDueDate((Date) e.getNewValue());
         };
         dueDateField.addPropertyChangeListener("value", propertyListenerDueDate);
 
         // Done CheckBox
-        doneCheckBoxActionListener = new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent evt) {
-                changedDone();
-            }
+        doneCheckBoxActionListener = (ActionEvent evt) -> {
+            changedDone();
         };
         doneCheckBox.addActionListener(doneCheckBoxActionListener);
 
-        propertyListenerDoneDate = new PropertyChangeListener() {
-            @Override
-            public void propertyChange(PropertyChangeEvent e) {
-                changedDoneDate((Date) e.getNewValue());
-            }
+        propertyListenerDoneDate = (PropertyChangeEvent e) -> {
+            changedDoneDate((Date) e.getNewValue());
         };
         doneDateField.addPropertyChangeListener("value", propertyListenerDoneDate);
     }

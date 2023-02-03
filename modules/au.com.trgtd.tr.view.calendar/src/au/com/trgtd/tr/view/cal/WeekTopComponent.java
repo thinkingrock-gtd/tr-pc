@@ -29,7 +29,6 @@ import java.awt.BorderLayout;
 import java.awt.Component;
 import java.awt.Dimension;
 import java.beans.PropertyChangeEvent;
-import java.beans.PropertyChangeListener;
 import java.util.Date;
 import javax.swing.JPanel;
 import javax.swing.JToggleButton;
@@ -70,14 +69,11 @@ public final class WeekTopComponent extends TopComponent {
 
         WeekPanelCtlr weekPanelCtlr = new WeekPanelCtlr(calModel, dateCtlr, 0, 23);
         WeekPanel weekPanel = weekPanelCtlr.getWeekPanel();
-        weekPanel.addDayListener(new PropertyChangeListener() {
-            @Override
-            public void propertyChange(PropertyChangeEvent pce) {
-                Object newValue = pce.getNewValue();
-                if (newValue instanceof Date) {
-                    dateCtlr.setDate((Date)newValue);
-                    activateDayView();                                        
-                }
+        weekPanel.addDayListener((PropertyChangeEvent pce) -> {
+            Object newValue = pce.getNewValue();
+            if (newValue instanceof Date) {
+                dateCtlr.setDate((Date)newValue);
+                activateDayView();
             }            
         });
         

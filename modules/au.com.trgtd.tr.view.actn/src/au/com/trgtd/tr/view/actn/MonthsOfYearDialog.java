@@ -56,11 +56,8 @@ public class MonthsOfYearDialog extends JDialog {
         // default Ok button
         getRootPane().setDefaultButton(okButton);
         // Escape key to cancel
-        ActionListener escapeListener = new ActionListener() {
-
-            public void actionPerformed(ActionEvent evt) {
-                cancel(evt);
-            }
+        ActionListener escapeListener = (ActionEvent evt) -> {
+            cancel(evt);
         };
         KeyStroke stroke = KeyStroke.getKeyStroke(KeyEvent.VK_ESCAPE, 0);
         getRootPane().registerKeyboardAction(escapeListener, stroke,

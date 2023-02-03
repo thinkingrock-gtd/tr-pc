@@ -39,7 +39,6 @@ import javax.swing.event.DocumentListener;
 import net.miginfocom.swing.MigLayout;
 import org.openide.util.Lookup;
 import org.openide.util.LookupEvent;
-import org.openide.util.LookupListener;
 import org.openide.util.NbBundle;
 import org.openide.windows.WindowManager;
 import tr.model.Data;
@@ -79,11 +78,9 @@ public final class ProjectPanel extends JPanel { // implements Observer {
         super();
         initPanel();
         initModel(null);
-        result = DataLookup.instance().lookup(new Lookup.Template(Data.class));
-        result.addLookupListener(new LookupListener() {
-            public void resultChanged(LookupEvent lookupEvent) {
-                dataChanged();
-            }
+        result = DataLookup.instance().lookupResult(Data.class);
+        result.addLookupListener((LookupEvent lookupEvent) -> {
+            dataChanged();
         });
         dataChanged();
     }
@@ -94,10 +91,8 @@ public final class ProjectPanel extends JPanel { // implements Observer {
             return;
         }
         if (observerCriterion == null) {
-            observerCriterion = new Observer() {
-                public void update(Observable observable, Object arguement) {
-                    showHideCriteria();
-                }
+            observerCriterion = (Observable observable, Object arguement) -> {
+                showHideCriteria();
             };
         }
         getData().getPriorityCriterion().addObserver(observerCriterion);
@@ -258,10 +253,8 @@ public final class ProjectPanel extends JPanel { // implements Observer {
 
     private void addListeners() {
 
-        prefsChangeListener = new PreferenceChangeListener() {
-            public void preferenceChange(PreferenceChangeEvent arg0) {
-                changedPrefs();
-            }
+        prefsChangeListener = (PreferenceChangeEvent arg0) -> {
+            changedPrefs();
         };
         ProjectsPrefs.getPrefs().addPreferenceChangeListener(prefsChangeListener);
 
@@ -272,10 +265,8 @@ public final class ProjectPanel extends JPanel { // implements Observer {
         };
         descriptionText.getDocument().addDocumentListener(docListenerDescription);
 
-        actionListenerPriorityCombo = new ActionListener() {
-            public void actionPerformed(ActionEvent evt) {
-                priorityComboActionPerformed(evt);
-            }
+        actionListenerPriorityCombo = (ActionEvent evt) -> {
+            priorityComboActionPerformed(evt);
         };
         priorityCombo.addActionListener(actionListenerPriorityCombo);
 
@@ -315,74 +306,53 @@ public final class ProjectPanel extends JPanel { // implements Observer {
         };
         descriptionText.addFocusListener(focusAdapterDescription);
 
-        actionListenerTopic = new ActionListener() {
-
-            public void actionPerformed(ActionEvent evt) {
-                topicComboActionPerformed(evt);
-            }
+        actionListenerTopic = (ActionEvent evt) -> {
+            topicComboActionPerformed(evt);
         };
         topicCombo.addActionListener(actionListenerTopic);
 
-        actionListenerSequencingCheckBox = new ActionListener() {
-            public void actionPerformed(ActionEvent evt) {
-                sequencingCheckBoxActionPerformed(evt);
-            }
+        actionListenerSequencingCheckBox = (ActionEvent evt) -> {
+            sequencingCheckBoxActionPerformed(evt);
         };
         sequencingCheckBox.addActionListener(actionListenerSequencingCheckBox);
 
-        actionListenerSeqProjectsCheckBox = new ActionListener() {
-            public void actionPerformed(ActionEvent evt) {
-                seqProjectsCheckBoxActionPerformed(evt);
-            }
+        actionListenerSeqProjectsCheckBox = (ActionEvent evt) -> {
+            seqProjectsCheckBoxActionPerformed(evt);
         };
         seqProjectsCheckBox.addActionListener(actionListenerSeqProjectsCheckBox);
 
-        actionListenerSeqScheduledCheckBox = new ActionListener() {
-            public void actionPerformed(ActionEvent evt) {
-                seqScheduledCheckBoxActionPerformed(evt);
-            }
+        actionListenerSeqScheduledCheckBox = (ActionEvent evt) -> {
+            seqScheduledCheckBoxActionPerformed(evt);
         };
         seqScheduledCheckBox.addActionListener(actionListenerSeqScheduledCheckBox);
 
-        actionListenerSeqDelegatedCheckBox = new ActionListener() {
-            public void actionPerformed(ActionEvent evt) {
-                seqDelegatedCheckBoxActionPerformed(evt);
-            }
+        actionListenerSeqDelegatedCheckBox = (ActionEvent evt) -> {
+            seqDelegatedCheckBoxActionPerformed(evt);
         };
         seqDelegatedCheckBox.addActionListener(actionListenerSeqDelegatedCheckBox);
 
-        createdDatePropertyChangeListener = new PropertyChangeListener() {
-            public void propertyChange(PropertyChangeEvent e) {
-                changedCreatedDate();
-            }
+        createdDatePropertyChangeListener = (PropertyChangeEvent e) -> {
+            changedCreatedDate();
         };
         createdDateField.addPropertyChangeListener("value", createdDatePropertyChangeListener);
 
-        startDatePropertyChangeListener = new PropertyChangeListener() {
-            public void propertyChange(PropertyChangeEvent e) {
-                changedStartDate();
-            }
+        startDatePropertyChangeListener = (PropertyChangeEvent e) -> {
+            changedStartDate();
         };
         startDateField.addPropertyChangeListener("value", startDatePropertyChangeListener);
 
-        dueDatePropertyChangeListener = new PropertyChangeListener() {
-            public void propertyChange(PropertyChangeEvent e) {
-                changedDueDate();
-            }
+        dueDatePropertyChangeListener = (PropertyChangeEvent e) -> {
+            changedDueDate();
         };
         dueDateField.addPropertyChangeListener("value", dueDatePropertyChangeListener);
 
-        actionListenerDoneCheckBox = new ActionListener() {
-            public void actionPerformed(ActionEvent evt) {
-                completedCheckBoxActionPerformed(evt);
-            }
+        actionListenerDoneCheckBox = (ActionEvent evt) -> {
+            completedCheckBoxActionPerformed(evt);
         };
         doneCheckBox.addActionListener(actionListenerDoneCheckBox);
 
-        doneDatePropertyChangeListener = new PropertyChangeListener() {
-            public void propertyChange(PropertyChangeEvent e) {
-                changedCompletedDate();
-            }
+        doneDatePropertyChangeListener = (PropertyChangeEvent e) -> {
+            changedCompletedDate();
         };
         doneDateField.addPropertyChangeListener("value", doneDatePropertyChangeListener);
     }
@@ -524,11 +494,8 @@ public final class ProjectPanel extends JPanel { // implements Observer {
         }
 
         // scroll to top
-        SwingUtilities.invokeLater(new Runnable() {
-            public void run() {
-                scrollpane.getViewport().setViewPosition(new Point(0,0));
-            }
-
+        SwingUtilities.invokeLater(() -> {
+            scrollpane.getViewport().setViewPosition(new Point(0,0));
         });
 
         updating = false;

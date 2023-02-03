@@ -19,7 +19,6 @@ package au.com.trgtd.tr.view;
 
 import au.com.trgtd.tr.swing.TRComboBox;
 import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
@@ -52,16 +51,14 @@ public class CriteriaChangePanel extends JPanel {
         criteriaLabel = new JLabel(getMsg("CTL_Criteria"));
         criteriaCombo = new TRComboBox(Criteria.values());
         criteriaCombo.setSelectedItem(Criteria.Priority);
-        criteriaCombo.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent evt) {
-                Criteria c = (Criteria)criteriaCombo.getSelectedItem();
-                if (c == Criteria.Priority) {
-                    valueCombo.setModel(priorities);
-                } else if (c == Criteria.Time) {
-                    valueCombo.setModel(times);
-                } else if (c == Criteria.Energy) {
-                    valueCombo.setModel(energies);
-                }
+        criteriaCombo.addActionListener((ActionEvent evt) -> {
+            Criteria c = (Criteria)criteriaCombo.getSelectedItem();
+            if (c == Criteria.Priority) {
+                valueCombo.setModel(priorities);
+            } else if (c == Criteria.Time) {
+                valueCombo.setModel(times);
+            } else if (c == Criteria.Energy) {
+                valueCombo.setModel(energies);
             }
         });
 

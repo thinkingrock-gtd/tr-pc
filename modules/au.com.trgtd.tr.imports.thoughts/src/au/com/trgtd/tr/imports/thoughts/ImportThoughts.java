@@ -162,25 +162,20 @@ public class ImportThoughts {
     }
     
     private static void notifySuccess(final int count) {
-        SwingUtilities.invokeLater(new Runnable() {
-            public void run() {
-                String t = NbBundle.getMessage(ImportThoughts.class, "Import_Thoughts");
-//              String m = "Completed importing " + count + " thoughts." + "      ";
-                String m = NbBundle.getMessage(getClass(), "imported_n_thoughts", count) + "       "; // No I18N
-                Component p = WindowManager.getDefault().getMainWindow();
-                JOptionPane.showMessageDialog(p, m, t, JOptionPane.INFORMATION_MESSAGE);
-            }
+        SwingUtilities.invokeLater(() -> {
+            String t = NbBundle.getMessage(ImportThoughts.class, "Import_Thoughts");
+            String m = NbBundle.getMessage(ImportThoughts.class, "imported_n_thoughts", count) + "       "; // No I18N
+            Component p = WindowManager.getDefault().getMainWindow();
+            JOptionPane.showMessageDialog(p, m, t, JOptionPane.INFORMATION_MESSAGE);
         });
     }
     
     private static void notifyFailure(final Exception ex) {
-        SwingUtilities.invokeLater(new Runnable() {
-            public void run() {
-                String t = NbBundle.getMessage(ImportThoughts.class, "Import_Thoughts");
-                String m = NbBundle.getMessage(ImportThoughts.class, "error_processing_file") + " \n" + ex.getMessage();
-                Component p = WindowManager.getDefault().getMainWindow();
-                JOptionPane.showMessageDialog(p, m, t, JOptionPane.ERROR_MESSAGE);
-            }
+        SwingUtilities.invokeLater(() -> {
+            String t = NbBundle.getMessage(ImportThoughts.class, "Import_Thoughts");
+            String m = NbBundle.getMessage(ImportThoughts.class, "error_processing_file") + " \n" + ex.getMessage();
+            Component p = WindowManager.getDefault().getMainWindow();
+            JOptionPane.showMessageDialog(p, m, t, JOptionPane.ERROR_MESSAGE);
         });
     }
     

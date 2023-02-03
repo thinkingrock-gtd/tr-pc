@@ -20,7 +20,6 @@ package au.com.trgtd.tr.view.criteria;
 import javax.swing.DefaultComboBoxModel;
 import org.openide.util.Lookup;
 import org.openide.util.LookupEvent;
-import org.openide.util.LookupListener;
 import tr.model.Data;
 import tr.model.DataLookup;
 import tr.model.criteria.Criterion;
@@ -59,12 +58,9 @@ public class EnergyComboBoxModel extends DefaultComboBoxModel implements Observe
         criterion.addObserver(this);
 
         if (result == null) {
-            result = DataLookup.instance().lookup(new Lookup.Template(Data.class));
-            result.addLookupListener(new LookupListener() {
-
-                public void resultChanged(LookupEvent lookupEvent) {
-                    update(null, null);
-                }
+            result = DataLookup.instance().lookupResult(Data.class);
+            result.addLookupListener((LookupEvent lookupEvent) -> {
+                update(null, null);
             });
         }
     }

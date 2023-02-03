@@ -20,7 +20,6 @@ package au.com.trgtd.tr.prefs.projects;
 import au.com.trgtd.tr.swing.TRComboBox;
 import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.DefaultComboBoxModel;
@@ -46,69 +45,45 @@ final class ProjectsOptionsPanel extends JPanel {
 
     private JComponent getView() {
         autoSeqCheckBox = new JCheckBox(getMsg("Pref_AutoSequence"));
-        autoSeqCheckBox.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent evt) {
-                boolean b = autoSeqCheckBox.isSelected();
-                autoSeqIncludeLabel.setEnabled(b);
-                autoSeqSubprojectsCheckBox.setEnabled(b);
-                autoSeqScheduledCheckBox.setEnabled(b);
-                autoSeqDelegatedCheckBox.setEnabled(b);
-                controller.changed();
-            }
+        autoSeqCheckBox.addActionListener((ActionEvent evt) -> {
+            boolean b = autoSeqCheckBox.isSelected();
+            autoSeqIncludeLabel.setEnabled(b);
+            autoSeqSubprojectsCheckBox.setEnabled(b);
+            autoSeqScheduledCheckBox.setEnabled(b);
+            autoSeqDelegatedCheckBox.setEnabled(b);
+            controller.changed();
         });
 
         autoSeqIncludeLabel = new JLabel(getMsg("Pref_AutoSeqInclude"));
         autoSeqSubprojectsCheckBox = new JCheckBox(getMsg("Pref_AutoSeqSubprojects"));
-        autoSeqSubprojectsCheckBox.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent evt) {
-                controller.changed();
-            }
+        autoSeqSubprojectsCheckBox.addActionListener((ActionEvent evt) -> {
+            controller.changed();
         });
         autoSeqScheduledCheckBox = new JCheckBox(getMsg("Pref_AutoSeqScheduled"));
-        autoSeqScheduledCheckBox.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent evt) {
-                controller.changed();
-            }
+        autoSeqScheduledCheckBox.addActionListener((ActionEvent evt) -> {
+            controller.changed();
         });
         autoSeqDelegatedCheckBox = new JCheckBox(getMsg("Pref_AutoSeqDelegated"));
-        autoSeqDelegatedCheckBox.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent evt) {
-                controller.changed();
-            }
+        autoSeqDelegatedCheckBox.addActionListener((ActionEvent evt) -> {
+            controller.changed();
         });
 
         startDateCheckBox = new JCheckBox(getMsg("Pref_StartDate"));
-        startDateCheckBox.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent evt) {
-                controller.changed();
-            }
+        startDateCheckBox.addActionListener((ActionEvent evt) -> {
+            controller.changed();
         });
         dueDateCheckBox = new JCheckBox(getMsg("Pref_DueDate"));
-        dueDateCheckBox.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent evt) {
-                defaultActionDueDateCheckBox.setEnabled(dueDateCheckBox.isSelected());
-                controller.changed();
-            }
+        dueDateCheckBox.addActionListener((ActionEvent evt) -> {
+            defaultActionDueDateCheckBox.setEnabled(dueDateCheckBox.isSelected());
+            controller.changed();
         });
         defaultActionDueDateCheckBox = new JCheckBox(getMsg("Pref_DefaultActionDueDate"));
-        defaultActionDueDateCheckBox.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent evt) {
-                controller.changed();
-            }
+        defaultActionDueDateCheckBox.addActionListener((ActionEvent evt) -> {
+            controller.changed();
         });
         createDateCheckBox = new JCheckBox(getMsg("CTL_editCreateDate"));
-        createDateCheckBox.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent evt) {
-                controller.changed();
-            }
+        createDateCheckBox.addActionListener((ActionEvent evt) -> {
+            controller.changed();
         });
 
         actionStatesLabel = new JLabel(getMsg("DefaultActionState"));

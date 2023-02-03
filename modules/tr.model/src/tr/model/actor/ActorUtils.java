@@ -65,11 +65,7 @@ public class ActorUtils {
         }
     }
 
-    public static final Comparator<Actor> COMPARATOR_AZ = new Comparator<Actor>() {
-        @Override
-        public int compare(Actor a1, Actor a2) {
-            return a1.getName().compareToIgnoreCase(a2.getName());
-        }
-    };
+    public static final Comparator<Actor> COMPARATOR_AZ = (Actor a1, Actor a2) ->
+            a1.getName().compareToIgnoreCase(a2.getName());
 
 }

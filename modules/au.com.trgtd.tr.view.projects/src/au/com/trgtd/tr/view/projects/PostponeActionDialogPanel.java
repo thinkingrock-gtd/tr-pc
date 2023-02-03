@@ -93,18 +93,12 @@ public class PostponeActionDialogPanel extends JPanel {
     private void initComponents() {
         // type choice fields
         specificRadioButton = new JRadioButton(NbBundle.getMessage(PostponeActionPanel.class, "postpone.specific"));
-        specificRadioButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent evt) {
-                enableDisable();
-            }
+        specificRadioButton.addActionListener((ActionEvent evt) -> {
+            enableDisable();
         });
         advanceRadioButton = new JRadioButton(NbBundle.getMessage(PostponeActionPanel.class, "postpone.advanced"));
-        advanceRadioButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent evt) {
-                enableDisable();
-            }
+        advanceRadioButton.addActionListener((ActionEvent evt) -> {
+            enableDisable();
         });
         typeButtonGroup = new ButtonGroup();
         typeButtonGroup.add(specificRadioButton);

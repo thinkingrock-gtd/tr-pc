@@ -217,42 +217,36 @@ public class ProjectNode extends AbstractNode implements Observer, EditCookie,
     }
 
     protected void move(final Action tAction, final TransferNode tNode) {
-        EventQueue.invokeLater(new Runnable() {
-            @Override
-            public void run() {
-                // check for recurrence 
-                Recurrence r = tAction.getRecurrence();
-                if (r != null && !r.getProject().equals(project)) {
-                    String ad = tAction.getDescription();
-                    String pd = project.getDescription();
-                    String m = org.openide.util.NbBundle.getMessage(ProjectNode.class, "warning.move.recurrent.action", ad, pd);
-                    String t = org.openide.util.NbBundle.getMessage(ProjectNode.class, "confirm.move.recurrent.action");
-                    Component p = WindowManager.getDefault().getMainWindow();
-                    int opt = JOptionPane.showConfirmDialog(p, m, t, JOptionPane.OK_CANCEL_OPTION, JOptionPane.WARNING_MESSAGE);
-                    if (opt == JOptionPane.CANCEL_OPTION) {
-                        return;
-                    }
-                    // remove recurrence from transfer action
-                    ((ActionStateScheduled) tAction.getState()).setRecurrence(null);
+        EventQueue.invokeLater(() -> {
+            // check for recurrence
+            Recurrence r = tAction.getRecurrence();
+            if (r != null && !r.getProject().equals(project)) {
+                String ad = tAction.getDescription();
+                String pd = project.getDescription();
+                String m = org.openide.util.NbBundle.getMessage(ProjectNode.class, "warning.move.recurrent.action", ad, pd);
+                String t = org.openide.util.NbBundle.getMessage(ProjectNode.class, "confirm.move.recurrent.action");
+                Component p = WindowManager.getDefault().getMainWindow();
+                int opt = JOptionPane.showConfirmDialog(p, m, t, JOptionPane.OK_CANCEL_OPTION, JOptionPane.WARNING_MESSAGE);
+                if (opt == JOptionPane.CANCEL_OPTION) {
+                    return;
                 }
-                // do the move
-                tAction.removeFromParent();
-                project.add(tAction);
-                tNode.setTransferType(DnDConstants.ACTION_COPY);
-                select(tAction);
+                // remove recurrence from transfer action
+                ((ActionStateScheduled) tAction.getState()).setRecurrence(null);
             }
+            // do the move
+            tAction.removeFromParent();
+            project.add(tAction);
+            tNode.setTransferType(DnDConstants.ACTION_COPY);
+            select(tAction);
         });
     }
 
     protected void move(final Project transferProject, final TransferNode transferNode) {
-        EventQueue.invokeLater(new Runnable() {
-            @Override
-            public void run() {
-                transferProject.removeFromParent();
-                project.add(transferProject);
-                transferNode.setTransferType(DnDConstants.ACTION_COPY);
-                select(transferProject);
-            }
+        EventQueue.invokeLater(() -> {
+            transferProject.removeFromParent();
+            project.add(transferProject);
+            transferNode.setTransferType(DnDConstants.ACTION_COPY);
+            select(transferProject);
         });
     }
 
@@ -262,11 +256,8 @@ public class ProjectNode extends AbstractNode implements Observer, EditCookie,
      * @param action The action of the node to select.
      */
     void select(final Action action) {
-        EventQueue.invokeLater(new Runnable() {
-            @Override
-            public void run() {
-                select(find(action));
-            }
+        EventQueue.invokeLater(() -> {
+            select(find(action));
         });
     }
 
@@ -276,11 +267,8 @@ public class ProjectNode extends AbstractNode implements Observer, EditCookie,
      * @param project The project of the node to select.
      */
     void select(final Project project) {
-        EventQueue.invokeLater(new Runnable() {
-            @Override
-            public void run() {
-                select(find(project));
-            }
+        EventQueue.invokeLater(() -> {
+            select(find(project));
         });
     }
 
@@ -598,21 +586,15 @@ public class ProjectNode extends AbstractNode implements Observer, EditCookie,
 
     @Override
     public void addAction() {
-        EventQueue.invokeLater(new Runnable() {
-            @Override
-            public void run() {
-                addNewAction(null);
-            }
+        EventQueue.invokeLater(() -> {
+            addNewAction(null);
         });
     }
 
     @Override
     public void addAction(final Action sibling) {
-        EventQueue.invokeLater(new Runnable() {
-            @Override
-            public void run() {
-                addNewAction(sibling);
-            }
+        EventQueue.invokeLater(() -> {
+            addNewAction(sibling);
         });
     }
 
@@ -687,21 +669,15 @@ public class ProjectNode extends AbstractNode implements Observer, EditCookie,
 
     @Override
     public void addProject() {
-        EventQueue.invokeLater(new Runnable() {
-            @Override
-            public void run() {
-                addNewProject(null);
-            }
+        EventQueue.invokeLater(() -> {
+            addNewProject(null);
         });
     }
 
     @Override
     public void addProject(final Action sibling) {
-        EventQueue.invokeLater(new Runnable() {
-            @Override
-            public void run() {
-                addNewProject(sibling);
-            }
+        EventQueue.invokeLater(() -> {
+            addNewProject(sibling);
         });
     }
 
@@ -924,11 +900,8 @@ public class ProjectNode extends AbstractNode implements Observer, EditCookie,
         if (show) {
             final TreeView view = getTreeView();
             if (view != null) {
-                SwingUtilities.invokeLater(new Runnable() {
-                    @Override
-                    public void run() {
-                        view.expandNode(children.goalsNode);
-                    }
+                SwingUtilities.invokeLater(() -> {
+                    view.expandNode(children.goalsNode);
                 });
                 view.expandNode(this);
             }

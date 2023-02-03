@@ -21,13 +21,11 @@ import au.com.trgtd.tr.datastore.DataStore;
 import au.com.trgtd.tr.datastore.DataStoreLookup;
 import au.com.trgtd.tr.sync.device.prefs.SyncPrefsWiFi;
 import java.beans.PropertyChangeEvent;
-import java.beans.PropertyChangeListener;
 import java.io.File;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import org.openide.util.Lookup;
 import org.openide.util.LookupEvent;
-import org.openide.util.LookupListener;
 import tr.model.Data;
 import tr.model.DataLookup;
 
@@ -61,22 +59,16 @@ public final class WiFiServiceManager {
         startServices();
 
         // listen for user preferences change to reset service
-        SyncPrefsWiFi.addListener(new PropertyChangeListener() {
-            @Override
-            public void propertyChange(PropertyChangeEvent evt) {
-                LOG.info("WiFi sync preferences have changed - resetting WiFi service.");
-                resetServices();
-            }
+        SyncPrefsWiFi.addListener((PropertyChangeEvent evt) -> {
+            LOG.info("WiFi sync preferences have changed - resetting WiFi service.");
+            resetServices();
         });
         
         // listen for data file change to reset service
-        Lookup.Result<Data> r = DataLookup.instance().lookup(new Lookup.Template<Data>(Data.class));
-        r.addLookupListener(new LookupListener() {
-            @Override
-            public void resultChanged(LookupEvent lookupEvent) {
-                LOG.info("Data source has changed - resetting WiFi service.");
-                resetServices();
-            }
+        Lookup.Result<Data> r = DataLookup.instance().lookupResult(Data.class);
+        r.addLookupListener((LookupEvent lookupEvent) -> {
+            LOG.info("Data source has changed - resetting WiFi service.");
+            resetServices();
         });        
     }
 

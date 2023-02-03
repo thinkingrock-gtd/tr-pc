@@ -23,7 +23,6 @@ import java.awt.EventQueue;
 import org.openide.util.HelpCtx;
 import org.openide.util.Lookup;
 import org.openide.util.LookupEvent;
-import org.openide.util.LookupListener;
 import org.openide.util.NbBundle;
 import org.openide.util.actions.CallableSystemAction;
 import org.openide.windows.Mode;
@@ -45,11 +44,8 @@ public class TopicsAction extends CallableSystemAction implements InitialAction 
         super();
         enableDisable();
         Lookup.Result r = DataLookup.instance().lookupResult(Data.class);
-        r.addLookupListener(new LookupListener() {
-            @Override
-            public void resultChanged(LookupEvent lookupEvent) {
-                enableDisable();
-            }
+        r.addLookupListener((LookupEvent lookupEvent) -> {
+            enableDisable();
         });
     }
     
@@ -64,12 +60,9 @@ public class TopicsAction extends CallableSystemAction implements InitialAction 
     }
     
     private void enableDisable() {
-        EventQueue.invokeLater(new Runnable() {
-            @Override
-            public void run() {
-                Data data = (Data)DataLookup.instance().lookup(Data.class);
-                setEnabled(data != null);
-            }
+        EventQueue.invokeLater(() -> {
+            Data data = (Data)DataLookup.instance().lookup(Data.class);
+            setEnabled(data != null);
         });
     }
     
@@ -84,26 +77,23 @@ public class TopicsAction extends CallableSystemAction implements InitialAction 
     
     @Override
     public void performAction() {
-        EventQueue.invokeLater(new Runnable() {
-            @Override
-            public void run() {
-                Data data = (Data)DataLookup.instance().lookup(Data.class);
-                if (data == null) {
-                    return;
-                }
-
-                WindowUtils.closeWindows();
-                
-                TopComponent tc = TopicsTopComponent.findInstance();
-                
-                Mode mode = WindowManager.getDefault().findMode("Setup");
-                if (mode != null) {
-                    mode.dockInto(tc);
-                }
-                
-                tc.open();
-                tc.requestActive();
+        EventQueue.invokeLater(() -> {
+            Data data = (Data)DataLookup.instance().lookup(Data.class);
+            if (data == null) {
+                return;
             }
+
+            WindowUtils.closeWindows();
+
+            TopComponent tc = TopicsTopComponent.findInstance();
+
+            Mode mode = WindowManager.getDefault().findMode("Setup");
+            if (mode != null) {
+                mode.dockInto(tc);
+            }
+
+            tc.open();
+            tc.requestActive();
         });
     }
     

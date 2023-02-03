@@ -74,21 +74,13 @@ public class LevelDialog extends JDialog {
     }
 
     private void construct() {
-        ActionListener cancelListener = new ActionListener() {
-
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                cancel();
-            }
+        ActionListener cancelListener = (ActionEvent e) -> {
+            cancel();
         };
         cancelButton = new JButton(NbBundle.getMessage(getClass(), "cancel")); // NOI18N
         cancelButton.addActionListener(cancelListener);
-        ActionListener okListener = new ActionListener() {
-
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                ok();
-            }
+        ActionListener okListener = (ActionEvent e) -> {
+            ok();
         };
         okButton = new JButton(NbBundle.getMessage(getClass(), "ok")); // NOI18N
         okButton.addActionListener(okListener);

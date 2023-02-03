@@ -22,7 +22,6 @@ import au.com.trgtd.tr.view.goals.levels.dialog.LevelDialog;
 import org.openide.util.HelpCtx;
 import org.openide.util.Lookup;
 import org.openide.util.LookupEvent;
-import org.openide.util.LookupListener;
 import org.openide.util.NbBundle;
 import org.openide.util.actions.CallableSystemAction;
 import tr.model.Data;
@@ -40,12 +39,9 @@ public class LevelAddAction extends CallableSystemAction {
     public LevelAddAction() {
         super();
         setIcon(Icons.Add);
-        result = DataLookup.instance().lookup(new Lookup.Template<Data>(Data.class));
-        result.addLookupListener(new LookupListener() {
-            @Override
-            public void resultChanged(LookupEvent lookupEvent) {
-                setEnabled(result.allInstances().size() > 0);
-            }
+        result = DataLookup.instance().lookupResult(Data.class);
+        result.addLookupListener((LookupEvent lookupEvent) -> {
+            setEnabled(!result.allInstances().isEmpty());
         });
     }
 

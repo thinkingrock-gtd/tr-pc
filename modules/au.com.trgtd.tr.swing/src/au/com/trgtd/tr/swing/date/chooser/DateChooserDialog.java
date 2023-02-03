@@ -29,7 +29,6 @@ import java.util.GregorianCalendar;
 import javax.swing.*;
 import javax.swing.border.Border;
 import javax.swing.event.HyperlinkEvent;
-import javax.swing.event.HyperlinkListener;
 import org.openide.util.NbBundle;
 
 /**
@@ -163,16 +162,13 @@ public class DateChooserDialog extends JDialog implements ItemListener, MouseLis
      * registers listeners and initialises the dialog box. */
     private void construct() {
         // Escape key to cancel
-        ActionListener cancelListener = new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                if (day != null) {
-                    day.deselect();
-                }
-                cancel = true;
-                setVisible(false);
-                dispose();
+        ActionListener cancelListener = (ActionEvent e) -> {
+            if (day != null) {
+                day.deselect();
             }
+            cancel = true;
+            setVisible(false);
+            dispose();
         };
 
         KeyStroke stroke = KeyStroke.getKeyStroke(KeyEvent.VK_ESCAPE, 0);
@@ -200,11 +196,8 @@ public class DateChooserDialog extends JDialog implements ItemListener, MouseLis
         monthLast.setMaximumSize(new Dimension(18, 23));
         monthLast.setMinimumSize(new Dimension(18, 23));
         monthLast.setPreferredSize(new Dimension(18, 23));
-        monthLast.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                goLastMonth();
-            }
+        monthLast.addActionListener((ActionEvent e) -> {
+            goLastMonth();
         });
         monthNext = new JButton();
         monthNext.setFocusable(false);
@@ -213,11 +206,8 @@ public class DateChooserDialog extends JDialog implements ItemListener, MouseLis
         monthNext.setMaximumSize(new Dimension(18, 23));
         monthNext.setMinimumSize(new Dimension(18, 23));
         monthNext.setPreferredSize(new Dimension(18, 23));
-        monthNext.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                goNextMonth();
-            }
+        monthNext.addActionListener((ActionEvent e) -> {
+            goNextMonth();
         });
         year = new TRComboBox();
         year.setPreferredSize(new Dimension(110, 23));
@@ -242,11 +232,8 @@ public class DateChooserDialog extends JDialog implements ItemListener, MouseLis
         yearLast.setMaximumSize(new Dimension(18, 23));
         yearLast.setMinimumSize(new Dimension(18, 23));
         yearLast.setPreferredSize(new Dimension(18, 23));
-        yearLast.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                goLastYear();
-            }
+        yearLast.addActionListener((ActionEvent e) -> {
+            goLastYear();
         });
         yearNext = new JButton();
         yearNext.setFocusable(false);
@@ -255,11 +242,8 @@ public class DateChooserDialog extends JDialog implements ItemListener, MouseLis
         yearNext.setMaximumSize(new Dimension(18, 23));
         yearNext.setMinimumSize(new Dimension(18, 23));
         yearNext.setPreferredSize(new Dimension(18, 23));
-        yearNext.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                goNextYear();
-            }
+        yearNext.addActionListener((ActionEvent e) -> {
+            goNextYear();
         });
         days = new DayLabel[7][7];
         for (int i = 0; i < 7; i++) {
@@ -321,12 +305,9 @@ public class DateChooserDialog extends JDialog implements ItemListener, MouseLis
         todayPane.setContentType("text/html");
         String today = NbBundle.getMessage(clazz, "today.is");
         todayPane.setText("<html><body><p align='center' style='font-family:sans-serif'>" + today + " <a href=''>" + DF.format(new Date()) + "</a></p><br></body></html>");
-        todayPane.addHyperlinkListener(new HyperlinkListener() {
-            @Override
-            public void hyperlinkUpdate(HyperlinkEvent e) {
-                if (e.getEventType() == HyperlinkEvent.EventType.ACTIVATED) {
-                    goToday();
-                }
+        todayPane.addHyperlinkListener((HyperlinkEvent e) -> {
+            if (e.getEventType() == HyperlinkEvent.EventType.ACTIVATED) {
+                goToday();
             }
         });
 
@@ -674,10 +655,8 @@ public class DateChooserDialog extends JDialog implements ItemListener, MouseLis
         month.setSelectedIndex(_month - Calendar.JANUARY);
 
         if (getSelectedDay() != _day) {
-            SwingUtilities.invokeLater(new Runnable() {
-                public void run() {
-                    setSelected(_day);
-                }
+            SwingUtilities.invokeLater(() -> {
+                setSelected(_day);
             });
         }
 

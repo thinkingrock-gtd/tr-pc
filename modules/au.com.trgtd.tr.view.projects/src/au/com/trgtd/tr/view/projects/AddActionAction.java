@@ -22,7 +22,6 @@ import org.openide.nodes.Node;
 import org.openide.util.HelpCtx;
 import org.openide.util.Lookup;
 import org.openide.util.LookupEvent;
-import org.openide.util.LookupListener;
 import org.openide.util.NbBundle;
 import org.openide.util.actions.CookieAction;
 import tr.model.Data;
@@ -42,11 +41,9 @@ public class AddActionAction extends CookieAction {
     public AddActionAction() {
         super();
         setIcon(Icons.ActionAdd);
-        result = DataLookup.instance().lookup(new Lookup.Template(Data.class));
-        result.addLookupListener(new LookupListener() {
-            public void resultChanged(LookupEvent lookupEvent) {
-                setEnabled(result.allInstances().size() > 0);
-            }
+        result = DataLookup.instance().lookupResult(Data.class);
+        result.addLookupListener((LookupEvent lookupEvent) -> {
+            setEnabled(!result.allInstances().isEmpty());
         });
     }
 

@@ -57,7 +57,7 @@ public final class ActorsComboBoxModel extends DefaultComboBoxModel implements O
     /** Creates a new instance. */
     public ActorsComboBoxModel() {
         super();
-        this.rslt = DataLookup.instance().lookup(new Lookup.Template(Data.class));
+        this.rslt = DataLookup.instance().lookupResult(Data.class);
         this.rslt.addLookupListener(this);
         initModel();
     }

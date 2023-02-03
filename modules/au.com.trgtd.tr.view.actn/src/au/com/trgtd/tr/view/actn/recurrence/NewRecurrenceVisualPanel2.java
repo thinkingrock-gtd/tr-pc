@@ -20,14 +20,11 @@ package au.com.trgtd.tr.view.actn.recurrence;
 import java.awt.BorderLayout;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import javax.swing.ButtonGroup;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
-import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.UIManager;
-import javax.swing.border.EmptyBorder;
 import net.miginfocom.swing.MigLayout;
 import org.openide.util.NbBundle;
 import tr.model.action.Recurrence;
@@ -65,10 +62,8 @@ public final class NewRecurrenceVisualPanel2 extends JPanel {
     private void initView() {
         regRadio = new JRadioButton(getMsg("regular"));
         regRadio.setFont(regRadio.getFont().deriveFont(Font.BOLD));
-        regRadio.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent evt) {
-                saveValues();
-            }
+        regRadio.addActionListener((ActionEvent evt) -> {
+            saveValues();
         });
         regHelp = new JTextArea(getMsg("regular.hint"));
         regHelp.setBackground(UIManager.getDefaults().getColor("Panel.background"));
@@ -79,10 +74,8 @@ public final class NewRecurrenceVisualPanel2 extends JPanel {
 
         subRadio = new JRadioButton(getMsg("subsequent"));
         subRadio.setFont(subRadio.getFont().deriveFont(Font.BOLD));
-        subRadio.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent evt) {
-                saveValues();
-            }
+        subRadio.addActionListener((ActionEvent evt) -> {
+            saveValues();
         });
         subHelp = new JTextArea(getMsg("subsequent.hint"));
         subHelp.setBackground(UIManager.getDefaults().getColor("Panel.background"));

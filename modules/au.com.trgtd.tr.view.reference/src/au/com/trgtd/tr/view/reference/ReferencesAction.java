@@ -24,7 +24,6 @@ import java.util.logging.Logger;
 import org.openide.util.HelpCtx;
 import org.openide.util.Lookup;
 import org.openide.util.LookupEvent;
-import org.openide.util.LookupListener;
 import org.openide.util.NbBundle;
 import org.openide.util.actions.CallableSystemAction;
 import org.openide.windows.Mode;
@@ -49,12 +48,9 @@ public class ReferencesAction extends CallableSystemAction implements InitialAct
     public ReferencesAction() {
         super();
         enableDisable();
-        Lookup.Result r = DataLookup.instance().lookup(new Lookup.Template(Data.class));
-        r.addLookupListener(new LookupListener() {
-            @Override
-            public void resultChanged(LookupEvent lookupEvent) {
-                enableDisable();
-            }
+        Lookup.Result r = DataLookup.instance().lookupResult(Data.class);
+        r.addLookupListener((LookupEvent lookupEvent) -> {
+            enableDisable();
         });
     }
 
@@ -82,33 +78,30 @@ public class ReferencesAction extends CallableSystemAction implements InitialAct
 
     @Override
     public void performAction() {
-        EventQueue.invokeLater(new Runnable() {
-            @Override
-            public void run() {
-                WindowUtils.closeWindows();
+        EventQueue.invokeLater(() -> {
+            WindowUtils.closeWindows();
 
-                TopComponent tcReferences = ReferencesTopComponent.findInstance();
-                TopComponent tcReference = ReferenceTopComponent.findInstance();
+            TopComponent tcReferences = ReferencesTopComponent.findInstance();
+            TopComponent tcReference = ReferenceTopComponent.findInstance();
 
-                Mode mode = WindowManager.getDefault().findMode("references");
-                if (mode == null) {
-                    LOG.severe("References mode was not found.");
-                } else {
-                    mode.dockInto(tcReferences);
-                }
-
-                mode = WindowManager.getDefault().findMode("reference");
-                if (mode == null) {
-                    LOG.severe("Reference mode was not found.");
-                } else {
-                    mode.dockInto(tcReference);
-                }
-
-                tcReferences.open();
-                tcReference.open();
-
-                tcReferences.requestActive();
+            Mode mode = WindowManager.getDefault().findMode("references");
+            if (mode == null) {
+                LOG.severe("References mode was not found.");
+            } else {
+                mode.dockInto(tcReferences);
             }
+
+            mode = WindowManager.getDefault().findMode("reference");
+            if (mode == null) {
+                LOG.severe("Reference mode was not found.");
+            } else {
+                mode.dockInto(tcReference);
+            }
+
+            tcReferences.open();
+            tcReference.open();
+
+            tcReferences.requestActive();
         });
     }
 

@@ -24,10 +24,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
-import java.lang.Object;
 import java.util.Vector;
 import javax.swing.DefaultComboBoxModel;
-import javax.swing.SwingUtilities;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 import javax.swing.text.Document;
@@ -233,10 +231,8 @@ public final class FilterSearch extends FilterChoice implements PropertyChangeLi
             getDoc().removeDocumentListener(docListener);
         }
         
-        private ActionListener actListener = new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                selectionChange();
-            }
+        private ActionListener actListener = (ActionEvent e) -> {
+            selectionChange();
         };
         
         private Document getDoc() {

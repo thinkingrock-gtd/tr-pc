@@ -68,19 +68,13 @@ public class LinkNewProjectDialog extends JDialog {
     }
 
     private void construct() {
-        ActionListener cancelListener = new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                cancel();
-            }
+        ActionListener cancelListener = (ActionEvent e) -> {
+            cancel();
         };
         mCancelButton = new JButton(NbBundle.getMessage(getClass(), "cancel"));
         mCancelButton.addActionListener(cancelListener);
-        ActionListener okListener = new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                ok();
-            }
+        ActionListener okListener = (ActionEvent e) -> {
+            ok();
         };
         mOkButton = new JButton(NbBundle.getMessage(getClass(), "ok"));
         mOkButton.addActionListener(okListener);

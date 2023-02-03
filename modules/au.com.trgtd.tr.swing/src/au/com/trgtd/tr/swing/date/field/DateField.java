@@ -38,7 +38,6 @@ import java.util.Date;
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeEvent;
 import java.util.prefs.PreferenceChangeEvent;
-import java.util.prefs.PreferenceChangeListener;
 import javax.swing.BorderFactory;
 import javax.swing.Box;
 import javax.swing.BoxLayout;
@@ -146,16 +145,13 @@ public class DateField extends JComponent implements ActionListener, FocusListen
         
         final DateField self = this;
         
-        DatesPrefs.getPrefs().addPreferenceChangeListener(new PreferenceChangeListener() {
-            @Override
-            public void preferenceChange(PreferenceChangeEvent evt) {
-                if (evt.getKey().equals(DatesPrefs.KEY_DATE_ORDER)) {
-                    INPUT_FORMAT = getInputFormat();
-                    DISPLAY_FORMAT = getDisplayFormat();
-                    MaskFormatter dmf = DateField.getMaskFormatter();
-                    ftf.setFormatterFactory(new DefaultFormatterFactory(dmf));  
-                    resetDate();
-                }
+        DatesPrefs.getPrefs().addPreferenceChangeListener((PreferenceChangeEvent evt) -> {
+            if (evt.getKey().equals(DatesPrefs.KEY_DATE_ORDER)) {
+                INPUT_FORMAT = getInputFormat();
+                DISPLAY_FORMAT = getDisplayFormat();
+                MaskFormatter dmf = DateField.getMaskFormatter();
+                ftf.setFormatterFactory(new DefaultFormatterFactory(dmf));
+                resetDate();
             }
         });
         

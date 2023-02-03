@@ -102,11 +102,8 @@ final class NotesEditorField extends JScrollPane {
         setViewportView(textField);
         editing = true;
 
-        SwingUtilities.invokeLater(new Runnable() {
-            @Override
-            public void run() {
-                getViewport().setViewPosition(p);
-            }
+        SwingUtilities.invokeLater(() -> {
+            getViewport().setViewPosition(p);
         });
     }
 
@@ -117,11 +114,8 @@ final class NotesEditorField extends JScrollPane {
         setViewportView(htmlField);
         editing = false;
         
-        SwingUtilities.invokeLater(new Runnable() {
-            @Override
-            public void run() {
-                getViewport().setViewPosition(p);
-            }
+        SwingUtilities.invokeLater(() -> {
+            getViewport().setViewPosition(p);
         });
     }
 
@@ -154,11 +148,8 @@ final class NotesEditorField extends JScrollPane {
     }
 
     public void scrollToTop() {
-        SwingUtilities.invokeLater(new Runnable() {
-            @Override
-            public void run() {
-                getViewport().setViewPosition(new Point(0,0));
-            }
+        SwingUtilities.invokeLater(() -> {
+            getViewport().setViewPosition(new Point(0,0));
         });
     }
 

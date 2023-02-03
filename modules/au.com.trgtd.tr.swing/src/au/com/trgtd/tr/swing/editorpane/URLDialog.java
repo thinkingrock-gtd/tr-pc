@@ -66,10 +66,8 @@ final public class URLDialog extends JDialog {
     private void construct() {
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         
-        ActionListener cancelListener = new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                cancel();
-            }
+        ActionListener cancelListener = (ActionEvent e) -> {
+            cancel();
         };
         KeyStroke stroke = KeyStroke.getKeyStroke(KeyEvent.VK_ESCAPE, 0);
         JRootPane rootPane = getRootPane();
@@ -78,16 +76,12 @@ final public class URLDialog extends JDialog {
         urlPanel = new URLDialogPanel();
         
         cancelButton = new JButton(org.openide.util.NbBundle.getMessage(URLDialog.class, "cancel"));
-        cancelButton.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                cancel();
-            }
+        cancelButton.addActionListener((ActionEvent e) -> {
+            cancel();
         });
         okButton = new JButton(org.openide.util.NbBundle.getMessage(URLDialog.class, "ok"));
-        okButton.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                ok();
-            }
+        okButton.addActionListener((ActionEvent e) -> {
+            ok();
         });
         JPanel buttons = new JPanel(new FlowLayout(FlowLayout.RIGHT, 2, 2));
         buttons.setPreferredSize(new Dimension(0, 36));

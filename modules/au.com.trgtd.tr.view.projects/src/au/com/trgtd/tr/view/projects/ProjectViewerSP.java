@@ -37,14 +37,11 @@ public class ProjectViewerSP implements ProjectViewerSPI {
         }
         action.performAction();
 
-        EventQueue.invokeLater(new Runnable() {
-            @Override
-            public void run() {
-                ProjectsTreeTopComponent tc = ProjectsTreeTopComponent.findInstance();
-                if (tc != null) {
-                    tc.setShowDone(project.isDone());
-                    tc.select(project);
-                }
+        EventQueue.invokeLater(() -> {
+            ProjectsTreeTopComponent tc = ProjectsTreeTopComponent.findInstance();
+            if (tc != null) {
+                tc.setShowDone(project.isDone());
+                tc.select(project);
             }
         });
     }

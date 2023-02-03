@@ -27,7 +27,6 @@ import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -86,17 +85,14 @@ public final class DayListCtlr {
     public Collection<EventLabel> getEventLabels() {
 
         List<EventLabel> list = new ArrayList<>(eventMap.values());
-        list.sort(new Comparator<EventLabel>() {
-            @Override
-            public int compare(EventLabel l1, EventLabel l2) {
-                Topic topic1 = l1.getEvent().getAction().getTopic();
-                Topic topic2 = l2.getEvent().getAction().getTopic();
-                int order = topic1.compareTo(topic2);
-                if (order == 0) {
-                    order = l1.getEvent().compareTo(l2.getEvent());
-                }
-                return order;
+        list.sort((EventLabel l1, EventLabel l2) -> {
+            Topic topic1 = l1.getEvent().getAction().getTopic();
+            Topic topic2 = l2.getEvent().getAction().getTopic();
+            int order = topic1.compareTo(topic2);
+            if (order == 0) {
+                order = l1.getEvent().compareTo(l2.getEvent());
             }
+            return order;
         });
         return list;
     }

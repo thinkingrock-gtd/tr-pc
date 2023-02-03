@@ -138,11 +138,8 @@ final class SyncPrefsPanel extends JPanel {
         enableDisableFields();
     }
 
-    private final ActionListener changeListener = new ActionListener() {
-        @Override
-        public void actionPerformed(ActionEvent e) {
-            changed();
-        }
+    private final ActionListener changeListener = (ActionEvent e) -> {
+        changed();
     };
 
     private final DocumentListener docChangeListener = new DocumentListener() {

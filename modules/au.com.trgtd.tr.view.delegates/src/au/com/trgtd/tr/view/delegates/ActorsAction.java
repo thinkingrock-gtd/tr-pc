@@ -22,7 +22,6 @@ import java.awt.EventQueue;
 import org.openide.util.HelpCtx;
 import org.openide.util.Lookup;
 import org.openide.util.LookupEvent;
-import org.openide.util.LookupListener;
 import org.openide.util.NbBundle;
 import org.openide.util.actions.CallableSystemAction;
 import org.openide.windows.Mode;
@@ -39,71 +38,67 @@ import au.com.trgtd.tr.view.delegates.screen.ActorsTopComponent;
  * @author Jeremy Moore
  */
 public class ActorsAction extends CallableSystemAction implements InitialAction {
-    
+
     public ActorsAction() {
         super();
         enableDisable();
-        Lookup.Result r = DataLookup.instance().lookup(new Lookup.Template(Data.class));
-        r.addLookupListener(new LookupListener() {
-            @Override
-            public void resultChanged(LookupEvent lookupEvent) {
-                enableDisable();
-            }
+        Lookup.Result r = DataLookup.instance().lookupResult(Data.class);
+        r.addLookupListener((LookupEvent lookupEvent) -> {
+            enableDisable();
         });
     }
-    
+
     @Override
     public String getName() {
         return NbBundle.getMessage(getClass(), "CTL_ActorsAction");
     }
-    
+
     @Override
     protected String iconResource() {
         return "au/com/trgtd/tr/view/delegates/Delegates.png";
     }
-    
+
     private void enableDisable() {
         Data data = DataLookup.instance().lookup(Data.class);
         setEnabled(data != null);
     }
-    
+
     /** Gets the action identifier. */
     @Override
     public String getID() {
         return "actors";
     }
-    
+
     @Override
     public void performAction() {
-        EventQueue.invokeLater(new Runnable() {
-            @Override
-            public void run() {
-                Data data = DataLookup.instance().lookup(Data.class);
-                if (data == null) return;
-                
-                WindowUtils.closeWindows();
-                
-                TopComponent tc = ActorsTopComponent.findInstance();
-                
-                Mode mode = WindowManager.getDefault().findMode("Setup");
-                if (mode != null) {
-                    mode.dockInto(tc);
-                }
-                
-                tc.open();
-                tc.requestActive();
+        EventQueue.invokeLater(() -> {
+            Data data = DataLookup.instance().lookup(Data.class);
+            if (data == null) {
+                return;
             }
+
+            WindowUtils.closeWindows();
+
+            TopComponent tc = ActorsTopComponent.findInstance();
+
+            Mode mode = WindowManager.getDefault().findMode("Setup");
+            if (mode != null) {
+                mode.dockInto(tc);
+            }
+
+            tc.open();
+            tc.requestActive();
         });
     }
-    
+
     @Override
     protected boolean asynchronous() {
         return false;
     }
-    
+
     @Override
     public HelpCtx getHelpCtx() {
         return new HelpCtx("tr.view.delegates");
     }
-    
+
 }

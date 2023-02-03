@@ -164,17 +164,15 @@ final class DataPrefsPanel extends JPanel implements ChangeListener {
             public void removeUpdate(DocumentEvent e) {stateChanged(null);}
             public void changedUpdate(DocumentEvent e) {stateChanged(null);}
         };
-        ActionListener actionChangeListener = new ActionListener() {
-            public void actionPerformed(ActionEvent e) { stateChanged(null); }
+        ActionListener actionChangeListener = (ActionEvent e) -> {
+            stateChanged(null);
         };
         recoveryFolderLabel = new JLabel(Resources.getText("CTL_Folder"));
         recoveryFolderText = new JTextField();
         recoveryFolderText.getDocument().addDocumentListener(docChangeListener);
         recoveryBrowseButton = new JButton(Resources.getText("CTL_Browse"));
-        recoveryBrowseButton.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent evt) {
-                browse();
-            }
+        recoveryBrowseButton.addActionListener((ActionEvent evt) -> {
+            browse();
         });
         recoveryKeepAllRadio = new JRadioButton(Resources.getText("recovery.keep.all.files"));
         recoveryKeepAllRadio.addActionListener(actionChangeListener);
@@ -192,10 +190,8 @@ final class DataPrefsPanel extends JPanel implements ChangeListener {
         backupFolderText = new JTextField();
         backupFolderText.getDocument().addDocumentListener(docChangeListener);
         backupBrowseButton = new JButton(Resources.getText("CTL_Browse"));
-        backupBrowseButton.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent evt) {
-                backupBrowse();
-            }
+        backupBrowseButton.addActionListener((ActionEvent evt) -> {
+            backupBrowse();
         });
         backupKeepAllRadio = new JRadioButton(Resources.getText("backup.keep.all.files"));
         backupKeepAllRadio.addActionListener(actionChangeListener);

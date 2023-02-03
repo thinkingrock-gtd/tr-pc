@@ -23,7 +23,6 @@ import java.util.Vector;
 import javax.swing.DefaultComboBoxModel;
 import org.openide.util.Lookup;
 import org.openide.util.LookupEvent;
-import org.openide.util.LookupListener;
 import org.openide.util.NbBundle;
 import tr.model.Data;
 import tr.model.DataLookup;
@@ -85,11 +84,9 @@ public class ContextsComboBoxModel extends DefaultComboBoxModel implements Obser
 
         // if the data model changes we need to re-initialise
         if (result == null) {
-            result = DataLookup.instance().lookup(new Lookup.Template(Data.class));
-            result.addLookupListener(new LookupListener() {
-                public void resultChanged(LookupEvent lookupEvent) {
-                    update(null, null);
-                }
+            result = DataLookup.instance().lookupResult(Data.class);
+            result.addLookupListener((LookupEvent lookupEvent) -> {
+                update(null, null);
             });
         }
     }

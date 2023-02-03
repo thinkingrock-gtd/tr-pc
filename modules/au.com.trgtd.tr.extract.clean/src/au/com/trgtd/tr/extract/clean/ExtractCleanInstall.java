@@ -16,7 +16,7 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 package au.com.trgtd.tr.extract.clean;
- 
+
 import au.com.trgtd.tr.appl.Constants;
 import au.com.trgtd.tr.datastore.DataStore;
 import au.com.trgtd.tr.datastore.DataStoreLookup;
@@ -51,15 +51,12 @@ public class ExtractCleanInstall extends ModuleInstall {
      */
     @Override
     public void restored() {
-        SwingUtilities.invokeLater(new Runnable() {
+        SwingUtilities.invokeLater(() -> {
+            log.finest("Begin");
 
-            public void run() {
-                log.finest("Begin");
+            checkCleanup();
 
-                checkCleanup();
-
-                log.finest("End");
-            }
+            log.finest("End");
         });
     }
 
@@ -96,15 +93,15 @@ public class ExtractCleanInstall extends ModuleInstall {
         if (path.trim().length() > 0) {
             // user preference extract path
             return new File(path);
-        }        
+        }
         // no user preference path so use path of data file
         DataStore ds = (DataStore) DataStoreLookup.instance().lookup(DataStore.class);
         if (ds != null) {
             File dataFile = new File(ds.getPath());
             if (dataFile.isFile()) {
-                return dataFile.getParentFile();            
+                return dataFile.getParentFile();
             }
-        }  
+        }
         // data file error so give up
         return null;
     }

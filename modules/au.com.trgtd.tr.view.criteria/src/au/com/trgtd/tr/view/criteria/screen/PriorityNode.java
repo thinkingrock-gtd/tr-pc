@@ -144,11 +144,8 @@ final class PriorityNode extends AbstractNode implements EditCookie, Observer {
             return;
         }
         if (CriteriaUtils.instance().isUsedPriority(data, value)) {
-            SwingUtilities.invokeLater(new Runnable() {
-                @Override
-                public void run() {
-                    deleteWithReplace(data);
-                }
+            SwingUtilities.invokeLater(() -> {
+                deleteWithReplace(data);
             });
         } else {
             data.getPriorityCriterion().values.remove(value);

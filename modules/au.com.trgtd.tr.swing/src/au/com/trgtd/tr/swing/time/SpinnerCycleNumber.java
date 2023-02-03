@@ -62,10 +62,8 @@ public class SpinnerCycleNumber extends JSpinner {
         ftf.addFocusListener(new FocusAdapter() {
             @Override
             public void focusGained(FocusEvent evt) {
-                SwingUtilities.invokeLater(new Runnable() {
-                    public void run() {
-                        ftf.selectAll();
-                    }
+                SwingUtilities.invokeLater(() -> {
+                    ftf.selectAll();
                 });
             }
         });

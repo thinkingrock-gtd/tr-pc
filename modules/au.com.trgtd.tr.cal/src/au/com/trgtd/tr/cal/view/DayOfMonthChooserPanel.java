@@ -21,7 +21,6 @@ import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.beans.PropertyChangeEvent;
-import java.beans.PropertyChangeListener;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.prefs.PreferenceChangeEvent;
@@ -33,7 +32,6 @@ import au.com.trgtd.tr.cal.ctlr.DateCtlr;
 import au.com.trgtd.tr.cal.utils.DateUtils;
 import au.com.trgtd.tr.prefs.dates.DatesPrefs;
 import java.text.DateFormatSymbols;
-import java.util.prefs.PreferenceChangeListener;
 
 /**
  * Day of the month selection panel.
@@ -79,19 +77,13 @@ public class DayOfMonthChooserPanel extends JPanel {
         dateChanged(null, dateCtlr.getDate());
 
 
-        this.dateCtlr.addPropertyChangeListener(new PropertyChangeListener() {
-            @Override
-            public void propertyChange(PropertyChangeEvent pce) {
-                dateChanged((Date) pce.getOldValue(), (Date) pce.getNewValue());
-            }
+        this.dateCtlr.addPropertyChangeListener((PropertyChangeEvent pce) -> {
+            dateChanged((Date) pce.getOldValue(), (Date) pce.getNewValue());
         });
 
-        DatesPrefs.getPrefs().addPreferenceChangeListener(new PreferenceChangeListener() {
-            @Override
-            public void preferenceChange(PreferenceChangeEvent pce) {
-                initGridPanel();
-                initGridDays();
-            }
+        DatesPrefs.getPrefs().addPreferenceChangeListener((PreferenceChangeEvent pce) -> {
+            initGridPanel();
+            initGridDays();
         });
     }
 

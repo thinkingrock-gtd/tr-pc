@@ -76,7 +76,7 @@ public final class ArchiveAction extends CallableSystemAction implements LookupL
         setIcon(Icons.Archive);
         Data data = (Data)DataLookup.instance().lookup(Data.class);
         setEnabled(data != null);
-        Lookup.Result r = DataLookup.instance().lookup(new Lookup.Template(Data.class));
+        Lookup.Result r = DataLookup.instance().lookupResult(Data.class);
         r.addLookupListener(this);
         r.allInstances();
     }

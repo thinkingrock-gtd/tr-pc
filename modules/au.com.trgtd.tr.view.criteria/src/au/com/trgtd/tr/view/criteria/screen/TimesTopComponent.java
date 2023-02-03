@@ -25,7 +25,6 @@ import au.com.trgtd.tr.view.ViewUtils;
 import au.com.trgtd.tr.view.Window;
 import java.awt.*;
 import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.util.logging.Logger;
 import javax.swing.*;
 import javax.swing.table.JTableHeader;
@@ -107,11 +106,8 @@ public final class TimesTopComponent extends Window implements ExplorerManager.P
         final Data data = (Data) DataLookup.instance().lookup(Data.class);
         
         usedCbx = new JCheckBox(NbBundle.getMessage(getClass(), "use.time.criteria"));
-        usedCbx.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent ae) {
-                data.getTimeCriterion().setUse(usedCbx.isSelected());
-            }
+        usedCbx.addActionListener((ActionEvent ae) -> {
+            data.getTimeCriterion().setUse(usedCbx.isSelected());
         });
         usedCbx.setSelected(data.getTimeCriterion().isUse());
         
@@ -138,14 +134,12 @@ public final class TimesTopComponent extends Window implements ExplorerManager.P
         }
 
         // data lookup listener to force re-initialisation if data changes
-        Lookup.Result<Data> dataResult = DataLookup.instance().lookup(new Lookup.Template(Data.class));
-        dataResult.addLookupListener(new LookupListener() {
-            @Override
-            public void resultChanged(LookupEvent lookupEvent) {
-                Data data = DataLookup.instance().lookup(Data.class);
-                if (data != null) {
-                    explorerManager.setRootContext(new TimeNodeRoot(new TimeChildren(explorerManager)));
-                }
+        Lookup.Result<Data> dataResult;
+        dataResult = DataLookup.instance().lookupResult(Data.class);
+        dataResult.addLookupListener((LookupEvent lookupEvent) -> {
+            Data data1 = DataLookup.instance().lookup(Data.class);
+            if (data1 != null) {
+                explorerManager.setRootContext(new TimeNodeRoot(new TimeChildren(explorerManager)));
             }
         });
         

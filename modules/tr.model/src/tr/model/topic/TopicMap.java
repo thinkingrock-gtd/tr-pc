@@ -18,11 +18,9 @@
 package tr.model.topic;
 
 import au.com.trgtd.tr.util.Observable;
-import au.com.trgtd.tr.util.Observer;
 import java.util.HashMap;
 import org.openide.util.Lookup;
 import org.openide.util.LookupEvent;
-import org.openide.util.LookupListener;
 import tr.model.Data;
 import tr.model.DataLookup;
 import tr.model.util.Manager;
@@ -54,12 +52,9 @@ public class TopicMap {
     private HashMap<Integer, Topic> map;
 
     private TopicMap() {
-        Lookup.Result dlr = DataLookup.instance().lookup(new Lookup.Template(Data.class));
-        dlr.addLookupListener(new LookupListener() {
-            @Override
-            public void resultChanged(LookupEvent lookupEvent) {
-                initialise();
-            }
+        Lookup.Result dlr = DataLookup.instance().lookupResult(Data.class);
+        dlr.addLookupListener((LookupEvent lookupEvent) -> {
+            initialise();
         });
         initialise();
     }
@@ -78,13 +73,10 @@ public class TopicMap {
             for (Topic topic : data.getTopicManager().list()) {
                 map.put(topic.getID(), topic);
             }
-            data.getTopicManager().addObserver(new Observer() {
-                @Override
-                public void update(Observable obs, Object arg) {
-                    // if manager changed (add, remove, etc), not topic change
-                    if (arg instanceof Manager.Event) {
-                        initialise();
-                    }
+            data.getTopicManager().addObserver((Observable obs, Object arg) -> {
+                // if manager changed (add, remove, etc), not topic change
+                if (arg instanceof Manager.Event) {
+                    initialise();
                 }
             });
         }

@@ -24,7 +24,6 @@ import java.util.logging.Logger;
 import org.openide.modules.ModuleInstall;
 import org.openide.util.Lookup;
 import org.openide.util.LookupEvent;
-import org.openide.util.LookupListener;
 import org.openide.util.actions.SystemAction;
 import tr.model.Data;
 import tr.model.DataLookup;
@@ -50,13 +49,10 @@ public class Installer extends ModuleInstall {
      */
     @Override
     public void restored() {
-        result = DataLookup.instance().lookup(new Lookup.Template(Data.class));
-        result.addLookupListener(new LookupListener() {
-            @Override
-            public void resultChanged(LookupEvent lookupEvent) {
-                storeDataFilePath();
-                refreshRecentFilesMenu();
-            }
+        result = DataLookup.instance().lookupResult(Data.class);
+        result.addLookupListener((LookupEvent lookupEvent) -> {
+            storeDataFilePath();
+            refreshRecentFilesMenu();
         });
     }
     

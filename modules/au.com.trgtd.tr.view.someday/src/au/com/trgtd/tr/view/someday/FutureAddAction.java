@@ -41,10 +41,10 @@ public class FutureAddAction extends CallableSystemAction implements InitialActi
     public FutureAddAction() {
         super();
         setIcon(Icons.Add);
-        result = DataLookup.instance().lookup(new Lookup.Template(Data.class));
+        result = DataLookup.instance().lookupResult(Data.class);
         result.addLookupListener(new LookupListener() {
             public void resultChanged(LookupEvent lookupEvent) {
-                setEnabled(result.allInstances().size() > 0);
+                setEnabled(!result.allInstances().isEmpty());
             }
         });
     }

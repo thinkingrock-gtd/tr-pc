@@ -69,30 +69,21 @@ public class ActorDialog extends JDialog {
     private void construct() {
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         
-        ActionListener cancelListener = new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                cancel();
-            }
+        ActionListener cancelListener = (ActionEvent e) -> {
+            cancel();
         };
         
         KeyStroke stroke = KeyStroke.getKeyStroke(KeyEvent.VK_ESCAPE, 0);
         getRootPane().registerKeyboardAction(cancelListener, stroke, JComponent.WHEN_IN_FOCUSED_WINDOW);
         
         cancelButton = new JButton(NbBundle.getMessage(getClass(), "cancel")); // NOI18N
-        cancelButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                cancel();
-            }
+        cancelButton.addActionListener((ActionEvent e) -> {
+            cancel();
         });
         
         okButton = new JButton(NbBundle.getMessage(getClass(), "ok")); // NOI18N
-        okButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                ok();
-            }
+        okButton.addActionListener((ActionEvent e) -> {
+            ok();
         });
 
         JPanel buttons = new JPanel(new FlowLayout(FlowLayout.RIGHT, 2, 2));

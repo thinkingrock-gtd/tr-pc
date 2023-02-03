@@ -18,7 +18,6 @@
 package tr.model.goals.data;
 
 import au.com.trgtd.tr.appl.Constants;
-import java.util.Arrays;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -27,7 +26,6 @@ import java.util.Map.Entry;
 import java.util.Vector;
 import org.openide.util.Lookup;
 import org.openide.util.LookupEvent;
-import org.openide.util.LookupListener;
 import tr.model.Data;
 import tr.model.DataLookup;
 import tr.model.goals.dao.GoalsDAO;
@@ -472,12 +470,10 @@ public class GoalsDAOImpl extends DAOImpl implements GoalsDAO {
     private void initialise() {
         synchronized (this) {
             data = (Data) DataLookup.instance().lookup(Data.class);
-            Lookup.Result lookupResult = DataLookup.instance().lookup(new Lookup.Template(Data.class));
-            lookupResult.addLookupListener(new LookupListener() {
-                public void resultChanged(LookupEvent lookupEvent) {
-                    initialise();
-                    firePropertyChange(PROP_DATA, 0, 1);
-                }
+            Lookup.Result lookupResult = DataLookup.instance().lookupResult(Data.class);
+            lookupResult.addLookupListener((LookupEvent lookupEvent) -> {
+                initialise();
+                firePropertyChange(PROP_DATA, 0, 1);
             });
             if (goalMap == null) {
                 goalMap = new HashMap<Integer, Goal>();

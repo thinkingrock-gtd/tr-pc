@@ -23,7 +23,6 @@ import au.com.trgtd.tr.view.EditCookie;
 import au.com.trgtd.tr.view.cal.dialog.ActionEditDialog;
 import java.awt.Image;
 import java.beans.PropertyChangeEvent;
-import java.beans.PropertyChangeListener;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import org.apache.commons.text.StringEscapeUtils;
@@ -50,11 +49,8 @@ public class DelegatedNode extends AbstractNode implements EditCookie {
     public DelegatedNode(Action action) {
         super(Children.LEAF, Lookups.singleton(action));
         this.action = action;
-        this.action.addPropertyChangeListener(Action.PROP_DONE, new PropertyChangeListener() {
-            @Override
-            public void propertyChange(PropertyChangeEvent pce) {
-                setName(DelegatedNode.this.action.getDescription());
-            }            
+        this.action.addPropertyChangeListener(Action.PROP_DONE, (PropertyChangeEvent pce) -> {
+            setName(DelegatedNode.this.action.getDescription());
         });        
     }
     

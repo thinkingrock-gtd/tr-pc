@@ -28,7 +28,6 @@ import java.awt.event.FocusListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.beans.PropertyChangeEvent;
-import java.beans.PropertyChangeListener;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -78,11 +77,8 @@ public class EventPanel extends JPanel {
         initPanel();
         initValues();
 
-        this.event.addPropertyChangeListener(new PropertyChangeListener() {
-            @Override
-            public void propertyChange(PropertyChangeEvent pce) {
-                initValues();
-            }
+        this.event.addPropertyChangeListener((PropertyChangeEvent pce) -> {
+            initValues();
         });
 
     }

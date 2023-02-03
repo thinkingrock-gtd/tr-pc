@@ -21,7 +21,6 @@ import java.awt.EventQueue;
 import org.openide.util.HelpCtx;
 import org.openide.util.Lookup;
 import org.openide.util.LookupEvent;
-import org.openide.util.LookupListener;
 import org.openide.util.NbBundle;
 import org.openide.util.actions.CallableSystemAction;
 import org.openide.windows.Mode;
@@ -37,69 +36,65 @@ import au.com.trgtd.tr.prefs.ui.utils.WindowUtils;
  * @author Jeremy Moore
  */
 public class LevelsAction extends CallableSystemAction {
-    
+
     public LevelsAction() {
         super();
         enableDisable();
-        Lookup.Result<Data> r = DataLookup.instance().lookup(new Lookup.Template<Data>(Data.class));
-        r.addLookupListener(new LookupListener() {
-            public void resultChanged(LookupEvent lookupEvent) {
-                enableDisable();
-            }
+        Lookup.Result<Data> r = DataLookup.instance().lookupResult(Data.class);
+        r.addLookupListener((LookupEvent lookupEvent) -> {
+            enableDisable();
         });
     }
-    
+
     @Override
     protected String iconResource() {
         return "au/com/trgtd/tr/view/goals/resource/Levels.png";
     }
-    
+
     public String getName() {
         return NbBundle.getMessage(getClass(), "CTL_LevelsAction");
     }
-    
+
     private void enableDisable() {
-        EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                Data data = DataLookup.instance().lookup(Data.class);
-                setEnabled(data != null);
-            }
+        EventQueue.invokeLater(() -> {
+            Data data = DataLookup.instance().lookup(Data.class);
+            setEnabled(data != null);
         });
     }
-    
+
     /** Gets the action identifier. */
     public String getID() {
         return "levels";
     }
-    
+
     public void performAction() {
-        EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                Data data = DataLookup.instance().lookup(Data.class);
-                if (data == null) return;
-                
-                WindowUtils.closeWindows();
-                
-                TopComponent tc = LevelsTopComponent.findInstance();
-                
-                Mode mode = WindowManager.getDefault().findMode("Setup");
-                if (mode != null) {
-                    mode.dockInto(tc);
-                }
-                
-                tc.open();
-                tc.requestActive();
+        EventQueue.invokeLater(() -> {
+            Data data = DataLookup.instance().lookup(Data.class);
+            if (data == null) {
+                return;
             }
+
+            WindowUtils.closeWindows();
+
+            TopComponent tc = LevelsTopComponent.findInstance();
+
+            Mode mode = WindowManager.getDefault().findMode("Setup");
+            if (mode != null) {
+                mode.dockInto(tc);
+            }
+
+            tc.open();
+            tc.requestActive();
         });
     }
-    
+
     @Override
     protected boolean asynchronous() {
         return false;
     }
-    
+
     public HelpCtx getHelpCtx() {
         return new HelpCtx("tr.view.levels");
     }
-    
+
 }

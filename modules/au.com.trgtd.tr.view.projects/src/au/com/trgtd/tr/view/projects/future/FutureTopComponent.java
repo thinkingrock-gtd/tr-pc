@@ -91,11 +91,9 @@ public final class FutureTopComponent extends Window
         
         // data lookup listener to force re-initialisation if data changes
         if (dataResult == null) {
-            dataResult = DataLookup.instance().lookup(new Lookup.Template(Data.class));
-            dataResult.addLookupListener(new LookupListener() {
-                public void resultChanged(LookupEvent lookupEvent) {
-                    initialised = false;
-                }
+            dataResult = DataLookup.instance().lookupResult(Data.class);
+            dataResult.addLookupListener((LookupEvent lookupEvent) -> {
+                initialised = false;
             });
         }
         
@@ -164,10 +162,8 @@ public final class FutureTopComponent extends Window
         
         initialise();
         
-        EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                activate();
-            }
+        EventQueue.invokeLater(() -> {
+            activate();
         });
     }
     
@@ -224,12 +220,10 @@ public final class FutureTopComponent extends Window
 //////        } else if (item instanceof Project) {
 //////            EditorTopComponent.findInstance().view((Project)item);
 //////        }
-        EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                Node[] nodes = manager.getSelectedNodes();
-                Node node = nodes.length > 0 ? nodes[0] : null ;
-                EditorTopComponent.findInstance().view(node);
-            }
+        EventQueue.invokeLater(() -> {
+            Node[] nodes = manager.getSelectedNodes();
+            Node node = nodes.length > 0 ? nodes[0] : null ;
+            EditorTopComponent.findInstance().view(node);
         });
     }
     

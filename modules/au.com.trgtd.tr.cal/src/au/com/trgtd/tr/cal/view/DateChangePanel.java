@@ -20,7 +20,6 @@ package au.com.trgtd.tr.cal.view;
 import au.com.trgtd.tr.cal.ctlr.DateCtlr;
 import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.util.Calendar;
 import java.util.Date;
 import javax.swing.*;
@@ -120,32 +119,23 @@ public class DateChangePanel extends JPanel {
         prevButton.setFocusable(false);
         prevButton.putClientProperty("JButton.buttonType", style);
         prevButton.putClientProperty("JButton.segmentPosition", "first");
-        prevButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent ae) {
-                prev();
-            }
+        prevButton.addActionListener((ActionEvent ae) -> {
+            prev();
         });
         JButton todayButton = new JButton(MSG_TODAY);
         todayButton.setFocusable(false);
         todayButton.putClientProperty("JButton.buttonType", style);
         todayButton.putClientProperty("JButton.segmentPosition", "middle");
-        todayButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent ae) {
-                today();
-            }
+        todayButton.addActionListener((ActionEvent ae) -> {
+            today();
         });
         JButton nextButton = new JButton();
         nextButton.setIcon(nextIcon);
         nextButton.setFocusable(false);
         nextButton.putClientProperty("JButton.buttonType", style);
         nextButton.putClientProperty("JButton.segmentPosition", "last");
-        nextButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent ae) {
-                next();
-            }
+        nextButton.addActionListener((ActionEvent ae) -> {
+            next();
         });
         Box box = Box.createHorizontalBox();
         box.add(prevButton);

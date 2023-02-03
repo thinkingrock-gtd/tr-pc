@@ -54,20 +54,18 @@ public class OverviewAction extends CallableSystemAction implements InitialActio
 
     @Override
     public void performAction() {
-        EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                WindowUtils.closeWindows();
+        EventQueue.invokeLater(() -> {
+            WindowUtils.closeWindows();
 
-                TopComponent tc = OverviewTopComponent.findInstance();
+            TopComponent tc = OverviewTopComponent.findInstance();
 
-                Mode mode = WindowManager.getDefault().findMode("overview");
-                if (mode != null) {
-                    mode.dockInto(tc);
-                }
-
-                tc.open();
-                tc.requestActive();
+            Mode mode = WindowManager.getDefault().findMode("overview");
+            if (mode != null) {
+                mode.dockInto(tc);
             }
+
+            tc.open();
+            tc.requestActive();
         });
     }
 

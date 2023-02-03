@@ -29,7 +29,6 @@ import java.awt.BorderLayout;
 import java.awt.Component;
 import java.awt.Dimension;
 import java.beans.PropertyChangeEvent;
-import java.beans.PropertyChangeListener;
 import java.util.Date;
 import javax.swing.JPanel;
 import javax.swing.JToggleButton;
@@ -82,12 +81,9 @@ public final class MonthTopComponent extends TopComponent implements DayViewer {
         setOpaque(true);
         setBackground(ViewUtils.COLOR_PANEL_BG);
 
-        dateCtlr.addPropertyChangeListener(new PropertyChangeListener() {
-            @Override
-            public void propertyChange(PropertyChangeEvent pce) {
-                revalidate();
-                repaint();
-            }
+        dateCtlr.addPropertyChangeListener((PropertyChangeEvent pce) -> {
+            revalidate();
+            repaint();
         });
 
         DatePanel dateDisplayPanel = new DatePanel(dateCtlr, Period.Month);

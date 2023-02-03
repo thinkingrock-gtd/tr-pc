@@ -27,7 +27,6 @@ import java.awt.*;
 import java.awt.event.ComponentEvent;
 import java.awt.event.ComponentListener;
 import java.beans.PropertyChangeEvent;
-import java.beans.PropertyChangeListener;
 import java.util.*;
 import java.util.List;
 import javax.swing.BorderFactory;
@@ -102,11 +101,8 @@ public class DayGridPanel extends JLayeredPane {
             public void componentHidden(ComponentEvent ce) {
             }
         });
-        dateCtlr.addPropertyChangeListener(new PropertyChangeListener() {
-            @Override
-            public void propertyChange(PropertyChangeEvent pce) {
-                setBackground();                
-            }
+        dateCtlr.addPropertyChangeListener((PropertyChangeEvent pce) -> {
+            setBackground();
         });
     }
     
@@ -336,13 +332,10 @@ public class DayGridPanel extends JLayeredPane {
         return c.getTime();
     }
     
-    private final Comparator<EventPanel> ascEventStartComparator = new Comparator<EventPanel>() {
-        @Override
-        public int compare(EventPanel e1, EventPanel e2) {
-            Date d1 = filter(eventStart(e1.getEvent()));
-            Date d2 = filter(eventStart(e2.getEvent()));
-            return d1.compareTo(d2);
-        }
+    private final Comparator<EventPanel> ascEventStartComparator = (EventPanel e1, EventPanel e2) -> {
+        Date d1 = filter(eventStart(e1.getEvent()));
+        Date d2 = filter(eventStart(e2.getEvent()));
+        return d1.compareTo(d2);
     };
 
     private void paintGridLines(Graphics g) {
@@ -459,13 +452,10 @@ public class DayGridPanel extends JLayeredPane {
             return true;
         }
 
-        private final Comparator<EventPanel> descEndComparator = new Comparator<EventPanel>() {
-            @Override
-            public int compare(EventPanel event1, EventPanel event2) {
-                Date date1 = filter(eventEnd(event1.getEvent()));
-                Date date2 = filter(eventEnd(event2.getEvent()));
-                return date2.compareTo(date1);
-            }
+        private final Comparator<EventPanel> descEndComparator = (EventPanel event1, EventPanel event2) -> {
+            Date date1 = filter(eventEnd(event1.getEvent()));
+            Date date2 = filter(eventEnd(event2.getEvent()));
+            return date2.compareTo(date1);
         };
     }
 }

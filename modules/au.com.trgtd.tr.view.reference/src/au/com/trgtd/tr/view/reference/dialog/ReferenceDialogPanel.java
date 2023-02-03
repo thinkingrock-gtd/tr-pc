@@ -23,7 +23,6 @@ import au.com.trgtd.tr.swing.TRTextField;
 import au.com.trgtd.tr.view.notes.NotesEditorPanel;
 import au.com.trgtd.tr.view.topics.TopicsComboBox;
 import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.event.FocusAdapter;
 import java.awt.event.FocusEvent;
 import javax.swing.JPanel;
@@ -55,10 +54,8 @@ public class ReferenceDialogPanel extends JPanel {
         });
         topicLabel = new TRLabel(NbBundle.getMessage(CLASS, "topic"));
         topicCombo = new TopicsComboBox();
-        topicCombo.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent evt) {
-                topicActionPerformed();
-            }
+        topicCombo.addActionListener((ActionEvent evt) -> {
+            topicActionPerformed();
         });
         notesLabel = new TRLabel(NbBundle.getMessage(CLASS, "notes"));
         notesField = new NotesEditorPanel();

@@ -34,7 +34,6 @@ import javax.swing.SpinnerNumberModel;
 import javax.swing.SwingConstants;
 import javax.swing.UIManager;
 import javax.swing.event.ChangeEvent;
-import javax.swing.event.ChangeListener;
 import net.miginfocom.swing.MigLayout;
 import org.openide.util.NbBundle;
 
@@ -185,52 +184,38 @@ public final class NewRecurrenceVisualPanel3 extends JPanel {
         frequencySpinner = new JSpinner();
         frequencySpinner.setModel(new SpinnerNumberModel(Integer.valueOf(1), Integer.valueOf(1), null, Integer.valueOf(1)));
         frequencySpinner.setPreferredSize(new Dimension(50, 23));
-        frequencySpinner.addChangeListener(new ChangeListener() {
-            public void stateChanged(ChangeEvent evt) {
-                frequencySpinnerStateChanged(evt);
-            }
+        frequencySpinner.addChangeListener((ChangeEvent evt) -> {
+            frequencySpinnerStateChanged(evt);
         });
         periodCombo = new PeriodTypeComboBox();
-        periodCombo.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent evt) {
-                periodComboBoxActionPerformed(evt);
-            }
+        periodCombo.addActionListener((ActionEvent evt) -> {
+            periodComboBoxActionPerformed(evt);
         });
         endLabel = new JLabel(getMsg("terminate"));
         endLabel.setHorizontalAlignment(SwingConstants.TRAILING);
         endNeverRadio = new JRadioButton(getMsg("never"));
         endNeverRadio.setVerticalTextPosition(SwingConstants.TOP);
-        endNeverRadio.addChangeListener(new ChangeListener() {
-            public void stateChanged(ChangeEvent evt) {
-                endNeverRadioButtonStateChanged(evt);
-            }
+        endNeverRadio.addChangeListener((ChangeEvent evt) -> {
+            endNeverRadioButtonStateChanged(evt);
         });
         endNbrRadio = new JRadioButton(getMsg("after"));
 //      endNbrRadioButton.setVerticalTextPosition(javax.swing.SwingConstants.TOP);
-        endNbrRadio.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent evt) {
-                endNbrRadioButtonActionPerformed(evt);
-            }
+        endNbrRadio.addActionListener((ActionEvent evt) -> {
+            endNbrRadioButtonActionPerformed(evt);
         });
         endNbrSpinner = new JSpinner();
         endNbrSpinner.setModel(new SpinnerNumberModel(Integer.valueOf(2), Integer.valueOf(2), null, Integer.valueOf(1)));
-        endNbrSpinner.addChangeListener(new ChangeListener() {
-            public void stateChanged(ChangeEvent evt) {
-                endNbrSpinnerStateChanged(evt);
-            }
+        endNbrSpinner.addChangeListener((ChangeEvent evt) -> {
+            endNbrSpinnerStateChanged(evt);
         });
         endDateRadio = new JRadioButton(getMsg("after"));
 //      endDateRadioButton.setVerticalTextPosition(javax.swing.SwingConstants.TOP);
-        endDateRadio.addChangeListener(new ChangeListener() {
-            public void stateChanged(ChangeEvent evt) {
-                endDateRadioButtonStateChanged(evt);
-            }
+        endDateRadio.addChangeListener((ChangeEvent evt) -> {
+            endDateRadioButtonStateChanged(evt);
         });
         endDateField = new DateField();
-        endDateField.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
-            public void propertyChange(java.beans.PropertyChangeEvent evt) {
-                endDateFieldPropertyChange(evt);
-            }
+        endDateField.addPropertyChangeListener((java.beans.PropertyChangeEvent evt) -> {
+            endDateFieldPropertyChange(evt);
         });
 
         errorText = new JTextArea();

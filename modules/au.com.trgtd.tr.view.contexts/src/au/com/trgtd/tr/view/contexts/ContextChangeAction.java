@@ -21,7 +21,6 @@ import au.com.trgtd.tr.resource.Resource;
 import java.awt.Frame;
 import java.awt.Rectangle;
 import java.beans.PropertyChangeEvent;
-import java.beans.PropertyChangeListener;
 import javax.swing.JDialog;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -87,10 +86,8 @@ public class ContextChangeAction extends CookieAction {
         JOptionPane op = new JOptionPane(panel, JOptionPane.INFORMATION_MESSAGE,
                 JOptionPane.OK_CANCEL_OPTION, null, null, null);
         
-        op.addPropertyChangeListener(JOptionPane.VALUE_PROPERTY, new PropertyChangeListener() {
-            public void propertyChange(PropertyChangeEvent evt) {
-                jd.dispose();
-            }
+        op.addPropertyChangeListener(JOptionPane.VALUE_PROPERTY, (PropertyChangeEvent evt) -> {
+            jd.dispose();
         });
         
         jd.getContentPane().add(op, "Center" );

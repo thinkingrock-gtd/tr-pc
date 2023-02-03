@@ -20,7 +20,6 @@ package au.com.trgtd.tr.view.actns.prefs;
 import java.awt.BorderLayout;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.util.Vector;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JCheckBox;
@@ -82,10 +81,8 @@ final class ActionsPrefsPanel extends JPanel {
         titleLabel.setFont(titleLabel.getFont().deriveFont(Font.BOLD));        
         fontLabel = new JLabel(getMsg("report.font"));
         fontCombo = new TRComboBox();
-        fontCombo.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent evt) {
-                controller.changed();
-            }
+        fontCombo.addActionListener((ActionEvent evt) -> {
+            controller.changed();
         });
         colourCheck = new JCheckBox(getMsg("use.color"));
         strikeCheck = new JCheckBox(getMsg("strike.done"));

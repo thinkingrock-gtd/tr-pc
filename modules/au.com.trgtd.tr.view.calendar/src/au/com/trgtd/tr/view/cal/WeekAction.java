@@ -23,7 +23,6 @@ import java.awt.EventQueue;
 import org.openide.util.HelpCtx;
 import org.openide.util.Lookup;
 import org.openide.util.LookupEvent;
-import org.openide.util.LookupListener;
 import org.openide.util.NbBundle;
 import org.openide.util.actions.CallableSystemAction;
 import org.openide.windows.Mode;
@@ -37,12 +36,9 @@ public final class WeekAction extends CallableSystemAction implements InitialAct
     public WeekAction() {
         super();
         enableDisable();
-        Lookup.Result<Data> r = DataLookup.instance().lookup(new Lookup.Template<>(Data.class));
-        r.addLookupListener(new LookupListener() {
-            @Override
-            public void resultChanged(LookupEvent lookupEvent) {
-                enableDisable();
-            }
+        Lookup.Result<Data> r = DataLookup.instance().lookupResult(Data.class);
+        r.addLookupListener((LookupEvent lookupEvent) -> {
+            enableDisable();
         });
     }
 
@@ -57,12 +53,9 @@ public final class WeekAction extends CallableSystemAction implements InitialAct
     }
 
     private void enableDisable() {
-        EventQueue.invokeLater(new Runnable() {
-            @Override
-            public void run() {
-                Data data = DataLookup.instance().lookup(Data.class);
-                setEnabled(data != null);
-            }
+        EventQueue.invokeLater(() -> {
+            Data data = DataLookup.instance().lookup(Data.class);
+            setEnabled(data != null);
         });
     }
 
@@ -74,21 +67,18 @@ public final class WeekAction extends CallableSystemAction implements InitialAct
 
     @Override
     public void performAction() {
-        EventQueue.invokeLater(new Runnable() {
-            @Override
-            public void run() {
-                TopComponent tc = WindowManager.getDefault().findTopComponent("WeekTopComponent");
-                if (null == tc) {
-                    tc = new WeekTopComponent();
-                }
-                WindowUtils.closeWindows();
-                Mode mode = WindowManager.getDefault().findMode("editor");
-                if (mode != null) {
-                    mode.dockInto(tc);
-                }
-                tc.open();
-                tc.requestActive();
+        EventQueue.invokeLater(() -> {
+            TopComponent tc = WindowManager.getDefault().findTopComponent("WeekTopComponent");
+            if (null == tc) {
+                tc = new WeekTopComponent();
             }
+            WindowUtils.closeWindows();
+            Mode mode = WindowManager.getDefault().findMode("editor");
+            if (mode != null) {
+                mode.dockInto(tc);
+            }
+            tc.open();
+            tc.requestActive();
         });
     }
 

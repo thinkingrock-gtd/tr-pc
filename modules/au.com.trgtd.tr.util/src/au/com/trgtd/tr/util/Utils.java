@@ -116,11 +116,8 @@ public final class Utils {
             if (SwingUtilities.isEventDispatchThread()) {
                 appFrame = WindowManager.getDefault().getMainWindow();
             } else {
-                SwingUtilities.invokeLater(new Runnable() {
-                    @Override
-                    public void run() {
-                        appFrame = WindowManager.getDefault().getMainWindow();
-                    }
+                SwingUtilities.invokeLater(() -> {
+                    appFrame = WindowManager.getDefault().getMainWindow();
                 });
             }
         }

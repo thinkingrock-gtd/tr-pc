@@ -20,7 +20,6 @@ package au.com.trgtd.tr.export;
 import org.openide.util.HelpCtx;
 import org.openide.util.Lookup;
 import org.openide.util.LookupEvent;
-import org.openide.util.LookupListener;
 import org.openide.util.NbBundle;
 import org.openide.util.actions.CallableSystemAction;
 import tr.model.Data;
@@ -39,12 +38,9 @@ public abstract class ExportAction extends CallableSystemAction {
     public ExportAction() {
         super();
         enableDisable();
-        dataResult = DataLookup.instance().lookup(new Lookup.Template(Data.class));
-        dataResult.addLookupListener(new LookupListener() {
-            @Override
-            public void resultChanged(LookupEvent lookupEvent) {
-                enableDisable();
-            }
+        dataResult = DataLookup.instance().lookupResult(Data.class);
+        dataResult.addLookupListener((LookupEvent lookupEvent) -> {
+            enableDisable();
         });
         dataResult.allInstances();
     }

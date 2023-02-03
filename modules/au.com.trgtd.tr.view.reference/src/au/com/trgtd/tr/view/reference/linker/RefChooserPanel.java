@@ -53,7 +53,6 @@ import org.openide.DialogDescriptor;
 import org.openide.awt.Toolbar;
 import org.openide.util.Lookup;
 import org.openide.util.LookupEvent;
-import org.openide.util.LookupListener;
 import tr.model.DataLookup;
 import tr.model.Data;
 import tr.model.information.Information;
@@ -93,11 +92,9 @@ class RefChooserPanel extends JPanel implements Observer {
         if (data != null) {
             data.getInformationManager().addObserver(this);
         }
-        Lookup.Result r = DataLookup.instance().lookup(new Lookup.Template(Data.class));
-        r.addLookupListener(new LookupListener() {
-            public void resultChanged(LookupEvent lookupEvent) {
-                dataChanged();
-            }
+        Lookup.Result r = DataLookup.instance().lookupResult(Data.class);
+        r.addLookupListener((LookupEvent lookupEvent) -> {
+            dataChanged();
         });
         refsFilters = new RefChooserFilters();
         refsMatcherEditor = refsFilters.getMatcherEditor();

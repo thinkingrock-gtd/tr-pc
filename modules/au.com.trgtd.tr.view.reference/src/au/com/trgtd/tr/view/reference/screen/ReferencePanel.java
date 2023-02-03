@@ -81,10 +81,8 @@ public class ReferencePanel extends JPanel {
         }
         
         // scroll notes to top
-        SwingUtilities.invokeLater(new Runnable() {
-            public void run() {
-                notesScroll.getViewport().setViewPosition(new Point(0,0));
-            }
+        SwingUtilities.invokeLater(() -> {
+            notesScroll.getViewport().setViewPosition(new Point(0,0));
         });
 
     }
@@ -133,10 +131,8 @@ public class ReferencePanel extends JPanel {
         };
         descrField.addFocusListener(descrFocusListener);
 
-        topicActionListener = new ActionListener() {
-            public void actionPerformed(ActionEvent evt) {
-                changedTopic();
-            }
+        topicActionListener = (ActionEvent evt) -> {
+            changedTopic();
         };
         topicCombo.addActionListener(topicActionListener);
     }

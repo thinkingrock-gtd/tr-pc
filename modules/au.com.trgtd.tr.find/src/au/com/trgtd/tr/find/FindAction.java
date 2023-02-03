@@ -21,7 +21,6 @@ import au.com.trgtd.tr.find.ui.FoundTopComponent;
 import java.awt.Frame;
 import java.awt.Rectangle;
 import java.beans.PropertyChangeEvent;
-import java.beans.PropertyChangeListener;
 import javax.swing.JDialog;
 import javax.swing.JOptionPane;
 import org.openide.awt.ActionID;
@@ -54,12 +53,9 @@ public class FindAction extends CallableSystemAction {
     
     public FindAction() {
         super();
-        result = DataLookup.instance().lookup(new Lookup.Template(Data.class));
-        result.addLookupListener(new LookupListener() {
-            @Override
-            public void resultChanged(LookupEvent lookupEvent) {
-                setEnabled(result.allInstances().size() > 0);
-            }
+        result = DataLookup.instance().lookupResult(Data.class);
+        result.addLookupListener((LookupEvent lookupEvent) -> {
+            setEnabled(result.allInstances().size() > 0);
         });
         panel = new FindPanel();
     }
@@ -104,11 +100,8 @@ public class FindAction extends CallableSystemAction {
         JOptionPane op = new JOptionPane(panel, JOptionPane.INFORMATION_MESSAGE,
                 JOptionPane.OK_CANCEL_OPTION, null, null, null);
 
-        op.addPropertyChangeListener(JOptionPane.VALUE_PROPERTY, new PropertyChangeListener() {
-            @Override
-            public void propertyChange(PropertyChangeEvent evt) {
-                dialog.dispose();
-            }
+        op.addPropertyChangeListener(JOptionPane.VALUE_PROPERTY, (PropertyChangeEvent evt) -> {
+            dialog.dispose();
         });
 
         dialog.getContentPane().add(op, "Center" );

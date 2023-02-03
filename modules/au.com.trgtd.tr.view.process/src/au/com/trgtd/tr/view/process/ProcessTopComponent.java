@@ -215,16 +215,13 @@ public final class ProcessTopComponent extends Window implements ProcessNodeProv
      */
     @Override
     public void provide(final ProcessNode processNode) {
-        EventQueue.invokeLater(new Runnable() {
-            @Override
-            public void run() {
-                if (panel == null || processNode == null) {
-                    getInstanceContent().set(Collections.EMPTY_LIST, null);
-                } else {
-                    Collection collection = new ArrayList();
-                    collection.add(processNode);
-                    getInstanceContent().set(collection, null);
-                }
+        EventQueue.invokeLater(() -> {
+            if (panel == null || processNode == null) {
+                getInstanceContent().set(Collections.EMPTY_LIST, null);
+            } else {
+                Collection collection = new ArrayList();
+                collection.add(processNode);
+                getInstanceContent().set(collection, null);
             }
         });
     }

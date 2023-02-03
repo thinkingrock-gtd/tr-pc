@@ -19,7 +19,6 @@ package au.com.trgtd.tr.appl.prefs;
 
 import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JCheckBox;
 import javax.swing.JComboBox;
@@ -83,35 +82,29 @@ final class ApplicationPanel extends javax.swing.JPanel {
     private JComponent getView() {
         versionCheckBox = new JCheckBox(msg("prefs.version.label"));
         versionCheckBox.setHorizontalTextPosition(SwingConstants.TRAILING);
-        versionCheckBox.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent evt) {
-                if (versionCheckBox.isSelected()) {
-                    versionCheckCombo.setEnabled(true);
-                    versionCheckCombo.setSelectedIndex(ApplicationPrefs.VERSION_CHECK_PERIOD_STARTUP);
-                } else {
-                    versionCheckCombo.setEnabled(false);
-                    versionCheckCombo.setSelectedIndex(ApplicationPrefs.VERSION_CHECK_PERIOD_NEVER);
-                }
+        versionCheckBox.addActionListener((ActionEvent evt) -> {
+            if (versionCheckBox.isSelected()) {
+                versionCheckCombo.setEnabled(true);
+                versionCheckCombo.setSelectedIndex(ApplicationPrefs.VERSION_CHECK_PERIOD_STARTUP);
+            } else {
+                versionCheckCombo.setEnabled(false);
+                versionCheckCombo.setSelectedIndex(ApplicationPrefs.VERSION_CHECK_PERIOD_NEVER);
             }
         });
         versionCheckCombo = new JComboBox(new DefaultComboBoxModel(PERIODS));
         versionCheckCombo.setMaximumRowCount(PERIODS.length);
         idleCheckBox = new JCheckBox(msg("prefs.inactive.quit.label"));
         idleCheckBox.setHorizontalTextPosition(SwingConstants.TRAILING);
-        idleCheckBox.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent evt) {
-                boolean selected = idleCheckBox.isSelected();
-                if (!selected) {
-                    inactiveHrsSpinner.setValue(0);
-                    inactiveMinsSpinner.setValue(0);                    
-                }
-                inactiveHrsLabel.setEnabled(selected);
-                inactiveHrsSpinner.setEnabled(selected);
-                inactiveMinsLabel.setEnabled(selected);
-                inactiveMinsSpinner.setEnabled(selected);
+        idleCheckBox.addActionListener((ActionEvent evt) -> {
+            boolean selected = idleCheckBox.isSelected();
+            if (!selected) {
+                inactiveHrsSpinner.setValue(0);
+                inactiveMinsSpinner.setValue(0);
             }
+            inactiveHrsLabel.setEnabled(selected);
+            inactiveHrsSpinner.setEnabled(selected);
+            inactiveMinsLabel.setEnabled(selected);
+            inactiveMinsSpinner.setEnabled(selected);
         });
         inactiveHrsLabel = new JLabel(msg("prefs.inactive.hrs.label"));
         inactiveMinsLabel = new JLabel(msg("prefs.inactive.mins.label"));

@@ -19,7 +19,6 @@ package au.com.trgtd.tr.view.goals.levels;
 
 import au.com.trgtd.tr.appl.Constants;
 import au.com.trgtd.tr.prefs.ui.GUIPrefs;
-//import au.com.trgtd.tr.view.DeleteAction;
 import au.com.trgtd.tr.view.EditAction;
 import au.com.trgtd.tr.view.Window;
 import java.awt.BorderLayout;
@@ -33,7 +32,6 @@ import javax.swing.JToolBar;
 import javax.swing.table.TableColumn;
 import javax.swing.table.TableColumnModel;
 import javax.swing.text.DefaultEditorKit;
-import org.netbeans.swing.etable.ETable;
 import org.netbeans.swing.outline.Outline;
 import org.openide.actions.DeleteAction;
 import org.openide.awt.Toolbar;
@@ -48,7 +46,6 @@ import org.openide.util.HelpCtx;
 import org.openide.util.ImageUtilities;
 import org.openide.util.Lookup;
 import org.openide.util.LookupEvent;
-import org.openide.util.LookupListener;
 import org.openide.util.actions.SystemAction;
 import tr.model.Data;
 import tr.model.DataLookup;
@@ -161,13 +158,11 @@ public final class LevelsTopComponent extends Window implements ExplorerManager.
         }
 
         // data lookup listener to force re-initialisation if data changes
-        Lookup.Result<Data> dataResult = DataLookup.instance().lookup(new Lookup.Template(Data.class));
-        dataResult.addLookupListener(new LookupListener() {
-            public void resultChanged(LookupEvent lookupEvent) {
-                Data data = DataLookup.instance().lookup(Data.class);
-                if (data != null) {
-                    explorerManager.setRootContext(new LevelNodeRoot(new LevelChildren(outlineView)));
-                }
+        Lookup.Result<Data> dataResult = DataLookup.instance().lookupResult(Data.class);
+        dataResult.addLookupListener((LookupEvent lookupEvent) -> {
+            Data data = DataLookup.instance().lookup(Data.class);
+            if (data != null) {
+                explorerManager.setRootContext(new LevelNodeRoot(new LevelChildren(outlineView)));
             }
         });
     }

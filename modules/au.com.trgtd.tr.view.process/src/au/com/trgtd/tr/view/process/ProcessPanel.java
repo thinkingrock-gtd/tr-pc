@@ -405,11 +405,8 @@ public final class ProcessPanel extends JPanel implements Observer, ProcessCooki
     private Observer criteriaObserver;
 
     private void addListeners() {
-        actionListenerThoughtTopic = new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent evt) {
-                changedTopic();
-            }
+        actionListenerThoughtTopic = (ActionEvent evt) -> {
+            changedTopic();
         };
         topicCombo.addActionListener(actionListenerThoughtTopic);
 
@@ -421,110 +418,71 @@ public final class ProcessPanel extends JPanel implements Observer, ProcessCooki
         };
         thoughtText.addFocusListener(focusListenerThoughtText);
 
-        actionableYesListener = new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent arg0) {
-                changedToActionable();
-            }
+        actionableYesListener = (ActionEvent arg0) -> {
+            changedToActionable();
         };
         actionableYesRadioButton.addActionListener(actionableYesListener);
 
-        actionableNoListener = new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent arg0) {
-                changedToNotActionable();
-            }
+        actionableNoListener = (ActionEvent arg0) -> {
+            changedToNotActionable();
         };
         actionableNoRadioButton.addActionListener(actionableNoListener);
 
-        actionListenerEmail = new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent evt) {
-                emailActionPerformed();
-            }
+        actionListenerEmail = (ActionEvent evt) -> {
+            emailActionPerformed();
         };
         emailButton.addActionListener(actionListenerEmail);
 
-        actionListenerDelete = new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent evt) {
-                enableDisableNotActionable();
-            }
+        actionListenerDelete = (ActionEvent evt) -> {
+            enableDisableNotActionable();
         };
         deleteRadioButton.addActionListener(actionListenerDelete);
 
-        actionListenerSomeday = new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent evt) {
-                enableDisableNotActionable();
-            }
+        actionListenerSomeday = (ActionEvent evt) -> {
+            enableDisableNotActionable();
         };
         somedayRadioButton.addActionListener(actionListenerSomeday);
 
-        actionListenerReference = new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent evt) {
-                enableDisableNotActionable();
-            }
+        actionListenerReference = (ActionEvent evt) -> {
+            enableDisableNotActionable();
         };
         referenceRadioButton.addActionListener(actionListenerReference);
 
-        actionListenerGoal = new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent evt) {
-                enableDisableNotActionable();
-            }
+        actionListenerGoal = (ActionEvent evt) -> {
+            enableDisableNotActionable();
         };
         goalRadioButton.addActionListener(actionListenerGoal);
 
         // Done CheckBox
-        doneCheckBoxActionListener = new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent evt) {
-                doneCheckBoxChanged();
-            }
+        doneCheckBoxActionListener = (ActionEvent evt) -> {
+            doneCheckBoxChanged();
         };
         doneCheckBox.addActionListener(doneCheckBoxActionListener);
 
         // Done Date
-        doneDatePropertyChangeListener = new PropertyChangeListener() {
-            @Override
-            public void propertyChange(PropertyChangeEvent e) {
-                changedDoneDate();
-            }
+        doneDatePropertyChangeListener = (PropertyChangeEvent e) -> {
+            changedDoneDate();
         };
         doneDateField.addPropertyChangeListener("value", doneDatePropertyChangeListener);
 
         // status
-        statusListener = new ItemListener() {
-            @Override
-            public void itemStateChanged(ItemEvent e) {
-                changedStatus();
-            }
+        statusListener = (ItemEvent e) -> {
+            changedStatus();
         };
         statusCombo.addItemListener(statusListener);
 
-        recurrenceButtonListener = new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                recurrenceButtonActionPerformed(e);
-            }
+        recurrenceButtonListener = (ActionEvent e) -> {
+            recurrenceButtonActionPerformed(e);
         };
         recurrenceButton.addActionListener(recurrenceButtonListener);
 
-        scheduledDateListener = new PropertyChangeListener() {
-            @Override
-            public void propertyChange(PropertyChangeEvent arg0) {
-                changedScheduledDate();
-            }
+        scheduledDateListener = (PropertyChangeEvent arg0) -> {
+            changedScheduledDate();
         };
         scheduledDateField.addPropertyChangeListener(scheduledDateListener);
 
-        newProjectCheckBoxListener = new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                newProjectActionPerformed(e);
-            }
+        newProjectCheckBoxListener = (ActionEvent e) -> {
+            newProjectActionPerformed(e);
         };
         newProjectCheck.addActionListener(newProjectCheckBoxListener);
 
@@ -536,43 +494,28 @@ public final class ProcessPanel extends JPanel implements Observer, ProcessCooki
         };
         newProjectField.addFocusListener(newProjectTextFocusListener);
         
-        addToProjectCheckBoxListener = new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                addToProjectActionPerformed(e);
-            }
+        addToProjectCheckBoxListener = (ActionEvent e) -> {
+            addToProjectActionPerformed(e);
         };
         addToProjectCheck.addActionListener(addToProjectCheckBoxListener);
                 
-        addToProjectButtonListener = new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                addToProjectButtonActionPerformed(e);
-            }
+        addToProjectButtonListener = (ActionEvent e) -> {
+            addToProjectButtonActionPerformed(e);
         };
         addToProjectButton.addActionListener(addToProjectButtonListener);
         
-        supergoalButtonListener = new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                supergoalButtonActionPerformed(e);
-            }
+        supergoalButtonListener = (ActionEvent e) -> {
+            supergoalButtonActionPerformed(e);
         };
         supergoalButton.addActionListener(supergoalButtonListener);
 
-        prefsChangeListener = new PreferenceChangeListener() {
-            @Override
-            public void preferenceChange(PreferenceChangeEvent e) {
-                changedPrefs(e);
-            }
+        prefsChangeListener = (PreferenceChangeEvent e) -> {
+            changedPrefs(e);
         };
         ActionPrefs.getPrefs().addPreferenceChangeListener(prefsChangeListener);
 
-        criteriaObserver = new Observer() {
-            @Override
-            public void update(Observable observable, Object arguement) {
-                changedCriteria();
-            }
+        criteriaObserver = (Observable observable, Object arguement) -> {
+            changedCriteria();
         };
 
         data.getTimeCriterion().addObserver(criteriaObserver);
@@ -778,11 +721,8 @@ public final class ProcessPanel extends JPanel implements Observer, ProcessCooki
     private void changedStatus() {
         StatusEnum status = (StatusEnum) statusCombo.getSelectedItem();
         if (status == null) {
-            SwingUtilities.invokeLater(new Runnable() {
-                @Override
-                public void run() {
-                    statusCombo.setSelectedItem(StatusEnum.DO_ASAP);
-                }
+            SwingUtilities.invokeLater(() -> {
+                statusCombo.setSelectedItem(StatusEnum.DO_ASAP);
             });
             setStatusDoASAP();
             return;

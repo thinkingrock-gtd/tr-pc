@@ -164,11 +164,9 @@ public class FilterContext extends FilterChoice implements PropertyChangeListene
             }
             // data lookup listener to force panel initialisation if data changes
             if (result == null) {
-                result = DataLookup.instance().lookup(new Lookup.Template(Data.class));
-                result.addLookupListener(new LookupListener() {
-                    public void resultChanged(LookupEvent lookupEvent) {
-                        update(null, null);
-                    }
+                result = DataLookup.instance().lookupResult(Data.class);
+                result.addLookupListener((LookupEvent lookupEvent) -> {
+                    update(null, null);
                 });
             }
         }
@@ -357,4 +355,3 @@ public class FilterContext extends FilterChoice implements PropertyChangeListene
     }
     
 }
-

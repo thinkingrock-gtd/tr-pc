@@ -20,7 +20,6 @@ package au.com.trgtd.tr.view.goals;
 import java.awt.Frame;
 import java.awt.Rectangle;
 import java.beans.PropertyChangeEvent;
-import java.beans.PropertyChangeListener;
 import javax.swing.JDialog;
 import javax.swing.JOptionPane;
 import static javax.swing.JDialog.*;
@@ -90,10 +89,8 @@ public class ChangeLevelAction extends CookieAction {
         ChangeLevelPanel panel = new ChangeLevelPanel(msg);
 
         JOptionPane op = new JOptionPane(panel, INFORMATION_MESSAGE, OK_CANCEL_OPTION, null, null, null);
-        op.addPropertyChangeListener(VALUE_PROPERTY, new PropertyChangeListener() {
-            public void propertyChange(PropertyChangeEvent evt) {
-                dialog.dispose();
-            }
+        op.addPropertyChangeListener(VALUE_PROPERTY, (PropertyChangeEvent evt) -> {
+            dialog.dispose();
         });
 
         dialog.getContentPane().add(op, "Center" );

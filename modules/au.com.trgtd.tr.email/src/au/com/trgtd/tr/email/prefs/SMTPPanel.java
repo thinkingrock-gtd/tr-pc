@@ -120,11 +120,8 @@ public class SMTPPanel extends javax.swing.JPanel {
         passField.getDocument().addDocumentListener(new TextDocumentListener());
         portField.getDocument().addDocumentListener(new TextDocumentListener());
         sslCheck.addActionListener(new CheckActionListener());
-        testBttn.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                testConnection();
-            }
+        testBttn.addActionListener((ActionEvent e) -> {
+            testConnection();
         });
         panel.setLayout(new MigLayout("", "0[]2[grow]0", "0[]2[]2[]12[]0"));
         panel.add(hostLabel, "align right");

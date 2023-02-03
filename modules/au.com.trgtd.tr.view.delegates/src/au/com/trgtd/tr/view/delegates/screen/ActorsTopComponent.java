@@ -24,9 +24,7 @@ import java.awt.Dimension;
 import java.awt.EventQueue;
 import java.io.Serializable;
 import java.util.Collection;
-import java.util.Collections;
 import java.util.ArrayList;
-import java.util.List;
 import javax.swing.AbstractButton;
 import javax.swing.JToolBar;
 import org.openide.ErrorManager;
@@ -183,14 +181,11 @@ public final class ActorsTopComponent extends TopComponent implements ActorNodeP
 
     @Override
     public void provide(final Collection<ActorNode> actorNodes) {
-        EventQueue.invokeLater(new Runnable() {
-            @Override
-            public void run() {
-                if (panel == null || actorNodes == null) {
-                    getInstanceContent().set(new ArrayList<ActorNode>(), null);
-                } else {
-                    getInstanceContent().set(actorNodes, null);
-                }
+        EventQueue.invokeLater(() -> {
+            if (panel == null || actorNodes == null) {
+                getInstanceContent().set(new ArrayList<ActorNode>(), null);
+            } else {
+                getInstanceContent().set(actorNodes, null);
             }
         });
     }

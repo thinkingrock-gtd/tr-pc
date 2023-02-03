@@ -188,11 +188,8 @@ public final class NotesEditorPanel extends JPanel {
 
             requestFocusInWindow();
 
-            SwingUtilities.invokeLater(new Runnable() {
-                @Override
-                public void run() {
-                    notesField.insert(link.encode());
-                }
+            SwingUtilities.invokeLater(() -> {
+                notesField.insert(link.encode());
             });
         }
     }

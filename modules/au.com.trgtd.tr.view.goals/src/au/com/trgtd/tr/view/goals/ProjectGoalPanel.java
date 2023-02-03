@@ -27,8 +27,6 @@ import java.awt.Dimension;
 import java.awt.Point;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.util.Date;
 import javax.swing.JCheckBox;
 import javax.swing.JPanel;
@@ -269,11 +267,8 @@ public class ProjectGoalPanel extends JScrollPane {
         endDate.setText(format(goalCtrl.getEndDate()));
         
         // force scroll to top
-        SwingUtilities.invokeLater(new Runnable() {
-            @Override
-            public void run() {
-                getViewport().setViewPosition(new Point(0, 0));
-            }
+        SwingUtilities.invokeLater(() -> {
+            getViewport().setViewPosition(new Point(0, 0));
         });
     }
 

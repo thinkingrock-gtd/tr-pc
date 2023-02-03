@@ -30,11 +30,8 @@ public class Installer extends ModuleInstall {
     public void restored() {        
         final int ms = ApplicationPrefs.getInactivityMs();        
         if (ms > 0) {
-            WindowManager.getDefault().invokeWhenUIReady(new Runnable() {
-                @Override
-                public void run() {
-                    InactivityDetector.start(ms);
-                }
+            WindowManager.getDefault().invokeWhenUIReady(() -> {
+                InactivityDetector.start(ms);
             });            
         }
     }

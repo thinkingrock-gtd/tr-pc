@@ -33,7 +33,6 @@ import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.beans.PropertyChangeEvent;
-import java.beans.PropertyChangeListener;
 import javax.swing.ActionMap;
 import javax.swing.BorderFactory;
 import javax.swing.JPanel;
@@ -88,11 +87,8 @@ public final class DayTopComponent extends TopComponent
         treeView.setRootVisible(false);
         treeView.setBackground(Color.WHITE);
 
-        dateCtlr.addPropertyChangeListener(new PropertyChangeListener() {
-            @Override
-            public void propertyChange(PropertyChangeEvent pce) {
-                treeView.expandAll();
-            }            
+        dateCtlr.addPropertyChangeListener((PropertyChangeEvent pce) -> {
+            treeView.expandAll();
         });
         
         ActionMap map = getActionMap();

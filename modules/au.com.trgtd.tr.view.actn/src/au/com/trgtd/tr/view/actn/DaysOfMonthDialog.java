@@ -60,10 +60,8 @@ public class DaysOfMonthDialog extends JDialog {
         // default Ok button
         getRootPane().setDefaultButton(doneButton);
         // Escape key to cancel
-        ActionListener escapeListener = new ActionListener() {
-            public void actionPerformed(ActionEvent evt) {
-                cancel(evt);
-            }
+        ActionListener escapeListener = (ActionEvent evt) -> {
+            cancel(evt);
         };
         KeyStroke stroke = KeyStroke.getKeyStroke(KeyEvent.VK_ESCAPE, 0);
         getRootPane().registerKeyboardAction(escapeListener, stroke, JComponent.WHEN_IN_FOCUSED_WINDOW);

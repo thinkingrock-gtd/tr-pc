@@ -38,7 +38,6 @@ import ca.odell.glazedlists.EventList;
 import ca.odell.glazedlists.FilterList;
 import ca.odell.glazedlists.SortedList;
 import ca.odell.glazedlists.event.ListEvent;
-import ca.odell.glazedlists.event.ListEventListener;
 import ca.odell.glazedlists.gui.TableFormat;
 import ca.odell.glazedlists.matchers.CompositeMatcherEditor;
 import ca.odell.glazedlists.matchers.MatcherEditor;
@@ -125,12 +124,10 @@ public class ReviewActionsPanel extends JPanel implements ListSelectionListener,
         actionsEventList = new BasicEventList<Action>();
         actionsEventList.addAll(actionsList);
         actionsFilterList = new FilterList(actionsEventList, filters.getMatcherEditor());
-        actionsFilterList.addListEventListener(new ListEventListener() {
-            public void listChanged(ListEvent e) {
-                itemCountShower.showItemCount(e.getSourceList().size());
-                // fix problem of number of selected rows increasing by clearing 
-                selectionModel.clearSelection();
-            }
+        actionsFilterList.addListEventListener((ListEvent<Action> e) -> {
+            itemCountShower.showItemCount(e.getSourceList().size());
+            // fix problem of number of selected rows increasing by clearing
+            selectionModel.clearSelection();
         });
 
         itemCountShower.showItemCount(actionsFilterList.size());
@@ -293,25 +290,22 @@ public class ReviewActionsPanel extends JPanel implements ListSelectionListener,
     }
 
     private void edit() {
-        EventQueue.invokeLater(new Runnable() {
+        EventQueue.invokeLater(() -> {
+            EventList<Action> selected = selectionModel.getSelected();
+            if (selected.size() != 1) {
+                return;
+            }
+            Action action = selected.get(0);
 
-            public void run() {
-                EventList<Action> selected = selectionModel.getSelected();
-                if (selected.size() != 1) {
-                    return;
-                }               
-                Action action = selected.get(0);
-
-                if (action.isSingleAction()) {
-                    if (tcSingleActions != null) {
-                        tcSingleActions.setShowDone(isShowDone());
-                        tcSingleActions.edit(action);
-                    }
-                } else {
-                    if (tcProjectsTree != null) {
-                        tcProjectsTree.setShowDone(isShowDone());
-                        tcProjectsTree.edit(action);
-                    }
+            if (action.isSingleAction()) {
+                if (tcSingleActions != null) {
+                    tcSingleActions.setShowDone(isShowDone());
+                    tcSingleActions.edit(action);
+                }
+            } else {
+                if (tcProjectsTree != null) {
+                    tcProjectsTree.setShowDone(isShowDone());
+                    tcProjectsTree.edit(action);
                 }
             }
         });
@@ -337,10 +331,8 @@ public class ReviewActionsPanel extends JPanel implements ListSelectionListener,
             }
         }
         // get focus back on table (esp. for MacOSX)
-        EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                table.requestFocusInWindow();
-            }
+        EventQueue.invokeLater(() -> {
+            table.requestFocusInWindow();
         });
     }
 
@@ -457,59 +449,57 @@ public class ReviewActionsPanel extends JPanel implements ListSelectionListener,
         if (argument == Action.FIELD.Notes) {
             return;            
         }
-        EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                if (observable instanceof Action) {
-                    Action observedAction = (Action) observable;                    
-                    for (Action selectedAction : selectionModel.getSelected()) {
-                        if (selectedAction.getID() != observedAction.getID()) {
-                            clearSelection();
-                            break;
-                        }                       
-                    } 
-                    refresh();
-                    return;
-                }
-                if (observable instanceof Project) {
-                    Project obsProject = (Project) observable;
-                    clearSelection();
-                    if (argument == null) {
-                        // change to project itself
-                        actionsTable.validate();
-                        actionsTable.repaint();
-                        refresh();
-                    } else if (argument instanceof Action) {
-                        // added or removed action
-                        Action action = (Action) argument;
-                        Lock lock = actionsEventList.getReadWriteLock().writeLock();
-                        lock.lock();
-                        if (obsProject.contains(action)) {
-                            actionsEventList.add(action);
-                            lock.unlock();
-                        } else {
-                            actionsEventList.remove(action);
-                            lock.unlock();
-                            selectionModel.clearSelection();
-                            actionsProvider.provide(Collections.EMPTY_LIST);  
-                        }
-                    } else if (argument instanceof Project) {
-                        // added or removed project
-                        Project argProject = (Project) argument;
-
-                        List<Action> actions = Services.instance.getActionDecendants(argProject);
-                        if (actions == null || actions.isEmpty()) {
-                            return;
-                        }
-                        Lock lock = actionsEventList.getReadWriteLock().writeLock();
-                        lock.lock();
-                        if (obsProject.contains(argProject)) { // added argProject
-                            actionsEventList.addAll(actions);
-                        } else { // removed argProject
-
-                            actionsEventList.removeAll(actions);
-                        }
-                        lock.unlock();
+        EventQueue.invokeLater(() -> {
+            if (observable instanceof Action) {
+                Action observedAction = (Action) observable;
+                for (Action selectedAction : selectionModel.getSelected()) {
+                    if (selectedAction.getID() != observedAction.getID()) {
+                        clearSelection();
+                        break;
                     }
+                }
+                refresh();
+                return;
+            }
+            if (observable instanceof Project) {
+                Project obsProject = (Project) observable;
+                clearSelection();
+                if (argument == null) {
+                    // change to project itself
+                    actionsTable.validate();
+                    actionsTable.repaint();
+                    refresh();
+                } else if (argument instanceof Action) {
+                    // added or removed action
+                    Action action = (Action) argument;
+                    Lock lock = actionsEventList.getReadWriteLock().writeLock();
+                    lock.lock();
+                    if (obsProject.contains(action)) {
+                        actionsEventList.add(action);
+                        lock.unlock();
+                    } else {
+                        actionsEventList.remove(action);
+                        lock.unlock();
+                        selectionModel.clearSelection();
+                        actionsProvider.provide(Collections.EMPTY_LIST);
+                    }
+                } else if (argument instanceof Project) {
+                    // added or removed project
+                    Project argProject = (Project) argument;
+
+                    List<Action> actions = Services.instance.getActionDecendants(argProject);
+                    if (actions == null || actions.isEmpty()) {
+                        return;
+                    }
+                    Lock lock = actionsEventList.getReadWriteLock().writeLock();
+                    lock.lock();
+                    if (obsProject.contains(argProject)) { // added argProject
+                        actionsEventList.addAll(actions);
+                    } else { // removed argProject
+
+                        actionsEventList.removeAll(actions);
+                    }
+                    lock.unlock();
                 }
             }
         });
@@ -519,23 +509,21 @@ public class ReviewActionsPanel extends JPanel implements ListSelectionListener,
 
         final ListSelectionListener lsl = this;
 
-        EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                // remove selection listener to try and avoid the selected table 
-                // row from being re-selected and causing view() to be called 
-                // (which requests table focus).
-                selectionModel.removeListSelectionListener(lsl);
+        EventQueue.invokeLater(() -> {
+            // remove selection listener to try and avoid the selected table
+            // row from being re-selected and causing view() to be called
+            // (which requests table focus).
+            selectionModel.removeListSelectionListener(lsl);
 
-                actionsSortedList.setComparator(actionsSortedList.getComparator());
+            actionsSortedList.setComparator(actionsSortedList.getComparator());
 
-                // TODO Find a better way to fire update on filters
-                for (ActionsFilter filter : screen.getFilters()) {
-                    filter.getFilterCombo().fireValueChange();
-                }
-
-                // add back selection listener 
-                selectionModel.addListSelectionListener(lsl);
+            // TODO Find a better way to fire update on filters
+            for (ActionsFilter filter : screen.getFilters()) {
+                filter.getFilterCombo().fireValueChange();
             }
+
+            // add back selection listener
+            selectionModel.addListSelectionListener(lsl);
         });
     }
 

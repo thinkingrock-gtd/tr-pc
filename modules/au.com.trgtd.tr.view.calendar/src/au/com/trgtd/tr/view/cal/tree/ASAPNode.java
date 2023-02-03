@@ -27,7 +27,6 @@ import tr.model.action.Action;
 import java.awt.Color;
 import java.awt.Image;
 import java.beans.PropertyChangeEvent;
-import java.beans.PropertyChangeListener;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 
@@ -55,11 +54,8 @@ public final class ASAPNode extends AbstractNode implements EditCookie {
     private ASAPNode(Action action, InstanceContent content) {
         super(Children.LEAF, new AbstractLookup(content));
         this.action = action;
-        this.action.addPropertyChangeListener(Action.PROP_DONE, new PropertyChangeListener() {
-            @Override
-            public void propertyChange(PropertyChangeEvent pce) {
-                setName(ASAPNode.this.action.getDescription());
-            }            
+        this.action.addPropertyChangeListener(Action.PROP_DONE, (PropertyChangeEvent pce) -> {
+            setName(ASAPNode.this.action.getDescription());
         });                
         content.add(this);
         content.add(action);     

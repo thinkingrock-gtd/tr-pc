@@ -21,7 +21,6 @@ import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import javax.swing.ButtonGroup;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
@@ -59,10 +58,8 @@ public final class ModifyRecurrenceVisualPanelModRecur1 extends JPanel {
     private void initView() {
         regRadio = new JRadioButton(getMsg("regular"));
         regRadio.setFont(regRadio.getFont().deriveFont(Font.BOLD));
-        regRadio.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent evt) {
-                basis = Basis.START_DATE;
-            }
+        regRadio.addActionListener((ActionEvent evt) -> {
+            basis = Basis.START_DATE;
         });
         regHelp = new JTextArea(getMsg("regular.hint"));
         regHelp.setBackground(UIManager.getDefaults().getColor("Panel.background"));
@@ -73,10 +70,8 @@ public final class ModifyRecurrenceVisualPanelModRecur1 extends JPanel {
 
         subRadio = new JRadioButton(getMsg("subsequent"));
         subRadio.setFont(subRadio.getFont().deriveFont(Font.BOLD));
-        subRadio.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent evt) {
-                basis = Basis.DONE_DATE;
-            }
+        subRadio.addActionListener((ActionEvent evt) -> {
+            basis = Basis.DONE_DATE;
         });
         subHelp = new JTextArea(getMsg("subsequent.hint"));
         subHelp.setBackground(UIManager.getDefaults().getColor("Panel.background"));

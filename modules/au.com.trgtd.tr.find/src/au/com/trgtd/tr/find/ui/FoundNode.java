@@ -122,7 +122,7 @@ public class FoundNode extends AbstractNode implements ViewCookie {
 
     @Override
     public Action[] getActions(boolean popup) {
-        return new Action[] { 
+        return new Action[]{
             SystemAction.get(ViewAction.class)
         };
     }
@@ -153,6 +153,7 @@ public class FoundNode extends AbstractNode implements ViewCookie {
     }
 
     private ProjectsAction projectsAction;
+
     private ProjectsAction getProjectsAction() {
         if (projectsAction == null) {
             projectsAction = SystemAction.get(ProjectsAction.class);
@@ -167,26 +168,23 @@ public class FoundNode extends AbstractNode implements ViewCookie {
 
         projectsAction.performAction();
 
-        EventQueue.invokeLater(new Runnable() {
-            @Override
-            public void run() {
-                switch (group) {
-                    case Projects: {
-                        ProjectsTreeTopComponent tc = ProjectsTreeTopComponent.findInstance();
-                        if (tc != null) {
-                            tc.setShowDone(project.isDone());
-                            tc.select(project);
-                        }
-                        break;
+        EventQueue.invokeLater(() -> {
+            switch (group) {
+                case Projects: {
+                    ProjectsTreeTopComponent tc = ProjectsTreeTopComponent.findInstance();
+                    if (tc != null) {
+                        tc.setShowDone(project.isDone());
+                        tc.select(project);
                     }
-                    case Futures: {
-                        FutureTopComponent tc = FutureTopComponent.findInstance();
-                        if (tc != null) {
-                            tc.setShowDone(project.isDone());
-                            tc.select(project);
-                        }
-                        break;
+                    break;
+                }
+                case Futures: {
+                    FutureTopComponent tc = FutureTopComponent.findInstance();
+                    if (tc != null) {
+                        tc.setShowDone(project.isDone());
+                        tc.select(project);
                     }
+                    break;
                 }
             }
         });
@@ -199,40 +197,38 @@ public class FoundNode extends AbstractNode implements ViewCookie {
 
         projectsAction.performAction();
 
-        EventQueue.invokeLater(new Runnable() {
-            @Override
-            public void run() {
-                switch (group) {
-                    case Projects: {
-                        ProjectsTreeTopComponent tc = ProjectsTreeTopComponent.findInstance();
-                        if (tc != null) {
-                            tc.setShowDone(action.isDone());
-                            tc.select(action);
-                        }
-                        break;
+        EventQueue.invokeLater(() -> {
+            switch (group) {
+                case Projects: {
+                    ProjectsTreeTopComponent tc = ProjectsTreeTopComponent.findInstance();
+                    if (tc != null) {
+                        tc.setShowDone(action.isDone());
+                        tc.select(action);
                     }
-                    case SingleActions: {
-                        SingleActionsTopComponent tc = SingleActionsTopComponent.findInstance();
-                        if (tc != null) {
-                            tc.setShowDone(action.isDone());
-                            tc.select(action);
-                        }
-                        break;
+                    break;
+                }
+                case SingleActions: {
+                    SingleActionsTopComponent tc = SingleActionsTopComponent.findInstance();
+                    if (tc != null) {
+                        tc.setShowDone(action.isDone());
+                        tc.select(action);
                     }
-                    case Futures: {
-                        FutureTopComponent tc = FutureTopComponent.findInstance();
-                        if (tc != null) {
-                            tc.setShowDone(action.isDone());
-                            tc.select(action);
-                        }
-                        break;
+                    break;
+                }
+                case Futures: {
+                    FutureTopComponent tc = FutureTopComponent.findInstance();
+                    if (tc != null) {
+                        tc.setShowDone(action.isDone());
+                        tc.select(action);
                     }
+                    break;
                 }
             }
         });
     }
 
     private CollectThoughtsAction thoughtsAction;
+
     private CollectThoughtsAction getThoughtsAction() {
         if (thoughtsAction == null) {
             thoughtsAction = SystemAction.get(CollectThoughtsAction.class);
@@ -247,18 +243,16 @@ public class FoundNode extends AbstractNode implements ViewCookie {
 
         thoughtsAction.performAction();
 
-        EventQueue.invokeLater(new Runnable() {
-            @Override
-            public void run() {
-                CollectThoughtsTopComponent tc = CollectThoughtsTopComponent.findInstance();
-                if (tc != null) {
-                    tc.select(thought);
-                }
+        EventQueue.invokeLater(() -> {
+            CollectThoughtsTopComponent tc = CollectThoughtsTopComponent.findInstance();
+            if (tc != null) {
+                tc.select(thought);
             }
         });
     }
 
     private ReferencesAction referencesAction;
+
     private ReferencesAction getReferencesAction() {
         if (referencesAction == null) {
             referencesAction = SystemAction.get(ReferencesAction.class);
@@ -273,18 +267,16 @@ public class FoundNode extends AbstractNode implements ViewCookie {
 
         referencesAction.performAction();
 
-        EventQueue.invokeLater(new Runnable() {
-            @Override
-            public void run() {
-                ReferencesTopComponent tc = ReferencesTopComponent.findInstance();
-                if (tc != null) {
-                    tc.select(reference);
-                }
+        EventQueue.invokeLater(() -> {
+            ReferencesTopComponent tc = ReferencesTopComponent.findInstance();
+            if (tc != null) {
+                tc.select(reference);
             }
         });
     }
 
     private FuturesAction futuresAction;
+
     private FuturesAction getFuturesAction() {
         if (futuresAction == null) {
             futuresAction = SystemAction.get(FuturesAction.class);
@@ -299,20 +291,16 @@ public class FoundNode extends AbstractNode implements ViewCookie {
 
         futuresAction.performAction();
 
-        EventQueue.invokeLater(new Runnable() {
-            @Override
-            public void run() {
-                SomedaysTopComponent tc = SomedaysTopComponent.findInstance();
-                if (tc != null) {
-                    tc.select(future);
-                }
+        EventQueue.invokeLater(() -> {
+            SomedaysTopComponent tc = SomedaysTopComponent.findInstance();
+            if (tc != null) {
+                tc.select(future);
             }
         });
     }
 
-
-
     private GoalsAction goalsAction;
+
     private GoalsAction getGoalsAction() {
         if (goalsAction == null) {
             goalsAction = SystemAction.get(GoalsAction.class);
@@ -327,13 +315,10 @@ public class FoundNode extends AbstractNode implements ViewCookie {
 
         goalsAction.performAction();
 
-        EventQueue.invokeLater(new Runnable() {
-            @Override
-            public void run() {
-                GoalsTopComponent tc = GoalsTopComponent.findInstance();
-                if (tc != null) {
-                    tc.select(goalCtrl);
-                }
+        EventQueue.invokeLater(() -> {
+            GoalsTopComponent tc = GoalsTopComponent.findInstance();
+            if (tc != null) {
+                tc.select(goalCtrl);
             }
         });
     }

@@ -72,7 +72,6 @@ import org.openide.awt.Toolbar;
 import org.openide.util.HelpCtx;
 import org.openide.util.Lookup;
 import org.openide.util.LookupEvent;
-import org.openide.util.LookupListener;
 import org.openide.util.NbBundle;
 import org.openide.util.actions.SystemAction;
 import org.openide.util.lookup.AbstractLookup;
@@ -163,11 +162,9 @@ public final class ReviewActionsTopComponent extends Window implements ActionsPr
 
         // data lookup listener to save panel if data changes
         if (dataLookupResult == null) {
-            dataLookupResult = DataLookup.instance().lookup(new Lookup.Template(Data.class));
-            dataLookupResult.addLookupListener(new LookupListener() {
-                public void resultChanged(LookupEvent lookupEvent) {
-                    panel.save();
-                }
+            dataLookupResult = DataLookup.instance().lookupResult(Data.class);
+            dataLookupResult.addLookupListener((LookupEvent lookupEvent) -> {
+                panel.save();
             });
         }
     }
@@ -223,13 +220,11 @@ public final class ReviewActionsTopComponent extends Window implements ActionsPr
         panel.resetModel();
         panel.refresh();
         panel.startObserving();
-        EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                showHideFilters();
-                panel.revalidate();
-                panel.repaint();
-                panel.takeFocus();
-            }
+        EventQueue.invokeLater(() -> {
+            showHideFilters();
+            panel.revalidate();
+            panel.repaint();
+            panel.takeFocus();
         });
     }
 
@@ -260,10 +255,8 @@ public final class ReviewActionsTopComponent extends Window implements ActionsPr
 
     /** Shows the number of items in the title. */
     public void showItemCount(final int count) {
-        EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                setName(screen.toString() + " (" + count + ")");
-            }
+        EventQueue.invokeLater(() -> {
+            setName(screen.toString() + " (" + count + ")");
         });
     }
 
@@ -355,11 +348,9 @@ public final class ReviewActionsTopComponent extends Window implements ActionsPr
         }
 
         public void actionPerformed(ActionEvent e) {
-            EventQueue.invokeLater(new Runnable() {
-                public void run() {
-                    screen.setShowFilters(viewFiltersButton.isSelected());
-                    showHideFilters();
-                }
+            EventQueue.invokeLater(() -> {
+                screen.setShowFilters(viewFiltersButton.isSelected());
+                showHideFilters();
             });
         }
     }
@@ -370,16 +361,14 @@ public final class ReviewActionsTopComponent extends Window implements ActionsPr
             putValue(SHORT_DESCRIPTION, NbBundle.getMessage(getClass(), "CTL_EditFiltersAction"));
         }
         public void actionPerformed(final ActionEvent e) {
-            EventQueue.invokeLater(new Runnable() {
-                public void run() {
-                    FiltersDialog dialog = new FiltersDialog(screen);
-                    dialog.setLocationRelativeTo((Component) e.getSource());
-                    int result = dialog.showDialog();
-                    if (result == JOptionPane.OK_OPTION) {
-                        panel.refresh();
-                        splitPane.setTopComponent(filters.getPanel(true));
-                        showHideFilters();
-                    }
+            EventQueue.invokeLater(() -> {
+                FiltersDialog dialog = new FiltersDialog(screen);
+                dialog.setLocationRelativeTo((Component) e.getSource());
+                int result = dialog.showDialog();
+                if (result == JOptionPane.OK_OPTION) {
+                    panel.refresh();
+                    splitPane.setTopComponent(filters.getPanel(true));
+                    showHideFilters();
                 }
             });
         }
@@ -391,15 +380,13 @@ public final class ReviewActionsTopComponent extends Window implements ActionsPr
             putValue(SHORT_DESCRIPTION, NbBundle.getMessage(getClass(), "CTL_EditColumnsAction"));
         }
         public void actionPerformed(final ActionEvent e) {
-            EventQueue.invokeLater(new Runnable() {
-                public void run() {
-                    ColumnsDialog dialog = new ColumnsDialog(screen);
-                    dialog.setLocationRelativeTo((Component) e.getSource());
-                    dialog.setVisible(true);
-                    panel.refreshColumns();
-                    panel.validate();
-                    panel.repaint();
-                }
+            EventQueue.invokeLater(() -> {
+                ColumnsDialog dialog = new ColumnsDialog(screen);
+                dialog.setLocationRelativeTo((Component) e.getSource());
+                dialog.setVisible(true);
+                panel.refreshColumns();
+                panel.validate();
+                panel.repaint();
             });
         }
     }
@@ -410,13 +397,11 @@ public final class ReviewActionsTopComponent extends Window implements ActionsPr
             putValue(SHORT_DESCRIPTION, NbBundle.getMessage(getClass(), "CTL_PDFAction"));
         }
         public void actionPerformed(final ActionEvent e) {
-            EventQueue.invokeLater(new Runnable() {
-                public void run() {
-                    try {
-                        printPDF();
-                    } catch (Exception ex) {
-                        ex.printStackTrace();
-                    }
+            EventQueue.invokeLater(() -> {
+                try {
+                    printPDF();
+                } catch (Exception ex) {
+                    ex.printStackTrace();
                 }
             });
         }
@@ -593,10 +578,8 @@ public final class ReviewActionsTopComponent extends Window implements ActionsPr
         }
 
         private void doAction() {
-            EventQueue.invokeLater(new Runnable() {
-                public void run() {
-                    showHideFilters();
-                }
+            EventQueue.invokeLater(() -> {
+                showHideFilters();
             });
         }
 
@@ -615,17 +598,15 @@ public final class ReviewActionsTopComponent extends Window implements ActionsPr
     }
 
     public void provide(final List<Action> actions) {
-        EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                Collection collection = new Vector();
-                collection.add(panel);
-                if (actions != null) {
-                    for (Action action : actions) {
-                        collection.add(new ActionNode(action));
-                    }
+        EventQueue.invokeLater(() -> {
+            Collection collection = new Vector();
+            collection.add(panel);
+            if (actions != null) {
+                for (Action action : actions) {
+                    collection.add(new ActionNode(action));
                 }
-                content.set(collection, null);
             }
+            content.set(collection, null);
         });
     }
 }

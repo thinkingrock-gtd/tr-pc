@@ -65,21 +65,15 @@ public class GoalChooserDialog extends JDialog {
     private void construct() {
         setTitle(NbBundle.getMessage(getClass(), "title"));
 
-        ActionListener cancelListener = new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                cancel();
-            }
+        ActionListener cancelListener = (ActionEvent e) -> {
+            cancel();
         };
 
         cancelButton = new JButton(NbBundle.getMessage(getClass(), "cancel"));
         cancelButton.addActionListener(cancelListener);
 
-        ActionListener selectListener = new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                select();
-            }
+        ActionListener selectListener = (ActionEvent e) -> {
+            select();
         };
         
         selectButton = new JButton(NbBundle.getMessage(getClass(), "select"));

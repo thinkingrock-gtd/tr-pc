@@ -234,14 +234,11 @@ public class ProjectChildren extends Children.Keys implements Observer, ChangeLi
             fireChangeEvent(new ChangeEvent(IndexImpl.this));
 
             // reselect previously selected nodes
-            EventQueue.invokeLater(new Runnable() {
-
-                public void run() {
-                    try {
-                        explorerManager.setSelectedNodes(selectedNodes);
-                    } catch (Exception ex) {
-                        LOG.info("Node selection failed. " + ex.getMessage());
-                    }
+            EventQueue.invokeLater(() -> {
+                try {
+                    explorerManager.setSelectedNodes(selectedNodes);
+                } catch (Exception ex) {
+                    LOG.info("Node selection failed. " + ex.getMessage());
                 }
             });
         }

@@ -61,17 +61,14 @@ public class ActorsComboBox extends TRComboBox implements ActionListener {
         setMaximumRowCount(Constants.COMBO_MAX_ROWS);
         setToolTipText(NbBundle.getMessage(getClass(), "TTT_ActorsComboBox"));
         setEditable(true);
-        addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                Object selection = getSelectedItem();
-                if (selection == null) {
-                    firePropertyChange(PROP_SELECTED, null, null);
-                } else if ((selection instanceof String) && (e.getActionCommand().equals("comboBoxEdited"))) {
-                    handleEdit((String) selection);
-                } else if (selection instanceof Actor) {
-                    handleSelection((Actor) selection);
-                }
+        addActionListener((ActionEvent e) -> {
+            Object selection = getSelectedItem();
+            if (selection == null) {
+                firePropertyChange(PROP_SELECTED, null, null);
+            } else if ((selection instanceof String) && (e.getActionCommand().equals("comboBoxEdited"))) {
+                handleEdit((String) selection);
+            } else if (selection instanceof Actor) {
+                handleSelection((Actor) selection);
             }
         });
         textfield = (JTextComponent)getEditor().getEditorComponent();

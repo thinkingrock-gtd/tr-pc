@@ -24,7 +24,6 @@ import java.util.logging.Logger;
 import org.openide.util.HelpCtx;
 import org.openide.util.Lookup;
 import org.openide.util.LookupEvent;
-import org.openide.util.LookupListener;
 import org.openide.util.NbBundle;
 import org.openide.util.actions.CallableSystemAction;
 import org.openide.windows.Mode;
@@ -49,11 +48,9 @@ public class FuturesAction extends CallableSystemAction implements InitialAction
     public FuturesAction() {
         super();
         enableDisable();
-        Lookup.Result r = DataLookup.instance().lookup(new Lookup.Template(Data.class));
-        r.addLookupListener(new LookupListener() {
-            public void resultChanged(LookupEvent lookupEvent) {
-                enableDisable();
-            }
+        Lookup.Result r = DataLookup.instance().lookupResult(Data.class);
+        r.addLookupListener((LookupEvent lookupEvent) -> {
+            enableDisable();
         });
     }
 
@@ -64,8 +61,8 @@ public class FuturesAction extends CallableSystemAction implements InitialAction
     @Override
     protected String iconResource() {
         return Resource.SomedayMaybes;
-    }        
-    
+    }
+
     private void enableDisable() {
         Data data = (Data) DataLookup.instance().lookup(Data.class);
         setEnabled(data != null);
@@ -78,33 +75,30 @@ public class FuturesAction extends CallableSystemAction implements InitialAction
 
     @Override
     public void performAction() {
-        EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                WindowUtils.closeWindows();
+        EventQueue.invokeLater(() -> {
+            WindowUtils.closeWindows();
 
-                TopComponent tcFutures = SomedaysTopComponent.findInstance();
-                TopComponent tcFuture = SomedayTopComponent.findInstance();
+            TopComponent tcFutures = SomedaysTopComponent.findInstance();
+            TopComponent tcFuture = SomedayTopComponent.findInstance();
 
-                Mode mode = WindowManager.getDefault().findMode("futures");
-                if (mode == null) {
-                    LOG.severe("Futures mode was not found.");
-                } else {
-                    mode.dockInto(tcFutures);
-                }
-
-                mode = WindowManager.getDefault().findMode("future");
-                if (mode == null) {
-                    LOG.severe("Future mode was not found.");
-                } else {
-                    mode.dockInto(tcFuture);
-                }
-
-                tcFutures.open();
-                tcFuture.open();
-
-                tcFutures.requestActive();
-
+            Mode mode = WindowManager.getDefault().findMode("futures");
+            if (mode == null) {
+                LOG.severe("Futures mode was not found.");
+            } else {
+                mode.dockInto(tcFutures);
             }
+
+            mode = WindowManager.getDefault().findMode("future");
+            if (mode == null) {
+                LOG.severe("Future mode was not found.");
+            } else {
+                mode.dockInto(tcFuture);
+            }
+
+            tcFutures.open();
+            tcFuture.open();
+
+            tcFutures.requestActive();
         });
     }
 

@@ -29,7 +29,6 @@ import java.awt.event.ActionListener;
 import java.awt.event.FocusAdapter;
 import java.awt.event.FocusEvent;
 import java.awt.event.ItemEvent;
-import java.awt.event.ItemListener;
 import java.io.File;
 import java.io.IOException;
 import javax.swing.*;
@@ -192,20 +191,14 @@ final class SyncPrefsPanel extends JPanel {
     
     private JComponent getView() {
         syncCheckBox = new JCheckBox(Resources.getText("sync.android"));
-        syncCheckBox.addItemListener(new ItemListener() {
-            @Override
-            public void itemStateChanged(ItemEvent e) {
-                changed();                
-            }
+        syncCheckBox.addItemListener((ItemEvent e) -> {
+            changed();
         });        
 
         // DropBox
         dbxCheckBox = new JCheckBox(Resources.getText("dbx.use"));
-        dbxCheckBox.addItemListener(new ItemListener() {
-            @Override
-            public void itemStateChanged(ItemEvent e) {
-                changed();                
-            }
+        dbxCheckBox.addItemListener((ItemEvent e) -> {
+            changed();
         });                
         dbxPathLabel = new JLabel(Resources.getText("dbx.path"));
         dbxPathField = new JTextField();
@@ -217,11 +210,8 @@ final class SyncPrefsPanel extends JPanel {
         
         
         wifiCheckBox = new JCheckBox(Resources.getText("wifi.use"));
-        wifiCheckBox.addItemListener(new ItemListener() {
-            @Override
-            public void itemStateChanged(ItemEvent e) {
-                changed();                
-            }
+        wifiCheckBox.addItemListener((ItemEvent e) -> {
+            changed();
         });                
         wifiPortLabel = new JLabel(Resources.getText("wifi.port"));
         wifiPortSpinner = new JSpinner(getPortNumberModel(PORT_WIFI_DEFAULT));
@@ -229,11 +219,8 @@ final class SyncPrefsPanel extends JPanel {
         wifiPortSpinner.setEditor(new JSpinner.NumberEditor(wifiPortSpinner, "#"));
         
         usbCheckBox = new JCheckBox(Resources.getText("usb.use"));
-        usbCheckBox.addItemListener(new ItemListener() {
-            @Override
-            public void itemStateChanged(ItemEvent e) {
-                changed();                
-            }
+        usbCheckBox.addItemListener((ItemEvent e) -> {
+            changed();
         });        
         
         usbPortLabel = new JLabel(Resources.getText("usb.port"));
