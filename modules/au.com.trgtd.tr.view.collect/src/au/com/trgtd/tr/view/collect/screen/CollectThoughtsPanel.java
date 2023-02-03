@@ -272,12 +272,10 @@ public class CollectThoughtsPanel extends JPanel {
         if (row < 0 || row >= table.getRowCount()) {
             return;
         }
-        SwingUtilities.invokeLater(new Runnable() {
-            public void run() {
-                table.requestFocusInWindow();
-                table.changeSelection(row, 0, false, false);
-                table.scrollRowToVisible(row);
-            }
+        SwingUtilities.invokeLater(() -> {
+            table.requestFocusInWindow();
+            table.changeSelection(row, 0, false, false);
+            table.scrollRowToVisible(row);
         });
     }
 

@@ -259,13 +259,11 @@ public final class ReferencesTopComponent extends Window implements ReferenceNod
     }
     
     public void provide(final Collection<ReferenceNode> nodes) {
-        EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                if (panel == null || nodes == null) {
-                    getInstanceContent().set(Collections.EMPTY_LIST, null);
-                } else {
-                    getInstanceContent().set(nodes, null);
-                }
+        EventQueue.invokeLater(() -> {
+            if (panel == null || nodes == null) {
+                getInstanceContent().set(Collections.EMPTY_LIST, null);
+            } else {
+                getInstanceContent().set(nodes, null);
             }
         });
     }

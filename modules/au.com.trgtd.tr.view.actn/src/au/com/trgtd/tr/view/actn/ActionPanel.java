@@ -246,11 +246,8 @@ public final class ActionPanel extends JPanel implements Observer {
         }
 
         // force scroll to top
-        SwingUtilities.invokeLater(new Runnable() {
-            @Override
-            public void run() {
-                scrollpane.getViewport().setViewPosition(new Point(0, 0));
-            }
+        SwingUtilities.invokeLater(() -> {
+            scrollpane.getViewport().setViewPosition(new Point(0, 0));
         });
 
 //      updating = false;
@@ -1028,40 +1025,36 @@ public final class ActionPanel extends JPanel implements Observer {
         if (action == null) {
             return;
         }
-        EventQueue.invokeLater(new Runnable() {
-
-            @Override
-            public void run() {
-                // for postpone action date
-                dueDateField.setDate(action.getDueDate());
-                startDateField.setDate(action.getStartDate());
-                if (action.isStateDelegated()) {
-                    ActionStateDelegated s = (ActionStateDelegated) action.getState();
-                    followupField.setDate(s.getDate());
-                } else if (action.isStateScheduled()) {
-                    // handle possible recurrence change to scheduled state
+        EventQueue.invokeLater(() -> {
+            // for postpone action date
+            dueDateField.setDate(action.getDueDate());
+            startDateField.setDate(action.getStartDate());
+            if (action.isStateDelegated()) {
+                ActionStateDelegated s = (ActionStateDelegated) action.getState();
+                followupField.setDate(s.getDate());
+            } else if (action.isStateScheduled()) {
+                // handle possible recurrence change to scheduled state
 ////                    if (!notesField.getText().equals(action.getNotes())) {
 ////                        notesField.setText(action.getNotes());
 ////                    }
 //                    if (!notesViewField.getText().equals(action.getNotes())) {
 //                        notesViewField.setText(action.getNotes());
 //                    }
-                    if (!successText.getText().equals(action.getSuccess())) {
-                        successText.setText(action.getSuccess());
-                    }
-                    ActionStateScheduled ass = (ActionStateScheduled) action.getState();
-                    if (ass.getDate() == null) {
-                        setDefaultScheduledFields();
-                    } else {
-                        Calendar c = Calendar.getInstance();
-                        c.setTime(ass.getDate());
-                        scheduledHourSpinner.setVal(c.get(Calendar.HOUR_OF_DAY));
-                        scheduledMinuteSpinner.setVal(c.get(Calendar.MINUTE));
-                        durationHourSpinner.setVal(ass.getDurationHours());
-                        durationMinuteSpinner.setVal(ass.getDurationMinutes());
-                        scheduledDateField.setDate(ass.getDate());
-                    }
-                }
+if (!successText.getText().equals(action.getSuccess())) {
+    successText.setText(action.getSuccess());
+}
+ActionStateScheduled ass = (ActionStateScheduled) action.getState();
+if (ass.getDate() == null) {
+    setDefaultScheduledFields();
+} else {
+    Calendar c = Calendar.getInstance();
+    c.setTime(ass.getDate());
+    scheduledHourSpinner.setVal(c.get(Calendar.HOUR_OF_DAY));
+    scheduledMinuteSpinner.setVal(c.get(Calendar.MINUTE));
+    durationHourSpinner.setVal(ass.getDurationHours());
+    durationMinuteSpinner.setVal(ass.getDurationMinutes());
+    scheduledDateField.setDate(ass.getDate());
+}
             }
         });
     }

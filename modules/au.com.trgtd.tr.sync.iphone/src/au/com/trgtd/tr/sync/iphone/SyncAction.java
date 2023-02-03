@@ -83,12 +83,9 @@ public final class SyncAction extends CallableSystemAction {
     }
 
     private void enableDisable() {
-        EventQueue.invokeLater(new Runnable() {
-            @Override
-            public void run() {
-                Data data = DataLookup.instance().lookup(Data.class);
-                setEnabled(data != null && SyncPrefs.getMethod() == SyncPrefs.SYNC_METHOD_WIFI);
-            }
+        EventQueue.invokeLater(() -> {
+            Data data = DataLookup.instance().lookup(Data.class);
+            setEnabled(data != null && SyncPrefs.getMethod() == SyncPrefs.SYNC_METHOD_WIFI);
         });
     }
 

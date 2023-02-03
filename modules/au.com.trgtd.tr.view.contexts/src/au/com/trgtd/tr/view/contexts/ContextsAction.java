@@ -57,19 +57,16 @@ public class ContextsAction extends CallableSystemAction implements InitialActio
     public String getName() {
         return NbBundle.getMessage(getClass(), "CTL_ContextsAction");
     }
-    
+
     @Override
     protected String iconResource() {
         return Resource.Context;
     }
-    
+
     private void enableDisable() {
-        EventQueue.invokeLater(new Runnable() {
-            @Override
-            public void run() {
-                Data data = (Data)DataLookup.instance().lookup(Data.class);
-                setEnabled(data != null);
-            }
+        EventQueue.invokeLater(() -> {
+            Data data = (Data) DataLookup.instance().lookup(Data.class);
+            setEnabled(data != null);
         });
     }
 
@@ -78,38 +75,37 @@ public class ContextsAction extends CallableSystemAction implements InitialActio
     public String getID() {
         return "contexts";
     }
-    
+
     @Override
     public void performAction() {
-        EventQueue.invokeLater(new Runnable() {
-            @Override
-            public void run() {
-                Data data = (Data)DataLookup.instance().lookup(Data.class);
-                if (data == null) return;
-                
-                WindowUtils.closeWindows();
-                
-                TopComponent tc = ContextsTopComponent.findInstance();
-                
-                Mode mode = WindowManager.getDefault().findMode("Setup");
-                if (mode != null) {
-                    mode.dockInto(tc);
-                }
-                
-                tc.open();
-                tc.requestActive();
+        EventQueue.invokeLater(() -> {
+            Data data = (Data) DataLookup.instance().lookup(Data.class);
+            if (data == null) {
+                return;
             }
+
+            WindowUtils.closeWindows();
+
+            TopComponent tc = ContextsTopComponent.findInstance();
+
+            Mode mode = WindowManager.getDefault().findMode("Setup");
+            if (mode != null) {
+                mode.dockInto(tc);
+            }
+
+            tc.open();
+            tc.requestActive();
         });
     }
-    
+
     @Override
     protected boolean asynchronous() {
         return false;
     }
-    
+
     @Override
     public HelpCtx getHelpCtx() {
         return new HelpCtx("tr.view.contexts");
     }
-    
+
 }

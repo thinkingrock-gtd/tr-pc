@@ -180,11 +180,8 @@ public final class ActionEditPanel extends JPanel {
         setEnabled(true);
 
         // force scroll to top
-        SwingUtilities.invokeLater(new Runnable() {
-            @Override
-            public void run() {
-                scrollpane.getViewport().setViewPosition(new Point(0, 0));
-            }
+        SwingUtilities.invokeLater(() -> {
+            scrollpane.getViewport().setViewPosition(new Point(0, 0));
         });
     }
 

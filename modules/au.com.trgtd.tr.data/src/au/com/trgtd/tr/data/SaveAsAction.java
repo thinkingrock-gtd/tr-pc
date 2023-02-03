@@ -70,12 +70,9 @@ public final class SaveAsAction extends CallableSystemAction { // implements Obs
     }
 
     private void enableDisable() {
-        EventQueue.invokeLater(new Runnable() {
-            @Override
-            public void run() {
-                Data data = (Data)DataLookup.instance().lookup(Data.class);
-                setEnabled(data != null);
-            }
+        EventQueue.invokeLater(() -> {
+            Data data = (Data)DataLookup.instance().lookup(Data.class);
+            setEnabled(data != null);
         });
     }
     

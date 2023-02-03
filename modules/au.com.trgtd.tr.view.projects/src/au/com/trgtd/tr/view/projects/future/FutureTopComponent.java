@@ -164,10 +164,8 @@ public final class FutureTopComponent extends Window
         
         initialise();
         
-        EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                activate();
-            }
+        EventQueue.invokeLater(() -> {
+            activate();
         });
     }
     
@@ -224,12 +222,10 @@ public final class FutureTopComponent extends Window
 //////        } else if (item instanceof Project) {
 //////            EditorTopComponent.findInstance().view((Project)item);
 //////        }
-        EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                Node[] nodes = manager.getSelectedNodes();
-                Node node = nodes.length > 0 ? nodes[0] : null ;
-                EditorTopComponent.findInstance().view(node);
-            }
+        EventQueue.invokeLater(() -> {
+            Node[] nodes = manager.getSelectedNodes();
+            Node node = nodes.length > 0 ? nodes[0] : null ;
+            EditorTopComponent.findInstance().view(node);
         });
     }
     

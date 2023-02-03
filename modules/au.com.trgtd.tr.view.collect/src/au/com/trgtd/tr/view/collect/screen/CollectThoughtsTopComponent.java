@@ -171,14 +171,11 @@ public final class CollectThoughtsTopComponent extends Window implements Thought
     @Override
     public void provide(final Collection thoughtNodes) {
 
-        EventQueue.invokeLater(new Runnable() {
-            @Override
-            public void run() {
-                if (panel == null || thoughtNodes == null) {
-                    getInstanceContent().set(Collections.EMPTY_LIST, null);
-                } else {
-                    getInstanceContent().set(thoughtNodes, null);
-                }
+        EventQueue.invokeLater(() -> {
+            if (panel == null || thoughtNodes == null) {
+                getInstanceContent().set(Collections.EMPTY_LIST, null);
+            } else {
+                getInstanceContent().set(thoughtNodes, null);
             }
         });
     }

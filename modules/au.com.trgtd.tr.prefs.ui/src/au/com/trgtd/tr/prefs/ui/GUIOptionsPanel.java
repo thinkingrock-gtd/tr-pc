@@ -89,10 +89,8 @@ final class GUIOptionsPanel extends JPanel {
         if (SwingUtilities.isEventDispatchThread()) {
             doLoad();
         } else {
-            SwingUtilities.invokeLater(new Runnable() {
-                public void run() {
-                    doLoad();
-                }
+            SwingUtilities.invokeLater(() -> {
+                doLoad();
             });
         }
     }

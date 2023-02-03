@@ -252,13 +252,11 @@ public final class SomedaysTopComponent extends Window implements SomedayNodePro
     }
     
     public void provide(final Collection<SomedayNode> nodes) {
-        EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                if (panel == null || nodes == null) {
-                    getInstanceContent().set(Collections.EMPTY_LIST, null);
-                } else {
-                    getInstanceContent().set(nodes, null);
-                }
+        EventQueue.invokeLater(() -> {
+            if (panel == null || nodes == null) {
+                getInstanceContent().set(Collections.EMPTY_LIST, null);
+            } else {
+                getInstanceContent().set(nodes, null);
             }
         });
     }

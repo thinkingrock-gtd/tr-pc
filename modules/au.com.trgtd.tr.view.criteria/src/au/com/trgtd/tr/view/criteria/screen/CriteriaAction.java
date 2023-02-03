@@ -34,7 +34,7 @@ import tr.model.DataLookup;
  * @author Jeremy Moore
  */
 public class CriteriaAction extends CallableSystemAction {
-    
+
     public CriteriaAction() {
         super();
         enableDisable();
@@ -46,70 +46,66 @@ public class CriteriaAction extends CallableSystemAction {
             }
         });
     }
-    
+
     @Override
     protected String iconResource() {
         return Resource.Criteria;
     }
-    
+
     @Override
     public String getName() {
         return NbBundle.getMessage(getClass(), "CTL_CriteriaAction");
     }
-    
+
     private void enableDisable() {
-        EventQueue.invokeLater(new Runnable() {
-            @Override
-            public void run() {
-                Data data = DataLookup.instance().lookup(Data.class);
-                setEnabled(data != null);
-            }
+        EventQueue.invokeLater(() -> {
+            Data data = DataLookup.instance().lookup(Data.class);
+            setEnabled(data != null);
         });
     }
-    
+
     /** Gets the action identifier. */
     public String getID() {
         return "criteria";
     }
-    
+
     @Override
     public void performAction() {
-        EventQueue.invokeLater(new Runnable() {
-            @Override
-            public void run() {
-                Data data = DataLookup.instance().lookup(Data.class);
-                if (data == null) return;
-                
-                WindowUtils.closeWindows();
-                
-                TopComponent tc1 = TimesTopComponent.findInstance();
-                TopComponent tc2 = EnergiesTopComponent.findInstance();
-                TopComponent tc3 = PrioritiesTopComponent.findInstance();
-                
-                Mode mode = WindowManager.getDefault().findMode("Setup");
-                if (mode != null) {
-                    mode.dockInto(tc1);
-                    mode.dockInto(tc2);
-                    mode.dockInto(tc3);
-                }
-                
-                tc1.open();
-                tc2.open();
-                tc3.open();
-                
-                tc1.requestActive();
+        EventQueue.invokeLater(() -> {
+            Data data = DataLookup.instance().lookup(Data.class);
+            if (data == null) {
+                return;
             }
+
+            WindowUtils.closeWindows();
+
+            TopComponent tc1 = TimesTopComponent.findInstance();
+            TopComponent tc2 = EnergiesTopComponent.findInstance();
+            TopComponent tc3 = PrioritiesTopComponent.findInstance();
+
+            Mode mode = WindowManager.getDefault().findMode("Setup");
+            if (mode != null) {
+                mode.dockInto(tc1);
+                mode.dockInto(tc2);
+                mode.dockInto(tc3);
+            }
+
+            tc1.open();
+            tc2.open();
+            tc3.open();
+
+            tc1.requestActive();
         });
     }
-    
+
     @Override
     protected boolean asynchronous() {
         return false;
     }
-    
+
     @Override
     public HelpCtx getHelpCtx() {
         return new HelpCtx("tr.view.criteria");
     }
-    
+
 }

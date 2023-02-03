@@ -778,11 +778,8 @@ public final class ProcessPanel extends JPanel implements Observer, ProcessCooki
     private void changedStatus() {
         StatusEnum status = (StatusEnum) statusCombo.getSelectedItem();
         if (status == null) {
-            SwingUtilities.invokeLater(new Runnable() {
-                @Override
-                public void run() {
-                    statusCombo.setSelectedItem(StatusEnum.DO_ASAP);
-                }
+            SwingUtilities.invokeLater(() -> {
+                statusCombo.setSelectedItem(StatusEnum.DO_ASAP);
             });
             setStatusDoASAP();
             return;

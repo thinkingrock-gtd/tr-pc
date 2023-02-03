@@ -70,25 +70,23 @@ public class CollectThoughtsAction extends CallableSystemAction implements Initi
     }
 
     public void performAction() {
-        EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                Data data = (Data) DataLookup.instance().lookup(Data.class);
-                if (data == null) {
-                    return;
-                }
-                
-                WindowUtils.closeWindows();
-
-                TopComponent tc = CollectThoughtsTopComponent.findInstance();
-
-                Mode mode = WindowManager.getDefault().findMode("CollectThoughts");
-                if (mode != null) {
-                    mode.dockInto(tc);
-                }
-
-                tc.open();
-                tc.requestActive();
+        EventQueue.invokeLater(() -> {
+            Data data = (Data) DataLookup.instance().lookup(Data.class);
+            if (data == null) {
+                return;
             }
+
+            WindowUtils.closeWindows();
+
+            TopComponent tc = CollectThoughtsTopComponent.findInstance();
+
+            Mode mode = WindowManager.getDefault().findMode("CollectThoughts");
+            if (mode != null) {
+                mode.dockInto(tc);
+            }
+
+            tc.open();
+            tc.requestActive();
         });
     }
 

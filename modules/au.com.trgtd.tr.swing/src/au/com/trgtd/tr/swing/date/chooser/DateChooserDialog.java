@@ -674,10 +674,8 @@ public class DateChooserDialog extends JDialog implements ItemListener, MouseLis
         month.setSelectedIndex(_month - Calendar.JANUARY);
 
         if (getSelectedDay() != _day) {
-            SwingUtilities.invokeLater(new Runnable() {
-                public void run() {
-                    setSelected(_day);
-                }
+            SwingUtilities.invokeLater(() -> {
+                setSelected(_day);
             });
         }
 

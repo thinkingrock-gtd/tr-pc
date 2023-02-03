@@ -51,15 +51,12 @@ public class ExtractCleanInstall extends ModuleInstall {
      */
     @Override
     public void restored() {
-        SwingUtilities.invokeLater(new Runnable() {
+        SwingUtilities.invokeLater(() -> {
+            log.finest("Begin");
 
-            public void run() {
-                log.finest("Begin");
+            checkCleanup();
 
-                checkCleanup();
-
-                log.finest("End");
-            }
+            log.finest("End");
         });
     }
 

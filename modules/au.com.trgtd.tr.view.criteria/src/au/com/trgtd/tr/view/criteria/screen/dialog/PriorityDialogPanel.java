@@ -40,11 +40,8 @@ public class PriorityDialogPanel extends JPanel {
         titleField.addKeyListener(new KeyAdapter() {
             @Override
             public void keyTyped(KeyEvent ke) {
-                SwingUtilities.invokeLater(new Runnable() {
-                    @Override
-                    public void run() {
-                        validation();
-                    }
+                SwingUtilities.invokeLater(() -> {
+                    validation();
                 });
             }
         });

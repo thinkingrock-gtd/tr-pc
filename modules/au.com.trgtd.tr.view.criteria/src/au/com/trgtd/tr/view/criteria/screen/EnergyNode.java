@@ -152,11 +152,8 @@ final class EnergyNode extends AbstractNode implements EditCookie, Observer {
             return;
         }
         if (CriteriaUtils.instance().isUsedEnergy(data, value)) {
-            SwingUtilities.invokeLater(new Runnable() {
-                @Override
-                public void run() {
-                    deleteWithReplace(data);
-                }
+            SwingUtilities.invokeLater(() -> {
+                deleteWithReplace(data);
             });
         } else {
             data.getEnergyCriterion().values.remove(value);

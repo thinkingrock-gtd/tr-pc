@@ -57,12 +57,9 @@ public final class MonthAction extends CallableSystemAction implements InitialAc
     }
 
     private void enableDisable() {
-        EventQueue.invokeLater(new Runnable() {
-            @Override
-            public void run() {
-                Data data = DataLookup.instance().lookup(Data.class);
-                setEnabled(data != null);
-            }
+        EventQueue.invokeLater(() -> {
+            Data data = DataLookup.instance().lookup(Data.class);
+            setEnabled(data != null);
         });
     }
 
@@ -74,21 +71,18 @@ public final class MonthAction extends CallableSystemAction implements InitialAc
 
     @Override
     public void performAction() {
-        EventQueue.invokeLater(new Runnable() {
-            @Override
-            public void run() {
-                TopComponent tc = WindowManager.getDefault().findTopComponent("MonthTopComponent");
-                if (null == tc) {
-                    tc = new MonthTopComponent();
-                }
-                WindowUtils.closeWindows();
-                Mode mode = WindowManager.getDefault().findMode("editor");
-                if (mode != null) {
-                    mode.dockInto(tc);
-                }
-                tc.open();
-                tc.requestActive();
+        EventQueue.invokeLater(() -> {
+            TopComponent tc = WindowManager.getDefault().findTopComponent("MonthTopComponent");
+            if (null == tc) {
+                tc = new MonthTopComponent();
             }
+            WindowUtils.closeWindows();
+            Mode mode = WindowManager.getDefault().findMode("editor");
+            if (mode != null) {
+                mode.dockInto(tc);
+            }
+            tc.open();
+            tc.requestActive();
         });
     }
 

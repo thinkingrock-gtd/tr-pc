@@ -84,11 +84,8 @@ final class DatesOptionsPanel extends JPanel {
         if (SwingUtilities.isEventDispatchThread()) {
             doLoad();
         } else {
-            SwingUtilities.invokeLater(new Runnable() {
-                @Override
-                public void run() {
-                    doLoad();
-                }
+            SwingUtilities.invokeLater(() -> {
+                doLoad();
             });
         }
     }

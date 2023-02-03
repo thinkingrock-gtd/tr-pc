@@ -70,25 +70,22 @@ public class Installer extends ModuleInstall {
         }
         
         final String path = (ds == null || !ds.isLoaded()) ? "" : ds.getPath();
-        
-        EventQueue.invokeLater(new Runnable() {
-            @Override
-            public void run() {
-                WindowManager.getDefault().getMainWindow().addWindowListener(new WindowAdapter() {
-                    @Override
-                    public void windowOpened(WindowEvent e) {
-                        super.windowOpened(e);
-                        
-                        ((Frame)e.getSource()).setTitle(Constants.TITLE + " " + path); // No I18N
-                        
-                        if (path.equals("")) { // No I18N
-                            WindowUtils.openOverviewWindow();
-                        } else {
-                            WindowUtils.openInitialWindow();
-                        }
+
+        EventQueue.invokeLater(() -> {
+            WindowManager.getDefault().getMainWindow().addWindowListener(new WindowAdapter() {
+                @Override
+                public void windowOpened(WindowEvent e) {
+                    super.windowOpened(e);
+
+                    ((Frame) e.getSource()).setTitle(Constants.TITLE + " " + path); // No I18N
+
+                    if (path.equals("")) { // No I18N
+                        WindowUtils.openOverviewWindow();
+                    } else {
+                        WindowUtils.openInitialWindow();
                     }
-                });
-            }
+                }
+            });
         });
     }
     

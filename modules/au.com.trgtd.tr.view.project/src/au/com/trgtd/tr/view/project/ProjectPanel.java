@@ -524,11 +524,8 @@ public final class ProjectPanel extends JPanel { // implements Observer {
         }
 
         // scroll to top
-        SwingUtilities.invokeLater(new Runnable() {
-            public void run() {
-                scrollpane.getViewport().setViewPosition(new Point(0,0));
-            }
-
+        SwingUtilities.invokeLater(() -> {
+            scrollpane.getViewport().setViewPosition(new Point(0,0));
         });
 
         updating = false;

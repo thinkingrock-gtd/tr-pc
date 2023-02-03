@@ -269,11 +269,8 @@ public class ProjectGoalPanel extends JScrollPane {
         endDate.setText(format(goalCtrl.getEndDate()));
         
         // force scroll to top
-        SwingUtilities.invokeLater(new Runnable() {
-            @Override
-            public void run() {
-                getViewport().setViewPosition(new Point(0, 0));
-            }
+        SwingUtilities.invokeLater(() -> {
+            getViewport().setViewPosition(new Point(0, 0));
         });
     }
 

@@ -199,13 +199,11 @@ public final class TopicsTopComponent extends Window implements TopicNodeProvide
     }
     
     public void provide(final Collection<TopicNode> topicNodes) {
-        EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                if (panel == null || topicNodes == null) {
-                    getInstanceContent().set(Collections.EMPTY_LIST, null);
-                } else {
-                    getInstanceContent().set(topicNodes, null);
-                }
+        EventQueue.invokeLater(() -> {
+            if (panel == null || topicNodes == null) {
+                getInstanceContent().set(Collections.EMPTY_LIST, null);
+            } else {
+                getInstanceContent().set(topicNodes, null);
             }
         });
     }

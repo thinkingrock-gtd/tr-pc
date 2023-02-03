@@ -102,70 +102,66 @@ public class RAAction extends CallableSystemAction implements InitialAction {
      */
     @Override
     public void performAction() {
-        EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                Data data = (Data) DataLookup.instance().lookup(Data.class);
-                if (data == null) {
-                    return;
-                }
-                WindowUtils.closeWindows();
+        EventQueue.invokeLater(() -> {
+            Data data = (Data) DataLookup.instance().lookup(Data.class);
+            if (data == null) {
+                return;
+            }
+            WindowUtils.closeWindows();
 
-                Mode mode = WindowManager.getDefault().findMode("ra-actions");
-                if (mode == null) {
-                    LOG.severe("Mode ra-actions was not found.");
-                    return;
-                }
-
-
+            Mode mode = WindowManager.getDefault().findMode("ra-actions");
+            if (mode == null) {
+                LOG.severe("Mode ra-actions was not found.");
+                return;
+            }
 
 //              boolean first = true;
-                TopComponent tcActions1 = null;
+            TopComponent tcActions1 = null;
 
-                List<ActionsScreen> screens = ScreensDAOProvider.instance().provide().getData().getScreens().list();
-                for (ActionsScreen s : screens) {
-                    TopComponent tc = ReviewActionsTopComponent.createInstance(s);
-                    mode.dockInto(tc);
-                    tc.open();
+            List<ActionsScreen> screens = ScreensDAOProvider.instance().provide().getData().getScreens().list();
+            for (ActionsScreen s : screens) {
+                TopComponent tc = ReviewActionsTopComponent.createInstance(s);
+                mode.dockInto(tc);
+                tc.open();
 //                  if (first) {
 //                        tc.requestActive();
 //                        first = false;
 //                    }
-                    if (tcActions1 == null) {
-                        tcActions1 = tc;
+                if (tcActions1 == null) {
+                    tcActions1 = tc;
 
-                    }
                 }
+            }
 
-                ProjectsTreeTopComponent tcProjects = RAProjectsTreeTopComponent.findInstance();
-                ProjectsTreeLookup.register(tcProjects);
+            ProjectsTreeTopComponent tcProjects = RAProjectsTreeTopComponent.findInstance();
+            ProjectsTreeLookup.register(tcProjects);
 
-                SingleActionsTopComponent tcSingleActions = RASingleActionsTopComponent.findInstance();
-                SingleActionsLookup.register(tcSingleActions);
+            SingleActionsTopComponent tcSingleActions = RASingleActionsTopComponent.findInstance();
+            SingleActionsLookup.register(tcSingleActions);
 
-                TopComponent tcEditor = EditorTopComponent.findInstance();
+            TopComponent tcEditor = EditorTopComponent.findInstance();
 
-                mode = WindowManager.getDefault().findMode("ra-projects");
-                if (mode == null) {
-                    LOG.severe("Mode ra-projects was not found.");
-                } else {
-                    mode.dockInto(tcProjects);
-                    mode.dockInto(tcSingleActions);
-                }
-                mode = WindowManager.getDefault().findMode("ra-editor");
-                if (mode == null) {
-                    LOG.severe("Mode ra-editor was not found.");
-                } else {
-                    mode.dockInto(tcEditor);
-                }
+            mode = WindowManager.getDefault().findMode("ra-projects");
+            if (mode == null) {
+                LOG.severe("Mode ra-projects was not found.");
+            } else {
+                mode.dockInto(tcProjects);
+                mode.dockInto(tcSingleActions);
+            }
+            mode = WindowManager.getDefault().findMode("ra-editor");
+            if (mode == null) {
+                LOG.severe("Mode ra-editor was not found.");
+            } else {
+                mode.dockInto(tcEditor);
+            }
 
-                tcProjects.open();
-                tcSingleActions.open();
-                tcEditor.open();
+            tcProjects.open();
+            tcSingleActions.open();
+            tcEditor.open();
 
-                if (tcActions1 != null) {
-                    tcActions1.requestActive();
-                    tcActions1.requestVisible();
-                }
+            if (tcActions1 != null) {
+                tcActions1.requestActive();
+                tcActions1.requestVisible();
             }
         });
     }
@@ -173,8 +169,8 @@ public class RAAction extends CallableSystemAction implements InitialAction {
     @Override
     protected boolean asynchronous() {
         return false;
-    }    
-    
+    }
+
     @Override
     public HelpCtx getHelpCtx() {
         return new HelpCtx("prefs.actions.screens");

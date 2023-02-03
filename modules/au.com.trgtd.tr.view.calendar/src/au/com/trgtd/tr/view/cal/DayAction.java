@@ -57,12 +57,9 @@ public final class DayAction extends CallableSystemAction implements InitialActi
     }
 
     private void enableDisable() {
-        EventQueue.invokeLater(new Runnable() {
-            @Override
-            public void run() {
-                Data data = DataLookup.instance().lookup(Data.class);
-                setEnabled(data != null);
-            }
+        EventQueue.invokeLater(() -> {
+            Data data = DataLookup.instance().lookup(Data.class);
+            setEnabled(data != null);
         });
     }
 
@@ -74,21 +71,18 @@ public final class DayAction extends CallableSystemAction implements InitialActi
 
     @Override
     public void performAction() {
-        EventQueue.invokeLater(new Runnable() {
-            @Override
-            public void run() {
-                TopComponent tc = WindowManager.getDefault().findTopComponent("DayTopComponent");
-                if (null == tc) {
-                    tc = new DayTopComponent();
-                }
-                WindowUtils.closeWindows();
-                Mode mode = WindowManager.getDefault().findMode("editor");
-                if (mode != null) {
-                    mode.dockInto(tc);
-                }
-                tc.open();
-                tc.requestActive();
+        EventQueue.invokeLater(() -> {
+            TopComponent tc = WindowManager.getDefault().findTopComponent("DayTopComponent");
+            if (null == tc) {
+                tc = new DayTopComponent();
             }
+            WindowUtils.closeWindows();
+            Mode mode = WindowManager.getDefault().findMode("editor");
+            if (mode != null) {
+                mode.dockInto(tc);
+            }
+            tc.open();
+            tc.requestActive();
         });
     }
 
@@ -101,6 +95,4 @@ public final class DayAction extends CallableSystemAction implements InitialActi
     public HelpCtx getHelpCtx() {
         return new HelpCtx("tr.view.calendar");
     }
-
-
 }

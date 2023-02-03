@@ -81,51 +81,48 @@ public class ProjectsAction extends CallableSystemAction implements InitialActio
 
     @Override
     public void performAction() {
-        EventQueue.invokeLater(new Runnable() {
-            @Override
-            public void run() {
-                Data data = (Data) DataLookup.instance().lookup(Data.class);
-                if (data == null) {
-                    return;
-                }
-                WindowUtils.closeWindows();
-
-                ProjectsTreeTopComponent tcProjects = ProjectsTreeTopComponent.findInstance();
-                ProjectsTreeLookup.register(tcProjects);
-
-                SingleActionsTopComponent tcSingleActions = SingleActionsTopComponent.findInstance();
-                SingleActionsLookup.register(tcSingleActions);
-
-                TopComponent tcFuture = FutureTopComponent.findInstance();
-                TopComponent tcTemplates = TemplatesTopComponent.findInstance();
-                TopComponent tcEdit = EditorTopComponent.findInstance();
-
-                Mode mode = WindowManager.getDefault().findMode("projects-tree");
-                if (mode == null) {
-                    LOG.severe("Mode projects-tree was not found.");
-                } else {
-                    mode.dockInto(tcProjects);
-                    mode.dockInto(tcSingleActions);
-                    mode.dockInto(tcFuture);
-                    mode.dockInto(tcTemplates);
-                }
-
-                mode = WindowManager.getDefault().findMode("projects-editor");
-                if (mode == null) {
-                    LOG.severe("Mode projects-editor was not found.");
-                } else {
-                    mode.dockInto(tcEdit);
-                    tcEdit.open();
-                }
-
-                tcProjects.open();
-                tcSingleActions.open();
-                tcFuture.open();
-                tcTemplates.open();
-                tcEdit.open();
-
-                tcProjects.requestActive();
+        EventQueue.invokeLater(() -> {
+            Data data = (Data) DataLookup.instance().lookup(Data.class);
+            if (data == null) {
+                return;
             }
+            WindowUtils.closeWindows();
+
+            ProjectsTreeTopComponent tcProjects = ProjectsTreeTopComponent.findInstance();
+            ProjectsTreeLookup.register(tcProjects);
+
+            SingleActionsTopComponent tcSingleActions = SingleActionsTopComponent.findInstance();
+            SingleActionsLookup.register(tcSingleActions);
+
+            TopComponent tcFuture = FutureTopComponent.findInstance();
+            TopComponent tcTemplates = TemplatesTopComponent.findInstance();
+            TopComponent tcEdit = EditorTopComponent.findInstance();
+
+            Mode mode = WindowManager.getDefault().findMode("projects-tree");
+            if (mode == null) {
+                LOG.severe("Mode projects-tree was not found.");
+            } else {
+                mode.dockInto(tcProjects);
+                mode.dockInto(tcSingleActions);
+                mode.dockInto(tcFuture);
+                mode.dockInto(tcTemplates);
+            }
+
+            mode = WindowManager.getDefault().findMode("projects-editor");
+            if (mode == null) {
+                LOG.severe("Mode projects-editor was not found.");
+            } else {
+                mode.dockInto(tcEdit);
+                tcEdit.open();
+            }
+
+            tcProjects.open();
+            tcSingleActions.open();
+            tcFuture.open();
+            tcTemplates.open();
+            tcEdit.open();
+
+            tcProjects.requestActive();
         });
     }
 

@@ -420,20 +420,16 @@ public final class EditorTopComponent extends Window implements Lookup.Provider 
 
     private void refreshIcon(final Action action) {
         if (action != null) {
-            EventQueue.invokeLater(new Runnable() {
-                public void run() {
-                    setIcon(action.getIcon(false).getImage());
-                }
+            EventQueue.invokeLater(() -> {
+                setIcon(action.getIcon(false).getImage());
             });
         }
     }
 
     private void refreshIcon(final GoalCtrl goal) {
         if (goal != null) {
-            EventQueue.invokeLater(new Runnable() {
-                public void run() {
-                    setIcon(goal.getLevel().getGoalsIcon().icon.getImage());
-                }
+            EventQueue.invokeLater(() -> {
+                setIcon(goal.getLevel().getGoalsIcon().icon.getImage());
             });
         }
     }

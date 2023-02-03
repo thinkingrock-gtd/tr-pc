@@ -130,10 +130,8 @@ class RefViewerPanel extends JPanel {
             topicField.setOpaque(!ref.getTopic().getBackground().equals(Color.WHITE));
             notesField.setNotable(ref);
             // scroll notes to top
-            SwingUtilities.invokeLater(new Runnable() {
-                public void run() {
-                    notesPanel.getViewport().setViewPosition(new Point(0, 0));
-                }
+            SwingUtilities.invokeLater(() -> {
+                notesPanel.getViewport().setViewPosition(new Point(0, 0));
             });
         }
     }

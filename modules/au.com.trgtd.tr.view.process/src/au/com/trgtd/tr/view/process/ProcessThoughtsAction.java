@@ -77,26 +77,23 @@ public class ProcessThoughtsAction extends CallableSystemAction implements Initi
 
     @Override
     public void performAction() {
-        EventQueue.invokeLater(new Runnable() {
-            @Override
-            public void run() {        
-                Data data = (Data) DataLookup.instance().lookup(Data.class);
-                if (data == null) {
-                    return;
-                }
-
-                WindowUtils.closeWindows();
-
-                TopComponent tc = ProcessTopComponent.findInstance();
-
-                Mode mode = WindowManager.getDefault().findMode("process");
-                if (mode != null) {
-                    mode.dockInto(tc);
-                }
-
-                tc.open();
-                tc.requestActive();
+        EventQueue.invokeLater(() -> {
+            Data data = (Data) DataLookup.instance().lookup(Data.class);
+            if (data == null) {
+                return;
             }
+
+            WindowUtils.closeWindows();
+
+            TopComponent tc = ProcessTopComponent.findInstance();
+
+            Mode mode = WindowManager.getDefault().findMode("process");
+            if (mode != null) {
+                mode.dockInto(tc);
+            }
+
+            tc.open();
+            tc.requestActive();
         });
     }
 
@@ -116,5 +113,3 @@ public class ProcessThoughtsAction extends CallableSystemAction implements Initi
     }
 
 }
-
-

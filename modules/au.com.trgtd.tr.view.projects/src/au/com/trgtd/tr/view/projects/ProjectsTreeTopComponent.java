@@ -203,19 +203,15 @@ public class ProjectsTreeTopComponent extends TopComponent
             }
         } else if (selectedNodes[0] instanceof ProjectNode) {
             final ProjectNode projectNode = (ProjectNode) selectedNodes[0];
-            EventQueue.invokeLater(new Runnable() {
-                public void run() {
-                    EditorTopComponent.findInstance().view(projectNode);
-                    takeFocus();
-                }
+            EventQueue.invokeLater(() -> {
+                EditorTopComponent.findInstance().view(projectNode);
+                takeFocus();
             });
         } else if (selectedNodes[0] instanceof ActionNode) {
             final ActionNode actionNode = (ActionNode) selectedNodes[0];
-            EventQueue.invokeLater(new Runnable() {
-                public void run() {
-                    EditorTopComponent.findInstance().view(actionNode);
-                    takeFocus();
-                }
+            EventQueue.invokeLater(() -> {
+                EditorTopComponent.findInstance().view(actionNode);
+                takeFocus();
             });
         }
     }
@@ -234,12 +230,10 @@ public class ProjectsTreeTopComponent extends TopComponent
      * project or action node.
      */
     public void resultChanged(LookupEvent lookupEvent) {
-        EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                Node[] nodes = manager.getSelectedNodes();
-                Node node = nodes.length > 0 ? nodes[0] : null;
-                EditorTopComponent.findInstance().view(node);
-            }
+        EventQueue.invokeLater(() -> {
+            Node[] nodes = manager.getSelectedNodes();
+            Node node = nodes.length > 0 ? nodes[0] : null;
+            EditorTopComponent.findInstance().view(node);
         });
     }
 

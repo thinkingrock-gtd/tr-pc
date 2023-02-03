@@ -96,11 +96,8 @@ final class TimeNode extends AbstractNode implements EditCookie, Observer {
         }
 
         if (CriteriaUtils.instance().isUsedTime(data, value)) {
-            SwingUtilities.invokeLater(new Runnable() {
-                @Override
-                public void run() {
-                    deleteWithReplace(data);
-                }
+            SwingUtilities.invokeLater(() -> {
+                deleteWithReplace(data);
             });
         } else {
             data.getTimeCriterion().values.remove(value);

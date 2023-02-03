@@ -286,11 +286,8 @@ public final class GoalsTopComponent extends Window
         try {
             manager.setExploredContext(node);
             manager.setSelectedNodes(new Node[] {node});
-            SwingUtilities.invokeLater(new Runnable() {
-                @Override
-                public void run() {
-                    outlineView.getOutline().requestFocusInWindow();
-                }
+            SwingUtilities.invokeLater(() -> {
+                outlineView.getOutline().requestFocusInWindow();
             });
         } catch (Exception ex) {
         }

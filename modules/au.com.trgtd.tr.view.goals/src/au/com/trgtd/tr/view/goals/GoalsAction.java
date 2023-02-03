@@ -52,43 +52,38 @@ public class GoalsAction extends CallableSystemAction {
             }
         });
     }
-    
+
     @Override
     protected String iconResource() {
         return "au/com/trgtd/tr/view/goals/resource/Circle.png";
     }
-    
+
     @Override
     public String getName() {
         return NbBundle.getMessage(getClass(), "CTL_GoalsAction");
     }
-    
+
     private void enableDisable() {
-        EventQueue.invokeLater(new Runnable() {
-            @Override
-            public void run() {
-                setEnabled(null != DataLookup.instance().lookup(Data.class));
-            }
+        EventQueue.invokeLater(() -> {
+            setEnabled(null != DataLookup.instance().lookup(Data.class));
         });
     }
-    
+
     /** Gets the action identifier. */
     public String getID() {
         return "goals";
     }
-    
+
     @Override
     public void performAction() {
-        EventQueue.invokeLater(new Runnable() {
-            @Override
-            public void run() {
-                Data data = DataLookup.instance().lookup(Data.class);
-                if (data == null) {
-                    return;
-                }
-                
-                WindowUtils.closeWindows();
-                
+        EventQueue.invokeLater(() -> {
+            Data data = DataLookup.instance().lookup(Data.class);
+            if (data == null) {
+                return;
+            }
+
+            WindowUtils.closeWindows();
+
 //                TopComponent tc = GoalsTopComponent.findInstance();
 //
 //                Mode mode = WindowManager.getDefault().findMode("Setup");
@@ -98,42 +93,37 @@ public class GoalsAction extends CallableSystemAction {
 //
 //                tc.open();
 //                tc.requestActive();
+            TopComponent tcGoals = GoalsTopComponent.findInstance();
+            TopComponent tcGoal = GoalTopComponent.findInstance();
 
-
-
-
-                TopComponent tcGoals = GoalsTopComponent.findInstance();
-                TopComponent tcGoal = GoalTopComponent.findInstance();
-
-                Mode mode = WindowManager.getDefault().findMode("goals");
-                if (mode == null) {
-                    LOG.severe("Goals mode was not found.");
-                } else {
-                    mode.dockInto(tcGoals);
-                }
-
-                mode = WindowManager.getDefault().findMode("goal");
-                if (mode == null) {
-                    LOG.severe("Goal mode was not found.");
-                } else {
-                    mode.dockInto(tcGoal);
-                }
-
-                tcGoals.open();
-                tcGoal.open();
-                tcGoals.requestActive();
+            Mode mode = WindowManager.getDefault().findMode("goals");
+            if (mode == null) {
+                LOG.severe("Goals mode was not found.");
+            } else {
+                mode.dockInto(tcGoals);
             }
+
+            mode = WindowManager.getDefault().findMode("goal");
+            if (mode == null) {
+                LOG.severe("Goal mode was not found.");
+            } else {
+                mode.dockInto(tcGoal);
+            }
+
+            tcGoals.open();
+            tcGoal.open();
+            tcGoals.requestActive();
         });
     }
-    
+
     @Override
     protected boolean asynchronous() {
         return false;
     }
-    
+
     @Override
     public HelpCtx getHelpCtx() {
         return new HelpCtx("tr.view.goals");
     }
-    
+
 }
