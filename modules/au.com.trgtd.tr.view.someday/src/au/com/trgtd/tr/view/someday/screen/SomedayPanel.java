@@ -148,10 +148,8 @@ public class SomedayPanel extends JPanel {
         };
         topicCombo.addActionListener(topicActionListener);
 
-        ticklePropertyListener = new PropertyChangeListener() {
-            public void propertyChange(PropertyChangeEvent e) {
-                changedTickle((Date)e.getNewValue());
-            }
+        ticklePropertyListener = (PropertyChangeEvent e) -> {
+            changedTickle((Date)e.getNewValue());
         };
         tickleField.addPropertyChangeListener("value", ticklePropertyListener);
     }

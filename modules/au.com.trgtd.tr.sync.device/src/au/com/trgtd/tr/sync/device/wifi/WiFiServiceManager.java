@@ -21,7 +21,6 @@ import au.com.trgtd.tr.datastore.DataStore;
 import au.com.trgtd.tr.datastore.DataStoreLookup;
 import au.com.trgtd.tr.sync.device.prefs.SyncPrefsWiFi;
 import java.beans.PropertyChangeEvent;
-import java.beans.PropertyChangeListener;
 import java.io.File;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -60,12 +59,9 @@ public final class WiFiServiceManager {
         startServices();
 
         // listen for user preferences change to reset service
-        SyncPrefsWiFi.addListener(new PropertyChangeListener() {
-            @Override
-            public void propertyChange(PropertyChangeEvent evt) {
-                LOG.info("WiFi sync preferences have changed - resetting WiFi service.");
-                resetServices();
-            }
+        SyncPrefsWiFi.addListener((PropertyChangeEvent evt) -> {
+            LOG.info("WiFi sync preferences have changed - resetting WiFi service.");
+            resetServices();
         });
         
         // listen for data file change to reset service

@@ -30,7 +30,6 @@ import java.awt.GridLayout;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.beans.PropertyChangeEvent;
-import java.beans.PropertyChangeListener;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -78,11 +77,8 @@ public class MonthPanel extends JPanel {
         this.dayViewer = dayViewer;
         this.calModel = calModel;
         this.dateCtlr = dateCtlr;
-        this.dateCtlr.addPropertyChangeListener(new PropertyChangeListener() {
-            @Override
-            public void propertyChange(PropertyChangeEvent pce) {
-                initGridDates();
-            }
+        this.dateCtlr.addPropertyChangeListener((PropertyChangeEvent pce) -> {
+            initGridDates();
         });
         initGridDates();
     }

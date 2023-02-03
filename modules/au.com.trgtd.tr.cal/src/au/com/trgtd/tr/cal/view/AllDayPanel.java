@@ -23,7 +23,6 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.beans.PropertyChangeEvent;
-import java.beans.PropertyChangeListener;
 import java.util.Collection;
 import javax.swing.*;
 
@@ -65,14 +64,11 @@ public final class AllDayPanel extends JPanel {
        
         add(scrollPane, BorderLayout.CENTER);
         
-        dateCtlr.addPropertyChangeListener(new PropertyChangeListener() {
-            @Override
-            public void propertyChange(PropertyChangeEvent pce) {
-                setBackground();                        
-            }            
+        dateCtlr.addPropertyChangeListener((PropertyChangeEvent pce) -> {
+            setBackground();
         });
         
-        setBackground();          
+        setBackground();
         
         resetSize();
     }

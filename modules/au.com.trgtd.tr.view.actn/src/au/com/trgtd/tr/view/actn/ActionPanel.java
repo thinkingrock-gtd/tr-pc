@@ -1480,11 +1480,8 @@ if (ass.getDate() == null) {
         actionListenerContext = (ActionEvent evt) -> {
             changedContext(evt);
         };
-        propertyListenerScheduledDate = new PropertyChangeListener() {
-            @Override
-            public void propertyChange(PropertyChangeEvent e) {
-                changedScheduledDate((Date) e.getNewValue());
-            }
+        propertyListenerScheduledDate = (PropertyChangeEvent e) -> {
+            changedScheduledDate((Date) e.getNewValue());
         };
         changeListenerScheduledHour = new ChangeListener() {
             @Override
@@ -1517,11 +1514,8 @@ if (ass.getDate() == null) {
             changedDelegate();
         };
         
-        propertyListenerDelegate = new PropertyChangeListener() {
-            @Override
-            public void propertyChange(PropertyChangeEvent evt) {
-                changedDelegate();
-            }
+        propertyListenerDelegate = (PropertyChangeEvent evt) -> {
+            changedDelegate();
         };
         
         actionListenerEmail = (ActionEvent evt) -> {
@@ -1539,38 +1533,23 @@ if (ass.getDate() == null) {
         actionListenerTimeCombo = (ActionEvent evt) -> {
             changedTime();
         };
-        propertyListenerFollowupDate = new PropertyChangeListener() {
-            @Override
-            public void propertyChange(PropertyChangeEvent e) {
-                changedFollowupDate((Date) e.getNewValue());
-            }
+        propertyListenerFollowupDate = (PropertyChangeEvent e) -> {
+            changedFollowupDate((Date) e.getNewValue());
         };
-        propertyListenerCreatedDate = new PropertyChangeListener() {
-            @Override
-            public void propertyChange(PropertyChangeEvent e) {
-                changedCreatedDate((Date) e.getNewValue());
-            }
+        propertyListenerCreatedDate = (PropertyChangeEvent e) -> {
+            changedCreatedDate((Date) e.getNewValue());
         };
-        propertyListenerStartDate = new PropertyChangeListener() {
-            @Override
-            public void propertyChange(PropertyChangeEvent e) {
-                changedStartDate((Date) e.getNewValue());
-            }
+        propertyListenerStartDate = (PropertyChangeEvent e) -> {
+            changedStartDate((Date) e.getNewValue());
         };
-        propertyListenerDueDate = new PropertyChangeListener() {
-            @Override
-            public void propertyChange(PropertyChangeEvent e) {
-                changedDueDate((Date) e.getNewValue());
-            }
+        propertyListenerDueDate = (PropertyChangeEvent e) -> {
+            changedDueDate((Date) e.getNewValue());
         };
         doneCheckBoxActionListener = (ActionEvent evt) -> {
             changedDone();
         };
-        propertyListenerDoneDate = new PropertyChangeListener() {
-            @Override
-            public void propertyChange(PropertyChangeEvent e) {
-                changedDoneDate((Date) e.getNewValue());
-            }
+        propertyListenerDoneDate = (PropertyChangeEvent e) -> {
+            changedDoneDate((Date) e.getNewValue());
         };
     }
 

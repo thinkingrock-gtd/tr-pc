@@ -415,12 +415,8 @@ public final class ActionEditPanel extends JPanel {
         contextCombo.addActionListener(actionListenerContext);
 
         // Scheduled
-        propertyListenerScheduledDate = new PropertyChangeListener() {
-
-            @Override
-            public void propertyChange(PropertyChangeEvent e) {
-                changedScheduledDate((Date) e.getNewValue());
-            }
+        propertyListenerScheduledDate = (PropertyChangeEvent e) -> {
+            changedScheduledDate((Date) e.getNewValue());
         };
         scheduledDateField.addPropertyChangeListener("value", propertyListenerScheduledDate);
 
@@ -467,12 +463,8 @@ public final class ActionEditPanel extends JPanel {
 //        };
 //        recurrenceButton.addActionListener(actionListenerRecurrence);
 
-        propertyListenerDelegateCombo = new PropertyChangeListener() {
-
-            @Override
-            public void propertyChange(PropertyChangeEvent e) {
-                changedDelegate(e.getNewValue());
-            }
+        propertyListenerDelegateCombo = (PropertyChangeEvent e) -> {
+            changedDelegate(e.getNewValue());
         };
         delegateCombo.addPropertyChangeListener(ActorsComboBox.PROP_SELECTED, propertyListenerDelegateCombo);
 
@@ -501,35 +493,23 @@ public final class ActionEditPanel extends JPanel {
         };
         timeCombo.addActionListener(actionListenerTimeCombo);
 
-        propertyListenerFollowupDate = new PropertyChangeListener() {
-            @Override
-            public void propertyChange(PropertyChangeEvent e) {
-                ctlr.setDelegateDate((Date) e.getNewValue());
-            }
+        propertyListenerFollowupDate = (PropertyChangeEvent e) -> {
+            ctlr.setDelegateDate((Date) e.getNewValue());
         };
         followupField.addPropertyChangeListener("value", propertyListenerFollowupDate);
 
-        propertyListenerCreatedDate = new PropertyChangeListener() {
-            @Override
-            public void propertyChange(PropertyChangeEvent e) {
-                changedCreatedDate((Date) e.getNewValue());
-            }
+        propertyListenerCreatedDate = (PropertyChangeEvent e) -> {
+            changedCreatedDate((Date) e.getNewValue());
         };
         createdDateField.addPropertyChangeListener("value", propertyListenerCreatedDate);
 
-        propertyListenerStartDate = new PropertyChangeListener() {
-            @Override
-            public void propertyChange(PropertyChangeEvent e) {
-                changedStartDate((Date) e.getNewValue());
-            }
+        propertyListenerStartDate = (PropertyChangeEvent e) -> {
+            changedStartDate((Date) e.getNewValue());
         };
         startDateField.addPropertyChangeListener("value", propertyListenerStartDate);
 
-        propertyListenerDueDate = new PropertyChangeListener() {
-            @Override
-            public void propertyChange(PropertyChangeEvent e) {
-                changedDueDate((Date) e.getNewValue());
-            }
+        propertyListenerDueDate = (PropertyChangeEvent e) -> {
+            changedDueDate((Date) e.getNewValue());
         };
         dueDateField.addPropertyChangeListener("value", propertyListenerDueDate);
 
@@ -539,11 +519,8 @@ public final class ActionEditPanel extends JPanel {
         };
         doneCheckBox.addActionListener(doneCheckBoxActionListener);
 
-        propertyListenerDoneDate = new PropertyChangeListener() {
-            @Override
-            public void propertyChange(PropertyChangeEvent e) {
-                changedDoneDate((Date) e.getNewValue());
-            }
+        propertyListenerDoneDate = (PropertyChangeEvent e) -> {
+            changedDoneDate((Date) e.getNewValue());
         };
         doneDateField.addPropertyChangeListener("value", propertyListenerDoneDate);
     }

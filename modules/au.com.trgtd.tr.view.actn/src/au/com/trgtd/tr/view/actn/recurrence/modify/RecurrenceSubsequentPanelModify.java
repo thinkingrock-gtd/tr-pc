@@ -24,7 +24,6 @@ import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.beans.PropertyChangeEvent;
-import java.beans.PropertyChangeListener;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
@@ -188,11 +187,7 @@ public final class RecurrenceSubsequentPanelModify extends JPanel {
             }
         });
         endDateField = new DateField();
-        endDateField.addPropertyChangeListener(new PropertyChangeListener() {
-            public void propertyChange(PropertyChangeEvent evt) {
-                endDateFieldPropertyChange(evt);
-            }
-        });
+        endDateField.addPropertyChangeListener(this::endDateFieldPropertyChange);
         changeMessage = new JTextArea(getMsg("changing.recurrence.type.from.regular.to.subsequent"));
         changeMessage.setFont(changeMessage.getFont().deriveFont(Font.ITALIC));
         changeMessage.setBackground(UIManager.getDefaults().getColor("Panel.background"));

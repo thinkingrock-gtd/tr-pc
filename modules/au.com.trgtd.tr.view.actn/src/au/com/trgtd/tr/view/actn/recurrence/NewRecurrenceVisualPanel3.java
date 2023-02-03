@@ -223,10 +223,8 @@ public final class NewRecurrenceVisualPanel3 extends JPanel {
             }
         });
         endDateField = new DateField();
-        endDateField.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
-            public void propertyChange(java.beans.PropertyChangeEvent evt) {
-                endDateFieldPropertyChange(evt);
-            }
+        endDateField.addPropertyChangeListener((java.beans.PropertyChangeEvent evt) -> {
+            endDateFieldPropertyChange(evt);
         });
 
         errorText = new JTextArea();

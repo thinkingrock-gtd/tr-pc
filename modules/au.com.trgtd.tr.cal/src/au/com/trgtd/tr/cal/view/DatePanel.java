@@ -23,7 +23,6 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Font;
 import java.beans.PropertyChangeEvent;
-import java.beans.PropertyChangeListener;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -68,11 +67,8 @@ public final class DatePanel extends JPanel {
     public DatePanel(DateCtlr dateCtlr, Period period) {
         this.period = period;
         this.dateCtlr = dateCtlr;
-        this.dateCtlr.addPropertyChangeListener(new PropertyChangeListener() {
-            @Override
-            public void propertyChange(PropertyChangeEvent pce) {
-                dateChanged(); 
-            }
+        this.dateCtlr.addPropertyChangeListener((PropertyChangeEvent pce) -> {
+            dateChanged();
         });
         initThisPanel();
         dateChanged();

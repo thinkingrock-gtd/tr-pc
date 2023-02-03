@@ -460,11 +460,8 @@ public final class ProcessPanel extends JPanel implements Observer, ProcessCooki
         doneCheckBox.addActionListener(doneCheckBoxActionListener);
 
         // Done Date
-        doneDatePropertyChangeListener = new PropertyChangeListener() {
-            @Override
-            public void propertyChange(PropertyChangeEvent e) {
-                changedDoneDate();
-            }
+        doneDatePropertyChangeListener = (PropertyChangeEvent e) -> {
+            changedDoneDate();
         };
         doneDateField.addPropertyChangeListener("value", doneDatePropertyChangeListener);
 
@@ -482,11 +479,8 @@ public final class ProcessPanel extends JPanel implements Observer, ProcessCooki
         };
         recurrenceButton.addActionListener(recurrenceButtonListener);
 
-        scheduledDateListener = new PropertyChangeListener() {
-            @Override
-            public void propertyChange(PropertyChangeEvent arg0) {
-                changedScheduledDate();
-            }
+        scheduledDateListener = (PropertyChangeEvent arg0) -> {
+            changedScheduledDate();
         };
         scheduledDateField.addPropertyChangeListener(scheduledDateListener);
 

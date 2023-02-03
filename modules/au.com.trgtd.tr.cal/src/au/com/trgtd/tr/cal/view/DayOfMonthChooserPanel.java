@@ -21,7 +21,6 @@ import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.beans.PropertyChangeEvent;
-import java.beans.PropertyChangeListener;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.prefs.PreferenceChangeEvent;
@@ -79,11 +78,8 @@ public class DayOfMonthChooserPanel extends JPanel {
         dateChanged(null, dateCtlr.getDate());
 
 
-        this.dateCtlr.addPropertyChangeListener(new PropertyChangeListener() {
-            @Override
-            public void propertyChange(PropertyChangeEvent pce) {
-                dateChanged((Date) pce.getOldValue(), (Date) pce.getNewValue());
-            }
+        this.dateCtlr.addPropertyChangeListener((PropertyChangeEvent pce) -> {
+            dateChanged((Date) pce.getOldValue(), (Date) pce.getNewValue());
         });
 
         DatesPrefs.getPrefs().addPreferenceChangeListener(new PreferenceChangeListener() {

@@ -24,7 +24,6 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.GridLayout;
 import java.beans.PropertyChangeEvent;
-import java.beans.PropertyChangeListener;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
@@ -56,11 +55,8 @@ public class YearPanel extends JPanel {
         this.bg = bg;
         this.dateCtlr = dateCtlr;
         this.monthsPanel = makeMonthsPanel();
-        this.dateCtlr.addPropertyChangeListener(new PropertyChangeListener() {
-            @Override
-            public void propertyChange(PropertyChangeEvent pce) {
-                initGrid();
-            }
+        this.dateCtlr.addPropertyChangeListener((PropertyChangeEvent pce) -> {
+            initGrid();
         });
         this.setOpaque(false);
         this.setLayout(new BorderLayout());

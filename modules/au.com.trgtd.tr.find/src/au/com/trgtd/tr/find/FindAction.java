@@ -21,7 +21,6 @@ import au.com.trgtd.tr.find.ui.FoundTopComponent;
 import java.awt.Frame;
 import java.awt.Rectangle;
 import java.beans.PropertyChangeEvent;
-import java.beans.PropertyChangeListener;
 import javax.swing.JDialog;
 import javax.swing.JOptionPane;
 import org.openide.awt.ActionID;
@@ -101,11 +100,8 @@ public class FindAction extends CallableSystemAction {
         JOptionPane op = new JOptionPane(panel, JOptionPane.INFORMATION_MESSAGE,
                 JOptionPane.OK_CANCEL_OPTION, null, null, null);
 
-        op.addPropertyChangeListener(JOptionPane.VALUE_PROPERTY, new PropertyChangeListener() {
-            @Override
-            public void propertyChange(PropertyChangeEvent evt) {
-                dialog.dispose();
-            }
+        op.addPropertyChangeListener(JOptionPane.VALUE_PROPERTY, (PropertyChangeEvent evt) -> {
+            dialog.dispose();
         });
 
         dialog.getContentPane().add(op, "Center" );

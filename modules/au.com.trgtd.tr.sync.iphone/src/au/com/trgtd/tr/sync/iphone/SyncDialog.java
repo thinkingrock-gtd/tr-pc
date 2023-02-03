@@ -94,20 +94,14 @@ public class SyncDialog extends JDialog {
     @Override
     public void addNotify() {
         super.addNotify();
-        stateListener = new PropertyChangeListener() {
-            @Override
-            public void propertyChange(PropertyChangeEvent evt) {
-                updateState((SyncState.State)evt.getNewValue());
-            }
+        stateListener = (PropertyChangeEvent evt) -> {
+            updateState((SyncState.State)evt.getNewValue());
         };
 
         SyncManager.getDefault().addPropertyChangeListener(SyncState.PROP_STATE, stateListener);
 
-        progressListener = new PropertyChangeListener() {
-            @Override
-            public void propertyChange(PropertyChangeEvent evt) {
-                updateProgress((Integer)evt.getNewValue());
-            }
+        progressListener = (PropertyChangeEvent evt) -> {
+            updateProgress((Integer)evt.getNewValue());
         };
         SyncManager.getDefault().addPropertyChangeListener(SyncProgress.PROP_PROGRESS, progressListener);
 
@@ -248,14 +242,11 @@ public class SyncDialog extends JDialog {
         portField = new JFormattedTextField(portFormat);
         portField.setValue(SyncPrefs.getPort());
         portField.setColumns(6);
-        portField.addPropertyChangeListener("value", new PropertyChangeListener() {
-            @Override
-            public void propertyChange(PropertyChangeEvent evt) {
-                int port = getPortFieldValue();
-                if (port < 1) {
-                    Toolkit.getDefaultToolkit().beep();
-                    portField.setValue(SyncPrefs.getPort());
-                }
+        portField.addPropertyChangeListener("value", (PropertyChangeEvent evt) -> {
+            int port = getPortFieldValue();
+            if (port < 1) {
+                Toolkit.getDefaultToolkit().beep();
+                portField.setValue(SyncPrefs.getPort());
             }
         });
 

@@ -93,11 +93,8 @@ public class ASAPChildren extends Children.Keys<CalEvent> {
         super.removeNotify();
     }
 
-    private final PropertyChangeListener pcl = new PropertyChangeListener() {
-        @Override
-        public void propertyChange(PropertyChangeEvent pce) {
-            setKeys(getItems());
-        }
+    private final PropertyChangeListener pcl = (PropertyChangeEvent pce) -> {
+        setKeys(getItems());
     };
 
 }

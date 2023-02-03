@@ -335,24 +335,18 @@ public final class ProjectPanel extends JPanel { // implements Observer {
         };
         seqDelegatedCheckBox.addActionListener(actionListenerSeqDelegatedCheckBox);
 
-        createdDatePropertyChangeListener = new PropertyChangeListener() {
-            public void propertyChange(PropertyChangeEvent e) {
-                changedCreatedDate();
-            }
+        createdDatePropertyChangeListener = (PropertyChangeEvent e) -> {
+            changedCreatedDate();
         };
         createdDateField.addPropertyChangeListener("value", createdDatePropertyChangeListener);
 
-        startDatePropertyChangeListener = new PropertyChangeListener() {
-            public void propertyChange(PropertyChangeEvent e) {
-                changedStartDate();
-            }
+        startDatePropertyChangeListener = (PropertyChangeEvent e) -> {
+            changedStartDate();
         };
         startDateField.addPropertyChangeListener("value", startDatePropertyChangeListener);
 
-        dueDatePropertyChangeListener = new PropertyChangeListener() {
-            public void propertyChange(PropertyChangeEvent e) {
-                changedDueDate();
-            }
+        dueDatePropertyChangeListener = (PropertyChangeEvent e) -> {
+            changedDueDate();
         };
         dueDateField.addPropertyChangeListener("value", dueDatePropertyChangeListener);
 
@@ -361,10 +355,8 @@ public final class ProjectPanel extends JPanel { // implements Observer {
         };
         doneCheckBox.addActionListener(actionListenerDoneCheckBox);
 
-        doneDatePropertyChangeListener = new PropertyChangeListener() {
-            public void propertyChange(PropertyChangeEvent e) {
-                changedCompletedDate();
-            }
+        doneDatePropertyChangeListener = (PropertyChangeEvent e) -> {
+            changedCompletedDate();
         };
         doneDateField.addPropertyChangeListener("value", doneDatePropertyChangeListener);
     }

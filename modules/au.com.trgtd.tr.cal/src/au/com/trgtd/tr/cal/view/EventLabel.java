@@ -23,7 +23,6 @@ import au.com.trgtd.tr.services.Services;
 import java.awt.*;
 import java.awt.event.*;
 import java.beans.PropertyChangeEvent;
-import java.beans.PropertyChangeListener;
 import javax.swing.BorderFactory;
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
@@ -61,11 +60,8 @@ public final class EventLabel extends JLabel {
         init();
 
         this.event = event;
-        this.event.addPropertyChangeListener(new PropertyChangeListener() {
-            @Override
-            public void propertyChange(PropertyChangeEvent pce) {
-                initValues();
-            }
+        this.event.addPropertyChangeListener((PropertyChangeEvent pce) -> {
+            initValues();
         });
 
         addComponentListener(new ComponentAdapter() {

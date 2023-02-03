@@ -26,7 +26,6 @@ import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.dnd.DnDConstants;
 import java.beans.PropertyChangeEvent;
-import java.beans.PropertyChangeListener;
 import java.beans.PropertyVetoException;
 import java.util.logging.Logger;
 import javax.swing.AbstractButton;
@@ -157,14 +156,11 @@ public final class GoalsTopComponent extends Window
             add(getToolBar(), BorderLayout.EAST);
         }
 
-        goalsCtrl.addPropertyChangeListener(GoalsCtrl.PROP_GOALS_DATA, new PropertyChangeListener() {
-            @Override
-            public void propertyChange(PropertyChangeEvent evt) {
-                Data data = DataLookup.instance().lookup(Data.class);
-                if (data != null) {
-                    GoalNodeRoot rootNode = new GoalNodeRoot(outlineView, goalsCtrl.getRootGoal());
-                    manager.setRootContext(rootNode);
-                }
+        goalsCtrl.addPropertyChangeListener(GoalsCtrl.PROP_GOALS_DATA, (PropertyChangeEvent evt) -> {
+            Data data = DataLookup.instance().lookup(Data.class);
+            if (data != null) {
+                GoalNodeRoot rootNode1 = new GoalNodeRoot(outlineView, goalsCtrl.getRootGoal());
+                manager.setRootContext(rootNode1);
             }
         });
     }

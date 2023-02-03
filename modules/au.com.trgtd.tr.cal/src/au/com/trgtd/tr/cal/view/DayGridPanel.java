@@ -27,7 +27,6 @@ import java.awt.*;
 import java.awt.event.ComponentEvent;
 import java.awt.event.ComponentListener;
 import java.beans.PropertyChangeEvent;
-import java.beans.PropertyChangeListener;
 import java.util.*;
 import java.util.List;
 import javax.swing.BorderFactory;
@@ -102,11 +101,8 @@ public class DayGridPanel extends JLayeredPane {
             public void componentHidden(ComponentEvent ce) {
             }
         });
-        dateCtlr.addPropertyChangeListener(new PropertyChangeListener() {
-            @Override
-            public void propertyChange(PropertyChangeEvent pce) {
-                setBackground();                
-            }
+        dateCtlr.addPropertyChangeListener((PropertyChangeEvent pce) -> {
+            setBackground();
         });
     }
     

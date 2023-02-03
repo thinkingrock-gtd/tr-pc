@@ -28,7 +28,6 @@ import java.awt.Dimension;
 import java.awt.FontMetrics;
 import java.awt.event.ActionEvent;
 import java.beans.PropertyChangeEvent;
-import java.beans.PropertyChangeListener;
 import java.util.Date;
 import javax.swing.InputVerifier;
 import javax.swing.JButton;
@@ -84,10 +83,8 @@ public class GoalDialogPanel extends JPanel {
             achievedDate.setDate(achievedCheck.isSelected() ? new Date() : null);
         });
         achievedDate = new DateField();
-        achievedDate.addPropertyChangeListener("value", new PropertyChangeListener() {
-            public void propertyChange(PropertyChangeEvent evt) {
-                achievedCheck.setSelected(achievedDate.getDate() != null);
-            }
+        achievedDate.addPropertyChangeListener("value", (PropertyChangeEvent evt) -> {
+            achievedCheck.setSelected(achievedDate.getDate() != null);
         });
         createdLabel = new TRLabel(NbBundle.getMessage(CLASS, "created"));
         createdLabel.setHorizontalAlignment(SwingConstants.RIGHT);
