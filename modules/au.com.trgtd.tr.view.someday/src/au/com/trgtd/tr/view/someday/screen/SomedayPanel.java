@@ -143,10 +143,8 @@ public class SomedayPanel extends JPanel {
         };
         descrField.addFocusListener(descrFocusListener);
 
-        topicActionListener = new ActionListener() {
-            public void actionPerformed(ActionEvent evt) {
-                changedTopic();
-            }
+        topicActionListener = (ActionEvent evt) -> {
+            changedTopic();
         };
         topicCombo.addActionListener(topicActionListener);
 

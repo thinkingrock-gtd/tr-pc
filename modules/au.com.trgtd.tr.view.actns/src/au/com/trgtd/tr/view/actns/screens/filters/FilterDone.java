@@ -180,10 +180,8 @@ public class FilterDone extends FilterChoice implements PropertyChangeListener {
             addActionListener(listener);
         }
         
-        private ActionListener listener = new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                fireValueChange();
-            }
+        private ActionListener listener = (ActionEvent e) -> {
+            fireValueChange();
         };
     }
     

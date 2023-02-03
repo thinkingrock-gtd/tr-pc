@@ -28,7 +28,6 @@ import java.awt.Color;
 import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.util.logging.Logger;
 import javax.swing.*;
 import javax.swing.table.JTableHeader;
@@ -72,17 +71,14 @@ public final class EnergiesTopComponent extends Window implements ExplorerManage
         setIcon(ImageUtilities.loadImage(ICON_PATH, true));
 
         outlineView = new OutlineView();
-        
 
         explorerManager = new ExplorerManager();
-        
+
         EnergyNodeRoot rootNode = new EnergyNodeRoot(new EnergyChildren(outlineView, explorerManager));
-        
-        
-        
+
         explorerManager.setRootContext(rootNode);
         explorerManager.getRootContext().setDisplayName("Energy Values");
-        
+
 //        Property[] props = new Property[] {
 ////            new PropertyGoalsIcon(level),
 ////            new PropertyCanHaveProjects(level),
@@ -99,41 +95,31 @@ public final class EnergiesTopComponent extends Window implements ExplorerManage
 //        outlineView.setProperties(props);
 //        outlineView.setAllowedDragActions(DnDConstants.ACTION_COPY_OR_MOVE);
         outlineView.setTreeSortable(false);
-        
+
         outlineView.getOutline().setRootVisible(false);
 //        outlineView.getOutline().setAutoResizeMode(Outline.AUTO_RESIZE_SUBSEQUENT_COLUMNS);
-        
-        
-        
-        
 
 //        TableColumnModel tcm = outlineView.getOutline().getColumnModel();
 //        tcm.setColumnSelectionAllowed(false);
 //
 //        TableColumn tc = tcm.getColumn(0);
 //        tc.setHeaderValue(getName());
-        
-        
 //      ((JTable)outlineView.getOutline()).getTableHeader().setV.setBackground(Color.yellow);
         outlineView.setOpaque(true);
         outlineView.setBackground(Color.white);
         outlineView.getOutline().setBackground(Color.white);
         outlineView.getOutline().setShowGrid(false);
         outlineView.getOutline().setRowSelectionAllowed(true);
-        
-        
-        
+
         // do not show headings
-        JTableHeader header = ((JTable)outlineView.getOutline()).getTableHeader();
+        JTableHeader header = ((JTable) outlineView.getOutline()).getTableHeader();
         header.setMaximumSize(new Dimension(0,0));
         header.setMinimumSize(new Dimension(0,0));
         header.setPreferredSize(new Dimension(0,0));
-        
-        
+
 //        tc.setMinWidth(150);
 //        tc.setPreferredWidth(250);
 //        tc.setResizable(true);
-
 //        tc = tcm.getColumn(1);
 //        tc.setPreferredWidth(68);
 //        tc.setResizable(false);
@@ -144,10 +130,8 @@ public final class EnergiesTopComponent extends Window implements ExplorerManage
 //            tc.setPreferredWidth(w);
 //            tc.setResizable(false);
 //        }
-
-        
         outlineView.expandNode(rootNode);
-        
+
         ActionMap map = getActionMap();
         map.put(DefaultEditorKit.copyAction, ExplorerUtils.actionCopy(explorerManager));
         map.put(DefaultEditorKit.cutAction, ExplorerUtils.actionCut(explorerManager));
@@ -159,22 +143,17 @@ public final class EnergiesTopComponent extends Window implements ExplorerManage
             // already associated - ignore
         }
 
-        
         final Data data = (Data) DataLookup.instance().lookup(Data.class);
-        
+
         usedCbx = new JCheckBox(NbBundle.getMessage(getClass(), "use.energy.criteria"));
-        usedCbx.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent ae) {
-                data.getEnergyCriterion().setUse(usedCbx.isSelected());
-            }
+        usedCbx.addActionListener((ActionEvent ae) -> {
+            data.getEnergyCriterion().setUse(usedCbx.isSelected());
         });
         usedCbx.setSelected(data.getEnergyCriterion().isUse());
-        
+
         toolbar = getToolBar();
 
         JPanel toolbarPanel = getToolbarPanel();
-        
 
         setLayout(new BorderLayout());
         add(outlineView, BorderLayout.CENTER);
@@ -222,15 +201,15 @@ public final class EnergiesTopComponent extends Window implements ExplorerManage
         if (null != moveUpAction) {
             moveUpAction.setIcon(Icons.Up);
         }
-        
+
         SystemAction[] actions = new SystemAction[]{
             SystemAction.get(EnergyAddAction.class),
             SystemAction.get(EditAction.class),
-            SystemAction.get(DeleteAction.class),            
+            SystemAction.get(DeleteAction.class),
             moveUpAction,
             moveDownAction,
         };
-        
+
         JToolBar _toolbar = SystemAction.createToolbarPresenter(actions);
         _toolbar.setUI((new Toolbar()).getUI());
         _toolbar.setFloatable(false);
@@ -244,7 +223,7 @@ public final class EnergiesTopComponent extends Window implements ExplorerManage
                 component.setSize(buttonSize);
             }
         }
-        
+
         return _toolbar;
     }
 
@@ -256,9 +235,9 @@ public final class EnergiesTopComponent extends Window implements ExplorerManage
         p.setBackground(toolbar.getBackground());
         p.setBorder(ViewUtils.BORDER_TOOLBAR);
         return p;
-    }    
-    
-    /** Gets default instance. Do not use directly.  */
+    }
+
+    /** Gets default instance. Do not use directly. */
     public static synchronized EnergiesTopComponent getDefault() {
         if (instance == null) {
             instance = new EnergiesTopComponent();

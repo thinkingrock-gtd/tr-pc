@@ -24,7 +24,6 @@ import au.com.trgtd.tr.swing.date.field.DateField;
 import au.com.trgtd.tr.view.notes.NotesEditorPanel;
 import au.com.trgtd.tr.view.topics.TopicsComboBox;
 import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.event.FocusAdapter;
 import java.awt.event.FocusEvent;
 import java.util.Date;
@@ -57,10 +56,8 @@ public class SomedayDialogPanel extends JPanel {
         });
         topicLabel = new TRLabel(NbBundle.getMessage(CLASS, "topic"));
         topicCombo = new TopicsComboBox();
-        topicCombo.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent evt) {
-                topicActionPerformed();
-            }
+        topicCombo.addActionListener((ActionEvent evt) -> {
+            topicActionPerformed();
         });
         notesLabel = new TRLabel(NbBundle.getMessage(CLASS, "notes"));
         notesField = new NotesEditorPanel();

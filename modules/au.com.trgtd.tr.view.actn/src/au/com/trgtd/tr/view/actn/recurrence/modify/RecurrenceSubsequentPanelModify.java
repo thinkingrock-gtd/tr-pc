@@ -23,7 +23,6 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.util.Date;
@@ -161,10 +160,8 @@ public final class RecurrenceSubsequentPanelModify extends JPanel {
             }
         });
         periodCombo = new PeriodTypeComboBox();
-        periodCombo.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent evt) {
-                periodComboBoxActionPerformed();
-            }
+        periodCombo.addActionListener((ActionEvent evt) -> {
+            periodComboBoxActionPerformed();
         });
         endLabel = new JLabel(getMsg("terminate"));
         endNeverRadio = new JRadioButton(getMsg("never"));
@@ -174,10 +171,8 @@ public final class RecurrenceSubsequentPanelModify extends JPanel {
             }
         });
         endNbrRadio = new JRadioButton(getMsg("after"));
-        endNbrRadio.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent evt) {
-                endNbrRadioButtonActionPerformed();
-            }
+        endNbrRadio.addActionListener((ActionEvent evt) -> {
+            endNbrRadioButtonActionPerformed();
         });
         endNbrSpinner = new JSpinner(new SpinnerNumberModel(2, 2, null, 1));
         endNbrSpinner.addChangeListener(new ChangeListener() {

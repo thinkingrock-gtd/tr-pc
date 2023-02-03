@@ -53,13 +53,10 @@ public class ProjectChooserDialog extends JDialog implements ActionListener {
     
     private void construct() {
         // Escape key to cancel
-        ActionListener cancelListener = new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                cancel = true;
-                setVisible(false);
-                dispose();
-            }
+        ActionListener cancelListener = (ActionEvent e) -> {
+            cancel = true;
+            setVisible(false);
+            dispose();
         };
 
         KeyStroke stroke = KeyStroke.getKeyStroke(KeyEvent.VK_ESCAPE, 0);

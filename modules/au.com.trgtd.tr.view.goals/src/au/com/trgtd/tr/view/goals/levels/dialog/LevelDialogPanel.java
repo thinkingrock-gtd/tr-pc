@@ -63,26 +63,23 @@ public class LevelDialogPanel extends JPanel {
         goalsIconCombo = new GoalIconsComboBox();
         goalsHaveLabel = new JLabel(NbBundle.getMessage(CLASS, "goals.have"));
         projectsCheck = new JCheckBox(NbBundle.getMessage(CLASS, "projects"));
-        projectsCheck.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                if (projectsCheck.isSelected() || levelCtrl == null) {
-                    return;
-                }
-                GoalsCtrl goalsCtrl = GoalsCtrlLookup.getGoalsCtrl();
-                if (goalsCtrl == null) {
-                    return;
-                }
-                if (goalsCtrl.existGoalProjects(levelCtrl)) {
-                    // show confirm dialog to remove all linked projects
-                    String msg = NbBundle.getMessage(getClass(), "msg.confirm.remove.projects");
-                    String ttl = NbBundle.getMessage(getClass(), "ttl.confirm.remove.projects");
-                    NotifyDescriptor descriptor = new NotifyDescriptor.Confirmation(msg, ttl, NotifyDescriptor.OK_CANCEL_OPTION);
-                    if (NotifyDescriptor.OK_OPTION == DialogDisplayer.getDefault().notify(descriptor)) {
-                        goalsCtrl.removeProjects(levelCtrl);
-                    } else {
-                        projectsCheck.setSelected(true);    
-                    }
+        projectsCheck.addActionListener((ActionEvent e) -> {
+            if (projectsCheck.isSelected() || levelCtrl == null) {
+                return;
+            }
+            GoalsCtrl goalsCtrl = GoalsCtrlLookup.getGoalsCtrl();
+            if (goalsCtrl == null) {
+                return;
+            }
+            if (goalsCtrl.existGoalProjects(levelCtrl)) {
+                // show confirm dialog to remove all linked projects
+                String msg = NbBundle.getMessage(getClass(), "msg.confirm.remove.projects");
+                String ttl = NbBundle.getMessage(getClass(), "ttl.confirm.remove.projects");
+                NotifyDescriptor descriptor = new NotifyDescriptor.Confirmation(msg, ttl, NotifyDescriptor.OK_CANCEL_OPTION);
+                if (NotifyDescriptor.OK_OPTION == DialogDisplayer.getDefault().notify(descriptor)) {
+                    goalsCtrl.removeProjects(levelCtrl);
+                } else {
+                    projectsCheck.setSelected(true);
                 }
             }
         });

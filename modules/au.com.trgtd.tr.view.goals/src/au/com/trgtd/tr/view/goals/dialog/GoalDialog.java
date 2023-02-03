@@ -72,19 +72,13 @@ public class GoalDialog extends JDialog {
     }
 
     private void construct() {
-        ActionListener cancelListener = new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                cancel();
-            }
+        ActionListener cancelListener = (ActionEvent e) -> {
+            cancel();
         };
         cancelButton = new JButton(NbBundle.getMessage(getClass(), "cancel"));
         cancelButton.addActionListener(cancelListener);
-        ActionListener okListener = new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                ok();
-            }
+        ActionListener okListener = (ActionEvent e) -> {
+            ok();
         };
         okButton = new JButton(NbBundle.getMessage(getClass(), "ok"));
         okButton.addActionListener(okListener);

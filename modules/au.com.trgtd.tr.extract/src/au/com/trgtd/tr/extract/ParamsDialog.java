@@ -21,7 +21,6 @@ import au.com.trgtd.tr.appl.Constants;
 import java.awt.AWTError;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
-import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.FlowLayout;
 import java.awt.GridLayout;
@@ -156,11 +155,8 @@ public class ParamsDialog extends JDialog {
 
         JCheckBox rememberCheckBox = new JCheckBox(org.openide.util.NbBundle.getMessage(ParamsDialog.class, "Remember_options"));
         rememberCheckBox.setSelected(false);
-        rememberCheckBox.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent evt) {
-                remember = ((JCheckBox) evt.getSource()).isSelected();
-            }
+        rememberCheckBox.addActionListener((ActionEvent evt) -> {
+            remember = ((JCheckBox) evt.getSource()).isSelected();
         });
 
         JPanel north = new JPanel();
@@ -186,19 +182,13 @@ public class ParamsDialog extends JDialog {
 
         cancelButton = new JButton(org.openide.util.NbBundle.getMessage(ParamsDialog.class, "Cancel"));
         cancelButton.putClientProperty(Constants.BUTTON_TYPE, Constants.BUTTON_TYPE_TEXT);
-        cancelButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                cancel();
-            }
+        cancelButton.addActionListener((ActionEvent e) -> {
+            cancel();
         });
         okButton = new JButton(org.openide.util.NbBundle.getMessage(ParamsDialog.class, "OK"));
         okButton.putClientProperty(Constants.BUTTON_TYPE, Constants.BUTTON_TYPE_TEXT);
-        okButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                ok();
-            }
+        okButton.addActionListener((ActionEvent e) -> {
+            ok();
         });
         JPanel buttons = new JPanel(new FlowLayout(FlowLayout.RIGHT, 2, 2));
         buttons.setPreferredSize(new Dimension(0, 36));

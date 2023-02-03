@@ -146,15 +146,13 @@ public class MatcherEditorSearch extends MatcherEditorBase implements PropertyCh
             addActionListener(listener);
         }
         
-        private ActionListener listener = new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                setString(null);
-                Object object = getSelectedItem();
-                if (object instanceof String) {
-                    String string = ((String)object).trim();
-                    if (string.length() > 0) {
-                        setString(string);
-                    }
+        private ActionListener listener = (ActionEvent e) -> {
+            setString(null);
+            Object object = getSelectedItem();
+            if (object instanceof String) {
+                String string1 = ((String)object).trim();
+                if (string1.length() > 0) {
+                    setString(string1);
                 }
             }
         };

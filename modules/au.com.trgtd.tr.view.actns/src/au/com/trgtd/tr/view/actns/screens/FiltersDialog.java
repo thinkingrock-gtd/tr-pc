@@ -25,7 +25,6 @@ import au.com.trgtd.tr.view.filters.FilterCombo;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -128,10 +127,8 @@ public class FiltersDialog extends JDialog {
             useCheckBox = new JCheckBox();
             useCheckBox.setBackground(Color.white);
             useCheckBox.setSelected(filter.isUsed());
-            useCheckBox.addActionListener(new ActionListener() {
-                public void actionPerformed(ActionEvent actionEvent) {
-                    enableDisableComponents(useCheckBox.isSelected());
-                }
+            useCheckBox.addActionListener((ActionEvent actionEvent) -> {
+                enableDisableComponents(useCheckBox.isSelected());
             });
 
             seeCheckBox = new JCheckBox();

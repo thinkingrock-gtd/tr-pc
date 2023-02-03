@@ -1474,17 +1474,11 @@ if (ass.getDate() == null) {
                 descriptionTextFocusGained(evt);
             }
         };
-        actionListenerTopic = new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent evt) {
-                changedTopic(evt);
-            }
+        actionListenerTopic = (ActionEvent evt) -> {
+            changedTopic(evt);
         };
-        actionListenerContext = new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent evt) {
-                changedContext(evt);
-            }
+        actionListenerContext = (ActionEvent evt) -> {
+            changedContext(evt);
         };
         propertyListenerScheduledDate = new PropertyChangeListener() {
             @Override
@@ -1516,17 +1510,11 @@ if (ass.getDate() == null) {
                 changedDurationMinutes();
             }
         };
-        actionListenerRecurrence = new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent evt) {
-                recurrenceActionPerformed();
-            }
+        actionListenerRecurrence = (ActionEvent evt) -> {
+            recurrenceActionPerformed();
         };
-        actionListenerDelegateCombo = new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent evt) {
-                changedDelegate();
-            }
+        actionListenerDelegateCombo = (ActionEvent evt) -> {
+            changedDelegate();
         };
         
         propertyListenerDelegate = new PropertyChangeListener() {
@@ -1536,35 +1524,20 @@ if (ass.getDate() == null) {
             }
         };
         
-        actionListenerEmail = new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent evt) {
-                emailActionPerformed();
-            }
+        actionListenerEmail = (ActionEvent evt) -> {
+            emailActionPerformed();
         };
-        actionListenerStatusCombo = new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent evt) {
-                changedStatus();
-            }
+        actionListenerStatusCombo = (ActionEvent evt) -> {
+            changedStatus();
         };
-        actionListenerPriorityCombo = new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent evt) {
-                changedPriority();
-            }
+        actionListenerPriorityCombo = (ActionEvent evt) -> {
+            changedPriority();
         };
-        actionListenerEnergyCombo = new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent evt) {
-                changedEnergy();
-            }
+        actionListenerEnergyCombo = (ActionEvent evt) -> {
+            changedEnergy();
         };
-        actionListenerTimeCombo = new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent evt) {
-                changedTime();
-            }
+        actionListenerTimeCombo = (ActionEvent evt) -> {
+            changedTime();
         };
         propertyListenerFollowupDate = new PropertyChangeListener() {
             @Override
@@ -1590,11 +1563,8 @@ if (ass.getDate() == null) {
                 changedDueDate((Date) e.getNewValue());
             }
         };
-        doneCheckBoxActionListener = new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent evt) {
-                changedDone();
-            }
+        doneCheckBoxActionListener = (ActionEvent evt) -> {
+            changedDone();
         };
         propertyListenerDoneDate = new PropertyChangeListener() {
             @Override

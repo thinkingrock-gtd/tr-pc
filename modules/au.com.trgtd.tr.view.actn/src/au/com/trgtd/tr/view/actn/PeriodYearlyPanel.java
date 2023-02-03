@@ -21,7 +21,6 @@ import au.com.trgtd.tr.swing.TRComboBox;
 import java.awt.BorderLayout;
 import java.awt.Dialog;
 import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.util.Calendar;
 import java.util.Date;
 import javax.swing.ComboBoxModel;
@@ -89,28 +88,20 @@ public class PeriodYearlyPanel extends JPanel {
     private void initView() {
         inLabel = new JLabel(getMsg("YearsPanel.in"));
         monthsButton = new JButton(getSelectedMonthsText());
-        monthsButton.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent evt) {
-                monthsButtonAction(evt);
-            }
+        monthsButton.addActionListener((ActionEvent evt) -> {
+            monthsButtonAction(evt);
         });
         onTheCheckBox = new JCheckBox(getMsg("months.on.the"));
-        onTheCheckBox.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent evt) {
-                onTheCheckBoxAction(evt);
-            }
+        onTheCheckBox.addActionListener((ActionEvent evt) -> {
+            onTheCheckBoxAction(evt);
         });
         nthComboBox = new TRComboBox();
-        nthComboBox.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent evt) {
-                NthComboAction(evt);
-            }
+        nthComboBox.addActionListener((ActionEvent evt) -> {
+            NthComboAction(evt);
         });
         dayComboBox = new TRComboBox();
-        dayComboBox.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent evt) {
-                dayComboAction(evt);
-            }
+        dayComboBox.addActionListener((ActionEvent evt) -> {
+            dayComboAction(evt);
         });
 
         JPanel panel = new JPanel(new MigLayout("", "0[grow]0", "0[]0"));

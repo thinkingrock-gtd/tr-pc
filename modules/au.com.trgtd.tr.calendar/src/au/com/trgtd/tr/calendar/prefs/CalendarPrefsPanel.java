@@ -22,7 +22,6 @@ import au.com.trgtd.tr.calendar.spi.CalendarSynchronizerOptions;
 import au.com.trgtd.tr.swing.TRComboBox;
 import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.util.List;
 import java.util.Vector;
 import javax.swing.ButtonGroup;
@@ -68,17 +67,13 @@ final class CalendarPrefsPanel extends javax.swing.JPanel {
         emptyPanel = new JPanel();
 
         requiredCheck = new JCheckBox(getMsg("CTL_Required"));
-        requiredCheck.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent evt) {
-                RequiredCheckBoxActionPerformed();
-            }
+        requiredCheck.addActionListener((ActionEvent evt) -> {
+            RequiredCheckBoxActionPerformed();
         });
         
         inactiveCheck = new JCheckBox(getMsg("inactive.action.date.checkbox"));
-        inactiveCheck.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent evt) {
-                inactiveCheckBoxActionPerformed();
-            }
+        inactiveCheck.addActionListener((ActionEvent evt) -> {
+            inactiveCheckBoxActionPerformed();
         });
         inactiveAsEventRadio = new JRadioButton(getMsg("as.events"));
         inactiveAsToDoRadio = new JRadioButton(getMsg("as.todos"));
@@ -86,10 +81,8 @@ final class CalendarPrefsPanel extends javax.swing.JPanel {
         inactiveTypeButtonGroup.add(inactiveAsToDoRadio);
 
         doasapDueCheck = new JCheckBox(getMsg("doasap.due.date.checkbox"));
-        doasapDueCheck.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent evt) {
-                doasapDueCheckBoxActionPerformed();
-            }
+        doasapDueCheck.addActionListener((ActionEvent evt) -> {
+            doasapDueCheckBoxActionPerformed();
         });
         doasapDueAsEventRadio = new JRadioButton(getMsg("as.events"));
         doasapDueAsToDoRadio = new JRadioButton(getMsg("as.todos"));
@@ -97,17 +90,13 @@ final class CalendarPrefsPanel extends javax.swing.JPanel {
         doasapDueTypeButtonGroup.add(doasapDueAsToDoRadio);
         
         doasapNoDueCheck = new JCheckBox(getMsg("doasap.no.due.date.checkbox"));
-        doasapNoDueCheck.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent evt) {
-                doasapNoDueCheckBoxActionPerformed();
-            }
+        doasapNoDueCheck.addActionListener((ActionEvent evt) -> {
+            doasapNoDueCheckBoxActionPerformed();
         });
         
         delegatedCheck = new JCheckBox(getMsg("delegated.checkbox"));
-        delegatedCheck.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent evt) {
-                delegatedCheckBoxActionPerformed();
-            }
+        delegatedCheck.addActionListener((ActionEvent evt) -> {
+            delegatedCheckBoxActionPerformed();
         });
         delegatedAsEventRadio = new JRadioButton(getMsg("as.events"));
         delegatedAsToDoRadio = new JRadioButton(getMsg("as.todos"));
@@ -115,51 +104,37 @@ final class CalendarPrefsPanel extends javax.swing.JPanel {
         delegatedTypeButtonGroup.add(delegatedAsToDoRadio);
         
         delegatedNoDateCheck = new JCheckBox(getMsg("delegated.no.date.checkbox"));
-        delegatedNoDateCheck.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent evt) {
-                delegatedNoDateCheckBoxActionPerformed();
-            }
+        delegatedNoDateCheck.addActionListener((ActionEvent evt) -> {
+            delegatedNoDateCheckBoxActionPerformed();
         });
         
         scheduledCheck = new JCheckBox(getMsg("scheduled.checkbox"));
-        scheduledCheck.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent evt) {
-                scheduledCheckBoxActionPerformed();
-            }
+        scheduledCheck.addActionListener((ActionEvent evt) -> {
+            scheduledCheckBoxActionPerformed();
         });
 
         syncProjectsCheck = new JCheckBox(getMsg("sync.projects.checkbox"));
-        syncProjectsCheck.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent evt) {
-                syncProjectsCheckBoxActionPerformed();
-            }
+        syncProjectsCheck.addActionListener((ActionEvent evt) -> {
+            syncProjectsCheckBoxActionPerformed();
         });
         syncProjectsSepCheck = new JCheckBox(getMsg("sync.projects.sep.checkbox"));
-        syncProjectsSepCheck.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent evt) {
-                syncProjectsSepCheckBoxActionPerformed();
-            }
+        syncProjectsSepCheck.addActionListener((ActionEvent evt) -> {
+            syncProjectsSepCheckBoxActionPerformed();
         });
         syncFutureProjectsCheck = new JCheckBox(getMsg("sync.future.projects.checkbox"));
-        syncFutureProjectsCheck.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent evt) {
-                syncFutureProjectsCheckBoxActionPerformed();
-            }
+        syncFutureProjectsCheck.addActionListener((ActionEvent evt) -> {
+            syncFutureProjectsCheckBoxActionPerformed();
         });
         syncFutureProjectsSepCheck = new JCheckBox(getMsg("sync.future.projects.sep.checkbox"));
-        syncFutureProjectsSepCheck.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent evt) {
-                syncFutureProjectsSepCheckBoxActionPerformed();
-            }
+        syncFutureProjectsSepCheck.addActionListener((ActionEvent evt) -> {
+            syncFutureProjectsSepCheckBoxActionPerformed();
         });
 
         synchronizerLabel = new JLabel(getMsg("CalendarPanel.importerLabel.text"));
 
         synchronizerCombo = new TRComboBox();
-        synchronizerCombo.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent evt) {
-                synchronizerComboBoxActionPerformed();
-            }
+        synchronizerCombo.addActionListener((ActionEvent evt) -> {
+            synchronizerComboBoxActionPerformed();
         });
 
         synchronizerScrollPane = new JScrollPane();

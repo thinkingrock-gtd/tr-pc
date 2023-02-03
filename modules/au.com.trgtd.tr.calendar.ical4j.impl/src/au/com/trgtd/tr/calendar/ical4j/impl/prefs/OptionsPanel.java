@@ -24,7 +24,6 @@ import au.com.trgtd.tr.swing.TRComboBox;
 import au.com.trgtd.tr.swing.TRLabel;
 import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.io.File;
 import java.util.Collections;
 import java.util.Vector;
@@ -70,17 +69,13 @@ public class OptionsPanel extends JPanel implements CalendarSynchronizerOptions 
             }
         });
         folderButton = new JButton(getMsg("folderButton"));
-        folderButton.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent evt) {
-                browse();
-            }
+        folderButton.addActionListener((ActionEvent evt) -> {
+            browse();
         });
         timezoneLabel = new TRLabel(getMsg("timezoneLabel"));
         timezoneCombo = new TRComboBox();
-        timezoneCombo.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent evt) {
-                changed = true;
-            }
+        timezoneCombo.addActionListener((ActionEvent evt) -> {
+            changed = true;
         });
         JPanel panel = new JPanel(new MigLayout("", "4[]2[grow]2[]4", "4[]4"));
         panel.add(folderLabel,   "align left");

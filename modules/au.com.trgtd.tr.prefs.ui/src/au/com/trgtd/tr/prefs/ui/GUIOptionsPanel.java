@@ -21,7 +21,6 @@ import au.com.trgtd.tr.appl.InitialAction;
 import au.com.trgtd.tr.appl.InitialActionLookup;
 import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.Iterator;
@@ -53,19 +52,15 @@ final class GUIOptionsPanel extends JPanel {
         initialActionLabel = new JLabel(getMsg("LBL_InitialWindow"));
         initialActionCombo = new JComboBox(new DefaultComboBoxModel(actions));
         initialActionCombo.setMaximumRowCount(actions.size());
-        initialActionCombo.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent evt) {
-                controller.changed();
-            }
+        initialActionCombo.addActionListener((ActionEvent evt) -> {
+            controller.changed();
         });
         initPositions();
         buttonsPositionLabel = new JLabel(getMsg("LBL_ButtonsPosition"));
         buttonsPositionCombo = new JComboBox(new DefaultComboBoxModel(positions));
         buttonsPositionCombo.setMaximumRowCount(positions.size());
-        buttonsPositionCombo.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent evt) {
-                controller.changed();
-            }
+        buttonsPositionCombo.addActionListener((ActionEvent evt) -> {
+            controller.changed();
         });
 
         JPanel panel = new JPanel(new MigLayout("", "0[]2[]0", "0[]2[]0"));

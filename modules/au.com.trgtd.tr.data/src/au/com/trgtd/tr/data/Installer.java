@@ -37,15 +37,15 @@ import org.openide.windows.WindowManager;
  * @author Jeremy Moore
  */
 public class Installer extends ModuleInstall {
-    
+
     private static final Logger LOG = Logger.getLogger("tr.data"); // No I18N
-    
+
     /** Creates a new instance of Installer. */
     public Installer() {
 //        System.setProperty("netbeans.tab.close.button.enabled","false");
 //        System.setProperty("nb.tabs.suppressCloseButton","true");
     }
-    
+
     /**
      * On every startup register the data-store then listen for the main window
      * to be opened and attempt to load the data-store and set the window title
@@ -55,20 +55,20 @@ public class Installer extends ModuleInstall {
     public void restored() {
         loadDatastore();
     }
-    
+
     private void loadDatastore() {
-        
+
         DataStore ds = XStreamDataStore.instance();
-        
+
         DataStoreLookup.instance().setDataStore(ds);
-        
+
         try {
             ds.load();
             ds.startDaemon();
         } catch (Exception ex) {
             LOG.log(Level.SEVERE, "Data store could not load data. {0}", ex.getMessage()); // No I18N
         }
-        
+
         final String path = (ds == null || !ds.isLoaded()) ? "" : ds.getPath();
 
         EventQueue.invokeLater(() -> {

@@ -69,10 +69,8 @@ public class TopicDialog extends JDialog {
     private void construct() {
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 
-        ActionListener cancelListener = new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                cancel();
-            }
+        ActionListener cancelListener = (ActionEvent e) -> {
+            cancel();
         };
 
         KeyStroke stroke = KeyStroke.getKeyStroke(KeyEvent.VK_ESCAPE, 0);
@@ -83,17 +81,13 @@ public class TopicDialog extends JDialog {
         topicPanel.setPreferredSize(new Dimension(680, 140));
 
         cancelButton = new JButton(NbBundle.getMessage(getClass(), "cancel")); // NOI18N
-        cancelButton.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                cancel();
-            }
+        cancelButton.addActionListener((ActionEvent e) -> {
+            cancel();
         });
 
         okButton = new JButton(NbBundle.getMessage(getClass(), "ok")); // NOI18N
-        okButton.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                ok();
-            }
+        okButton.addActionListener((ActionEvent e) -> {
+            ok();
         });
 
         JPanel buttons = new JPanel(new FlowLayout(FlowLayout.RIGHT, 2, 2));

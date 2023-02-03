@@ -404,19 +404,13 @@ public final class ActionEditPanel extends JPanel {
         };
         successText.getDocument().addDocumentListener(docListenerSuccess);
 
-        actionListenerTopic = new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent evt) {
-                changedTopic(evt);
-            }
+        actionListenerTopic = (ActionEvent evt) -> {
+            changedTopic(evt);
         };
         topicCombo.addActionListener(actionListenerTopic);
 
-        actionListenerContext = new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent evt) {
-                changedContext(evt);
-            }
+        actionListenerContext = (ActionEvent evt) -> {
+            changedContext(evt);
         };
         contextCombo.addActionListener(actionListenerContext);
 
@@ -482,44 +476,28 @@ public final class ActionEditPanel extends JPanel {
         };
         delegateCombo.addPropertyChangeListener(ActorsComboBox.PROP_SELECTED, propertyListenerDelegateCombo);
 
-        actionListenerEmail = new ActionListener() {
-
-            @Override
-            public void actionPerformed(ActionEvent evt) {
-                emailActionPerformed(evt);
-            }
+        actionListenerEmail = (ActionEvent evt) -> {
+            emailActionPerformed(evt);
         };
         emailButton.addActionListener(actionListenerEmail);
 
-        actionListenerStatusCombo = new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent evt) {
-                changedStatus();
-            }
+        actionListenerStatusCombo = (ActionEvent evt) -> {
+            changedStatus();
         };
         statusCombo.addActionListener(actionListenerStatusCombo);
 
-        actionListenerPriorityCombo = new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent evt) {
-                ctlr.setPriority((Value)priorityCombo.getSelectedItem());
-            }
+        actionListenerPriorityCombo = (ActionEvent evt) -> {
+            ctlr.setPriority((Value)priorityCombo.getSelectedItem());
         };
         priorityCombo.addActionListener(actionListenerPriorityCombo);
 
-        actionListenerEnergyCombo = new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent evt) {
-                ctlr.setEnergy((Value)energyCombo.getSelectedItem());
-            }
+        actionListenerEnergyCombo = (ActionEvent evt) -> {
+            ctlr.setEnergy((Value)energyCombo.getSelectedItem());
         };
         energyCombo.addActionListener(actionListenerEnergyCombo);
 
-        actionListenerTimeCombo = new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent evt) {
-                ctlr.setTime((Value)timeCombo.getSelectedItem());
-            }
+        actionListenerTimeCombo = (ActionEvent evt) -> {
+            ctlr.setTime((Value)timeCombo.getSelectedItem());
         };
         timeCombo.addActionListener(actionListenerTimeCombo);
 
@@ -556,11 +534,8 @@ public final class ActionEditPanel extends JPanel {
         dueDateField.addPropertyChangeListener("value", propertyListenerDueDate);
 
         // Done CheckBox
-        doneCheckBoxActionListener = new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent evt) {
-                changedDone();
-            }
+        doneCheckBoxActionListener = (ActionEvent evt) -> {
+            changedDone();
         };
         doneCheckBox.addActionListener(doneCheckBoxActionListener);
 

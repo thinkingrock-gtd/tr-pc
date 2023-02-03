@@ -191,10 +191,8 @@ public final class NewRecurrenceVisualPanel3 extends JPanel {
             }
         });
         periodCombo = new PeriodTypeComboBox();
-        periodCombo.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent evt) {
-                periodComboBoxActionPerformed(evt);
-            }
+        periodCombo.addActionListener((ActionEvent evt) -> {
+            periodComboBoxActionPerformed(evt);
         });
         endLabel = new JLabel(getMsg("terminate"));
         endLabel.setHorizontalAlignment(SwingConstants.TRAILING);
@@ -207,10 +205,8 @@ public final class NewRecurrenceVisualPanel3 extends JPanel {
         });
         endNbrRadio = new JRadioButton(getMsg("after"));
 //      endNbrRadioButton.setVerticalTextPosition(javax.swing.SwingConstants.TOP);
-        endNbrRadio.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent evt) {
-                endNbrRadioButtonActionPerformed(evt);
-            }
+        endNbrRadio.addActionListener((ActionEvent evt) -> {
+            endNbrRadioButtonActionPerformed(evt);
         });
         endNbrSpinner = new JSpinner();
         endNbrSpinner.setModel(new SpinnerNumberModel(Integer.valueOf(2), Integer.valueOf(2), null, Integer.valueOf(1)));

@@ -208,21 +208,15 @@ public class SyncDialog extends JDialog {
 
     private void construct() {
         firstCancelButton = new JButton(getText("cancel"));
-        firstCancelButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                setVisible(false);
-                dispose();
-            }
+        firstCancelButton.addActionListener((ActionEvent e) -> {
+            setVisible(false);
+            dispose();
         });
         firstNextButton = new JButton(getText("next"));
         firstNextButton.setEnabled(false);
-        firstNextButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                SyncPrefs.setPort(getPortFieldValue());
-                startSync();
-            }
+        firstNextButton.addActionListener((ActionEvent e) -> {
+            SyncPrefs.setPort(getPortFieldValue());
+            startSync();
         });
         FlowLayout firstFlow = new FlowLayout();
         firstFlow.setAlignment(FlowLayout.TRAILING);
@@ -235,11 +229,8 @@ public class SyncDialog extends JDialog {
         addrLabel = new TRLabel(getText("choose.network.address"));
         addrCombo = new TRComboBox(netAddrs.toArray());
         addrCombo.setFont(new Font("Monospaced", Font.PLAIN, 14));
-        addrCombo.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                firstNextButton.setEnabled(addrCombo.getSelectedIndex() > -1);
-            }
+        addrCombo.addActionListener((ActionEvent e) -> {
+            firstNextButton.setEnabled(addrCombo.getSelectedIndex() > -1);
         });
 
         String lastAddr = SyncPrefs.getLastAddr();
@@ -283,31 +274,19 @@ public class SyncDialog extends JDialog {
 
         firstNextButton.setEnabled(addrCombo.getSelectedIndex() > -1);
 
-        ActionListener cancelConnectListener = new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                SyncManager.getDefault().cancelConnect();
-                setVisible(false);
-                dispose();
-
-            }
+        ActionListener cancelConnectListener = (ActionEvent e) -> {
+            SyncManager.getDefault().cancelConnect();
+            setVisible(false);
+            dispose();
         };
-        ActionListener cancelSyncingListener = new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                SyncManager.getDefault().cancelSync();
-                setVisible(false);
-                dispose();
-
-            }
+        ActionListener cancelSyncingListener = (ActionEvent e) -> {
+            SyncManager.getDefault().cancelSync();
+            setVisible(false);
+            dispose();
         };
-        ActionListener finishListener = new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                setVisible(false);
-                dispose();
-
-            }
+        ActionListener finishListener = (ActionEvent e) -> {
+            setVisible(false);
+            dispose();
         };
         cancelConnectButton = new JButton(getText("cancel"));
         cancelConnectButton.addActionListener(cancelConnectListener);

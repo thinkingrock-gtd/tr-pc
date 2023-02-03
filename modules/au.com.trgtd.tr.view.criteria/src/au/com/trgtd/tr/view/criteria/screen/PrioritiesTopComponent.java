@@ -147,11 +147,8 @@ public final class PrioritiesTopComponent extends Window implements ExplorerMana
         final Data data = (Data) DataLookup.instance().lookup(Data.class);
         
         usedCbx = new JCheckBox(NbBundle.getMessage(getClass(), "use.priority.criteria"));
-        usedCbx.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent ae) {
-                data.getPriorityCriterion().setUse(usedCbx.isSelected());
-            }
+        usedCbx.addActionListener((ActionEvent ae) -> {
+            data.getPriorityCriterion().setUse(usedCbx.isSelected());
         });
         usedCbx.setSelected(data.getPriorityCriterion().isUse());
         

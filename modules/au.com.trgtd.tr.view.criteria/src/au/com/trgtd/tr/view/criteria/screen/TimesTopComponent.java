@@ -25,7 +25,6 @@ import au.com.trgtd.tr.view.ViewUtils;
 import au.com.trgtd.tr.view.Window;
 import java.awt.*;
 import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.util.logging.Logger;
 import javax.swing.*;
 import javax.swing.table.JTableHeader;
@@ -107,11 +106,8 @@ public final class TimesTopComponent extends Window implements ExplorerManager.P
         final Data data = (Data) DataLookup.instance().lookup(Data.class);
         
         usedCbx = new JCheckBox(NbBundle.getMessage(getClass(), "use.time.criteria"));
-        usedCbx.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent ae) {
-                data.getTimeCriterion().setUse(usedCbx.isSelected());
-            }
+        usedCbx.addActionListener((ActionEvent ae) -> {
+            data.getTimeCriterion().setUse(usedCbx.isSelected());
         });
         usedCbx.setSelected(data.getTimeCriterion().isUse());
         

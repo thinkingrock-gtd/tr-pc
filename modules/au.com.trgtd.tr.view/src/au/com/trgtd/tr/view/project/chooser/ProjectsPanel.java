@@ -81,31 +81,23 @@ public class ProjectsPanel extends JPanel {
     private JToolBar getProjectsToolbar() {
         ToolBarButton expandButton = new ToolBarButton(Icons.ZoomIn);
         expandButton.setPreferredSize(new Dimension(18, 18));
-        expandButton.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent arg0) {
-                expand(projectsTree);
-            }
+        expandButton.addActionListener((ActionEvent arg0) -> {
+            expand(projectsTree);
         });
         ToolBarButton collapseButton = new ToolBarButton(Icons.ZoomOut);
         collapseButton.setPreferredSize(new Dimension(18, 18));
-        collapseButton.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent arg0) {
-                collapse(projectsTree);
-            }
+        collapseButton.addActionListener((ActionEvent arg0) -> {
+            collapse(projectsTree);
         });
         ToolBarButton sortAZButton = new ToolBarButton(Icons.SortAZ);
         sortAZButton.setPreferredSize(new Dimension(18, 18));
-        sortAZButton.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent arg0) {
-                sortAlphabetic(projectsTree, true, mapProjectSorts);
-            }
+        sortAZButton.addActionListener((ActionEvent arg0) -> {
+            sortAlphabetic(projectsTree, true, mapProjectSorts);
         });
         ToolBarButton sortZAButton = new ToolBarButton(Icons.SortZA);
         sortZAButton.setPreferredSize(new Dimension(18, 18));
-        sortZAButton.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent arg0) {
-                sortAlphabetic(projectsTree, false, mapProjectSorts);
-            }
+        sortZAButton.addActionListener((ActionEvent arg0) -> {
+            sortAlphabetic(projectsTree, false, mapProjectSorts);
         });
         sortAZButton.setToolTipText(NbBundle.getMessage(CLASS, "sort.ascending"));
         sortZAButton.setToolTipText(NbBundle.getMessage(CLASS, "sort.descending"));
@@ -128,31 +120,23 @@ public class ProjectsPanel extends JPanel {
     private JToolBar getFutureToolbar() {
         ToolBarButton expandButton = new ToolBarButton(Icons.ZoomIn);
         expandButton.setPreferredSize(new Dimension(18, 18));
-        expandButton.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent arg0) {
-                expand(futureTree);
-            }
+        expandButton.addActionListener((ActionEvent arg0) -> {
+            expand(futureTree);
         });
         ToolBarButton collapseButton = new ToolBarButton(Icons.ZoomOut);
         collapseButton.setPreferredSize(new Dimension(18, 18));
-        collapseButton.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent arg0) {
-                collapse(futureTree);
-            }
+        collapseButton.addActionListener((ActionEvent arg0) -> {
+            collapse(futureTree);
         });
         ToolBarButton sortAZButton = new ToolBarButton(Icons.SortAZ);
         sortAZButton.setPreferredSize(new Dimension(18, 18));
-        sortAZButton.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent arg0) {
-                sortAlphabetic(futureTree, true, mapFutureSorts);
-            }
+        sortAZButton.addActionListener((ActionEvent arg0) -> {
+            sortAlphabetic(futureTree, true, mapFutureSorts);
         });
         ToolBarButton sortZAButton = new ToolBarButton(Icons.SortZA);
         sortZAButton.setPreferredSize(new Dimension(18, 18));
-        sortZAButton.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent arg0) {
-                sortAlphabetic(futureTree, false, mapFutureSorts);
-            }
+        sortZAButton.addActionListener((ActionEvent arg0) -> {
+            sortAlphabetic(futureTree, false, mapFutureSorts);
         });
         sortAZButton.setToolTipText(NbBundle.getMessage(CLASS, "sort.ascending"));
         sortZAButton.setToolTipText(NbBundle.getMessage(CLASS, "sort.descending"));        

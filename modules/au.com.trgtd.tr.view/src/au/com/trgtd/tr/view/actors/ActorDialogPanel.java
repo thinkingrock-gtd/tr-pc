@@ -74,11 +74,8 @@ public class ActorDialogPanel extends JPanel {
         inactiveLabel = new JLabel(NbBundle.getMessage(ActorDialogPanel.class, "inactive"));
         inactiveCheck = new JCheckBox();
         inactiveCheck.setHorizontalTextPosition(SwingConstants.LEADING);
-        inactiveCheck.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent evt) {
-                changedInactive();
-            }
+        inactiveCheck.addActionListener((ActionEvent evt) -> {
+            changedInactive();
         });
         msgLabel = new JLabel();
         msgLabel.setForeground(UIManager.getDefaults().getColor("nb.errorForeground"));
