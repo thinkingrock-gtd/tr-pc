@@ -29,7 +29,6 @@ import java.util.GregorianCalendar;
 import javax.swing.*;
 import javax.swing.border.Border;
 import javax.swing.event.HyperlinkEvent;
-import javax.swing.event.HyperlinkListener;
 import org.openide.util.NbBundle;
 
 /**
@@ -306,12 +305,9 @@ public class DateChooserDialog extends JDialog implements ItemListener, MouseLis
         todayPane.setContentType("text/html");
         String today = NbBundle.getMessage(clazz, "today.is");
         todayPane.setText("<html><body><p align='center' style='font-family:sans-serif'>" + today + " <a href=''>" + DF.format(new Date()) + "</a></p><br></body></html>");
-        todayPane.addHyperlinkListener(new HyperlinkListener() {
-            @Override
-            public void hyperlinkUpdate(HyperlinkEvent e) {
-                if (e.getEventType() == HyperlinkEvent.EventType.ACTIVATED) {
-                    goToday();
-                }
+        todayPane.addHyperlinkListener((HyperlinkEvent e) -> {
+            if (e.getEventType() == HyperlinkEvent.EventType.ACTIVATED) {
+                goToday();
             }
         });
 
