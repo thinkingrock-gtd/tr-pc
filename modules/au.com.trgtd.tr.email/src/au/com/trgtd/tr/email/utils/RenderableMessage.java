@@ -64,11 +64,11 @@ public class RenderableMessage implements Renderable {
             return handleMultipart((Multipart) part.getContent());
         }
 
-//        LOG.log(Level.INFO, "EXTRACT PART ({0}) Content Type:{}", n, part.getContentType());
+//        LOG.log(Level.INFO, "EXTRACT PART ({0}) Content Type:{1}", new Object[]{n, part.getContentType()});
 
         if (part.getFileName() != null) {
 
-//            LOG.log(Level.INFO, "EXTRACT PART ({0}) Filename: {1}",n , part.getFileName());
+//            LOG.log(Level.INFO, "EXTRACT PART ({0}) Filename: {1}", new Object[]{n , part.getFileName()});
 
 //            LOG.log(Level.INFO, "EXTRACT PART ({0}) ATTACHMENT", n);
 
@@ -91,7 +91,7 @@ public class RenderableMessage implements Renderable {
 
         if (part.getContentType().startsWith("text/plain")) {
 
-//            LOG.log(Level.INFO, "EXTRACT PART ({0}) TEXT/PLAIN: {1}", n, part.getContent());
+//            LOG.log(Level.INFO, "EXTRACT PART ({0}) TEXT/PLAIN: {1}", new Object[]{n, part.getContent()});
 
             if (bodytext == null) {
                 bodytext = (String) part.getContent();
@@ -103,7 +103,7 @@ public class RenderableMessage implements Renderable {
 
         if (part.getContentType().startsWith("text/html")) {
 
-//            LOG.log(Level.INFO, "EXTRACT PART ({0}) TEXT/HTML: {1}", n, part.getContent());
+//            LOG.log(Level.INFO, "EXTRACT PART ({0}) TEXT/HTML: {1}", new Object[]{n, part.getContent()});
 
             if (bodytext == null) {
                 bodytext = HTML.html2text((String) part.getContent());
