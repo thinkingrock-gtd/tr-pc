@@ -19,6 +19,7 @@ package au.com.trgtd.tr.sync.iphone;
 
 import java.io.BufferedReader;
 import java.io.IOException;
+import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public abstract class SyncMsg101 {
@@ -75,7 +76,7 @@ public abstract class SyncMsg101 {
             return new MsgActionUpdate(str);
         }
 
-        LOG.warning("UNKNOWN MESSAGE: " + str);
+        LOG.log(Level.WARNING, "UNKNOWN MESSAGE: {0}", str);
         return MSG_UNKNOWN;
     }
 
@@ -200,7 +201,7 @@ public abstract class SyncMsg101 {
         while (!in.ready()) {
         }
         SyncHandler101.tTemp.stop();
-        LOG.info("======> WAITED: " + SyncHandler101.tTemp.getTotal());
+        LOG.log(Level.INFO, "======> WAITED: {0}", SyncHandler101.tTemp.getTotal());
         SyncHandler101.tReadWait.stop();
         // End recording time while stream not ready
 

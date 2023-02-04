@@ -25,6 +25,7 @@ import java.io.FileOutputStream;
 import java.io.OutputStream;
 import java.io.OutputStreamWriter;
 import java.io.Writer;
+import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
@@ -97,7 +98,7 @@ public class ExportTemplate {
             process(project, writer);
             finalise(writer);
         } catch (Exception ex) {
-            LOG.severe("Export project template failed: " + ex.getMessage());
+            LOG.log(Level.SEVERE, "Export project template failed: {0}", ex.getMessage());
         }
     }
 
@@ -129,7 +130,7 @@ public class ExportTemplate {
             out.write("</project>\r\n");        
             LOG.info("Export project template ... done");
         } catch (Exception ex) {
-            LOG.severe("Export project template failed: " + ex.getMessage());
+            LOG.log(Level.SEVERE, "Export project template failed: {0}", ex.getMessage());
         }
     }
 

@@ -19,6 +19,7 @@ package au.com.trgtd.tr.task.recurrence;
 
 import java.util.List;
 import java.util.Vector;
+import java.util.logging.Level;
 import java.util.logging.Logger;
 import org.openide.util.NbBundle;
 import tr.model.Data;
@@ -89,7 +90,7 @@ final class RecurrenceTaskThread extends Thread {
     
     /* Process the given action. */
     private void process(Action action) {
-//      LOG.info("Processing action: " + action.getID() + " >>> " + action.getDescription());
+//      LOG.log(Level.INFO, "Processing action: {0} >>> {1}", new Object[]{action.getID(), action.getDescription()});
 
         Recurrence recurrence = action.getRecurrence();
         if (recurrence == null) {

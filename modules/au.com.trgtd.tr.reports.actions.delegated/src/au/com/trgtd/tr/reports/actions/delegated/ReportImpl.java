@@ -43,6 +43,7 @@ import au.com.trgtd.tr.extract.ParamsDialog;
 import tr.model.Data;
 import au.com.trgtd.tr.swing.date.combo.DateItem;
 import au.com.trgtd.tr.util.DateUtils;
+import java.util.logging.Level;
 import java.util.logging.Logger;
 import tr.extract.reports.PaperSize;
 
@@ -200,15 +201,15 @@ public class ReportImpl extends au.com.trgtd.tr.extract.Extract {
         File xmlfile = getTmpFile("Actions.xml");
         ExtractActions.process(data, xmlfile);
 
-        LOG.info("==============================================================");
-        LOG.info("Extract file : " + xmlfile.getPath());
-        LOG.info("paramFrom    : " + dateFrom.getTime());
-        LOG.info("paramTo      : " + dateUpTo.getTime());
-        LOG.info("paramCriteria: " + Boolean.parseBoolean(paramCriteria.getValue()));
-        LOG.info("paramSuccess : " + Boolean.parseBoolean(paramSuccess.getValue()));
-        LOG.info("paramProject : " + Boolean.parseBoolean(paramProject.getValue()));
-        LOG.info("paramNotes   : " + Boolean.parseBoolean(paramNotes.getValue()));
-        LOG.info("==============================================================");
+        LOG.log(Level.INFO, "==============================================================");
+        LOG.log(Level.INFO, "Extract file : {0}", xmlfile.getPath());
+        LOG.log(Level.INFO, "paramFrom    : {0}", dateFrom.getTime());
+        LOG.log(Level.INFO, "paramTo      : {0}", dateUpTo.getTime());
+        LOG.log(Level.INFO, "paramCriteria: {0}", Boolean.parseBoolean(paramCriteria.getValue()));
+        LOG.log(Level.INFO, "paramSuccess : {0}", Boolean.parseBoolean(paramSuccess.getValue()));
+        LOG.log(Level.INFO, "paramProject : {0}", Boolean.parseBoolean(paramProject.getValue()));
+        LOG.log(Level.INFO, "paramNotes   : {0}", Boolean.parseBoolean(paramNotes.getValue()));
+        LOG.log(Level.INFO, "==============================================================");
 
 
         JRXmlDataSource xmlDataSource = new JRXmlDataSource(xmlfile, "/data/actions/action");

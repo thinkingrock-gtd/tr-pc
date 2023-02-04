@@ -27,6 +27,7 @@ import java.io.Writer;
 import java.text.DateFormat;
 import java.util.logging.Logger;
 import au.com.trgtd.tr.extract.Extract.FormatType;
+import java.util.logging.Level;
 import tr.model.Data;
 import tr.model.information.Information;
 
@@ -51,7 +52,7 @@ public class ExtractReferences {
             process(data, out);
             finalise(out);
         } catch (Exception ex) {
-            LOG.severe("Extracting data failed: " + ex.getMessage());
+            LOG.log(Level.SEVERE, "Extracting data failed: {0}", ex.getMessage());
         }
     }
 
@@ -84,7 +85,7 @@ public class ExtractReferences {
             writeReferences(data, out);
             LOG.info("Extracting references ... done");
         } catch (Exception ex) {
-            LOG.severe("Extracting references failed: " + ex.getMessage());
+            LOG.log(Level.SEVERE, "Extracting references failed: {0}", ex.getMessage());
             ex.printStackTrace();
         }
     }

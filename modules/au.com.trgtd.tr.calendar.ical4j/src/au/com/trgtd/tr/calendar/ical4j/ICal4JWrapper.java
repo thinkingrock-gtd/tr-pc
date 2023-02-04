@@ -47,6 +47,7 @@ import net.fortuna.ical4j.model.property.Summary;
 import net.fortuna.ical4j.model.property.Uid;
 import net.fortuna.ical4j.model.property.Version;
 import au.com.trgtd.tr.util.DateUtils;
+import java.util.logging.Level;
 
 /**
  * Wrapper of iCal4j for creating ICalendar files.
@@ -84,7 +85,7 @@ public class ICal4JWrapper {
             } else {
                 vtimezone = timezone.getVTimeZone();                
                 calendar.getComponents().add(vtimezone);
-                LOG.info("Time zone added: " + timezone.getDisplayName());
+                LOG.log(Level.INFO, "Time zone added: {0}", timezone.getDisplayName());
             }
         }
     }
@@ -123,7 +124,7 @@ public class ICal4JWrapper {
             vevent.validate();
             calendar.getComponents().add(vevent);
         } catch (ValidationException ex) {
-            LOG.severe("ValidationException for Event : " + vevent.toString() + "\n" + ex.getMessage());
+            LOG.log(Level.SEVERE, "ValidationException for Event : {0}\n{1}", new Object[]{vevent.toString(), ex.getMessage()});
             ex.printStackTrace(System.err);
         }
 
@@ -177,7 +178,7 @@ public class ICal4JWrapper {
             vevent.validate();
             calendar.getComponents().add(vevent);
         } catch (ValidationException ex) {
-            LOG.severe("ValidationException for Event : " + vevent.toString() + "\n" + ex.getMessage());
+            LOG.log(Level.SEVERE, "ValidationException for Event : {0}\n{1}", new Object[]{vevent.toString(), ex.getMessage()});
             ex.printStackTrace(System.err);
         }
         
@@ -242,7 +243,7 @@ public class ICal4JWrapper {
             vtodo.validate();
             calendar.getComponents().add(vtodo);
         } catch (ValidationException ex) {
-            LOG.severe("ValidationException for ToDO : " + vtodo.toString() + "\n" + ex.getMessage());
+            LOG.log(Level.SEVERE, "ValidationException for ToDO : {0}\n{1}", new Object[]{vtodo.toString(), ex.getMessage()});
             ex.printStackTrace(System.err);
         }
 

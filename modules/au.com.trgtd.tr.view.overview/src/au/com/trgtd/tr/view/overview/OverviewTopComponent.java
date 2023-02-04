@@ -35,6 +35,7 @@ import au.com.trgtd.tr.util.Utils;
 import au.com.trgtd.tr.view.Window;
 import au.com.trgtd.tr.view.overview.Overview.Screen;
 import au.com.trgtd.tr.view.overview.spi.OverviewSVGProvider;
+import java.util.logging.Level;
 
 /**
  * Top component which displays the overview screen.
@@ -71,14 +72,14 @@ public final class OverviewTopComponent extends Window {
         String language = Locale.getDefault().getLanguage();
         String country = Locale.getDefault().getCountry();
 
-        LOG.info("Language: " + language);
-        LOG.info("Country: " + country);
+        LOG.log(Level.INFO, "Language: {0}", language);
+        LOG.log(Level.INFO, "Country: {0}", country);
 
         OverviewSVGProvider generalLanguageProvider = null;
 
         for (OverviewSVGProvider provider : lookup.allInstances()) {
 
-            LOG.info("Provider, language: " + provider.getLanguage() + ", country: " + provider.getCountry());
+            LOG.log(Level.INFO, "Provider, language: {0}, country: {1}", new Object[]{provider.getLanguage(), provider.getCountry()});
 
             if (Utils.equal(provider.getLanguage(), language)) {
                 if (Utils.equal(provider.getCountry(), country)) {
