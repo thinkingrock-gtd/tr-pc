@@ -74,7 +74,7 @@ public class ExtractUtils {
     }    
     
     public static synchronized String getState(Action a, DateFormat dfn, DateFormat dft) {
-        StringBuffer sb = new StringBuffer();
+        StringBuilder sb = new StringBuilder();
         if (a.isStateASAP()) {
             sb.append("\u2605");
             sb.append(a.getDueDate() == null ? "" : " " + org.openide.util.NbBundle.getMessage(ExtractUtils.class, "Due") + ": " + dfn.format(a.getDueDate()));
@@ -95,10 +95,10 @@ public class ExtractUtils {
             if (s.getDurationHours() > 0 || s.getDurationMinutes() > 0) {
                 sb.append(" ");
                 if (s.getDurationHours() > 0) {
-                    sb.append(s.getDurationHours() + "h");
+                    sb.append(s.getDurationHours()).append("h");
                 }
                 if (s.getDurationMinutes() > 0) {
-                    sb.append(s.getDurationMinutes() + "m");
+                    sb.append(s.getDurationMinutes()).append("m");
                 }
             }
         } else if (a.isStateInactive()) {
@@ -127,14 +127,14 @@ public class ExtractUtils {
     }
 
     public static synchronized String getDuration(ActionStateScheduled s) {
-        StringBuffer sb = new StringBuffer();
+        StringBuilder sb = new StringBuilder();
         if (s.getDurationHours() > 0 || s.getDurationMinutes() > 0) {
             sb.append(" ");
             if (s.getDurationHours() > 0) {
-                sb.append(s.getDurationHours() + "h");
+                sb.append(s.getDurationHours()).append("h");
             }
             if (s.getDurationMinutes() > 0) {
-                sb.append(s.getDurationMinutes() + "m");
+                sb.append(s.getDurationMinutes()).append("m");
             }
         }
         return sb.toString();

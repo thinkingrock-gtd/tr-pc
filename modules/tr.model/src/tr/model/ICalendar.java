@@ -103,17 +103,17 @@ public class ICalendar {
         
         String context = action.getContext().getName();
         
-        StringBuffer notes = new StringBuffer();
+        StringBuilder notes = new StringBuilder();
         notes.append(context);
         if (action.isSingleAction()) {
             Thought thought = action.getThought();
             if (thought != null) {
-                notes.append(" {" + thought.getDescription() + "}");
+                notes.append(" {").append(thought.getDescription()).append("}");
             }
         } else {
             Project project = (Project)action.getParent();
             if (project != null) {
-                notes.append(" [" + project.getDescription() + "]");
+                notes.append(" [").append(project.getDescription()).append("]");
             }
         }
         notes.append("\r\n");

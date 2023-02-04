@@ -199,12 +199,12 @@ public class ICalendarSynchronizer implements CalendarSynchronizer {
                 String descr = project.getDescription();
                 Integer priority = getPriority(project);
                 Date startDate = DateUtils.clearTime(project.getStartDate());
-                StringBuffer sb = new StringBuffer();
+                StringBuilder sb = new StringBuilder();
                 if (startDate != null) {
-                    sb.append("Start: " + Constants.DATE_FORMAT_FIXED.format(startDate) + "\r\n");
+                    sb.append("Start: ").append(Constants.DATE_FORMAT_FIXED.format(startDate)).append("\r\n");
                 }
                 if (dueDate != null) {
-                    sb.append("Due: " + Constants.DATE_FORMAT_FIXED.format(dueDate) + "\r\n");
+                    sb.append("Due: ").append(Constants.DATE_FORMAT_FIXED.format(dueDate)).append("\r\n");
                 }
                 String notes = sb.toString() + getNotes(project);
                 iCalProject.createAllDayEvent(uid, dueDate, descr, notes, null, priority);
@@ -265,12 +265,12 @@ public class ICalendarSynchronizer implements CalendarSynchronizer {
         if (CalendarPrefs.isInactiveAsTodo()) {
             ical.createToDo(uid, startDate, dueDate, descr, getNotes(action), context, priority);
         } else {
-            StringBuffer sb = new StringBuffer();
+            StringBuilder sb = new StringBuilder();
             if (startDate != null) {
-                sb.append("Start: " + Constants.DATE_FORMAT_FIXED.format(startDate) + "\r\n");
+                sb.append("Start: ").append(Constants.DATE_FORMAT_FIXED.format(startDate)).append("\r\n");
             }
             if (dueDate != null) {
-                sb.append("Due: " + Constants.DATE_FORMAT_FIXED.format(dueDate) + "\r\n");
+                sb.append("Due: ").append(Constants.DATE_FORMAT_FIXED.format(dueDate)).append("\r\n");
             }
             String notes = sb.toString() + getNotes(action);
             ical.createAllDayEvent(uid, actionDate, descr, notes, context, priority);
@@ -381,17 +381,17 @@ public class ICalendarSynchronizer implements CalendarSynchronizer {
     }
 
     private static String getNotes(Action action) {
-        StringBuffer notes = new StringBuffer();
+        StringBuilder notes = new StringBuilder();
         notes.append(getContext(action));
         if (action.isSingleAction()) {
             Thought thought = action.getThought();
             if (thought != null) {
-                notes.append(" {" + thought.getDescription() + "}");
+                notes.append(" {").append(thought.getDescription()).append("}");
             }
         } else {
             Project project = (Project) action.getParent();
             if (project != null) {
-                notes.append(" [" + project.getDescription() + "]");
+                notes.append(" [").append(project.getDescription()).append("]");
             }
         }
         notes.append("\r\n");
@@ -400,10 +400,10 @@ public class ICalendarSynchronizer implements CalendarSynchronizer {
     }
 
     private static String getNotes(Project project) {
-        StringBuffer notes = new StringBuffer();
+        StringBuilder notes = new StringBuilder();
         Project parent = (Project) project.getParent();
         if (parent != null) {
-            notes.append("[" + parent.getDescription() + "]\r\n");
+            notes.append("[").append(parent.getDescription()).append("]\r\n");
         }
         notes.append(project.getNotes());
         return notes.toString();

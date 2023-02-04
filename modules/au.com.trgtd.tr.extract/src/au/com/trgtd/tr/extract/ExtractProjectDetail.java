@@ -222,7 +222,7 @@ public class ExtractProjectDetail {
     }
 
     private static synchronized String getState(Action a) {
-        StringBuffer sb = new StringBuffer();
+        StringBuilder sb = new StringBuilder();
         if (a.isStateASAP()) {
             sb.append("\u2605");
             sb.append(a.getDueDate() == null ? "" : " " + NbBundle.getMessage(ExtractProjectDetail.class, "Due") + ": " + DFN.format(a.getDueDate()));
@@ -243,10 +243,10 @@ public class ExtractProjectDetail {
             if (s.getDurationHours() > 0 || s.getDurationMinutes() > 0) {
                 sb.append(" ");
                 if (s.getDurationHours() > 0) {
-                    sb.append(s.getDurationHours() + "h");
+                    sb.append(s.getDurationHours()).append("h");
                 }
                 if (s.getDurationMinutes() > 0) {
-                    sb.append(s.getDurationMinutes() + "m");
+                    sb.append(s.getDurationMinutes()).append("m");
                 }
             }
         } else if (a.isStateInactive()) {
@@ -274,7 +274,7 @@ public class ExtractProjectDetail {
     }
 
 //    private static final String getIndent(int level) {
-//        StringBuffer sb = new StringBuffer();
+//        StringBuilder sb = new StringBuilder();
 //        for (int i = 0; i < level; i++) {
 //            sb.append("  ");
 //        }

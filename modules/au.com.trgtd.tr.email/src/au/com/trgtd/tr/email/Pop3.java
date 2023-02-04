@@ -909,14 +909,14 @@ public class Pop3 {
 
             String ctype = part.getContentType();
             ContentType xctype = new ContentType(ctype.toLowerCase());
-            StringBuffer buffer = new StringBuffer();
+            StringBuilder sb = new StringBuilder();
 
             if (xctype.match("text/plain") || xctype.match("TEXT/PLAIN")) {
                 BufferedReader xreader = getTextReader(part);
                 for (String xline; (xline = xreader.readLine()) != null;) {
-                    buffer.append(xline + '\n');
+                    sb.append(xline).append('\n');
                 }
-                body = buffer.toString();
+                body = sb.toString();
             } else {
 
 
@@ -936,7 +936,7 @@ public class Pop3 {
          */
         public static String getBodyHandleMultipart(Multipart multipart) throws MessagingException, IOException {
             String body = null;
-            StringBuffer buffer = new StringBuffer();
+            StringBuilder sb = new StringBuilder();
 
             // boucle sur les parties d'un message...
             for (int i = 0, n = multipart.getCount(); i < n; i++) {
@@ -955,9 +955,9 @@ public class Pop3 {
                 if ((xctype.match("text/plain") || xctype.match("TEXT/PLAIN")) && disposition == null) {
                     BufferedReader xreader = getTextReader(part);
                     for (String xline; (xline = xreader.readLine()) != null;) {
-                        buffer.append(xline + '\n');
+                        sb.append(xline).append('\n');
                     }
-                    body = buffer.toString();
+                    body = sb.toString();
                 }
             }
 
@@ -995,7 +995,7 @@ public class Pop3 {
          */
         public static String getBodyHandleMultipart(Multipart multipart, String contentType) throws MessagingException, IOException {
             String body = null;
-            StringBuffer buffer = new StringBuffer();
+            StringBuilder sb = new StringBuilder();
 
             // boucle sur les parties d'un message...
             for (int i = 0, n = multipart.getCount(); i < n; i++) {
@@ -1014,9 +1014,9 @@ public class Pop3 {
                 if (xctype.match(contentType) && disposition == null) {
                     BufferedReader xreader = getTextReader(part);
                     for (String xline; (xline = xreader.readLine()) != null;) {
-                        buffer.append(xline + '\n');
+                        sb.append(xline).append('\n');
                     }
-                    body = buffer.toString();
+                    body = sb.toString();
                 }
             }
 
@@ -1340,7 +1340,7 @@ public class Pop3 {
         }
 
         private String tohexString(byte abyte0[], int i, int j) {
-            StringBuffer stringbuffer = new StringBuffer(i * 2);
+            StringBuilder sb = new StringBuilder(i * 2);
             for (int l = 0; l < i; l++) {
                 int k;
                 if (abyte0[l + j] < 0) {
@@ -1348,11 +1348,11 @@ public class Pop3 {
                 } else {
                     k = abyte0[l + j];
                 }
-                stringbuffer.insert(2 * l, halfBytetoHex(k / 16));
-                stringbuffer.insert(2 * l + 1, halfBytetoHex(k - 16 * (k / 16)));
+                sb.insert(2 * l, halfBytetoHex(k / 16));
+                sb.insert(2 * l + 1, halfBytetoHex(k - 16 * (k / 16)));
             }
 
-            return stringbuffer.toString();
+            return sb.toString();
         }
 
         private char halfBytetoHex(int i) {
