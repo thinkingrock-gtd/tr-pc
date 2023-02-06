@@ -101,7 +101,7 @@ public final class NewAction extends CallableSystemAction {
                     screensDAOProvider.reset();
                 }
             } catch (Exception ex) {
-                LOG.severe("Review Actions screens could not be saved. " + ex.getMessage());                
+                LOG.log(Level.SEVERE, "Review Actions screens could not be saved. {0}", ex.getMessage());
             }
         }        
         

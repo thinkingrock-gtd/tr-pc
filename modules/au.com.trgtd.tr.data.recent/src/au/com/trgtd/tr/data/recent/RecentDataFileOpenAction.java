@@ -33,6 +33,7 @@ import org.openide.windows.WindowManager;
 import au.com.trgtd.tr.task.activation.ActivatorTaskScheduler;
 import au.com.trgtd.tr.task.recurrence.RecurrenceTaskScheduler;
 import au.com.trgtd.tr.prefs.ui.utils.WindowUtils;
+import java.util.logging.Level;
 
 /**
  * Action to open a recent data file.
@@ -80,7 +81,7 @@ public final class RecentDataFileOpenAction extends AbstractAction {
         try {
             ds.store();
         } catch (Exception ex) {
-            LOG.severe("Datastore store exception: " + ex.getMessage());
+            LOG.log(Level.SEVERE, "Datastore store exception: {0}", ex.getMessage());
         }
 
         // save review actions screens and force reload
@@ -94,7 +95,7 @@ public final class RecentDataFileOpenAction extends AbstractAction {
                     screensDAOProvider.reset();
                 }
             } catch (Exception ex) {
-                LOG.severe("Review Actions screens could not be saved. " + ex.getMessage());                
+                LOG.log(Level.SEVERE, "Review Actions screens could not be saved. {0}", ex.getMessage());
             }
         }        
 

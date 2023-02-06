@@ -27,6 +27,7 @@ import java.io.Writer;
 import java.text.DateFormat;
 import java.util.logging.Logger;
 import au.com.trgtd.tr.extract.Extract.FormatType;
+import java.util.logging.Level;
 import tr.model.Data;
 import tr.model.future.Future;
 
@@ -51,7 +52,7 @@ public class ExtractSomedayMaybe {
             process(data, out);
             finalise(out);
         } catch (Exception ex) {
-            LOG.severe("Extracting someday/maybe failed: " + ex.getMessage());
+            LOG.log(Level.SEVERE, "Extracting someday/maybe failed: {0}", ex.getMessage());
         }
     }
 
@@ -84,7 +85,7 @@ public class ExtractSomedayMaybe {
             writeItems(data, out);
             LOG.info("Extracting someday/maybe ... done");
         } catch (Exception ex) {
-            LOG.severe("Extracting someday/maybe failed: " + ex.getMessage());
+            LOG.log(Level.SEVERE, "Extracting someday/maybe failed: {0}", ex.getMessage());
             ex.printStackTrace();
         }
     }

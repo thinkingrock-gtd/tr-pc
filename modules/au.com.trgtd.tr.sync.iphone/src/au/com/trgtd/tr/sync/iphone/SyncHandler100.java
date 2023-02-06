@@ -20,6 +20,7 @@ package au.com.trgtd.tr.sync.iphone;
 import java.io.BufferedReader;
 import java.io.PrintWriter;
 import java.util.Date;
+import java.util.logging.Level;
 import tr.model.action.Action;
 import tr.model.context.Context;
 import tr.model.thought.Thought;
@@ -73,7 +74,7 @@ public class SyncHandler100 extends SyncHandler {
                 LOG.warning("RECIEVED: Unexpected end of input stream.");
                 return false;
             }
-            LOG.info("RECIEVED:" + inMsg.toString());
+            LOG.log(Level.INFO, "RECIEVED:{0}", inMsg.toString());
 
             switch (inMsg.type) {
                 case Thought: {
@@ -84,7 +85,7 @@ public class SyncHandler100 extends SyncHandler {
                     thought.setTopic(getTopic(msgThought.topic));
                     getData().getThoughtManager().add(thought);
                     nbrThoughtsGot++;
-                    LOG.info("TR added thought: " + thought.getDescription());
+                    LOG.log(Level.INFO, "TR added thought: {0}", thought.getDescription());
                     out.println(log("OK"));
                     updateProgress();
                     break;

@@ -59,18 +59,18 @@ public class RenderableMessage implements Renderable {
 
         if (part.getContent() instanceof Multipart) {
 
-//            LOG.info("EXTRACT PART (" + n + ") " + "Multipart");
+//            LOG.log(Level.INFO, "EXTRACT PART ({0}) Multipart", n);
 
             return handleMultipart((Multipart) part.getContent());
         }
 
-//        LOG.info("EXTRACT PART (" + n + ") " + "Content Type:" + part.getContentType());
+//        LOG.log(Level.INFO, "EXTRACT PART ({0}) Content Type:{1}", new Object[]{n, part.getContentType()});
 
         if (part.getFileName() != null) {
 
-//            LOG.info("EXTRACT PART (" + n + ") " + "Filename: " + part.getFileName());
+//            LOG.log(Level.INFO, "EXTRACT PART ({0}) Filename: {1}", new Object[]{n , part.getFileName()});
 
-//            LOG.info("EXTRACT PART (" + n + ") " + "ATTACHMENT");
+//            LOG.log(Level.INFO, "EXTRACT PART ({0}) ATTACHMENT", n);
 
             Attachment attachment = new Attachment();
             attachment.setContenttype(part.getContentType());
@@ -91,7 +91,7 @@ public class RenderableMessage implements Renderable {
 
         if (part.getContentType().startsWith("text/plain")) {
 
-//            LOG.info("EXTRACT PART (" + n + ") " + "TEXT/PLAIN: " + part.getContent());
+//            LOG.log(Level.INFO, "EXTRACT PART ({0}) TEXT/PLAIN: {1}", new Object[]{n, part.getContent()});
 
             if (bodytext == null) {
                 bodytext = (String) part.getContent();
@@ -103,7 +103,7 @@ public class RenderableMessage implements Renderable {
 
         if (part.getContentType().startsWith("text/html")) {
 
-//            LOG.info("EXTRACT PART (" + n + ") " + "TEXT/HTML: " + part.getContent());
+//            LOG.log(Level.INFO, "EXTRACT PART ({0}) TEXT/HTML: {1}", new Object[]{n, part.getContent()});
 
             if (bodytext == null) {
                 bodytext = HTML.html2text((String) part.getContent());
@@ -113,7 +113,7 @@ public class RenderableMessage implements Renderable {
             return true;
         }
 
-////        LOG.info("ATTACHMENT");
+////        LOG.log(Level.INFO, "ATTACHMENT");
 //
 //        Attachment attachment = new Attachment();
 //        attachment.setContenttype(part.getContentType());
@@ -133,13 +133,13 @@ public class RenderableMessage implements Renderable {
 //        attachments.add(attachment);
 //        return true;
 
-//        LOG.warning("EXTRACT PART (" + n + ") " + "NOT HANDLED");
+//        LOG.log(Level.WARNING, "EXTRACT PART ({0}) NOT HANDLED", n);
 
         return false;
     }
 
     private boolean handleMultipart(Multipart mp) throws MessagingException, IOException {
-//      LOG.info("Multipart content type: " + mp.getContentType());
+//      LOG.log(Level.INFO, "Multipart content type: {0}", mp.getContentType());
 
         if (mp.getContentType().startsWith("multipart/alternative")) {
             return handleMultipartAlternative(mp);
@@ -153,7 +153,7 @@ public class RenderableMessage implements Renderable {
             return handleMultipartSigned(mp);
         }
 
-//        LOG.warning("Multipart content could not be handled.");
+//        LOG.log(Level.WARNING, "Multipart content could not be handled.");
 
         return false;
     }

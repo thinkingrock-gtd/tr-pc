@@ -43,12 +43,10 @@ public final class FetchEmailThread extends Thread {
      */
     @Override
     public void run() {
-//      LOG.info("Starting email fetch at: " + new Date());
-
+//      LOG.log(LogLevel.Info, "Starting email fetch at: {0}", new Date());
         synchronized (SYNCHRONIZE_OBJECT) {
             Email.retrieve();
         }
-
-//      LOG.info("Finished email fetch at: " + new Date());
+//      LOG.log(LogLevel.Info, "Finished email fetch at: {0}", new Date());
     }
 }

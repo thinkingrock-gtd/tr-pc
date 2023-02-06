@@ -187,8 +187,8 @@ final class TCPConnector extends Thread {
             return null;
         }
 
-//      LOG.log(Level.INFO, "SOCKET  LOCAL ADDR: " + socket.getLocalSocketAddress().toString());
-//      LOG.log(Level.INFO, "SOCKET REMOTE ADDR: " + socket.getRemoteSocketAddress().toString());
+//      LOG.log(Level.INFO, "SOCKET  LOCAL ADDR: {0}", socket.getLocalSocketAddress().toString());
+//      LOG.log(Level.INFO, "SOCKET REMOTE ADDR: {0}", socket.getRemoteSocketAddress().toString());
 
         try {
             socket.setReuseAddress(true);

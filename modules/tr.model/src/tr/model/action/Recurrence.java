@@ -815,7 +815,7 @@ public final class Recurrence extends ObservableImpl implements Notable {
 
     /** Removes all occurrences scheduled after the given date. */
     private void removeOccurrencesAfter(Date date) {
-        LOG.fine("Removing recurrent actions after: " + date);
+        LOG.log(Level.FINE, "Removing recurrent actions after: {0}", date);
 
         if (!date.before(DateUtils.MAX_DATE)) {
             return;
@@ -844,7 +844,7 @@ public final class Recurrence extends ObservableImpl implements Notable {
 
                     Date schdDate = schdState.getDate();
                     if (schdDate != null && schdDate.after(endOfDate)) {
-                        LOG.fine("Removing action; Scheduled: " + schdDate + " Description: " + action.getDescription());
+                        LOG.log(Level.FINE, "Removing action; Scheduled: {0} Description: {1}", new Object[]{schdDate, action.getDescription()});
 
                         action.removeFromParent();
                     }

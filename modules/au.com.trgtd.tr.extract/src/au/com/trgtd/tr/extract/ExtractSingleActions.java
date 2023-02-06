@@ -19,6 +19,7 @@ package au.com.trgtd.tr.extract;
 
 import java.io.File;
 import java.io.Writer;
+import java.util.logging.Level;
 import java.util.logging.Logger;
 import tr.model.Data;
 import tr.model.action.Action;
@@ -60,7 +61,7 @@ public class ExtractSingleActions {
             process(out, data);
             ExtractUtils.finalise(out);
         } catch (Exception ex) {
-            LOG.severe("Extracting data failed: " + ex.getMessage());
+            LOG.log(Level.SEVERE, "Extracting data failed: {0}", ex.getMessage());
         }
     }
 

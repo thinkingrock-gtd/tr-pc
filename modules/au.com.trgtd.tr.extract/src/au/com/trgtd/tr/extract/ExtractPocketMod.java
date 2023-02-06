@@ -44,6 +44,7 @@ import tr.model.project.Project;
 import tr.model.thought.Thought;
 import tr.model.topic.Topic;
 import au.com.trgtd.tr.util.DateUtils;
+import java.util.logging.Level;
 
 /**
  * Extract data as XML for PocketMod report.
@@ -102,7 +103,7 @@ public class ExtractPocketMod {
             finalise(out);
         } catch (Exception ex) {
             ex.printStackTrace(System.err);
-            LOG.severe("Extracting data failed: " + ex.getMessage());
+            LOG.log(Level.SEVERE, "Extracting data failed: {0}", ex.getMessage());
         }
     }
 
@@ -148,7 +149,7 @@ public class ExtractPocketMod {
             LOG.info("Extracting completed");
         } catch (Exception ex) {
             ex.printStackTrace(System.err);
-            LOG.severe("Extracting failed: " + ex.getMessage());
+            LOG.log(Level.SEVERE, "Extracting failed: {0}", ex.getMessage());
         }
     }
 

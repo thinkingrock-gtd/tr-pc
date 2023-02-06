@@ -19,6 +19,7 @@ package au.com.trgtd.tr.sync.iphone;
 
 import java.io.BufferedReader;
 import java.io.IOException;
+import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public abstract class SyncMsg102 {
@@ -88,7 +89,7 @@ public abstract class SyncMsg102 {
             return new MsgActionUpdate(str);
         }
 
-        LOG.warning("UNKNOWN MESSAGE: " + str);
+        LOG.log(Level.WARNING, "UNKNOWN MESSAGE: {0}", str);
         return MSG_UNKNOWN;
     }
 

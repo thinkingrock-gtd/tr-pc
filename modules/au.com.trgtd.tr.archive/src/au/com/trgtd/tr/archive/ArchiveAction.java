@@ -54,6 +54,7 @@ import tr.model.thought.Thought;
 import tr.model.util.Manager;
 import au.com.trgtd.tr.util.DateUtils;
 import au.com.trgtd.tr.util.UtilsFile;
+import java.util.logging.Level;
 
 /**
  * Archive action.
@@ -154,7 +155,7 @@ public final class ArchiveAction extends CallableSystemAction implements LookupL
         try {
             UtilsFile.copyFile(dataFile, backupFile);
         } catch (Exception ex) {
-            LOG.severe("Error creating archive backup of datafile. " + ex.getMessage()); // No I18N
+            LOG.log(Level.SEVERE, "Error creating archive backup of datafile. {0}", ex.getMessage()); // No I18N
             StatusDisplayer.getDefault().setStatusText("");
             return;
         }
@@ -166,7 +167,7 @@ public final class ArchiveAction extends CallableSystemAction implements LookupL
         try {
             UtilsFile.copyFile(dataFile, archiveFile);
         } catch (Exception ex) {
-            LOG.severe("Error creating archive copy of datafile. " + ex.getMessage()); // No I18N
+            LOG.log(Level.SEVERE, "Error creating archive copy of datafile. {0}", ex.getMessage()); // No I18N
             StatusDisplayer.getDefault().setStatusText("");
             return;
         }
@@ -179,7 +180,7 @@ public final class ArchiveAction extends CallableSystemAction implements LookupL
         try {
             archiveData = XStreamWrapper.instance().load(archiveFile);
         } catch (Exception ex) {
-            LOG.severe("Error loading data from archive file. " + ex.getMessage()); // No I18N
+            LOG.log(Level.SEVERE, "Error loading data from archive file. {0}", ex.getMessage()); // No I18N
             StatusDisplayer.getDefault().setStatusText("");
             return;
         }
@@ -190,7 +191,7 @@ public final class ArchiveAction extends CallableSystemAction implements LookupL
             if (action.isDone() && action.getDoneDate().before(archiveDate)) {
                 archiveSingleActions.add(action);
             } else {
-                LOG.fine("Removing from archive - action: " + action.getDescription()); // No I18N
+                LOG.log(Level.FINE, "Removing from archive - action: {0}", action.getDescription()); // No I18N
                 action.removeFromParent();
             }
         }
@@ -202,7 +203,7 @@ public final class ArchiveAction extends CallableSystemAction implements LookupL
                 if (project.isDone() && project.getDoneDate().before(archiveDate)) {
                     archiveProjects.add(project);
                 } else {
-                    LOG.fine("Removing from archive - project: " + project.getDescription()); // No I18N
+                    LOG.log(Level.FINE, "Removing from archive - project: {0}", project.getDescription()); // No I18N
                     project.removeFromParent();
                 }
             }
@@ -244,7 +245,7 @@ public final class ArchiveAction extends CallableSystemAction implements LookupL
         try {
             XStreamWrapper.instance().store(archiveData, archiveFile);
         } catch (Exception ex) {
-            LOG.severe("Error storing archive. " + ex.getMessage()); // No I18N
+            LOG.log(Level.SEVERE, "Error storing archive. {0}", ex.getMessage()); // No I18N
             StatusDisplayer.getDefault().setStatusText(""); // No I18N
             return;
         }
@@ -260,14 +261,14 @@ public final class ArchiveAction extends CallableSystemAction implements LookupL
 //      // Remove from data file all archived single singleActions
 //        Project singleActions = data.getRootActions();
 //        for (Action archiveAction : archiveActions) {
-//            LOG.fine("Removing from data - action: " + archiveAction.getDescription()); // No I18N
+//            LOG.log(Level.FINE, "Removing from data - action: {0}", archiveAction.getDescription()); // No I18N
 //            singleActions.remove(archiveAction);
 //        }
 
         // Remove from data file all archived single actions
         Project singleActions = data.getRootActions();
         for (Action a : archiveSingleActions) {
-            LOG.fine("Removing from data - single action: " + a.getDescription()); 
+            LOG.log(Level.FINE, "Removing from data - single action: {0}", a.getDescription());
             singleActions.remove(a);
         }        
 
@@ -276,7 +277,7 @@ public final class ArchiveAction extends CallableSystemAction implements LookupL
 
         // Remove from data file all archived actions
         for (Action archiveAction : archiveActions) {
-            LOG.fine("Removing from data file - archived action: " + archiveAction.getDescription());
+            LOG.log(Level.FINE, "Removing from data file - archived action: {0}", archiveAction.getDescription());
             
             Project dataParent = dataProjectsMap.get(archiveAction.getParent().getID());
             if (dataParent != null) {
@@ -291,7 +292,7 @@ public final class ArchiveAction extends CallableSystemAction implements LookupL
 
         // Remove from data file all archived projects
         for (Project archiveProject : archiveProjects) {
-            LOG.fine("Removing from data file - archived project: " + archiveProject.getDescription());
+            LOG.log(Level.FINE, "Removing from data file - archived project: {0}", archiveProject.getDescription());
             Project dataParent = dataProjectsMap.get(archiveProject.getParent().getID());
             if (dataParent != null) {
                 if (!dataParent.remove(archiveProject)) {
@@ -315,7 +316,7 @@ public final class ArchiveAction extends CallableSystemAction implements LookupL
         for (Thought thought : orphanedThoughts) {
             thoughtManager.remove(thought);
         }
-        LOG.info("Removed from data file: " + orphanedThoughts.size() + " processed thoughts no longer used.");
+        LOG.log(Level.INFO, "Removed from data file: {0} processed thoughts no longer used.", orphanedThoughts.size());
 
 
         saveData(datastore);
@@ -407,7 +408,7 @@ public final class ArchiveAction extends CallableSystemAction implements LookupL
         try {
             ds.store();
         } catch (Exception ex) {
-            LOG.severe("Could not save data. " + ex.getMessage()); // No I18N
+            LOG.log(Level.SEVERE, "Could not save data. {0}", ex.getMessage()); // No I18N
         }
     }
 

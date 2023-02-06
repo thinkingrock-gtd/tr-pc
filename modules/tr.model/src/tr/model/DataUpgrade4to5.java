@@ -20,6 +20,7 @@ package tr.model;
 import au.com.trgtd.tr.util.UtilsEmail;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.logging.Level;
 import java.util.logging.Logger;
 import tr.model.action.Action;
 import tr.model.action.ActionStateDelegated;
@@ -53,11 +54,11 @@ public class DataUpgrade4to5 {
 
     // Upgrade the data.
     private static void upgrade(Data data) {
-        LOG.info("Starting data upgrade version " + OLD_VERSION + " to version " + NEW_VERSION + " ... ");
+        LOG.log(Level.INFO, "Starting data upgrade version {0} to version {1} ... ", new Object[]{OLD_VERSION, NEW_VERSION});
 
         upgradeDelegate(data);
 
-        LOG.info("Finished data upgrade.");
+        LOG.log(Level.INFO, "Finished data upgrade.");
     }
 
     private static void upgradeDelegate(Data data) {
@@ -99,7 +100,7 @@ public class DataUpgrade4to5 {
                 actors.put(to, actor);
             }
             state.setActorID(actor.getID());
-            LOG.info("upgraded delegate: " + to);
+            LOG.log(Level.INFO, "upgraded delegate: {0}", to);
         }
 
 //        // Only create delegate if "to" field is a valid email address
@@ -124,7 +125,7 @@ public class DataUpgrade4to5 {
 //                }
 //                state.setActorID(actor.getID());
 //            }
-//            LOG.info("upgraded delegate: " + to);
+//            LOG.log(Level.INFO, "upgraded delegate: {0}", to);
 //        }
 
     }

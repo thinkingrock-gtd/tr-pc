@@ -88,6 +88,7 @@ import au.com.trgtd.tr.view.contexts.ContextChangeAction;
 import au.com.trgtd.tr.view.projects.PostponeActionAction;
 import au.com.trgtd.tr.view.projects.SetDoneAction;
 import au.com.trgtd.tr.view.topics.TopicChangeAction;
+import java.util.logging.Level;
 //import org.openide.actions.DeleteAction;
 
 /**
@@ -204,7 +205,7 @@ public final class ReviewActionsTopComponent extends Window implements ActionsPr
 
 //  @Override
 //  protected void componentClosed() {
-//      LOG.info("CLOSED ACTIONS: " + getName());
+//      LOG.log(Level.INFO, "CLOSED ACTIONS: {0}", getName());
 //
 //      // panel.save() moved to componentDeactivated()
 //      panel.save();
