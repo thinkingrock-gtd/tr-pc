@@ -37,6 +37,7 @@ import tr.model.action.Action;
 import au.com.trgtd.tr.util.Observable;
 import au.com.trgtd.tr.util.Observer;
 import au.com.trgtd.tr.view.projects.goals.ProjectGoalsNode;
+import java.util.logging.Level;
 
 /**
  * Children of a project node.
@@ -238,7 +239,7 @@ public class ProjectChildren extends Children.Keys implements Observer, ChangeLi
                 try {
                     explorerManager.setSelectedNodes(selectedNodes);
                 } catch (Exception ex) {
-                    LOG.info("Node selection failed. " + ex.getMessage());
+                    LOG.log(Level.INFO, "Node selection failed. {0}", ex.getMessage());
                 }
             });
         }

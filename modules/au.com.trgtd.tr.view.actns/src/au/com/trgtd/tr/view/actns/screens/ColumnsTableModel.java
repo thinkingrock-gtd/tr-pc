@@ -26,6 +26,7 @@ import org.openide.util.NbBundle;
 import au.com.trgtd.tr.util.Observable;
 import au.com.trgtd.tr.util.Observer;
 import au.com.trgtd.tr.view.actns.screens.columns.ActionsColumn;
+import java.util.logging.Level;
 
 /**
  * Table model for the columns dialog.
@@ -136,7 +137,7 @@ public class ColumnsTableModel extends AbstractTableModel implements Observer {
     /** Sets the data model value at the specified table row and column. */
     @Override
     public void setValueAt(Object object, int row, int column) {
-        LOG.fine("SetValueAt: row = " + row + " col = " + column);
+        LOG.log(Level.FINE, "SetValueAt: row = {0} col = {1}", new Object[]{row, column});
         
         if (column == COLUMN_VISIBLE && object instanceof Boolean) {
             

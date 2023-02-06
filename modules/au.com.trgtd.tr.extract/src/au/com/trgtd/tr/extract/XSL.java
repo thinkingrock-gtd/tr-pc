@@ -25,6 +25,7 @@ import java.io.OutputStream;
 import java.io.OutputStreamWriter;
 import java.io.Writer;
 import java.util.List;
+import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.xml.transform.OutputKeys;
 import javax.xml.transform.Transformer;
@@ -61,7 +62,7 @@ public class XSL {
             try {
                 outStreamWriter = new OutputStreamWriter(outStream, encoding);
             } catch (Exception ex) {
-                LOG.warning("Encoding " + encoding + " is not supported.");
+                LOG.log(Level.WARNING, "Encoding {0} is not supported.", encoding);
                 encoding = null;
                 outStreamWriter = new OutputStreamWriter(outStream);
             }
@@ -85,7 +86,7 @@ public class XSL {
                     String value = param.getValue();
                     if (value != null && !value.trim().equals("")) {
                         
-                        LOG.info("****** ID: |" + param.id + "| Value: |" + value + "| ******");
+                        LOG.log(Level.INFO, "****** ID: |{0}| Value: |{1}| ******", new Object[]{param.id, value});
                         
                         transformer.setParameter(param.id, value);                        
                     }

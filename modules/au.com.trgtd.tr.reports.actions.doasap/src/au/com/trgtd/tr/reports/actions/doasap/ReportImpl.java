@@ -36,6 +36,7 @@ import au.com.trgtd.tr.extract.ParamBoolean;
 import au.com.trgtd.tr.extract.ParamContext;
 import au.com.trgtd.tr.extract.ParamList;
 import au.com.trgtd.tr.extract.ParamsDialog;
+import java.util.logging.Level;
 import java.util.logging.Logger;
 import tr.extract.reports.PaperSize;
 import tr.model.Data;
@@ -128,7 +129,7 @@ public class ReportImpl extends au.com.trgtd.tr.extract.Extract {
         
         File xmlfile = getTmpFile("Actions.xml");
 
-        LOG.info("Extract file: " + xmlfile.getPath());
+        LOG.log(Level.INFO, "Extract file: {0}", xmlfile.getPath());
         
         ExtractActions.process(data, xmlfile);
                             

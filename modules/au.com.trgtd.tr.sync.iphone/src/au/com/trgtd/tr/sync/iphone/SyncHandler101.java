@@ -22,6 +22,7 @@ import java.io.BufferedReader;
 import java.io.PrintWriter;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.logging.Level;
 import tr.model.action.Action;
 import tr.model.context.Context;
 import tr.model.thought.Thought;
@@ -129,7 +130,7 @@ public class SyncHandler101 extends SyncHandler {
                 return false;
             }
 
-            LOG.info("RECIEVED:" + inMsg.toString());
+            LOG.log(Level.INFO, "RECIEVED:{0}", inMsg.toString());
 
             switch (inMsg.type) {
                 case Thought: {
@@ -140,7 +141,7 @@ public class SyncHandler101 extends SyncHandler {
                     thought.setTopic(getTopic(msgThought.topic));
                     getData().getThoughtManager().add(thought);
                     nbrThoughtsGot++;
-                    LOG.info("TR added thought: " + thought.getDescription());
+                    LOG.log(Level.INFO, "TR added thought: {0}", thought.getDescription());
                     send("OK");
                     break;
                 }
@@ -148,11 +149,11 @@ public class SyncHandler101 extends SyncHandler {
                     SyncMsg101.MsgActionUpdate msgActionUpdate = (SyncMsg101.MsgActionUpdate)inMsg;
                     Action action = Services.instance.getAction(msgActionUpdate.id);
                     if (action == null) {
-                        LOG.warning("COULD NOT FIND ACTION WITH ID: " + msgActionUpdate.id);
+                        LOG.log(Level.WARNING, "COULD NOT FIND ACTION WITH ID: {0}", msgActionUpdate.id);
                         break;
                     }
                     if (msgActionUpdate.done) {
-                        LOG.info("TR updated action with id: " + msgActionUpdate.id + " Done set to True");
+                        LOG.log(Level.INFO, "TR updated action with id: {0} Done set to True", msgActionUpdate.id);
                         action.setDone(true);
                         updateActionsToSend();
                     }
@@ -209,7 +210,7 @@ public class SyncHandler101 extends SyncHandler {
             if (!action.isDone()) {
                 return action;
             } else {
-                LOG.info("TR not sending action with id: " + action.getID() + " Was updated to Done");
+                LOG.log(Level.INFO, "TR not sending action with id: {0} Was updated to Done", action.getID());
             }
         }
         return null;

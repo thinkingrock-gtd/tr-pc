@@ -19,6 +19,7 @@ package au.com.trgtd.tr.extract.clean;
 
 import au.com.trgtd.tr.appl.Constants;
 import au.com.trgtd.tr.appl.UtilsPrefs;
+import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.prefs.BackingStoreException;
 import java.util.prefs.Preferences;
@@ -71,7 +72,7 @@ public class ExtractCleanPrefs {
                 }
             }
         } catch (BackingStoreException ex) {
-            LOG.severe("Extract clean preferences error. " + ex.getMessage());
+            LOG.log(Level.SEVERE, "Extract clean preferences error. {0}", ex.getMessage());
             Exceptions.printStackTrace(ex);
         }
     }
@@ -128,7 +129,7 @@ public class ExtractCleanPrefs {
         try {
             instance.prefs.flush();
         } catch (BackingStoreException ex) {
-            LOG.severe("Extract clean preferences error. " + ex.getMessage());
+            LOG.log(Level.SEVERE, "Extract clean preferences error. {0}", ex.getMessage());
         }
     }
 

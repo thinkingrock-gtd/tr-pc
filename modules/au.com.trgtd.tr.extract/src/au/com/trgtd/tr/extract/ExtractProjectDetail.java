@@ -30,6 +30,7 @@ import java.util.Date;
 import java.util.logging.Logger;
 import org.openide.util.NbBundle;
 import au.com.trgtd.tr.extract.Extract.FormatType;
+import java.util.logging.Level;
 import tr.model.Item.Item;
 import tr.model.action.Action;
 import tr.model.action.ActionStateDelegated;
@@ -73,7 +74,7 @@ public class ExtractProjectDetail {
             process(out, project);
             finalise(out);
         } catch (Exception ex) {
-            LOG.severe("Extracting data failed: " + ex.getMessage());
+            LOG.log(Level.SEVERE, "Extracting data failed: {0}", ex.getMessage());
         }
     }
 

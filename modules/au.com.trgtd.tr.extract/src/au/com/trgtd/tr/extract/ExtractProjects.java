@@ -32,6 +32,7 @@ import au.com.trgtd.tr.extract.Extract.FormatType;
 import au.com.trgtd.tr.extract.criteria.ValueIDsProviderEnergy;
 import au.com.trgtd.tr.extract.criteria.ValueIDsProviderPriority;
 import au.com.trgtd.tr.extract.criteria.ValueIDsProviderTime;
+import java.util.logging.Level;
 import tr.model.Data;
 import tr.model.action.Action;
 import tr.model.criteria.Value;
@@ -66,7 +67,7 @@ public class ExtractProjects {
             process(data, out);
             finalise(out);
         } catch (Exception ex) {
-            LOG.severe("Extracting data failed: " + ex.getMessage());
+            LOG.log(Level.SEVERE, "Extracting data failed: {0}", ex.getMessage());
         }
     }
 
@@ -101,7 +102,7 @@ public class ExtractProjects {
             processData(data, out);
             LOG.info("Extracting projects ... done");
         } catch (Exception ex) {
-            LOG.severe("Extracting projects failed: " + ex.getMessage());
+            LOG.log(Level.SEVERE, "Extracting projects failed: {0}", ex.getMessage());
         }
 
     }

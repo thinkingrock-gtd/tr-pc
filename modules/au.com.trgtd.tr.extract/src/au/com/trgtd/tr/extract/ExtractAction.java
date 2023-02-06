@@ -34,6 +34,7 @@ import au.com.trgtd.tr.extract.Extract.FormatType;
 import au.com.trgtd.tr.extract.criteria.ValueIDsProviderEnergy;
 import au.com.trgtd.tr.extract.criteria.ValueIDsProviderPriority;
 import au.com.trgtd.tr.extract.criteria.ValueIDsProviderTime;
+import java.util.logging.Level;
 import tr.model.action.Action;
 import tr.model.action.ActionState;
 import tr.model.action.ActionStateASAP;
@@ -75,7 +76,7 @@ public class ExtractAction {
             process(action, out);
             finalise(out);
         } catch (Exception ex) {
-            LOG.severe("Extracting data failed: " + ex.getMessage());
+            LOG.log(Level.SEVERE, "Extracting data failed: {0}", ex.getMessage());
         }
     }
 
@@ -110,7 +111,7 @@ public class ExtractAction {
             processData(action, out);
             LOG.info("Extracting action ... done");
         } catch (Exception ex) {
-            LOG.severe("Extracting action failed: " + ex.getMessage());
+            LOG.log(Level.SEVERE, "Extracting action failed: {0}", ex.getMessage());
         }
 
     }

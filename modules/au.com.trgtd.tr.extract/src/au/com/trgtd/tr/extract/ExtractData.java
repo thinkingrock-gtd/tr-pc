@@ -32,6 +32,7 @@ import java.util.Iterator;
 import java.util.Vector;
 import java.util.logging.Logger;
 import au.com.trgtd.tr.extract.Extract.FormatType;
+import java.util.logging.Level;
 import tr.model.Data;
 import tr.model.Item.Item;
 import tr.model.action.Action;
@@ -136,7 +137,7 @@ public class ExtractData {
             output();
             LOG.info("Extracting data done");
         } catch (Exception ex) {
-            LOG.severe("Extracting data failed: " + ex.getMessage());
+            LOG.log(Level.SEVERE, "Extracting data failed: {0}", ex.getMessage());
             ex.printStackTrace();
         }
     }

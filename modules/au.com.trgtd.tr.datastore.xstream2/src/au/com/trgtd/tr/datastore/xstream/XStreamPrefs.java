@@ -20,6 +20,7 @@ package au.com.trgtd.tr.datastore.xstream;
 import au.com.trgtd.tr.appl.Constants;
 import au.com.trgtd.tr.appl.UtilsPrefs;
 import java.io.File;
+import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.prefs.BackingStoreException;
 import java.util.prefs.Preferences;
@@ -61,7 +62,7 @@ public final class XStreamPrefs {
                 }
             }
         } catch (BackingStoreException ex) {
-            LOG.severe("XStream preferences error. " + ex.getMessage());
+            LOG.log(Level.SEVERE, "XStream preferences error. {0}", ex.getMessage());
             Exceptions.printStackTrace(ex);
         }
     }
@@ -98,7 +99,7 @@ public final class XStreamPrefs {
         try {
             instance.prefs.flush();
         } catch (BackingStoreException ex) {
-            LOG.severe("XStream preferences exception. " + ex.getMessage());
+            LOG.log(Level.SEVERE, "XStream preferences exception. {0}", ex.getMessage());
         }
     }
 
