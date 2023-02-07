@@ -116,7 +116,7 @@ public class ContextsPanel extends JPanel implements ListSelectionListener, Obse
         
         contextTable.setDefaultRenderer(Context.class, new ContextsTableFormat.ContextRenderer());
         
-        tableSorter = new TableComparatorChooser<Context>(contextTable, contextSortedList, true);
+        tableSorter = new TableComparatorChooser<>(contextTable, contextSortedList, true);
         
         contextTable.addKeyListener(new KeyAdapter() {
             public void keyPressed(KeyEvent e) {

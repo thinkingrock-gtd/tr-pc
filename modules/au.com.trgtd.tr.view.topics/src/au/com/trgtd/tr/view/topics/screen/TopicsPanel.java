@@ -117,7 +117,7 @@ public class TopicsPanel extends JPanel implements ListSelectionListener, Observ
         topicTable.setDefaultRenderer(TopicsTableFormat.TopicName.class, new TopicsTableFormat.TopicNameRenderer());
         topicTable.setDefaultRenderer(TopicsTableFormat.TopicDesc.class, new TopicsTableFormat.TopicDescRenderer());
         
-        tableSorter = new TableComparatorChooser<Topic>(topicTable, topicSortedList, true);
+        tableSorter = new TableComparatorChooser<>(topicTable, topicSortedList, true);
         
         topicTable.addKeyListener(new KeyAdapter() {
             @Override

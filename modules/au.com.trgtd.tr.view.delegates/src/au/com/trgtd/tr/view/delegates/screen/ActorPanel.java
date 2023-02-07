@@ -116,7 +116,7 @@ public class ActorPanel extends JPanel implements ListSelectionListener, Observe
             actorTable.getColumnModel().getColumn(c).setPreferredWidth(actorTableFormat.getColumnWidth(c));
         }
         
-        tableSorter = new TableComparatorChooser<Actor>(actorTable, actorSortedList, true);        
+        tableSorter = new TableComparatorChooser<>(actorTable, actorSortedList, true);
 
         actorTable.addKeyListener(new KeyAdapter() {
             @Override
