@@ -86,7 +86,7 @@ public class ContextsPanel extends JPanel implements ListSelectionListener, Obse
         contextSortedList.setMode(SortedList.AVOID_MOVING_ELEMENTS);
         
         contextTableFormat = new ContextsTableFormat();
-        contextEventTableModel = new EventTableModel<Context>(contextSortedList, contextTableFormat);
+        contextEventTableModel = new EventTableModel<>(contextSortedList, contextTableFormat);
         
         contextTable = new JXTable(contextEventTableModel);
         contextTable.getActionMap().remove("find");

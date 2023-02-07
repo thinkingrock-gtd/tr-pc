@@ -141,7 +141,7 @@ class RefChooserPanel extends JPanel implements Observer {
         FilterList refsFilterList = new FilterList(refsEventList, refsMatcherEditor);
         refsSortedList = new SortedList<>(refsFilterList);
         refsTableFormat = new RefChooserTableFormat();
-        refsTableModel = new EventTableModel<Information>(refsSortedList, refsTableFormat);
+        refsTableModel = new EventTableModel<>(refsSortedList, refsTableFormat);
         refsTable = new JXTable(refsTableModel);
         refsTable.getTableHeader().setDefaultRenderer(new JTableHeader().getDefaultRenderer());
         refsTable.setAutoCreateRowSorter(false);

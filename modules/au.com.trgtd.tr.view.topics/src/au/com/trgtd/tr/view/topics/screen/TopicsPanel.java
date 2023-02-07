@@ -86,7 +86,7 @@ public class TopicsPanel extends JPanel implements ListSelectionListener, Observ
         topicSortedList.setMode(SortedList.AVOID_MOVING_ELEMENTS);
         
         topicTableFormat = new TopicsTableFormat();
-        topicEventTableModel = new EventTableModel<Topic>(topicSortedList, topicTableFormat);
+        topicEventTableModel = new EventTableModel<>(topicSortedList, topicTableFormat);
         
         topicTable = new JXTable(topicEventTableModel);
         topicTable.getActionMap().remove("find");

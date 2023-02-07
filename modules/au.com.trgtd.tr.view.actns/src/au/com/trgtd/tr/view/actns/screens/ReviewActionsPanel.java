@@ -138,7 +138,7 @@ public class ReviewActionsPanel extends JPanel implements ListSelectionListener,
 
         actionsTableFormat = new ReviewActionsTableFormat(screen);
 
-        actionsTableModel = new EventTableModel<Action>(actionsSortedList, actionsTableFormat);
+        actionsTableModel = new EventTableModel<>(actionsSortedList, actionsTableFormat);
 
 //        actionsTable = new JXTable(actionsTableModel);
 //        actionsTable.getTableHeader().setDefaultRenderer(new JTableHeader().getDefaultRenderer());

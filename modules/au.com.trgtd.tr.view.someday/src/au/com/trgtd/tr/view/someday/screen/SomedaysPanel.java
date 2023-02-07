@@ -93,7 +93,7 @@ public class SomedaysPanel extends JPanel implements ListSelectionListener, Obse
         
         refsSortedList = new SortedList<>(refsFilterList);
         refsTableFormat = new SomedaysTableFormat();
-        refsTableModel = new EventTableModel<Future>(refsSortedList, refsTableFormat);
+        refsTableModel = new EventTableModel<>(refsSortedList, refsTableFormat);
         
         futuresTable = new JXTable(refsTableModel);
         futuresTable.getActionMap().remove("find");

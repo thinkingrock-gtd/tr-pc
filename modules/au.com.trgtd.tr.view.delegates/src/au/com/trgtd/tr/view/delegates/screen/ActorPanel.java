@@ -88,7 +88,7 @@ public class ActorPanel extends JPanel implements ListSelectionListener, Observe
         actorSortedList.setMode(SortedList.AVOID_MOVING_ELEMENTS);
         
         actorTableFormat = new ActorsTableFormat();
-        actorEventTableModel = new EventTableModel<Actor>(actorSortedList, actorTableFormat);
+        actorEventTableModel = new EventTableModel<>(actorSortedList, actorTableFormat);
         
         actorTable = new JXTable(actorEventTableModel);
         actorTable.getActionMap().remove("find");
