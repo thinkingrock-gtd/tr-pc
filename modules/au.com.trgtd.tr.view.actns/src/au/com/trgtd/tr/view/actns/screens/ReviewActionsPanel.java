@@ -121,7 +121,7 @@ public class ReviewActionsPanel extends JPanel implements ListSelectionListener,
 
         actionsList = Services.instance.getAllActions();
 
-        actionsEventList = new BasicEventList<Action>();
+        actionsEventList = new BasicEventList<>();
         actionsEventList.addAll(actionsList);
         actionsFilterList = new FilterList(actionsEventList, filters.getMatcherEditor());
         actionsFilterList.addListEventListener((ListEvent<Action> e) -> {

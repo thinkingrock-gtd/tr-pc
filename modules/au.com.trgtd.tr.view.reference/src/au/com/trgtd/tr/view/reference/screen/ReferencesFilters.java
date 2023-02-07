@@ -50,7 +50,7 @@ public class ReferencesFilters {
     
     public MatcherEditor getMatcherEditor() {
         if (matcherEditor == null) {
-            BasicEventList<MatcherEditor> list = new BasicEventList<MatcherEditor>();
+            BasicEventList<MatcherEditor> list = new BasicEventList<>();
             list.add(matcherEditorCreatedFrom);
             list.add(matcherEditorCreatedTo);
             list.add(matcherEditorTopics);

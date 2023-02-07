@@ -77,7 +77,7 @@ public class TopicsPanel extends JPanel implements ListSelectionListener, Observ
         if (data == null) return;
         
         topicList = data.getTopicManager().list();
-        topicEventList = new BasicEventList<Topic>();
+        topicEventList = new BasicEventList<>();
         topicEventList.addAll(topicList);
         
         data.getTopicManager().addObserver(this);

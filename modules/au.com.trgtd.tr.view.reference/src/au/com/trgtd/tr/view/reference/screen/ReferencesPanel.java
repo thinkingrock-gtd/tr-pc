@@ -84,7 +84,7 @@ public class ReferencesPanel extends JPanel implements ListSelectionListener, Ob
         
         refsList = data.getInformationManager().list();
         
-        refsEventList = new BasicEventList<Information>();
+        refsEventList = new BasicEventList<>();
         refsEventList.addAll(refsList);
         
         FilterList refsFilterList = new FilterList(refsEventList, refsMatcherEditor);

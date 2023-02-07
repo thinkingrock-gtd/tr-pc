@@ -84,7 +84,7 @@ public class SomedaysPanel extends JPanel implements ListSelectionListener, Obse
         
         refsList = data.getFutureManager().list();
         
-        refsEventList = new BasicEventList<Future>();
+        refsEventList = new BasicEventList<>();
         refsEventList.addAll(refsList);
         
         FilterList refsFilterList = new FilterList(refsEventList, refsMatcherEditor);

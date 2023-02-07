@@ -77,7 +77,7 @@ public class ContextsPanel extends JPanel implements ListSelectionListener, Obse
         if (data == null) return;
         
         contextList = data.getContextManager().list();
-        contextEventList = new BasicEventList<Context>();
+        contextEventList = new BasicEventList<>();
         contextEventList.addAll(contextList);
         
         data.getContextManager().addObserver(this);

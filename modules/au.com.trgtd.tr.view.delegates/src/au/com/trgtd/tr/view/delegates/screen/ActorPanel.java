@@ -79,7 +79,7 @@ public class ActorPanel extends JPanel implements ListSelectionListener, Observe
         if (data == null) return;
         
         actorList = data.getActorManager().list();
-        actorEventList = new BasicEventList<Actor>();
+        actorEventList = new BasicEventList<>();
         actorEventList.addAll(actorList);
         
         data.getActorManager().addObserver(this);

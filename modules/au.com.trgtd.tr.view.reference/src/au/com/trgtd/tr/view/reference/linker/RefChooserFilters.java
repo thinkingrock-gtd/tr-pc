@@ -46,7 +46,7 @@ class RefChooserFilters {
     
     public MatcherEditor getMatcherEditor() {
         if (matcherEditor == null) {
-            BasicEventList<MatcherEditor> list = new BasicEventList<MatcherEditor>();
+            BasicEventList<MatcherEditor> list = new BasicEventList<>();
             list.add(matcherEditorTopics);
             list.add(matcherEditorSearch);
             matcherEditor = new CompositeMatcherEditor(list);
