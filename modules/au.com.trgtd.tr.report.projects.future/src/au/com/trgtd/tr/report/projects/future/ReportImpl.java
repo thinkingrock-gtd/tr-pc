@@ -92,10 +92,10 @@ public class ReportImpl extends au.com.trgtd.tr.extract.Extract {
         if (dlg.showDialog() == JOptionPane.CANCEL_OPTION) {
             return;
         }    
-        Map<String, Object> rparams = new HashMap<String, Object>();        
-        rparams.put("paramTopic", paramTopic.getValue());        
+        Map<String, Object> rparams = new HashMap<>();
+        rparams.put("paramTopic", paramTopic.getValue());
         if (!paramSort.getValue().equals("none")) {
-            rparams.put("paramSortText", getString("param-sort-" + paramSort.getValue()));                                    
+            rparams.put("paramSortText", getString("param-sort-" + paramSort.getValue()));
         }
 
         PaperSize paper = paramPaper.getValue().equals("letter") ? PaperSize.Letter : PaperSize.A4;

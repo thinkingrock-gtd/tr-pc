@@ -58,7 +58,7 @@ public class GoalsCtrlImpl extends CtrlImpl implements GoalsCtrl, PropertyChange
 
     private GoalsCtrlImpl() {
         super(Constants.ID_ROOT_GOAL);
-        goalsMap = new HashMap<Integer, GoalCtrl>();
+        goalsMap = new HashMap<>();
         goalsDAO = GoalsDAOLookup.getGoalsDAO();
         goalsDAO.addPropertyChangeListener(GoalsDAO.PROP_DATA, this);
         initialise();

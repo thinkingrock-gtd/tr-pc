@@ -39,7 +39,7 @@ public class DataUpgrade4to5 {
     private static final Logger LOG = Logger.getLogger("tr.data.upgrade");
     private static final int OLD_VERSION = 4;
     private static final int NEW_VERSION = 5;
-    private static final Map<String, Actor> actors = new HashMap<String, Actor>();
+    private static final Map<String, Actor> actors = new HashMap<>();
     
     /**
      * Upgrade the data.

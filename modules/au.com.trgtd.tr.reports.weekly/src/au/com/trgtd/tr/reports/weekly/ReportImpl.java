@@ -103,7 +103,7 @@ public class ReportImpl extends au.com.trgtd.tr.extract.Extract {
         if (dlg.showDialog() == JOptionPane.CANCEL_OPTION) {
             return;
         }
-        Map<String, Object> rparams = new HashMap<String, Object>();
+        Map<String, Object> rparams = new HashMap<>();
                 
         boolean today = paramStart.getValue().equals("today");
         Date todayDate = today ? getDate(0) : getDate(1);

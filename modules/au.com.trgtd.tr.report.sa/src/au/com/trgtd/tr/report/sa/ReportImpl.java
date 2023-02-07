@@ -111,7 +111,7 @@ public class ReportImpl extends au.com.trgtd.tr.extract.Extract {
         if (dlg.showDialog() == JOptionPane.CANCEL_OPTION) {
             return;
         }
-        Map<String, Object> rparams = new HashMap<String, Object>();
+        Map<String, Object> rparams = new HashMap<>();
         rparams.put("paramThought", Boolean.parseBoolean(paramThought.getValue()));
         rparams.put("paramSuccess", Boolean.parseBoolean(paramSuccess.getValue()));
         rparams.put("paramCriteria", Boolean.parseBoolean(paramCriteria.getValue()));

@@ -127,7 +127,7 @@ public class ReportImpl extends au.com.trgtd.tr.extract.Extract {
         if (dlg.showDialog() == JOptionPane.CANCEL_OPTION) {
             return;
         }
-        Map<String, Object> rparams = new HashMap<String, Object>();
+        Map<String, Object> rparams = new HashMap<>();
         rparams.put("paramTopic", paramTopic.getValue());
         if (!paramSort.getValue().equals("none")) {
             rparams.put("paramSortText", getString("param-sort-" + paramSort.getValue()));
@@ -161,7 +161,7 @@ public class ReportImpl extends au.com.trgtd.tr.extract.Extract {
     }
 
     public void process(List<Project> projects, boolean showDone) throws Exception {
-        Map<String, Object> rparams = new HashMap<String, Object>();
+        Map<String, Object> rparams = new HashMap<>();
         rparams.put("paramTopic", "all");
 
         PaperSize paper;

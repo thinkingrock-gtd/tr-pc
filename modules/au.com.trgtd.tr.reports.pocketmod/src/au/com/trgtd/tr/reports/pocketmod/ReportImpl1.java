@@ -247,7 +247,7 @@ public class ReportImpl1 extends au.com.trgtd.tr.extract.Extract {
         File xmlfile = getTmpFile("PocketMod.xml");
         ExtractPocketMod.process(data, xmlfile, pages, date, includeCriteria, includeProject);
 
-        Map<String, Object> rparams = new HashMap<String, Object>();
+        Map<String, Object> rparams = new HashMap<>();
 
         PaperSize paper = paramPaper.getValue().equals("letter") ? PaperSize.Letter : PaperSize.A4;
         File rptfile = (paper == PaperSize.Letter) ? Resources.FILE_RPT_POCKETMOD_LTR : Resources.FILE_RPT_POCKETMOD_A4;

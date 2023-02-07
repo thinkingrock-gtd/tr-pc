@@ -520,7 +520,7 @@ public class GoalNode extends AbstractNode
     }
 
     private Map<Integer, Project> getProjectsMap() {
-        Map<Integer, Project> map = new HashMap<Integer, Project>();
+        Map<Integer, Project> map = new HashMap<>();
         for (Project project : Services.instance.getProjects()) {
             map.put(project.getID(), project);
         }

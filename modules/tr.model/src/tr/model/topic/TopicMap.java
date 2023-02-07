@@ -62,7 +62,7 @@ public class TopicMap {
     private void initialise() {
         synchronized (this) {
             if (map == null) {
-                map = new HashMap<Integer, Topic>();
+                map = new HashMap<>();
             } else {
                 map.clear();
             }

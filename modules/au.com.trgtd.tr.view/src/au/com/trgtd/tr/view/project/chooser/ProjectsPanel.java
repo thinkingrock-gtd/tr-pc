@@ -74,8 +74,8 @@ public class ProjectsPanel extends JPanel {
         if (currentOnly) {
             tabbedPane.remove(1);
         }
-        mapProjectSorts = new HashMap<Integer, Boolean>();
-        mapFutureSorts = new HashMap<Integer, Boolean>();
+        mapProjectSorts = new HashMap<>();
+        mapFutureSorts = new HashMap<>();
     }
 
     private JToolBar getProjectsToolbar() {

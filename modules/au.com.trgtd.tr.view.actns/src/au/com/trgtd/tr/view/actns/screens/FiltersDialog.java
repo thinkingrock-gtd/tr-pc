@@ -66,7 +66,7 @@ public class FiltersDialog extends JDialog {
         filtersPanel.add(new HeadLabel("FiltersDialog.column.values"), "align center");
         filtersPanel.add(new HeadLabel("FiltersDialog.column.nulls"), "align left, wrap");
 
-        Map<Byte, ActionsFilter> actionsFilterMap = new HashMap<Byte, ActionsFilter>();
+        Map<Byte, ActionsFilter> actionsFilterMap = new HashMap<>();
         for (ActionsFilter af : screen.getFilters()) {
             actionsFilterMap.put(af.getIndex(), af);
         }

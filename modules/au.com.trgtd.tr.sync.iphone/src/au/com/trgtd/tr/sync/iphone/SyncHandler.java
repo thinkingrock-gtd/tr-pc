@@ -155,7 +155,7 @@ public abstract class SyncHandler {
             if (getData() == null) {
                 projectsMap = Collections.emptyMap();
             } else {
-                projectsMap = new HashMap<Integer, Project>();
+                projectsMap = new HashMap<>();
                 for (Project p : getProjects()) {
                     projectsMap.put(p.getID(), p);                    
                 }
@@ -170,7 +170,7 @@ public abstract class SyncHandler {
             if (getData() == null) {
                 referencesMap = Collections.emptyMap();
             } else {
-                referencesMap = new HashMap<Integer, Information>();
+                referencesMap = new HashMap<>();
                 for (Information ref : getReferences()) {
                     referencesMap.put(ref.getID(), ref);                    
                 }
@@ -281,7 +281,7 @@ public abstract class SyncHandler {
     private Map<Integer, Actor> delegatesMap;
     private Map<Integer, Actor> getDelegatesMap() {
         if (null == delegatesMap) {
-            delegatesMap = new HashMap<Integer, Actor>();
+            delegatesMap = new HashMap<>();
             for (Actor actor : getData().getActorManager().list()) {
                 delegatesMap.put(actor.getID(), actor);
             }

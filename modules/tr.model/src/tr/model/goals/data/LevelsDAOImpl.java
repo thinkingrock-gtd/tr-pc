@@ -253,12 +253,12 @@ public class LevelsDAOImpl extends DAOImpl implements LevelsDAO {
                 levelDTOList.clear();
             }
             if (levelDTOMap == null) {
-                levelDTOMap = new HashMap<Integer, LevelDTO>();
+                levelDTOMap = new HashMap<>();
             } else {
                 levelDTOMap.clear();
             }
             if (levelMap == null) {
-                levelMap = new HashMap<Integer, Level>();
+                levelMap = new HashMap<>();
             } else {
                 levelMap.clear();
             }

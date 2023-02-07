@@ -392,7 +392,7 @@ public final class ArchiveAction extends CallableSystemAction implements LookupL
     }
     
     private Map<Integer, Project> createProjectsMap(Data data) {        
-        Map<Integer, Project> map = new HashMap<Integer, Project>();        
+        Map<Integer, Project> map = new HashMap<>();
         mapProjects(data.getRootProjects(), map);
         return map;
     }

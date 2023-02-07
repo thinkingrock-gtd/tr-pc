@@ -42,7 +42,7 @@ public class SyncHandler extends SyncHandler103 {
     }
 
     protected Map<Integer, Action> getActionMap() {
-        Map<Integer, Action> actionMap = new HashMap<Integer, Action>();
+        Map<Integer, Action> actionMap = new HashMap<>();
         List<Action> actionList = super.getActions();
         for (Action action : actionList) {
             actionMap.put(action.getID(), action);

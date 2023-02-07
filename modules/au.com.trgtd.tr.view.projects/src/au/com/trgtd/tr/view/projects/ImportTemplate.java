@@ -117,7 +117,7 @@ public class ImportTemplate {
     }
     
     private Map<String, Value> initialiseMap(Criterion criterion) {
-        Map<String, Value> map = new HashMap<String, Value>();
+        Map<String, Value> map = new HashMap<>();
         for (Value value : criterion.values.list()) {
             map.put(value.getName(), value);
         }        

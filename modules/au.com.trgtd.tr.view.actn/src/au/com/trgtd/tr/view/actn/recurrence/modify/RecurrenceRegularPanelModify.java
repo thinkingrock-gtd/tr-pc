@@ -526,7 +526,7 @@ public final class RecurrenceRegularPanelModify extends JPanel {
 
     private Integer getAdvanceNbr(PeriodType type) {
         if (mapAdvanceNbrs == null) {
-            mapAdvanceNbrs = new HashMap<PeriodType, Integer>();
+            mapAdvanceNbrs = new HashMap<>();
         }
 
         Integer n = mapAdvanceNbrs.get(type);
@@ -539,7 +539,7 @@ public final class RecurrenceRegularPanelModify extends JPanel {
 
     private void setAdvanceNbr(PeriodType type, Integer advanceNbr) {
         if (mapAdvanceNbrs == null) {
-            mapAdvanceNbrs = new HashMap<PeriodType, Integer>();
+            mapAdvanceNbrs = new HashMap<>();
         }
 
         mapAdvanceNbrs.put(type, advanceNbr);
@@ -547,7 +547,7 @@ public final class RecurrenceRegularPanelModify extends JPanel {
 
     private Period getPeriod(PeriodType type) {
         if (mapPeriods == null) {
-            mapPeriods = new HashMap<PeriodType, Period>();
+            mapPeriods = new HashMap<>();
         }
 
         return mapPeriods.get(type);
@@ -555,7 +555,7 @@ public final class RecurrenceRegularPanelModify extends JPanel {
 
     private void setPeriod(Period period) {
         if (mapPeriods == null) {
-            mapPeriods = new HashMap<PeriodType, Period>();
+            mapPeriods = new HashMap<>();
         }
 
         mapPeriods.put(period.getType(), period);

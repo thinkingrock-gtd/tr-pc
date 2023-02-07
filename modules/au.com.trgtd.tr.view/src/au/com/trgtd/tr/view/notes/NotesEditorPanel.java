@@ -62,7 +62,7 @@ public final class NotesEditorPanel extends JPanel {
         fileAction = new FileAction();
         timeAction = new TimeAction();
         urlAction = new URLAction();
-        linkerActionMap = new HashMap<String, LinkerAction>();
+        linkerActionMap = new HashMap<>();
         linkersLookup = Lookup.getDefault().lookupResult(NotesLinker.class);
         linkers = linkersLookup.allInstances();
         toolbar = getToolbar();

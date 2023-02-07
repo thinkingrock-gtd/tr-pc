@@ -34,7 +34,7 @@ public final class ComponentSizer extends MouseAdapter {
 
     private final static Dimension MINIMUM_SIZE = new Dimension(10, 10);
     private final static Dimension MAXIMUM_SIZE = new Dimension(Integer.MAX_VALUE, Integer.MAX_VALUE);
-    private static Map<Integer, Integer> cursors = new HashMap<Integer, Integer>();
+    private static Map<Integer, Integer> cursors = new HashMap<>();
 
     {
         cursors.put(1, Cursor.N_RESIZE_CURSOR);

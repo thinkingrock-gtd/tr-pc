@@ -134,7 +134,7 @@ public class ReportImpl extends au.com.trgtd.tr.extract.Extract {
             return;
         }
 
-        Map<String, Object> rparams = new HashMap<String, Object>();
+        Map<String, Object> rparams = new HashMap<>();
         
         Date dateFrom = null;
         String dateFromStr = paramDateFrom.getValue();

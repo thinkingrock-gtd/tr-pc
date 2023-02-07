@@ -54,7 +54,7 @@ public class LevelsCtrlImpl extends CtrlImpl implements LevelsCtrl, PropertyChan
         levelsDAO = LevelsDAOLookup.getLevelsDAO();
         levelsDAO.addPropertyChangeListener(LevelsDAO.PROP_DATA, this);
         levelCtrlsList = new Vector<>();
-        levelCtrlsMap = new HashMap<Integer, LevelCtrl>();
+        levelCtrlsMap = new HashMap<>();
         initialise();
     }
 

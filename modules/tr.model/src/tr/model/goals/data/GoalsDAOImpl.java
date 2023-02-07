@@ -476,12 +476,12 @@ public class GoalsDAOImpl extends DAOImpl implements GoalsDAO {
                 firePropertyChange(PROP_DATA, 0, 1);
             });
             if (goalMap == null) {
-                goalMap = new HashMap<Integer, Goal>();
+                goalMap = new HashMap<>();
             } else {
                 goalMap.clear();
             }
             if (goalDTOMap == null) {
-                goalDTOMap = new HashMap<Integer, GoalDTO>();
+                goalDTOMap = new HashMap<>();
             } else {
                 goalDTOMap.clear();
             }

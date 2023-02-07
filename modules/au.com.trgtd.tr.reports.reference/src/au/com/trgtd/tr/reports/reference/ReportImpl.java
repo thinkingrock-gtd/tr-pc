@@ -89,7 +89,7 @@ public class ReportImpl extends au.com.trgtd.tr.extract.Extract {
             return;
         }
 
-        Map<String, Object> rparams = new HashMap<String, Object>();
+        Map<String, Object> rparams = new HashMap<>();
         rparams.put("param-notes", Boolean.parseBoolean(paramNotes.getValue()));
         rparams.put("param-topic", paramTopic.getValue());
 
