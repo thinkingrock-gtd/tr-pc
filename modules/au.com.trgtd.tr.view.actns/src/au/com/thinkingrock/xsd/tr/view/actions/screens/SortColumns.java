@@ -62,7 +62,7 @@ public class SortColumns {
      */
     public List<SortColumn> getSortColumns() {
         if (sortColumn == null) {
-            sortColumn = new ArrayList<SortColumn>();
+            sortColumn = new ArrayList<>();
         }
         return this.sortColumn;
     }

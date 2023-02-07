@@ -183,7 +183,7 @@ public final class ActorsTopComponent extends TopComponent implements ActorNodeP
     public void provide(final Collection<ActorNode> actorNodes) {
         EventQueue.invokeLater(() -> {
             if (panel == null || actorNodes == null) {
-                getInstanceContent().set(new ArrayList<ActorNode>(), null);
+                getInstanceContent().set(new ArrayList<>(), null);
             } else {
                 getInstanceContent().set(actorNodes, null);
             }

@@ -49,7 +49,7 @@ public class ExportXML extends Extract {
     
     @Override
     public List<Param> getParams() {
-        List<Param> params = new ArrayList<Param>(2);
+        List<Param> params = new ArrayList<>(2);
         params.add(new ParamBoolean("include-topic", getString("param-include-topic")));
         params.add(new ParamBoolean("include-notes", getString("param-include-notes")));
         return params;

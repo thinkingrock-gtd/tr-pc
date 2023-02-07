@@ -62,7 +62,7 @@ public class Columns {
      */
     public List<Column> getColumns() {
         if (column == null) {
-            column = new ArrayList<Column>();
+            column = new ArrayList<>();
         }
         return column;
     }

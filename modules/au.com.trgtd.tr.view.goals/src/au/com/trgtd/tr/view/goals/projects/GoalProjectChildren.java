@@ -71,7 +71,7 @@ public class GoalProjectChildren extends Children.Keys<Project> implements Prope
             projectsMap.put(project.getID(), project);
         }
 
-        ArrayList<Project> goalProjects = new ArrayList<Project>(goalProjectIDs.length);
+        ArrayList<Project> goalProjects = new ArrayList<>(goalProjectIDs.length);
         for (Integer id : goalProjectIDs) {
             Project project = projectsMap.get(id);
             if (project != null) {

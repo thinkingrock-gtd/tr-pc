@@ -41,7 +41,7 @@ public class FoundOutlineView extends Outline implements ExplorerManager.Provide
         outlineView = new OutlineView();
         
         outlineView.setProperties(properties);
-//        List<String> names = new ArrayList<String>();
+//        List<String> names = new ArrayList<>();
 //        for (Property prop : properties) {
 //            names.add(prop.getName());
 //            names.add(prop.getDisplayName());

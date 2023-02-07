@@ -89,7 +89,7 @@ public class ParamsDialog extends JDialog {
         JPanel panelLabels = new JPanel(new GridLayout(rows, cols, hgap, vgap));
         JPanel panelFields = new JPanel(new GridLayout(rows, cols, hgap, vgap));
 
-        components = new ArrayList<JComponent>();
+        components = new ArrayList<>();
 
         for (Param param : params) {
             if (param.type == Param.Type.CHECKBOX) {

@@ -67,7 +67,7 @@ public class Filters {
      */
     public List<Filter> getFilters() {
         if (filter == null) {
-            filter = new ArrayList<Filter>();
+            filter = new ArrayList<>();
         }
         return filter;
     }

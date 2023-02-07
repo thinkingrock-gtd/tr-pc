@@ -250,7 +250,7 @@ public class GoalsCtrlImpl extends CtrlImpl implements GoalsCtrl, PropertyChange
     }
 
     private List<GoalCtrl> getGoals(Integer levelID) {
-        List<GoalCtrl> goals = new ArrayList<GoalCtrl>();
+        List<GoalCtrl> goals = new ArrayList<>();
         for (GoalCtrl g : goalsMap.values()) {
             if (g.getLevelID().equals(levelID)) {
                 goals.add(g);

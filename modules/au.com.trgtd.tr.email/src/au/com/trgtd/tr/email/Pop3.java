@@ -686,7 +686,7 @@ public class Pop3 {
         if (folders == null) {
             return null;
         }
-        ArrayList<Folder> array = new ArrayList<Folder>(); //auto size!
+        ArrayList<Folder> array = new ArrayList<>(); //auto size!
         for (int i = 0, n = folders.length; i < n; i++) {
             if (this.folders[i].isSubscribed()) {
                 array.add(this.folders[i]);
@@ -706,7 +706,7 @@ public class Pop3 {
         if (folders == null) {
             return null;
         }
-        ArrayList<Folder> array = new ArrayList<Folder>(); //auto size!
+        ArrayList<Folder> array = new ArrayList<>(); //auto size!
         for (int i = 0, n = folders.length; i < n; i++) {
             if (!this.folders[i].isSubscribed()) {
                 array.add(this.folders[i]);

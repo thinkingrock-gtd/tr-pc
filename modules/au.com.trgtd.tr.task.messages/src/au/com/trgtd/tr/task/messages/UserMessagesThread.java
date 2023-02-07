@@ -42,7 +42,7 @@ public class UserMessagesThread extends Thread {
     public UserMessagesThread() {
         versionChecker = new VersionChecker();
         messageChecker = new MessageChecker();
-        messages = new ArrayList<Message>();
+        messages = new ArrayList<>();
     }
 
     /**

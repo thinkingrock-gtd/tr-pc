@@ -180,7 +180,7 @@ public class ReferencesPanel extends JPanel implements ListSelectionListener, Ob
     public void valueChanged(ListSelectionEvent e) {
         if (e.getValueIsAdjusting()) return;
         
-        Collection<ReferenceNode> nodes = new ArrayList<ReferenceNode>();
+        Collection<ReferenceNode> nodes = new ArrayList<>();
         for (Information info : selectionModel.getSelected()) {
             nodes.add(new ReferenceNode(info));
         }
@@ -249,7 +249,7 @@ public class ReferencesPanel extends JPanel implements ListSelectionListener, Ob
             }
             // save column sorting:
             sortingColumns = panel.tableSorter.getSortingColumns();
-            sortingReverse = new ArrayList<Boolean>();
+            sortingReverse = new ArrayList<>();
             for (Integer column : sortingColumns) {
                 sortingReverse.add(panel.tableSorter.isColumnReverse(column));
             }

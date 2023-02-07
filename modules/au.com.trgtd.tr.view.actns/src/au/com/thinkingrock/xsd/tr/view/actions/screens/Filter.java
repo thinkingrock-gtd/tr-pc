@@ -73,7 +73,7 @@ public class Filter {
      */
     public List<String> getValues() {
         if (value == null) {
-            value = new ArrayList<String>();
+            value = new ArrayList<>();
         }
         return this.value;
     }
