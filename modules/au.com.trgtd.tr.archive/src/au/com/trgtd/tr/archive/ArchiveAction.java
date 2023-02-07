@@ -424,7 +424,7 @@ public final class ArchiveAction extends CallableSystemAction implements LookupL
 
 
     private HashSet<Integer> getUsedThoughts(Data data) {
-        HashSet<Integer> set = new HashSet<Integer>();
+        HashSet<Integer> set = new HashSet<>();
         getUsedThoughts(set, data.getFutureManager());
         getUsedThoughts(set, data.getRootActions());
         getUsedThoughts(set, data.getRootProjects());

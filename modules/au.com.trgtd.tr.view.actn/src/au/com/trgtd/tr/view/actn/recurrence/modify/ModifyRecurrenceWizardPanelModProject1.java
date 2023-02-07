@@ -57,7 +57,7 @@ public class ModifyRecurrenceWizardPanelModProject1 implements WizardDescriptor.
     public boolean isValid() {
         return panel != null && panel.isFormValid();
     }
-    private final Set<ChangeListener> listeners = new HashSet<ChangeListener>(1);
+    private final Set<ChangeListener> listeners = new HashSet<>(1);
 
     public final void addChangeListener(ChangeListener l) {
         synchronized (listeners) {
@@ -74,7 +74,7 @@ public class ModifyRecurrenceWizardPanelModProject1 implements WizardDescriptor.
     protected final void fireChangeEvent() {
         Iterator<ChangeListener> it;
         synchronized (listeners) {
-            it = new HashSet<ChangeListener>(listeners).iterator();
+            it = new HashSet<>(listeners).iterator();
         }
         ChangeEvent ev = new ChangeEvent(this);
         while (it.hasNext()) {
