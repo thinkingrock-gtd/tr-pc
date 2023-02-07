@@ -232,7 +232,7 @@ public class FilterCriterionPriority extends FilterCriterion
                     } else {
                         all = data.getPriorityCriterion().values.list();
                     }
-                    MultiChoiceDialog d = new MultiChoiceDialog<Value>(PriorityCombo.this, all, m.getChosen(), false);
+                    MultiChoiceDialog d = new MultiChoiceDialog<>(PriorityCombo.this, all, m.getChosen(), false);
                     d.setTitle(NbBundle.getMessage(getClass(), "filter-priority"));
                     d.setLocationRelativeTo(PriorityCombo.this);
                     d.setVisible(true);
@@ -259,7 +259,7 @@ public class FilterCriterionPriority extends FilterCriterion
                     } else {
                         all = data.getPriorityCriterion().values.list();
                     }
-                    MultiChoiceDialog d = new MultiChoiceDialog<Value>(PriorityCombo.this, all, m.getChosen(), false);
+                    MultiChoiceDialog d = new MultiChoiceDialog<>(PriorityCombo.this, all, m.getChosen(), false);
                     d.setTitle(NbBundle.getMessage(getClass(), "filter-priority"));
                     d.setLocationRelativeTo(PriorityCombo.this);
                     d.setVisible(true);

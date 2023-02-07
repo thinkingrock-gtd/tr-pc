@@ -234,7 +234,7 @@ public class FilterCriterionTime extends FilterCriterion implements PropertyChan
                     } else {
                         all = data.getTimeCriterion().values.list();
                     }
-                    MultiChoiceDialog d = new MultiChoiceDialog<Value>(TimeCombo.this, all, m.getChosen(), false);
+                    MultiChoiceDialog d = new MultiChoiceDialog<>(TimeCombo.this, all, m.getChosen(), false);
                     d.setTitle(NbBundle.getMessage(getClass(), "filter-time"));
                     d.setLocationRelativeTo(TimeCombo.this);
                     d.setVisible(true);
@@ -261,7 +261,7 @@ public class FilterCriterionTime extends FilterCriterion implements PropertyChan
                     } else {
                         all = data.getTimeCriterion().values.list();
                     }
-                    MultiChoiceDialog d = new MultiChoiceDialog<Value>(TimeCombo.this, all, m.getChosen(), false);
+                    MultiChoiceDialog d = new MultiChoiceDialog<>(TimeCombo.this, all, m.getChosen(), false);
                     d.setTitle(NbBundle.getMessage(getClass(), "filter-time"));
                     d.setLocationRelativeTo(TimeCombo.this);
                     d.setVisible(true);

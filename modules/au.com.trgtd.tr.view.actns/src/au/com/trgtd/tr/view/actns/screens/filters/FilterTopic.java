@@ -297,7 +297,7 @@ public class FilterTopic extends FilterChoice implements PropertyChangeListener 
                     } else {
                         all = data.getTopicManager().list();
                     }
-                    MultiChoiceDialog d = new MultiChoiceDialog<Topic>(TopicsComboBox.this, all, tm.getChosen(), true);
+                    MultiChoiceDialog d = new MultiChoiceDialog<>(TopicsComboBox.this, all, tm.getChosen(), true);
                     d.setTitle(NbBundle.getMessage(getClass(), "filter-topic"));
                     d.setLocationRelativeTo(TopicsComboBox.this);
                     d.setVisible(true);
@@ -324,7 +324,7 @@ public class FilterTopic extends FilterChoice implements PropertyChangeListener 
                     } else {
                         all = data.getTopicManager().list();
                     }
-                    MultiChoiceDialog d = new MultiChoiceDialog<Topic>(TopicsComboBox.this, all, tm.getChosen(), true);
+                    MultiChoiceDialog d = new MultiChoiceDialog<>(TopicsComboBox.this, all, tm.getChosen(), true);
                     d.setTitle(NbBundle.getMessage(getClass(), "filter-topic"));
                     d.setLocationRelativeTo(TopicsComboBox.this);
                     d.setVisible(true);

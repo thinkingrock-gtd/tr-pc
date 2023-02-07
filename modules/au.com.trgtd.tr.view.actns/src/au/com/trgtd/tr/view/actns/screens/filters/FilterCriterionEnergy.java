@@ -234,7 +234,7 @@ public class FilterCriterionEnergy extends FilterCriterion implements PropertyCh
                     } else {
                         all = data.getEnergyCriterion().values.list();
                     }
-                    MultiChoiceDialog d = new MultiChoiceDialog<Value>(EnergyCombo.this, all, m.getChosen(), false);
+                    MultiChoiceDialog d = new MultiChoiceDialog<>(EnergyCombo.this, all, m.getChosen(), false);
                     d.setTitle(NbBundle.getMessage(getClass(), "filter-energy"));
                     d.setLocationRelativeTo(EnergyCombo.this);
                     d.setVisible(true);
@@ -261,7 +261,7 @@ public class FilterCriterionEnergy extends FilterCriterion implements PropertyCh
                     } else {
                         all = data.getEnergyCriterion().values.list();
                     }
-                    MultiChoiceDialog d = new MultiChoiceDialog<Value>(EnergyCombo.this, all, m.getChosen(), false);
+                    MultiChoiceDialog d = new MultiChoiceDialog<>(EnergyCombo.this, all, m.getChosen(), false);
                     d.setTitle(NbBundle.getMessage(getClass(), "filter-energy"));
                     d.setLocationRelativeTo(EnergyCombo.this);
                     d.setVisible(true);

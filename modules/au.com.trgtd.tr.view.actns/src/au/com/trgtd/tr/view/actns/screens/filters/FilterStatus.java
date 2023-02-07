@@ -314,7 +314,7 @@ public class FilterStatus extends FilterChoice implements PropertyChangeListener
                 Object object = getSelectedItem();
                 if (object instanceof Multiple) {
                     Multiple m = (Multiple)object;
-                    MultiChoiceDialog d = new MultiChoiceDialog<Choice>(StatusComboBox.this, options, m.getChosen(), true);
+                    MultiChoiceDialog d = new MultiChoiceDialog<>(StatusComboBox.this, options, m.getChosen(), true);
                     d.setTitle(NbBundle.getMessage(getClass(), "filter-status"));
                     d.setLocationRelativeTo(StatusComboBox.this);
                     d.setVisible(true);
@@ -332,7 +332,7 @@ public class FilterStatus extends FilterChoice implements PropertyChangeListener
                 if (object instanceof ChoiceMultipleEdit) {
                     StatusComboBoxModel model = (StatusComboBoxModel)getModel();
                     Multiple m = model.multiple;
-                    MultiChoiceDialog d = new MultiChoiceDialog<Choice>(StatusComboBox.this, options, m.getChosen(), true);
+                    MultiChoiceDialog d = new MultiChoiceDialog<>(StatusComboBox.this, options, m.getChosen(), true);
                     d.setTitle(NbBundle.getMessage(getClass(), "filter-topic"));
                     d.setLocationRelativeTo(StatusComboBox.this);
                     d.setVisible(true);

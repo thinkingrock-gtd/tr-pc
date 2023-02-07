@@ -232,7 +232,7 @@ public class FilterContext extends FilterChoice implements PropertyChangeListene
                     } else {
                         all = data.getContextManager().list();
                     }
-                    MultiChoiceDialog d = new MultiChoiceDialog<Context>(ContextsCombo.this, all, m.getChosen(), true);
+                    MultiChoiceDialog d = new MultiChoiceDialog<>(ContextsCombo.this, all, m.getChosen(), true);
                     d.setTitle(NbBundle.getMessage(getClass(), "filter-context"));
                     d.setLocationRelativeTo(ContextsCombo.this);
                     d.setVisible(true);
@@ -259,7 +259,7 @@ public class FilterContext extends FilterChoice implements PropertyChangeListene
                     } else {
                         all = data.getContextManager().list();
                     }
-                    MultiChoiceDialog d = new MultiChoiceDialog<Context>(ContextsCombo.this, all, m.getChosen(), true);
+                    MultiChoiceDialog d = new MultiChoiceDialog<>(ContextsCombo.this, all, m.getChosen(), true);
                     d.setTitle(NbBundle.getMessage(getClass(), "filter-context"));
                     d.setLocationRelativeTo(ContextsCombo.this);
                     d.setVisible(true);
