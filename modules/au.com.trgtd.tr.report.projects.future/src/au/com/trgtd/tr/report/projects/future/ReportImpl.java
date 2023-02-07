@@ -65,19 +65,19 @@ public class ReportImpl extends au.com.trgtd.tr.extract.Extract {
 
     /** Overridden to return report parameters. */
     public List<Param> getParams() {
-        List<Item> formatItems = new Vector<Item>();
+        List<Item> formatItems = new Vector<>();
         formatItems.add(new Item(PaperSize.A4.toString(), "a4"));
         formatItems.add(new Item(PaperSize.Letter.toString(), "letter"));
         paramPaper = new ParamList("paper", PaperSize.getLabel(), formatItems);
         paramTopic = new ParamTopic("paramTopic", getString("param-topic"), FormatType.XML);        
         paramActions = new ParamBoolean("paramActions", getString("param-actions"));        
-        List<Item> sortItems = new Vector<Item>();
+        List<Item> sortItems = new Vector<>();
         sortItems.add(new Item(getString("param-sort-none"), "none"));
         sortItems.add(new Item(getString("param-sort-descr"), "descr"));
         sortItems.add(new Item(getString("param-sort-priority"), "priority"));
         sortItems.add(new Item(getString("param-sort-date"), "date"));
         paramSort = new ParamList("paramSort", getString("param-sort"), sortItems);                
-        List<Param> params = new Vector<Param>();
+        List<Param> params = new Vector<>();
         params.add(paramPaper);
         params.add(paramTopic);
         params.add(paramActions);

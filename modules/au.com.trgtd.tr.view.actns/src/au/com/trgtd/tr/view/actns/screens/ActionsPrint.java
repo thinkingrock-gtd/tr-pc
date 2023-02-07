@@ -94,7 +94,7 @@ public class ActionsPrint extends Extract {
     /** Overridden to get the report parameters. */
     public List<Param> getParams() {
         // get the parameters
-        List<Param> params = new Vector<Param>();
+        List<Param> params = new Vector<>();
         params.add(new Param("context", context));
         params.add(new Param("topic", topic));
         params.add(new Param("done", Boolean.toString(done)));

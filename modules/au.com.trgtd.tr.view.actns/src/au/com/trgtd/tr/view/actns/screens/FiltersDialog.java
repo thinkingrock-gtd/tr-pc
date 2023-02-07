@@ -55,7 +55,7 @@ public class FiltersDialog extends JDialog {
 
     private JPanel getPanel() {
 
-        filtersList = new Vector<FilterFields>();
+        filtersList = new Vector<>();
 
         filtersPanel = new JPanel(new MigLayout("", "4[]4[]4[]4[]4[]4", "0[]0"));
         filtersPanel.setBackground(Color.white);

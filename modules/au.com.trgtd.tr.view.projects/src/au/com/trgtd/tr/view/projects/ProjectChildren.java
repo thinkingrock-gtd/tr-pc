@@ -64,7 +64,7 @@ public class ProjectChildren extends Children.Keys implements Observer, ChangeLi
             return Collections.EMPTY_SET;
         }
 
-        List<Object> items = new Vector<Object>();
+        List<Object> items = new Vector<>();
 
         if (showGoals && !project.isRoot()) {
             items.add(goalsNode);
@@ -211,7 +211,7 @@ public class ProjectChildren extends Children.Keys implements Observer, ChangeLi
                 return;
             }
 
-            Vector<Item> srcItems = new Vector<Item>();
+            Vector<Item> srcItems = new Vector<>();
             for (int i = 0; i < perms.length; i++) {
                 if (nodes[i] instanceof ProjectNode) {
                     srcItems.add(((ProjectNode) nodes[i]).project);
@@ -220,7 +220,7 @@ public class ProjectChildren extends Children.Keys implements Observer, ChangeLi
                 }
             }
 
-            Vector<Item> dstItems = new Vector<Item>();
+            Vector<Item> dstItems = new Vector<>();
             for (int i = 0; i < perms.length; i++) {
                 if (nodes[perms[i]] instanceof ProjectNode) {
                     dstItems.add(((ProjectNode) nodes[perms[i]]).project);

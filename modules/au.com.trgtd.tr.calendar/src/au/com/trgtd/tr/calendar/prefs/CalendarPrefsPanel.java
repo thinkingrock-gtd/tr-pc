@@ -251,7 +251,7 @@ final class CalendarPrefsPanel extends javax.swing.JPanel {
         syncFutureProjectsSepCheck.setSelected(CalendarPrefs.isSyncFutureProjectsSeparate());
 
         SynchronizerItem selected = null;
-        List<SynchronizerItem> synchronizers = new Vector<SynchronizerItem>();
+        List<SynchronizerItem> synchronizers = new Vector<>();
         synchronizers.add(noneItem);
         for (CalendarSynchronizer synchronizer : lookup.allInstances()) {
             SynchronizerItem item = new SynchronizerItem(synchronizer.getID(), synchronizer);

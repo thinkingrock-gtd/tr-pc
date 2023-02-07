@@ -120,7 +120,7 @@ public class MatcherEditorTopic extends MatcherEditorBase implements PropertyCha
         
         public TopicMatcher(Topic topic) {
             this.all = false;
-            this.topics = new Vector<Topic>();
+            this.topics = new Vector<>();
             this.topics.add(topic);
         }
         
@@ -169,7 +169,7 @@ public class MatcherEditorTopic extends MatcherEditorBase implements PropertyCha
             Data data = (Data)DataLookup.instance().lookup(Data.class);
             if (data == null) {
                 topicManager = null;
-                topics = new Vector<Topic>();
+                topics = new Vector<>();
             } else {
                 topicManager = data.getTopicManager();
                 topicManager.addObserver(this);
@@ -247,7 +247,7 @@ public class MatcherEditorTopic extends MatcherEditorBase implements PropertyCha
                     Vector<Topic> all;
                     Data data = (Data)DataLookup.instance().lookup(Data.class);
                     if (data == null) {
-                        all = new Vector<Topic>();
+                        all = new Vector<>();
                     } else {
                         all = data.getTopicManager().list();
                     }
@@ -273,7 +273,7 @@ public class MatcherEditorTopic extends MatcherEditorBase implements PropertyCha
                     Vector<Topic> all;
                     Data data = (Data)DataLookup.instance().lookup(Data.class);
                     if (data == null) {
-                        all = new Vector<Topic>();
+                        all = new Vector<>();
                     } else {
                         all = data.getTopicManager().list();
                     }

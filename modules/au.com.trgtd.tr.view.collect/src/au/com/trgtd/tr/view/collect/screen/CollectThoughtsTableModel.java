@@ -72,7 +72,7 @@ public class CollectThoughtsTableModel extends AbstractTableModel implements Obs
     }
 
     private void initModel() {
-        unprocessedThoughts = new Vector<Thought>();
+        unprocessedThoughts = new Vector<>();
         for (Thought t : thoughtManager.list()) {
             if (!t.isProcessed()) {
                 unprocessedThoughts.add(t);

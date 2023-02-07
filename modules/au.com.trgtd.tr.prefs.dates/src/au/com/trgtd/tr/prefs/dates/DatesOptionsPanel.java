@@ -103,13 +103,13 @@ final class DatesOptionsPanel extends JPanel {
     }
 
     private void initDayItems() {
-        days = new Vector<ComboItem>();
+        days = new Vector<>();
         days.add(new ComboItem(NbBundle.getMessage(getClass(), "Sunday"), DatesPrefs.SUNDAY));
         days.add(new ComboItem(NbBundle.getMessage(getClass(), "Monday"), DatesPrefs.MONDAY));
     }
 
     private void initOrderItems() {
-        orders = new Vector<ComboItem>();
+        orders = new Vector<>();
         orders.add(new ComboItem(NbBundle.getMessage(getClass(), "MMDDYY"), DatesPrefs.MMDDYY));
         orders.add(new ComboItem(NbBundle.getMessage(getClass(), "DDMMYY"), DatesPrefs.DDMMYY));
         orders.add(new ComboItem(NbBundle.getMessage(getClass(), "YYMMDD"), DatesPrefs.YYMMDD));

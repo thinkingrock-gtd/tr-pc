@@ -168,7 +168,7 @@ public class ContextsPanel extends JPanel implements ListSelectionListener, Obse
             }
             // save column sorting:
             sortingColumns = panel.tableSorter.getSortingColumns();
-            sortingReverse = new Vector<Boolean>();
+            sortingReverse = new Vector<>();
             for (Integer column : sortingColumns) {
                 sortingReverse.add(new Boolean(panel.tableSorter.isColumnReverse(column)));
             }
@@ -250,7 +250,7 @@ public class ContextsPanel extends JPanel implements ListSelectionListener, Obse
     public void valueChanged(ListSelectionEvent e) {
         if (e.getValueIsAdjusting()) return;
         
-        Collection<ContextNode> nodes = new Vector<ContextNode>();
+        Collection<ContextNode> nodes = new Vector<>();
         for (Context context : selectionModel.getSelected()) {
             nodes.add(new ContextNode(data.getContextManager(), context));
         }

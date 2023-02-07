@@ -96,7 +96,7 @@ final class GUIOptionsPanel extends JPanel {
     }
 
     private void initActions() {
-        actions = new Vector<ComboItem>();
+        actions = new Vector<>();
         actions.add(new ComboItem(INITIAL_NONE, GUIPrefs.INITIAL_ACTION_ID_NONE));
         Lookup.Result r = InitialActionLookup.instance().lookupResult(InitialAction.class);
         Collection c = r.allInstances();
@@ -108,7 +108,7 @@ final class GUIOptionsPanel extends JPanel {
     }
 
     private void initPositions() {
-        positions = new Vector<ComboItem>();
+        positions = new Vector<>();
         positions.add(new ComboItem(TOP, GUIPrefs.BUTTONS_POSITION_TOP));
         positions.add(new ComboItem(BOTTOM, GUIPrefs.BUTTONS_POSITION_BOTTOM));
         positions.add(new ComboItem(LEFT, GUIPrefs.BUTTONS_POSITION_LEFT));

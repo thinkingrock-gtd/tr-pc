@@ -175,83 +175,83 @@ public class ExtractPocketMod {
 
             if (pageIDs[i].startsWith(PAGE_ID_DoASAPDue)) {
                 if (linesDoASAPDue == null) {
-                    linesDoASAPDue = new Vector<String>();
+                    linesDoASAPDue = new Vector<>();
                     populateLinesDoASAPDue(linesDoASAPDue);
                 }
                 String title = org.openide.util.NbBundle.getMessage(ExtractPocketMod.class, "Do_ASAP_Due") + " " + getWeekText(true);
                 populatePage(linesDoASAPDue, pages[i], getPageNumber(pageIDs[i]), title, true);
             } else if (pageIDs[i].startsWith(PAGE_ID_DoASAPNoDue)) {
                 if (linesDoASAPNoDue == null) {
-                    linesDoASAPNoDue = new Vector<String>();
+                    linesDoASAPNoDue = new Vector<>();
                     populateLinesDoASAPNoDue(linesDoASAPNoDue);
                 }
                 String title = org.openide.util.NbBundle.getMessage(ExtractPocketMod.class, "Do_ASAP_No_Due_Date");
                 populatePage(linesDoASAPNoDue, pages[i], getPageNumber(pageIDs[i]), title, true);
             } else if (pageIDs[i].startsWith(PAGE_ID_DoASAPAll)) {
                 if (linesDoASAPAll == null) {
-                    linesDoASAPAll = new Vector<String>();
+                    linesDoASAPAll = new Vector<>();
                     populateLinesDoASAPAll(linesDoASAPAll);
                 }
                 String title = org.openide.util.NbBundle.getMessage(ExtractPocketMod.class, "Do_ASAP_ALL");
                 populatePage(linesDoASAPAll, pages[i], getPageNumber(pageIDs[i]), title, true);
             } else if (pageIDs[i].startsWith(PAGE_ID_Today)) {
                 if (linesToday == null) {
-                    linesToday = new Vector<String>();
+                    linesToday = new Vector<>();
                     populateLinesToday(linesToday);
                 }
                 String title = org.openide.util.NbBundle.getMessage(ExtractPocketMod.class, "Today") + " " + DFN.format(todayStart);
                 populatePage(linesToday, pages[i], getPageNumber(pageIDs[i]), title, true);
             } else if (pageIDs[i].startsWith(PAGE_ID_Scheduled)) {
                 if (linesScheduled == null) {
-                    linesScheduled = new Vector<String>();
+                    linesScheduled = new Vector<>();
                     populateLinesScheduled(linesScheduled);
                 }
                 String title = NbBundle.getMessage(ExtractPocketMod.class, "Scheduled") + " " + getWeekText(true);
                 populatePage(linesScheduled, pages[i], getPageNumber(pageIDs[i]), title, true);
             } else if (pageIDs[i].startsWith(PAGE_ID_Delegated)) {
                 if (linesDelegated == null) {
-                    linesDelegated = new Vector<String>();
+                    linesDelegated = new Vector<>();
                     populateLinesDelegated(linesDelegated);
                 }
                 String title = NbBundle.getMessage(ExtractPocketMod.class, "Delegated") + " " + getWeekText(true);
                 populatePage(linesDelegated, pages[i], getPageNumber(pageIDs[i]), title, true);
             } else if (pageIDs[i].startsWith(PAGE_ID_ThisWeek)) {
                 if (linesThisWeek == null) {
-                    linesThisWeek = new Vector<String>();
+                    linesThisWeek = new Vector<>();
                     populateLinesThisWeek(linesThisWeek);
                 }
                 String title = NbBundle.getMessage(ExtractPocketMod.class, "This_Week") + " " + getWeekText(false);
                 populatePage(linesThisWeek, pages[i], getPageNumber(pageIDs[i]), title, true);
             } else if (pageIDs[i].startsWith(PAGE_ID_Overdue)) {
                 if (linesOverdue == null) {
-                    linesOverdue = new Vector<String>();
+                    linesOverdue = new Vector<>();
                     populateLinesOverdue(linesOverdue);
                 }
                 String title = NbBundle.getMessage(ExtractPocketMod.class, "Overdue");
                 populatePage(linesOverdue, pages[i], getPageNumber(pageIDs[i]), title, true);
             } else if (pageIDs[i].equals(PAGE_ID_NewThoughts)) {
                 if (linesNewThoughts == null) {
-                    linesNewThoughts = new Vector<String>();
+                    linesNewThoughts = new Vector<>();
                     populateLinesNewThoughts(linesNewThoughts);
                 }
                 String title = NbBundle.getMessage(ExtractPocketMod.class, "New_Thoughts");
                 populatePage(linesNewThoughts, pages[i], 1, title, false);
             } else if (pageIDs[i].equals(PAGE_ID_NewThoughtsSpaced)) {
                 if (linesNewThoughtsSpaced == null) {
-                    linesNewThoughtsSpaced = new Vector<String>();
+                    linesNewThoughtsSpaced = new Vector<>();
                     populateLinesNewThoughtsSpaced(linesNewThoughtsSpaced);
                 }
                 String title = NbBundle.getMessage(ExtractPocketMod.class, "New_Thoughts_(spaced)");
                 populatePage(linesNewThoughtsSpaced, pages[i], 1, title, false);
             } else if (pageIDs[i].equals(PAGE_ID_Blank)) {
                 if (linesBlank == null) {
-                    linesBlank = new Vector<String>();
+                    linesBlank = new Vector<>();
                     populateLinesBlank(linesBlank);
                 }
                 populatePage(linesBlank, pages[i], 1, null, false);
             } else if (pageIDs[i].startsWith(PAGE_ID_Thoughts)) {
                 if (linesThoughts == null) {
-                    linesThoughts = new Vector<String>();
+                    linesThoughts = new Vector<>();
                     populateLinesThoughts(linesThoughts);
                 }
                 String title = NbBundle.getMessage(ExtractPocketMod.class, "Thoughts");
@@ -296,7 +296,7 @@ public class ExtractPocketMod {
 
     // DoASAP, with due date this week, order by due-date, include context
     private static void populateLinesDoASAPDue(Vector<String> lines) {
-        Vector<Action> actions = new Vector<Action>();
+        Vector<Action> actions = new Vector<>();
         processProjects(actions, ActionFilterDoASAPDue.instance);
         processSingleActions(actions, ActionFilterDoASAPDue.instance);
         Collections.sort(actions, DueDateComparator.instance);
@@ -309,7 +309,7 @@ public class ExtractPocketMod {
 
     // DoASAP, without due date, grouped by context
     private static void populateLinesDoASAPNoDue(Vector<String> lines) {
-        Vector<Action> actions = new Vector<Action>();
+        Vector<Action> actions = new Vector<>();
         processProjects(actions, ActionFilterDoASAPNoDue.instance);
         processSingleActions(actions, ActionFilterDoASAPNoDue.instance);
         Collections.sort(actions, ContextComparator.instance);
@@ -325,7 +325,7 @@ public class ExtractPocketMod {
     }
     // DoASAP, all, grouped by context
     private static void populateLinesDoASAPAll(Vector<String> lines) {
-        Vector<Action> actions = new Vector<Action>();
+        Vector<Action> actions = new Vector<>();
         processProjects(actions, ActionFilterDoASAP.instance);
         processSingleActions(actions, ActionFilterDoASAP.instance);
         Collections.sort(actions, ContextComparator.instance);
@@ -341,7 +341,7 @@ public class ExtractPocketMod {
 
     // Actions scheduled this week
     private static void populateLinesScheduled(Vector<String> lines) {
-        Vector<Action> actions = new Vector<Action>();
+        Vector<Action> actions = new Vector<>();
         processProjects(actions, ActionFilterScheduled.instance);
         processSingleActions(actions, ActionFilterScheduled.instance);
         Collections.sort(actions, ScheduledComparator.instance);
@@ -354,7 +354,7 @@ public class ExtractPocketMod {
 
     // Actions delegated this week (order by Delegated-to, follow-up date) show followup date
     private static void populateLinesDelegated(Vector<String> lines) {
-        Vector<Action> actions = new Vector<Action>();
+        Vector<Action> actions = new Vector<>();
         processProjects(actions, ActionFilterDelegated.instance);
         processSingleActions(actions, ActionFilterDelegated.instance);
         Collections.sort(actions, DelegatedComparator.instance);
@@ -390,7 +390,7 @@ public class ExtractPocketMod {
      *   Delegated followup linesToday (order Delegated-to)
      */
     private static void populateLinesToday(Vector<String> lines) {
-        Vector<Action> actions = new Vector<Action>();
+        Vector<Action> actions = new Vector<>();
         processProjects(actions, ActionFilterToday.instance);
         processSingleActions(actions, ActionFilterToday.instance);
         Collections.sort(actions, TodayComparator.instance);
@@ -417,7 +417,7 @@ public class ExtractPocketMod {
 
     // All Actions this week: (order by action-date) show symbol - include inactive [show due date]
     private static void populateLinesThisWeek(Vector<String> lines) {
-        Vector<Action> actions = new Vector<Action>();
+        Vector<Action> actions = new Vector<>();
         processProjects(actions, ActionFilterThisWeek.instance);
         processSingleActions(actions, ActionFilterThisWeek.instance);
         Collections.sort(actions, ActionDateComparator.instance);
@@ -430,7 +430,7 @@ public class ExtractPocketMod {
 
     // All Actions linesOverdue: (include Scheduled)
     private static void populateLinesOverdue(Vector<String> lines) {
-        Vector<Action> actions = new Vector<Action>();
+        Vector<Action> actions = new Vector<>();
         processProjects(actions, ActionFilterOverdue.instance);
         processSingleActions(actions, ActionFilterOverdue.instance);
         Collections.sort(actions, ActionDateComparator.instance);
@@ -464,7 +464,7 @@ public class ExtractPocketMod {
     }
     // Thoughts
     private static void populateLinesThoughts(Vector<String> lines) {
-        Vector<Thought> thoughts = new Vector<Thought>();
+        Vector<Thought> thoughts = new Vector<>();
         processThoughts(thoughts);
         for (Thought thought : thoughts) {
             lines.add(checkbox() + " " + escape(thought.getDescription()) + " " + topic(thought.getTopic()));

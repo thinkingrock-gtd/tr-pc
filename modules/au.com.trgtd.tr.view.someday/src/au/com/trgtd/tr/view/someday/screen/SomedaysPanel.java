@@ -183,7 +183,7 @@ public class SomedaysPanel extends JPanel implements ListSelectionListener, Obse
     public void valueChanged(ListSelectionEvent e) {
         if (e.getValueIsAdjusting()) return;
         
-        Collection<SomedayNode> nodes = new Vector<SomedayNode>();
+        Collection<SomedayNode> nodes = new Vector<>();
         
         for (Future future : selectionModel.getSelected()) {
             nodes.add(new SomedayNode(future));
@@ -252,7 +252,7 @@ public class SomedaysPanel extends JPanel implements ListSelectionListener, Obse
             }
             // save column sorting:
             sortingColumns = panel.tableSorter.getSortingColumns();
-            sortingReverse = new Vector<Boolean>();
+            sortingReverse = new Vector<>();
             for (Integer column : sortingColumns) {
                 sortingReverse.add(new Boolean(panel.tableSorter.isColumnReverse(column)));
             }

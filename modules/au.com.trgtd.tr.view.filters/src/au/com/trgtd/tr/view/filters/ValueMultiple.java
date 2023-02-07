@@ -44,7 +44,7 @@ public class ValueMultiple extends Value implements Serializable {
     }
     
     public Vector<Value> getChosen() {
-        return (chosen == null) ? new Vector<Value>() : chosen;
+        return (chosen == null) ? new Vector<>() : chosen;
     }
     
     public void setChosen(Vector<Value> chosen) {

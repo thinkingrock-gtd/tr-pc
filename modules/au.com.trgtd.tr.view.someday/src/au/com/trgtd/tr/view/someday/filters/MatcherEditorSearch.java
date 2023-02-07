@@ -103,7 +103,7 @@ public class MatcherEditorSearch extends MatcherEditorBase
     
     private class SearchComboBoxModel extends DefaultComboBoxModel {
         
-        public final Vector<String> searches = new Vector<String>();
+        public final Vector<String> searches = new Vector<>();
         
         public void addSearch(String search) {
             if (search == null) {

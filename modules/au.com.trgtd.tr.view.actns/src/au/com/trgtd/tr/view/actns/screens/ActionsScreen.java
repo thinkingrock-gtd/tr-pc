@@ -202,7 +202,7 @@ public class ActionsScreen extends ObservableImpl implements Observable, Observe
      */
     public Vector<ActionsFilter> getFilters() {
         if (filters == null) {
-            filters = new Vector<ActionsFilter>();
+            filters = new Vector<>();
         }
         return filters;
     }

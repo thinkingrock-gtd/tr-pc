@@ -81,7 +81,7 @@ public class Manager<T extends Observable> extends ObservableImpl implements Obs
      * Creates a new instance.
      */
     public Manager() {
-        items = new Vector<T>();
+        items = new Vector<>();
     }
     
     /**
@@ -205,7 +205,7 @@ public class Manager<T extends Observable> extends ObservableImpl implements Obs
      */
     public final Vector<T> list() {
         synchronized(this) {
-            return new Vector<T>(items);
+            return new Vector<>(items);
         }
     }
     

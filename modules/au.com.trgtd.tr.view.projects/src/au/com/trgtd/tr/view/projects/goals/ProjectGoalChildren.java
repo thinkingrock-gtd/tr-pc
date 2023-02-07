@@ -38,7 +38,7 @@ public class ProjectGoalChildren extends Children.Keys<GoalCtrl> implements Prop
     public ProjectGoalChildren(Project project) {
         assert(project != null);
         this.project = project;
-        this.realIdxs = new Vector<Integer>();
+        this.realIdxs = new Vector<>();
     }
 
     @Override

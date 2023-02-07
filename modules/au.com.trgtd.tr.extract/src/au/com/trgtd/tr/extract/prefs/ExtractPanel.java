@@ -99,7 +99,7 @@ final class ExtractPanel extends JPanel {
     }
 
     private ComboBoxModel getEncodingModel() {
-        Vector<String> encodings = new Vector<String>();
+        Vector<String> encodings = new Vector<>();
         encodings.add("");
         encodings.addAll(Charset.availableCharsets().keySet());
         return new DefaultComboBoxModel(encodings);

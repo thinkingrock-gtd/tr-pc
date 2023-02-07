@@ -305,7 +305,7 @@ public class GoalsDAOImpl extends DAOImpl implements GoalsDAO {
                     achieved);
 
             data.getGoals().add(goal);
-            data.getGoalSubgoalsMap().put(goal.getID(), new Vector<Integer>());
+            data.getGoalSubgoalsMap().put(goal.getID(), new Vector<>());
             data.getGoalSubgoalsMap().get(supergoalID).add(goal.getID());
             data.setChanged(true);
             // add goal to goal map
@@ -434,7 +434,7 @@ public class GoalsDAOImpl extends DAOImpl implements GoalsDAO {
             return new Integer[0];
         }
 
-        List<Integer> goalIDs = new Vector<Integer>();
+        List<Integer> goalIDs = new Vector<>();
 
         for (Entry<Integer, Vector<Integer>> entry : data.getGoalProjectsMap().entrySet()) {
             if (entry.getValue().contains(projectID)) {
@@ -497,11 +497,11 @@ public class GoalsDAOImpl extends DAOImpl implements GoalsDAO {
 
     private Vector<Integer> getSubgoalIDs(Integer goalID) {
         if (data == null) {
-            return new Vector<Integer>();
+            return new Vector<>();
         }
         Vector<Integer> subgoalIDs = data.getGoalSubgoalsMap().get(goalID);
         if (subgoalIDs == null) {
-            subgoalIDs = new Vector<Integer>();
+            subgoalIDs = new Vector<>();
             data.getGoalSubgoalsMap().put(goalID, subgoalIDs);
         }
         return subgoalIDs;
@@ -568,7 +568,7 @@ public class GoalsDAOImpl extends DAOImpl implements GoalsDAO {
         }
         Vector<Integer> projectsList = data.getGoalProjectsMap().get(goalID);
         if (projectsList == null) {
-            projectsList = new Vector<Integer>();
+            projectsList = new Vector<>();
             data.getGoalProjectsMap().put(goalID, projectsList);
             projectsList.add(projectID);
             return true;

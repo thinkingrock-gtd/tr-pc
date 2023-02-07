@@ -249,7 +249,7 @@ public class EmailUtils {
 //    }
     public List<Message> getNewMessages() {
 
-        List<Message> result = new Vector<Message>();
+        List<Message> result = new Vector<>();
 
         try {
             Message[] messages = folder.getMessages();

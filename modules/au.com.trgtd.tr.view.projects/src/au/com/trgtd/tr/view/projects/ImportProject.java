@@ -591,7 +591,7 @@ public class ImportProject {
     }
 
     private List<Element> getChildElementsByName(Element element, String name) {
-        List<Element> childElements = new Vector<Element>();
+        List<Element> childElements = new Vector<>();
         NodeList nodeList = element.getChildNodes();
         if (nodeList != null) {
             for (int i = 0; i < nodeList.getLength(); i++) {
@@ -645,7 +645,7 @@ public class ImportProject {
         if (s == null || s.trim().length() == 0) {
             return null;
         }
-        List<Integer> list = new Vector<Integer>();
+        List<Integer> list = new Vector<>();
         for (String n : s.trim().split(",")) {
             try {
                 list.add(Integer.parseInt(n));

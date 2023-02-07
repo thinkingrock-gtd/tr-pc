@@ -107,7 +107,7 @@ public class GoalsCtrlImpl extends CtrlImpl implements GoalsCtrl, PropertyChange
     @Override
     public List<GoalCtrl> getSubgoalCtrls(Integer goalID) {
         synchronized (this) {
-            Vector<GoalCtrl> subgoalCtrls = new Vector<GoalCtrl>();
+            Vector<GoalCtrl> subgoalCtrls = new Vector<>();
             for (Integer subgoalID : goalsDAO.getSubGoalIDs(goalID)) {
                 subgoalCtrls.add(goalsMap.get(subgoalID));
             }
@@ -125,7 +125,7 @@ public class GoalsCtrlImpl extends CtrlImpl implements GoalsCtrl, PropertyChange
     @Override
     public List<GoalCtrl> getProjectGoals(Integer projectID) {
         synchronized (this) {
-            Vector<GoalCtrl> goalCtrls = new Vector<GoalCtrl>();
+            Vector<GoalCtrl> goalCtrls = new Vector<>();
             for (Integer goalID : goalsDAO.getGoalIDs(projectID)) {
                 goalCtrls.add(goalsMap.get(goalID));
             }

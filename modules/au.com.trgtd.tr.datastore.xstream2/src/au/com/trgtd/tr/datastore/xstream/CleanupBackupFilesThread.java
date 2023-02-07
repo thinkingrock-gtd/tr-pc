@@ -138,7 +138,7 @@ public class CleanupBackupFilesThread extends Thread {
     private static void map(String key, File file) {
         List<File> fileList = map.get(key);
         if (fileList == null) {
-            fileList = new Vector<File>();
+            fileList = new Vector<>();
             map.put(key, fileList);
         }
         fileList.add(file);

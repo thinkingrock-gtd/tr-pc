@@ -171,7 +171,7 @@ public class TopicsPanel extends JPanel implements ListSelectionListener, Observ
             }
             // save column sorting:
             sortingColumns = panel.tableSorter.getSortingColumns();
-            sortingReverse = new Vector<Boolean>();
+            sortingReverse = new Vector<>();
             for (Integer column : sortingColumns) {
                 sortingReverse.add(new Boolean(panel.tableSorter.isColumnReverse(column)));
             }
@@ -253,7 +253,7 @@ public class TopicsPanel extends JPanel implements ListSelectionListener, Observ
     public void valueChanged(ListSelectionEvent e) {
         if (e.getValueIsAdjusting()) return;
         
-        Collection<TopicNode> nodes = new Vector<TopicNode>();
+        Collection<TopicNode> nodes = new Vector<>();
         for (Topic topic : selectionModel.getSelected()) {
             nodes.add(new TopicNode(data.getTopicManager(), topic));
         }

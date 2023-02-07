@@ -60,7 +60,7 @@ final class RecurrenceTaskThread extends Thread {
             return;
         }
         
-        done = new Vector<Integer>();
+        done = new Vector<>();
         
 //      LOG.info("Processing single actions ... ");
         for (Action action : data.getRootActions().getChildren(Action.class)) {

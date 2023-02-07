@@ -813,7 +813,7 @@ public class Pop3 {
          * @return Vector        Retourne un Vector contenant les chemin complet des fichiers
          */
         public static Vector<String> getFileHandleMultipart(Multipart multipart) throws MessagingException, IOException {
-            Vector<String> vec = new Vector<String>();
+            Vector<String> vec = new Vector<>();
 
             // boucle sur les parties d'un message...
             for (int i = 0, n = multipart.getCount(); i < n; i++) {
@@ -857,7 +857,7 @@ public class Pop3 {
          * @return Vector                Retourne un Vector contenant les chemin complet des fichiers
          */
         public static Vector<String> getFileHandleMultipart(Multipart multipart, String _contentType) throws MessagingException, IOException {
-            Vector<String> vec = new Vector<String>();
+            Vector<String> vec = new Vector<>();
 
             // boucle sur les parties d'un message...
             for (int i = 0, n = multipart.getCount(); i < n; i++) {

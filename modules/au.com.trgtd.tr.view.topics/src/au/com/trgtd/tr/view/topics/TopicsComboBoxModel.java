@@ -66,7 +66,7 @@ public class TopicsComboBoxModel extends DefaultComboBoxModel implements Observe
     private void initialise() {
         Data data = (Data)DataLookup.instance().lookup(Data.class);
         if (data == null) {
-            topics = new Vector<Topic>();
+            topics = new Vector<>();
             return;
         }
         

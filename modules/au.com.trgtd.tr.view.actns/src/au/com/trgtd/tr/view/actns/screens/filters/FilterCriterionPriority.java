@@ -107,7 +107,7 @@ public class FilterCriterionPriority extends FilterCriterion
         private final boolean excludeNulls;
         
         public ValueMatcher(Value value, boolean excludeNulls) {
-            this.values = new Vector<Value>();
+            this.values = new Vector<>();
             this.values.add(value);
             this.excludeNulls = excludeNulls;
         }
@@ -157,7 +157,7 @@ public class FilterCriterionPriority extends FilterCriterion
             Data data = (Data)DataLookup.instance().lookup(Data.class);
             if (data == null) {
                 valueManager = null;
-                values = new Vector<Value>();
+                values = new Vector<>();
             } else {
                 valueManager = data.getPriorityCriterion().values;
                 valueManager.addObserver(this);
@@ -228,7 +228,7 @@ public class FilterCriterionPriority extends FilterCriterion
                     Vector<Value> all;
                     Data data = (Data)DataLookup.instance().lookup(Data.class);
                     if (data == null) {
-                        all = new Vector<Value>();
+                        all = new Vector<>();
                     } else {
                         all = data.getPriorityCriterion().values.list();
                     }
@@ -255,7 +255,7 @@ public class FilterCriterionPriority extends FilterCriterion
                     Vector<Value> all;
                     Data data = (Data)DataLookup.instance().lookup(Data.class);
                     if (data == null) {
-                        all = new Vector<Value>();
+                        all = new Vector<>();
                     } else {
                         all = data.getPriorityCriterion().values.list();
                     }

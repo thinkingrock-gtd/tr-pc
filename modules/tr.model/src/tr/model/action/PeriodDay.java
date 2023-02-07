@@ -99,7 +99,7 @@ public class PeriodDay extends Period {
         cal.set(Calendar.SECOND, templateCal.get(Calendar.SECOND));
         cal.set(Calendar.MILLISECOND, templateCal.get(Calendar.MILLISECOND));
         
-        List<Date> dates = new Vector<Date>(1);
+        List<Date> dates = new Vector<>(1);
         dates.add(cal.getTime());
         return dates;
     }

@@ -415,7 +415,7 @@ public final class ReviewActionsTopComponent extends Window implements ActionsPr
         File xmlfile = Extract.getTmpFile(prefix + timestamp + ".xml");
         File outfile = Extract.getOutFile(prefix + timestamp + ".pdf");
         URL xslfo = getClass().getResource("tr-actions-screen.fo.xml");
-        List<Param> params = new Vector<Param>();
+        List<Param> params = new Vector<>();
         params.add(new Param("font", ActionsPrefs.getReportFont()));
         extractData(xmlfile);
         XSLFO.transform(xmlfile, xslfo.openStream(), params, outfile);

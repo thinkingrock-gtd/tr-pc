@@ -74,13 +74,13 @@ public class ReportImpl extends au.com.trgtd.tr.extract.Extract {
 
     /** Overridden to return report parameters. */
     public List<Param> getParams() {
-        List<Param> params = new Vector<Param>();
-        List<Item> formatItems = new Vector<Item>();
+        List<Param> params = new Vector<>();
+        List<Item> formatItems = new Vector<>();
         formatItems.add(new Item(PaperSize.A4.toString(), "a4"));
         formatItems.add(new Item(PaperSize.Letter.toString(), "letter"));
         paramPaper = new ParamList("paper", PaperSize.getLabel(), formatItems);
         params.add(paramPaper);
-        List<DateItem> fromDateItems = new Vector<DateItem>();
+        List<DateItem> fromDateItems = new Vector<>();
         fromDateItems.add(DateItem.DATE_CHOOSER);
         fromDateItems.add(DateItem.TOMORROW);
         fromDateItems.add(DateItem.TODAY);
@@ -92,7 +92,7 @@ public class ReportImpl extends au.com.trgtd.tr.extract.Extract {
         fromDateItems.add(DateItem.EARLIEST);
         paramDateFrom = new ParamDateList("from", getString("param-from"), fromDateItems);
         params.add(paramDateFrom);
-        List<DateItem> toDateItems = new Vector<DateItem>();
+        List<DateItem> toDateItems = new Vector<>();
         toDateItems.add(DateItem.DATE_CHOOSER);
         toDateItems.add(DateItem.YESTERDAY);
         toDateItems.add(DateItem.TODAY);

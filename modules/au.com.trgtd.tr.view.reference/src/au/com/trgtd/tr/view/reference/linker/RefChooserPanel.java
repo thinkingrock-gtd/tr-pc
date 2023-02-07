@@ -135,7 +135,7 @@ class RefChooserPanel extends JPanel implements Observer {
     }
 
     private void initTable() {
-        refsList = (data == null ? new Vector<Information>() : data.getInformationManager().list());
+        refsList = (data == null ? new Vector<>() : data.getInformationManager().list());
         refsEventList = new BasicEventList<Information>();
         refsEventList.addAll(refsList);
         FilterList refsFilterList = new FilterList(refsEventList, refsMatcherEditor);

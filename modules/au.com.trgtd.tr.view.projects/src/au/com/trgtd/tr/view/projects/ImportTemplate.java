@@ -347,7 +347,7 @@ public class ImportTemplate {
     }
 
     private List<Element> getChildElementsByName(Element element, String name) {
-        List<Element> childElements = new Vector<Element>();
+        List<Element> childElements = new Vector<>();
 
         NodeList nodeList = element.getChildNodes();
         if (nodeList != null) {

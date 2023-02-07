@@ -170,7 +170,7 @@ public class ActorPanel extends JPanel implements ListSelectionListener, Observe
             }
             // save column sorting:
             sortingColumns = panel.tableSorter.getSortingColumns();
-            sortingReverse = new Vector<Boolean>();
+            sortingReverse = new Vector<>();
             for (Integer column : sortingColumns) {
                 sortingReverse.add(new Boolean(panel.tableSorter.isColumnReverse(column)));
             }
@@ -253,7 +253,7 @@ public class ActorPanel extends JPanel implements ListSelectionListener, Observe
     public void valueChanged(ListSelectionEvent e) {
         if (e.getValueIsAdjusting()) return;
         
-        Collection<ActorNode> nodes = new Vector<ActorNode>();
+        Collection<ActorNode> nodes = new Vector<>();
         for (Actor actor : selectionModel.getSelected()) {
             nodes.add(new ActorNode(data.getActorManager(), actor));
         }

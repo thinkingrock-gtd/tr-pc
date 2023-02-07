@@ -68,7 +68,7 @@ public class ParamContext extends Param {
     }
     
     private void initItems() {
-        items = new Vector<Item>();
+        items = new Vector<>();
         items.add(new Item(NbBundle.getMessage(ParamContext.class, "All"),"all"));
         
         Data data = (Data)DataLookup.instance().lookup(Data.class);

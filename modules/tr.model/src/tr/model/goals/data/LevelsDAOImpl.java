@@ -248,7 +248,7 @@ public class LevelsDAOImpl extends DAOImpl implements LevelsDAO {
     private void initialise() {
         synchronized (this) {
             if (levelDTOList == null) {
-                levelDTOList = new Vector<LevelDTO>();
+                levelDTOList = new Vector<>();
             } else {
                 levelDTOList.clear();
             }

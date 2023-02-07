@@ -51,15 +51,15 @@ public class ExportText extends Extract {
     
     /** Overridden to return report parameters. */
     public List<Param> getParams() {
-        List<Param> params = new Vector<Param>(2);
+        List<Param> params = new Vector<>(2);
         params.add(new ParamBoolean("include-topic", getString("param-include-topic")));
         params.add(new ParamBoolean("include-notes", getString("param-include-notes")));
         params.add(new ParamBoolean("include-tickle", getString("param-include-tickle")));
-        List<Item> dateFormatItems = new Vector<Item>(2);
+        List<Item> dateFormatItems = new Vector<>(2);
         dateFormatItems.add(new Item("YYYYMMDDhhmmss", "f1"));
         dateFormatItems.add(new Item("DAY DD MMM YYYY hh:mm:ss", "f2"));
         params.add(new ParamList("date-format", getString("param-date-format"), dateFormatItems));
-        List<Item> separatorItems = new Vector<Item>(3);
+        List<Item> separatorItems = new Vector<>(3);
         separatorItems.add(new Item(getString("comma"), "comma"));
         separatorItems.add(new Item(getString("semicolon"), "semicolon"));
         separatorItems.add(new Item(getString("tab"), "tab"));

@@ -82,7 +82,7 @@ class ProjectsComboBoxModel extends DefaultComboBoxModel implements Observer {
             });
         }     
         
-        projectItems = new Vector<ProjectItem>();
+        projectItems = new Vector<>();
         
         Data data = (Data)DataLookup.instance().lookup(Data.class);
         if (data == null) return;

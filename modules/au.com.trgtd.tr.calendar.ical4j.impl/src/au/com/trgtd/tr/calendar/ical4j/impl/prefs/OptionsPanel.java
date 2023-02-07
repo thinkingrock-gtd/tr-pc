@@ -102,7 +102,7 @@ public class OptionsPanel extends JPanel implements CalendarSynchronizerOptions 
     private static Vector<String> tzlist;
 
     private void initTimeZoneItems() {
-        tzlist = new Vector<String>();
+        tzlist = new Vector<>();
         tzlist.add("");
         for (String id : TimeZones.IDS) {
             tzlist.add(id);

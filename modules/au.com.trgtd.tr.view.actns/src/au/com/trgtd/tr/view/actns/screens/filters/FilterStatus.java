@@ -110,7 +110,7 @@ public class FilterStatus extends FilterChoice implements PropertyChangeListener
         } else if (values.length > 1) {
             combo.setSelectedIndex(1); // multiple
             Multiple multiple = (Multiple)combo.getItemAt(1);
-            multiple.setChosen(new Vector<Choice>());
+            multiple.setChosen(new Vector<>());
             for (String id : values) {
                 multiple.getChosen().add(getChoice(id));
             }
@@ -204,7 +204,7 @@ public class FilterStatus extends FilterChoice implements PropertyChangeListener
         private final List<Choice> choices;
         
         public StatusMatcher(Choice choice) {
-            this.choices = new Vector<Choice>();
+            this.choices = new Vector<>();
             this.choices.add(choice);
         }
         
@@ -281,7 +281,7 @@ public class FilterStatus extends FilterChoice implements PropertyChangeListener
     
     public class StatusComboBox extends FilterComboAbstract {
         
-        private final Vector<Choice> options = new Vector<Choice>();
+        private final Vector<Choice> options = new Vector<>();
         private final ActionListener listener;
         private Object lastSelectedItem;
         

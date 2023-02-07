@@ -72,11 +72,11 @@ public class ReportImpl extends au.com.trgtd.tr.extract.Extract {
     /** Overridden to return report parameters. */
     @Override
     public List<Param> getParams() {
-        List<Item> formatItems = new Vector<Item>();
+        List<Item> formatItems = new Vector<>();
         formatItems.add(new Item(PaperSize.A4.toString(), "a4"));
         formatItems.add(new Item(PaperSize.Letter.toString(), "letter"));
         paramPaper = new ParamList("paper", PaperSize.getLabel(), formatItems);
-        List<Item> groupItems = new Vector<Item>();
+        List<Item> groupItems = new Vector<>();
         groupItems.add(new Item(getString("param-group-context-only"), "context-only"));
         groupItems.add(new Item(getString("param-group-context-time"), "context-time"));
         groupItems.add(new Item(getString("param-group-context-energy"),"context-energy"));
@@ -87,7 +87,7 @@ public class ReportImpl extends au.com.trgtd.tr.extract.Extract {
         paramSuccess = new ParamBoolean("paramSuccess", getString("param-success"));
         paramProject = new ParamBoolean("paramProject", getString("param-project"));
         paramNotes = new ParamBoolean("paramNotes", getString("param-notes"));
-        List<Param> params = new Vector<Param>();
+        List<Param> params = new Vector<>();
         params.add(paramPaper);
         params.add(paramGroup);
         params.add(paramContext);

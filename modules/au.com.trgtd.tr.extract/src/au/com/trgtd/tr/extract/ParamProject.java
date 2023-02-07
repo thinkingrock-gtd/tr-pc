@@ -54,7 +54,7 @@ public class ParamProject extends Param {
     }
     
     private void initItems() {
-        items = new Vector<Item>();
+        items = new Vector<>();
         items.add(new Item(allText, "all"));            
         
         Data data = (Data)DataLookup.instance().lookup(Data.class);

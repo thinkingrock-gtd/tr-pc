@@ -47,7 +47,7 @@ public class TopicMultiple extends Topic implements MultipleItem<Topic>, Seriali
     }
     
     public Vector<Topic> getChosen() {
-        return (chosen == null) ? new Vector<Topic>() : chosen;
+        return (chosen == null) ? new Vector<>() : chosen;
     }
     
     public void setChosen(Vector<Topic> chosen) {

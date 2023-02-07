@@ -63,7 +63,7 @@ public class ContextsComboBoxModel extends DefaultComboBoxModel implements Obser
     private void initialise() {
         Data data = (Data) DataLookup.instance().lookup(Data.class);
         if (data == null) {
-            contexts = new Vector<Context>();
+            contexts = new Vector<>();
             return;
         }
 

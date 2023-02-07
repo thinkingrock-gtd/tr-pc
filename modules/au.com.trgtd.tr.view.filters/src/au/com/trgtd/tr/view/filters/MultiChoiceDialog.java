@@ -42,7 +42,7 @@ public class MultiChoiceDialog<T extends Comparable<? super T>> extends JDialog 
         }
         setLocationRelativeTo(comp);
         initComponents();
-        Vector<T> c = new Vector<T>(chosen);
+        Vector<T> c = new Vector<>(chosen);
         if (sort) {
             Collections.sort(chosen);
         }
@@ -66,7 +66,7 @@ public class MultiChoiceDialog<T extends Comparable<? super T>> extends JDialog 
     public void setChosen(Vector<T> chosen) {
         this.chosen = chosen;
         
-        choice = new Vector<T>();
+        choice = new Vector<>();
         
         for (T t : all) {
             if (!chosen.contains(t)) {
@@ -292,7 +292,7 @@ public class MultiChoiceDialog<T extends Comparable<? super T>> extends JDialog 
             int[] indices = choiceList.getSelectedIndices();
             if (indices == null || indices.length < 1) return;
             
-            Vector<T> selected = new Vector<T>(indices.length);
+            Vector<T> selected = new Vector<>(indices.length);
             
             for (int i = 0; i < indices.length; i++) {
                 selected.add(choice.get(indices[i]));
@@ -322,7 +322,7 @@ public class MultiChoiceDialog<T extends Comparable<? super T>> extends JDialog 
             int[] indices = chosenList.getSelectedIndices();
             if (indices == null || indices.length < 1) return;
             
-            Vector<T> selected = new Vector<T>(indices.length);
+            Vector<T> selected = new Vector<>(indices.length);
             for (int i = 0; i < indices.length; i++) {
                 selected.add(chosen.get(indices[i]));
             }
