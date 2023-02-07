@@ -112,7 +112,7 @@ public class ActionsScreen extends ObservableImpl implements Observable, Observe
      */
     public Manager<ActionsColumn> getColumns() {
         if (columns == null) {
-            columns = new Manager<ActionsColumn>();
+            columns = new Manager<>();
             columns.addObserver(this);
         }
         return columns;
@@ -128,7 +128,7 @@ public class ActionsScreen extends ObservableImpl implements Observable, Observe
         }
         
         if (columns == null) {
-            this.columns = new Manager<ActionsColumn>();
+            this.columns = new Manager<>();
         } else {
             this.columns = columns;
         }

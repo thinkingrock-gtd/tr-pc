@@ -44,7 +44,7 @@ public class Criterion extends ObservableImpl implements Observable, Observer {
     public Criterion(String name) {
         super();
         this.name = name;
-        values = new Manager<Value>();
+        values = new Manager<>();
         values.addObserver(this);
     }
         

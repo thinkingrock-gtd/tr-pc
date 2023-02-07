@@ -93,18 +93,18 @@ public class Data extends ObservableImpl implements IDGenerator, Observer {
     public Data() {
         super();
         version = CURRENT_VERSION;
-        topics = new Manager<Topic>();
+        topics = new Manager<>();
         topics.add(Topic.getDefault());
-        contexts = new Manager<Context>();
+        contexts = new Manager<>();
         contexts.add(Context.getDefault());
-        thoughts = new Manager<Thought>();
-        futures = new Manager<Future>();
-        information = new Manager<Information>();
+        thoughts = new Manager<>();
+        futures = new Manager<>();
+        information = new Manager<>();
         rootProject = new ProjectProjects();
         rootActions = new ProjectSingleActions();
         rootTemplates = new ProjectTemplates();
         rootFutures = new ProjectFutures();
-        actors = new Manager<Actor>();  
+        actors = new Manager<>();
         resetObservers();
     }
 
@@ -205,7 +205,7 @@ public class Data extends ObservableImpl implements IDGenerator, Observer {
 
     public final Manager<Actor> getActorManager() {
         if (actors == null) {
-            actors = new Manager<Actor>();
+            actors = new Manager<>();
         }
         return actors;
     }
