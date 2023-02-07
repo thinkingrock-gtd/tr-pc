@@ -19,7 +19,6 @@ package au.com.trgtd.tr.view.projects;
 
 import au.com.trgtd.tr.data.FileFilterImpl;
 import au.com.trgtd.tr.services.Services;
-//import au.com.trgtd.tr.view.actors.ActorUtils;
 import java.awt.Component;
 import java.io.File;
 import java.util.Date;

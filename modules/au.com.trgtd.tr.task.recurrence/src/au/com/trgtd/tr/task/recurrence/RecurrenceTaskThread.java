@@ -19,7 +19,6 @@ package au.com.trgtd.tr.task.recurrence;
 
 import java.util.List;
 import java.util.Vector;
-import java.util.logging.Level;
 import java.util.logging.Logger;
 import org.openide.util.NbBundle;
 import tr.model.Data;

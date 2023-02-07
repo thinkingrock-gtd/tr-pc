@@ -24,7 +24,6 @@ import java.util.Vector;
 import javax.swing.DefaultComboBoxModel;
 import org.openide.util.Lookup;
 import org.openide.util.LookupEvent;
-import org.openide.util.LookupListener;
 import tr.model.Data;
 import tr.model.DataLookup;
 import tr.model.project.Project;
