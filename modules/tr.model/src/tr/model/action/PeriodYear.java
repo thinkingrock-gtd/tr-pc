@@ -136,10 +136,10 @@ public class PeriodYear extends Period {
 
         Collections.sort(selectedMonths);
 
-        StringBuffer sb = new StringBuffer();
+        StringBuilder sb = new StringBuilder();
         
         for (int i = 0; i < selectedMonths.size(); i++) {
-            sb.append((i > 0 ? "," : "") + MONTHS_TEXT[selectedMonths.get(i)]);
+            sb.append(i > 0 ? "," : "").append(MONTHS_TEXT[selectedMonths.get(i)]);
         }
 
         return sb.toString();

@@ -290,7 +290,7 @@ public class EmailUtils {
 //            if (content instanceof String) {
 //                return (String) content;
 //            } else if (content instanceof Multipart) {
-//                StringBuffer sb = new StringBuffer();
+//                StringBuilder sb = new StringBuilder();
 //                Multipart mp = (Multipart) content;
 //                for (int i = 0; i < mp.getCount(); i++) {
 //                    BodyPart bp = mp.getBodyPart(i);

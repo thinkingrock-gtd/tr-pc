@@ -223,16 +223,26 @@ public class ExtractProjectDetail {
     }
 
     private static synchronized String getState(Action a) {
-        StringBuffer sb = new StringBuffer();
+        StringBuilder sb = new StringBuilder();
         if (a.isStateASAP()) {
             sb.append("\u2605");
-            sb.append(a.getDueDate() == null ? "" : " " + NbBundle.getMessage(ExtractProjectDetail.class, "Due") + ": " + DFN.format(a.getDueDate()));
+            if (a.getDueDate() != null)
+                sb.append(" ")
+                        .append(NbBundle.getMessage(ExtractProjectDetail.class, "Due"))
+                        .append(": ").append(DFN.format(a.getDueDate()));
         } else if (a.isStateDelegated()) {
             ActionStateDelegated s = (ActionStateDelegated) a.getState();
             sb.append("\u261E");
-            sb.append(s.getTo() == null ? "" : " " + escape(s.getTo()));
-            sb.append(s.getDate() == null ? "" : " " + NbBundle.getMessage(ExtractProjectDetail.class, "Followup_Abbrev") + ": " + DFN.format(s.getDate()));
-            sb.append(a.getDueDate() == null ? "" : " " + NbBundle.getMessage(ExtractProjectDetail.class, "Due") + ": " + DFN.format(a.getDueDate()));
+            if (s.getTo() != null)
+                sb.append(" ").append(escape(s.getTo()));
+            if (s.getDate() != null)
+                sb.append(" ")
+                        .append(NbBundle.getMessage(ExtractProjectDetail.class, "Followup_Abbrev"))
+                        .append(": ").append(DFN.format(s.getDate()));
+            if (a.getDueDate() != null)
+                sb.append(" ")
+                        .append(NbBundle.getMessage(ExtractProjectDetail.class, "Due"))
+                        .append(": ").append(DFN.format(a.getDueDate()));
         } else if (a.isStateScheduled()) {
             ActionStateScheduled s = (ActionStateScheduled) a.getState();
             sb.append(s.getRecurrence() == null ? "\u2637" : "\u27F3");
@@ -244,16 +254,22 @@ public class ExtractProjectDetail {
             if (s.getDurationHours() > 0 || s.getDurationMinutes() > 0) {
                 sb.append(" ");
                 if (s.getDurationHours() > 0) {
-                    sb.append(s.getDurationHours() + "h");
+                    sb.append(s.getDurationHours()).append("h");
                 }
                 if (s.getDurationMinutes() > 0) {
-                    sb.append(s.getDurationMinutes() + "m");
+                    sb.append(s.getDurationMinutes()).append("m");
                 }
             }
         } else if (a.isStateInactive()) {
             sb.append("\u2606");
-            sb.append(a.getStartDate() == null ? "" : " " + NbBundle.getMessage(ExtractProjectDetail.class, "Start") + ": " + DFN.format(a.getStartDate()));
-            sb.append(a.getDueDate() == null ? "" : " " + NbBundle.getMessage(ExtractProjectDetail.class, "Due") + ": " + DFN.format(a.getDueDate()));
+            if (a.getStartDate() != null)
+                sb.append(" ")
+                        .append(NbBundle.getMessage(ExtractProjectDetail.class, "Start"))
+                        .append(": ").append(DFN.format(a.getStartDate()));
+            if (a.getDueDate() != null)
+                sb.append(" ")
+                        .append(NbBundle.getMessage(ExtractProjectDetail.class, "Due"))
+                        .append(": ").append(DFN.format(a.getDueDate()));
         }
         return sb.length() == 0 ? "" : sb.toString();
     }
@@ -275,7 +291,7 @@ public class ExtractProjectDetail {
     }
 
 //    private static final String getIndent(int level) {
-//        StringBuffer sb = new StringBuffer();
+//        StringBuilder sb = new StringBuilder();
 //        for (int i = 0; i < level; i++) {
 //            sb.append("  ");
 //        }

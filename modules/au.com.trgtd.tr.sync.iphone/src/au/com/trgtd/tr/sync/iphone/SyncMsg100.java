@@ -122,7 +122,7 @@ public abstract class SyncMsg100 {
         public final String topic;
         public MsgThought(String firstLine, BufferedReader in) {
             super(Type.Thought);
-            StringBuffer sb = new StringBuffer(SyncUtils.unEscape(firstLine.trim()));
+            StringBuilder sb = new StringBuilder(SyncUtils.unEscape(firstLine.trim()));
             while (!sb.toString().matches(RE)) {
                 String nextLine;
                 try {
@@ -133,7 +133,7 @@ public abstract class SyncMsg100 {
                 if (nextLine == null) {
                     break;
                 }
-                sb.append("\n" + SyncUtils.unEscape(nextLine.trim()));
+                sb.append("\n").append(SyncUtils.unEscape(nextLine.trim()));
             }
             msg = sb.toString();
             title = SyncUtils.getFieldValue("Title", msg);

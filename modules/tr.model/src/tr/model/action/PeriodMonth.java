@@ -158,9 +158,9 @@ public class PeriodMonth extends Period {
         
         Collections.sort(selectedDays);
         
-        StringBuffer sb = new StringBuffer();
+        StringBuilder sb = new StringBuilder();
         for (int i = 0; i < selectedDays.size(); i++) {
-            sb.append((i > 0 ? "," : "") + selectedDays.get(i));
+            sb.append(i > 0 ? "," : "").append(selectedDays.get(i));
         }
         
         return sb.toString();

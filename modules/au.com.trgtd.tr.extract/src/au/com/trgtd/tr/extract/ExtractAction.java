@@ -241,12 +241,12 @@ public class ExtractAction {
             }
             out.write("<schd-date-idx>" + (s.getDate() == null ? Long.MAX_VALUE : s.getDate().getTime()) + "</schd-date-idx>");
             if (s.getDurationHours() > 0 || s.getDurationMinutes() > 0) {
-                StringBuffer sb = new StringBuffer();
+                StringBuilder sb = new StringBuilder();
                 if (s.getDurationHours() > 0) {
-                    sb.append(s.getDurationHours() + "h");
+                    sb.append(s.getDurationHours()).append("h");
                 }
                 if (s.getDurationMinutes() > 0) {
-                    sb.append(s.getDurationMinutes() + "m");
+                    sb.append(s.getDurationMinutes()).append("m");
                 }
                 out.write("<duration>" + sb.toString() + "</duration>\r\n");
             }

@@ -71,12 +71,12 @@ public class ParamProject extends Param {
             return;
         }
         
-        StringBuffer display = new StringBuffer();
+        StringBuilder display = new StringBuilder();
         display.append("<HTML>");
         if (project.isDone()) {
             display.append("<STRIKE>");
         }
-        display.append(indent + project.getDescription());
+        display.append(indent).append(project.getDescription());
         if (project.isDone()) {
             display.append("</STRIKE>");
         }

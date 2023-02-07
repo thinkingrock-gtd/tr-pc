@@ -163,7 +163,7 @@ public class ReportImpl extends au.com.trgtd.tr.extract.Extract {
         if (DateUtils.isSameDay(dateFrom, dateUpTo)) {
             rparams.put("paramDateRangeText", " For: " + DF.format(dateFrom));
         } else {
-            StringBuffer sb = new StringBuffer();
+            StringBuilder sb = new StringBuilder();
             sb.append("From: ");
             sb.append(dateFrom.getTime() == DateItem.EARLIEST.value ? "Earliest" : DF.format(dateFrom));
             sb.append(" To: ");

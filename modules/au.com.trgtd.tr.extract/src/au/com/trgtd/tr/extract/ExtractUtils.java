@@ -74,16 +74,26 @@ public class ExtractUtils {
     }    
     
     public static synchronized String getState(Action a, DateFormat dfn, DateFormat dft) {
-        StringBuffer sb = new StringBuffer();
+        StringBuilder sb = new StringBuilder();
         if (a.isStateASAP()) {
             sb.append("\u2605");
-            sb.append(a.getDueDate() == null ? "" : " " + org.openide.util.NbBundle.getMessage(ExtractUtils.class, "Due") + ": " + dfn.format(a.getDueDate()));
+            if (a.getDueDate() != null)
+                sb.append(" ")
+                        .append(org.openide.util.NbBundle.getMessage(ExtractUtils.class, "Due"))
+                        .append(": ").append(dfn.format(a.getDueDate()));
         } else if (a.isStateDelegated()) {
             ActionStateDelegated s = (ActionStateDelegated) a.getState();
             sb.append("\u261E");
-            sb.append(s.getTo() == null ? "" : " " + escape(s.getTo()));
-            sb.append(s.getDate() == null ? "" : " " + org.openide.util.NbBundle.getMessage(ExtractUtils.class, "Followup_Abbrev") + ": " + dfn.format(s.getDate()));
-            sb.append(a.getDueDate() == null ? "" : " " + org.openide.util.NbBundle.getMessage(ExtractUtils.class, "Due") + ": " + dfn.format(a.getDueDate()));
+            if (s.getTo() != null)
+                sb.append(" ").append(escape(s.getTo()));
+            if (s.getDate() != null)
+                sb.append(" ")
+                        .append(org.openide.util.NbBundle.getMessage(ExtractUtils.class, "Followup_Abbrev"))
+                        .append(": ").append(dfn.format(s.getDate()));
+            if (a.getDueDate() != null)
+                sb.append(" ")
+                        .append(org.openide.util.NbBundle.getMessage(ExtractUtils.class, "Due"))
+                        .append(": ").append(dfn.format(a.getDueDate()));
         } else if (a.isStateScheduled()) {
             ActionStateScheduled s = (ActionStateScheduled) a.getState();
             sb.append(s.getRecurrence() == null ? "\u2637" : "\u27F3");
@@ -95,16 +105,22 @@ public class ExtractUtils {
             if (s.getDurationHours() > 0 || s.getDurationMinutes() > 0) {
                 sb.append(" ");
                 if (s.getDurationHours() > 0) {
-                    sb.append(s.getDurationHours() + "h");
+                    sb.append(s.getDurationHours()).append("h");
                 }
                 if (s.getDurationMinutes() > 0) {
-                    sb.append(s.getDurationMinutes() + "m");
+                    sb.append(s.getDurationMinutes()).append("m");
                 }
             }
         } else if (a.isStateInactive()) {
             sb.append("\u2606");
-            sb.append(a.getStartDate() == null ? "" : " " + org.openide.util.NbBundle.getMessage(ExtractUtils.class, "Start") + ": " + dfn.format(a.getStartDate()));
-            sb.append(a.getDueDate() == null ? "" : " " + org.openide.util.NbBundle.getMessage(ExtractUtils.class, "Due") + ": " + dfn.format(a.getDueDate()));
+            if (a.getStartDate() != null)
+                sb.append(" ")
+                        .append(org.openide.util.NbBundle.getMessage(ExtractUtils.class, "Start"))
+                        .append(": ").append(dfn.format(a.getStartDate()));
+            if (a.getDueDate() != null)
+                sb.append(" ")
+                        .append(org.openide.util.NbBundle.getMessage(ExtractUtils.class, "Due"))
+                        .append(": ").append(dfn.format(a.getDueDate()));
         }
         return sb.length() == 0 ? "" : sb.toString();
     }
@@ -127,14 +143,14 @@ public class ExtractUtils {
     }
 
     public static synchronized String getDuration(ActionStateScheduled s) {
-        StringBuffer sb = new StringBuffer();
+        StringBuilder sb = new StringBuilder();
         if (s.getDurationHours() > 0 || s.getDurationMinutes() > 0) {
             sb.append(" ");
             if (s.getDurationHours() > 0) {
-                sb.append(s.getDurationHours() + "h");
+                sb.append(s.getDurationHours()).append("h");
             }
             if (s.getDurationMinutes() > 0) {
-                sb.append(s.getDurationMinutes() + "m");
+                sb.append(s.getDurationMinutes()).append("m");
             }
         }
         return sb.toString();
