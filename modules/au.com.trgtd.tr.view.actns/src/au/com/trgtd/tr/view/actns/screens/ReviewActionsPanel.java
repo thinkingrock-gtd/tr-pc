@@ -134,7 +134,7 @@ public class ReviewActionsPanel extends JPanel implements ListSelectionListener,
 
 ////////        Services.instance.addActionsObserver(this);
 
-        actionsSortedList = new SortedList<Action>(actionsFilterList);
+        actionsSortedList = new SortedList<>(actionsFilterList);
 
         actionsTableFormat = new ReviewActionsTableFormat(screen);
 

@@ -84,7 +84,7 @@ public class ActorPanel extends JPanel implements ListSelectionListener, Observe
         
         data.getActorManager().addObserver(this);
         
-        actorSortedList = new SortedList<Actor>(actorEventList, actorComparator);
+        actorSortedList = new SortedList<>(actorEventList, actorComparator);
         actorSortedList.setMode(SortedList.AVOID_MOVING_ELEMENTS);
         
         actorTableFormat = new ActorsTableFormat();

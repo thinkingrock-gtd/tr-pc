@@ -91,7 +91,7 @@ public class ReferencesPanel extends JPanel implements ListSelectionListener, Ob
         
         data.getInformationManager().addObserver(this);
         
-        refsSortedList = new SortedList<Information>(refsFilterList);
+        refsSortedList = new SortedList<>(refsFilterList);
         refsTableFormat = new ReferencesTableFormat();
         refsTableModel = new EventTableModel<Information>(refsSortedList, refsTableFormat);
         

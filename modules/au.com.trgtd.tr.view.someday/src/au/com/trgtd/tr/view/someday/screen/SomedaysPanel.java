@@ -91,7 +91,7 @@ public class SomedaysPanel extends JPanel implements ListSelectionListener, Obse
         
         data.getFutureManager().addObserver(this);
         
-        refsSortedList = new SortedList<Future>(refsFilterList);
+        refsSortedList = new SortedList<>(refsFilterList);
         refsTableFormat = new SomedaysTableFormat();
         refsTableModel = new EventTableModel<Future>(refsSortedList, refsTableFormat);
         

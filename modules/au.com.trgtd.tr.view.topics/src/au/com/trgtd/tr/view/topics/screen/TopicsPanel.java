@@ -82,7 +82,7 @@ public class TopicsPanel extends JPanel implements ListSelectionListener, Observ
         
         data.getTopicManager().addObserver(this);
         
-        topicSortedList = new SortedList<Topic>(topicEventList);
+        topicSortedList = new SortedList<>(topicEventList);
         topicSortedList.setMode(SortedList.AVOID_MOVING_ELEMENTS);
         
         topicTableFormat = new TopicsTableFormat();

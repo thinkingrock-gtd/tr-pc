@@ -82,7 +82,7 @@ public class ContextsPanel extends JPanel implements ListSelectionListener, Obse
         
         data.getContextManager().addObserver(this);
         
-        contextSortedList = new SortedList<Context>(contextEventList);
+        contextSortedList = new SortedList<>(contextEventList);
         contextSortedList.setMode(SortedList.AVOID_MOVING_ELEMENTS);
         
         contextTableFormat = new ContextsTableFormat();
