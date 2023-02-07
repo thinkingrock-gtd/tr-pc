@@ -106,7 +106,7 @@ public class ActorPanel extends JPanel implements ListSelectionListener, Observe
         actorTable.setShowVerticalLines(false);
 //      actorTable.setGridColor(Color.lightGray);
         
-        selectionModel = new EventSelectionModel<Actor>(actorSortedList);
+        selectionModel = new EventSelectionModel<>(actorSortedList);
         selectionModel.addListSelectionListener(this);
         selectionModel.setSelectionMode(EventSelectionModel.MULTIPLE_INTERVAL_SELECTION);
         selectionModel.setEnabled(true);

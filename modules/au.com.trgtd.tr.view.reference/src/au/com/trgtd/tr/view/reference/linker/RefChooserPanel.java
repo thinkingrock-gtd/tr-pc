@@ -157,7 +157,7 @@ class RefChooserPanel extends JPanel implements Observer {
         refsTable.setShowVerticalLines(false);
         refsTable.setColumnControlVisible(false);
         refsTable.getActionMap().remove("find");
-        selectionModel = new EventSelectionModel<Information>(refsSortedList);
+        selectionModel = new EventSelectionModel<>(refsSortedList);
         selectionModel.addListSelectionListener(new ListSelectionListener() {
             public void valueChanged(ListSelectionEvent e) {
                 if (e.getValueIsAdjusting()) {

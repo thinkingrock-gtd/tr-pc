@@ -114,7 +114,7 @@ public class SomedaysPanel extends JPanel implements ListSelectionListener, Obse
         futuresTable.setShowVerticalLines(false);
 //      futuresTable.setGridColor(Color.lightGray);
         
-        selectionModel = new EventSelectionModel<Future>(refsSortedList);
+        selectionModel = new EventSelectionModel<>(refsSortedList);
         selectionModel.addListSelectionListener(this);
 ////    selectionModel.setSelectionMode(EventSelectionModel.SINGLE_SELECTION);
         selectionModel.setSelectionMode(EventSelectionModel.MULTIPLE_INTERVAL_SELECTION);

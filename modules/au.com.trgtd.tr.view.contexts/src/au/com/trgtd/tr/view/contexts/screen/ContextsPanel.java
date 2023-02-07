@@ -104,7 +104,7 @@ public class ContextsPanel extends JPanel implements ListSelectionListener, Obse
         contextTable.setShowVerticalLines(false);
 //      contextTable.setGridColor(Color.lightGray);
         
-        selectionModel = new EventSelectionModel<Context>(contextSortedList);
+        selectionModel = new EventSelectionModel<>(contextSortedList);
         selectionModel.addListSelectionListener(this);
         selectionModel.setSelectionMode(selectionModel.MULTIPLE_INTERVAL_SELECTION);
         selectionModel.setEnabled(true);

@@ -162,7 +162,7 @@ public class ReviewActionsPanel extends JPanel implements ListSelectionListener,
         actionsTable.setShowVerticalLines(false);
 //      actionsTable.setGridColor(Color.lightGray);
 
-        selectionModel = new EventSelectionModel<Action>(actionsSortedList);
+        selectionModel = new EventSelectionModel<>(actionsSortedList);
 
         selectionModel.addListSelectionListener(this);
 

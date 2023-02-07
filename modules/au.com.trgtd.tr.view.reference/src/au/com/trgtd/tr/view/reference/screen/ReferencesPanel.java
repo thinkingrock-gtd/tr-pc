@@ -112,7 +112,7 @@ public class ReferencesPanel extends JPanel implements ListSelectionListener, Ob
 
         refsTable.getActionMap().remove("find");
 
-        selectionModel = new EventSelectionModel<Information>(refsSortedList);
+        selectionModel = new EventSelectionModel<>(refsSortedList);
         selectionModel.addListSelectionListener(this);
         selectionModel.setSelectionMode(EventSelectionModel.SINGLE_SELECTION);
         selectionModel.setEnabled(true);

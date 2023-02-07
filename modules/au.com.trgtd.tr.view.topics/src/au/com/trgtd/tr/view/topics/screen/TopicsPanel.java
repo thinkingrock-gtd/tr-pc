@@ -104,7 +104,7 @@ public class TopicsPanel extends JPanel implements ListSelectionListener, Observ
         topicTable.setShowVerticalLines(false);
 //      topicTable.setGridColor(Color.lightGray);
         
-        selectionModel = new EventSelectionModel<Topic>(topicSortedList);
+        selectionModel = new EventSelectionModel<>(topicSortedList);
         selectionModel.addListSelectionListener(this);
         selectionModel.setSelectionMode(EventSelectionModel.MULTIPLE_INTERVAL_SELECTION);
         selectionModel.setEnabled(true);
