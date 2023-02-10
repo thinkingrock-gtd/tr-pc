@@ -17,9 +17,9 @@
  */
 package au.com.trgtd.tr.archive;
 
+import au.com.trgtd.tr.util.ResourceUtils;
 import javax.swing.ImageIcon;
 import org.openide.util.NbBundle;
-import au.com.trgtd.tr.util.ResourceUtils;
 
 /**
  * Resources.

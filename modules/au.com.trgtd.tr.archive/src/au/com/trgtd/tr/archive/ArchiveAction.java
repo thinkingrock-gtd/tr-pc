@@ -22,6 +22,8 @@ import au.com.trgtd.tr.datastore.DataStore;
 import au.com.trgtd.tr.datastore.DataStoreLookup;
 import au.com.trgtd.tr.datastore.xstream.XStreamWrapper;
 import au.com.trgtd.tr.resource.Icons;
+import au.com.trgtd.tr.util.DateUtils;
+import au.com.trgtd.tr.util.UtilsFile;
 import java.awt.Frame;
 import java.io.File;
 import java.text.DateFormat;
@@ -33,6 +35,7 @@ import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.Vector;
+import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import org.openide.awt.StatusDisplayer;
@@ -52,9 +55,6 @@ import tr.model.future.Future;
 import tr.model.project.Project;
 import tr.model.thought.Thought;
 import tr.model.util.Manager;
-import au.com.trgtd.tr.util.DateUtils;
-import au.com.trgtd.tr.util.UtilsFile;
-import java.util.logging.Level;
 
 /**
  * Archive action.
