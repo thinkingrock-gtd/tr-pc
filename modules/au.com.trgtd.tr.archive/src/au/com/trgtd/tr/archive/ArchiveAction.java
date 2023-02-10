@@ -75,7 +75,7 @@ public final class ArchiveAction extends CallableSystemAction implements LookupL
     public ArchiveAction() {
         super();
         setIcon(Icons.Archive);
-        Data data = (Data)DataLookup.instance().lookup(Data.class);
+        Data data = DataLookup.instance().lookup(Data.class);
         setEnabled(data != null);
         Lookup.Result r = DataLookup.instance().lookupResult(Data.class);
         r.addLookupListener(this);
@@ -119,7 +119,7 @@ public final class ArchiveAction extends CallableSystemAction implements LookupL
         String archivePath = dialog.getArchivePath();
         doneProjectsOnly = dialog.isDoneProjectsOnly();
 
-        DataStore datastore = (DataStore)DataStoreLookup.instance().lookup(DataStore.class);
+        DataStore datastore = DataStoreLookup.instance().lookup(DataStore.class);
         if (datastore == null) {
             LOG.severe("Data store could not be obtained."); // No I18N
             StatusDisplayer.getDefault().setStatusText("");
@@ -251,7 +251,7 @@ public final class ArchiveAction extends CallableSystemAction implements LookupL
         }
 
         // get actual data file
-        Data data = (Data) DataLookup.instance().lookup(Data.class);
+        Data data = DataLookup.instance().lookup(Data.class);
         if (data == null) {
             LOG.severe("Data could not be obtained."); // No I18N
             StatusDisplayer.getDefault().setStatusText(""); // No I18N
@@ -417,7 +417,7 @@ public final class ArchiveAction extends CallableSystemAction implements LookupL
      * @param lookupEvent Is not used.
      */
     public void resultChanged(LookupEvent lookupEvent) {
-        Data data = (Data) DataLookup.instance().lookup(Data.class);
+        Data data = DataLookup.instance().lookup(Data.class);
         setEnabled(data != null);
     }
 
