@@ -151,8 +151,8 @@ public class ExtractData {
     
     /* ExtractData projects. */
     private static void extractProjects() {
-        projects = new Vector<Project>();
-        actions = new Vector<Action>();
+        projects = new Vector<>();
+        actions = new Vector<>();
         
         // extract all top level projects
         for (Iterator<Project> i = data.getRootProjects().iterator(Project.class); i.hasNext();) {

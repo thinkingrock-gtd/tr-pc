@@ -72,11 +72,11 @@ public class ReportImpl extends au.com.trgtd.tr.extract.Extract {
     /** Overridden to return report parameters. */
     @Override
     public List<Param> getParams() {
-        List<Item> formatItems = new Vector<Item>();
+        List<Item> formatItems = new Vector<>();
         formatItems.add(new Item(PaperSize.A4.toString(), "a4"));
         formatItems.add(new Item(PaperSize.Letter.toString(), "letter"));
         paramPaper = new ParamList("paper", PaperSize.getLabel(), formatItems);
-        List<Item> groupItems = new Vector<Item>();
+        List<Item> groupItems = new Vector<>();
         groupItems.add(new Item(getString("param-group-context-only"), "context-only"));
         groupItems.add(new Item(getString("param-group-context-time"), "context-time"));
         groupItems.add(new Item(getString("param-group-context-energy"),"context-energy"));
@@ -87,7 +87,7 @@ public class ReportImpl extends au.com.trgtd.tr.extract.Extract {
         paramSuccess = new ParamBoolean("paramSuccess", getString("param-success"));
         paramProject = new ParamBoolean("paramProject", getString("param-project"));
         paramNotes = new ParamBoolean("paramNotes", getString("param-notes"));
-        List<Param> params = new Vector<Param>();
+        List<Param> params = new Vector<>();
         params.add(paramPaper);
         params.add(paramGroup);
         params.add(paramContext);
@@ -106,12 +106,12 @@ public class ReportImpl extends au.com.trgtd.tr.extract.Extract {
         if (dlg.showDialog() == JOptionPane.CANCEL_OPTION) {
             return;
         }
-        Map<String, Object> rparams = new HashMap<String, Object>();        
-        rparams.put("paramContext", paramContext.getValue());                
-        rparams.put("paramCriteria", Boolean.parseBoolean(paramCriteria.getValue()));                
-        rparams.put("paramSuccess", Boolean.parseBoolean(paramSuccess.getValue()));                
-        rparams.put("paramProject", Boolean.parseBoolean(paramProject.getValue()));                
-        rparams.put("paramNotes", Boolean.parseBoolean(paramNotes.getValue()));                
+        Map<String, Object> rparams = new HashMap<>();
+        rparams.put("paramContext", paramContext.getValue());
+        rparams.put("paramCriteria", Boolean.parseBoolean(paramCriteria.getValue()));
+        rparams.put("paramSuccess", Boolean.parseBoolean(paramSuccess.getValue()));
+        rparams.put("paramProject", Boolean.parseBoolean(paramProject.getValue()));
+        rparams.put("paramNotes", Boolean.parseBoolean(paramNotes.getValue()));
 
         PaperSize paper = paramPaper.getValue().equals("letter") ? PaperSize.Letter : PaperSize.A4;
         String groupBy = paramGroup.getValue();

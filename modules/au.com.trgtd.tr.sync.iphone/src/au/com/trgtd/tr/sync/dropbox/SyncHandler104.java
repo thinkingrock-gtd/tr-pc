@@ -44,7 +44,7 @@ public class SyncHandler104 extends au.com.trgtd.tr.sync.iphone.SyncHandler104 {
 
     protected Map<Integer, Action> getActionMap() {
 
-        Map<Integer, Action> actionMap = new HashMap<Integer, Action>();
+        Map<Integer, Action> actionMap = new HashMap<>();
 
         super.actions = null;        
         List<Action> actionList = super.getActions();

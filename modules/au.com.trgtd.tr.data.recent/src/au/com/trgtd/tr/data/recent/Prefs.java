@@ -85,7 +85,7 @@ public class Prefs {
      */
     public static final List<String> getPaths() {
         
-        List<String> paths = new ArrayList<String>();
+        List<String> paths = new ArrayList<>();
         
         int i = 0;
         

@@ -207,7 +207,7 @@ final class ScreensDAOJAXB implements ScreensDAO {
             ActionsScreen actionsScreen = ActionsScreen.create(name);
 
             // columns
-            List<Byte> columnOrderList = new ArrayList<Byte>();
+            List<Byte> columnOrderList = new ArrayList<>();
             Columns columns = screen.getColumns();
             if (columns != null) {
                 for (Column column : columns.getColumns()) {
@@ -235,8 +235,8 @@ final class ScreensDAOJAXB implements ScreensDAO {
             }
 
             // sort columns
-            List<Byte> sortColumnList = new ArrayList<Byte>();
-            List<Byte> sortStatusList = new ArrayList<Byte>();
+            List<Byte> sortColumnList = new ArrayList<>();
+            List<Byte> sortStatusList = new ArrayList<>();
             SortColumns sortColumns = screen.getSortColumns();
             if (sortColumns != null) {
                 for (SortColumn sortColumn : screen.getSortColumns().getSortColumns()) {

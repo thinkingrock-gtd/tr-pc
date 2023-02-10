@@ -81,14 +81,14 @@ public final class RecurrenceSubsequentPanelModify extends JPanel {
 
     private Period getPeriod(PeriodType type) {
         if (mapPeriods == null) {
-            mapPeriods = new HashMap<PeriodType, Period>();
+            mapPeriods = new HashMap<>();
         }
         return mapPeriods.get(type);
     }
 
     private void setPeriod(Period period) {
         if (mapPeriods == null) {
-            mapPeriods = new HashMap<PeriodType, Period>();
+            mapPeriods = new HashMap<>();
         }
         mapPeriods.put(period.getType(), period);
     }

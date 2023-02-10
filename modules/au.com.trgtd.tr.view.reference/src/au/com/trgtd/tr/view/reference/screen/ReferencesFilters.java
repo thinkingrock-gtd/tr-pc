@@ -50,7 +50,7 @@ public class ReferencesFilters {
     
     public MatcherEditor getMatcherEditor() {
         if (matcherEditor == null) {
-            BasicEventList<MatcherEditor> list = new BasicEventList<MatcherEditor>();
+            BasicEventList<MatcherEditor> list = new BasicEventList<>();
             list.add(matcherEditorCreatedFrom);
             list.add(matcherEditorCreatedTo);
             list.add(matcherEditorTopics);
@@ -78,7 +78,7 @@ public class ReferencesFilters {
     
     /** Gets the serializable value. */
     public Serializable getSerializable() {
-        Vector<Serializable> serialized = new Vector<Serializable>(4);
+        Vector<Serializable> serialized = new Vector<>(4);
         serialized.add(matcherEditorCreatedFrom.getSerializable());
         serialized.add(matcherEditorCreatedTo.getSerializable());
         serialized.add(matcherEditorTopics.getSerializable());

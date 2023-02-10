@@ -135,13 +135,13 @@ class RefChooserPanel extends JPanel implements Observer {
     }
 
     private void initTable() {
-        refsList = (data == null ? new Vector<Information>() : data.getInformationManager().list());
-        refsEventList = new BasicEventList<Information>();
+        refsList = (data == null ? new Vector<>() : data.getInformationManager().list());
+        refsEventList = new BasicEventList<>();
         refsEventList.addAll(refsList);
         FilterList refsFilterList = new FilterList(refsEventList, refsMatcherEditor);
-        refsSortedList = new SortedList<Information>(refsFilterList);
+        refsSortedList = new SortedList<>(refsFilterList);
         refsTableFormat = new RefChooserTableFormat();
-        refsTableModel = new EventTableModel<Information>(refsSortedList, refsTableFormat);
+        refsTableModel = new EventTableModel<>(refsSortedList, refsTableFormat);
         refsTable = new JXTable(refsTableModel);
         refsTable.getTableHeader().setDefaultRenderer(new JTableHeader().getDefaultRenderer());
         refsTable.setAutoCreateRowSorter(false);
@@ -157,7 +157,7 @@ class RefChooserPanel extends JPanel implements Observer {
         refsTable.setShowVerticalLines(false);
         refsTable.setColumnControlVisible(false);
         refsTable.getActionMap().remove("find");
-        selectionModel = new EventSelectionModel<Information>(refsSortedList);
+        selectionModel = new EventSelectionModel<>(refsSortedList);
         selectionModel.addListSelectionListener(new ListSelectionListener() {
             public void valueChanged(ListSelectionEvent e) {
                 if (e.getValueIsAdjusting()) {

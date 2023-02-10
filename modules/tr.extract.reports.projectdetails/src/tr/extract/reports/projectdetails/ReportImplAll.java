@@ -52,7 +52,7 @@ public class ReportImplAll extends au.com.trgtd.tr.extract.Extract {
     /* Overridden to return report parameters. */
     @Override
     public List<Param> getParams() {
-        List<Param> params = new ArrayList<Param>(5);
+        List<Param> params = new ArrayList<>(5);
         params.add(new ParamProject("project-key", getString("param-project"), getString("param-project-all"), true));
         params.add(new ParamBoolean("subprojects", getString("param-subprojects")));
         params.add(new ParamBoolean("show-notes", getString("param-show-notes")));

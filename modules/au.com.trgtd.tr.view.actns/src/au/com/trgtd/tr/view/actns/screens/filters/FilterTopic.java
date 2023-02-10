@@ -100,7 +100,7 @@ public class FilterTopic extends FilterChoice implements PropertyChangeListener 
             if (chosen == null || chosen.size() == 0) {
                 return null;
             }
-            Vector<String> values = new Vector<String>();
+            Vector<String> values = new Vector<>();
             for (Topic t : chosen) {
                 if (t != null) {
                     values.add(t.getName());
@@ -130,7 +130,7 @@ public class FilterTopic extends FilterChoice implements PropertyChangeListener 
             Object object = combo.getItemAt(1);
             if (object instanceof TopicMultiple) {
                 TopicMultiple multiple = (TopicMultiple)object;
-                Vector<Topic> chosen = new Vector<Topic>();
+                Vector<Topic> chosen = new Vector<>();
                 for (String name : values) {
                     Topic topic = getTopic(name);
                     if (topic != null) {
@@ -174,7 +174,7 @@ public class FilterTopic extends FilterChoice implements PropertyChangeListener 
         
         public TopicMatcher(Topic topic) {
             this.all = false;
-            this.topics = new Vector<Topic>();
+            this.topics = new Vector<>();
             this.topics.add(topic);
         }
         
@@ -222,7 +222,7 @@ public class FilterTopic extends FilterChoice implements PropertyChangeListener 
             Data data = (Data)DataLookup.instance().lookup(Data.class);
             if (data == null) {
                 topicManager = null;
-                topics = new Vector<Topic>();
+                topics = new Vector<>();
             } else {
                 topicManager = data.getTopicManager();
                 topicManager.addObserver(this);
@@ -293,11 +293,11 @@ public class FilterTopic extends FilterChoice implements PropertyChangeListener 
                     Vector<Topic> all;
                     Data data = (Data)DataLookup.instance().lookup(Data.class);
                     if (data == null) {
-                        all = new Vector<Topic>();
+                        all = new Vector<>();
                     } else {
                         all = data.getTopicManager().list();
                     }
-                    MultiChoiceDialog d = new MultiChoiceDialog<Topic>(TopicsComboBox.this, all, tm.getChosen(), true);
+                    MultiChoiceDialog d = new MultiChoiceDialog<>(TopicsComboBox.this, all, tm.getChosen(), true);
                     d.setTitle(NbBundle.getMessage(getClass(), "filter-topic"));
                     d.setLocationRelativeTo(TopicsComboBox.this);
                     d.setVisible(true);
@@ -320,11 +320,11 @@ public class FilterTopic extends FilterChoice implements PropertyChangeListener 
                     Vector<Topic> all;
                     Data data = (Data)DataLookup.instance().lookup(Data.class);
                     if (data == null) {
-                        all = new Vector<Topic>();
+                        all = new Vector<>();
                     } else {
                         all = data.getTopicManager().list();
                     }
-                    MultiChoiceDialog d = new MultiChoiceDialog<Topic>(TopicsComboBox.this, all, tm.getChosen(), true);
+                    MultiChoiceDialog d = new MultiChoiceDialog<>(TopicsComboBox.this, all, tm.getChosen(), true);
                     d.setTitle(NbBundle.getMessage(getClass(), "filter-topic"));
                     d.setLocationRelativeTo(TopicsComboBox.this);
                     d.setVisible(true);

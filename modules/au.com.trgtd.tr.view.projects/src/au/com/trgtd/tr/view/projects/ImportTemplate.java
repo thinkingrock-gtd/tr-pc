@@ -117,7 +117,7 @@ public class ImportTemplate {
     }
     
     private Map<String, Value> initialiseMap(Criterion criterion) {
-        Map<String, Value> map = new HashMap<String, Value>();
+        Map<String, Value> map = new HashMap<>();
         for (Value value : criterion.values.list()) {
             map.put(value.getName(), value);
         }        
@@ -347,7 +347,7 @@ public class ImportTemplate {
     }
 
     private List<Element> getChildElementsByName(Element element, String name) {
-        List<Element> childElements = new Vector<Element>();
+        List<Element> childElements = new Vector<>();
 
         NodeList nodeList = element.getChildNodes();
         if (nodeList != null) {

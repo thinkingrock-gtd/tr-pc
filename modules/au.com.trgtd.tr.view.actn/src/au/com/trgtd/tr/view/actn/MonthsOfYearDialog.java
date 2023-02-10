@@ -112,7 +112,7 @@ public class MonthsOfYearDialog extends JDialog {
 
     public List<Integer> getSelectedMonths() {
         if (periodYear == null) {
-            return new Vector<Integer>();
+            return new Vector<>();
         }
         return periodYear.getSelectedMonths();
     }

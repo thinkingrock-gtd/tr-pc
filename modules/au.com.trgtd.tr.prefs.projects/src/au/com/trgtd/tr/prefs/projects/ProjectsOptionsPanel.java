@@ -87,7 +87,7 @@ final class ProjectsOptionsPanel extends JPanel {
         });
 
         actionStatesLabel = new JLabel(getMsg("DefaultActionState"));
-        states = new ArrayList<ProjectsPrefs.ActionState>();
+        states = new ArrayList<>();
         states.add(ProjectsPrefs.ActionState.INACTIVE);
         states.add(ProjectsPrefs.ActionState.DOASAP);
         states.add(ProjectsPrefs.ActionState.SCHEDULED);

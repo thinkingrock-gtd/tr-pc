@@ -49,7 +49,7 @@ public class ValueIDsProviderTime implements ValueIDsProvider, Observer {
     }
     
     private void initialise() {
-        ids = new Vector<Integer>();
+        ids = new Vector<>();
         
         Data data = (Data)DataLookup.instance().lookup(Data.class);
         if (data == null) return;

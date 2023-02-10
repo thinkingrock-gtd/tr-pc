@@ -55,10 +55,10 @@ public class ExportText extends Extract {
     
     /** Overridden to return report parameters. */
     public List<Param> getParams() {
-        List<Param> params = new Vector<Param>();
+        List<Param> params = new Vector<>();
         params.add(new ParamTopic("topic", getString("param-topic"), FormatType.CSV));
         params.add(new ParamContext("context", getString("param-context"), FormatType.CSV, false));
-        List<Item> uptoItems = new Vector<Item>();
+        List<Item> uptoItems = new Vector<>();
         uptoItems.add(new Item(getString("today"), "today"));
         uptoItems.add(new Item(getString("tomorrow"), "tomorrow"));
         uptoItems.add(new Item(getString("one-week"), "one-week"));
@@ -72,16 +72,16 @@ public class ExportText extends Extract {
         params.add(new ParamBoolean("include-doasap", getString("param-include-doasap")));
         params.add(new ParamBoolean("include-scheduled", getString("param-include-scheduled")));
         params.add(new ParamBoolean("include-delegated", getString("param-include-delegated")));
-        List<Item> separatorItems = new Vector<Item>();
+        List<Item> separatorItems = new Vector<>();
         separatorItems.add(new Item(getString("comma"), "comma"));
         separatorItems.add(new Item(getString("semicolon"), "semicolon"));
         separatorItems.add(new Item(getString("tab"), "tab"));
         params.add(new ParamList("separator", getString("param-separator"), separatorItems));
-        List<Item> dateFormatItems = new Vector<Item>();
+        List<Item> dateFormatItems = new Vector<>();
         dateFormatItems.add(new Item("YYYYMMDDhhmmss", "f1"));
         dateFormatItems.add(new Item("DAY DD MMM YYYY hh:mm:ss", "f2"));
         params.add(new ParamList("date-format", getString("param-date-format"), dateFormatItems));
-        List<Item> fieldItems = new Vector<Item>();
+        List<Item> fieldItems = new Vector<>();
         fieldItems.add(new Item("", "none"));
         fieldItems.add(new Item(getString("field-key"), "field-key"));
         fieldItems.add(new Item(getString("field-desc"), "field-desc"));
@@ -150,7 +150,7 @@ public class ExportText extends Extract {
             return;
         }
         
-        List<Param> headingParams = new Vector<Param>();
+        List<Param> headingParams = new Vector<>();
         if (Boolean.parseBoolean(outputHeadings.getValue())) {
             for (Param param : params) {
 //              if (param.id.startsWith("field") && !param.getValue().equals("")) {

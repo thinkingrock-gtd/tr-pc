@@ -51,10 +51,10 @@ public class ExportText extends Extract {
     
     @Override
     public List<Param> getParams() {
-        List<Param> params = new ArrayList<Param>(2);
+        List<Param> params = new ArrayList<>(2);
         params.add(new ParamBoolean("include-topic", getString("param-include-topic")));
         params.add(new ParamBoolean("include-notes", getString("param-include-notes")));
-        List<Item> separatorItems = new ArrayList<Item>(3);
+        List<Item> separatorItems = new ArrayList<>(3);
         separatorItems.add(new Item(getString("comma"), "comma"));
         separatorItems.add(new Item(getString("semicolon"), "semicolon"));
         separatorItems.add(new Item(getString("tab"), "tab"));

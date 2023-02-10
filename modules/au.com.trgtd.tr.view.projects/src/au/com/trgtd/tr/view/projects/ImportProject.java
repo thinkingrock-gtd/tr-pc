@@ -19,7 +19,6 @@ package au.com.trgtd.tr.view.projects;
 
 import au.com.trgtd.tr.data.FileFilterImpl;
 import au.com.trgtd.tr.services.Services;
-//import au.com.trgtd.tr.view.actors.ActorUtils;
 import java.awt.Component;
 import java.io.File;
 import java.util.Date;
@@ -136,7 +135,7 @@ public class ImportProject {
     }
 
     private Map<String, Value> initialiseMap(Criterion criterion) {
-        Map<String, Value> map = new HashMap<String, Value>();
+        Map<String, Value> map = new HashMap<>();
         for (Value value : criterion.values.list()) {
             map.put(value.getName(), value);
         }
@@ -592,7 +591,7 @@ public class ImportProject {
     }
 
     private List<Element> getChildElementsByName(Element element, String name) {
-        List<Element> childElements = new Vector<Element>();
+        List<Element> childElements = new Vector<>();
         NodeList nodeList = element.getChildNodes();
         if (nodeList != null) {
             for (int i = 0; i < nodeList.getLength(); i++) {
@@ -646,7 +645,7 @@ public class ImportProject {
         if (s == null || s.trim().length() == 0) {
             return null;
         }
-        List<Integer> list = new Vector<Integer>();
+        List<Integer> list = new Vector<>();
         for (String n : s.trim().split(",")) {
             try {
                 list.add(Integer.parseInt(n));

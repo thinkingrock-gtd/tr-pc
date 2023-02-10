@@ -19,7 +19,6 @@ package au.com.trgtd.tr.task.recurrence;
 
 import java.util.List;
 import java.util.Vector;
-import java.util.logging.Level;
 import java.util.logging.Logger;
 import org.openide.util.NbBundle;
 import tr.model.Data;
@@ -61,7 +60,7 @@ final class RecurrenceTaskThread extends Thread {
             return;
         }
         
-        done = new Vector<Integer>();
+        done = new Vector<>();
         
 //      LOG.info("Processing single actions ... ");
         for (Action action : data.getRootActions().getChildren(Action.class)) {

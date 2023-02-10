@@ -81,14 +81,14 @@ public class ReportImpl extends au.com.trgtd.tr.extract.Extract {
      */
     @Override
     public List<Param> getParams() {
-        List<Item> formatItems = new ArrayList<Item>();
+        List<Item> formatItems = new ArrayList<>();
         formatItems.add(new Item(PaperSize.A4.toString(), "a4"));
         formatItems.add(new Item(PaperSize.Letter.toString(), "letter"));
         paramPaper = new ParamList("paper", PaperSize.getLabel(), formatItems);
         
         paramTopic = new ParamTopic("paramTopic", getString("param-topic"), FormatType.XML);
         
-        List<Item> doneItems = new ArrayList<Item>();
+        List<Item> doneItems = new ArrayList<>();
         doneItems.add(new Item(getString("param-done-all"), "all"));
         doneItems.add(new Item(getString("param-done-done"), "done"));
         doneItems.add(new Item(getString("param-done-todo"), "todo"));
@@ -97,7 +97,7 @@ public class ReportImpl extends au.com.trgtd.tr.extract.Extract {
         
         paramActions = new ParamBoolean("paramActions", getString("param-actions"));
         
-        List<Item> sortItems = new ArrayList<Item>();
+        List<Item> sortItems = new ArrayList<>();
         sortItems.add(new Item(getString("param-sort-none"), "none"));
         sortItems.add(new Item(getString("param-sort-descr"), "descr"));
         sortItems.add(new Item(getString("param-sort-priority"), "priority"));
@@ -105,7 +105,7 @@ public class ReportImpl extends au.com.trgtd.tr.extract.Extract {
         sortItems.add(new Item(getString("param-sort-topic"), "topic"));
         paramSort = new ParamList("paramSort", getString("param-sort"), sortItems);
         
-        List<Param> params = new ArrayList<Param>();
+        List<Param> params = new ArrayList<>();
         params.add(paramPaper);
         params.add(paramTopic);
         params.add(paramDoneTop);
@@ -127,7 +127,7 @@ public class ReportImpl extends au.com.trgtd.tr.extract.Extract {
         if (dlg.showDialog() == JOptionPane.CANCEL_OPTION) {
             return;
         }
-        Map<String, Object> rparams = new HashMap<String, Object>();
+        Map<String, Object> rparams = new HashMap<>();
         rparams.put("paramTopic", paramTopic.getValue());
         if (!paramSort.getValue().equals("none")) {
             rparams.put("paramSortText", getString("param-sort-" + paramSort.getValue()));
@@ -161,16 +161,16 @@ public class ReportImpl extends au.com.trgtd.tr.extract.Extract {
     }
 
     public void process(List<Project> projects, boolean showDone) throws Exception {
-        Map<String, Object> rparams = new HashMap<String, Object>();
+        Map<String, Object> rparams = new HashMap<>();
         rparams.put("paramTopic", "all");
 
         PaperSize paper;
         if (ProjectsPrefs.getPageSizeChoiceName().equals("Prompt")) {
-            List<Item> formatItems = new ArrayList<Item>();
+            List<Item> formatItems = new ArrayList<>();
             formatItems.add(new Item(PaperSize.A4.toString(), "a4"));
             formatItems.add(new Item(PaperSize.Letter.toString(), "letter"));
             paramPaper = new ParamList("paper", PaperSize.getLabel(), formatItems);
-            List<Param> params = new ArrayList<Param>();
+            List<Param> params = new ArrayList<>();
             params.add(paramPaper);
             String title = getDialogTitleReport(getName());
             ParamsDialog dlg = new ParamsDialog(title, getID(), params);

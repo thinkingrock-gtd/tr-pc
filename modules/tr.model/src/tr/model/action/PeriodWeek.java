@@ -44,7 +44,7 @@ public class PeriodWeek extends Period {
     private final List<Integer> selectedDays;
 
     public PeriodWeek() {
-        this.selectedDays = new Vector<Integer>();
+        this.selectedDays = new Vector<>();
     }
 
     public PeriodWeek(List<Integer> selectedDays) {
@@ -55,7 +55,7 @@ public class PeriodWeek extends Period {
      * Creates a clone.
      */
     public Period clone() {
-        return new PeriodWeek(new Vector<Integer>(selectedDays));
+        return new PeriodWeek(new Vector<>(selectedDays));
     }
 
     public final String getBundleKey() {
@@ -150,7 +150,7 @@ public class PeriodWeek extends Period {
     }
 
     public List<Date> getSelectedDates(Date periodDate) {
-        List<Date> dates = new Vector<Date>();
+        List<Date> dates = new Vector<>();
         Calendar calendar = Calendar.getInstance();
         calendar.setFirstDayOfWeek(DatesPrefs.getFirstDayOfWeek());
 
@@ -168,7 +168,7 @@ public class PeriodWeek extends Period {
         assert (startDate != null);
         assert (templateDate != null);
 
-        List<Date> dates = new Vector<Date>();
+        List<Date> dates = new Vector<>();
 
         Calendar templateCal = Calendar.getInstance();
         templateCal.setFirstDayOfWeek(DatesPrefs.getFirstDayOfWeek());

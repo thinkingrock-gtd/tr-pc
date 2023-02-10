@@ -34,7 +34,7 @@ public class StatusComboBoxModel extends DefaultComboBoxModel {
      */
     public StatusComboBoxModel() {
         super();
-        states = new Vector<StatusEnum>();
+        states = new Vector<>();
         states.add(StatusEnum.INACTIVE);
         states.add(StatusEnum.DO_ASAP);
         states.add(StatusEnum.SCHEDULED);

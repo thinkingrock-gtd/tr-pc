@@ -94,15 +94,15 @@ public class ReportImpl1 extends au.com.trgtd.tr.extract.Extract {
 
     /** Overridden to return report parameters. */
     public List<Param> getParams() {
-        List<Param> params = new Vector<Param>();
+        List<Param> params = new Vector<>();
 
-        List<Item> formatItems = new Vector<Item>();
+        List<Item> formatItems = new Vector<>();
         formatItems.add(new Item(PaperSize.A4.toString(), "a4"));
         formatItems.add(new Item(PaperSize.Letter.toString(), "letter"));
         paramPaper = new ParamList("paper", PaperSize.getLabel(), formatItems);
         params.add(paramPaper);
 
-        List<Item> dateItems = new Vector<Item>();
+        List<Item> dateItems = new Vector<>();
         dateItems.add(new Item(getString("today"), FromDateType.TODAY.getTime().toString()));
         dateItems.add(new Item(getString("tomorrow"), FromDateType.TOMORROW.getTime().toString()));
         paramDate = new ParamList("date", getString("param-date"), dateItems);
@@ -113,7 +113,7 @@ public class ReportImpl1 extends au.com.trgtd.tr.extract.Extract {
         params.add(paramCriteria);
         params.add(paramProject);
                 
-        List<Item> pageItems = new Vector<Item>();
+        List<Item> pageItems = new Vector<>();
 
         pageItems.add(new Item(getString("doasap-all-1"), "doasap-all-1"));
         pageItems.add(new Item(getString("doasap-all-2"), "doasap-all-2"));
@@ -247,7 +247,7 @@ public class ReportImpl1 extends au.com.trgtd.tr.extract.Extract {
         File xmlfile = getTmpFile("PocketMod.xml");
         ExtractPocketMod.process(data, xmlfile, pages, date, includeCriteria, includeProject);
 
-        Map<String, Object> rparams = new HashMap<String, Object>();
+        Map<String, Object> rparams = new HashMap<>();
 
         PaperSize paper = paramPaper.getValue().equals("letter") ? PaperSize.Letter : PaperSize.A4;
         File rptfile = (paper == PaperSize.Letter) ? Resources.FILE_RPT_POCKETMOD_LTR : Resources.FILE_RPT_POCKETMOD_A4;

@@ -54,7 +54,7 @@ public class ObservableImpl implements Observable, Serializable {
             return;
         }
         if (observers == null) {
-            observers = new WeakHashMap<Observer, Object>();
+            observers = new WeakHashMap<>();
         }
         observers.put(observer, null);
     }

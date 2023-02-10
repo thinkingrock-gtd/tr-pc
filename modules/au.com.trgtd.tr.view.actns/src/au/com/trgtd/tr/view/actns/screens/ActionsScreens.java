@@ -58,7 +58,7 @@ public final class ActionsScreens {
     
     public Manager<ActionsScreen> getScreens() {
         if (screens == null) {
-            screens = new Manager<ActionsScreen>();
+            screens = new Manager<>();
         }
         return screens;
     }
@@ -70,7 +70,7 @@ public final class ActionsScreens {
     public static final Manager<ActionsScreen> createDefaultScreens() {
         LOG.info("Creating default actions screens.");
         
-        Manager<ActionsScreen> screens = new Manager<ActionsScreen>();
+        Manager<ActionsScreen> screens = new Manager<>();
         
         ActionsScreen screen;
         ActionsFilter filter;

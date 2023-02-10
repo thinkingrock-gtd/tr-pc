@@ -43,7 +43,7 @@ public class TopicView extends JPanel implements Observer {
     private final static Border LABEL_BORDER = new EmptyBorder(1, 4, 1, 4);
     private final static int PANEL_ARC = 10;
     private final static Insets PANEL_INSETS = new Insets(0, 0, 0, 0);
-    private final static Map<Key, Object> RENDER_HINTS = new HashMap<Key, Object>();
+    private final static Map<Key, Object> RENDER_HINTS = new HashMap<>();
     static {RENDER_HINTS.put(KEY_ANTIALIASING, VALUE_ANTIALIAS_ON);}
 
     private final PanelBorder panelBorder = new PanelBorder();

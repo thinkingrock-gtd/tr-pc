@@ -154,7 +154,7 @@ public class SyncDialog extends JDialog {
 
     private List<NetAddr> getNetAddresses() {
         try {
-            List<NetAddr> list = new Vector<NetAddr>();
+            List<NetAddr> list = new Vector<>();
             for (NetworkInterface netint : Collections.list(NetworkInterface.getNetworkInterfaces())) {
                 for (InetAddress inetaddr : Collections.list(netint.getInetAddresses())) {
                     String address = inetaddr.getHostAddress();

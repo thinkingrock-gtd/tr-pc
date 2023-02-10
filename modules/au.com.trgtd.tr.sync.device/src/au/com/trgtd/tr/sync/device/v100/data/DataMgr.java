@@ -641,7 +641,7 @@ public final class DataMgr {
 //        return new SendMsgReference(info);
 //    }
 //    private List<SendMsgReference> getRefsList() {
-//        return Collections.unmodifiableList(new ArrayList<SendMsgReference>(sndRefsMap.values()));
+//        return Collections.unmodifiableList(new ArrayList<>(sndRefsMap.values()));
 //    }
 //    private SendMsgAction newSendMsgActn(Action action) {
 //        return new SendMsgAction(action, isTimeUsed, isEnergyUsed, isPriorityUsed);
@@ -651,7 +651,7 @@ public final class DataMgr {
     }
 
 //    private List<SendMsgAction> getActnList() {
-//        return Collections.unmodifiableList(new ArrayList<SendMsgAction>(sndActnMap.values()));
+//        return Collections.unmodifiableList(new ArrayList<>(sndActnMap.values()));
 //    }
     private List<SendMsgTopic> createSendTopicList() {
         List<SendMsgTopic> list = new ArrayList<>();

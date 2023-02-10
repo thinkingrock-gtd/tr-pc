@@ -45,7 +45,7 @@ public class ContextMultiple extends Context implements MultipleItem<Context>, S
     }
     
     public Vector<Context> getChosen() {
-        return (chosen == null) ? new Vector<Context>() : chosen;
+        return (chosen == null) ? new Vector<>() : chosen;
     }
     
     public void setChosen(Vector<Context> chosen) {

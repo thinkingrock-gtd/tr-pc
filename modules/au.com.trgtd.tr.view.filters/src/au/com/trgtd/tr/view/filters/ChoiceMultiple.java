@@ -33,7 +33,7 @@ public class ChoiceMultiple extends Choice {
     private Vector<Choice> chosen;
     
     public Vector<Choice> getChosen() {
-        return (chosen == null) ? new Vector<Choice>() : chosen;
+        return (chosen == null) ? new Vector<>() : chosen;
     }
     
     public void setChosen(Vector<Choice> chosen) {

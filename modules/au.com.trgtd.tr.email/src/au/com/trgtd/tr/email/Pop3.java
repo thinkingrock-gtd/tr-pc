@@ -686,7 +686,7 @@ public class Pop3 {
         if (folders == null) {
             return null;
         }
-        ArrayList<Folder> array = new ArrayList<Folder>(); //auto size!
+        ArrayList<Folder> array = new ArrayList<>(); //auto size!
         for (int i = 0, n = folders.length; i < n; i++) {
             if (this.folders[i].isSubscribed()) {
                 array.add(this.folders[i]);
@@ -706,7 +706,7 @@ public class Pop3 {
         if (folders == null) {
             return null;
         }
-        ArrayList<Folder> array = new ArrayList<Folder>(); //auto size!
+        ArrayList<Folder> array = new ArrayList<>(); //auto size!
         for (int i = 0, n = folders.length; i < n; i++) {
             if (!this.folders[i].isSubscribed()) {
                 array.add(this.folders[i]);
@@ -813,7 +813,7 @@ public class Pop3 {
          * @return Vector        Retourne un Vector contenant les chemin complet des fichiers
          */
         public static Vector<String> getFileHandleMultipart(Multipart multipart) throws MessagingException, IOException {
-            Vector<String> vec = new Vector<String>();
+            Vector<String> vec = new Vector<>();
 
             // boucle sur les parties d'un message...
             for (int i = 0, n = multipart.getCount(); i < n; i++) {
@@ -857,7 +857,7 @@ public class Pop3 {
          * @return Vector                Retourne un Vector contenant les chemin complet des fichiers
          */
         public static Vector<String> getFileHandleMultipart(Multipart multipart, String _contentType) throws MessagingException, IOException {
-            Vector<String> vec = new Vector<String>();
+            Vector<String> vec = new Vector<>();
 
             // boucle sur les parties d'un message...
             for (int i = 0, n = multipart.getCount(); i < n; i++) {

@@ -23,7 +23,6 @@ import java.util.HashMap;
 import java.util.Vector;
 import org.openide.util.Lookup;
 import org.openide.util.LookupEvent;
-import org.openide.util.LookupListener;
 import tr.model.Data;
 import tr.model.DataLookup;
 import tr.model.goals.dao.LevelsDAO;
@@ -249,17 +248,17 @@ public class LevelsDAOImpl extends DAOImpl implements LevelsDAO {
     private void initialise() {
         synchronized (this) {
             if (levelDTOList == null) {
-                levelDTOList = new Vector<LevelDTO>();
+                levelDTOList = new Vector<>();
             } else {
                 levelDTOList.clear();
             }
             if (levelDTOMap == null) {
-                levelDTOMap = new HashMap<Integer, LevelDTO>();
+                levelDTOMap = new HashMap<>();
             } else {
                 levelDTOMap.clear();
             }
             if (levelMap == null) {
-                levelMap = new HashMap<Integer, Level>();
+                levelMap = new HashMap<>();
             } else {
                 levelMap.clear();
             }

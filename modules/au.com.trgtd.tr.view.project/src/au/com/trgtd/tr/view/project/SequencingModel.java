@@ -33,7 +33,7 @@ public class SequencingModel extends DefaultComboBoxModel {
     /** Creates a new instance. */
     public SequencingModel() {
         super();
-        types = new Vector<Sequencing>();
+        types = new Vector<>();
         types.add(Sequencing.INTO_SUBPROJECTS);
         types.add(Sequencing.OVER_SUBPROJECTS);
     }

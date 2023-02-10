@@ -49,7 +49,7 @@ public class ReviewActionsFilters {
     
     public MatcherEditor getMatcherEditor() {
         if (matcherEditor == null) {
-            BasicEventList<MatcherEditor> list = new BasicEventList<MatcherEditor>();
+            BasicEventList<MatcherEditor> list = new BasicEventList<>();
             for (MatcherEditor m : screen.getFilters()) {
                 list.add(m);
             }

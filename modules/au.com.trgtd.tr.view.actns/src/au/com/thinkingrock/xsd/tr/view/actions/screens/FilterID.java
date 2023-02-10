@@ -142,7 +142,7 @@ public enum FilterID {
     
     public synchronized byte index() {
         if (map == null) {
-            map = new HashMap<String, Byte>();
+            map = new HashMap<>();
             map.put(SEARCH.value, FilterSearch.INDEX);
             map.put(TOPIC.value, FilterTopic.INDEX);
             map.put(DONE.value, FilterDone.INDEX);

@@ -101,7 +101,7 @@ public class FilterContext extends FilterChoice implements PropertyChangeListene
         
         public ContextMatcher(Context context) {
             this.all = false;
-            this.contexts = new Vector<Context>();
+            this.contexts = new Vector<>();
             this.contexts.add(context);
         }
         
@@ -149,7 +149,7 @@ public class FilterContext extends FilterChoice implements PropertyChangeListene
             Data data = (Data)DataLookup.instance().lookup(Data.class);
             if (data == null) {
                 contextManager = null;
-                contexts = new Vector<Context>();
+                contexts = new Vector<>();
             } else {
                 contextManager = data.getContextManager();
                 contextManager.addObserver(this);
@@ -228,11 +228,11 @@ public class FilterContext extends FilterChoice implements PropertyChangeListene
                     Vector<Context> all;
                     Data data = (Data)DataLookup.instance().lookup(Data.class);
                     if (data == null) {
-                        all = new Vector<Context>();
+                        all = new Vector<>();
                     } else {
                         all = data.getContextManager().list();
                     }
-                    MultiChoiceDialog d = new MultiChoiceDialog<Context>(ContextsCombo.this, all, m.getChosen(), true);
+                    MultiChoiceDialog d = new MultiChoiceDialog<>(ContextsCombo.this, all, m.getChosen(), true);
                     d.setTitle(NbBundle.getMessage(getClass(), "filter-context"));
                     d.setLocationRelativeTo(ContextsCombo.this);
                     d.setVisible(true);
@@ -255,11 +255,11 @@ public class FilterContext extends FilterChoice implements PropertyChangeListene
                     Vector<Context> all;
                     Data data = (Data)DataLookup.instance().lookup(Data.class);
                     if (data == null) {
-                        all = new Vector<Context>();
+                        all = new Vector<>();
                     } else {
                         all = data.getContextManager().list();
                     }
-                    MultiChoiceDialog d = new MultiChoiceDialog<Context>(ContextsCombo.this, all, m.getChosen(), true);
+                    MultiChoiceDialog d = new MultiChoiceDialog<>(ContextsCombo.this, all, m.getChosen(), true);
                     d.setTitle(NbBundle.getMessage(getClass(), "filter-context"));
                     d.setLocationRelativeTo(ContextsCombo.this);
                     d.setVisible(true);
@@ -293,7 +293,7 @@ public class FilterContext extends FilterChoice implements PropertyChangeListene
             if (chosen == null || chosen.size() == 0) {
                 return null;
             }
-            Vector<String> values = new Vector<String>();
+            Vector<String> values = new Vector<>();
             for (Context c : chosen) {
                 if (c != null) {
                     values.add(c.getName());
@@ -321,7 +321,7 @@ public class FilterContext extends FilterChoice implements PropertyChangeListene
             Object o = combo.getItemAt(1);
             if (o instanceof ContextMultiple) {
                 ContextMultiple multiple = (ContextMultiple)o;
-                Vector<Context> chosen = new Vector<Context>();
+                Vector<Context> chosen = new Vector<>();
                 for (String name : values) {
                     Context context = getContext(name);
                     if (context != null) {

@@ -27,7 +27,7 @@ import java.util.List;
 public class FoundItems implements Observable {
 
     private final ObservableImpl observable = new ObservableImpl();
-    private final List<FoundItem> list = new ArrayList<FoundItem>();
+    private final List<FoundItem> list = new ArrayList<>();
     private String text = "";
 
     public String getText() {

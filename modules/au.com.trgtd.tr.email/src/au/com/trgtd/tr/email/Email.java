@@ -166,7 +166,7 @@ public class Email extends Thread {
                 LOG.info("Not POP3 Folder");
             }
 
-            List<Message> msgs = new ArrayList<Message>(email.getMessageCount());
+            List<Message> msgs = new ArrayList<>(email.getMessageCount());
 
             String lastUID = EmailPrefs.getLastMsgUID();
             boolean lookForLast = (lastUID != null && pop3folder != null);

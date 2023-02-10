@@ -140,7 +140,7 @@ public class BackupThread extends Thread {
                 return file.isFile() && file.getName().toLowerCase().matches(regex);
             }
         };
-        List<File> recoveryFiles = new Vector<File>();
+        List<File> recoveryFiles = new Vector<>();
         for (File file : dir.listFiles(filter)) {
             recoveryFiles.add(file);
         }

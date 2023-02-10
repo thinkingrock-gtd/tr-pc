@@ -192,7 +192,7 @@ public final class XStreamDataStore extends AbstractDataStore implements Prefere
             }
         };
 
-        List<File> recoveryFiles = new ArrayList<File>();
+        List<File> recoveryFiles = new ArrayList<>();
         recoveryFiles.addAll(Arrays.asList(dir.listFiles(filter)));
 
         if (recoveryFiles.size() > 0) {

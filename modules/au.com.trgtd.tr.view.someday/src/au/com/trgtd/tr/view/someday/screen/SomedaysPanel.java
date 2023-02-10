@@ -84,16 +84,16 @@ public class SomedaysPanel extends JPanel implements ListSelectionListener, Obse
         
         refsList = data.getFutureManager().list();
         
-        refsEventList = new BasicEventList<Future>();
+        refsEventList = new BasicEventList<>();
         refsEventList.addAll(refsList);
         
         FilterList refsFilterList = new FilterList(refsEventList, refsMatcherEditor);
         
         data.getFutureManager().addObserver(this);
         
-        refsSortedList = new SortedList<Future>(refsFilterList);
+        refsSortedList = new SortedList<>(refsFilterList);
         refsTableFormat = new SomedaysTableFormat();
-        refsTableModel = new EventTableModel<Future>(refsSortedList, refsTableFormat);
+        refsTableModel = new EventTableModel<>(refsSortedList, refsTableFormat);
         
         futuresTable = new JXTable(refsTableModel);
         futuresTable.getActionMap().remove("find");
@@ -114,7 +114,7 @@ public class SomedaysPanel extends JPanel implements ListSelectionListener, Obse
         futuresTable.setShowVerticalLines(false);
 //      futuresTable.setGridColor(Color.lightGray);
         
-        selectionModel = new EventSelectionModel<Future>(refsSortedList);
+        selectionModel = new EventSelectionModel<>(refsSortedList);
         selectionModel.addListSelectionListener(this);
 ////    selectionModel.setSelectionMode(EventSelectionModel.SINGLE_SELECTION);
         selectionModel.setSelectionMode(EventSelectionModel.MULTIPLE_INTERVAL_SELECTION);
@@ -183,7 +183,7 @@ public class SomedaysPanel extends JPanel implements ListSelectionListener, Obse
     public void valueChanged(ListSelectionEvent e) {
         if (e.getValueIsAdjusting()) return;
         
-        Collection<SomedayNode> nodes = new Vector<SomedayNode>();
+        Collection<SomedayNode> nodes = new Vector<>();
         
         for (Future future : selectionModel.getSelected()) {
             nodes.add(new SomedayNode(future));
@@ -252,7 +252,7 @@ public class SomedaysPanel extends JPanel implements ListSelectionListener, Obse
             }
             // save column sorting:
             sortingColumns = panel.tableSorter.getSortingColumns();
-            sortingReverse = new Vector<Boolean>();
+            sortingReverse = new Vector<>();
             for (Integer column : sortingColumns) {
                 sortingReverse.add(new Boolean(panel.tableSorter.isColumnReverse(column)));
             }

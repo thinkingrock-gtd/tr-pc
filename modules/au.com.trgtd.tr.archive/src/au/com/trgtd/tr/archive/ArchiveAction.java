@@ -172,9 +172,9 @@ public final class ArchiveAction extends CallableSystemAction implements LookupL
             return;
         }
 
-        archiveSingleActions = new Vector<Action>();
-        archiveActions = new Vector<Action>();
-        archiveProjects = new Vector<Project>();
+        archiveSingleActions = new Vector<>();
+        archiveActions = new Vector<>();
+        archiveProjects = new Vector<>();
 
         Data archiveData = null;
         try {
@@ -306,7 +306,7 @@ public final class ArchiveAction extends CallableSystemAction implements LookupL
 
         // Remove from data file all orphaned processed thoughts
         HashSet<Integer> usedThoughts = getUsedThoughts(data);
-        Vector<Thought> orphanedThoughts = new Vector<Thought>();
+        Vector<Thought> orphanedThoughts = new Vector<>();
         Manager<Thought> thoughtManager = data.getThoughtManager();
         for (Thought thought : thoughtManager.list()) {
             if (thought.isProcessed() && !usedThoughts.contains(thought.getID())) {
@@ -392,7 +392,7 @@ public final class ArchiveAction extends CallableSystemAction implements LookupL
     }
     
     private Map<Integer, Project> createProjectsMap(Data data) {        
-        Map<Integer, Project> map = new HashMap<Integer, Project>();        
+        Map<Integer, Project> map = new HashMap<>();
         mapProjects(data.getRootProjects(), map);
         return map;
     }
@@ -424,7 +424,7 @@ public final class ArchiveAction extends CallableSystemAction implements LookupL
 
 
     private HashSet<Integer> getUsedThoughts(Data data) {
-        HashSet<Integer> set = new HashSet<Integer>();
+        HashSet<Integer> set = new HashSet<>();
         getUsedThoughts(set, data.getFutureManager());
         getUsedThoughts(set, data.getRootActions());
         getUsedThoughts(set, data.getRootProjects());

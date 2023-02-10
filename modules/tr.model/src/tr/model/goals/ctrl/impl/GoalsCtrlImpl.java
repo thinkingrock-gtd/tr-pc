@@ -58,7 +58,7 @@ public class GoalsCtrlImpl extends CtrlImpl implements GoalsCtrl, PropertyChange
 
     private GoalsCtrlImpl() {
         super(Constants.ID_ROOT_GOAL);
-        goalsMap = new HashMap<Integer, GoalCtrl>();
+        goalsMap = new HashMap<>();
         goalsDAO = GoalsDAOLookup.getGoalsDAO();
         goalsDAO.addPropertyChangeListener(GoalsDAO.PROP_DATA, this);
         initialise();
@@ -107,7 +107,7 @@ public class GoalsCtrlImpl extends CtrlImpl implements GoalsCtrl, PropertyChange
     @Override
     public List<GoalCtrl> getSubgoalCtrls(Integer goalID) {
         synchronized (this) {
-            Vector<GoalCtrl> subgoalCtrls = new Vector<GoalCtrl>();
+            Vector<GoalCtrl> subgoalCtrls = new Vector<>();
             for (Integer subgoalID : goalsDAO.getSubGoalIDs(goalID)) {
                 subgoalCtrls.add(goalsMap.get(subgoalID));
             }
@@ -125,7 +125,7 @@ public class GoalsCtrlImpl extends CtrlImpl implements GoalsCtrl, PropertyChange
     @Override
     public List<GoalCtrl> getProjectGoals(Integer projectID) {
         synchronized (this) {
-            Vector<GoalCtrl> goalCtrls = new Vector<GoalCtrl>();
+            Vector<GoalCtrl> goalCtrls = new Vector<>();
             for (Integer goalID : goalsDAO.getGoalIDs(projectID)) {
                 goalCtrls.add(goalsMap.get(goalID));
             }
@@ -250,7 +250,7 @@ public class GoalsCtrlImpl extends CtrlImpl implements GoalsCtrl, PropertyChange
     }
 
     private List<GoalCtrl> getGoals(Integer levelID) {
-        List<GoalCtrl> goals = new ArrayList<GoalCtrl>();
+        List<GoalCtrl> goals = new ArrayList<>();
         for (GoalCtrl g : goalsMap.values()) {
             if (g.getLevelID().equals(levelID)) {
                 goals.add(g);

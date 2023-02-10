@@ -161,7 +161,7 @@ public final class ModifyRecurrenceWizardIterator implements WizardDescriptor.It
         }
         index--;
     }
-    private Set<ChangeListener> listeners = new HashSet<ChangeListener>(1);
+    private Set<ChangeListener> listeners = new HashSet<>(1);
 
     public final void addChangeListener(ChangeListener l) {
         synchronized (listeners) {
@@ -178,7 +178,7 @@ public final class ModifyRecurrenceWizardIterator implements WizardDescriptor.It
     protected final void fireChangeEvent() {
         Iterator<ChangeListener> it;
         synchronized (listeners) {
-            it = new HashSet<ChangeListener>(listeners).iterator();
+            it = new HashSet<>(listeners).iterator();
         }
         ChangeEvent ev = new ChangeEvent(this);
         while (it.hasNext()) {

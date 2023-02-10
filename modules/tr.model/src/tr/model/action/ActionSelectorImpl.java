@@ -82,11 +82,11 @@ public class ActionSelectorImpl implements ActionSelector {
      */
     public ActionSelectorImpl(String name) {
         this.name = name;
-        actionStates = new Vector<Class>();
-        contexts = new Vector<Context>();
-        topics = new Vector<Topic>();
-        doneValues = new Vector<Boolean>();
-        activeValues = new Vector<Boolean>();
+        actionStates = new Vector<>();
+        contexts = new Vector<>();
+        topics = new Vector<>();
+        doneValues = new Vector<>();
+        activeValues = new Vector<>();
     }
     
     /**

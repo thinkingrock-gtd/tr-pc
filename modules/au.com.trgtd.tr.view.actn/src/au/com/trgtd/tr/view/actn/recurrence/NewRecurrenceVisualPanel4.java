@@ -57,21 +57,21 @@ public final class NewRecurrenceVisualPanel4 extends JPanel {
 
     private Period getPeriod(PeriodType type) {
         if (mapPeriods == null) {
-            mapPeriods = new HashMap<PeriodType, Period>();
+            mapPeriods = new HashMap<>();
         }
         return mapPeriods.get(type);
     }
 
     private void setPeriod(Period period) {
         if (mapPeriods == null) {
-            mapPeriods = new HashMap<PeriodType, Period>();
+            mapPeriods = new HashMap<>();
         }
         mapPeriods.put(period.getType(), period);
     }
 
     private Integer getAdvanceNbr(PeriodType type) {
         if (mapAdvanceNbrs == null) {
-            mapAdvanceNbrs = new HashMap<PeriodType, Integer>();
+            mapAdvanceNbrs = new HashMap<>();
         }
         Integer n = mapAdvanceNbrs.get(type);
         if (n == null || n < 1) {
@@ -82,7 +82,7 @@ public final class NewRecurrenceVisualPanel4 extends JPanel {
 
     private void setAdvanceNbr(PeriodType type, Integer advanceNbr) {
         if (mapAdvanceNbrs == null) {
-            mapAdvanceNbrs = new HashMap<PeriodType, Integer>();
+            mapAdvanceNbrs = new HashMap<>();
         }
         mapAdvanceNbrs.put(type, advanceNbr);
     }

@@ -53,7 +53,7 @@ public class ParamFont extends Param {
     }
     
     private void initItems() {
-        items = new Vector<Item>();
+        items = new Vector<>();
         items.add(new Item("Courier","Courier"));
         items.add(new Item("Helvetica","Helvetica"));
         items.add(new Item("Times","Times"));

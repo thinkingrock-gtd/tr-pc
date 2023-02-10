@@ -109,7 +109,7 @@ public class FilterCriterionEnergy extends FilterCriterion implements PropertyCh
         private final boolean excludeNulls;
         
         public ValueMatcher(Value value, boolean excludeNulls) {
-            this.values = new Vector<Value>();
+            this.values = new Vector<>();
             this.values.add(value);
             this.excludeNulls = excludeNulls;
         }
@@ -159,7 +159,7 @@ public class FilterCriterionEnergy extends FilterCriterion implements PropertyCh
             Data data = (Data)DataLookup.instance().lookup(Data.class);
             if (data == null) {
                 valueManager = null;
-                values = new Vector<Value>();
+                values = new Vector<>();
             } else {
                 valueManager = data.getEnergyCriterion().values;
                 valueManager.addObserver(this);
@@ -230,11 +230,11 @@ public class FilterCriterionEnergy extends FilterCriterion implements PropertyCh
                     Vector<Value> all;
                     Data data = (Data)DataLookup.instance().lookup(Data.class);
                     if (data == null) {
-                        all = new Vector<Value>();
+                        all = new Vector<>();
                     } else {
                         all = data.getEnergyCriterion().values.list();
                     }
-                    MultiChoiceDialog d = new MultiChoiceDialog<Value>(EnergyCombo.this, all, m.getChosen(), false);
+                    MultiChoiceDialog d = new MultiChoiceDialog<>(EnergyCombo.this, all, m.getChosen(), false);
                     d.setTitle(NbBundle.getMessage(getClass(), "filter-energy"));
                     d.setLocationRelativeTo(EnergyCombo.this);
                     d.setVisible(true);
@@ -257,11 +257,11 @@ public class FilterCriterionEnergy extends FilterCriterion implements PropertyCh
                     Vector<Value> all;
                     Data data = (Data)DataLookup.instance().lookup(Data.class);
                     if (data == null) {
-                        all = new Vector<Value>();
+                        all = new Vector<>();
                     } else {
                         all = data.getEnergyCriterion().values.list();
                     }
-                    MultiChoiceDialog d = new MultiChoiceDialog<Value>(EnergyCombo.this, all, m.getChosen(), false);
+                    MultiChoiceDialog d = new MultiChoiceDialog<>(EnergyCombo.this, all, m.getChosen(), false);
                     d.setTitle(NbBundle.getMessage(getClass(), "filter-energy"));
                     d.setLocationRelativeTo(EnergyCombo.this);
                     d.setVisible(true);

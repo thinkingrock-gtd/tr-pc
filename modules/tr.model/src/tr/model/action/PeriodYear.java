@@ -56,7 +56,7 @@ public class PeriodYear extends Period {
     private PeriodMonth.OnTheDay onTheDay;
 
     public PeriodYear() {
-        this.selectedMonths = new Vector<Integer>();
+        this.selectedMonths = new Vector<>();
         this.onTheSelected = false;
         this.onTheNth = OnTheNth.First;
         this.onTheDay = OnTheDay.Monday;
@@ -81,7 +81,7 @@ public class PeriodYear extends Period {
      */
     public Period clone() {
         PeriodYear clone = new PeriodYear();
-        clone.selectedMonths = new Vector<Integer>(selectedMonths);
+        clone.selectedMonths = new Vector<>(selectedMonths);
         clone.onTheSelected = this.onTheSelected;
         clone.onTheNth = this.onTheNth;
         clone.onTheDay = this.onTheDay;
@@ -126,7 +126,7 @@ public class PeriodYear extends Period {
 
     public List<Integer> getSelectedMonths() {
         Collections.sort(selectedMonths);
-        return new Vector<Integer>(selectedMonths);
+        return new Vector<>(selectedMonths);
     }
 
     public String getSelectedMonthsText() {
@@ -244,7 +244,7 @@ public class PeriodYear extends Period {
         assert (startDate != null);
         assert (templateDate != null);
 
-        List<Date> dates = new Vector<Date>();
+        List<Date> dates = new Vector<>();
 
         Calendar templateCal = Calendar.getInstance();
         templateCal.setTime(templateDate);
@@ -290,7 +290,7 @@ public class PeriodYear extends Period {
 
     @Override
     public void initialise(Date startDate) {
-        selectedMonths = new Vector<Integer>();
+        selectedMonths = new Vector<>();
         if (startDate != null) {
             Calendar calendar = Calendar.getInstance();
             calendar.setTime(startDate);

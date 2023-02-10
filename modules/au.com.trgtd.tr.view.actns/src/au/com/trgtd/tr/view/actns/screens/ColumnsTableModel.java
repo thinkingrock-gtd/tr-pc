@@ -104,7 +104,7 @@ public class ColumnsTableModel extends AbstractTableModel implements Observer {
     
     private Map<Byte, ActionsColumn> getRowMap() {
         if (rowMap == null) {
-            rowMap = new HashMap<Byte, ActionsColumn>();
+            rowMap = new HashMap<>();
             for (ActionsColumn ac : actionsScreen.getColumns().list()) {
                 rowMap.put(ac.getColumnIndex(), ac);
             }

@@ -209,7 +209,7 @@ final class ActionsScreensOptionsPanel extends JPanel {
     }//GEN-LAST:event_addActionPerformed
     
     void load() {
-        items = new Manager<ActionsScreensItem>();
+        items = new Manager<>();
         
         ActionsScreens screens = ScreensDAOProvider.instance().provide().getData();
         
@@ -222,7 +222,7 @@ final class ActionsScreensOptionsPanel extends JPanel {
     
     void store() {
         
-        Manager<ActionsScreen> screens = new Manager<ActionsScreen>();
+        Manager<ActionsScreen> screens = new Manager<>();
         
         for (ActionsScreensItem item : items.list()) {
             if (item.screen == null) {

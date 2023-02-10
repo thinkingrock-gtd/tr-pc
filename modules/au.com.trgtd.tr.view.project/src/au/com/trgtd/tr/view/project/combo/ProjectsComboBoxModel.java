@@ -24,7 +24,6 @@ import java.util.Vector;
 import javax.swing.DefaultComboBoxModel;
 import org.openide.util.Lookup;
 import org.openide.util.LookupEvent;
-import org.openide.util.LookupListener;
 import tr.model.Data;
 import tr.model.DataLookup;
 import tr.model.project.Project;
@@ -83,7 +82,7 @@ class ProjectsComboBoxModel extends DefaultComboBoxModel implements Observer {
             });
         }     
         
-        projectItems = new Vector<ProjectItem>();
+        projectItems = new Vector<>();
         
         Data data = (Data)DataLookup.instance().lookup(Data.class);
         if (data == null) return;

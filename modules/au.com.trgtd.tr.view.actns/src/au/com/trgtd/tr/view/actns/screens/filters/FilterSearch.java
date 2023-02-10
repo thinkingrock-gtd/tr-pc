@@ -189,7 +189,7 @@ public final class FilterSearch extends FilterChoice implements PropertyChangeLi
 
     private class SearchComboBoxModel extends DefaultComboBoxModel {
 
-        public final Vector<String> searches = new Vector<String>();
+        public final Vector<String> searches = new Vector<>();
 
         public void addSearch(String search) {
             if (search == null) {

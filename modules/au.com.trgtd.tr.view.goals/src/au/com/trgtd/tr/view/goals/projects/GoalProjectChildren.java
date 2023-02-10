@@ -66,12 +66,12 @@ public class GoalProjectChildren extends Children.Keys<Project> implements Prope
             return;
         }
 
-        java.util.Map<Integer, Project> projectsMap = new HashMap<Integer, Project>();
+        java.util.Map<Integer, Project> projectsMap = new HashMap<>();
         for (Project project : Services.instance.getProjects()) {
             projectsMap.put(project.getID(), project);
         }
 
-        ArrayList<Project> goalProjects = new ArrayList<Project>(goalProjectIDs.length);
+        ArrayList<Project> goalProjects = new ArrayList<>(goalProjectIDs.length);
         for (Integer id : goalProjectIDs) {
             Project project = projectsMap.get(id);
             if (project != null) {

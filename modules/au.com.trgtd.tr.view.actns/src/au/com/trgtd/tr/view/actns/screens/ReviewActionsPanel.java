@@ -121,7 +121,7 @@ public class ReviewActionsPanel extends JPanel implements ListSelectionListener,
 
         actionsList = Services.instance.getAllActions();
 
-        actionsEventList = new BasicEventList<Action>();
+        actionsEventList = new BasicEventList<>();
         actionsEventList.addAll(actionsList);
         actionsFilterList = new FilterList(actionsEventList, filters.getMatcherEditor());
         actionsFilterList.addListEventListener((ListEvent<Action> e) -> {
@@ -134,11 +134,11 @@ public class ReviewActionsPanel extends JPanel implements ListSelectionListener,
 
 ////////        Services.instance.addActionsObserver(this);
 
-        actionsSortedList = new SortedList<Action>(actionsFilterList);
+        actionsSortedList = new SortedList<>(actionsFilterList);
 
         actionsTableFormat = new ReviewActionsTableFormat(screen);
 
-        actionsTableModel = new EventTableModel<Action>(actionsSortedList, actionsTableFormat);
+        actionsTableModel = new EventTableModel<>(actionsSortedList, actionsTableFormat);
 
 //        actionsTable = new JXTable(actionsTableModel);
 //        actionsTable.getTableHeader().setDefaultRenderer(new JTableHeader().getDefaultRenderer());
@@ -162,7 +162,7 @@ public class ReviewActionsPanel extends JPanel implements ListSelectionListener,
         actionsTable.setShowVerticalLines(false);
 //      actionsTable.setGridColor(Color.lightGray);
 
-        selectionModel = new EventSelectionModel<Action>(actionsSortedList);
+        selectionModel = new EventSelectionModel<>(actionsSortedList);
 
         selectionModel.addListSelectionListener(this);
 

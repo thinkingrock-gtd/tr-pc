@@ -79,16 +79,16 @@ public class ActorPanel extends JPanel implements ListSelectionListener, Observe
         if (data == null) return;
         
         actorList = data.getActorManager().list();
-        actorEventList = new BasicEventList<Actor>();
+        actorEventList = new BasicEventList<>();
         actorEventList.addAll(actorList);
         
         data.getActorManager().addObserver(this);
         
-        actorSortedList = new SortedList<Actor>(actorEventList, actorComparator);
+        actorSortedList = new SortedList<>(actorEventList, actorComparator);
         actorSortedList.setMode(SortedList.AVOID_MOVING_ELEMENTS);
         
         actorTableFormat = new ActorsTableFormat();
-        actorEventTableModel = new EventTableModel<Actor>(actorSortedList, actorTableFormat);
+        actorEventTableModel = new EventTableModel<>(actorSortedList, actorTableFormat);
         
         actorTable = new JXTable(actorEventTableModel);
         actorTable.getActionMap().remove("find");
@@ -106,7 +106,7 @@ public class ActorPanel extends JPanel implements ListSelectionListener, Observe
         actorTable.setShowVerticalLines(false);
 //      actorTable.setGridColor(Color.lightGray);
         
-        selectionModel = new EventSelectionModel<Actor>(actorSortedList);
+        selectionModel = new EventSelectionModel<>(actorSortedList);
         selectionModel.addListSelectionListener(this);
         selectionModel.setSelectionMode(EventSelectionModel.MULTIPLE_INTERVAL_SELECTION);
         selectionModel.setEnabled(true);
@@ -116,7 +116,7 @@ public class ActorPanel extends JPanel implements ListSelectionListener, Observe
             actorTable.getColumnModel().getColumn(c).setPreferredWidth(actorTableFormat.getColumnWidth(c));
         }
         
-        tableSorter = new TableComparatorChooser<Actor>(actorTable, actorSortedList, true);        
+        tableSorter = new TableComparatorChooser<>(actorTable, actorSortedList, true);
 
         actorTable.addKeyListener(new KeyAdapter() {
             @Override
@@ -170,7 +170,7 @@ public class ActorPanel extends JPanel implements ListSelectionListener, Observe
             }
             // save column sorting:
             sortingColumns = panel.tableSorter.getSortingColumns();
-            sortingReverse = new Vector<Boolean>();
+            sortingReverse = new Vector<>();
             for (Integer column : sortingColumns) {
                 sortingReverse.add(new Boolean(panel.tableSorter.isColumnReverse(column)));
             }
@@ -253,7 +253,7 @@ public class ActorPanel extends JPanel implements ListSelectionListener, Observe
     public void valueChanged(ListSelectionEvent e) {
         if (e.getValueIsAdjusting()) return;
         
-        Collection<ActorNode> nodes = new Vector<ActorNode>();
+        Collection<ActorNode> nodes = new Vector<>();
         for (Actor actor : selectionModel.getSelected()) {
             nodes.add(new ActorNode(data.getActorManager(), actor));
         }

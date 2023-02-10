@@ -101,7 +101,7 @@ final class ActionPrefsPanel extends JPanel {
         encodingLabel = new TRLabel(getMsg("CTL_EmailEncoding"));
         encodingCombo = new TRComboBox(getEncodingModel());
         actionStatesLabel = new TRLabel(getMsg("DefaultActionState"));
-        states = new Vector<ActionPrefs.ActionState>();
+        states = new Vector<>();
         states.add(ActionPrefs.ActionState.INACTIVE);
         states.add(ActionPrefs.ActionState.DOASAP);
         states.add(ActionPrefs.ActionState.SCHEDULED);
@@ -152,7 +152,7 @@ final class ActionPrefsPanel extends JPanel {
     }
 
     private ComboBoxModel getEncodingModel() {
-        Vector<String> encodings = new Vector<String>();
+        Vector<String> encodings = new Vector<>();
         encodings.add("");
         encodings.addAll(Charset.availableCharsets().keySet());
         return new DefaultComboBoxModel(encodings);

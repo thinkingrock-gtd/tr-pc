@@ -170,7 +170,7 @@ public class ModifyRecurrenceWizard {
 
         Recurrence recurrence = action.getRecurrence();
 
-        List<Recurrence.Property> changedProperties = new ArrayList<Recurrence.Property>();
+        List<Recurrence.Property> changedProperties = new ArrayList<>();
         
         if (!Utils.equal(recurrence.getScheduleHours(), changedRecurrence.getScheduleHours())) {
             changedProperties.add(Recurrence.Property.SCHEDULED_HOURS);

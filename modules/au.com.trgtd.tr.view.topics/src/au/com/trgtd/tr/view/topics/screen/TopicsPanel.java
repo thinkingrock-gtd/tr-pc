@@ -77,16 +77,16 @@ public class TopicsPanel extends JPanel implements ListSelectionListener, Observ
         if (data == null) return;
         
         topicList = data.getTopicManager().list();
-        topicEventList = new BasicEventList<Topic>();
+        topicEventList = new BasicEventList<>();
         topicEventList.addAll(topicList);
         
         data.getTopicManager().addObserver(this);
         
-        topicSortedList = new SortedList<Topic>(topicEventList);
+        topicSortedList = new SortedList<>(topicEventList);
         topicSortedList.setMode(SortedList.AVOID_MOVING_ELEMENTS);
         
         topicTableFormat = new TopicsTableFormat();
-        topicEventTableModel = new EventTableModel<Topic>(topicSortedList, topicTableFormat);
+        topicEventTableModel = new EventTableModel<>(topicSortedList, topicTableFormat);
         
         topicTable = new JXTable(topicEventTableModel);
         topicTable.getActionMap().remove("find");
@@ -104,7 +104,7 @@ public class TopicsPanel extends JPanel implements ListSelectionListener, Observ
         topicTable.setShowVerticalLines(false);
 //      topicTable.setGridColor(Color.lightGray);
         
-        selectionModel = new EventSelectionModel<Topic>(topicSortedList);
+        selectionModel = new EventSelectionModel<>(topicSortedList);
         selectionModel.addListSelectionListener(this);
         selectionModel.setSelectionMode(EventSelectionModel.MULTIPLE_INTERVAL_SELECTION);
         selectionModel.setEnabled(true);
@@ -117,7 +117,7 @@ public class TopicsPanel extends JPanel implements ListSelectionListener, Observ
         topicTable.setDefaultRenderer(TopicsTableFormat.TopicName.class, new TopicsTableFormat.TopicNameRenderer());
         topicTable.setDefaultRenderer(TopicsTableFormat.TopicDesc.class, new TopicsTableFormat.TopicDescRenderer());
         
-        tableSorter = new TableComparatorChooser<Topic>(topicTable, topicSortedList, true);
+        tableSorter = new TableComparatorChooser<>(topicTable, topicSortedList, true);
         
         topicTable.addKeyListener(new KeyAdapter() {
             @Override
@@ -171,7 +171,7 @@ public class TopicsPanel extends JPanel implements ListSelectionListener, Observ
             }
             // save column sorting:
             sortingColumns = panel.tableSorter.getSortingColumns();
-            sortingReverse = new Vector<Boolean>();
+            sortingReverse = new Vector<>();
             for (Integer column : sortingColumns) {
                 sortingReverse.add(new Boolean(panel.tableSorter.isColumnReverse(column)));
             }
@@ -253,7 +253,7 @@ public class TopicsPanel extends JPanel implements ListSelectionListener, Observ
     public void valueChanged(ListSelectionEvent e) {
         if (e.getValueIsAdjusting()) return;
         
-        Collection<TopicNode> nodes = new Vector<TopicNode>();
+        Collection<TopicNode> nodes = new Vector<>();
         for (Topic topic : selectionModel.getSelected()) {
             nodes.add(new TopicNode(data.getTopicManager(), topic));
         }

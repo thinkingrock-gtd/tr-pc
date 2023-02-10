@@ -705,7 +705,7 @@ public class DaysOfMonthDialog extends JDialog {
 
     public List<Integer> getSelectedDays() {
         if (periodMonth == null) {
-            return new Vector<Integer>();
+            return new Vector<>();
         }
         return periodMonth.getSelectedDays();
     }

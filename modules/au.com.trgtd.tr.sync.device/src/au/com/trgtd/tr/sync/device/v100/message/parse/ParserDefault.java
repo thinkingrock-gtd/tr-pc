@@ -44,7 +44,7 @@ class ParserDefault implements IParser {
 
     private static final Map<RecvMsg.Type, RecvMsg> SIMPLE_MSG_MAP;
     static {
-        EnumMap<RecvMsg.Type, RecvMsg> map = new EnumMap<RecvMsg.Type, RecvMsg>(RecvMsg.Type.class);
+        EnumMap<RecvMsg.Type, RecvMsg> map = new EnumMap<>(RecvMsg.Type.class);
 
         for (RecvMsg.Type msgType : SIMPLE_MSG_TYPES) {
             map.put(msgType, new RecvMsg(msgType));

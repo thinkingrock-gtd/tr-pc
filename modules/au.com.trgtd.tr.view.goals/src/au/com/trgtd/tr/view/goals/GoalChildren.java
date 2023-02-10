@@ -208,7 +208,7 @@ public class GoalChildren extends Children.Keys<Object> implements PropertyChang
         
         @Override
         public void reorder(int[] perm) {
-            List<Integer> reorderedIDs = new ArrayList<Integer>(perm.length);
+            List<Integer> reorderedIDs = new ArrayList<>(perm.length);
             for (int index : perm ) {
                 Object key = keys.get(index);
                 if (key instanceof GoalCtrl) {

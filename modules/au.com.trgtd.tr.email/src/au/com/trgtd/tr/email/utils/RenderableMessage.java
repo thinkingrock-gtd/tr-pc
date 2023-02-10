@@ -47,7 +47,7 @@ public class RenderableMessage implements Renderable {
      * Creates a new instance of RenderableMessage.
      */
     public RenderableMessage(Message m) throws MessagingException, IOException {
-        attachments = new ArrayList<Attachment>();
+        attachments = new ArrayList<>();
         subject = m.getSubject();
         extractPart(m);
     }

@@ -77,16 +77,16 @@ public class ContextsPanel extends JPanel implements ListSelectionListener, Obse
         if (data == null) return;
         
         contextList = data.getContextManager().list();
-        contextEventList = new BasicEventList<Context>();
+        contextEventList = new BasicEventList<>();
         contextEventList.addAll(contextList);
         
         data.getContextManager().addObserver(this);
         
-        contextSortedList = new SortedList<Context>(contextEventList);
+        contextSortedList = new SortedList<>(contextEventList);
         contextSortedList.setMode(SortedList.AVOID_MOVING_ELEMENTS);
         
         contextTableFormat = new ContextsTableFormat();
-        contextEventTableModel = new EventTableModel<Context>(contextSortedList, contextTableFormat);
+        contextEventTableModel = new EventTableModel<>(contextSortedList, contextTableFormat);
         
         contextTable = new JXTable(contextEventTableModel);
         contextTable.getActionMap().remove("find");
@@ -104,7 +104,7 @@ public class ContextsPanel extends JPanel implements ListSelectionListener, Obse
         contextTable.setShowVerticalLines(false);
 //      contextTable.setGridColor(Color.lightGray);
         
-        selectionModel = new EventSelectionModel<Context>(contextSortedList);
+        selectionModel = new EventSelectionModel<>(contextSortedList);
         selectionModel.addListSelectionListener(this);
         selectionModel.setSelectionMode(selectionModel.MULTIPLE_INTERVAL_SELECTION);
         selectionModel.setEnabled(true);
@@ -116,7 +116,7 @@ public class ContextsPanel extends JPanel implements ListSelectionListener, Obse
         
         contextTable.setDefaultRenderer(Context.class, new ContextsTableFormat.ContextRenderer());
         
-        tableSorter = new TableComparatorChooser<Context>(contextTable, contextSortedList, true);
+        tableSorter = new TableComparatorChooser<>(contextTable, contextSortedList, true);
         
         contextTable.addKeyListener(new KeyAdapter() {
             public void keyPressed(KeyEvent e) {
@@ -168,7 +168,7 @@ public class ContextsPanel extends JPanel implements ListSelectionListener, Obse
             }
             // save column sorting:
             sortingColumns = panel.tableSorter.getSortingColumns();
-            sortingReverse = new Vector<Boolean>();
+            sortingReverse = new Vector<>();
             for (Integer column : sortingColumns) {
                 sortingReverse.add(new Boolean(panel.tableSorter.isColumnReverse(column)));
             }
@@ -250,7 +250,7 @@ public class ContextsPanel extends JPanel implements ListSelectionListener, Obse
     public void valueChanged(ListSelectionEvent e) {
         if (e.getValueIsAdjusting()) return;
         
-        Collection<ContextNode> nodes = new Vector<ContextNode>();
+        Collection<ContextNode> nodes = new Vector<>();
         for (Context context : selectionModel.getSelected()) {
             nodes.add(new ContextNode(data.getContextManager(), context));
         }

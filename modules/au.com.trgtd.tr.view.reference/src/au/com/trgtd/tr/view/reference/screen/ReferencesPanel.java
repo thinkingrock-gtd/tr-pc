@@ -84,16 +84,16 @@ public class ReferencesPanel extends JPanel implements ListSelectionListener, Ob
         
         refsList = data.getInformationManager().list();
         
-        refsEventList = new BasicEventList<Information>();
+        refsEventList = new BasicEventList<>();
         refsEventList.addAll(refsList);
         
         FilterList refsFilterList = new FilterList(refsEventList, refsMatcherEditor);
         
         data.getInformationManager().addObserver(this);
         
-        refsSortedList = new SortedList<Information>(refsFilterList);
+        refsSortedList = new SortedList<>(refsFilterList);
         refsTableFormat = new ReferencesTableFormat();
-        refsTableModel = new EventTableModel<Information>(refsSortedList, refsTableFormat);
+        refsTableModel = new EventTableModel<>(refsSortedList, refsTableFormat);
         
         refsTable = new JXTable(refsTableModel);
         refsTable.getTableHeader().setDefaultRenderer(new JTableHeader().getDefaultRenderer());
@@ -112,7 +112,7 @@ public class ReferencesPanel extends JPanel implements ListSelectionListener, Ob
 
         refsTable.getActionMap().remove("find");
 
-        selectionModel = new EventSelectionModel<Information>(refsSortedList);
+        selectionModel = new EventSelectionModel<>(refsSortedList);
         selectionModel.addListSelectionListener(this);
         selectionModel.setSelectionMode(EventSelectionModel.SINGLE_SELECTION);
         selectionModel.setEnabled(true);
@@ -180,7 +180,7 @@ public class ReferencesPanel extends JPanel implements ListSelectionListener, Ob
     public void valueChanged(ListSelectionEvent e) {
         if (e.getValueIsAdjusting()) return;
         
-        Collection<ReferenceNode> nodes = new ArrayList<ReferenceNode>();
+        Collection<ReferenceNode> nodes = new ArrayList<>();
         for (Information info : selectionModel.getSelected()) {
             nodes.add(new ReferenceNode(info));
         }
@@ -249,7 +249,7 @@ public class ReferencesPanel extends JPanel implements ListSelectionListener, Ob
             }
             // save column sorting:
             sortingColumns = panel.tableSorter.getSortingColumns();
-            sortingReverse = new ArrayList<Boolean>();
+            sortingReverse = new ArrayList<>();
             for (Integer column : sortingColumns) {
                 sortingReverse.add(panel.tableSorter.isColumnReverse(column));
             }

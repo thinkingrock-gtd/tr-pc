@@ -64,8 +64,8 @@ public class ReportImpl extends au.com.trgtd.tr.extract.Extract {
 
     /** Overridden to return report parameters. */
     public List<Param> getParams() {
-        List<Param> params = new Vector<Param>();
-        List<Item> formatItems = new Vector<Item>();
+        List<Param> params = new Vector<>();
+        List<Item> formatItems = new Vector<>();
         formatItems.add(new Item(PaperSize.A4.toString(), "a4"));
         formatItems.add(new Item(PaperSize.Letter.toString(), "letter"));
         paramPaper = new ParamList("paper", PaperSize.getLabel(), formatItems);
@@ -93,7 +93,7 @@ public class ReportImpl extends au.com.trgtd.tr.extract.Extract {
             paper = ProjectsPrefs.getPageSizeChoiceName().equals("A4") ? PaperSize.A4 : PaperSize.Letter;
         }
 
-        Map<String, Object> rparams = new HashMap<String, Object>();
+        Map<String, Object> rparams = new HashMap<>();
 
         File xmlfile = getTmpFile("Action.xml");
 

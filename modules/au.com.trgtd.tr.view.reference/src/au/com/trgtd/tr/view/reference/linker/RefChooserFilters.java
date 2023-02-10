@@ -46,7 +46,7 @@ class RefChooserFilters {
     
     public MatcherEditor getMatcherEditor() {
         if (matcherEditor == null) {
-            BasicEventList<MatcherEditor> list = new BasicEventList<MatcherEditor>();
+            BasicEventList<MatcherEditor> list = new BasicEventList<>();
             list.add(matcherEditorTopics);
             list.add(matcherEditorSearch);
             matcherEditor = new CompositeMatcherEditor(list);
@@ -68,7 +68,7 @@ class RefChooserFilters {
     
     /** Gets the serializable value. */
     public Serializable getSerializable() {
-        Vector<Serializable> serialized = new Vector<Serializable>(4);
+        Vector<Serializable> serialized = new Vector<>(4);
         serialized.add(matcherEditorTopics.getSerializable());
         serialized.add(matcherEditorSearch.getSerializable());
         return serialized;

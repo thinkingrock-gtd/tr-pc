@@ -128,7 +128,7 @@ public class Project extends ObservableImpl
         setModified();
         thought = null;
         parent = null;
-        children = new Vector<Item>();
+        children = new Vector<>();
         setTopic(Topic.getDefault());
         setDescription("");
         setPurpose("");
@@ -1228,7 +1228,7 @@ public class Project extends ObservableImpl
      */
     @Override
     public synchronized <T extends Item> Iterator<T> iterator(Class<T> clazz) {
-        Vector<T> result = new Vector<T>();
+        Vector<T> result = new Vector<>();
         for (Item item : getChildren()) {
             if (clazz.isAssignableFrom(item.getClass())) {
                 result.add(clazz.cast(item));
@@ -1244,7 +1244,7 @@ public class Project extends ObservableImpl
      */
     public List<Item> getChildren() {
         synchronized (this) {
-            return new Vector<Item>(children);
+            return new Vector<>(children);
         }
 
     }
@@ -1257,7 +1257,7 @@ public class Project extends ObservableImpl
      */
     public <T extends Item> List<T> getChildren(Class<T> clazz) {
         synchronized (this) {
-            List<T> result = new Vector<T>();
+            List<T> result = new Vector<>();
             for (Item item : getChildren()) {
                 if (clazz.isAssignableFrom(item.getClass())) {
                     result.add(clazz.cast(item));

@@ -768,7 +768,7 @@ public class ProjectNode extends AbstractNode implements Observer, EditCookie,
         try {
             au.com.trgtd.tr.report.project.outline.ReportImpl report =
                     new au.com.trgtd.tr.report.project.outline.ReportImpl();
-            List<Project> projects = new Vector<Project>();
+            List<Project> projects = new Vector<>();
             projects.add(project);
             report.process(projects, showDone);
         } catch (Exception ex) {

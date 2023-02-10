@@ -49,7 +49,7 @@ public class ChooserGoalChildren extends Children.Keys<GoalCtrl> {
     }
 
     public void setKeys() {
-        List<GoalCtrl> keys = new ArrayList<GoalCtrl>();
+        List<GoalCtrl> keys = new ArrayList<>();
         for (GoalCtrl subgoal : goal.getSubgoals()) {
             if (showGoal(subgoal)) {
                 keys.add(subgoal);

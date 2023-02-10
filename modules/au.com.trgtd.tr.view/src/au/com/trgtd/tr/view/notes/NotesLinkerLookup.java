@@ -60,7 +60,7 @@ public class NotesLinkerLookup extends ProxyLookup {
         }
         String scheme = url.substring(0, p + 1);
         if (map == null) {
-            map = new HashMap<String, NotesLinker>();
+            map = new HashMap<>();
             for (NotesLinker linker : Lookup.getDefault().lookupResult(NotesLinker.class).allInstances()) {
                 map.put(linker.getScheme(), linker);
             }

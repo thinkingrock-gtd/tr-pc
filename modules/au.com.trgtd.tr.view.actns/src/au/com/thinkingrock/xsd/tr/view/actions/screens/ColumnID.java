@@ -117,7 +117,7 @@ public enum ColumnID {
     
     public synchronized byte index() {
         if (map == null) {
-            map = new HashMap<String, Byte>();
+            map = new HashMap<>();
             map.put(ICON.value, ActionsColumn.INDEX_ICON);
             map.put(DONE.value, ActionsColumn.INDEX_DONE);
             map.put(DESCR.value, ActionsColumn.INDEX_DESCR);

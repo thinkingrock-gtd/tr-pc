@@ -70,18 +70,18 @@ public class ReportImpl extends au.com.trgtd.tr.extract.Extract {
 
     /** Overridden to return report parameters. */
     public List<Param> getParams() {
-        List<Item> formatItems = new Vector<Item>();
+        List<Item> formatItems = new Vector<>();
         formatItems.add(new Item(PaperSize.A4.toString(), "a4"));
         formatItems.add(new Item(PaperSize.Letter.toString(), "letter"));
         paramPaper = new ParamList("paper", PaperSize.getLabel(), formatItems);
         paramContext = new ParamContext("paramContext", getString("param-context"), FormatType.XML);
         paramTopic = new ParamTopic("paramTopic", getString("param-topic"), FormatType.XML);
-        List<Item> doneItems = new Vector<Item>();
+        List<Item> doneItems = new Vector<>();
         doneItems.add(new Item(getString("param-done-all"), "all"));
         doneItems.add(new Item(getString("param-done-done"), "done"));
         doneItems.add(new Item(getString("param-done-todo"), "todo"));
         paramDone = new ParamList("paramDone", getString("param-done"), doneItems);
-        List<Item> sortItems = new Vector<Item>();
+        List<Item> sortItems = new Vector<>();
         sortItems.add(new Item(getString("param-sort-none"), "none"));
         sortItems.add(new Item(getString("param-sort-descr"), "descr"));
         sortItems.add(new Item(getString("param-sort-priority"), "priority"));
@@ -91,7 +91,7 @@ public class ReportImpl extends au.com.trgtd.tr.extract.Extract {
         paramCriteria = new ParamBoolean("paramCriteria", getString("param-criteria"));
         paramSuccess = new ParamBoolean("paramSuccess", getString("param-success"));
         paramNotes = new ParamBoolean("paramNotes", getString("param-notes"));
-        List<Param> params = new Vector<Param>();
+        List<Param> params = new Vector<>();
         params.add(paramPaper);
         params.add(paramTopic);
         params.add(paramContext);
@@ -111,7 +111,7 @@ public class ReportImpl extends au.com.trgtd.tr.extract.Extract {
         if (dlg.showDialog() == JOptionPane.CANCEL_OPTION) {
             return;
         }
-        Map<String, Object> rparams = new HashMap<String, Object>();
+        Map<String, Object> rparams = new HashMap<>();
         rparams.put("paramThought", Boolean.parseBoolean(paramThought.getValue()));
         rparams.put("paramSuccess", Boolean.parseBoolean(paramSuccess.getValue()));
         rparams.put("paramCriteria", Boolean.parseBoolean(paramCriteria.getValue()));

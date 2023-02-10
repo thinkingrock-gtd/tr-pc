@@ -62,7 +62,7 @@ public class NewRecurrenceWizardPanel3 implements WizardDescriptor.Panel,
         return panel != null && panel.isValidForm();
     }
     
-    private final Set<ChangeListener> listeners = new HashSet<ChangeListener>(1);
+    private final Set<ChangeListener> listeners = new HashSet<>(1);
 
     public final void addChangeListener(ChangeListener l) {
         synchronized (listeners) {
@@ -79,7 +79,7 @@ public class NewRecurrenceWizardPanel3 implements WizardDescriptor.Panel,
     protected final void fireChangeEvent() {
         Iterator<ChangeListener> it;
         synchronized (listeners) {
-            it = new HashSet<ChangeListener>(listeners).iterator();
+            it = new HashSet<>(listeners).iterator();
         }
         ChangeEvent ev = new ChangeEvent(this);
         while (it.hasNext()) {

@@ -193,7 +193,7 @@ public class ChangeStatusPanel extends JPanel {
         private List<StatusEnum> states;
         public StatusComboBoxModel() {
             super();
-            states = new ArrayList<StatusEnum>();
+            states = new ArrayList<>();
             states.add(StatusEnum.INACTIVE);
             states.add(StatusEnum.DO_ASAP);
             states.add(StatusEnum.SCHEDULED);

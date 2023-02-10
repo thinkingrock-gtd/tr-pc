@@ -67,8 +67,8 @@ public class DayGridPanel extends JLayeredPane {
         int INDENT_WIDTH = 8;
     }
     
-    private final List<EventPanel> events = new ArrayList<EventPanel>();
-    private final List<EventGroup> groups = new ArrayList<EventGroup>();
+    private final List<EventPanel> events = new ArrayList<>();
+    private final List<EventGroup> groups = new ArrayList<>();
     private final int begHr;
     private final int endHr;
     private final DateCtlr dateCtlr;
@@ -391,7 +391,7 @@ public class DayGridPanel extends JLayeredPane {
         private int indentRight;
 
         public EventGroup() {
-            this.events = new ArrayList<EventPanel>();
+            this.events = new ArrayList<>();
         }
         
         public void add(EventPanel event) {

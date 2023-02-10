@@ -87,7 +87,7 @@ public abstract class FilterCriterion extends FilterChoice
             
             ValueMultiple m = (ValueMultiple)combo.getItemAt(1);
             
-            m.setChosen(new Vector<Value>());
+            m.setChosen(new Vector<>());
             for (String id : values) {
                 m.getChosen().add(getValue(id));
             }

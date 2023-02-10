@@ -142,7 +142,7 @@ public class CleanupBackupFilesThread extends Thread {
     private static void map(String key, File file) {
         List<File> fileList = map.get(key);
         if (fileList == null) {
-            fileList = new ArrayList<File>();
+            fileList = new ArrayList<>();
             map.put(key, fileList);
         }
         fileList.add(file);

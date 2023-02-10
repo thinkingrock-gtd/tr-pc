@@ -74,8 +74,8 @@ public class ProjectsPanel extends JPanel {
         if (currentOnly) {
             tabbedPane.remove(1);
         }
-        mapProjectSorts = new HashMap<Integer, Boolean>();
-        mapFutureSorts = new HashMap<Integer, Boolean>();
+        mapProjectSorts = new HashMap<>();
+        mapFutureSorts = new HashMap<>();
     }
 
     private JToolBar getProjectsToolbar() {
@@ -161,7 +161,7 @@ public class ProjectsPanel extends JPanel {
             return;
         }
         
-//        List<DefaultMutableTreeNode> list = new Vector<DefaultMutableTreeNode>();
+//        List<DefaultMutableTreeNode> list = new Vector<>();
 //        
 //        for (Enumeration e = node.children(); e.hasMoreElements(); ) {
 //            list.add((DefaultMutableTreeNode)e.nextElement());
@@ -193,7 +193,7 @@ public class ProjectsPanel extends JPanel {
     }
     
     private void sortAlphabetic(JTree tree, DefaultMutableTreeNode node, boolean ascending) {
-        List<DefaultMutableTreeNode> list = new Vector<DefaultMutableTreeNode>();        
+        List<DefaultMutableTreeNode> list = new Vector<>();
         for (Enumeration e = node.children(); e.hasMoreElements(); ) {
             list.add((DefaultMutableTreeNode)e.nextElement());
         }        
@@ -460,7 +460,7 @@ public class ProjectsPanel extends JPanel {
 
     public void addActionListener(ActionListener listener) {
         if (actionListeners == null) {
-            actionListeners = new Vector<ActionListener>();
+            actionListeners = new Vector<>();
         }
         if (actionListeners.contains(listener)) {
             return;

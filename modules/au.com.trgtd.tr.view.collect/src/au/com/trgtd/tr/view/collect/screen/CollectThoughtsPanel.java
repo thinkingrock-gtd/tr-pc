@@ -135,7 +135,7 @@ public class CollectThoughtsPanel extends JPanel {
 //        }
 //        thoughtProvider.provide(new ThoughtNode(data.getThoughtManager(), thought));
 
-        Collection<ThoughtNode> thoughtNodes = new Vector<ThoughtNode>();
+        Collection<ThoughtNode> thoughtNodes = new Vector<>();
 
         for (int row : table.getSelectedRows()) {
             Thought thought = tableModel.getValueAt(row);
@@ -249,7 +249,7 @@ public class CollectThoughtsPanel extends JPanel {
     }
 
     public void delete(int[] selectedRows) {
-        Vector<Thought> thoughts = new Vector<Thought>();
+        Vector<Thought> thoughts = new Vector<>();
         for (int row : table.getSelectedRows()) {
             thoughts.add(tableModel.getValueAt(row));
         }
