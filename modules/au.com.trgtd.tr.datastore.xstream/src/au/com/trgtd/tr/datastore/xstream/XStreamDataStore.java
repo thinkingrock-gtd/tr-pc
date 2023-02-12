@@ -42,7 +42,6 @@ import tr.model.Data;
 import au.com.trgtd.tr.util.UtilsFile;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Locale;
 
 /**
  * Data manager singleton that uses XStream to persist the data model.
