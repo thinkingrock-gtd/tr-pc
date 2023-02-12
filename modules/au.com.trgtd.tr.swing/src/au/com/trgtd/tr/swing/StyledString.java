@@ -58,9 +58,9 @@ public class StyledString implements Comparable {
      * o.toString() respectively.
      */
     public int compareTo(Object object) {
-        if (object instanceof StyledString) {
+        if (object instanceof StyledString styledString) {
             String s1 = getString();
-            String s2 = ((StyledString)object).getString();
+            String s2 = styledString.getString();
             return s1.compareToIgnoreCase(s2);
         }
         return 0;

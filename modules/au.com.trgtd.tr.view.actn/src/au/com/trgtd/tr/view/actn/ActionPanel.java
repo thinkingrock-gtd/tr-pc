@@ -565,12 +565,12 @@ public final class ActionPanel extends JPanel implements Observer {
             stateDelegate.setTo("");
             return;
         }
-        if (selected instanceof String) {
-            stateDelegate.setTo((String) selected);
+        if (selected instanceof String string) {
+            stateDelegate.setTo(string);
             return;
         }
-        if (selected instanceof Actor) {
-            stateDelegate.setActorID(((Actor) selected).getID());
+        if (selected instanceof Actor actor) {
+            stateDelegate.setActorID(actor.getID());
         }
     }
 

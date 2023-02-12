@@ -76,8 +76,7 @@ public class TopicsListCellRenderer extends JLabel implements ListCellRenderer {
         Component c = std.getListCellRendererComponent(list, value, index, isSelected, cellHasFocus);
 
         if (!isSelected) {
-            if (value instanceof Topic) {
-                Topic topic = (Topic) value;
+            if (value instanceof Topic topic) {
                 ((JLabel)c).setText(topic.getName());
                 c.setBackground(topic.getBackground());
                 c.setForeground(topic.getForeground());

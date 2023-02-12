@@ -347,8 +347,8 @@ public class DBoxSync103 extends Thread {
         // read in new thoughts from iPhone
         for (int i = 0; i < hsMsg.nbrThoughts; i++) {
             SyncMsg103 msg = SyncMsg103.getNextMsg(reader);
-            if (msg instanceof MsgThought) {
-                newThoughtMsgs[i] = (MsgThought) msg;
+            if (msg instanceof MsgThought msgThought) {
+                newThoughtMsgs[i] = msgThought;
                 LOG.log(Level.INFO, "Received: {0}", msg.toString());
             } else {
                 throw new Exception("Expected new thought message not found.");
@@ -359,8 +359,8 @@ public class DBoxSync103 extends Thread {
         // read in action updates from iPhone
         for (int i = 0; i < hsMsg.nbrActions; i++) {
             SyncMsg103 msg = SyncMsg103.getNextMsg(reader);
-            if (msg instanceof MsgActionUpdate) {
-                updActionMsgs[i] = (MsgActionUpdate) msg;
+            if (msg instanceof MsgActionUpdate msgActionUpdate) {
+                updActionMsgs[i] = msgActionUpdate;
                 LOG.log(Level.INFO, "Received: {0}", msg.toString());
             } else {
                 throw new Exception("Expected update action message not found.");

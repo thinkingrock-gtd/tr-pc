@@ -139,13 +139,11 @@ public class FiltersDialog extends JDialog {
             tempFilter.setSerialValues(filter.getSerialValues());
             valFilterCombo = tempFilter.getFilterCombo();
 
-            if (filter instanceof FilterDate) {
-                FilterDate dateFilter = (FilterDate)filter;
+            if (filter instanceof FilterDate dateFilter) {
                 nullsCheckBox = new JCheckBox();
                 nullsCheckBox.setBackground(Color.white);
                 nullsCheckBox.setSelected(dateFilter.isExcludeNulls());
-            } else if (filter instanceof FilterCriterion) {
-                FilterCriterion criterionFilter = (FilterCriterion)filter;
+            } else if (filter instanceof FilterCriterion criterionFilter) {
                 nullsCheckBox = new JCheckBox();
                 nullsCheckBox.setBackground(Color.white);
                 nullsCheckBox.setSelected(criterionFilter.isExcludeNulls());
@@ -174,10 +172,10 @@ public class FiltersDialog extends JDialog {
             filter.setUsed(useCheckBox.isSelected());
             filter.setShown(seeCheckBox.isSelected());
             filter.setSerialValues(tempFilter.getSerialValues());
-            if (filter instanceof FilterDate) {
-                ((FilterDate)filter).setExcludeNulls(nullsCheckBox.isSelected());
-            } else if (filter instanceof FilterCriterion) {
-                ((FilterCriterion)filter).setExcludeNulls(nullsCheckBox.isSelected());
+            if (filter instanceof FilterDate filterDate) {
+                filterDate.setExcludeNulls(nullsCheckBox.isSelected());
+            } else if (filter instanceof FilterCriterion filterCriterion) {
+                filterCriterion.setExcludeNulls(nullsCheckBox.isSelected());
             }
             filter.getFilterCombo().fireValueChange();
         }

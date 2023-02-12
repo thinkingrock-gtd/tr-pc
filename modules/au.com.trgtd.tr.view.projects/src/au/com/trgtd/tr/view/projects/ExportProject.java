@@ -175,13 +175,13 @@ public class ExportProject {
 
         // children;
         for (Item child : project.getChildren()) {
-            if (child instanceof Project) {
+            if (child instanceof Project prj) {
                 out.write("<child type='project'>\r\n");
-                writeProject((Project) child, out);
+                writeProject(prj, out);
                 out.write("</child>\r\n");
-            } else if (child instanceof Action) {
+            } else if (child instanceof Action action) {
                 out.write("<child type='action'>\r\n");
-                writeAction((Action) child, out);
+                writeAction(action, out);
                 out.write("</child>\r\n");
             }
         }

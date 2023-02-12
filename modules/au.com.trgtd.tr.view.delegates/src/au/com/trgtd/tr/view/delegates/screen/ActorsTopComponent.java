@@ -97,8 +97,8 @@ public final class ActorsTopComponent extends TopComponent implements ActorNodeP
             ErrorManager.getDefault().log(ErrorManager.WARNING, "Cannot find actors component. It will not be located properly in the window system.");
             return getDefault();
         }
-        if (tc instanceof ActorsTopComponent) {
-            return (ActorsTopComponent)tc;
+        if (tc instanceof ActorsTopComponent actorsTopComponent) {
+            return actorsTopComponent;
         }
         ErrorManager.getDefault().log(ErrorManager.WARNING, "There seem to be multiple components with the '" + PREFERRED_ID + "' ID. That is a potential source of errors and unexpected behavior.");
         return getDefault();

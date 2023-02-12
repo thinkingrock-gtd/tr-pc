@@ -127,8 +127,8 @@ public final class ReferencesTopComponent extends Window implements ReferenceNod
             ErrorManager.getDefault().log(ErrorManager.WARNING, "Cannot find collect thoughts component. It will not be located properly in the window system.");
             return getDefault();
         }
-        if (win instanceof ReferencesTopComponent) {
-            return (ReferencesTopComponent)win;
+        if (win instanceof ReferencesTopComponent comp) {
+            return comp;
         }
         ErrorManager.getDefault().log(ErrorManager.WARNING, "There seem to be multiple components with the '" + PREFERRED_ID + "' ID. That is a potential source of errors and unexpected behavior.");
         return getDefault();

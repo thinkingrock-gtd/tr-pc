@@ -55,8 +55,7 @@ public abstract class FilterCriterion extends FilterChoice
         if (value instanceof ValueAll) {
             return new String[] { ChoiceAll.ID };
         }
-        if (value instanceof ValueMultiple) {
-            ValueMultiple m = (ValueMultiple)value;
+        if (value instanceof ValueMultiple m) {
             if (m.getChosen() == null || m.getChosen().isEmpty()) {
                 return null;
             }

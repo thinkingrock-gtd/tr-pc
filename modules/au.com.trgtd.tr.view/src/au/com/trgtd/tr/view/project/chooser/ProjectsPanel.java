@@ -183,8 +183,7 @@ public class ProjectsPanel extends JPanel {
         
         // save sort
         Object object = node.getUserObject();
-        if (object instanceof Project) {
-            Project project = (Project)object;
+        if (object instanceof Project project) {
             sortsMap.put(project.getID(), ascending);        
         } else { 
             // assume root node
@@ -423,8 +422,7 @@ public class ProjectsPanel extends JPanel {
     
     private DefaultMutableTreeNode findNode(int projectID, DefaultMutableTreeNode node) {               
         Object object = node.getUserObject();
-        if (object instanceof Project) {            
-            Project project = (Project)object;
+        if (object instanceof Project project) {
             if (project.getID() == projectID) {
                 return node;
             }
@@ -452,8 +450,8 @@ public class ProjectsPanel extends JPanel {
             return null;
         }        
         Object object = node.getUserObject();
-        if (object instanceof Project) {
-            return (Project)object;
+        if (object instanceof Project project) {
+            return project;
         }        
         return null;
     }

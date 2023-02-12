@@ -74,8 +74,7 @@ public class PeriodWeek extends Period {
     }
 
     public boolean equals(Object object) {
-        if (object instanceof PeriodWeek) {
-            PeriodWeek other = (PeriodWeek) object;
+        if (object instanceof PeriodWeek other) {
             return selectedDays.equals(other.selectedDays);
         }
         return false;

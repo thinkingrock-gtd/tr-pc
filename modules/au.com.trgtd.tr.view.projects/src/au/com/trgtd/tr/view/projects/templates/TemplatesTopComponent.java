@@ -178,15 +178,13 @@ public final class TemplatesTopComponent extends Window
                 manager.setSelectedNodes(new Node[] { manager.getRootContext() });
             } catch (Exception ex) {
             }
-        } else if (selectedNodes[0] instanceof ProjectNode) {
+        } else if (selectedNodes[0] instanceof ProjectNode projectNode) {
 //////            Project project = ((ProjectNode) selectedNodes[0]).project;
 //////            EditorTopComponent.findInstance().view(project);
-            ProjectNode projectNode = (ProjectNode)selectedNodes[0];
             EditorTopComponent.findInstance().view(projectNode);
-        } else if (selectedNodes[0] instanceof ActionNode) {
+        } else if (selectedNodes[0] instanceof ActionNode actionNode) {
 //////            Action action = ((ActionNode) selectedNodes[0]).action;
 //////            EditorTopComponent.findInstance().view(action);
-            ActionNode actionNode = (ActionNode)selectedNodes[0];
             EditorTopComponent.findInstance().view(actionNode);
         }
     }

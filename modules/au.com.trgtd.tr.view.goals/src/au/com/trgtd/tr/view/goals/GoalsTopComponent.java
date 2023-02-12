@@ -239,8 +239,8 @@ public final class GoalsTopComponent extends Window
                     "Cannot find " + PREFERRED_ID + " component. It will not be located properly in the window system.");
             return getDefault();
         }
-        if (win instanceof GoalsTopComponent) {
-            return (GoalsTopComponent) win;
+        if (win instanceof GoalsTopComponent goalsTopComponent) {
+            return goalsTopComponent;
         }
         Logger.getLogger(GoalsTopComponent.class.getName()).warning(
                 "There seem to be multiple components with the '" + PREFERRED_ID +

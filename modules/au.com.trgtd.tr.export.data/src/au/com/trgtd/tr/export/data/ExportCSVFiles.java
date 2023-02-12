@@ -374,8 +374,8 @@ public class ExportCSVFiles {
             };
             beanWriter.writeHeader(header);
             for (ItemBean item : list) {
-                if (item instanceof ActionBean) {
-                    beanWriter.write((ActionBean) item, header, processors);
+                if (item instanceof ActionBean bean) {
+                    beanWriter.write(bean, header, processors);
                 }
             }
         } catch (IOException ex) {
@@ -423,8 +423,8 @@ public class ExportCSVFiles {
             };
             beanWriter.writeHeader(header);
             for (ItemBean item : list) {
-                if (item instanceof ProjectBean) {
-                    beanWriter.write((ProjectBean) item, header, processors);
+                if (item instanceof ProjectBean bean) {
+                    beanWriter.write(bean, header, processors);
                 }
             }
         } catch (IOException ex) {

@@ -85,8 +85,8 @@ public class GoalIconsComboBox extends JComboBox {
                 int index, boolean isSelected, boolean cellHasFocus) {
 
             JLabel lbl = (JLabel)std.getListCellRendererComponent(list, value, index, isSelected, cellHasFocus);
-            if (value instanceof GoalIcon) {
-                lbl.setIcon(((GoalIcon)value).icon);
+            if (value instanceof GoalIcon goalIcon) {
+                lbl.setIcon(goalIcon.icon);
                 lbl.setText("");
             }
             return lbl;

@@ -194,24 +194,22 @@ public class SomedaysPanel extends JPanel implements ListSelectionListener, Obse
     
     /** Handle future item add, remove and change events. */
     public void update(final Observable observable, final Object object) {
-        if (object instanceof Manager.EventAdd) {
-            Manager.EventAdd event = (Manager.EventAdd)object;
+        if (object instanceof Manager.EventAdd event) {
             Lock lock = refsEventList.getReadWriteLock().writeLock();
             lock.lock();
             refsEventList.add((Future)event.item);
             lock.unlock();
-        } else if (object instanceof Manager.EventRemove) {
-            Manager.EventRemove event = (Manager.EventRemove)object;
+        } else if (object instanceof Manager.EventRemove event) {
             Lock lock = refsEventList.getReadWriteLock().writeLock();
             lock.lock();
             refsEventList.remove(event.item);
             lock.unlock();
-        } else if (observable instanceof Future) {
+        } else if (observable instanceof Future future) {
             if (object == Future.Change.NOTES) return;
             
             Lock lock = refsEventList.getReadWriteLock().writeLock();
             lock.lock();
-            Future future = (Future)observable;
+            Future future = future;
             int index = refsEventList.indexOf(future);
             if (index > -1) {
                 refsEventList.set(index, future);

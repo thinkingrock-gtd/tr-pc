@@ -176,14 +176,14 @@ public class ExportTemplate {
 //      Project parent;        
 //      Vector<Item> children;
         for (Item child : project.getChildren()) {
-            if (child instanceof Project) {
-                out.write("<child type='project'>\r\n");                        
-                writeProject((Project)child, out);              
-                out.write("</child>\r\n");                        
-            } else if (child instanceof Action) {
-                out.write("<child type='action'>\r\n");                        
-                writeAction((Action)child, out);                
-                out.write("</child>\r\n");        
+            if (child instanceof Project prj) {
+                out.write("<child type='project'>\r\n");
+                writeProject(prj, out);
+                out.write("</child>\r\n");
+            } else if (child instanceof Action action) {
+                out.write("<child type='action'>\r\n");
+                writeAction(action, out);
+                out.write("</child>\r\n");
             }
         }        
     }

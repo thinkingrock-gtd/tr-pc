@@ -629,8 +629,8 @@ public final class ProcessPanel extends JPanel implements Observer, ProcessCooki
         String name;
         boolean team = false;
         
-        if (object instanceof String) {
-            addr = (String)object;
+        if (object instanceof String str) {
+            addr = str;
             name = addr;
         } else {
             Actor actor = (Actor)object;
@@ -1053,15 +1053,16 @@ public final class ProcessPanel extends JPanel implements Observer, ProcessCooki
                     ActionStateDelegated stateDelegated = new ActionStateDelegated();
                     stateDelegated.setDate(followupField.getDate());
                     Object delegate = delegateCombo.getSelectedItem();
-                    if (delegate instanceof String) {
-                        stateDelegated.setTo((String) delegate);
-                    } else if (delegate instanceof Actor) {
-                        stateDelegated.setActorID(((Actor) delegate).getID());
+                    if (delegate instanceof String str) {
+                        stateDelegated.setTo(str);
+                    } else if (delegate instanceof Actor actor) {
+                        stateDelegated.setActorID(actor.getID());
                     }
                     action.setState(stateDelegated);
                     action.setDueDate(dueDateField.getDate());
                     action.setStartDate(startDateField.getDate());
                     break;
+
                 case DO_ASAP:
                     action.setState(new ActionStateASAP());
                     action.setDueDate(dueDateField.getDate());
@@ -1201,8 +1202,8 @@ public final class ProcessPanel extends JPanel implements Observer, ProcessCooki
      * @param delegatedActionID The ID of the original delegated action.
      */
     private boolean isDelegatedActionResponse(Item item, int delegatedActionID) {
-        if (item instanceof Action) {
-            Thought itemThought = ((Action)item).getThought();
+        if (item instanceof Action actn) {
+            Thought itemThought = actn.getThought();
             if (itemThought != null) {
                 if (Objects.equals(itemThought.getDelegationActionID(), delegatedActionID)) {
                     return true;

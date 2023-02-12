@@ -183,15 +183,13 @@ public class SingleActionsTopComponent extends Window
                 manager.setSelectedNodes(new Node[]{manager.getRootContext()});
             } catch (Exception ex) {
             }
-        } else if (selectedNodes[0] instanceof ProjectNode) {
+        } else if (selectedNodes[0] instanceof ProjectNode projectNode) {
 //////            Project project = ((ProjectNode)selectedNodes[0]).project;
 //////            EditorTopComponent.findInstance().view(project);
-            ProjectNode projectNode = (ProjectNode) selectedNodes[0];
             EditorTopComponent.findInstance().view(projectNode);
-        } else if (selectedNodes[0] instanceof ActionNode) {
+        } else if (selectedNodes[0] instanceof ActionNode actionNode) {
 //////            Action action = ((ActionNode)selectedNodes[0]).action;
 //////            EditorTopComponent.findInstance().view(action);
-            ActionNode actionNode = (ActionNode) selectedNodes[0];
             EditorTopComponent.findInstance().view(actionNode);
         }
     }
@@ -322,8 +320,8 @@ public class SingleActionsTopComponent extends Window
     public boolean isSelected(Action action) {
         Node[] nodes = manager.getSelectedNodes();
         if (nodes != null && nodes.length > 0) {
-            if (nodes[0] instanceof ActionNode) {
-                return Utils.equal(((ActionNode)nodes[0]).action, action);            
+            if (nodes[0] instanceof ActionNode actionNode) {
+                return Utils.equal(actionNode.action, action);
             }
         }
         return false;        

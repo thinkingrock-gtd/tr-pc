@@ -213,10 +213,10 @@ public class ICalendarSynchronizer implements CalendarSynchronizer {
 
         if (iCalAction != null) {
             for (Item child : project.getChildren()) {
-                if (child instanceof Action) {
-                    process((Action) child, iCalAction);
-                } else if (child instanceof Project) {
-                    process((Project) child, iCalProject, iCalAction);
+                if (child instanceof Action action) {
+                    process(action, iCalAction);
+                } else if (child instanceof Project prj) {
+                    process(prj, iCalProject, iCalAction);
                 }
             }
         }

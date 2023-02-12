@@ -142,8 +142,7 @@ public class Overview extends ObservableImpl {
             String id = (String)screenIDs[i][0];
             Screen s = (Screen)screenIDs[i][1];
             Element e = document.getElementById(id);
-            if (e instanceof EventTarget) {
-                EventTarget et = (EventTarget)e;
+            if (e instanceof EventTarget et) {
                 et.addEventListener("click", new OnClickAction(s), false);
                 et.addEventListener("mouseover", new OnMouseOverAction(s), false);
                 et.addEventListener("mousemove", new OnMouseMoveAction(s), false);

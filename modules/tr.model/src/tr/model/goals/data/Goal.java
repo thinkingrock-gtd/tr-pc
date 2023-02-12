@@ -74,8 +74,8 @@ public class Goal implements Serializable {
 
     @Override
     public boolean equals(Object that) {
-        if (that instanceof Goal) {
-            return ((Goal)that).getID() == this.getID();
+        if (that instanceof Goal goal) {
+            return goal.getID() == this.getID();
         }
         return false;
     }

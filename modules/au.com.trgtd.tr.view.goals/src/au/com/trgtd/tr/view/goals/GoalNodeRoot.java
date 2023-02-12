@@ -144,8 +144,8 @@ public class GoalNodeRoot extends GoalNode {
     @Override
     public void bump() {
         Children children = getChildren();
-        if (children instanceof GoalChildren) {
-            ((GoalChildren)children).bump();
+        if (children instanceof GoalChildren goalChildren) {
+            goalChildren.bump();
         }
     }
 

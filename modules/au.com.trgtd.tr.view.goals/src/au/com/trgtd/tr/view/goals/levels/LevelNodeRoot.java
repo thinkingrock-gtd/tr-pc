@@ -85,8 +85,7 @@ public class LevelNodeRoot extends AbstractNode {
     @Override
     public PasteType getDropType(Transferable t, final int action, int index) {
         final Node dropNode = NodeTransfer.node(t, DnDConstants.ACTION_COPY_OR_MOVE + NodeTransfer.CLIPBOARD_CUT);
-        if (dropNode instanceof LevelNode) {
-            final LevelNode dropLevelNode = (LevelNode) dropNode;
+        if (dropNode instanceof LevelNode dropLevelNode) {
             if (!this.equals(dropNode.getParentNode()) || !isMove(action)) {
                 return new PasteType() {
                     public Transferable paste() throws IOException {

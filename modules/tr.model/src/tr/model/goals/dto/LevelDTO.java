@@ -62,8 +62,8 @@ public class LevelDTO {
 
     @Override
     public boolean equals(Object that) {
-        if (that instanceof LevelDTO) {
-            return ((LevelDTO)that).id == this.id;
+        if (that instanceof LevelDTO levelDTO) {
+            return levelDTO.id == this.id;
         }
         return false;
     }

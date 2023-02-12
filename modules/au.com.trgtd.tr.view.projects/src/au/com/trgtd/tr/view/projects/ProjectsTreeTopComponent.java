@@ -198,14 +198,12 @@ public class ProjectsTreeTopComponent extends TopComponent
                 takeFocus();
             } catch (Exception ex) {
             }
-        } else if (selectedNodes[0] instanceof ProjectNode) {
-            final ProjectNode projectNode = (ProjectNode) selectedNodes[0];
+        } else if (selectedNodes[0] instanceof ProjectNode projectNode) {
             EventQueue.invokeLater(() -> {
                 EditorTopComponent.findInstance().view(projectNode);
                 takeFocus();
             });
-        } else if (selectedNodes[0] instanceof ActionNode) {
-            final ActionNode actionNode = (ActionNode) selectedNodes[0];
+        } else if (selectedNodes[0] instanceof ActionNode actionNode) {
             EventQueue.invokeLater(() -> {
                 EditorTopComponent.findInstance().view(actionNode);
                 takeFocus();
@@ -300,8 +298,8 @@ public class ProjectsTreeTopComponent extends TopComponent
     public boolean isSelected(Action action) {
         Node[] nodes = manager.getSelectedNodes();
         if (nodes != null && nodes.length > 0) {
-            if (nodes[0] instanceof ActionNode) {
-                return Utils.equal(((ActionNode)nodes[0]).action, action);
+            if (nodes[0] instanceof ActionNode actionNode) {
+                return Utils.equal(actionNode.action, action);
             }
         }
         return false;

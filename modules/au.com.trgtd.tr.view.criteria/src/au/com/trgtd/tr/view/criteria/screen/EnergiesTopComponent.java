@@ -248,8 +248,8 @@ public final class EnergiesTopComponent extends Window implements ExplorerManage
                     "Cannot find " + PREFERRED_ID + " component. It will not be located properly in the window system.");
             return getDefault();
         }
-        if (win instanceof EnergiesTopComponent) {
-            return (EnergiesTopComponent) win;
+        if (win instanceof EnergiesTopComponent comp) {
+            return comp;
         }
         Logger.getLogger(EnergiesTopComponent.class.getName()).warning(
                 "There seem to be multiple components with the '" + PREFERRED_ID +

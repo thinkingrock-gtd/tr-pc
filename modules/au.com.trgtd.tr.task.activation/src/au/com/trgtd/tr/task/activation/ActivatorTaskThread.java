@@ -124,10 +124,10 @@ final class ActivatorTaskThread extends Thread {
     /* Process a given project. */
     private void process(Project project) {
         for (Item item : project.getChildren()) {
-            if (item instanceof Project) {
-                process((Project)item);
-            } else if (item instanceof Action) {
-                process((Action)item);
+            if (item instanceof Project prj) {
+                process(prj);
+            } else if (item instanceof Action action) {
+                process(action);
             }
         }
     }

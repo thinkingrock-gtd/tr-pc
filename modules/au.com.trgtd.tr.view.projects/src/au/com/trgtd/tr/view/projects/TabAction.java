@@ -87,8 +87,8 @@ public class TabAction extends SystemAction {
             tc = treeMode.getSelectedTopComponent();
             if (tc != null) {
                 tc.requestActive();
-                if (tc instanceof Window) {
-                    ((Window)tc).takeFocus();                    
+                if (tc instanceof Window window) {
+                    window.takeFocus();
                 }
             }
         }

@@ -40,11 +40,11 @@ public class FutureProjectChildren extends ProjectChildren {
     
     @Override
     protected Node[] createNodes(Object key) {
-        if (key instanceof Project) {
-            return new Node[] { new FutureProjectNode((Project)key, showDone) };
+        if (key instanceof Project project1) {
+            return new Node[] { new FutureProjectNode(project1, showDone) };
         }
-        if (key instanceof Action) {
-            return new Node[] { new ActionNode((Action)key) };
+        if (key instanceof Action action) {
+            return new Node[] { new ActionNode(action) };
         }
         return new Node[] {};
     }    

@@ -403,10 +403,9 @@ public class Project extends ObservableImpl
     private static class SequencingActiveChildSelector implements ItemSelector {
 
         public boolean isSelected(Item item) {
-            if (item instanceof Action) {
+            if (item instanceof Action action) {
 //              return ((Action)item).isActive();
-                Action action = (Action)item;
-                if (action.isDone()) {
+                                if (action.isDone()) {
                     return false;
                 }
                 Project parent = (Project)action.getParent();
@@ -417,8 +416,7 @@ public class Project extends ObservableImpl
                     case DOASAP: return true;
                 }
             }
-            if (item instanceof Project) {
-                Project p = (Project) item;
+            if (item instanceof Project p) {
                 if (p.parent.isSequencing() && p.parent.isSeqIncludeProjects()) {
                     for (Item subItem : p.getChildren()) {
                         if (isSelected(subItem)) {
@@ -469,8 +467,7 @@ public class Project extends ObservableImpl
         for (Item child : getChildren()) {
             LOG.fine("Processing child");
 
-            if (child instanceof Action) {
-                Action action = (Action) child;
+            if (child instanceof Action action) {
                 if (!action.isDone() && action.isStateInactive()) {
                     LOG.fine("Setting state to Do ASAP.");
 
@@ -685,8 +682,8 @@ public class Project extends ObservableImpl
 
     @Override
     public boolean equals(Object that) {
-        if (that instanceof Project) {
-            return this.getID() == ((Project)that).getID();
+        if (that instanceof Project project) {
+            return this.getID() == project.getID();
         }
         return false;
     }
@@ -851,8 +848,8 @@ public class Project extends ObservableImpl
             return;
         }
 
-        if (parent instanceof Project) {
-            this.parent = (Project) parent;
+        if (parent instanceof Project project) {
+            this.parent = project;
             setModified();
 
             notifyObservers(this);
@@ -1067,8 +1064,7 @@ public class Project extends ObservableImpl
         // Default action due date if required
         if (ProjectsPrefs.isDefaultActionDueDate()) {
             if (getDueDate() != null) {
-                if (item instanceof Action) {
-                    Action action = (Action)item;
+                if (item instanceof Action action) {
                     if (action.getDueDate() == null) {
                         action.setDueDate(getDueDate());
                     }  
@@ -1183,8 +1179,8 @@ public class Project extends ObservableImpl
 
         if (recurse) {
             for (Item child : getChildren()) {
-                if (child instanceof ItemList) {
-                    if (((ItemList) child).contains(item, true)) {
+                if (child instanceof ItemList itemList) {
+                    if (itemList.contains(item, true)) {
                         return true;
                     }
 
@@ -1296,8 +1292,8 @@ public class Project extends ObservableImpl
     /* End of ItemList Implementation */
     @Override
     public int compareTo(Item item) {
-        if (item instanceof Project) {
-            return getDescription().compareToIgnoreCase(((Project) item).getDescription());
+        if (item instanceof Project project) {
+            return getDescription().compareToIgnoreCase(project.getDescription());
         }
 
         throw new ClassCastException(item.getClass().toString());

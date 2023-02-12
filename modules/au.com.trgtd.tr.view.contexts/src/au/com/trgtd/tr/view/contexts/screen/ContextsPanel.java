@@ -274,22 +274,20 @@ public class ContextsPanel extends JPanel implements ListSelectionListener, Obse
 //////            contextEventList.remove(event.item);
 //////            lock.unlock();
 //////        }
-        if (object instanceof Manager.EventAdd) {
-            Manager.EventAdd event = (Manager.EventAdd)object;
+        if (object instanceof Manager.EventAdd event) {
             Lock lock = contextEventList.getReadWriteLock().writeLock();
             lock.lock();
             contextEventList.add((Context)event.item);
             lock.unlock();
-        } else if (object instanceof Manager.EventRemove) {
-            Manager.EventRemove event = (Manager.EventRemove)object;
+        } else if (object instanceof Manager.EventRemove event) {
             Lock lock = contextEventList.getReadWriteLock().writeLock();
             lock.lock();
             contextEventList.remove(event.item);
             lock.unlock();
-        } else if (observable instanceof Context) {
+        } else if (observable instanceof Context context) {
             Lock lock = contextEventList.getReadWriteLock().writeLock();
             lock.lock();
-            Context item = (Context)observable;
+            Context item = context;
             int index = contextEventList.indexOf(item);
             if (index > -1) {
                 contextEventList.set(index, item);

@@ -58,10 +58,10 @@ public class DateCombo extends TRComboBox implements ActionListener {
         super(new DefaultComboBoxModel(items));
         this.calc = calc;
         this.df = df;
-        if (window instanceof Frame) {
-            dateChooser = new DateChooser((Frame)window);            
-        } else if (window instanceof Dialog) {
-            dateChooser = new DateChooser((Dialog)window);                        
+        if (window instanceof Frame frame) {
+            dateChooser = new DateChooser(frame);
+        } else if (window instanceof Dialog dialog) {
+            dateChooser = new DateChooser(dialog);
         } else {
             dateChooser = new DateChooser(new Frame());                        
         }

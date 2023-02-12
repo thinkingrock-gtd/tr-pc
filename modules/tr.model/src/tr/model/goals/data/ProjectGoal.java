@@ -35,8 +35,7 @@ public class ProjectGoal {
 
     @Override
     public boolean equals(Object object) {
-        if (object instanceof ProjectGoal) {
-            ProjectGoal that = (ProjectGoal)object;
+        if (object instanceof ProjectGoal that) {
             return that.goalID == this.goalID && that.projectID == this.projectID;
         }
         return false;

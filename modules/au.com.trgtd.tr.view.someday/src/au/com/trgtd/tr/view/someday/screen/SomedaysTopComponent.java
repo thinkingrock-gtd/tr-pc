@@ -120,8 +120,8 @@ public final class SomedaysTopComponent extends Window implements SomedayNodePro
             ErrorManager.getDefault().log(ErrorManager.WARNING, "Cannot find futures component. It will not be located properly in the window system.");
             return getDefault();
         }
-        if (win instanceof SomedaysTopComponent) {
-            return (SomedaysTopComponent)win;
+        if (win instanceof SomedaysTopComponent comp) {
+            return comp;
         }
         ErrorManager.getDefault().log(ErrorManager.WARNING, "There seem to be multiple components with the '" + PREFERRED_ID + "' ID. That is a potential source of errors and unexpected behavior.");
         return getDefault();

@@ -70,8 +70,8 @@ public class PriorityDialogPanel extends JPanel {
 
     public Integer getICalValue() {
         Object object = icalField.getValue();
-        if (object instanceof Integer) {
-            return (Integer)object;
+        if (object instanceof Integer integer) {
+            return integer;
         } else {
             return null;
         }

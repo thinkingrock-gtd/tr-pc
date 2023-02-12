@@ -90,8 +90,8 @@ public class SpinnerCycleNumber extends JSpinner {
     /* Gets the underlying formatted text field */
     private JFormattedTextField getTextField(JSpinner spinner) {
         JComponent editor = spinner.getEditor();
-        if (editor instanceof JSpinner.DefaultEditor) {
-            return ((JSpinner.DefaultEditor)editor).getTextField();
+        if (editor instanceof JSpinner.DefaultEditor defaultEditor) {
+            return defaultEditor.getTextField();
         } else {
             return null;
         }

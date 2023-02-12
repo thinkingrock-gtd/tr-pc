@@ -102,8 +102,8 @@ public class ChangeLevelAction extends CookieAction {
         dialog.setVisible(true);
 
         Object value = op.getValue() ;
-        if (value instanceof Integer) {
-            if (((Integer)value).intValue() == OK_OPTION) {
+        if (value instanceof Integer integer) {
+            if (integer.intValue() == OK_OPTION) {
                 changeLevel(nodes, panel.getLevel());
             }
         }

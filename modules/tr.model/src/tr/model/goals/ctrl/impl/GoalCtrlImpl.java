@@ -71,8 +71,8 @@ public class GoalCtrlImpl extends CtrlImpl implements GoalCtrl {
 
     @Override
     public boolean equals(Object that) {
-        if (that instanceof GoalCtrl) {
-            return ((GoalCtrl)that).getID() == this.getID();
+        if (that instanceof GoalCtrl goalCtrl) {
+            return goalCtrl.getID() == this.getID();
         }
         return false;
     }

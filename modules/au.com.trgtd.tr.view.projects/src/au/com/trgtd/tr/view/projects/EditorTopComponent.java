@@ -256,22 +256,19 @@ public final class EditorTopComponent extends Window implements Lookup.Provider 
      * @param node The node to view.
      */
     public void view(Node node) {
-        if (node instanceof ActionNode) {
-            ActionNode actionNode = (ActionNode)node;
+        if (node instanceof ActionNode actionNode) {
             view(actionNode.action);
             content.set(Collections.singleton(actionNode), null);
-        } else if (node instanceof ProjectNode) {
-            ProjectNode projectNode = (ProjectNode)node;
+        } else if (node instanceof ProjectNode projectNode) {
             view(projectNode.project);
             content.set(Collections.singleton(projectNode), null);
-        } else if (node instanceof ProjectGoalsNode) {
+        } else if (node instanceof ProjectGoalsNode projectGoalsNode) {
             initModel();
             clearView();
-            setIcon(((ProjectGoalsNode)node).getIcon(0));
-            setName(((ProjectGoalsNode)node).getName());
+            setIcon(projectGoalsNode.getIcon(0));
+            setName(projectGoalsNode.getName());
             content.set(Collections.singleton(node), null);
-        } else if (node instanceof ProjectGoalNode) {
-            ProjectGoalNode goalNode = (ProjectGoalNode)node;
+        } else if (node instanceof ProjectGoalNode goalNode) {
             view(goalNode.goalCtrl);
             content.set(Collections.singleton(goalNode), null);
         }
@@ -281,12 +278,10 @@ public final class EditorTopComponent extends Window implements Lookup.Provider 
         if (viewModel == null) {
             return;
         }
-        if (viewModel instanceof Action) {
-            Action action = (Action)viewModel;
+        if (viewModel instanceof Action action) {
             action.removePropertyChangeListener(Action.PROP_STATE, actionStateListener);
         }
-        if (viewModel instanceof GoalCtrl) {
-            GoalCtrl goal = (GoalCtrl)viewModel;
+        if (viewModel instanceof GoalCtrl goal) {
             goal.removePropertyChangeListener(GoalCtrl.PROP_LEVEL, goalLevelListener);
         }
         viewModel = null;
@@ -437,8 +432,8 @@ public final class EditorTopComponent extends Window implements Lookup.Provider 
     private final PropertyChangeListener actionStateListener =
             new PropertyChangeListener() {
                 public void propertyChange(PropertyChangeEvent evt) {
-                    if (viewModel instanceof Action) {
-                        refreshIcon((Action)viewModel);
+                    if (viewModel instanceof Action action) {
+                        refreshIcon(action);
                     }
                 }
             };
@@ -446,8 +441,8 @@ public final class EditorTopComponent extends Window implements Lookup.Provider 
     private final PropertyChangeListener goalLevelListener =
             new PropertyChangeListener() {
                 public void propertyChange(PropertyChangeEvent evt) {
-                    if (viewModel instanceof GoalCtrl) {
-                        refreshIcon((GoalCtrl)viewModel);
+                    if (viewModel instanceof GoalCtrl goalCtrl) {
+                        refreshIcon(goalCtrl);
                     }
                 }
             };

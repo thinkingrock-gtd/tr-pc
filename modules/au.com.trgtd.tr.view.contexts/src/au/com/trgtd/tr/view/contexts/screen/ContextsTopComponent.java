@@ -108,8 +108,8 @@ public final class ContextsTopComponent extends Window implements ContextNodePro
             ErrorManager.getDefault().log(ErrorManager.WARNING, "Cannot find contexts component. It will not be located properly in the window system.");
             return getDefault();
         }
-        if (win instanceof ContextsTopComponent) {
-            return (ContextsTopComponent)win;
+        if (win instanceof ContextsTopComponent comp) {
+            return comp;
         }
         ErrorManager.getDefault().log(ErrorManager.WARNING, "There seem to be multiple components with the '" + PREFERRED_ID + "' ID. That is a potential source of errors and unexpected behavior.");
         return getDefault();

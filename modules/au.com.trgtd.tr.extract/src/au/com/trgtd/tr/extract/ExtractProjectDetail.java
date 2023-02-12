@@ -152,10 +152,10 @@ public class ExtractProjectDetail {
         out.write("</item>\r\n");
 
         for (Item item : project.getChildren()) {
-            if (item instanceof Action) {
-                extractAction((Action) item, out, level + 1);
-            } else if (item instanceof Project) {
-                extractProject((Project) item, out, level + 1);
+            if (item instanceof Action action) {
+                extractAction(action, out, level + 1);
+            } else if (item instanceof Project prj) {
+                extractProject(prj, out, level + 1);
             }
         }
 
