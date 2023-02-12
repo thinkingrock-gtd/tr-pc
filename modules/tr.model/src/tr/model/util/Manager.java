@@ -230,6 +230,16 @@ public class Manager<T extends Observable> extends ObservableImpl implements Obs
     }
     
     /**
+     * Returns true if there are no elements, false otherwise.
+     * @return true if there are no elements.
+     */
+    public final boolean isEmpty() {
+        synchronized(this) {
+            return items.isEmpty();
+        }
+    }
+
+    /**
      * Implements Observer to pass on item changes to Observers.
      * @param observable The observable object.
      * @param arg The object argument.
