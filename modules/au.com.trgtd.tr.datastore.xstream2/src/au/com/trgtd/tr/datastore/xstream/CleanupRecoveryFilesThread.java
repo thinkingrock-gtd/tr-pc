@@ -96,7 +96,7 @@ public class CleanupRecoveryFilesThread extends Thread {
             }
         };
 
-        Map<String, List<File>> map = new HashMap<String, List<File>>();
+        Map<String, List<File>> map = new HashMap<>();
 
         for (File file : recoveryDir.listFiles(filter)) {
             String str = file.getName();

@@ -364,7 +364,7 @@ public class Data extends ObservableImpl implements IDGenerator, Observer {
      */
     public final Map<Integer, Vector<Integer>> getGoalSubgoalsMap() {
         if (goalSubgoals == null) {
-            goalSubgoals = new HashMap<Integer, Vector<Integer>>();
+            goalSubgoals = new HashMap<>();
             goalSubgoals.put(Constants.ID_ROOT_GOAL, new Vector<>());
         } 
         if (goalSubgoals.get(Constants.ID_ROOT_GOAL) == null) {
@@ -379,7 +379,7 @@ public class Data extends ObservableImpl implements IDGenerator, Observer {
      */
     public final Map<Integer, Vector<Integer>> getGoalProjectsMap() {
         if (goalProjects == null) {
-            goalProjects = new HashMap<Integer, Vector<Integer>>();
+            goalProjects = new HashMap<>();
         }
         return goalProjects;
     }
