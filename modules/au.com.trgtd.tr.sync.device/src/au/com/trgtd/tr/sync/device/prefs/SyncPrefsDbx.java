@@ -17,7 +17,6 @@
  */
 package au.com.trgtd.tr.sync.device.prefs;
 
-import au.com.trgtd.tr.sync.device.dbx.DbxController;
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
 import java.io.File;
