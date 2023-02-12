@@ -152,7 +152,7 @@ public class PeriodMonth extends Period {
     }
 
     public String getSelectedDaysText() {
-        if (selectedDays.size() == 0) {
+        if (selectedDays.isEmpty()) {
             return getMsg("period.day") + " ...";
         }
         
