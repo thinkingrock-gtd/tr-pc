@@ -101,7 +101,7 @@ public class ParamsDialog extends JDialog {
                 panelFields.add(checkbox);
             } else if (param.type == Param.Type.COMBOBOX) {
                 List<Item> items = param.getItems();
-                if (items != null && items.size() > 0) {
+                if (items != null && !items.isEmpty()) {
                     JComboBox combo = new TRComboBox(items.toArray());
                     combo.setPreferredSize(COMBOBOX_SIZE);
                     if (param.getValue() != null && !param.getValue().trim().equals("")) {
@@ -121,7 +121,7 @@ public class ParamsDialog extends JDialog {
                 }
             } else if (param.type == Param.Type.DATESCOMBO) {
                 List<DateItem> items = param.getDateItems();
-                if (items != null && items.size() > 0) {
+                if (items != null && !items.isEmpty()) {
                     DateCombo combo = new DateCombo(this, items.toArray(new DateItem[0]), false, df);
                     combo.setPreferredSize(COMBOBOX_SIZE);
                     if (param.getValue() != null && !param.getValue().trim().equals("")) {

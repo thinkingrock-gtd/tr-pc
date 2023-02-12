@@ -86,7 +86,7 @@ public class GoalsDAOImpl extends DAOImpl implements GoalsDAO {
     @Override
     public boolean hasSubgoals(Integer goalID) {
         List<Integer> subgoals = data.getGoalSubgoalsMap().get(goalID);
-        return subgoals != null && subgoals.size() > 0;
+        return subgoals != null && !subgoals.isEmpty();
 
     }
 

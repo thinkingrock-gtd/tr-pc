@@ -55,7 +55,7 @@ public class FindAction extends CallableSystemAction {
         super();
         result = DataLookup.instance().lookupResult(Data.class);
         result.addLookupListener((LookupEvent lookupEvent) -> {
-            setEnabled(result.allInstances().size() > 0);
+            setEnabled(!result.allInstances().isEmpty());
         });
         panel = new FindPanel();
     }

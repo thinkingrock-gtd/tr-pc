@@ -77,7 +77,7 @@ public class PeriodYearlyPanel extends JPanel {
         if (startDate == null) {
             return;
         }
-        if (periodYear.getSelectedMonths().size() > 0) {
+        if (!periodYear.getSelectedMonths().isEmpty()) {
             return;
         }
         Calendar calendar = Calendar.getInstance();
