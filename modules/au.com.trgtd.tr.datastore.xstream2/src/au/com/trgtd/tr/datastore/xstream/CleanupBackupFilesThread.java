@@ -26,6 +26,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Vector;
+import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
@@ -92,8 +93,8 @@ public class CleanupBackupFilesThread extends Thread {
     private static final String regex = ".*\\d{8}-\\d{9}\\.bak\\.(trx|TRX|xml|XML)";
 
     private void clean(File backupDir, int nbrFilesToKeep) {
-        log.info("Backup directory: " + backupDir.getPath());
-        log.info("Number of files to keep: " + nbrFilesToKeep);
+        log.log(Level.INFO, "Backup directory: {0}", backupDir.getPath());
+        log.log(Level.INFO, "Number of files to keep: {0}", nbrFilesToKeep);
 
         FileFilter filter = new FileFilter() {
             public boolean accept(File file) {
@@ -113,12 +114,12 @@ public class CleanupBackupFilesThread extends Thread {
             Collections.sort(files, comparator);
 
             for (File file : files) {
-                log.info("Found backup file: " + file.getPath());
+                log.log(Level.INFO, "Found backup file: {0}", file.getPath());
             }
 
             while (files.size() > nbrFilesToKeep) {
                 File file = files.remove(0);
-                log.info("Deleting backup file: " + file.getPath());                
+                log.log(Level.INFO, "Deleting backup file: {0}", file.getPath());
                 file.delete();
             }
         }

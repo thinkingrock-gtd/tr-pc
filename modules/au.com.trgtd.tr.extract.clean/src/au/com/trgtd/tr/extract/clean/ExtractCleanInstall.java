@@ -29,6 +29,7 @@ import javax.swing.SwingUtilities;
 import org.openide.modules.ModuleInstall;
 import au.com.trgtd.tr.extract.prefs.ExtractPrefs;
 import au.com.trgtd.tr.util.UtilsFile;
+import java.util.logging.Level;
 
 /**
  * Extract cleanup install.
@@ -120,7 +121,7 @@ public class ExtractCleanInstall extends ModuleInstall {
         final Calendar ageDate = Calendar.getInstance();
         ageDate.add(Calendar.DAY_OF_YEAR, ExtractCleanPrefs.getCleanAgeDays() * -1);
 
-        log.fine("Deleting files older than: " + ageDate.getTime());
+        log.log(Level.FINE, "Deleting files older than: {0}", ageDate.getTime());
 
         FileFilter filter = new FileFilter() {
 
@@ -161,10 +162,10 @@ public class ExtractCleanInstall extends ModuleInstall {
 
         for (File file : folder.listFiles(filter)) {
 
-            log.fine("Deleting: " + file.getPath());
+            log.log(Level.FINE, "Deleting: {0}", file.getPath());
 
             if (!file.delete()) {
-                log.warning("Could not delete: " + file.getPath());
+                log.log(Level.WARNING, "Could not delete: {0}", file.getPath());
             }
         }
     }
