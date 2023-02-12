@@ -95,11 +95,8 @@ public class CleanupBackupFilesThread extends Thread {
         log.info("Backup directory: " + backupDir.getPath());
         log.info("Number of files to keep: " + nbrFilesToKeep);
 
-        FileFilter filter = new FileFilter() {
-            public boolean accept(File file) {
-                return file.isFile() && file.getName().matches(regex);
-            }
-        };
+        FileFilter filter = (File file) -> file.isFile()
+                && file.getName().matches(regex);
 
         for (File file : backupDir.listFiles(filter)) {
             String str = file.getName();

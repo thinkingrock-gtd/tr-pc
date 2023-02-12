@@ -90,11 +90,8 @@ public class CleanupRecoveryFilesThread extends Thread {
         log.info("Recovery directory: " + recoveryDir.getPath());
         log.info("Number of files to keep: " + nbrFilesToKeep);
 
-        FileFilter filter = new FileFilter() {
-            public boolean accept(File file) {
-                return file.isFile() && file.getName().matches(regex);
-            }
-        };
+        FileFilter filter = (File file) -> file.isFile()
+                && file.getName().matches(regex);
 
         Map<String, List<File>> map = new HashMap<String, List<File>>();
 
