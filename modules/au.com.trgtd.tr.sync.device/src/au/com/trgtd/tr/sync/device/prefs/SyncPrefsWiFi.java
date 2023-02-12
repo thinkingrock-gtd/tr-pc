@@ -22,7 +22,6 @@ import static au.com.trgtd.tr.sync.device.prefs.SyncPrefs.PORT_MIN_DYNAMIC;
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
 import java.util.prefs.PreferenceChangeEvent;
-import java.util.prefs.PreferenceChangeListener;
 
 /**
  * Application logic for a snapshot of the Android WiFi synchronization user
@@ -44,14 +43,11 @@ public final class SyncPrefsWiFi {
     }
     
     static {
-        SyncPrefs.addListener(new PreferenceChangeListener() {
-            @Override
-            public void preferenceChange(PreferenceChangeEvent evt) {
-                if (evt.getKey().equals(SyncPrefs.KEY_SYNC_ANDROID)
-                 || evt.getKey().equals(SyncPrefs.KEY_SYNC_WIFI)
-                 || evt.getKey().equals(SyncPrefs.KEY_WIFI_PORT)) {
-                    PCS.firePropertyChange("changed", false, true);
-                }
+        SyncPrefs.addListener((PreferenceChangeEvent evt) -> {
+            if (evt.getKey().equals(SyncPrefs.KEY_SYNC_ANDROID)
+                    || evt.getKey().equals(SyncPrefs.KEY_SYNC_WIFI)
+                    || evt.getKey().equals(SyncPrefs.KEY_WIFI_PORT)) {
+                PCS.firePropertyChange("changed", false, true);
             }            
         });        
     }

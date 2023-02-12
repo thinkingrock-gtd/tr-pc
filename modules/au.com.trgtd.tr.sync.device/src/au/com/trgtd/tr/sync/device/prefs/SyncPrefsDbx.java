@@ -17,7 +17,6 @@
  */
 package au.com.trgtd.tr.sync.device.prefs;
 
-import au.com.trgtd.tr.sync.device.dbx.DbxController;
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
 import java.io.File;
@@ -25,7 +24,6 @@ import java.io.FileFilter;
 import java.util.Objects;
 import java.util.logging.Logger;
 import java.util.prefs.PreferenceChangeEvent;
-import java.util.prefs.PreferenceChangeListener;
 
 /**
  * Application logic for a snapshot of the Android DropBox synchronization user
@@ -49,14 +47,11 @@ public final class SyncPrefsDbx {
     }
     
     static {
-        SyncPrefs.addListener(new PreferenceChangeListener() {
-            @Override
-            public void preferenceChange(PreferenceChangeEvent evt) {
-                if (evt.getKey().equals(SyncPrefs.KEY_SYNC_ANDROID)
-                 || evt.getKey().equals(SyncPrefs.KEY_SYNC_DBX)
-                 || evt.getKey().equals(SyncPrefs.KEY_DBX_PATH)) {
-                    PCS.firePropertyChange("changed", false, true);
-                }
+        SyncPrefs.addListener((PreferenceChangeEvent evt) -> {
+            if (evt.getKey().equals(SyncPrefs.KEY_SYNC_ANDROID)
+                    || evt.getKey().equals(SyncPrefs.KEY_SYNC_DBX)
+                    || evt.getKey().equals(SyncPrefs.KEY_DBX_PATH)) {
+                PCS.firePropertyChange("changed", false, true);
             }            
         });        
     }
