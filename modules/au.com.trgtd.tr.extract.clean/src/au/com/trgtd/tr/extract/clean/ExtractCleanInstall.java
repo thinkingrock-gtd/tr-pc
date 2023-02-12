@@ -122,41 +122,36 @@ public class ExtractCleanInstall extends ModuleInstall {
 
         log.fine("Deleting files older than: " + ageDate.getTime());
 
-        FileFilter filter = new FileFilter() {
-
-            public boolean accept(File file) {
-                if (file.isDirectory()) {
-                    return false;
-                }
-
-                String extn = UtilsFile.getExtension(file.getPath());
-                if (extn == null) {
-                    return false;
-                }
-
-                if (!extn.equalsIgnoreCase("txt") && !extn.equalsIgnoreCase("pdf") && !extn.equalsIgnoreCase("xml")) {
-                    return false;
-                }
-
-                String name = UtilsFile.removeExtension(file.getName());
-                if (name.length() < 15) { // timestamp is 14 digits
-
-                    return false;
-                }
-
-                try {
-                    String timestamp = name.substring(name.length() - 14);
-                    Long.parseLong(timestamp); // check that it is a number
-
-                    Date date = Constants.DF_TIMESTAMP.parse(timestamp);
-                    if (date.before(ageDate.getTime())) {
-                        return true;
-                    }
-
-                } catch (Exception ex) {
-                }
+        FileFilter filter = (File file) -> {
+            if (file.isDirectory()) {
                 return false;
             }
+
+            String extn = UtilsFile.getExtension(file.getPath());
+            if (extn == null) {
+                return false;
+            }
+
+            if (!extn.equalsIgnoreCase("txt") && !extn.equalsIgnoreCase("pdf") && !extn.equalsIgnoreCase("xml")) {
+                return false;
+            }
+
+            String name = UtilsFile.removeExtension(file.getName());
+            if (name.length() < 15) { // timestamp is 14 digits
+                return false;
+            }
+
+            try {
+                String timestamp = name.substring(name.length() - 14);
+                Long.parseLong(timestamp); // check that it is a number
+
+                Date date = Constants.DF_TIMESTAMP.parse(timestamp);
+                if (date.before(ageDate.getTime())) {
+                    return true;
+                }
+            } catch (Exception ex) {
+            }
+            return false;
         };
 
         for (File file : folder.listFiles(filter)) {
