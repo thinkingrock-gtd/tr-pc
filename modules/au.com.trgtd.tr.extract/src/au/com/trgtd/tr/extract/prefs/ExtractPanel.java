@@ -74,11 +74,7 @@ final class ExtractPanel extends JPanel {
         folderField = new JTextField();
         folderField.getDocument().addDocumentListener(new FolderDocumentListener());
         browseButton = new JButton(getMsg("Browse"));
-        browseButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                browse(evt);
-            }
-        });
+        browseButton.addActionListener(this::browse);
         encodingLabel = new TRLabel(getMsg("Encoding"));
         encodingCombo = new TRComboBox();
         encodingCombo.setEditable(true);

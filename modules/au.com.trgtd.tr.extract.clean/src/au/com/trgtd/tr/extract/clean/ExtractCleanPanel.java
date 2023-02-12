@@ -20,7 +20,6 @@ package au.com.trgtd.tr.extract.clean;
 import au.com.trgtd.tr.swing.TRComboBox;
 import java.awt.BorderLayout;
 import javax.swing.DefaultComboBoxModel;
-import javax.swing.JComboBox;
 import javax.swing.JComponent;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -43,16 +42,12 @@ final class ExtractCleanPanel extends javax.swing.JPanel {
         runLabel = new JLabel(getMsg("Run_Label"));
         ageLabel = new JLabel(getMsg("Age_Label"));
         runCombo = new TRComboBox(new DefaultComboBoxModel(intervals));
-        runCombo.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                controller.changed();
-            }
+        runCombo.addActionListener((java.awt.event.ActionEvent evt) -> {
+            controller.changed();
         });
         ageCombo = new TRComboBox(new DefaultComboBoxModel(ages));
-        ageCombo.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                controller.changed();
-            }
+        ageCombo.addActionListener((java.awt.event.ActionEvent evt) -> {
+            controller.changed();
         });
 
         JPanel panel = new JPanel(new MigLayout("", "0[]2[]0", "0[]2[]0"));
