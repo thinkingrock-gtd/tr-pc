@@ -238,8 +238,7 @@ public class MatcherEditorTopic extends MatcherEditorBase
         private final class RealActionListener implements ActionListener {
             public void actionPerformed(ActionEvent e) {
                 Object object = getSelectedItem();
-                if (object instanceof TopicMultiple) {
-                    TopicMultiple tm = (TopicMultiple)object;
+                if (object instanceof TopicMultiple tm) {
                     Vector<Topic> all;
                     Data data = (Data)DataLookup.instance().lookup(Data.class);
                     if (data == null) {
