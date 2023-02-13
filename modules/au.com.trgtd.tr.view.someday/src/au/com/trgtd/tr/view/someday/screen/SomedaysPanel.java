@@ -209,7 +209,6 @@ public class SomedaysPanel extends JPanel implements ListSelectionListener, Obse
             
             Lock lock = refsEventList.getReadWriteLock().writeLock();
             lock.lock();
-            Future future = future;
             int index = refsEventList.indexOf(future);
             if (index > -1) {
                 refsEventList.set(index, future);
