@@ -26,10 +26,6 @@ jobs:
         with:
           path: netbeans-plat
           key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('nbproject/platform.properties') }}
-          restore-keys: |
-            ${{ runner.os }}-build-${{ env.cache-name }}-
-            ${{ runner.os }}-build-
-            ${{ runner.os }}-
 
       - name: Set up JDK 17
         uses: actions/setup-java@v3
