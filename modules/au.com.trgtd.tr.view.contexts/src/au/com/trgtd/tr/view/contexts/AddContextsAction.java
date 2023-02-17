@@ -42,7 +42,7 @@ public class AddContextsAction extends CallableSystemAction implements InitialAc
         setIcon(Icons.ContextAdd);
         result = DataLookup.instance().lookupResult(Data.class);
         result.addLookupListener((LookupEvent lookupEvent) -> {
-            setEnabled(result.allInstances().size() > 0);
+            setEnabled(!result.allInstances().isEmpty());
         });
     }
     

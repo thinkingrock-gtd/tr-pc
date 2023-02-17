@@ -251,7 +251,7 @@ public class ExtractData {
         out.write("</topics>\r\n");
         
         // Set the default topic key to the managed default topic key
-        if (data.getTopicManager().size() > 0) {
+        if (!data.getTopicManager().isEmpty()) {
             Topic def = (Topic)data.getTopicManager().get(0);
             Topic.getDefault().key = def.key;
         }
@@ -270,7 +270,7 @@ public class ExtractData {
         out.write("</contexts>\r\n");
         
         // Set the default context key to the managed default context key
-        if (data.getContextManager().size() > 0) {
+        if (!data.getContextManager().isEmpty()) {
             Context def = (Context)data.getContextManager().get(0);
             Context.getDefault().key = def.key;
         }
