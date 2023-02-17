@@ -202,7 +202,7 @@ public class Email extends Thread {
                 }
             }
 
-            if (msgs.size() > 0) {
+            if (!msgs.isEmpty()) {
                 String newLastUID = pop3folder.getUID(msgs.get(msgs.size() - 1));
                 EmailPrefs.setLastMsgUID(newLastUID);
             }

@@ -147,7 +147,7 @@ public class BackupThread extends Thread {
         List<File> recoveryFiles = new ArrayList();
         Collections.addAll(recoveryFiles, dir.listFiles(filter));
         
-        if (recoveryFiles.size() > 0) {
+        if (!recoveryFiles.isEmpty()) {
             Collections.sort(recoveryFiles, new DescendingFilenameComparator());
             return recoveryFiles.get(0);
         } else {
