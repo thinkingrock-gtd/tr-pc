@@ -32,25 +32,44 @@ public class ManagerTest {
     }
 
     @Test
+    public void givenNewManager_sizeIsZero() {
+        assertEquals(0, sut.size());        
+    }
+    
+    @Test
     public void givenNewManager_sizeIsZero_itIsEmpty() {
-        assertEquals(0, sut.size());
         assertEquals(true, sut.isEmpty());
     }
 
     @Test
-    public void givenNewManagerWithAnItem_sizeIsOne_itIsNotEmpty() {
+    public void givenNewManagerWithAnItem_sizeIsOne() {
         sut.add(Topic.getDefault());
-        assertEquals(1, sut.size());
+        assertEquals(1, sut.size());        
+    }
+    
+    @Test
+    public void givenNewManagerWithAnItem_itIsNotEmpty() {
+        sut.add(Topic.getDefault());        
         assertEquals(false, sut.isEmpty());
     }
 
     @Test
-    public void givenNewManagerWithItems_afterClearing_sizeIsZero_itIsEmpty() {
+    public void givenNewManagerWithItems_afterClearing_sizeIsZero() {
+        addAndRemoveTopics();        
+        assertEquals(0, sut.size());        
+    }
+    
+    @Test
+    public void givenNewManagerWithItems_afterClearing_itIsEmpty() {
+        addAndRemoveTopics();
+        assertEquals(true, sut.isEmpty());
+    }
+    
+    private void addAndRemoveTopics() {
         sut.add(Topic.getDefault());
         sut.add(Topic.getDefault());
         sut.removeAll();
-        assertEquals(0, sut.size());
-        assertEquals(true, sut.isEmpty());
     }
 
 }
+
