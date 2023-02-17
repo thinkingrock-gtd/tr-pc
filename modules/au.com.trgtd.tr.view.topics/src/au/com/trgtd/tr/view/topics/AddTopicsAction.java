@@ -42,7 +42,7 @@ public class AddTopicsAction extends CallableSystemAction implements InitialActi
         setIcon(Icons.TopicAdd);
         result = DataLookup.instance().lookupResult(Data.class);
         result.addLookupListener((LookupEvent lookupEvent) -> {
-            setEnabled(result.allInstances().size() > 0);
+            setEnabled(!result.allInstances().isEmpty());
         });
     }
     

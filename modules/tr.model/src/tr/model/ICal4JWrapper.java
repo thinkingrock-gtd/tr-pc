@@ -185,7 +185,7 @@ public class ICal4JWrapper {
      * @throws Exception.
      */
     public void write(File outfile) throws Exception {
-        if (calendar.getComponents().size() > 0) {
+        if (!calendar.getComponents().isEmpty()) {
             FileOutputStream fout = new FileOutputStream(outfile);
             CalendarOutputter outputter = new CalendarOutputter();
             outputter.output(calendar, fout);

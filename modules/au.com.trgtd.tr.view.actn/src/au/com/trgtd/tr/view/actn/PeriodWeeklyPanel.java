@@ -118,7 +118,7 @@ public class PeriodWeeklyPanel extends JPanel {
         if (startDate == null) {
             return;
         }
-        if (periodWeek.getSelectedDays().size() > 0) {
+        if (!periodWeek.getSelectedDays().isEmpty()) {
             return;
         }
         Calendar calendar = Calendar.getInstance();

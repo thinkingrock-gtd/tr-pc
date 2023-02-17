@@ -166,7 +166,7 @@ class RefChooserPanel extends JPanel implements Observer {
                 if (descriptor == null) {
                     return;
                 }
-                descriptor.setValid(selectionModel.getSelected().size() > 0);
+                descriptor.setValid(!selectionModel.getSelected().isEmpty());
                 saveSelected();
             }
         });
@@ -240,7 +240,7 @@ class RefChooserPanel extends JPanel implements Observer {
 
     private void saveSelected() {
         EventList<Information> selected = selectionModel.getSelected();
-        choice = selected.size() > 0 ? selected.get(0) : null;
+        choice = !selected.isEmpty() ? selected.get(0) : null;
     }
 
     public Information getSelected() {

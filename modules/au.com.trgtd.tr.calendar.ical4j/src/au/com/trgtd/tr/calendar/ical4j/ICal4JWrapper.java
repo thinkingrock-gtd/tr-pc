@@ -293,7 +293,7 @@ public class ICal4JWrapper {
      * @throws Exception.
      */
     public void write(File outfile) throws Exception {
-        if (calendar.getComponents().size() > 0) {
+        if (!calendar.getComponents().isEmpty()) {
             String encoding = "UTF-8";            
             Writer writer = new OutputStreamWriter(new FileOutputStream(outfile), encoding);
             CalendarOutputter outputter = new CalendarOutputter();

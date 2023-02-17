@@ -226,7 +226,7 @@ public class ActionSelectorImpl implements ActionSelector {
     public boolean isSelected(Action action) {
         
         // see if the action done value is in the list
-        if (doneValues.size() > 0) {
+        if (!doneValues.isEmpty()) {
             boolean found = false;
             for (Iterator i = doneValues.iterator(); i.hasNext(); ) {
                 Boolean b = (Boolean)i.next();
@@ -257,7 +257,7 @@ public class ActionSelectorImpl implements ActionSelector {
         }
         
         // see if the action active value is in the list
-        if (activeValues.size() > 0) {
+        if (!activeValues.isEmpty()) {
             boolean found = false;
             for (Iterator i = activeValues.iterator(); i.hasNext(); ) {
                 Boolean b = (Boolean)i.next();
@@ -270,7 +270,7 @@ public class ActionSelectorImpl implements ActionSelector {
         }
         
         // see if the action state class is in list
-        if (actionStates.size() == 0) {
+        if (actionStates.isEmpty()) {
             return false;
         } else {
             boolean found = false;
@@ -285,7 +285,7 @@ public class ActionSelectorImpl implements ActionSelector {
         }
         
         // see if the action context is in list
-        if (contexts.size() > 0) {
+        if (!contexts.isEmpty()) {
             boolean found = false;
             for (Iterator i = contexts.iterator(); i.hasNext(); ) {
                 Context context = (Context)i.next();
@@ -298,7 +298,7 @@ public class ActionSelectorImpl implements ActionSelector {
         }
         
         // see if the action topic is in list
-        if (topics.size() > 0) {
+        if (!topics.isEmpty()) {
             boolean found = false;
             for (Iterator i = topics.iterator(); i.hasNext(); ) {
                 Topic topic = (Topic)i.next();
