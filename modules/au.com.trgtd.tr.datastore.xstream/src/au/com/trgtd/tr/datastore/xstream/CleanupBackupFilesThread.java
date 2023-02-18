@@ -120,7 +120,7 @@ public class CleanupBackupFilesThread extends Thread {
 
             while (files.size() > nbrFilesToKeep) {
                 File file = files.remove(0);
-                log.log(Level.INFO, "Deleting backup file: {0}", file.getPath());                
+                log.log(Level.INFO, "Deleting backup file: {0}", file.getPath());
                 file.delete();
             }
         }
