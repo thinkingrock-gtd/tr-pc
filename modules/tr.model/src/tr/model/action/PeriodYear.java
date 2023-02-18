@@ -130,7 +130,7 @@ public class PeriodYear extends Period {
     }
 
     public String getSelectedMonthsText() {
-        if (selectedMonths.size() == 0) {
+        if (selectedMonths.isEmpty()) {
             return getMsg("period.month") + " ...";
         }
 

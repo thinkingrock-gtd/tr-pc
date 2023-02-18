@@ -57,7 +57,7 @@ public abstract class FilterCriterion extends FilterChoice
         }
         if (value instanceof ValueMultiple) {
             ValueMultiple m = (ValueMultiple)value;
-            if (m.getChosen() == null || m.getChosen().size() == 0) {
+            if (m.getChosen() == null || m.getChosen().isEmpty()) {
                 return null;
             }
             String[] values = new String[m.getChosen().size()];
