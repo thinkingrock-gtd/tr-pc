@@ -86,7 +86,7 @@ public class GoalsDAOImpl extends DAOImpl implements GoalsDAO {
     @Override
     public boolean hasSubgoals(Integer goalID) {
         List<Integer> subgoals = data.getGoalSubgoalsMap().get(goalID);
-        return subgoals != null && subgoals.size() > 0;
+        return subgoals != null && !subgoals.isEmpty();
 
     }
 
@@ -451,7 +451,7 @@ public class GoalsDAOImpl extends DAOImpl implements GoalsDAO {
             return new Integer[0];
         }
         List<Integer> projectIDs = data.getGoalProjectsMap().get(goalID);
-        if (projectIDs == null || projectIDs.size() == 0) {
+        if (projectIDs == null || projectIDs.isEmpty()) {
             return new Integer[0];
         }
         return projectIDs.toArray(new Integer[projectIDs.size()]);

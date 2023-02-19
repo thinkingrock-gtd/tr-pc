@@ -37,7 +37,6 @@ import javax.swing.DefaultComboBoxModel;
 import javax.swing.JComboBox;
 import org.openide.util.Lookup;
 import org.openide.util.LookupEvent;
-import org.openide.util.LookupListener;
 import org.openide.util.NbBundle;
 import org.openide.util.Utilities;
 import tr.model.Data;
@@ -290,7 +289,7 @@ public class FilterContext extends FilterChoice implements PropertyChangeListene
         }
         if (context instanceof ContextMultiple) {
             Vector<Context> chosen = ((ContextMultiple)context).getChosen();
-            if (chosen == null || chosen.size() == 0) {
+            if (chosen == null || chosen.isEmpty()) {
                 return null;
             }
             Vector<String> values = new Vector<>();

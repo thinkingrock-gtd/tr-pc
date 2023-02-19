@@ -42,7 +42,6 @@ import tr.model.Data;
 import au.com.trgtd.tr.util.UtilsFile;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Locale;
 
 /**
  * Data manager singleton that uses XStream to persist the data model.
@@ -195,7 +194,7 @@ public class XStreamDataStore extends AbstractDataStore implements PreferenceCha
         List<File> recoveryFiles = new ArrayList<>();
         recoveryFiles.addAll(Arrays.asList(dir.listFiles(filter)));
 
-        if (recoveryFiles.size() > 0) {
+        if (!recoveryFiles.isEmpty()) {
             Collections.sort(recoveryFiles, new FileDateComparator());
             return recoveryFiles.get(0);
         } else {

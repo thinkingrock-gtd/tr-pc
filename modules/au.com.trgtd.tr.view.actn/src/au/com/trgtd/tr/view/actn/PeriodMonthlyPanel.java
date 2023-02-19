@@ -77,7 +77,7 @@ public class PeriodMonthlyPanel extends JPanel {
         if (startDate == null) {
             return;
         }
-        if (periodMonth.getSelectedDays().size() > 0) {
+        if (!periodMonth.getSelectedDays().isEmpty()) {
             return;
         }
         Calendar calendar = Calendar.getInstance();

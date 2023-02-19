@@ -18,6 +18,9 @@
 package au.com.trgtd.tr.util;
 
 import java.io.Serializable;
+import java.util.Collections;
+import java.util.HashSet;
+import java.util.Map;
 import java.util.WeakHashMap;
 
 /**
@@ -33,7 +36,7 @@ public class ObservableImpl implements Observable, Serializable {
 
     private static final long serialVersionUID = 1;
 
-    private transient WeakHashMap<Observer, Object> observers;
+    private transient Map<Observer, Object> observers;
 
     /**
      * Constructs a default instance.
@@ -49,12 +52,12 @@ public class ObservableImpl implements Observable, Serializable {
      * @param observer The observer to add.
      */
     @Override
-    public synchronized void addObserver(Observer observer) {
+    public void addObserver(Observer observer) {
         if (observer == null) {
             return;
         }
         if (observers == null) {
-            observers = new WeakHashMap<>();
+            observers = Collections.synchronizedMap(new WeakHashMap<>());
         }
         observers.put(observer, null);
     }
@@ -65,7 +68,7 @@ public class ObservableImpl implements Observable, Serializable {
      * @param observer The observer to remove.
      */
     @Override
-    public synchronized void removeObserver(Observer observer) {
+    public void removeObserver(Observer observer) {
         if (observer == null || observers == null) {
             return;
         }
@@ -76,7 +79,7 @@ public class ObservableImpl implements Observable, Serializable {
      * Removes all observers from the list.
      */
     @Override
-    public synchronized void removeObservers() {
+    public void removeObservers() {
         if (observers == null) {
             return;
         }
@@ -87,7 +90,7 @@ public class ObservableImpl implements Observable, Serializable {
      * Override to reset all child observers.
      */
     @Override
-    public synchronized void resetObservers() {
+    public void resetObservers() {
     }
 
     /**
@@ -107,20 +110,12 @@ public class ObservableImpl implements Observable, Serializable {
      * @param observable The observable.
      * @param object The object or null.
      */
-    public synchronized void notifyObservers(Observable observable, Object object) {
+    public void notifyObservers(Observable observable, Object object) {
         if (observers == null) {
             return;
         }
-//        for (Observer observer : observers.keySet()) {
-//            observer.update(observable, object);
-//        }
-
-        Observer[] arr = observers.keySet().toArray(new Observer[0]);
-        for (Observer o : arr) {
-            if (o != null) {
-                o.update(observable, object);                
-            }
+        for (Observer observer : new HashSet<>(observers.keySet())) {
+            observer.update(observable, object);
         }
     }
-
 }
