@@ -137,7 +137,7 @@ public class CleanupBackupFilesThread extends Thread {
         }
     }
     
-    private static final Map<String, List<File>> map = new HashMap<String, List<File>>();
+    private static final Map<String, List<File>> map = new HashMap<>();
 
     private static void map(String key, File file) {
         List<File> fileList = map.get(key);

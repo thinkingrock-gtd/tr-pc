@@ -134,7 +134,7 @@ public class CleanupBackupFilesThread extends Thread {
             return f1.getName().compareTo(f2.getName());
         }
     }
-    private static Map<String, List<File>> map = new HashMap<String, List<File>>();
+    private static Map<String, List<File>> map = new HashMap<>();
 
     private static void map(String key, File file) {
         List<File> fileList = map.get(key);
