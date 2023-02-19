@@ -94,7 +94,7 @@ public class CleanupRecoveryFilesThread extends Thread {
         FileFilter filter = (File file) -> file.isFile()
                 && file.getName().matches(regex);
 
-        Map<String, List<File>> map = new HashMap<String, List<File>>();
+        Map<String, List<File>> map = new HashMap<>();
 
         for (File file : recoveryDir.listFiles(filter)) {
             String str = file.getName();

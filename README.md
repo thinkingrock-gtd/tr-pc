@@ -25,7 +25,7 @@ This issue will be solved in #33.
 ### Compilation from a Terminal (without Netbeans)
 
 #### Preconditions
-- Java is installed (min. java 11, also tested with 17)
+- Java is installed (Java 17)
 - [Apache Ant](https://ant.apache.org/manual/install.html) is installed
 - Optional: [just](https://github.com/casey/just) is installed
 

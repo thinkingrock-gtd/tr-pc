@@ -97,7 +97,7 @@ public class FilterTopic extends FilterChoice implements PropertyChangeListener 
         }
         if (topic instanceof TopicMultiple) {
             Vector<Topic> chosen = ((TopicMultiple)topic).getChosen();
-            if (chosen == null || chosen.size() == 0) {
+            if (chosen == null || chosen.isEmpty()) {
                 return null;
             }
             Vector<String> values = new Vector<>();

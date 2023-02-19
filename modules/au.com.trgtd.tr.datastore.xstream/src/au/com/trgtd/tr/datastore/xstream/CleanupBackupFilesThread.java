@@ -116,7 +116,7 @@ public class CleanupBackupFilesThread extends Thread {
 
             while (files.size() > nbrFilesToKeep) {
                 File file = files.remove(0);
-                log.log(Level.INFO, "Deleting backup file: {0}", file.getPath());                
+                log.log(Level.INFO, "Deleting backup file: {0}", file.getPath());
                 file.delete();
             }
         }
@@ -133,7 +133,7 @@ public class CleanupBackupFilesThread extends Thread {
         }
     }
     
-    private static final Map<String, List<File>> map = new HashMap<String, List<File>>();
+    private static final Map<String, List<File>> map = new HashMap<>();
 
     private static void map(String key, File file) {
         List<File> fileList = map.get(key);

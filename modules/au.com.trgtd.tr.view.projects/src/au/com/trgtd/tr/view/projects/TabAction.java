@@ -43,7 +43,7 @@ public class TabAction extends SystemAction {
 //      setIcon(Resources.ICON_G_ADD_ACTION);
         result = DataLookup.instance().lookupResult(Data.class);
         result.addLookupListener((LookupEvent lookupEvent) -> {
-            setEnabled(result.allInstances().size() > 0);
+            setEnabled(!result.allInstances().isEmpty());
         });
     }
     
