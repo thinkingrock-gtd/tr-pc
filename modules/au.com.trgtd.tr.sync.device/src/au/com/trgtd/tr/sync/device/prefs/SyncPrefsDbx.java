@@ -17,7 +17,6 @@
  */
 package au.com.trgtd.tr.sync.device.prefs;
 
-import au.com.trgtd.tr.sync.device.dbx.DbxController;
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
 import java.io.File;
@@ -140,12 +139,7 @@ public final class SyncPrefsDbx {
         return null;
     }
     
-    private final FileFilter directoriesOnlyFilter = new FileFilter() {
-        @Override
-        public boolean accept(File file) {
-            return file.isDirectory();
-        }
-    };
+    private final FileFilter directoriesOnlyFilter = File::isDirectory;
     
     /**
      * Gets the sync down file within the DropBox path.
