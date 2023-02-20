@@ -184,12 +184,8 @@ public class XStreamDataStore extends AbstractDataStore implements PreferenceCha
 
         final String regex = prefix.toLowerCase() + "\\.\\d{8}-\\d{9}\\.rec\\.(trx|xml)";
 
-        FileFilter filter = new FileFilter() {
-            @Override
-            public boolean accept(File file) {
-                return file.isFile() && file.getName().toLowerCase().matches(regex);
-            }
-        };
+        FileFilter filter = (File file) -> file.isFile()
+                && file.getName().toLowerCase().matches(regex);
 
         List<File> recoveryFiles = new ArrayList<>();
         recoveryFiles.addAll(Arrays.asList(dir.listFiles(filter)));
