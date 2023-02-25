@@ -405,7 +405,7 @@ public class Project extends ObservableImpl
         public boolean isSelected(Item item) {
             if (item instanceof Action action) {
 //              return ((Action)item).isActive();
-                                if (action.isDone()) {
+                    if (action.isDone()) {
                     return false;
                 }
                 Project parent = (Project)action.getParent();
