@@ -36,11 +36,7 @@ public class OverviewSVGProvider_fr_FR implements OverviewSVGProvider {
  
     @Override
     public URL getURL() {
-        try {
-            return FileUtil.getConfigFile("Overview/overview_fr_FR.svg").getURL();
-        } catch (FileStateInvalidException ex) {
-            return null;
-        }
+        return FileUtil.getConfigFile("Overview/overview_fr_FR.svg").toURL();
     }
  
 }
