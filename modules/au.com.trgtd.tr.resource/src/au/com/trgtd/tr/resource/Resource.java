@@ -136,12 +136,7 @@ public class Resource {
     public final static String Overview = PATH + "Overview.png";
 
     public final static URL getOverviewURL() {
-        try {
-            return FileUtil.getConfigFile("Overview/overview.svg").getURL();
-        } catch (FileStateInvalidException ex) {
-            Exceptions.printStackTrace(ex);
-            return null;
-        }
+        return FileUtil.getConfigFile("Overview/overview.svg").toURL();
     }
 
 }
