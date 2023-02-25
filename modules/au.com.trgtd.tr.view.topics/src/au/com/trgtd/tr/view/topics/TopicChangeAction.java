@@ -104,8 +104,8 @@ public class TopicChangeAction extends CookieAction {
         jd.setVisible(true);
         
         Object value = op.getValue() ;
-        if (value instanceof Integer) {
-            if (((Integer)value).intValue() == JOptionPane.OK_OPTION) {
+        if (value instanceof Integer integer) {
+            if (integer.intValue() == JOptionPane.OK_OPTION) {
                 change((Topic)cb.getSelectedItem(), nodes);
             }
         }

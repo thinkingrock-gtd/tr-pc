@@ -579,8 +579,7 @@ public class ImportProject {
         NodeList nodeList = element.getChildNodes();
         if (nodeList != null) {
             for (int i = 0; i < nodeList.getLength(); i++) {
-                if (nodeList.item(i) instanceof Element) {
-                    Element childElement = (Element) nodeList.item(i);
+                if (nodeList.item(i) instanceof Element childElement) {
                     if (childElement.getTagName().equals(name)) {
                         return childElement;
                     }
@@ -595,8 +594,7 @@ public class ImportProject {
         NodeList nodeList = element.getChildNodes();
         if (nodeList != null) {
             for (int i = 0; i < nodeList.getLength(); i++) {
-                if (nodeList.item(i) instanceof Element) {
-                    Element childElement = (Element) nodeList.item(i);
+                if (nodeList.item(i) instanceof Element childElement) {
                     if (childElement.getTagName().equals(name)) {
                         childElements.add(childElement);
                     }

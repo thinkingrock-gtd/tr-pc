@@ -615,8 +615,7 @@ public final class DataMgr {
     private void populateSendActionsMap(Map<Integer, SendMsgAction> map, Project project) {
         int ordinal = 1;
         for (Item child : project.getChildren()) {
-            if (child instanceof Action) {
-                Action action = (Action) child;
+            if (child instanceof Action action) {
                 if (!action.isDone()) {
                     map.put(action.getID(), newSendMsgAction(action, ordinal++));
                 }

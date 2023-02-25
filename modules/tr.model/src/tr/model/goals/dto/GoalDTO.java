@@ -72,8 +72,8 @@ public class GoalDTO {
 
     @Override
     public boolean equals(Object that) {
-        if (that instanceof GoalDTO) {
-            return ((GoalDTO)that).id == this.id;
+        if (that instanceof GoalDTO goalDTO) {
+            return goalDTO.id == this.id;
         }
         return false;
     }

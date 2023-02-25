@@ -836,8 +836,7 @@ public final class Recurrence extends ObservableImpl implements Notable {
         for (Action action : getProject().getChildren(Action.class)) {
 
             ActionState state = action.getState();
-            if (state instanceof ActionStateScheduled) {
-                ActionStateScheduled schdState = (ActionStateScheduled) state;
+            if (state instanceof ActionStateScheduled schdState) {
 
                 Recurrence recurrence = schdState.getRecurrence();
                 if (recurrence != null && recurrence.id == this.id) {

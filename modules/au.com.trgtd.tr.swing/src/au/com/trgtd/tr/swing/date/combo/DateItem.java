@@ -77,8 +77,7 @@ public class DateItem implements Serializable {
 
     @Override
     public boolean equals(Object object) {
-        if (object instanceof DateItem) {
-            DateItem dateItem = (DateItem) object;
+        if (object instanceof DateItem dateItem) {
             return (dateItem.type == type && dateItem.value == value);
         }
         return false;

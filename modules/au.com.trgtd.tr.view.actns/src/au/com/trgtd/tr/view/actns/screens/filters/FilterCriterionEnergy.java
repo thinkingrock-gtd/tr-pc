@@ -73,8 +73,7 @@ public class FilterCriterionEnergy extends FilterCriterion implements PropertyCh
             fireMatchAll();
         } else if (value instanceof ValueAll) {
             fireMatchAll();
-        } else if (value instanceof ValueMultiple) {
-            ValueMultiple multiple = (ValueMultiple)value;
+        } else if (value instanceof ValueMultiple multiple) {
             fireChanged(new ValueMatcher(multiple.getChosen(), excludeNulls));
         } else {
             fireChanged(new ValueMatcher(value, excludeNulls));
@@ -225,8 +224,7 @@ public class FilterCriterionEnergy extends FilterCriterion implements PropertyCh
         private final class RealActionListener implements ActionListener {
             public void actionPerformed(ActionEvent e) {
                 Object object = getSelectedItem();
-                if (object instanceof ValueMultiple) {
-                    ValueMultiple m = (ValueMultiple)object;
+                if (object instanceof ValueMultiple m) {
                     Vector<Value> all;
                     Data data = (Data)DataLookup.instance().lookup(Data.class);
                     if (data == null) {

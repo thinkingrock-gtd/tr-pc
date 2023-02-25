@@ -204,8 +204,8 @@ public class LevelDialogPanel extends JPanel {
 
     public GoalIcon getGoalsIcon() {
         Object selected = goalsIconCombo.getSelectedItem();
-        if (selected instanceof GoalIcon) {
-            return (GoalIcon) selected;
+        if (selected instanceof GoalIcon goalIcon) {
+            return goalIcon;
         }
         return null;
     }

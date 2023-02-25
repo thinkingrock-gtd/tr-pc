@@ -448,10 +448,10 @@ public final class RecurrenceRegularPanelModify extends JPanel {
     private Dialog getDialog() {
         if (dialog == null) {
             Window window = SwingUtilities.getWindowAncestor(this);
-            if (window instanceof Dialog) {
-                dialog = (Dialog) window;
-            } else if (window instanceof Frame) {
-                dialog = new Dialog((Frame) window);
+            if (window instanceof Dialog dlg) {
+                dialog = dlg;
+            } else if (window instanceof Frame frame) {
+                dialog = new Dialog(frame);
             } else {
                 dialog = new Dialog(new Frame());
             }

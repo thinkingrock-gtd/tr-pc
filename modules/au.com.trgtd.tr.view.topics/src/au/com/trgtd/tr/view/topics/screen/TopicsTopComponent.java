@@ -108,8 +108,8 @@ public final class TopicsTopComponent extends Window implements TopicNodeProvide
             ErrorManager.getDefault().log(ErrorManager.WARNING, "Cannot find topics component. It will not be located properly in the window system.");
             return getDefault();
         }
-        if (win instanceof TopicsTopComponent) {
-            return (TopicsTopComponent)win;
+        if (win instanceof TopicsTopComponent topicsTopComponent) {
+            return topicsTopComponent;
         }
         ErrorManager.getDefault().log(ErrorManager.WARNING, "There seem to be multiple components with the '" + PREFERRED_ID + "' ID. That is a potential source of errors and unexpected behavior.");
         return getDefault();

@@ -60,10 +60,10 @@ public final class DateChooser implements PreferenceChangeListener {
     public DateChooserDialog getDialog() {
         synchronized(this) {
             if (dialog == null) {
-                if (owner instanceof Frame) {
-                    dialog = (title == null) ? new DateChooserDialog((Frame)owner) : new DateChooserDialog((Frame)owner, title);
-                } else if (owner instanceof Dialog) {
-                    dialog = (title == null) ? new DateChooserDialog((Dialog)owner) : new DateChooserDialog((Dialog)owner, title);
+                if (owner instanceof Frame frame) {
+                    dialog = (title == null) ? new DateChooserDialog(frame) : new DateChooserDialog(frame, title);
+                } else if (owner instanceof Dialog dlg) {
+                    dialog = (title == null) ? new DateChooserDialog(dlg) : new DateChooserDialog(dlg, title);
                 } else {
                     dialog = (title == null) ? new DateChooserDialog(new JFrame()) : new DateChooserDialog(new JFrame(), title);
                 }

@@ -71,8 +71,8 @@ public final class WeekTopComponent extends TopComponent {
         WeekPanel weekPanel = weekPanelCtlr.getWeekPanel();
         weekPanel.addDayListener((PropertyChangeEvent pce) -> {
             Object newValue = pce.getNewValue();
-            if (newValue instanceof Date) {
-                dateCtlr.setDate((Date)newValue);
+            if (newValue instanceof Date date) {
+                dateCtlr.setDate(date);
                 activateDayView();
             }            
         });

@@ -313,14 +313,14 @@ public class ActionSelectorImpl implements ActionSelector {
         if (checkFutureDays) {
             Calendar future = Calendar.getInstance();
             future.add(Calendar.DAY_OF_YEAR, futureDays + 1);
-            if (action.getState() instanceof ActionStateDelegated) {
-                Date date = ((ActionStateDelegated)action.getState()).getDate();
+            if (action.getState() instanceof ActionStateDelegated asd) {
+                Date date = asd.getDate();
                 if (date == null) return true;
                 if ( ! DateUtils.isBeforeDay(date, future.getTime())) {
                     return false;
                 }
-            } else if (action.getState() instanceof ActionStateScheduled) {
-                Date date = ((ActionStateScheduled)action.getState()).getDate();
+            } else if (action.getState() instanceof ActionStateScheduled ass) {
+                Date date = ass.getDate();
                 if (date == null) return true;
                 if ( ! DateUtils.isBeforeDay(date, future.getTime())) {
                     return false;

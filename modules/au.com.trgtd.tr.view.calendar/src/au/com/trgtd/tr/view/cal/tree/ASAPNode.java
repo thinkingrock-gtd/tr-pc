@@ -143,8 +143,8 @@ public final class ASAPNode extends AbstractNode implements EditCookie {
     @Override
     public Image getIcon(int type) {
         Icon icon = action.getIcon(false);
-        if (icon instanceof ImageIcon) {
-            return ((ImageIcon) icon).getImage();
+        if (icon instanceof ImageIcon imageIcon) {
+            return imageIcon.getImage();
         }
         return super.getIcon(type);
     }

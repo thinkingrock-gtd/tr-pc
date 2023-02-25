@@ -89,10 +89,10 @@ public class ICalendar {
         // process children
         for (Iterator<Item> i = project.iterator(Item.class); i.hasNext();) {
             Item child = i.next();
-            if (child instanceof Action) {
-                process(data, (Action)child);
-            } else if (child instanceof Project) {
-                process(data, (Project)child);
+            if (child instanceof Action action) {
+                process(data, action);
+            } else if (child instanceof Project prj) {
+                process(data, prj);
             }
         }
     }
@@ -122,13 +122,11 @@ public class ICalendar {
         ActionState state = action.getState();
         if (state instanceof ActionStateASAP) {
             ical.createToDo(getUID(action.getID()), action.getDescription(), notes.toString(), context);
-        } else if (state instanceof ActionStateDelegated) {
-            ActionStateDelegated asd = (ActionStateDelegated)state;
+        } else if (state instanceof ActionStateDelegated asd) {
             if (asd.getDate()==null) return;
             String desc = action.getDescription() + " " + " " + org.openide.util.NbBundle.getMessage(ICalendar.class, "Delegated_to") + ": " + asd.getTo();
             ical.createAllDayEvent(getUID(action.getID()), asd.getDate(), desc, notes.toString(), context);
-        } else if (state instanceof ActionStateScheduled) {
-            ActionStateScheduled ass = (ActionStateScheduled)state;
+        } else if (state instanceof ActionStateScheduled ass) {
             if (ass.getDate() == null) return;
             
             ical.createSpecificTimeEvent(getUID(action.getID()), ass.getDate(),

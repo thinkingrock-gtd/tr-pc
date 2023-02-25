@@ -67,8 +67,8 @@ public class ActorsComboBox extends TRComboBox implements ActionListener {
                 firePropertyChange(PROP_SELECTED, null, null);
             } else if ((selection instanceof String) && (e.getActionCommand().equals("comboBoxEdited"))) {
                 handleEdit((String) selection);
-            } else if (selection instanceof Actor) {
-                handleSelection((Actor) selection);
+            } else if (selection instanceof Actor actor) {
+                handleSelection(actor);
             }
         });
         textfield = (JTextComponent)getEditor().getEditorComponent();

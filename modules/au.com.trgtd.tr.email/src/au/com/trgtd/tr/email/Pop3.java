@@ -798,8 +798,8 @@ public class Pop3 {
         public static Vector getFile(Message pop_message) throws Exception {
             Vector vec = new Vector();
             Object content = pop_message.getContent();
-            if (content instanceof Multipart) {
-                vec = getFileHandleMultipart((Multipart) content);
+            if (content instanceof Multipart mp) {
+                vec = getFileHandleMultipart(mp);
             }
             return vec;
         }
@@ -840,8 +840,8 @@ public class Pop3 {
         public static Vector getFileEmbed(Message pop_message, String _contentType) throws Exception {
             Vector vec = new Vector();
             Object content = pop_message.getContent();
-            if (content instanceof Multipart) {
-                vec = getFileHandleMultipart((Multipart) content, _contentType);
+            if (content instanceof Multipart mp) {
+                vec = getFileHandleMultipart(mp, _contentType);
             }
             return vec;
         }
@@ -889,8 +889,8 @@ public class Pop3 {
         public static String getBody(Message pop_message) throws Exception {
             String body = null;
             Object content = pop_message.getContent();
-            if (content instanceof Multipart) {
-                body = getBodyHandleMultipart((Multipart) content);
+            if (content instanceof Multipart mp) {
+                body = getBodyHandleMultipart(mp);
             } else {
                 body = getBodyHandlePart(pop_message);
             }
@@ -942,11 +942,11 @@ public class Pop3 {
             for (int i = 0, n = multipart.getCount(); i < n; i++) {
                 Part part = (Part) multipart.getBodyPart(i);
                 Object content = part.getContent();
-                if (content instanceof Multipart) // for multipart/mixed
-                {
-                    body = getBodyHandleMultipart((Multipart) content);
+                if (content instanceof Multipart mp) {
+                    body = getBodyHandleMultipart(mp);
                     break;
                 }
+                // for multipart/mixed
 
                 String disposition = part.getDisposition();
                 String ctype = part.getContentType();
@@ -978,8 +978,8 @@ public class Pop3 {
         public static String getBodyHtml(Message pop_message) throws Exception {
             String body = null;
             Object content = pop_message.getContent();
-            if (content instanceof Multipart) {
-                body = getBodyHandleMultipart((Multipart) content, "text/html");
+            if (content instanceof Multipart mp) {
+                body = getBodyHandleMultipart(mp, "text/html");
             }
             return body;
         }
@@ -1001,11 +1001,11 @@ public class Pop3 {
             for (int i = 0, n = multipart.getCount(); i < n; i++) {
                 Part part = (Part) multipart.getBodyPart(i);
                 Object content = part.getContent();
-                if (content instanceof Multipart) // for multipart/mixed
-                {
-                    body = getBodyHandleMultipart((Multipart) content, contentType);
+                if (content instanceof Multipart mp) {
+                    body = getBodyHandleMultipart(mp, contentType);
                     break;
                 }
+                // for multipart/mixed
 
                 String disposition = part.getDisposition();
                 String ctype = part.getContentType();

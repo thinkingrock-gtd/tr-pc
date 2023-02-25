@@ -73,8 +73,7 @@ public class FilterContext extends FilterChoice implements PropertyChangeListene
             fireMatchAll();
         } else if (context instanceof ContextAll) {
             fireMatchAll();
-        } else if (context instanceof ContextMultiple) {
-            ContextMultiple m = (ContextMultiple)context;
+        } else if (context instanceof ContextMultiple m) {
             fireChanged(new ContextMatcher(m.getChosen()));
         } else {
             fireChanged(new ContextMatcher(context));
@@ -222,8 +221,7 @@ public class FilterContext extends FilterChoice implements PropertyChangeListene
         private final class RealActionListener implements ActionListener {
             public void actionPerformed(ActionEvent e) {
                 Object object = getSelectedItem();
-                if (object instanceof ContextMultiple) {
-                    ContextMultiple m = (ContextMultiple)object;
+                if (object instanceof ContextMultiple m) {
                     Vector<Context> all;
                     Data data = (Data)DataLookup.instance().lookup(Data.class);
                     if (data == null) {
@@ -287,8 +285,8 @@ public class FilterContext extends FilterChoice implements PropertyChangeListene
         if (context instanceof ContextAll) {
             return new String[] {ContextAll.ID};
         }
-        if (context instanceof ContextMultiple) {
-            Vector<Context> chosen = ((ContextMultiple)context).getChosen();
+        if (context instanceof ContextMultiple contextMultiple) {
+            Vector<Context> chosen = contextMultiple.getChosen();
             if (chosen == null || chosen.isEmpty()) {
                 return null;
             }
@@ -318,8 +316,7 @@ public class FilterContext extends FilterChoice implements PropertyChangeListene
             }
         } else if (values.length > 1) {
             Object o = combo.getItemAt(1);
-            if (o instanceof ContextMultiple) {
-                ContextMultiple multiple = (ContextMultiple)o;
+            if (o instanceof ContextMultiple multiple) {
                 Vector<Context> chosen = new Vector<>();
                 for (String name : values) {
                     Context context = getContext(name);

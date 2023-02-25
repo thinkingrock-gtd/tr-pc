@@ -339,8 +339,8 @@ final class CalendarPrefsPanel extends javax.swing.JPanel {
 
         @Override
         public boolean equals(Object object) {
-            if (object instanceof SynchronizerItem) {
-                return id.equals(((SynchronizerItem) object).id);
+            if (object instanceof SynchronizerItem item) {
+                return id.equals(item.id);
             } else {
                 return false;
             }

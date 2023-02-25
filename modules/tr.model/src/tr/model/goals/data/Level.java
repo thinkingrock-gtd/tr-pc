@@ -70,8 +70,8 @@ public class Level implements Serializable {
 
     @Override
     public boolean equals(Object that) {
-        if (that instanceof Level) {
-            return ((Level)that).getID() == this.getID();
+        if (that instanceof Level level) {
+            return level.getID() == this.getID();
         }
         return false;
     }

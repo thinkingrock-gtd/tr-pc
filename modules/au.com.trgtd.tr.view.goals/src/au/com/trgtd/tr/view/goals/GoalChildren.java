@@ -115,8 +115,8 @@ public class GoalChildren extends Children.Keys<Object> implements PropertyChang
 
     @Override
     protected Node[] createNodes(Object key) {
-        if (key instanceof GoalCtrl) {
-            return new Node[]{new GoalNode(view, goalCtrl, (GoalCtrl) key)};
+        if (key instanceof GoalCtrl ctrl) {
+            return new Node[]{new GoalNode(view, goalCtrl, ctrl)};
         } else {
             return new Node[]{new GoalProjectsNode(goalCtrl)};
         }
@@ -124,11 +124,11 @@ public class GoalChildren extends Children.Keys<Object> implements PropertyChang
 
     void bump() {
         for (Node node : getNodes()) {
-            if (node instanceof GoalNode) {
-                ((GoalNode)node).bump();
+            if (node instanceof GoalNode goalNode) {
+                goalNode.bump();
             }
-            else if (node instanceof GoalProjectsNode) {
-                ((GoalProjectsNode)node).bump();
+            else if (node instanceof GoalProjectsNode goalProjectsNode) {
+                goalProjectsNode.bump();
             }
 
         }
@@ -211,8 +211,8 @@ public class GoalChildren extends Children.Keys<Object> implements PropertyChang
             List<Integer> reorderedIDs = new ArrayList<>(perm.length);
             for (int index : perm ) {
                 Object key = keys.get(index);
-                if (key instanceof GoalCtrl) {
-                    reorderedIDs.add(((GoalCtrl)key).getID());
+                if (key instanceof GoalCtrl ctrl) {
+                    reorderedIDs.add(ctrl.getID());
                 }
             }            
             goalCtrl.reorderSubgoals(reorderedIDs);

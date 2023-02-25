@@ -121,8 +121,7 @@ public class PeriodMonth extends Period {
 
     @Override
     public boolean equals(Object object) {
-        if (object instanceof PeriodMonth) {
-            PeriodMonth other = (PeriodMonth) object;
+        if (object instanceof PeriodMonth other) {
             if (option != other.option) {
                 return false;
             }

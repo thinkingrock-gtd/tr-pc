@@ -57,11 +57,11 @@ public class RenderableMessage implements Renderable {
 
         n++;
 
-        if (part.getContent() instanceof Multipart) {
+        if (part.getContent() instanceof Multipart mp) {
 
 //            LOG.log(Level.INFO, "EXTRACT PART ({0}) Multipart", n);
 
-            return handleMultipart((Multipart) part.getContent());
+            return handleMultipart(mp);
         }
 
 //        LOG.log(Level.INFO, "EXTRACT PART ({0}) Content Type:{1}", new Object[]{n, part.getContentType()});

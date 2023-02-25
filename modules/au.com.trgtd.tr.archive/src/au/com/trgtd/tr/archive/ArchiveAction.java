@@ -446,10 +446,10 @@ public final class ArchiveAction extends CallableSystemAction implements LookupL
             set.add(project.getThought().getID());
         }
         for (Item item : project.getChildren()) {
-            if (item instanceof Action) {
-                getUsedThoughts(set, (Action)item);
-            } else if (item instanceof Project) {
-                getUsedThoughts(set, (Project)item);
+            if (item instanceof Action action) {
+                getUsedThoughts(set, action);
+            } else if (item instanceof Project prj) {
+                getUsedThoughts(set, prj);
             }
         }
     }

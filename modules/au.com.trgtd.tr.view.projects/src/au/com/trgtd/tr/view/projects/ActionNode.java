@@ -283,8 +283,8 @@ public class ActionNode extends AbstractNode implements EditCookie,
     @Override
     public Image getIcon(int type) {
         Icon icon = action.getIcon(false);
-        if (icon instanceof ImageIcon) {
-            return ((ImageIcon) icon).getImage();
+        if (icon instanceof ImageIcon imageIcon) {
+            return imageIcon.getImage();
         }
         return super.getIcon(type);
     }
@@ -396,8 +396,8 @@ public class ActionNode extends AbstractNode implements EditCookie,
             if (pt != null && pt.isOpened()) {
                 pt.requestActive();
                 Node rootNode = pt.getExplorerManager().getRootContext();
-                if (rootNode instanceof ProjectNode) {
-                    ((ProjectNode) rootNode).select(project);
+                if (rootNode instanceof ProjectNode projectNode) {
+                    projectNode.select(project);
                 }
             }
         } else {
@@ -405,8 +405,8 @@ public class ActionNode extends AbstractNode implements EditCookie,
             parent.add(index, project);
 
             // try to select new project
-            if (parentNode instanceof ProjectNode) {
-                ((ProjectNode) parentNode).select(project);
+            if (parentNode instanceof ProjectNode projectNode) {
+                projectNode.select(project);
             }
         }
     }
@@ -484,8 +484,8 @@ public class ActionNode extends AbstractNode implements EditCookie,
     @Override
     public void addAction() {
         Node parentNode = getParentNode();
-        if (parentNode instanceof AddActionCookie) {
-            ((AddActionCookie) parentNode).addAction(action);
+        if (parentNode instanceof AddActionCookie addActionCookie) {
+            addActionCookie.addAction(action);
         }
     }
 
@@ -498,8 +498,8 @@ public class ActionNode extends AbstractNode implements EditCookie,
     @Override
     public void addProject() {
         Node parentNode = getParentNode();
-        if (parentNode instanceof AddProjectCookie) {
-            ((AddProjectCookie) parentNode).addProject(action);
+        if (parentNode instanceof AddProjectCookie addProjectCookie) {
+            addProjectCookie.addProject(action);
         }
     }
 
@@ -511,8 +511,8 @@ public class ActionNode extends AbstractNode implements EditCookie,
     @Override
     public boolean canAddAction() {
         Node parentNode = getParentNode();
-        if (parentNode instanceof AddActionCookie) {
-            return ((AddActionCookie) parentNode).canAddAction();
+        if (parentNode instanceof AddActionCookie addActionCookie) {
+            return addActionCookie.canAddAction();
         }
         return false;
     }

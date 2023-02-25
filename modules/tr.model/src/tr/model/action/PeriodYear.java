@@ -108,8 +108,7 @@ public class PeriodYear extends Period {
 
     @Override
     public boolean equals(Object object) {
-        if (object instanceof PeriodYear) {
-            PeriodYear other = (PeriodYear) object;
+        if (object instanceof PeriodYear other) {
             if (!selectedMonths.equals(other.selectedMonths)) {
                 return false;
             }

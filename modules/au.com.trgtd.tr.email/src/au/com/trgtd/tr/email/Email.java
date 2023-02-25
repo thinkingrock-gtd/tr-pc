@@ -159,8 +159,8 @@ public class Email extends Thread {
             LOG.log(Level.INFO, "Total messages: {0}", email.getMessageCount());
 
             POP3Folder pop3folder = null;
-            if (folder instanceof POP3Folder) {
-                pop3folder = (POP3Folder) folder;
+            if (folder instanceof POP3Folder p3f) {
+                pop3folder = p3f;
                 LOG.info("POP3 Folder");
             } else {
                 LOG.info("Not POP3 Folder");

@@ -68,8 +68,8 @@ public class ReviewActionsTableFormat implements AdvancedTableFormat, WritableTa
     public Object getColumnValue(Object object, int column) {
         
         Action action;
-        if (object instanceof Action) {
-            action = (Action)object;
+        if (object instanceof Action a) {
+            action = a;
         } else {
 //            throw new IllegalStateException("Row data missing.");
             return null;

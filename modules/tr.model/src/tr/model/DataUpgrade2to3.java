@@ -66,10 +66,10 @@ public class DataUpgrade2to3 {
     private static void processProject(Project project) {
         // process children
         for (Item child : project.getChildren()) {
-            if (child instanceof Action) {
-                processAction((Action) child);
-            } else if (child instanceof Project) {
-                processProject((Project) child);
+            if (child instanceof Action action) {
+                processAction(action);
+            } else if (child instanceof Project prj) {
+                processProject(prj);
             }
         }
     }

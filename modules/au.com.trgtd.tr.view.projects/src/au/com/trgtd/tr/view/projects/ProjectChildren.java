@@ -83,11 +83,11 @@ public class ProjectChildren extends Children.Keys implements Observer, ChangeLi
         if (key instanceof ProjectGoalsNode) {
             return new Node[]{goalsNode};
         }
-        if (key instanceof Project) {
-            return new Node[]{new ProjectNode((Project) key, showDone)};
+        if (key instanceof Project project1) {
+            return new Node[]{new ProjectNode(project1, showDone)};
         }
-        if (key instanceof Action) {
-            return new Node[]{new ActionNode((Action) key)};
+        if (key instanceof Action action) {
+            return new Node[]{new ActionNode(action)};
         }
         return new Node[]{};
     }
@@ -213,19 +213,19 @@ public class ProjectChildren extends Children.Keys implements Observer, ChangeLi
 
             Vector<Item> srcItems = new Vector<>();
             for (int i = 0; i < perms.length; i++) {
-                if (nodes[i] instanceof ProjectNode) {
-                    srcItems.add(((ProjectNode) nodes[i]).project);
-                } else if (nodes[i] instanceof ActionNode) {
-                    srcItems.add(((ActionNode) nodes[i]).action);
+                if (nodes[i] instanceof ProjectNode projectNode) {
+                    srcItems.add(projectNode.project);
+                } else if (nodes[i] instanceof ActionNode actionNode) {
+                    srcItems.add(actionNode.action);
                 }
             }
 
             Vector<Item> dstItems = new Vector<>();
             for (int i = 0; i < perms.length; i++) {
-                if (nodes[perms[i]] instanceof ProjectNode) {
-                    dstItems.add(((ProjectNode) nodes[perms[i]]).project);
-                } else if (nodes[perms[i]] instanceof ActionNode) {
-                    dstItems.add(((ActionNode) nodes[perms[i]]).action);
+                if (nodes[perms[i]] instanceof ProjectNode projectNode) {
+                    dstItems.add(projectNode.project);
+                } else if (nodes[perms[i]] instanceof ActionNode actionNode) {
+                    dstItems.add(actionNode.action);
                 }
             }
 

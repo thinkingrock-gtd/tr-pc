@@ -263,11 +263,10 @@ public class ReviewActionsPanel extends JPanel implements ListSelectionListener,
 
     private FilterDone getDoneFilter() {
         MatcherEditor matcherEditor = filters.getMatcherEditor();
-        if (matcherEditor instanceof CompositeMatcherEditor) {
-            CompositeMatcherEditor cme = (CompositeMatcherEditor) matcherEditor;
+        if (matcherEditor instanceof CompositeMatcherEditor cme) {
             for (Object filter : cme.getMatcherEditors().toArray()) {
-                if (filter instanceof FilterDone) {
-                    return (FilterDone) filter;
+                if (filter instanceof FilterDone filterDone) {
+                    return filterDone;
                 }
             }
         }
@@ -450,8 +449,7 @@ public class ReviewActionsPanel extends JPanel implements ListSelectionListener,
             return;            
         }
         EventQueue.invokeLater(() -> {
-            if (observable instanceof Action) {
-                Action observedAction = (Action) observable;
+            if (observable instanceof Action observedAction) {
                 for (Action selectedAction : selectionModel.getSelected()) {
                     if (selectedAction.getID() != observedAction.getID()) {
                         clearSelection();
@@ -461,17 +459,15 @@ public class ReviewActionsPanel extends JPanel implements ListSelectionListener,
                 refresh();
                 return;
             }
-            if (observable instanceof Project) {
-                Project obsProject = (Project) observable;
+            if (observable instanceof Project obsProject) {
                 clearSelection();
                 if (argument == null) {
                     // change to project itself
                     actionsTable.validate();
                     actionsTable.repaint();
                     refresh();
-                } else if (argument instanceof Action) {
+                } else if (argument instanceof Action action) {
                     // added or removed action
-                    Action action = (Action) argument;
                     Lock lock = actionsEventList.getReadWriteLock().writeLock();
                     lock.lock();
                     if (obsProject.contains(action)) {
@@ -483,10 +479,8 @@ public class ReviewActionsPanel extends JPanel implements ListSelectionListener,
                         selectionModel.clearSelection();
                         actionsProvider.provide(Collections.EMPTY_LIST);
                     }
-                } else if (argument instanceof Project) {
+                } else if (argument instanceof Project argProject) {
                     // added or removed project
-                    Project argProject = (Project) argument;
-
                     List<Action> actions = Services.instance.getActionDecendants(argProject);
                     if (actions == null || actions.isEmpty()) {
                         return;

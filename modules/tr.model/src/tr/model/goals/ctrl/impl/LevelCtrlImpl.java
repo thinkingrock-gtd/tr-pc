@@ -53,8 +53,8 @@ public class LevelCtrlImpl extends CtrlImpl implements LevelCtrl {
 
     @Override
     public boolean equals(Object that) {
-        if (that instanceof LevelCtrl) {
-            return ((LevelCtrl)that).getID() == this.getID();
+        if (that instanceof LevelCtrl levelCtrl) {
+            return levelCtrl.getID() == this.getID();
         }
         return false;
     }

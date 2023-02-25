@@ -265,10 +265,10 @@ public class DateField extends JComponent implements ActionListener, FocusListen
     private void popupCalendar() {
         if (dateChooser == null) {
             Window parent = SwingUtilities.windowForComponent(this);
-            if (parent instanceof Frame) {
-                dateChooser = new DateChooser((Frame)parent);
-            } else if (parent instanceof Dialog) {
-                dateChooser = new DateChooser((Dialog)parent);
+            if (parent instanceof Frame frame) {
+                dateChooser = new DateChooser(frame);
+            } else if (parent instanceof Dialog dialog) {
+                dateChooser = new DateChooser(dialog);
             } else {
                 dateChooser = new DateChooser(new Frame());
             }

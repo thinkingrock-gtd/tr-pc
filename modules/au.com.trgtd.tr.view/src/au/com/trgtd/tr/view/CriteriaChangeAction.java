@@ -95,8 +95,8 @@ public class CriteriaChangeAction extends CookieAction {
         jd.setVisible(true);
 
         Object value = op.getValue() ;
-        if (value instanceof Integer) {
-            if (((Integer)value).intValue() == JOptionPane.OK_OPTION) {
+        if (value instanceof Integer integer) {
+            if (integer.intValue() == JOptionPane.OK_OPTION) {
                 changeCriteria(nodes, panel.getCriteria(), panel.getValue());
             }
         }

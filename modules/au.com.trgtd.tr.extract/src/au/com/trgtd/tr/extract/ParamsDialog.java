@@ -248,20 +248,17 @@ public class ParamsDialog extends JDialog {
     public void transferSelectionValues() {
         for (int i = 0; i < components.size(); i++) {
             JComponent c = components.get(i);
-            if (c instanceof DateCombo) {
-                DateCombo dateCombo = (DateCombo) c;
+            if (c instanceof DateCombo dateCombo) {
                 DateItem dateItem = (DateItem) dateCombo.getSelectedItem();
                 if (dateItem == null) {
                     params.get(i).setValue(null);
                 } else {
                     params.get(i).setValue(Long.toString(dateItem.value));
                 }
-            } else if (c instanceof JComboBox) {
-                JComboBox combo = (JComboBox) c;
+            } else if (c instanceof JComboBox combo) {
                 Item item = (Item) combo.getSelectedItem();
                 params.get(i).setValue(item.value);
-            } else if (c instanceof JCheckBox) {
-                JCheckBox checkbox = (JCheckBox) c;
+            } else if (c instanceof JCheckBox checkbox) {
                 params.get(i).setValue(Boolean.toString(checkbox.isSelected()));
             }
         }

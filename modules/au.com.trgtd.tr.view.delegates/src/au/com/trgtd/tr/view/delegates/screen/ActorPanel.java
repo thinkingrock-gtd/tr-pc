@@ -265,22 +265,20 @@ public class ActorPanel extends JPanel implements ListSelectionListener, Observe
      */
     @Override
     public void update(final Observable observable, final Object object) {
-        if (object instanceof Manager.EventAdd) {
-            Manager.EventAdd event = (Manager.EventAdd)object;
+        if (object instanceof Manager.EventAdd event) {
             Lock lock = actorEventList.getReadWriteLock().writeLock();
             lock.lock();
             actorEventList.add((Actor)event.item);
             lock.unlock();
-        } else if (object instanceof Manager.EventRemove) {
-            Manager.EventRemove event = (Manager.EventRemove)object;
+        } else if (object instanceof Manager.EventRemove event) {
             Lock lock = actorEventList.getReadWriteLock().writeLock();
             lock.lock();
             actorEventList.remove(event.item);
             lock.unlock();
-        } else if (observable instanceof Actor) {
+        } else if (observable instanceof Actor actor) {
             Lock lock = actorEventList.getReadWriteLock().writeLock();
             lock.lock();
-            Actor item = (Actor)observable;
+            Actor item = actor;
             int index = actorEventList.indexOf(item);
             if (index > -1) {
                 actorEventList.set(index, item);

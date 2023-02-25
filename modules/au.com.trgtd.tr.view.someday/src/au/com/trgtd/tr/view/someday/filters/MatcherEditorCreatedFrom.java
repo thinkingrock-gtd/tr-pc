@@ -67,8 +67,8 @@ public class MatcherEditorCreatedFrom extends MatcherEditorBase
     }
     
     public void setSerializable(Serializable serializable) {
-        if (serializable instanceof DateItem) {
-            dateCombo.setSelectedItem((DateItem)serializable);
+        if (serializable instanceof DateItem dateItem) {
+            dateCombo.setSelectedItem(dateItem);
         } else {
             dateCombo.setSelectedItem(null);
         }

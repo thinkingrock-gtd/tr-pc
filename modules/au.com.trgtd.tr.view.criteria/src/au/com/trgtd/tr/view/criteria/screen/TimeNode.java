@@ -151,8 +151,8 @@ final class TimeNode extends AbstractNode implements EditCookie, Observer {
         Object selectedItem = cb.getSelectedItem();
         if (selectedItem instanceof NullItem) {
             replacement = null;
-        } else if (selectedItem instanceof Value) {
-            replacement = (Value)selectedItem;
+        } else if (selectedItem instanceof Value value1) {
+            replacement = value1;
         } else {
             return;
         }

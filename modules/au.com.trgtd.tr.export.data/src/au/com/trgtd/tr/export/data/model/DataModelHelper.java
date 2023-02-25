@@ -114,11 +114,11 @@ class DataModelHelper {
     }
 
     public ItemBean convertItem(Item item, int order) {
-        if (item instanceof Action) {
-            return convertAction((Action) item, order);
+        if (item instanceof Action action) {
+            return convertAction(action, order);
         }
-        if (item instanceof Project) {
-            return convertProject((Project) item, order);
+        if (item instanceof Project project) {
+            return convertProject(project, order);
         }
         throw new IllegalArgumentException("Item is not an action or a project.");
     }
@@ -173,29 +173,29 @@ class DataModelHelper {
         if (object == null) {
             return null;
         }
-        if (object instanceof Action) {
-            return ((Action) object).getID();
+        if (object instanceof Action action) {
+            return action.getID();
         }
-        if (object instanceof Project) {
-            int id = ((Project) object).getID();
+        if (object instanceof Project project) {
+            int id = project.getID();
             return id < Constants.ID_MAX_SPECIAL ? null : id;
         }
-        if (object instanceof Actor) {
-            return ((Actor) object).getID();
+        if (object instanceof Actor actor) {
+            return actor.getID();
         }
-        if (object instanceof Context) {
-            int id = ((Context) object).getID();
+        if (object instanceof Context context) {
+            int id = context.getID();
             return id == ID_DEFAULT_CONTEXT ? null : id;
         }
-        if (object instanceof Topic) {
-            int id = ((Topic) object).getID();
+        if (object instanceof Topic topic) {
+            int id = topic.getID();
             return id == ID_DEFAULT_TOPIC ? null : id;
         }
-        if (object instanceof Thought) {
-            return ((Thought) object).getID();
+        if (object instanceof Thought thought) {
+            return thought.getID();
         }
-        if (object instanceof Value) {
-            return ((Value) object).getID();
+        if (object instanceof Value value) {
+            return value.getID();
         }
         throw new IllegalArgumentException("Object not recognized.");
     }

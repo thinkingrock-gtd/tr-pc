@@ -97,8 +97,8 @@ public class ColumnsDialog extends JDialog {
         // left justify headings
         JTableHeader tableHeader = t.getTableHeader();
         TableCellRenderer tcr = tableHeader.getDefaultRenderer();
-        if (tcr instanceof DefaultTableCellRenderer) {
-            ((DefaultTableCellRenderer)tcr).setHorizontalAlignment(SwingConstants.LEFT);
+        if (tcr instanceof DefaultTableCellRenderer renderer) {
+            renderer.setHorizontalAlignment(SwingConstants.LEFT);
         }
         
         // set renderers and column sizes

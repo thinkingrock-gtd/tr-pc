@@ -76,8 +76,7 @@ public class ActorsListCellRenderer extends JLabel implements ListCellRenderer {
         JLabel lbl = (JLabel)std.getListCellRendererComponent(list, value, index, isSelected, cellHasFocus);
 
 //        if (!isSelected) {
-            if (value instanceof Actor) {
-                Actor actor = (Actor) value;
+            if (value instanceof Actor actor) {
                 if (actor.isInactive()) {
                     lbl.setText("<HTML><STRIKE>" + actor.getName() + "</STRIKE></HTML>");
                 } else {

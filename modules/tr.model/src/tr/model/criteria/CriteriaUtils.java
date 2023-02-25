@@ -140,14 +140,13 @@ public class CriteriaUtils {
     private boolean _isUsedTime(Project project, Value time) {
         // check project children
         for (Item child : project.getChildren()) {
-            if (child instanceof Action) {
-                Action action = (Action) child;
+            if (child instanceof Action action) {
                 if (Utils.equal(action.getTime(), time)) {
                     return true;
                 }
-            } else if (child instanceof Project) {
+            } else if (child instanceof Project prj) {
                 // recursive call for child project
-                if (_isUsedTime((Project) child, time)) {
+                if (_isUsedTime(prj, time)) {
                     return true;
                 }
             }
@@ -159,14 +158,13 @@ public class CriteriaUtils {
     private boolean _isUsedEnergy(Project project, Value energy) {
         // check project children
         for (Item child : project.getChildren()) {
-            if (child instanceof Action) {
-                Action action = (Action)child;
+            if (child instanceof Action action) {
                 if (Utils.equal(action.getEnergy(), energy)) {
                     return true;
                 }
-            } else if (child instanceof Project) {
+            } else if (child instanceof Project prj) {
                 // recursive call for child project
-                if (_isUsedEnergy((Project) child, energy)) {
+                if (_isUsedEnergy(prj, energy)) {
                     return true;
                 }
             }
@@ -178,14 +176,13 @@ public class CriteriaUtils {
     private boolean _isUsedPriority(Project project, Value priority) {
         // check project children
         for (Item child : project.getChildren()) {
-            if (child instanceof Action) {
-                Action action = (Action) child;
+            if (child instanceof Action action) {
                 if (Utils.equal(action.getPriority(), priority)) {
                     return true;
                 }
-            } else if (child instanceof Project) {
+            } else if (child instanceof Project prj) {
                 // recursive call for child project
-                if (_isUsedPriority((Project) child, priority)) {
+                if (_isUsedPriority(prj, priority)) {
                     return true;
                 }
             }
@@ -225,13 +222,12 @@ public class CriteriaUtils {
     // Recursively replace time in a project and decendants.
     private void _replaceTime(Project project, Value oldTime, Value newTime) {
         for (Item child : project.getChildren()) {
-            if (child instanceof Action) {
-                Action action = (Action) child;
+            if (child instanceof Action action) {
                 if (Utils.equal(action.getTime(), oldTime)) {
                     action.setTime(newTime);
                 }
-            } else if (child instanceof Project) {
-                _replaceTime((Project) child, oldTime, newTime);
+            } else if (child instanceof Project prj) {
+                _replaceTime(prj, oldTime, newTime);
             }
         }
     }
@@ -268,13 +264,12 @@ public class CriteriaUtils {
     // Recursively replace energy in a project and decendants.
     private void _replaceEnergy(Project project, Value oldEnergy, Value newEnergy) {
         for (Item child : project.getChildren()) {
-            if (child instanceof Action) {
-                Action action = (Action) child;
+            if (child instanceof Action action) {
                 if (Utils.equal(action.getEnergy(), oldEnergy)) {
                     action.setEnergy(newEnergy);
                 }
-            } else if (child instanceof Project) {
-                _replaceEnergy((Project) child, oldEnergy, newEnergy);
+            } else if (child instanceof Project prj) {
+                _replaceEnergy(prj, oldEnergy, newEnergy);
             }
         }
     }
@@ -312,13 +307,12 @@ public class CriteriaUtils {
     // Recursively replace priority in a project and decendants.
     private void _replacePriority(Project project, Value oldPriority, Value newPriority) {
         for (Item child : project.getChildren()) {
-            if (child instanceof Action) {
-                Action action = (Action) child;
+            if (child instanceof Action action) {
                 if (Utils.equal(action.getPriority(), oldPriority)) {
                     action.setPriority(newPriority);
                 }
-            } else if (child instanceof Project) {
-                _replacePriority((Project) child, oldPriority, newPriority);
+            } else if (child instanceof Project prj) {
+                _replacePriority(prj, oldPriority, newPriority);
             }
         }
     }

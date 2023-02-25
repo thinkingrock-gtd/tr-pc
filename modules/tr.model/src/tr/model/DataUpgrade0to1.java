@@ -71,10 +71,10 @@ public class DataUpgrade0to1 {
 //        for (Iterator iter = project.iterator(); iter.hasNext();) {
         for (Iterator<Item> i = project.iterator(Item.class); i.hasNext();) {
             Item child = i.next();
-            if (child instanceof Action) {
-                processAction((Action)child);
-            } else if (child instanceof Project) {
-                processProject((Project)child);
+            if (child instanceof Action action) {
+                processAction(action);
+            } else if (child instanceof Project project1) {
+                processProject(project1);
             }
         }
     }
@@ -89,11 +89,9 @@ public class DataUpgrade0to1 {
     // Process an action.
     private static void processAction(Action action) {
         ActionState state = action.getState();
-        if (state instanceof ActionStateDelegated) {
-            ActionStateDelegated asd = (ActionStateDelegated)state;
+        if (state instanceof ActionStateDelegated asd) {
             asd.setDate(clearTime(asd.getDate()));
-        } else if (state instanceof ActionStateScheduled) {
-            ActionStateScheduled ass = (ActionStateScheduled)state;
+        } else if (state instanceof ActionStateScheduled ass) {
             ass.setDate(clearTime(ass.getDate()));
         }
     }

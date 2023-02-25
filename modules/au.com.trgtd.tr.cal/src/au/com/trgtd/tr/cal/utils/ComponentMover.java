@@ -17,7 +17,6 @@
  */
 package au.com.trgtd.tr.cal.utils;
 
-import au.com.trgtd.tr.cal.view.EventPanel;
 import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
@@ -259,8 +258,7 @@ public final class ComponentMover extends MouseAdapter {
         //  Making sure autoscrolls is false will allow for smoother dragging of
         //  individual components
 
-        if (destination instanceof JComponent) {
-            JComponent jc = (JComponent) destination;
+        if (destination instanceof JComponent jc) {
             autoscrolls = jc.getAutoscrolls();
             jc.setAutoscrolls(false);
         }
@@ -356,15 +354,15 @@ public final class ComponentMover extends MouseAdapter {
             source.setCursor(originalCursor);
         }
 
-        if (destination instanceof JComponent) {
-            ((JComponent) destination).setAutoscrolls(autoscrolls);
+        if (destination instanceof JComponent jc) {
+            jc.setAutoscrolls(autoscrolls);
         }
 
         //  Layout the components on the parent container
 
         if (autoLayout) {
-            if (destination instanceof JComponent) {
-                ((JComponent) destination).revalidate();
+            if (destination instanceof JComponent jc) {
+                jc.revalidate();
             } else {
                 destination.validate();
             }

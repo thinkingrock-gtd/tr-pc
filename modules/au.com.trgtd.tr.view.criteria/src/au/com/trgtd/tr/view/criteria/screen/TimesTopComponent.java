@@ -211,8 +211,8 @@ public final class TimesTopComponent extends Window implements ExplorerManager.P
                     "Cannot find " + PREFERRED_ID + " component. It will not be located properly in the window system.");
             return getDefault();
         }
-        if (win instanceof TimesTopComponent) {
-            return (TimesTopComponent) win;
+        if (win instanceof TimesTopComponent comp) {
+            return comp;
         }
         Logger.getLogger(TimesTopComponent.class.getName()).warning(
                 "There seem to be multiple components with the '" + PREFERRED_ID +

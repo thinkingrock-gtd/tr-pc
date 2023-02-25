@@ -184,8 +184,7 @@ public class ReferencesTableFormat implements AdvancedTableFormat {
             JLabel label = new JLabel("");
             label.setOpaque(true);
             
-            if (value instanceof ColoredDate) {
-                ColoredDate cd = (ColoredDate)value;
+            if (value instanceof ColoredDate cd) {
                 if (isSelected) {
                     label.setBackground(table.getSelectionBackground());
                     label.setForeground(table.getSelectionForeground());
@@ -208,8 +207,7 @@ public class ReferencesTableFormat implements AdvancedTableFormat {
             JLabel label = new JLabel("");
             label.setOpaque(true);
             
-            if (value instanceof ColoredString) {
-                ColoredString cs = (ColoredString)value;
+            if (value instanceof ColoredString cs) {
                 if (isSelected) {
                     label.setBackground(table.getSelectionBackground());
                     label.setForeground(table.getSelectionForeground());
@@ -234,8 +232,7 @@ public class ReferencesTableFormat implements AdvancedTableFormat {
             
             label.setOpaque(true);
             
-            if (value instanceof Topic) {
-                Topic topic = (Topic)value;
+            if (value instanceof Topic topic) {
                 if (isSelected) {
                     label.setBackground(table.getSelectionBackground());
                     label.setForeground(table.getSelectionForeground());

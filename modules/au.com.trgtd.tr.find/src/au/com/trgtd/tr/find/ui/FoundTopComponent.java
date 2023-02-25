@@ -116,8 +116,8 @@ public class FoundTopComponent extends TopComponent implements StayOpen, Explore
                     "Cannot find " + PREFERRED_ID + " component. It will not be located properly in the window system.");
             return getDefault();
         }
-        if (win instanceof FoundTopComponent) {
-            return (FoundTopComponent) win;
+        if (win instanceof FoundTopComponent foundTopComponent) {
+            return foundTopComponent;
         }
         Logger.getLogger(FoundTopComponent.class.getName()).warning(
                 "There seem to be multiple components with the '" + PREFERRED_ID +

@@ -252,8 +252,8 @@ public final class PrioritiesTopComponent extends Window implements ExplorerMana
                     "Cannot find " + PREFERRED_ID + " component. It will not be located properly in the window system.");
             return getDefault();
         }
-        if (win instanceof PrioritiesTopComponent) {
-            return (PrioritiesTopComponent) win;
+        if (win instanceof PrioritiesTopComponent comp) {
+            return comp;
         }
         Logger.getLogger(PrioritiesTopComponent.class.getName()).warning(
                 "There seem to be multiple components with the '" + PREFERRED_ID +
