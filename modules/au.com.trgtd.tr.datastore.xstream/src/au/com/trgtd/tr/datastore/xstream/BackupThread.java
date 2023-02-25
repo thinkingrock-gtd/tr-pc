@@ -137,17 +137,13 @@ public class BackupThread extends Thread {
 
         final String regex = prefix.toLowerCase() + "\\.\\d{8}-\\d{9}\\.bak\\.(trx|xml)";
 
-        FileFilter filter = new FileFilter() {
-            @Override
-            public boolean accept(File file) {
-                return file.isFile() && file.getName().toLowerCase().matches(regex);
-            }
-        };
-        
+        FileFilter filter = (File file) -> file.isFile()
+                && file.getName().toLowerCase().matches(regex);
+
         List<File> recoveryFiles = new ArrayList();
         Collections.addAll(recoveryFiles, dir.listFiles(filter));
         
-        if (recoveryFiles.size() > 0) {
+        if (!recoveryFiles.isEmpty()) {
             Collections.sort(recoveryFiles, new DescendingFilenameComparator());
             return recoveryFiles.get(0);
         } else {

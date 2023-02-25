@@ -502,8 +502,7 @@ public final class ReviewActionsTopComponent extends Window implements ActionsPr
                 String bg = "white";
                 boolean strike = false;
 
-                if (value instanceof StyledString) {
-                    StyledString ss = (StyledString) value;
+                if (value instanceof StyledString ss) {
                     if (useColour) {
                         fg = HTML.format(ss.getForeground());
                         bg = HTML.format(ss.getBackground());

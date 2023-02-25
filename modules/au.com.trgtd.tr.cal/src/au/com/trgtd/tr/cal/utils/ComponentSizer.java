@@ -17,7 +17,6 @@
  */
 package au.com.trgtd.tr.cal.utils;
 
-import au.com.trgtd.tr.cal.view.EventPanel;
 import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
@@ -306,8 +305,7 @@ public final class ComponentSizer extends MouseAdapter {
         //  Making sure autoscrolls is false will allow for smoother resizing
         //  of components
 
-        if (source instanceof JComponent) {
-            JComponent jc = (JComponent) source;
+        if (source instanceof JComponent jc) {
             autoscrolls = jc.getAutoscrolls();
             jc.setAutoscrolls(false);
         }
@@ -323,8 +321,8 @@ public final class ComponentSizer extends MouseAdapter {
         Component source = e.getComponent();
         source.setCursor(sourceCursor);
 
-        if (source instanceof JComponent) {
-            ((JComponent) source).setAutoscrolls(autoscrolls);
+        if (source instanceof JComponent jc) {
+            jc.setAutoscrolls(autoscrolls);
 
 
 // JIM            

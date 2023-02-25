@@ -100,8 +100,8 @@ public final class CollectThoughtsTopComponent extends Window implements Thought
             ErrorManager.getDefault().log(ErrorManager.WARNING, "Cannot find collect thoughts component. It will not be located properly in the window system.");
             return getDefault();
         }
-        if (win instanceof CollectThoughtsTopComponent) {
-            return (CollectThoughtsTopComponent) win;
+        if (win instanceof CollectThoughtsTopComponent comp) {
+            return comp;
         }
         ErrorManager.getDefault().log(ErrorManager.WARNING, "There seem to be multiple components with the '" + PREFERRED_ID + "' ID. That is a potential source of errors and unexpected behavior.");
         return getDefault();

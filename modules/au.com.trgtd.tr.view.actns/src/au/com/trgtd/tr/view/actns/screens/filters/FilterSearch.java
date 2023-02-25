@@ -265,12 +265,12 @@ public final class FilterSearch extends FilterChoice implements PropertyChangeLi
         
         public String getSearchString() {
             Object object = getSelectedItem();
-            if (object instanceof String) {
-                return ((String)object).trim().toLowerCase();
+            if (object instanceof String string) {
+                return string.trim().toLowerCase();
             }
             object = getEditingText();
-            if (object instanceof String) {
-                return ((String)object).trim().toLowerCase();
+            if (object instanceof String string) {
+                return string.trim().toLowerCase();
             }
             return null;
         }

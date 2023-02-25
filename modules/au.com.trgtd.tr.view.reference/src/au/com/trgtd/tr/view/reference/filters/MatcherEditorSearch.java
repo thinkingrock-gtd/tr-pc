@@ -149,8 +149,8 @@ public class MatcherEditorSearch extends MatcherEditorBase implements PropertyCh
         private ActionListener listener = (ActionEvent e) -> {
             setString(null);
             Object object = getSelectedItem();
-            if (object instanceof String) {
-                String string1 = ((String)object).trim();
+            if (object instanceof String str) {
+                String string1 = str.trim();
                 if (string1.length() > 0) {
                     setString(string1);
                 }

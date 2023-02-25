@@ -29,6 +29,7 @@ import javax.swing.SwingUtilities;
 import org.openide.modules.ModuleInstall;
 import au.com.trgtd.tr.extract.prefs.ExtractPrefs;
 import au.com.trgtd.tr.util.UtilsFile;
+import java.util.logging.Level;
 
 /**
  * Extract cleanup install.
@@ -120,51 +121,46 @@ public class ExtractCleanInstall extends ModuleInstall {
         final Calendar ageDate = Calendar.getInstance();
         ageDate.add(Calendar.DAY_OF_YEAR, ExtractCleanPrefs.getCleanAgeDays() * -1);
 
-        log.fine("Deleting files older than: " + ageDate.getTime());
+        log.log(Level.FINE, "Deleting files older than: {0}", ageDate.getTime());
 
-        FileFilter filter = new FileFilter() {
-
-            public boolean accept(File file) {
-                if (file.isDirectory()) {
-                    return false;
-                }
-
-                String extn = UtilsFile.getExtension(file.getPath());
-                if (extn == null) {
-                    return false;
-                }
-
-                if (!extn.equalsIgnoreCase("txt") && !extn.equalsIgnoreCase("pdf") && !extn.equalsIgnoreCase("xml")) {
-                    return false;
-                }
-
-                String name = UtilsFile.removeExtension(file.getName());
-                if (name.length() < 15) { // timestamp is 14 digits
-
-                    return false;
-                }
-
-                try {
-                    String timestamp = name.substring(name.length() - 14);
-                    Long.parseLong(timestamp); // check that it is a number
-
-                    Date date = Constants.DF_TIMESTAMP.parse(timestamp);
-                    if (date.before(ageDate.getTime())) {
-                        return true;
-                    }
-
-                } catch (Exception ex) {
-                }
+        FileFilter filter = (File file) -> {
+            if (file.isDirectory()) {
                 return false;
             }
+
+            String extn = UtilsFile.getExtension(file.getPath());
+            if (extn == null) {
+                return false;
+            }
+
+            if (!extn.equalsIgnoreCase("txt") && !extn.equalsIgnoreCase("pdf") && !extn.equalsIgnoreCase("xml")) {
+                return false;
+            }
+
+            String name = UtilsFile.removeExtension(file.getName());
+            if (name.length() < 15) { // timestamp is 14 digits
+                return false;
+            }
+
+            try {
+                String timestamp = name.substring(name.length() - 14);
+                Long.parseLong(timestamp); // check that it is a number
+
+                Date date = Constants.DF_TIMESTAMP.parse(timestamp);
+                if (date.before(ageDate.getTime())) {
+                    return true;
+                }
+            } catch (Exception ex) {
+            }
+            return false;
         };
 
         for (File file : folder.listFiles(filter)) {
 
-            log.fine("Deleting: " + file.getPath());
+            log.log(Level.FINE, "Deleting: {0}", file.getPath());
 
             if (!file.delete()) {
-                log.warning("Could not delete: " + file.getPath());
+                log.log(Level.WARNING, "Could not delete: {0}", file.getPath());
             }
         }
     }

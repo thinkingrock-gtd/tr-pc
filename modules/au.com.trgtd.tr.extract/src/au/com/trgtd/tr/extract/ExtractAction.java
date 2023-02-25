@@ -229,8 +229,7 @@ public class ExtractAction {
 
         ActionState state = action.getState();
 
-        if (state instanceof ActionStateScheduled) {
-            ActionStateScheduled s = (ActionStateScheduled) state;
+        if (state instanceof ActionStateScheduled s) {
             out.write("<state>");
             out.write("<type>SCHEDULED</type>");
             out.write("<created>" + DFN.format(s.getCreated()) + "</created>");
@@ -252,14 +251,12 @@ public class ExtractAction {
             }
             out.write("</state>\r\n");
         } else {
-            if (state instanceof ActionStateASAP) {
-                ActionStateASAP s = (ActionStateASAP) state;
+            if (state instanceof ActionStateASAP s) {
                 out.write("<state>");
                 out.write("<type>DOASAP</type>");
                 out.write("<created>" + DFN.format(s.getCreated()) + "</created>");
                 out.write("</state>\r\n");
-            } else if (state instanceof ActionStateDelegated) {
-                ActionStateDelegated s = (ActionStateDelegated) state;
+            } else if (state instanceof ActionStateDelegated s) {
                 out.write("<state>");
                 out.write("<type>DELEGATED</type>");
                 out.write("<created>" + DFN.format(s.getCreated()) + "</created>");                
@@ -269,8 +266,7 @@ public class ExtractAction {
                 out.write("<followup-date>" + (s.getDate() == null ? "" : DFN.format(s.getDate())) + "</followup-date>");
                 out.write("<followup-date-idx>" + (s.getDate() == null ? Long.MAX_VALUE : s.getDate().getTime()) + "</followup-date-idx>");
                 out.write("</state>\r\n");
-            } else if (state instanceof ActionStateInactive) {
-                ActionStateInactive s = (ActionStateInactive) state;
+            } else if (state instanceof ActionStateInactive s) {
                 out.write("<state>");
                 out.write("<type>INACTIVE</type>");
                 out.write("<created>" + DFN.format(s.getCreated()) + "</created>");
@@ -301,8 +297,7 @@ public class ExtractAction {
             path = project.getDescription();
         }
         Object object = project.getParent();
-        if (object instanceof Project) {
-            Project parent = (Project) object;
+        if (object instanceof Project parent) {
             if (!parent.isRoot()) {
                 return getProjectPath(parent, path);
             }

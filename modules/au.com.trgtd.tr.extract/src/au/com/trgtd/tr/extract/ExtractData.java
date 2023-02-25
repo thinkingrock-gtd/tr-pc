@@ -168,10 +168,10 @@ public class ExtractData {
         // extract project children
         for (Iterator<Item> i = project.iterator(Item.class); i.hasNext();) {
             Item child = i.next();
-            if (child instanceof Action) {
-                extractAction((Action) child);
-            } else if (child instanceof Project) {
-                extractProject((Project) child);
+            if (child instanceof Action action) {
+                extractAction(action);
+            } else if (child instanceof Project prj) {
+                extractProject(prj);
             }
         }
     }
@@ -251,7 +251,7 @@ public class ExtractData {
         out.write("</topics>\r\n");
         
         // Set the default topic key to the managed default topic key
-        if (data.getTopicManager().size() > 0) {
+        if (!data.getTopicManager().isEmpty()) {
             Topic def = (Topic)data.getTopicManager().get(0);
             Topic.getDefault().key = def.key;
         }
@@ -270,7 +270,7 @@ public class ExtractData {
         out.write("</contexts>\r\n");
         
         // Set the default context key to the managed default context key
-        if (data.getContextManager().size() > 0) {
+        if (!data.getContextManager().isEmpty()) {
             Context def = (Context)data.getContextManager().get(0);
             Context.getDefault().key = def.key;
         }
@@ -468,8 +468,7 @@ public class ExtractData {
         
         ActionState state = action.getState();
         
-        if (state instanceof ActionStateScheduled) {
-            ActionStateScheduled s = (ActionStateScheduled)state;
+        if (state instanceof ActionStateScheduled s) {
             out.write("<state type='SCHEDULED'>");
             out.write("<created>" + df.format(s.getCreated()) + "</created>");
             out.write("<date>" + (s.getDate() == null ? "" : df.format(s.getDate())) + "</date>");
@@ -477,20 +476,17 @@ public class ExtractData {
             out.write("<duration-mns>" + s.getDurationMinutes() + "</duration-mns>\r\n");
             out.write("</state>\r\n");
         } else {
-            if (state instanceof ActionStateASAP) {
-                ActionStateASAP s = (ActionStateASAP)state;
+            if (state instanceof ActionStateASAP s) {
                 out.write("<state type='ASAP'>");
                 out.write("<created>" + df.format(s.getCreated()) + "</created>");
                 out.write("</state>\r\n");
-            } else if (state instanceof ActionStateDelegated) {
-                ActionStateDelegated s = (ActionStateDelegated)state;
+            } else if (state instanceof ActionStateDelegated s) {
                 out.write("<state type='DELEGATED'>");
                 out.write("<created>" + df.format(s.getCreated()) + "</created>");
                 out.write("<to>" + escape(s.getTo()) + "</to>");
                 out.write("<date>" + (s.getDate() == null ? "" : df.format(s.getDate())) + "</date>");
                 out.write("</state>\r\n");
-            } else if (state instanceof ActionStateInactive) {
-                ActionStateInactive s = (ActionStateInactive)state;
+            } else if (state instanceof ActionStateInactive s) {
                 out.write("<state type='INACTIVE'>");
                 out.write("<created>" + df.format(s.getCreated()) + "</created>");
                 out.write("</state>\r\n");

@@ -54,10 +54,10 @@ public final class ProjectChooser {
     public ProjectChooserDialog getDialog() {
         synchronized(this) {
             if (dialog == null) {
-                if (owner instanceof Frame) {
-                    dialog = (title == null) ? new ProjectChooserDialog((Frame)owner) : new ProjectChooserDialog((Frame)owner, title);
-                } else if (owner instanceof Dialog) {
-                    dialog = (title == null) ? new ProjectChooserDialog((Dialog)owner) : new ProjectChooserDialog((Dialog)owner, title);
+                if (owner instanceof Frame frame) {
+                    dialog = (title == null) ? new ProjectChooserDialog(frame) : new ProjectChooserDialog(frame, title);
+                } else if (owner instanceof Dialog dlg) {
+                    dialog = (title == null) ? new ProjectChooserDialog(dlg) : new ProjectChooserDialog(dlg, title);
                 } else {
                     dialog = (title == null) ? new ProjectChooserDialog(new JFrame()) : new ProjectChooserDialog(new JFrame(), title);
                 }

@@ -211,8 +211,8 @@ public final class LevelsTopComponent extends Window implements ExplorerManager.
                     "Cannot find " + PREFERRED_ID + " component. It will not be located properly in the window system.");
             return getDefault();
         }
-        if (win instanceof LevelsTopComponent) {
-            return (LevelsTopComponent) win;
+        if (win instanceof LevelsTopComponent levelsTopComponent) {
+            return levelsTopComponent;
         }
         Logger.getLogger(LevelsTopComponent.class.getName()).warning(
                 "There seem to be multiple components with the '" + PREFERRED_ID +

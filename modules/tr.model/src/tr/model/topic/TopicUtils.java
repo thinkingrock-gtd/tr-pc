@@ -120,13 +120,13 @@ public class TopicUtils {
         }
         // check project children
         for (Item child : project.getChildren()) {            
-            if (child instanceof Action) {
-                if (((Action)child).getTopic().equals(topic)) {
+            if (child instanceof Action action) {
+                if (action.getTopic().equals(topic)) {
                     return true;
                 }
-            } else if (child instanceof Project) {
+            } else if (child instanceof Project prj) {
                 // recursive call for child project
-                if (isUsedTopic((Project)child, topic)) {
+                if (isUsedTopic(prj, topic)) {
                     return true;
                 }
             }
@@ -202,13 +202,12 @@ public class TopicUtils {
             project.setTopic(replacement);
         }
         for (Item child : project.getChildren()) {            
-            if (child instanceof Action) {
-                Action action = (Action)child;
+            if (child instanceof Action action) {
                 if (action.getTopic().equals(topic)) {
                     action.setTopic(replacement);
                 }
-            } else if (child instanceof Project) {
-                replaceTopic((Project)child, topic, replacement);
+            } else if (child instanceof Project prj) {
+                replaceTopic(prj, topic, replacement);
             }
         }
     }

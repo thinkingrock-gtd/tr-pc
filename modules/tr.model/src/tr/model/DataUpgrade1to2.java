@@ -75,10 +75,10 @@ public class DataUpgrade1to2 {
         // process children
         for (Iterator<Item> i = project.iterator(Item.class); i.hasNext();) {
             Item child = i.next();
-            if (child instanceof Action) {
-                processAction((Action)child);
-            } else if (child instanceof Project) {
-                processProject((Project)child);
+            if (child instanceof Action action) {
+                processAction(action);
+            } else if (child instanceof Project project1) {
+                processProject(project1);
             }
         }
     }
@@ -99,8 +99,7 @@ public class DataUpgrade1to2 {
         }
         // transfer due date from DoASAP state to Action.
         ActionState actionState = action.getState();
-        if (actionState instanceof ActionStateASAP) {
-            ActionStateASAP stateDoASAP = (ActionStateASAP)actionState;
+        if (actionState instanceof ActionStateASAP stateDoASAP) {
             action.setDueDate(stateDoASAP.getDueDate());
         }
     }

@@ -68,8 +68,7 @@ public class FilterTopic extends FilterChoice implements PropertyChangeListener 
             fireMatchAll();
         } else if (topic instanceof TopicAll) {
             fireMatchAll();
-        } else if (topic instanceof TopicMultiple) {
-            TopicMultiple multiple = (TopicMultiple)topic;
+        } else if (topic instanceof TopicMultiple multiple) {
             fireChanged(new TopicMatcher(multiple.getChosen()));
         } else {
             fireChanged(new TopicMatcher(topic));
@@ -95,9 +94,9 @@ public class FilterTopic extends FilterChoice implements PropertyChangeListener 
         if (topic instanceof TopicAll) {
             return new String[] { TopicAll.ID };
         }
-        if (topic instanceof TopicMultiple) {
-            Vector<Topic> chosen = ((TopicMultiple)topic).getChosen();
-            if (chosen == null || chosen.size() == 0) {
+        if (topic instanceof TopicMultiple topicMultiple) {
+            Vector<Topic> chosen = topicMultiple.getChosen();
+            if (chosen == null || chosen.isEmpty()) {
                 return null;
             }
             Vector<String> values = new Vector<>();
@@ -128,8 +127,7 @@ public class FilterTopic extends FilterChoice implements PropertyChangeListener 
             }
         } else if (values.length > 1) {
             Object object = combo.getItemAt(1);
-            if (object instanceof TopicMultiple) {
-                TopicMultiple multiple = (TopicMultiple)object;
+            if (object instanceof TopicMultiple multiple) {
                 Vector<Topic> chosen = new Vector<>();
                 for (String name : values) {
                     Topic topic = getTopic(name);
@@ -288,8 +286,7 @@ public class FilterTopic extends FilterChoice implements PropertyChangeListener 
         private final class RealActionListener implements ActionListener {
             public void actionPerformed(ActionEvent e) {
                 Object object = getSelectedItem();
-                if (object instanceof TopicMultiple) {
-                    TopicMultiple tm = (TopicMultiple)object;
+                if (object instanceof TopicMultiple tm) {
                     Vector<Topic> all;
                     Data data = (Data)DataLookup.instance().lookup(Data.class);
                     if (data == null) {

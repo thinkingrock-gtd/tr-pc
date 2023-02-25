@@ -407,8 +407,8 @@ public class DBoxSync104 extends Thread {
         // read in new thoughts from iPhone
         for (int i = 0; i < hsMsg.nbrNewThoughts; i++) {
             SyncMsg104 msg = SyncMsg104.getNextMsg(reader);
-            if (msg instanceof MsgThought) {
-                newThoughtMsgs[i] = (MsgThought) msg;
+            if (msg instanceof MsgThought msgThought) {
+                newThoughtMsgs[i] = msgThought;
                 LOG.log(Level.INFO, "Received: {0}", msg.toString());
             } else {
                 throw new Exception("Expected new thought message not found.");
@@ -419,8 +419,8 @@ public class DBoxSync104 extends Thread {
         // read in action updates from iPhone
         for (int i = 0; i < hsMsg.nbrUpdActions; i++) {
             SyncMsg104 msg = SyncMsg104.getNextMsg(reader);
-            if (msg instanceof MsgActionUpdate) {
-                updActionMsgs[i] = (MsgActionUpdate) msg;
+            if (msg instanceof MsgActionUpdate msgActionUpdate) {
+                updActionMsgs[i] = msgActionUpdate;
                 LOG.log(Level.INFO, "Received: {0}", msg.toString());
             } else {
                 throw new Exception("Expected update action message not found.");
@@ -431,8 +431,8 @@ public class DBoxSync104 extends Thread {
         // read in project updates from iPhone
         for (int i = 0; i < hsMsg.nbrUpdProjects; i++) {
             SyncMsg104 msg = SyncMsg104.getNextMsg(reader);
-            if (msg instanceof MsgProjectUpdate) {
-                updProjectMsgs[i] = (MsgProjectUpdate) msg;
+            if (msg instanceof MsgProjectUpdate msgProjectUpdate) {
+                updProjectMsgs[i] = msgProjectUpdate;
                 LOG.log(Level.INFO, "Received: {0}", msg.toString());
             } else {
                 throw new Exception("Expected update project message not found.");
@@ -443,8 +443,8 @@ public class DBoxSync104 extends Thread {
         // read in reference updates from iPhone
         for (int i = 0; i < hsMsg.nbrUpdReferences; i++) {
             SyncMsg104 msg = SyncMsg104.getNextMsg(reader);
-            if (msg instanceof MsgReferenceUpdate) {
-                updReferenceMsgs[i] = (MsgReferenceUpdate) msg;
+            if (msg instanceof MsgReferenceUpdate msgReferenceUpdate) {
+                updReferenceMsgs[i] = msgReferenceUpdate;
                 LOG.log(Level.INFO, "Received: {0}", msg.toString());
             } else {
                 throw new Exception("Expected update reference message not found.");

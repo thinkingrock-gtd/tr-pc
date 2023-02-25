@@ -135,12 +135,7 @@ public final class SyncPrefsDbx {
         return null;
     }
     
-    private final FileFilter directoriesOnlyFilter = new FileFilter() {
-        @Override
-        public boolean accept(File file) {
-            return file.isDirectory();
-        }
-    };
+    private final FileFilter directoriesOnlyFilter = File::isDirectory;
     
     /**
      * Gets the sync down file within the DropBox path.

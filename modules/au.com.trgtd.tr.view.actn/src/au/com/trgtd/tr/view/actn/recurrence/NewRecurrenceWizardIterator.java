@@ -62,8 +62,7 @@ public final class NewRecurrenceWizardIterator implements WizardDescriptor.Itera
             if (i < steps.length) {
                 steps[i] = c.getName();
             }
-            if (c instanceof JComponent) {
-                JComponent jc = (JComponent) c;
+            if (c instanceof JComponent jc) {
                 //Property changes
                 jc.addPropertyChangeListener(this);
 //              jc.putClientProperty("WizardPanel_contentSelectedIndex", i);

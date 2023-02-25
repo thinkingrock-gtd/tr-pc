@@ -64,8 +64,7 @@ public class FilterStatus extends FilterChoice implements PropertyChangeListener
             fireMatchAll();
         } else if (choice instanceof All) {
             fireMatchAll();
-        } else if (choice instanceof Multiple) {
-            Multiple m = (Multiple)choice;
+        } else if (choice instanceof Multiple m) {
             fireChanged(new StatusMatcher(m.getChosen()));
         } else {
             fireChanged(new StatusMatcher(choice));
@@ -84,8 +83,7 @@ public class FilterStatus extends FilterChoice implements PropertyChangeListener
         if (item == null) {
             return null;
         }
-        if (item instanceof Multiple) {
-            Multiple m = (Multiple)item;
+        if (item instanceof Multiple m) {
             if (m == null || m.getChosen() == null) {
                 return null;
             }
@@ -312,8 +310,7 @@ public class FilterStatus extends FilterChoice implements PropertyChangeListener
         private final class RealActionListener implements ActionListener {
             public void actionPerformed(ActionEvent e) {
                 Object object = getSelectedItem();
-                if (object instanceof Multiple) {
-                    Multiple m = (Multiple)object;
+                if (object instanceof Multiple m) {
                     MultiChoiceDialog d = new MultiChoiceDialog<>(StatusComboBox.this, options, m.getChosen(), true);
                     d.setTitle(NbBundle.getMessage(getClass(), "filter-status"));
                     d.setLocationRelativeTo(StatusComboBox.this);

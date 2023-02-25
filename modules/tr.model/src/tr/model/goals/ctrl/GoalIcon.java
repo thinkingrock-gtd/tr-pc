@@ -37,8 +37,8 @@ public class GoalIcon {
 
     @Override
     public boolean equals(Object object) {
-        if (object instanceof GoalIcon) {
-            return Utils.equal(((GoalIcon)object).path, path);
+        if (object instanceof GoalIcon goalIcon) {
+            return Utils.equal(goalIcon.path, path);
         }
         return false;
     }

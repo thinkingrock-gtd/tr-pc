@@ -54,8 +54,7 @@ public class ShowHideDoneAction extends AbstractAction {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        if (e.getSource() instanceof JToggleButton) {
-            JToggleButton tb = (JToggleButton) e.getSource();
+        if (e.getSource() instanceof JToggleButton tb) {
             model.setShowDone(tb.isSelected());
         } else {
             model.setShowDone(!model.isShowDone());

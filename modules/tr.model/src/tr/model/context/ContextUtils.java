@@ -95,13 +95,13 @@ public class ContextUtils {
     private boolean isUsedContext(Project project, Context context) {
         // check project children
         for (Item child : project.getChildren()) {            
-            if (child instanceof Action) {
-                if (((Action)child).getContext().equals(context)) {
+            if (child instanceof Action action) {
+                if (action.getContext().equals(context)) {
                     return true;
                 }
-            } else if (child instanceof Project) {
+            } else if (child instanceof Project prj) {
                 // recursive call for child project
-                if (isUsedContext((Project)child, context)) {
+                if (isUsedContext(prj, context)) {
                     return true;
                 }
             }
@@ -155,13 +155,12 @@ public class ContextUtils {
     /* Recursively replace context in a project and decendants. */
     private void replaceContext(Project project, Context context, Context replacement) {
         for (Item child : project.getChildren()) {            
-            if (child instanceof Action) {
-                Action action = (Action)child;
+            if (child instanceof Action action) {
                 if (action.getContext().equals(context)) {
                     action.setContext(replacement);
                 }
-            } else if (child instanceof Project) {
-                replaceContext((Project)child, context, replacement);
+            } else if (child instanceof Project prj) {
+                replaceContext(prj, context, replacement);
             }
         }
     }

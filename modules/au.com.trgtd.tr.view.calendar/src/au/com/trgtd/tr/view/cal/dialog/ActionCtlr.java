@@ -364,14 +364,14 @@ public class ActionCtlr {
     }
 
     public void setSchdHour(Object hour) {
-        if (hour instanceof Integer) {
-            this.schdHr = (Integer)hour;
+        if (hour instanceof Integer h) {
+            this.schdHr = h;
         }
     }
 
     public void setSchdMin(Object min) {
-        if (min instanceof Integer) {
-            this.schdMn = (Integer)min;
+        if (min instanceof Integer m) {
+            this.schdMn = m;
         }
     }
 

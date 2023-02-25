@@ -101,7 +101,7 @@ public class ParamsDialog extends JDialog {
                 panelFields.add(checkbox);
             } else if (param.type == Param.Type.COMBOBOX) {
                 List<Item> items = param.getItems();
-                if (items != null && items.size() > 0) {
+                if (items != null && !items.isEmpty()) {
                     JComboBox combo = new TRComboBox(items.toArray());
                     combo.setPreferredSize(COMBOBOX_SIZE);
                     if (param.getValue() != null && !param.getValue().trim().equals("")) {
@@ -121,7 +121,7 @@ public class ParamsDialog extends JDialog {
                 }
             } else if (param.type == Param.Type.DATESCOMBO) {
                 List<DateItem> items = param.getDateItems();
-                if (items != null && items.size() > 0) {
+                if (items != null && !items.isEmpty()) {
                     DateCombo combo = new DateCombo(this, items.toArray(new DateItem[0]), false, df);
                     combo.setPreferredSize(COMBOBOX_SIZE);
                     if (param.getValue() != null && !param.getValue().trim().equals("")) {
@@ -248,20 +248,17 @@ public class ParamsDialog extends JDialog {
     public void transferSelectionValues() {
         for (int i = 0; i < components.size(); i++) {
             JComponent c = components.get(i);
-            if (c instanceof DateCombo) {
-                DateCombo dateCombo = (DateCombo) c;
+            if (c instanceof DateCombo dateCombo) {
                 DateItem dateItem = (DateItem) dateCombo.getSelectedItem();
                 if (dateItem == null) {
                     params.get(i).setValue(null);
                 } else {
                     params.get(i).setValue(Long.toString(dateItem.value));
                 }
-            } else if (c instanceof JComboBox) {
-                JComboBox combo = (JComboBox) c;
+            } else if (c instanceof JComboBox combo) {
                 Item item = (Item) combo.getSelectedItem();
                 params.get(i).setValue(item.value);
-            } else if (c instanceof JCheckBox) {
-                JCheckBox checkbox = (JCheckBox) c;
+            } else if (c instanceof JCheckBox checkbox) {
                 params.get(i).setValue(Boolean.toString(checkbox.isSelected()));
             }
         }

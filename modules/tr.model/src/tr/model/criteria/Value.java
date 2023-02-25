@@ -88,8 +88,7 @@ public class Value extends ObservableImpl implements Observable, Comparable<Valu
     
     @Override
     public boolean equals(Object object) {
-        if (object instanceof Value) {
-            Value c = (Value)object;
+        if (object instanceof Value c) {
             return (Utils.equal(id, c.id) && Utils.equal(name, c.name));
         }
         return false;

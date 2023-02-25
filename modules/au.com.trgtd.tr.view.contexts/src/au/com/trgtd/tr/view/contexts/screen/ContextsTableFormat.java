@@ -125,8 +125,7 @@ public class ContextsTableFormat implements AdvancedTableFormat<Context> {
                 boolean isSelected, boolean hasFocus, int row, int col) {
             JLabel label = new JLabel("");
             label.setOpaque(true);
-            if (value instanceof Context) {
-                Context context = (Context)value;
+            if (value instanceof Context context) {
                 if (isSelected) {
                     label.setBackground(table.getSelectionBackground());
                     label.setForeground(table.getSelectionForeground());

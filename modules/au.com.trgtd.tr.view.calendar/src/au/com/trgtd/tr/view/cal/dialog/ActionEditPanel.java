@@ -293,12 +293,12 @@ public final class ActionEditPanel extends JPanel {
             ctlr.setDelegateName(null);
             return;
         }
-        if (selected instanceof String) {
-            ctlr.setDelegateName((String)selected);
+        if (selected instanceof String string) {
+            ctlr.setDelegateName(string);
             return;
         }
-        if (selected instanceof Actor) {
-            ctlr.setDelegateID(((Actor) selected).getID());
+        if (selected instanceof Actor actor) {
+            ctlr.setDelegateID(actor.getID());
         }
     }
 

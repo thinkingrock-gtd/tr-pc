@@ -264,22 +264,20 @@ public class TopicsPanel extends JPanel implements ListSelectionListener, Observ
      * Handle topic manager add and remove events.
      */
     public void update(final Observable observable, final Object object) {
-        if (object instanceof Manager.EventAdd) {
-            Manager.EventAdd event = (Manager.EventAdd)object;
+        if (object instanceof Manager.EventAdd event) {
             Lock lock = topicEventList.getReadWriteLock().writeLock();
             lock.lock();
             topicEventList.add((Topic)event.item);
             lock.unlock();
-        } else if (object instanceof Manager.EventRemove) {
-            Manager.EventRemove event = (Manager.EventRemove)object;
+        } else if (object instanceof Manager.EventRemove event) {
             Lock lock = topicEventList.getReadWriteLock().writeLock();
             lock.lock();
             topicEventList.remove(event.item);
             lock.unlock();
-        } else if (observable instanceof Topic) {
+        } else if (observable instanceof Topic topic) {
             Lock lock = topicEventList.getReadWriteLock().writeLock();
             lock.lock();
-            Topic item = (Topic)observable;
+            Topic item = topic;
             int index = topicEventList.indexOf(item);
             if (index > -1) {
                 topicEventList.set(index, item);

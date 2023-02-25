@@ -64,8 +64,7 @@ public class ProjectTreeCellRenderer extends DefaultTreeCellRenderer {
     
     protected Color getProjectColor(Object value) {
         DefaultMutableTreeNode node = (DefaultMutableTreeNode)value;
-        if (node.getUserObject() instanceof Project) {
-            Project project = (Project)node.getUserObject();            
+        if (node.getUserObject() instanceof Project project) {
             Topic topic = project.getTopic();
             if (topic != null) {
                 return topic.getForeground();

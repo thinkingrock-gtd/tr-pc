@@ -35,6 +35,7 @@ import java.util.logging.Logger;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import au.com.trgtd.tr.util.UtilsFile;
+import java.util.logging.Level;
 
 /**
  * Backup data thread.
@@ -135,16 +136,14 @@ public class BackupThread extends Thread {
 
         final String regex = prefix.toLowerCase() + "\\.\\d{8}-\\d{9}\\.bak\\.(trx|xml)";
 
-        FileFilter filter = new FileFilter() {
-            public boolean accept(File file) {
-                return file.isFile() && file.getName().toLowerCase().matches(regex);
-            }
-        };
+        FileFilter filter = (File file) -> file.isFile()
+                && file.getName().toLowerCase().matches(regex);
+
         List<File> recoveryFiles = new Vector<>();
         for (File file : dir.listFiles(filter)) {
             recoveryFiles.add(file);
         }
-        if (recoveryFiles.size() > 0) {
+        if (!recoveryFiles.isEmpty()) {
             Collections.sort(recoveryFiles, new DescendingFilenameComparator());
             return recoveryFiles.get(0);
         } else {
@@ -199,7 +198,7 @@ public class BackupThread extends Thread {
             return false;
         }
         if (!dir.canRead() || !dir.canWrite()) {
-            log.severe("Insifficient permissions on backup dir: " + dir.getPath());
+            log.log(Level.SEVERE, "Insifficient permissions on backup dir: {0}", dir.getPath());
             return false;
         }
         File datafile = getDataFile();
@@ -214,10 +213,10 @@ public class BackupThread extends Thread {
         }
         try {
             UtilsFile.copyFile(datafile, backupfile);
-            log.info("Created backup file: " + backupfile.getPath());
+            log.log(Level.INFO, "Created backup file: {0}", backupfile.getPath());
             return true;
         } catch (Exception ex) {
-            log.severe("Could not create backup file. \n" + ex.getMessage());
+            log.log(Level.SEVERE, "Could not create backup file. \n{0}", ex.getMessage());
             return false;
         }    
     }

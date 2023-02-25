@@ -26,6 +26,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Vector;
+import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
@@ -87,16 +88,13 @@ public class CleanupRecoveryFilesThread extends Thread {
 
     private void clean(File recoveryDir, int nbrFilesToKeep) {
 
-        log.info("Recovery directory: " + recoveryDir.getPath());
-        log.info("Number of files to keep: " + nbrFilesToKeep);
+        log.log(Level.INFO, "Recovery directory: {0}", recoveryDir.getPath());
+        log.log(Level.INFO, "Number of files to keep: {0}", nbrFilesToKeep);
 
-        FileFilter filter = new FileFilter() {
-            public boolean accept(File file) {
-                return file.isFile() && file.getName().matches(regex);
-            }
-        };
+        FileFilter filter = (File file) -> file.isFile()
+                && file.getName().matches(regex);
 
-        Map<String, List<File>> map = new HashMap<String, List<File>>();
+        Map<String, List<File>> map = new HashMap<>();
 
         for (File file : recoveryDir.listFiles(filter)) {
             String str = file.getName();
@@ -111,13 +109,13 @@ public class CleanupRecoveryFilesThread extends Thread {
             Collections.sort(files, comparator);
 
             for (File file : files) {
-                log.info("Found recovery file: " + file.getPath());
+                log.log(Level.INFO, "Found recovery file: {0}", file.getPath());
             }
 
             while (files.size() > nbrFilesToKeep) {
                 File file = files.remove(0);
 
-                log.info("Deleting recovery file: " + file.getPath());
+                log.log(Level.INFO, "Deleting recovery file: {0}", file.getPath());
                 
                 file.delete();
             }

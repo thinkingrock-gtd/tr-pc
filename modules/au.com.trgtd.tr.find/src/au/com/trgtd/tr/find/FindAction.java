@@ -55,7 +55,7 @@ public class FindAction extends CallableSystemAction {
         super();
         result = DataLookup.instance().lookupResult(Data.class);
         result.addLookupListener((LookupEvent lookupEvent) -> {
-            setEnabled(result.allInstances().size() > 0);
+            setEnabled(!result.allInstances().isEmpty());
         });
         panel = new FindPanel();
     }
@@ -113,8 +113,8 @@ public class FindAction extends CallableSystemAction {
         dialog.setVisible(true);
 
         Object value = op.getValue() ;
-        if (value instanceof Integer) {
-            if (((Integer)value).intValue() == JOptionPane.OK_OPTION) {
+        if (value instanceof Integer integer) {
+            if (integer.intValue() == JOptionPane.OK_OPTION) {
                 find(panel.getFindText().trim(), panel.getDoneState());
             }
         }

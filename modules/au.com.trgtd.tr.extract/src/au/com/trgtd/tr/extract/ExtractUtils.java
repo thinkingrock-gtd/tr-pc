@@ -239,8 +239,7 @@ public class ExtractUtils {
             path = project.getDescription();
         }
         Object object = project.getParent();
-        if (object instanceof Project) {
-            Project parent = (Project) object;
+        if (object instanceof Project parent) {
             if (!parent.isRoot()) {
                 return getProjectPath(parent, path);
             }

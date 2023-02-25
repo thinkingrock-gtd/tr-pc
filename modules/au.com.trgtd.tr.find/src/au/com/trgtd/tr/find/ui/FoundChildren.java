@@ -33,8 +33,8 @@ public class FoundChildren extends Children.Keys implements Observer {
 
     @Override
     protected Node[] createNodes(Object key) {
-        if (key instanceof FoundItem) {
-            return new Node[]{new FoundNode((FoundItem) key)};
+        if (key instanceof FoundItem foundItem) {
+            return new Node[]{new FoundNode(foundItem)};
         }
         return new Node[0];
     }

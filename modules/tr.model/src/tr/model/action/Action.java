@@ -586,8 +586,8 @@ public final class Action extends ObservableImpl implements Doable, Item,
 
     @Override
     public boolean equals(Object that) {
-        if (that instanceof Action) {
-            return this.getID() == ((Action) that).getID();
+        if (that instanceof Action action) {
+            return this.getID() == action.getID();
         }
         return false;
     }
@@ -841,8 +841,8 @@ public final class Action extends ObservableImpl implements Doable, Item,
         if (Utils.equal(this.parent, parent)) {
             return;
         }
-        if (parent instanceof Project) {
-            this.parent = (Project) parent;
+        if (parent instanceof Project project) {
+            this.parent = project;
             setModified();
             notifyObservers(this);
         }
@@ -943,8 +943,8 @@ public final class Action extends ObservableImpl implements Doable, Item,
     /* End of Item implementation */
     @Override
     public int compareTo(Item item) {
-        if (item instanceof Action) {
-            return getDescription().compareToIgnoreCase(((Action) item).getDescription());
+        if (item instanceof Action action) {
+            return getDescription().compareToIgnoreCase(action.getDescription());
         }
         throw new ClassCastException(item.getClass().toString());
     }

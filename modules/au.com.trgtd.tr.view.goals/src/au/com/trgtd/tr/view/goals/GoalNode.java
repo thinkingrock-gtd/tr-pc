@@ -443,8 +443,8 @@ public class GoalNode extends AbstractNode
         }
         Node result = null;
         for (Node node : getChildren().getNodes()) {
-            if (node instanceof GoalNode) {
-                result = ((GoalNode) node).find(goalID);
+            if (node instanceof GoalNode goalNode) {
+                result = goalNode.find(goalID);
                 if (result != null) {
                     return result;
                 }
@@ -468,8 +468,8 @@ public class GoalNode extends AbstractNode
         GoalChildren children = (GoalChildren) getChildren();
         children.setHideDone(b);
         for (Node node : children.getNodes()) {
-            if (node instanceof GoalNode) {
-                ((GoalNode)node).setHideDone(b);
+            if (node instanceof GoalNode goalNode) {
+                goalNode.setHideDone(b);
             }
         }
     }
@@ -485,8 +485,8 @@ public class GoalNode extends AbstractNode
         GoalChildren children = (GoalChildren) getChildren();
         children.setShowProjects(b);
         for (Node node : children.getNodes()) {
-            if (node instanceof GoalNode) {
-                ((GoalNode)node).setShowProjects(b);
+            if (node instanceof GoalNode goalNode) {
+                goalNode.setShowProjects(b);
             }
         }
     }

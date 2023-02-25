@@ -117,8 +117,8 @@ public class PostponeActionAction extends CookieAction {
         jd.setVisible(true);
         
         Object value = op.getValue() ;
-        if (value instanceof Integer) {
-            if (((Integer)value).intValue() == JOptionPane.OK_OPTION) {
+        if (value instanceof Integer integer) {
+            if (integer.intValue() == JOptionPane.OK_OPTION) {
                 if (panel.isAdvance()) {
                     postponeAdvance(nodes, panel.getAdvanceNumber(), panel.getAdvancePeriods());
                 } else if (panel.isSpecific()) {

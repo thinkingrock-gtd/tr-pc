@@ -73,8 +73,8 @@ public abstract class CtrlImpl {
 
     @Override
     public boolean equals(Object that) {
-        if (that instanceof CtrlImpl) {
-            return ((CtrlImpl)that).getID() == this.getID();
+        if (that instanceof CtrlImpl ctrlImpl) {
+            return ctrlImpl.getID() == this.getID();
         }
         return false;
     }

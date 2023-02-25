@@ -121,8 +121,7 @@ public class PeriodMonth extends Period {
 
     @Override
     public boolean equals(Object object) {
-        if (object instanceof PeriodMonth) {
-            PeriodMonth other = (PeriodMonth) object;
+        if (object instanceof PeriodMonth other) {
             if (option != other.option) {
                 return false;
             }
@@ -152,7 +151,7 @@ public class PeriodMonth extends Period {
     }
 
     public String getSelectedDaysText() {
-        if (selectedDays.size() == 0) {
+        if (selectedDays.isEmpty()) {
             return getMsg("period.day") + " ...";
         }
         

@@ -50,8 +50,7 @@ public class ProjectsComboBox extends TRComboBox {
             setSelectedIndex(0); // None item
             return;
         }
-        if (object instanceof Project) {
-            Project project = (Project) object;
+        if (object instanceof Project project) {
             for (int i = 1; i < getItemCount(); i++) {
                 ProjectItem item = (ProjectItem) super.getItemAt(i);
                 if (project.equals(item.project)) {
@@ -68,8 +67,8 @@ public class ProjectsComboBox extends TRComboBox {
     @Override
     public Object getSelectedItem() {
         Object item = super.getSelectedItem();
-        if (item instanceof ProjectItem) {
-            return ((ProjectItem) item).project;
+        if (item instanceof ProjectItem projectItem) {
+            return projectItem.project;
         }
         return item;
     }
@@ -77,8 +76,8 @@ public class ProjectsComboBox extends TRComboBox {
     @Override
     public Object getItemAt(int index) {
         Object item = super.getItemAt(index);
-        if (item instanceof ProjectItem) {
-            return ((ProjectItem) item).project;
+        if (item instanceof ProjectItem projectItem) {
+            return projectItem.project;
         }
         return item;        
     }    

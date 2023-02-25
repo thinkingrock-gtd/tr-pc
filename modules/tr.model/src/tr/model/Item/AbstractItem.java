@@ -60,8 +60,8 @@ public abstract class AbstractItem extends ObservableImpl implements Item {
     
     @Override
     public boolean equals(Object that) {
-        if (that instanceof AbstractItem) {
-            return this.getID() == ((AbstractItem)that).getID();
+        if (that instanceof AbstractItem abstractItem) {
+            return this.getID() == abstractItem.getID();
         }
         return false;
     }
@@ -131,8 +131,8 @@ public abstract class AbstractItem extends ObservableImpl implements Item {
         if (Utils.equal(this.parent, parent)) {
             return;
         }        
-        if (parent instanceof Project) {
-            this.parent = (Project)parent;        
+        if (parent instanceof Project project) {
+            this.parent = project;
             notifyObservers(this);            
         }        
     }

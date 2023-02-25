@@ -96,12 +96,8 @@ public class CleanupBackupFilesThread extends Thread {
         log.log(Level.INFO, "Backup directory: {0}", backupDir.getPath());
         log.log(Level.INFO, "Number of files to keep: {0}", nbrFilesToKeep);
 
-        FileFilter filter = new FileFilter() {
-            @Override
-            public boolean accept(File file) {
-                return file.isFile() && file.getName().matches(regex);
-            }
-        };
+        FileFilter filter = (File file) -> file.isFile()
+                && file.getName().matches(regex);
 
         for (File file : backupDir.listFiles(filter)) {
             String str = file.getName();
@@ -120,7 +116,7 @@ public class CleanupBackupFilesThread extends Thread {
 
             while (files.size() > nbrFilesToKeep) {
                 File file = files.remove(0);
-                log.log(Level.INFO, "Deleting backup file: {0}", file.getPath());                
+                log.log(Level.INFO, "Deleting backup file: {0}", file.getPath());
                 file.delete();
             }
         }
@@ -137,7 +133,7 @@ public class CleanupBackupFilesThread extends Thread {
         }
     }
     
-    private static final Map<String, List<File>> map = new HashMap<String, List<File>>();
+    private static final Map<String, List<File>> map = new HashMap<>();
 
     private static void map(String key, File file) {
         List<File> fileList = map.get(key);

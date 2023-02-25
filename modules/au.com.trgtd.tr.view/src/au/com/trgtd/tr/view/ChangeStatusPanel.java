@@ -259,10 +259,10 @@ public class ChangeStatusPanel extends JPanel {
             case DELEGATED: {
                 ActionStateDelegated stateDelegated = new ActionStateDelegated();
                 Object delegate = delegateCombo.getSelectedItem();
-                if (delegate instanceof String) {
-                    stateDelegated.setTo((String)delegate);
-                } else if (delegate instanceof Actor) {
-                    stateDelegated.setActorID(((Actor)delegate).getID());
+                if (delegate instanceof String str) {
+                    stateDelegated.setTo(str);
+                } else if (delegate instanceof Actor actor) {
+                    stateDelegated.setActorID(actor.getID());
                 } else {
                     stateDelegated.setTo("");
                 }

@@ -75,7 +75,7 @@ public class UserMessagesThread extends Thread {
             }
         }
 
-        if (messages.size() > 0) {
+        if (!messages.isEmpty()) {
             notifyUser(messages);
         }
 

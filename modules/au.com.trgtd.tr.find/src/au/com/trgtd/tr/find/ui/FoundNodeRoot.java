@@ -88,8 +88,8 @@ public class FoundNodeRoot extends AbstractNode implements Observer {
 
     @Override
     public void update(Observable obs, Object arg) {
-        if (obs instanceof FoundItems) {
-            setName((FoundItems)obs);
+        if (obs instanceof FoundItems foundItems) {
+            setName(foundItems);
         }
     }
 

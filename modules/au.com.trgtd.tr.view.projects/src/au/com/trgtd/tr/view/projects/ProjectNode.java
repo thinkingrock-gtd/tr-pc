@@ -153,8 +153,8 @@ public class ProjectNode extends AbstractNode implements Observer, EditCookie,
 
     private Image getIcon(int type, boolean opened) {
         Icon icon = project.getIcon(opened);
-        if (icon instanceof ImageIcon) {
-            return ((ImageIcon) icon).getImage();
+        if (icon instanceof ImageIcon imageIcon) {
+            return imageIcon.getImage();
         }
         return super.getIcon(type);
     }
@@ -457,8 +457,8 @@ public class ProjectNode extends AbstractNode implements Observer, EditCookie,
     public Node find(Action findAction) {
         Node result = null;
         for (Node node : getChildren().getNodes()) {
-            if (node instanceof ActionFinder) {
-                result = ((ActionFinder) node).find(findAction);
+            if (node instanceof ActionFinder actionFinder) {
+                result = actionFinder.find(findAction);
                 if (result != null) {
                     break;
                 }
@@ -479,8 +479,8 @@ public class ProjectNode extends AbstractNode implements Observer, EditCookie,
         }
         Node result = null;
         for (Node node : getChildren().getNodes()) {
-            if (node instanceof ProjectFinder) {
-                result = ((ProjectFinder) node).find(findProject);
+            if (node instanceof ProjectFinder projectFinder) {
+                result = projectFinder.find(findProject);
                 if (result != null) {
                     break;
                 }

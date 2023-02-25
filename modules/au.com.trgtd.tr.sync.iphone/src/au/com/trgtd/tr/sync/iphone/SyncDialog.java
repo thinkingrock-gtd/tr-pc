@@ -191,11 +191,11 @@ public class SyncDialog extends JDialog {
 
     private int getPortFieldValue() {
         Object value = portField.getValue();
-        if (value instanceof Integer) {
-            return ((Integer) value).intValue();
+        if (value instanceof Integer i) {
+            return i;
         }
-        if (value instanceof Long) {
-            return ((Long) value).intValue();
+        if (value instanceof Long l) {
+            return l.intValue();
         }
         return 0;
     }

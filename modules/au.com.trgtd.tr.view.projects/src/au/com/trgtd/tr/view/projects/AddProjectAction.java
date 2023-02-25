@@ -100,11 +100,11 @@ public class AddProjectAction extends CookieAction {
     @Override
     protected boolean enable(Node[] nodes) {
         if (nodes.length == 1) {
-            if (nodes[0] instanceof ActionNode) {
-                return ((ActionNode)nodes[0]).canAddProject();
+            if (nodes[0] instanceof ActionNode actionNode) {
+                return actionNode.canAddProject();
             }
-            if (nodes[0] instanceof ProjectNode) {
-                return ((ProjectNode)nodes[0]).canAddProject();
+            if (nodes[0] instanceof ProjectNode projectNode) {
+                return projectNode.canAddProject();
             }
         }
         return false;

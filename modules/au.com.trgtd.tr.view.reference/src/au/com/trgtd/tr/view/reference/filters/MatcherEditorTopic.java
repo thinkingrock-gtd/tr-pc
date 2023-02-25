@@ -73,8 +73,7 @@ public class MatcherEditorTopic extends MatcherEditorBase
             fireMatchAll();
         } else if (topic instanceof TopicAll) {
             fireMatchAll();
-        } else if (topic instanceof TopicMultiple) {
-            TopicMultiple mts = (TopicMultiple)topic;
+        } else if (topic instanceof TopicMultiple mts) {
             fireChanged(new TopicMatcher(mts.getChosen()));
         } else {
             fireChanged(new TopicMatcher(topic));
@@ -91,19 +90,17 @@ public class MatcherEditorTopic extends MatcherEditorBase
     
     public void setSerializable(Serializable serializable) {
         comboBox.stopChangeEvents();
-        if (serializable instanceof TopicAll) {
-            comboBox.setSelectedItem((TopicAll)serializable);
+        if (serializable instanceof TopicAll topicAll) {
+            comboBox.setSelectedItem(topicAll);
             fireMatchAll();
-        } else if (serializable instanceof TopicMultiple) {
+        } else if (serializable instanceof TopicMultiple tm) {
 //            TopicMultiple tm = (TopicMultiple)serializable;
 //            topicsCombo.setSelectedItem(tm);
 //            fireChanged(new TopicMatcher(tm.getChosen()));
-            TopicMultiple tm = (TopicMultiple)serializable;
             comboModel.multiple.setChosen(tm.getChosen());
             comboBox.setSelectedItem(comboModel.multiple);
             fireChanged(new TopicMatcher(comboModel.multiple.getChosen()));
-        } else if (serializable instanceof Topic) {
-            Topic topic = (Topic)serializable;
+        } else if (serializable instanceof Topic topic) {
             comboBox.setSelectedItem(topic);
             fireChanged(new TopicMatcher(topic));
         }
@@ -241,8 +238,7 @@ public class MatcherEditorTopic extends MatcherEditorBase
         private final class RealActionListener implements ActionListener {
             public void actionPerformed(ActionEvent e) {
                 Object object = getSelectedItem();
-                if (object instanceof TopicMultiple) {
-                    TopicMultiple tm = (TopicMultiple)object;
+                if (object instanceof TopicMultiple tm) {
                     Vector<Topic> all;
                     Data data = (Data)DataLookup.instance().lookup(Data.class);
                     if (data == null) {

@@ -127,8 +127,7 @@ public class TopicsTableFormat implements AdvancedTableFormat<Topic> {
             
             JLabel label = new JLabel("");
             label.setOpaque(true);
-            if (value instanceof TopicName) {
-                TopicName td = (TopicName)value;
+            if (value instanceof TopicName td) {
                 if (isSelected) {
                     label.setBackground(table.getSelectionBackground());
                     label.setForeground(table.getSelectionForeground());
@@ -165,8 +164,7 @@ public class TopicsTableFormat implements AdvancedTableFormat<Topic> {
             
             JLabel label = new JLabel("");
             label.setOpaque(true);
-            if (value instanceof TopicDesc) {
-                TopicDesc td = (TopicDesc)value;
+            if (value instanceof TopicDesc td) {
                 if (isSelected) {
                     label.setBackground(table.getSelectionBackground());
                     label.setForeground(table.getSelectionForeground());
