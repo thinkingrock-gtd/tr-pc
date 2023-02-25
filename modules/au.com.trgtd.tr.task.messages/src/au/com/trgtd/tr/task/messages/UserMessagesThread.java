@@ -25,7 +25,6 @@ import javax.swing.JEditorPane;
 import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
 import javax.swing.event.HyperlinkEvent;
-import javax.swing.event.HyperlinkListener;
 import org.openide.util.NbBundle;
 import au.com.trgtd.tr.task.messages.MessageParser.Message;
 import au.com.trgtd.tr.runtime.Open;
@@ -110,13 +109,10 @@ public class UserMessagesThread extends Thread {
         editorPane.setText(m);
         editorPane.setEditable(false);
         editorPane.setOpaque(true);
-        editorPane.addHyperlinkListener(new HyperlinkListener() {
-            @Override
-            public void hyperlinkUpdate(HyperlinkEvent evt) {
-                if (evt.getEventType() == HyperlinkEvent.EventType.ACTIVATED) {
-                    if (evt.getURL() != null) {
-                        Open.open(evt.getURL());
-                    }
+        editorPane.addHyperlinkListener((HyperlinkEvent evt) -> {
+            if (evt.getEventType() == HyperlinkEvent.EventType.ACTIVATED) {
+                if (evt.getURL() != null) {
+                    Open.open(evt.getURL());
                 }
             }
         });

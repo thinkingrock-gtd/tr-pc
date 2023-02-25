@@ -47,20 +47,14 @@ final class DatesOptionsPanel extends JPanel {
     private JComponent getView() {
         dayLabel = new JLabel(getMsg("Dates.FirstDayOfWeek"));
         dayCombo = new JComboBox();
-        dayCombo.addActionListener(new java.awt.event.ActionListener() {
-            @Override
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                controller.changed();
-            }
+        dayCombo.addActionListener((java.awt.event.ActionEvent evt) -> {
+            controller.changed();
         });
         
         orderLabel = new JLabel(getMsg("Dates.Order"));
         orderCombo = new JComboBox();
-        orderCombo.addActionListener(new java.awt.event.ActionListener() {
-            @Override
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                controller.changed();
-            }
+        orderCombo.addActionListener((java.awt.event.ActionEvent evt) -> {
+            controller.changed();
         });
 
         JPanel panel = new JPanel(new MigLayout("", "0[]2[]0", "0[]2[]0"));

@@ -27,7 +27,6 @@ import java.util.logging.Logger;
 import org.apache.commons.lang3.StringUtils;
 import org.openide.util.Lookup;
 import org.openide.util.LookupEvent;
-import org.openide.util.LookupListener;
 import tr.model.Data;
 import tr.model.DataLookup;
 import tr.model.action.Action;
@@ -62,11 +61,8 @@ public class Services {
         dataChanged();
         
         lookupResult = DataLookup.instance().lookupResult(Data.class);
-        lookupResult.addLookupListener(new LookupListener() {
-            @Override
-            public void resultChanged(LookupEvent lookupEvent) {
-                dataChanged();
-            }
+        lookupResult.addLookupListener((LookupEvent lookupEvent) -> {
+            dataChanged();
         });
     }
     

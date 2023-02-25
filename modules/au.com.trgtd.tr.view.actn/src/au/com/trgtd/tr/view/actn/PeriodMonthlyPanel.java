@@ -97,35 +97,15 @@ public class PeriodMonthlyPanel extends JPanel {
 
     private void initView() {
         eachRadio = new JRadioButton(getMsg("months.each"));
-        eachRadio.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                monthsRadioButtonAction(evt);
-            }
-        });
+        eachRadio.addActionListener(this::monthsRadioButtonAction);
         daysButton = new JButton(getSelectedDaysText());
-        daysButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                daysButtonAction(evt);
-            }
-        });
+        daysButton.addActionListener(this::daysButtonAction);
         onTheRadio = new JRadioButton(getMsg("months.on.the"));
-        onTheRadio.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                monthsRadioButtonAction(evt);
-            }
-        });
+        onTheRadio.addActionListener(this::monthsRadioButtonAction);
         nthCombo = new TRComboBox();
-        nthCombo.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                onTheNthComboAction(evt);
-            }
-        });
+        nthCombo.addActionListener(this::onTheNthComboAction);
         dayCombo = new TRComboBox();
-        dayCombo.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                dayComboAction(evt);
-            }
-        });
+        dayCombo.addActionListener(this::dayComboAction);
 
         buttonGroup = new ButtonGroup();
         buttonGroup.add(eachRadio);

@@ -23,7 +23,6 @@ import au.com.trgtd.tr.view.someday.dialog.SomedayDialog;
 import org.openide.util.HelpCtx;
 import org.openide.util.Lookup;
 import org.openide.util.LookupEvent;
-import org.openide.util.LookupListener;
 import org.openide.util.NbBundle;
 import org.openide.util.actions.CallableSystemAction;
 import tr.model.Data;
@@ -42,10 +41,8 @@ public class FutureAddAction extends CallableSystemAction implements InitialActi
         super();
         setIcon(Icons.Add);
         result = DataLookup.instance().lookupResult(Data.class);
-        result.addLookupListener(new LookupListener() {
-            public void resultChanged(LookupEvent lookupEvent) {
-                setEnabled(!result.allInstances().isEmpty());
-            }
+        result.addLookupListener((LookupEvent lookupEvent) -> {
+            setEnabled(!result.allInstances().isEmpty());
         });
     }
     
