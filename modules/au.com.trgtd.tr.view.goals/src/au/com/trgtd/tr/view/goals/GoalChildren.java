@@ -49,7 +49,7 @@ public class GoalChildren extends Children.Keys<Object> implements PropertyChang
         assert (goalCtrl != null);
         this.view = view;
         this.goalCtrl = goalCtrl;
-        this.keys = new ArrayList();
+        this.keys = new ArrayList<>();
     }
 
     @Override

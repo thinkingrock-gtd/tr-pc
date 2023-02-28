@@ -176,7 +176,7 @@ final class EnergyNode extends AbstractNode implements EditCookie, Observer {
     }
 
     private JComboBox getReplacementCombo(Data data) {
-        JComboBox cb = new JComboBox();
+        JComboBox cb = new JComboBox<>();
         cb.addItem(new NullItem());
         for (Value itemValue : data.getEnergyCriterion().values.list()) {
             if (!itemValue.equals(value)) {

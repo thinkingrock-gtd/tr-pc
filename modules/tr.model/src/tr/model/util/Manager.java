@@ -101,7 +101,7 @@ public class Manager<T extends Observable> extends ObservableImpl implements Obs
         
         item.addObserver(this);
         
-        notifyObservers(this, new EventAdd(item));
+        notifyObservers(this, new EventAdd<>(item));
         
         return true;
     }
@@ -122,7 +122,7 @@ public class Manager<T extends Observable> extends ObservableImpl implements Obs
         
         item.addObserver(this);
         
-        notifyObservers(this, new EventInsert(item, pos));
+        notifyObservers(this, new EventInsert<>(item, pos));
     }
     
     /**
@@ -145,7 +145,7 @@ public class Manager<T extends Observable> extends ObservableImpl implements Obs
         
         item.removeObserver(this);
         
-        notifyObservers(this, new EventRemove(item));
+        notifyObservers(this, new EventRemove<>(item));
         
         return true;
     }
@@ -196,7 +196,7 @@ public class Manager<T extends Observable> extends ObservableImpl implements Obs
             item.addObserver(this);
         }
         
-        notifyObservers(this, new EventReplace(old, item, index));
+        notifyObservers(this, new EventReplace<>(old, item, index));
     }
     
     /**

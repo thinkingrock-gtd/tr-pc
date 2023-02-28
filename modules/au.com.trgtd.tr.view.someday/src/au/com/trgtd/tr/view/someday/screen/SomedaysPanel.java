@@ -87,7 +87,7 @@ public class SomedaysPanel extends JPanel implements ListSelectionListener, Obse
         refsEventList = new BasicEventList<>();
         refsEventList.addAll(refsList);
         
-        FilterList refsFilterList = new FilterList(refsEventList, refsMatcherEditor);
+        FilterList refsFilterList = new FilterList<>(refsEventList, refsMatcherEditor);
         
         data.getFutureManager().addObserver(this);
         
@@ -133,7 +133,7 @@ public class SomedaysPanel extends JPanel implements ListSelectionListener, Obse
         futuresTable.setDefaultRenderer(Topic.class,
                 new SomedaysTableFormat.TopicRenderer());
         
-        tableSorter = new TableComparatorChooser(futuresTable, refsSortedList, true);
+        tableSorter = new TableComparatorChooser<>(futuresTable, refsSortedList, true);
         
         futuresTable.addKeyListener(new KeyAdapter() {
             @Override

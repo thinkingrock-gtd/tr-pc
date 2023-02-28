@@ -18,11 +18,9 @@
 package au.com.trgtd.tr.view.goals.levels.combo;
 
 import java.beans.PropertyChangeEvent;
-import java.util.List;
-
-import javax.swing.DefaultComboBoxModel;
-
 import java.beans.PropertyChangeListener;
+import java.util.List;
+import javax.swing.DefaultComboBoxModel;
 import tr.model.goals.ctrl.LevelCtrl;
 import tr.model.goals.ctrl.LevelsCtrl;
 import tr.model.goals.ctrl.LevelsCtrlLookup;

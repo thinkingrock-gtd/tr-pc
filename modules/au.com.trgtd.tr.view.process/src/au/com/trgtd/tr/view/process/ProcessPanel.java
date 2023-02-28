@@ -1851,7 +1851,7 @@ public final class ProcessPanel extends JPanel implements Observer, ProcessCooki
                 return new CriterionComboBoxModel(criterion);
             }
         }
-        return new DefaultComboBoxModel();
+        return new DefaultComboBoxModel<>();
     }
 
     private ComboBoxModel getEnergyComboBoxModel() {
@@ -1861,7 +1861,7 @@ public final class ProcessPanel extends JPanel implements Observer, ProcessCooki
                 return new CriterionComboBoxModel(criterion);
             }
         }
-        return new DefaultComboBoxModel();
+        return new DefaultComboBoxModel<>();
     }
 
     private ComboBoxModel getPriorityComboBoxModel() {
@@ -1871,7 +1871,7 @@ public final class ProcessPanel extends JPanel implements Observer, ProcessCooki
                 return new CriterionComboBoxModel(criterion);
             }
         }
-        return new DefaultComboBoxModel();
+        return new DefaultComboBoxModel<>();
     }
 
     private void recurrenceButtonActionPerformed(ActionEvent e) {

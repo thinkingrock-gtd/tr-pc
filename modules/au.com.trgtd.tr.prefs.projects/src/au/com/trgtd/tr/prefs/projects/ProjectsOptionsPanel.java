@@ -95,7 +95,7 @@ final class ProjectsOptionsPanel extends JPanel {
         actionStatesCombo = new TRComboBox(new DefaultComboBoxModel(states.toArray()));
         actionStatesCombo.setMaximumRowCount(states.size());
         printFormatLabel = new JLabel(getMsg("print.format.Label"));
-        printFormatCombo = new JComboBox(new PageSizeChoice[] { PageSizeChoice.Prompt, PageSizeChoice.A4, PageSizeChoice.Letter });
+        printFormatCombo = new JComboBox<>(new PageSizeChoice[] { PageSizeChoice.Prompt, PageSizeChoice.A4, PageSizeChoice.Letter });
 
         JPanel panel = new JPanel(new MigLayout("", "0[]2[grow]0", "0[]2[]2[]2[]2[]2[]0"));
 

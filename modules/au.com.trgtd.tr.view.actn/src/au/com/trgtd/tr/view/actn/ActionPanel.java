@@ -1671,10 +1671,7 @@ if (ass.getDate() == null) {
     private PropertyChangeListener propertyListenerDoneDate;
     private PropertyChangeListener propertyListenerScheduledDate;
     
-    
     private PropertyChangeListener propertyListenerDelegate;
-    
-    
     
     private Observer criteriaObserver;
     private PreferenceChangeListener prefsChangeListener;

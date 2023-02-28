@@ -50,14 +50,14 @@ final class GUIOptionsPanel extends JPanel {
     private JComponent getView() {
         initActions();
         initialActionLabel = new JLabel(getMsg("LBL_InitialWindow"));
-        initialActionCombo = new JComboBox(new DefaultComboBoxModel(actions));
+        initialActionCombo = new JComboBox<>(new DefaultComboBoxModel<>(actions));
         initialActionCombo.setMaximumRowCount(actions.size());
         initialActionCombo.addActionListener((ActionEvent evt) -> {
             controller.changed();
         });
         initPositions();
         buttonsPositionLabel = new JLabel(getMsg("LBL_ButtonsPosition"));
-        buttonsPositionCombo = new JComboBox(new DefaultComboBoxModel(positions));
+        buttonsPositionCombo = new JComboBox<>(new DefaultComboBoxModel<>(positions));
         buttonsPositionCombo.setMaximumRowCount(positions.size());
         buttonsPositionCombo.addActionListener((ActionEvent evt) -> {
             controller.changed();

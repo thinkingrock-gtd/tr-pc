@@ -55,7 +55,7 @@ public class DateCombo extends TRComboBox implements ActionListener {
      * option the selected date is set in the first item and it is selected.
      */
     public DateCombo(Window window, DateItem[] items, boolean calc, DateFormat df) {
-        super(new DefaultComboBoxModel(items));
+        super(new DefaultComboBoxModel<>(items));
         this.calc = calc;
         this.df = df;
         if (window instanceof Frame frame) {

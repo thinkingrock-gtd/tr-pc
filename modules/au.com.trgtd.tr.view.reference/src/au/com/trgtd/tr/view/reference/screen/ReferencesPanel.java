@@ -129,7 +129,7 @@ public class ReferencesPanel extends JPanel implements ListSelectionListener, Ob
         refsTable.setDefaultRenderer(Topic.class,
                 new ReferencesTableFormat.TopicRenderer());
         
-        tableSorter = new TableComparatorChooser(refsTable, refsSortedList, true);
+        tableSorter = new TableComparatorChooser<>(refsTable, refsSortedList, true);
         
         refsTable.addKeyListener(new KeyAdapter() {
             @Override

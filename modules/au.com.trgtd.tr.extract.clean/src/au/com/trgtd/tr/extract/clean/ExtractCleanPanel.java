@@ -41,11 +41,11 @@ final class ExtractCleanPanel extends javax.swing.JPanel {
     private JComponent getView() {
         runLabel = new JLabel(getMsg("Run_Label"));
         ageLabel = new JLabel(getMsg("Age_Label"));
-        runCombo = new TRComboBox(new DefaultComboBoxModel(intervals));
+        runCombo = new TRComboBox<>(new DefaultComboBoxModel<>(intervals));
         runCombo.addActionListener((java.awt.event.ActionEvent evt) -> {
             controller.changed();
         });
-        ageCombo = new TRComboBox(new DefaultComboBoxModel(ages));
+        ageCombo = new TRComboBox<>(new DefaultComboBoxModel<>(ages));
         ageCombo.addActionListener((java.awt.event.ActionEvent evt) -> {
             controller.changed();
         });

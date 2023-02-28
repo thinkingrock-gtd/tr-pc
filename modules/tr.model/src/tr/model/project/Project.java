@@ -1028,7 +1028,7 @@ public class Project extends ObservableImpl
             return;
         }
         synchronized (this) {
-            Vector reorderedChildren = new Vector(children);
+            Vector reorderedChildren = new Vector<>(children);
             for (int i = 0; i < srcItems.length; i++) {
                 if (contains(srcItems[i]) && contains(dstItems[i])) {
                     int dstIndex = children.indexOf(dstItems[i]);

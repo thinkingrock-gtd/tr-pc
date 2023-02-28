@@ -796,7 +796,7 @@ public class Pop3 {
          * @return Vector        Retourne un Vector contenant les chemin complet des fichiers
          */
         public static Vector getFile(Message pop_message) throws Exception {
-            Vector vec = new Vector();
+            Vector vec = new Vector<>();
             Object content = pop_message.getContent();
             if (content instanceof Multipart mp) {
                 vec = getFileHandleMultipart(mp);
@@ -838,7 +838,7 @@ public class Pop3 {
          * @return Vector                Retourne un Vector contenant les chemin complet des fichiers
          */
         public static Vector getFileEmbed(Message pop_message, String _contentType) throws Exception {
-            Vector vec = new Vector();
+            Vector vec = new Vector<>();
             Object content = pop_message.getContent();
             if (content instanceof Multipart mp) {
                 vec = getFileHandleMultipart(mp, _contentType);
