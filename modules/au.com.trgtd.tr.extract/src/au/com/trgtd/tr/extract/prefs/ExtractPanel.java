@@ -94,7 +94,7 @@ final class ExtractPanel extends JPanel {
         }
     }
 
-    private ComboBoxModel getEncodingModel() {
+    private ComboBoxModel<String> getEncodingModel() {
         Vector<String> encodings = new Vector<>();
         encodings.add("");
         encodings.addAll(Charset.availableCharsets().keySet());
@@ -168,7 +168,7 @@ final class ExtractPanel extends JPanel {
         return NbBundle.getMessage(ExtractPanel.class, key);
     }
 
-    private javax.swing.JComboBox encodingCombo;
+    private javax.swing.JComboBox<String> encodingCombo;
     private javax.swing.JLabel encodingLabel;
     private javax.swing.JButton browseButton;
     private javax.swing.JLabel folderLabel;

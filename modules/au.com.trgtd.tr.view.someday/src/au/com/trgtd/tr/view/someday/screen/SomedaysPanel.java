@@ -66,7 +66,7 @@ public class SomedaysPanel extends JPanel implements ListSelectionListener, Obse
     /**
      * Creates a new instance for the given future item provider and filters.
      */
-    public SomedaysPanel(SomedayNodeProvider futuresProvider, MatcherEditor matcherEditor) {
+    public SomedaysPanel(SomedayNodeProvider futuresProvider, MatcherEditor<Future> matcherEditor) {
         super();
         this.refsProvider = futuresProvider;
         this.refsMatcherEditor = matcherEditor;
@@ -87,7 +87,7 @@ public class SomedaysPanel extends JPanel implements ListSelectionListener, Obse
         refsEventList = new BasicEventList<>();
         refsEventList.addAll(refsList);
         
-        FilterList refsFilterList = new FilterList<>(refsEventList, refsMatcherEditor);
+        FilterList<Future> refsFilterList = new FilterList<>(refsEventList, refsMatcherEditor);
         
         data.getFutureManager().addObserver(this);
         
@@ -310,7 +310,7 @@ public class SomedaysPanel extends JPanel implements ListSelectionListener, Obse
     private final static Logger LOG = Logger.getLogger("tr.view.future");
     
     private final SomedayNodeProvider refsProvider;
-    private final MatcherEditor refsMatcherEditor;
+    private final MatcherEditor<Future> refsMatcherEditor;
     private final Data data;
     
     private JXTable futuresTable;

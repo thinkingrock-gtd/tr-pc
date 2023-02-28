@@ -67,7 +67,7 @@ class RefChooserPanel extends JPanel implements Observer {
 
     private Data data;
     private RefChooserFilters refsFilters;
-    private MatcherEditor refsMatcherEditor;
+    private MatcherEditor<Information> refsMatcherEditor;
     private JXTable refsTable;
     private RefChooserTableFormat refsTableFormat;
     private EventTableModel<Information> refsTableModel;
@@ -138,7 +138,7 @@ class RefChooserPanel extends JPanel implements Observer {
         refsList = (data == null ? new Vector<>() : data.getInformationManager().list());
         refsEventList = new BasicEventList<>();
         refsEventList.addAll(refsList);
-        FilterList refsFilterList = new FilterList(refsEventList, refsMatcherEditor);
+        FilterList<Information> refsFilterList = new FilterList<>(refsEventList, refsMatcherEditor);
         refsSortedList = new SortedList<>(refsFilterList);
         refsTableFormat = new RefChooserTableFormat();
         refsTableModel = new EventTableModel<>(refsSortedList, refsTableFormat);

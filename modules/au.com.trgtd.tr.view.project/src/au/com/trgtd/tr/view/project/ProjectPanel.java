@@ -119,7 +119,7 @@ public final class ProjectPanel extends JPanel { // implements Observer {
         descriptionText.requestFocusInWindow();
     }
 
-    private ComboBoxModel getPriorityComboBoxModel() {
+    private ComboBoxModel<Value> getPriorityComboBoxModel() {
         return new PriorityComboBoxModel();
     }
 
@@ -830,9 +830,9 @@ public final class ProjectPanel extends JPanel { // implements Observer {
     private TRLabel descriptionLabel;
     private TRTextField descriptionText;
     private TRLabel topicLabel;
-    private TRComboBox topicCombo;
+    private TRComboBox<Topic> topicCombo;
     private TRLabel priorityLabel;
-    private TRComboBox priorityCombo;
+    private TRComboBox<Value> priorityCombo;
     private TRCheckBox sequencingCheckBox;
     private JLabel seqIncludeLabel;
     private TRCheckBox seqProjectsCheckBox;
@@ -858,7 +858,7 @@ public final class ProjectPanel extends JPanel { // implements Observer {
     private DateField createdDateField;
     private Lookup.Result result;
     private Project project;
-    private ComboBoxModel topicsModel;
+    private ComboBoxModel<Topic> topicsModel;
     private boolean updating;
     private DocumentListener docListenerDescription;
     private DocumentListener docListenerPurpose;

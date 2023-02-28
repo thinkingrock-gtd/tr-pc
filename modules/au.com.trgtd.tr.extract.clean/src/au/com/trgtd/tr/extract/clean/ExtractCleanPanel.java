@@ -141,9 +141,9 @@ final class ExtractCleanPanel extends javax.swing.JPanel {
         return NbBundle.getMessage(getClass(), key);
     }
 
-    private javax.swing.JComboBox ageCombo;
+    private javax.swing.JComboBox<Item> ageCombo;
     private javax.swing.JLabel ageLabel;
-    private javax.swing.JComboBox runCombo;
+    private javax.swing.JComboBox<Item> runCombo;
     private javax.swing.JLabel runLabel;
 
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents

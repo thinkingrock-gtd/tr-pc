@@ -174,7 +174,7 @@ public class OptionsPanel extends JPanel implements CalendarSynchronizerOptions 
     private JButton folderButton;
     private JLabel folderLabel;
     private JTextField folderField;
-    private JComboBox timezoneCombo;
+    private JComboBox<String> timezoneCombo;
     private JLabel timezoneLabel;
 
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents

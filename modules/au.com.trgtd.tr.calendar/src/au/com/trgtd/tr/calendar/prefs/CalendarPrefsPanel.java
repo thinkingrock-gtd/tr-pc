@@ -260,7 +260,7 @@ final class CalendarPrefsPanel extends javax.swing.JPanel {
                 selected = item;
             }
         }
-        synchronizerCombo.setModel(new DefaultComboBoxModel(synchronizers.toArray()));
+        synchronizerCombo.setModel(new DefaultComboBoxModel<>(synchronizers.toArray(SynchronizerItem[]::new)));
         if (selected == null) {
             loadSynchronizerOptions(null);
         } else {
@@ -430,7 +430,7 @@ final class CalendarPrefsPanel extends javax.swing.JPanel {
     private JCheckBox syncFutureProjectsCheck;
     private JCheckBox syncFutureProjectsSepCheck;
 
-    private JComboBox synchronizerCombo;
+    private JComboBox<SynchronizerItem> synchronizerCombo;
     private JLabel synchronizerLabel;
     private JPanel synchronizerPanel;
     private JScrollPane synchronizerScrollPane;

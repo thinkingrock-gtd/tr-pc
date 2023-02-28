@@ -273,7 +273,7 @@ public class ActorPanel extends JPanel implements ListSelectionListener, Observe
         } else if (object instanceof Manager.EventRemove event) {
             Lock lock = actorEventList.getReadWriteLock().writeLock();
             lock.lock();
-            actorEventList.remove(event.item);
+            actorEventList.remove((Actor)event.item);
             lock.unlock();
         } else if (observable instanceof Actor actor) {
             Lock lock = actorEventList.getReadWriteLock().writeLock();

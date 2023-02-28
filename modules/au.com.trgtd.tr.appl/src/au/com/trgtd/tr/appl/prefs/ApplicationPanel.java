@@ -130,7 +130,7 @@ final class ApplicationPanel extends javax.swing.JPanel {
     }
 
     private JCheckBox versionCheckBox;
-    private JComboBox versionCheckCombo;
+    private JComboBox<String> versionCheckCombo;
     private JCheckBox idleCheckBox;
     private JLabel inactiveHrsLabel;
     private JLabel inactiveMinsLabel;

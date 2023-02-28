@@ -88,13 +88,13 @@ public class CriteriaChangePanel extends JPanel {
         return NbBundle.getMessage(getClass(), key);
     }
 
-    private DefaultComboBoxModel priorities;
-    private DefaultComboBoxModel times;
-    private DefaultComboBoxModel energies;
+    private DefaultComboBoxModel<Value> priorities;
+    private DefaultComboBoxModel<Value> times;
+    private DefaultComboBoxModel<Value> energies;
     private JLabel criteriaLabel;
     private JLabel valueLabel;
-    private JComboBox criteriaCombo;
-    private JComboBox valueCombo;
+    private JComboBox<Criteria> criteriaCombo;
+    private JComboBox<Value> valueCombo;
 
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {

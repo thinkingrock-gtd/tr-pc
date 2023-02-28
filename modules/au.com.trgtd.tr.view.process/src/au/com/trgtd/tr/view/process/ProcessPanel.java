@@ -1844,7 +1844,7 @@ public final class ProcessPanel extends JPanel implements Observer, ProcessCooki
         return delegationOriginalActionPanel;
     }
     
-    private ComboBoxModel getTimeComboBoxModel() {
+    private ComboBoxModel<Value> getTimeComboBoxModel() {
         if (data != null) {
             Criterion criterion = data.getTimeCriterion();
             if (criterion != null) {
@@ -1854,7 +1854,7 @@ public final class ProcessPanel extends JPanel implements Observer, ProcessCooki
         return new DefaultComboBoxModel<>();
     }
 
-    private ComboBoxModel getEnergyComboBoxModel() {
+    private ComboBoxModel<Value> getEnergyComboBoxModel() {
         if (data != null) {
             Criterion criterion = data.getEnergyCriterion();
             if (criterion != null) {
@@ -1864,7 +1864,7 @@ public final class ProcessPanel extends JPanel implements Observer, ProcessCooki
         return new DefaultComboBoxModel<>();
     }
 
-    private ComboBoxModel getPriorityComboBoxModel() {
+    private ComboBoxModel<Value> getPriorityComboBoxModel() {
         if (data != null) {
             Criterion criterion = data.getPriorityCriterion();
             if (criterion != null) {
@@ -2050,7 +2050,7 @@ public final class ProcessPanel extends JPanel implements Observer, ProcessCooki
     private TRLabel thoughtLabel;
     private TRTextField thoughtText;
     private TRLabel topicLabel;
-    private JComboBox topicCombo;
+    private JComboBox<Topic> topicCombo;
     private ButtonGroup actionableButtonGroup;
     private TRRadioButton actionableYesRadioButton;
     private TRRadioButton actionableNoRadioButton;
@@ -2081,15 +2081,15 @@ public final class ProcessPanel extends JPanel implements Observer, ProcessCooki
     private TRLabel descriptionLabel;
     private TRTextField descrField;
     private TRLabel contextLabel;
-    private JComboBox contextCombo;
+    private JComboBox<Context> contextCombo;
     private TRLabel timeLabel;
-    private JComboBox timeCombo;
+    private JComboBox<Value> timeCombo;
     private TRLabel energyLabel;
-    private JComboBox energyCombo;
+    private JComboBox<Value> energyCombo;
     private TRLabel priorityLabel;
-    private JComboBox priorityCombo;
+    private JComboBox<Value> priorityCombo;
     // Status
-    private JComboBox statusCombo;
+    private JComboBox<StatusEnum> statusCombo;
     private TRLabel statusLabel;
     private TRLabel dueDateLabel;
     private DateField dueDateField;

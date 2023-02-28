@@ -127,12 +127,12 @@ public final class GoalTopComponent extends Window implements LookupListener {
             return;
         }
 
-        Collection collection = result.allInstances();
+        Collection<? extends GoalNode> collection = result.allInstances();
         if (collection.isEmpty()) {
 //            panel.initModel(null);
 //            LOG.info("null");
         } else {
-            GoalNode node = (GoalNode)collection.iterator().next();
+            GoalNode node = collection.iterator().next();
             panel.initModel(node.goalCtrl);
             LOG.info("initialising model");
         }

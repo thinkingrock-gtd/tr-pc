@@ -102,7 +102,7 @@ public class ParamsDialog extends JDialog {
             } else if (param.type == Param.Type.COMBOBOX) {
                 List<Item> items = param.getItems();
                 if (items != null && !items.isEmpty()) {
-                    JComboBox combo = new TRComboBox(items.toArray());
+                    JComboBox<Item> combo = new TRComboBox<>(items.toArray(Item[]::new));
                     combo.setPreferredSize(COMBOBOX_SIZE);
                     if (param.getValue() != null && !param.getValue().trim().equals("")) {
                         // set selected item

@@ -67,7 +67,7 @@ public class ModifyRecurrenceWizard {
         if (recurrence == null) {
             return;
         }
-        WizardDescriptor.Iterator iterator = new ModifyRecurrenceWizardIterator(action, recurrence);
+        WizardDescriptor.Iterator<WizardDescriptor> iterator = new ModifyRecurrenceWizardIterator(action, recurrence);
         wizardDescriptor = new WizardDescriptor(iterator);
         wizardDescriptor.setTitleFormat(new MessageFormat("{0}"));
         wizardDescriptor.setTitle(org.openide.util.NbBundle.getMessage(ModifyRecurrenceWizard.class, "modify.recurrence"));

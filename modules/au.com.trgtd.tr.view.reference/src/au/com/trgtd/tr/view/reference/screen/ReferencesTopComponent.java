@@ -189,7 +189,7 @@ public final class ReferencesTopComponent extends Window implements ReferenceNod
         return filters;
     }
     
-    private MatcherEditor getMatcherEditor() {
+    private MatcherEditor<Information> getMatcherEditor() {
         return getFilters().getMatcherEditor();
     }
     

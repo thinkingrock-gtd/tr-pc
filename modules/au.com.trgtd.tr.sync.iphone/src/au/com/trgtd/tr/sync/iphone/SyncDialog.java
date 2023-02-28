@@ -69,7 +69,7 @@ public class SyncDialog extends JDialog {
     private JButton firstNextButton;
     private JButton firstCancelButton;
     private JLabel addrLabel;
-    private JComboBox addrCombo;
+    private JComboBox<NetAddr> addrCombo;
     private JLabel portLabel;
     private JFormattedTextField portField;
     private JPanel infoPanel;
@@ -221,7 +221,7 @@ public class SyncDialog extends JDialog {
 
         List<NetAddr> netAddrs = getNetAddresses();
         addrLabel = new TRLabel(getText("choose.network.address"));
-        addrCombo = new TRComboBox(netAddrs.toArray());
+        addrCombo = new TRComboBox<>(netAddrs.toArray(NetAddr[]::new));
         addrCombo.setFont(new Font("Monospaced", Font.PLAIN, 14));
         addrCombo.addActionListener((ActionEvent e) -> {
             firstNextButton.setEnabled(addrCombo.getSelectedIndex() > -1);

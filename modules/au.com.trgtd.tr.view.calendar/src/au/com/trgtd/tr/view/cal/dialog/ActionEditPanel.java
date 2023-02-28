@@ -356,12 +356,12 @@ public final class ActionEditPanel extends JPanel {
     }
 
     private void changedContext(java.awt.event.ActionEvent evt) {
-        TRComboBox combo = (TRComboBox) evt.getSource();
+        TRComboBox<Context> combo = (TRComboBox<Context>) evt.getSource();
         ctlr.setContext((Context) combo.getSelectedItem());
     }
 
     private void changedTopic(java.awt.event.ActionEvent evt) {
-        TRComboBox combo = (TRComboBox) evt.getSource();
+        TRComboBox<Topic> combo = (TRComboBox<Topic>) evt.getSource();
         ctlr.setTopic((Topic) combo.getSelectedItem());
     }
 
@@ -373,15 +373,15 @@ public final class ActionEditPanel extends JPanel {
         return NbBundle.getMessage(ActionEditPanel.class, key, p1, p2);
     }
 
-    private ComboBoxModel getTimeComboBoxModel() {
+    private ComboBoxModel<Value> getTimeComboBoxModel() {
         return new TimeComboBoxModel();
     }
 
-    private ComboBoxModel getEnergyComboBoxModel() {
+    private ComboBoxModel<Value> getEnergyComboBoxModel() {
         return new EnergyComboBoxModel();
     }
 
-    private ComboBoxModel getPriorityComboBoxModel() {
+    private ComboBoxModel<Value> getPriorityComboBoxModel() {
         return new PriorityComboBoxModel();
     }
 
@@ -972,8 +972,8 @@ public final class ActionEditPanel extends JPanel {
     private static final TRLabel fillerLabel2 = new TRLabel("");
     private static final TRLabel fillerLabel3 = new TRLabel("");
     
-    private ComboBoxModel topicsModel;
-    private ComboBoxModel contextsModel;
+    private ComboBoxModel<Topic> topicsModel;
+    private ComboBoxModel<Context> contextsModel;
     private DocumentListener docListenerDescr;
     private DocumentListener docListenerSuccess;
     private ActionListener actionListenerTopic;
@@ -1005,8 +1005,8 @@ public final class ActionEditPanel extends JPanel {
     private TRLabel successLabel;
     private MTextArea successText;
     private TRLabel contextLabel;
-    private TRComboBox contextCombo;
-    private TRComboBox topicCombo;
+    private TRComboBox<Context> contextCombo;
+    private TRComboBox<Topic> topicCombo;
     private TRLabel topicLabel;
     private DateField createdDateField;
     private TRLabel createdDateLabel;
@@ -1019,13 +1019,13 @@ public final class ActionEditPanel extends JPanel {
     private TRLabel durationLabel;
     private MinuteSpinner durationMinuteSpinner;
     private TRButton emailButton;
-    private TRComboBox energyCombo;
+    private TRComboBox<Value> energyCombo;
     private TRLabel energyLabel;
     private DateField followupField;
     private TRLabel followupLabel;
     private NotesViewLabel notesViewLabel;
     private NotesViewField notesViewField;
-    private TRComboBox priorityCombo;
+    private TRComboBox<Value> priorityCombo;
     private TRLabel priorityLabel;
     private DateField scheduledDateField;
     private HourSpinner scheduledHourSpinner;
@@ -1033,9 +1033,9 @@ public final class ActionEditPanel extends JPanel {
     private MinuteSpinner scheduledMinuteSpinner;
     private DateField startDateField;
     private TRLabel startDateLabel;
-    private TRComboBox statusCombo;
+    private TRComboBox<StatusEnum> statusCombo;
     private TRLabel statusLabel;
-    private TRComboBox timeCombo;
+    private TRComboBox<Value> timeCombo;
     private TRLabel timeLabel;
     private JPanel statusPanel;
     private ActorsComboBox delegateCombo;
