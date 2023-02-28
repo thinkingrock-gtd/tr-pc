@@ -42,7 +42,7 @@ import tr.model.action.ActionStateScheduled;
  */
 public class CalModelImp implements CalModel {
 
-    private static final Comparator COMPARATOR = (Comparator<CalEvent>) (CalEvent e1, CalEvent e2) -> {
+    private static final Comparator<CalEvent> COMPARATOR = (Comparator<CalEvent>) (CalEvent e1, CalEvent e2) -> {
         Action a1 = e1.getAction();
         Action a2 = e2.getAction();
         int c = a1.getTopic().compareTo(a2.getTopic());

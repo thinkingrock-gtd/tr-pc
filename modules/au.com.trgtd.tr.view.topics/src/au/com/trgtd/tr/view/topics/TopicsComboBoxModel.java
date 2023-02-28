@@ -39,7 +39,7 @@ import au.com.trgtd.tr.util.Observer;
  *
  * @author Jeremy Moore
  */
-public class TopicsComboBoxModel extends DefaultComboBoxModel implements Observer {
+public class TopicsComboBoxModel extends DefaultComboBoxModel<Topic> implements Observer {
     
     private Manager<Topic> topicManager;
     private List<Topic> topics;
@@ -98,7 +98,7 @@ public class TopicsComboBoxModel extends DefaultComboBoxModel implements Observe
      * Implement ListModel.getElementAt(int index).
      */
     @Override
-    public Object getElementAt(int index) {
+    public Topic getElementAt(int index) {
         return topics.get(index);
     }
     

@@ -37,7 +37,7 @@ import tr.model.actor.Actor;
  *
  * @author Jeremy Moore
  */
-public class ActorsComboBox extends TRComboBox implements ActionListener {
+public class ActorsComboBox extends TRComboBox<Actor> implements ActionListener {
 
     public final static String PROP_SELECTED = "selected";
 

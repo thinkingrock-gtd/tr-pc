@@ -28,7 +28,7 @@ import tr.model.actor.Actor;
  *
  * @author Jeremy Moore
  */
-public class ActorsListCellRenderer extends JLabel implements ListCellRenderer {
+public class ActorsListCellRenderer extends JLabel implements ListCellRenderer<Actor> {
 
     private final ListCellRenderer std;
 
@@ -40,12 +40,12 @@ public class ActorsListCellRenderer extends JLabel implements ListCellRenderer {
     }
 
     @Override
-    public Component getListCellRendererComponent(JList list, Object value,
+    public Component getListCellRendererComponent(JList<? extends Actor> list, Actor actor,
             int index, boolean isSelected, boolean cellHasFocus) {
 
-        JLabel lbl = (JLabel)std.getListCellRendererComponent(list, value, index, isSelected, cellHasFocus);
+        JLabel lbl = (JLabel)std.getListCellRendererComponent(list, actor, index, isSelected, cellHasFocus);
 
-        if (value instanceof Actor actor) {
+        if (actor != null) {
             if (actor.isInactive()) {
                 lbl.setText("<HTML><STRIKE>" + actor.getName() + "</STRIKE></HTML>");
             } else {

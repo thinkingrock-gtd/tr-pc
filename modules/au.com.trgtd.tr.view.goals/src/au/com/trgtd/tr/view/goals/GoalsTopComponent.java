@@ -43,6 +43,7 @@ import org.openide.explorer.ExplorerUtils;
 import org.openide.explorer.view.OutlineView;
 import org.openide.nodes.Node;
 import org.openide.nodes.Node.Property;
+import org.openide.nodes.PropertySupport;
 import org.openide.util.HelpCtx;
 import org.openide.util.ImageUtilities;
 import org.openide.util.Lookup;
@@ -88,7 +89,7 @@ public final class GoalsTopComponent extends Window
         manager.setRootContext(rootNode);
 
         GoalCtrl goal = manager.getExploredContext().getLookup().lookup(GoalCtrl.class);
-        Property[] props = new Property[]{
+        Property<PropertySupport.ReadOnly<?>>[] props = new Property[]{
             new PropertyAchieved(goal),
             new PropertyLevel(goal),
             new PropertyTopic(goal),};

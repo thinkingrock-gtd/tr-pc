@@ -131,7 +131,7 @@ public class FilterCriterionTime extends FilterCriterion implements PropertyChan
         }
     }
     
-    private class TimeComboBoxModel extends DefaultComboBoxModel implements Observer {
+    private class TimeComboBoxModel extends DefaultComboBoxModel<Value> implements Observer {
         private final ValueAll all;
         private final ValueMultiple multiple;
         private final ValueMultipleEdit multipleEdit;
@@ -180,7 +180,7 @@ public class FilterCriterionTime extends FilterCriterion implements PropertyChan
         }
         
         /** Implement ListModel.getElementAt(int index). */
-        public Object getElementAt(int index) {
+        public Value getElementAt(int index) {
             return values.get(index);
         }
         
@@ -196,7 +196,7 @@ public class FilterCriterionTime extends FilterCriterion implements PropertyChan
         }
     }
     
-    public class TimeCombo extends FilterComboAbstract {
+    public class TimeCombo extends FilterComboAbstract<Value> {
         
         private final ActionListener listener;
         
@@ -232,7 +232,7 @@ public class FilterCriterionTime extends FilterCriterion implements PropertyChan
                     } else {
                         all = data.getTimeCriterion().values.list();
                     }
-                    MultiChoiceDialog d = new MultiChoiceDialog<>(TimeCombo.this, all, m.getChosen(), false);
+                    MultiChoiceDialog<Value> d = new MultiChoiceDialog<>(TimeCombo.this, all, m.getChosen(), false);
                     d.setTitle(NbBundle.getMessage(getClass(), "filter-time"));
                     d.setLocationRelativeTo(TimeCombo.this);
                     d.setVisible(true);
@@ -259,7 +259,7 @@ public class FilterCriterionTime extends FilterCriterion implements PropertyChan
                     } else {
                         all = data.getTimeCriterion().values.list();
                     }
-                    MultiChoiceDialog d = new MultiChoiceDialog<>(TimeCombo.this, all, m.getChosen(), false);
+                    MultiChoiceDialog<Value> d = new MultiChoiceDialog<>(TimeCombo.this, all, m.getChosen(), false);
                     d.setTitle(NbBundle.getMessage(getClass(), "filter-time"));
                     d.setLocationRelativeTo(TimeCombo.this);
                     d.setVisible(true);

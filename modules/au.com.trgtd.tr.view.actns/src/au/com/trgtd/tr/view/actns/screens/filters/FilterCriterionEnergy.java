@@ -131,7 +131,7 @@ public class FilterCriterionEnergy extends FilterCriterion implements PropertyCh
         }
     }
     
-    private class EnergyComboBoxModel extends DefaultComboBoxModel implements Observer {
+    private class EnergyComboBoxModel extends DefaultComboBoxModel<Value> implements Observer {
         private final ValueAll all;
         private final ValueMultiple multiple;
         private final ValueMultipleEdit multipleEdit;
@@ -180,7 +180,7 @@ public class FilterCriterionEnergy extends FilterCriterion implements PropertyCh
         }
         
         /** Implement ListModel.getElementAt(int index). */
-        public Object getElementAt(int index) {
+        public Value getElementAt(int index) {
             return values.get(index);
         }
         
@@ -196,7 +196,7 @@ public class FilterCriterionEnergy extends FilterCriterion implements PropertyCh
         }
     }
     
-    public class EnergyCombo extends FilterComboAbstract {
+    public class EnergyCombo extends FilterComboAbstract<Value> {
         
         private final ActionListener listener;
         
@@ -232,7 +232,7 @@ public class FilterCriterionEnergy extends FilterCriterion implements PropertyCh
                     } else {
                         all = data.getEnergyCriterion().values.list();
                     }
-                    MultiChoiceDialog d = new MultiChoiceDialog<>(EnergyCombo.this, all, m.getChosen(), false);
+                    MultiChoiceDialog<Value> d = new MultiChoiceDialog<>(EnergyCombo.this, all, m.getChosen(), false);
                     d.setTitle(NbBundle.getMessage(getClass(), "filter-energy"));
                     d.setLocationRelativeTo(EnergyCombo.this);
                     d.setVisible(true);
@@ -259,7 +259,7 @@ public class FilterCriterionEnergy extends FilterCriterion implements PropertyCh
                     } else {
                         all = data.getEnergyCriterion().values.list();
                     }
-                    MultiChoiceDialog d = new MultiChoiceDialog<>(EnergyCombo.this, all, m.getChosen(), false);
+                    MultiChoiceDialog<Value> d = new MultiChoiceDialog<>(EnergyCombo.this, all, m.getChosen(), false);
                     d.setTitle(NbBundle.getMessage(getClass(), "filter-energy"));
                     d.setLocationRelativeTo(EnergyCombo.this);
                     d.setVisible(true);

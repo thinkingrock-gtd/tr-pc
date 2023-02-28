@@ -36,7 +36,7 @@ import au.com.trgtd.tr.util.Observer;
  *
  * @author Jeremy Moore
  */
-public class ContextsComboBoxModel extends DefaultComboBoxModel implements Observer {
+public class ContextsComboBoxModel extends DefaultComboBoxModel<Context> implements Observer {
 
     private Manager<Context> contextManager;
     private List<Context> contexts;
@@ -95,7 +95,7 @@ public class ContextsComboBoxModel extends DefaultComboBoxModel implements Obser
      * Implement ListModel.getElementAt(int index).
      */
     @Override
-    public Object getElementAt(int index) {
+    public Context getElementAt(int index) {
         return contexts.get(index);
     }
 

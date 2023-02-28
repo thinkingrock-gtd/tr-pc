@@ -140,7 +140,7 @@ public class MatcherEditorTopic extends MatcherEditorBase
         }
     }
     
-    private class TopicsComboBoxModel extends DefaultComboBoxModel implements Observer {
+    private class TopicsComboBoxModel extends DefaultComboBoxModel<Topic> implements Observer {
         private final TopicAll all;
         private final TopicMultiple multiple;
         private final TopicMultipleEdit multipleEdit;
@@ -188,7 +188,7 @@ public class MatcherEditorTopic extends MatcherEditorBase
         }
         
         /** Implement ListModel.getElementAt(int index). */
-        public Object getElementAt(int index) {
+        public Topic getElementAt(int index) {
             return topics.get(index);
         }
         
@@ -210,7 +210,7 @@ public class MatcherEditorTopic extends MatcherEditorBase
         comboBox.fireValueChange();
     }
     
-    public class TopicsComboBox extends FilterComboAbstract {
+    public class TopicsComboBox extends FilterComboAbstract<Topic> {
         
         private final ActionListener listener;
         

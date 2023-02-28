@@ -151,13 +151,13 @@ public class FilterDone extends FilterChoice implements PropertyChangeListener {
         }
     }
     
-    private class DoneChoiceComboBoxModel extends DefaultComboBoxModel {
+    private class DoneChoiceComboBoxModel extends DefaultComboBoxModel<Choice> {
         private final Choice[] items = new Choice[] {
             new All(),
             new Done(),
             new ToDo()
         };
-        public Object getElementAt(int index) {
+        public Choice getElementAt(int index) {
             return items[index];
         }
         public int getSize() {
@@ -165,7 +165,7 @@ public class FilterDone extends FilterChoice implements PropertyChangeListener {
         }
     }
     
-    private class DoneChoiceComboBox extends FilterComboAbstract {
+    private class DoneChoiceComboBox extends FilterComboAbstract<Choice> {
         
         public DoneChoiceComboBox(DoneChoiceComboBoxModel model) {
             super(model);

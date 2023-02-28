@@ -21,11 +21,12 @@ import javax.swing.DefaultComboBoxModel;
 import tr.model.criteria.Criterion; 
 import au.com.trgtd.tr.util.Observable;
 import au.com.trgtd.tr.util.Observer;
+import tr.model.criteria.Value;
 
 /**
  * Criterion ComboBoxModel.
  */
-public class CriterionComboBoxModel extends DefaultComboBoxModel implements Observer {
+public class CriterionComboBoxModel extends DefaultComboBoxModel<Value> implements Observer {
     
     private final Criterion criterion;
     
@@ -43,7 +44,7 @@ public class CriterionComboBoxModel extends DefaultComboBoxModel implements Obse
      * Implement ListModel.getElementAt(int index).
      */
     @Override
-    public Object getElementAt(int index) {
+    public Value getElementAt(int index) {
         return criterion.values.get(index);
     }
     

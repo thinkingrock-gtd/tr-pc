@@ -18,17 +18,18 @@
 package au.com.trgtd.tr.view.contexts;
 
 import au.com.trgtd.tr.appl.Constants;
+import au.com.trgtd.tr.swing.TRComboBox;
 import java.awt.Font;
 import javax.swing.ComboBoxModel;
 import org.openide.util.NbBundle;
-import au.com.trgtd.tr.swing.TRComboBox;
+import tr.model.context.Context;
 
 /**
  * Combo box for contexts.
  *
  * @author Jeremy Moore
  */
-public class ContextsComboBox extends TRComboBox {
+public class ContextsComboBox extends TRComboBox<Context> {
 
     /**
      * Constructs a new instance with the default model.
@@ -41,7 +42,7 @@ public class ContextsComboBox extends TRComboBox {
      * Constructs a new instance for the given data model.
      * @param model The contexts combo box model.
      */
-    public ContextsComboBox(ComboBoxModel model) {
+    public ContextsComboBox(ComboBoxModel<Context> model) {
         super(model);
         setFont(getFont().deriveFont(Font.PLAIN));
         setMaximumRowCount(Constants.COMBO_MAX_ROWS);

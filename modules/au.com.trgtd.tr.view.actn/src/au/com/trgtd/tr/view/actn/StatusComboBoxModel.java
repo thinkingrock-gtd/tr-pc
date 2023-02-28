@@ -25,7 +25,7 @@ import javax.swing.DefaultComboBoxModel;
 /**
  * ComboBoxModel for action states.
  */
-public class StatusComboBoxModel extends DefaultComboBoxModel {
+public class StatusComboBoxModel extends DefaultComboBoxModel<StatusEnum> {
     
     private List<StatusEnum> states;
     
@@ -44,7 +44,7 @@ public class StatusComboBoxModel extends DefaultComboBoxModel {
     /**
      * Implement ListModel.getElementAt(int index).
      */
-    public Object getElementAt(int index) {
+    public StatusEnum getElementAt(int index) {
         return states.get(index);
     }
     

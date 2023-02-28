@@ -139,7 +139,7 @@ public class MatcherEditorTopic extends MatcherEditorBase implements PropertyCha
         }
     }
     
-    private class TopicsComboBoxModel extends DefaultComboBoxModel implements Observer {
+    private class TopicsComboBoxModel extends DefaultComboBoxModel<Topic> implements Observer {
         private final TopicAll all;
         private final TopicMultiple multiple;
         private final TopicMultipleEdit multipleEdit;
@@ -189,7 +189,7 @@ public class MatcherEditorTopic extends MatcherEditorBase implements PropertyCha
         }
         
         /** Implement ListModel.getElementAt(int index). */
-        public Object getElementAt(int index) {
+        public Topic getElementAt(int index) {
             return topics.get(index);
         }
         
@@ -211,7 +211,7 @@ public class MatcherEditorTopic extends MatcherEditorBase implements PropertyCha
         comboBox.fireValueChange();
     }
     
-    public class TopicsComboBox extends FilterComboAbstract {
+    public class TopicsComboBox extends FilterComboAbstract<Topic> {
         
         private final ActionListener listener;
         
@@ -247,7 +247,7 @@ public class MatcherEditorTopic extends MatcherEditorBase implements PropertyCha
                     } else {
                         all = data.getTopicManager().list();
                     }
-                    MultiChoiceDialog d = new MultiChoiceDialog<>(TopicsComboBox.this, all, tm.getChosen(), true);
+                    MultiChoiceDialog<Topic> d = new MultiChoiceDialog<>(TopicsComboBox.this, all, tm.getChosen(), true);
                     d.setTitle(NbBundle.getMessage(getClass(), "filter-topic"));
                     d.setLocationRelativeTo(TopicsComboBox.this);
                     d.setVisible(true);
@@ -273,7 +273,7 @@ public class MatcherEditorTopic extends MatcherEditorBase implements PropertyCha
                     } else {
                         all = data.getTopicManager().list();
                     }
-                    MultiChoiceDialog d = new MultiChoiceDialog<>(TopicsComboBox.this, all, tm.getChosen(), true);
+                    MultiChoiceDialog<Topic> d = new MultiChoiceDialog<>(TopicsComboBox.this, all, tm.getChosen(), true);
                     d.setTitle(NbBundle.getMessage(getClass(), "filter-topic"));
                     d.setLocationRelativeTo(TopicsComboBox.this);
                     d.setVisible(true);
