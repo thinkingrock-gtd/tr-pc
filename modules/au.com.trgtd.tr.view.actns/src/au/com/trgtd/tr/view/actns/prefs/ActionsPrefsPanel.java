@@ -80,7 +80,7 @@ final class ActionsPrefsPanel extends JPanel {
         titleLabel = new JLabel(getMsg("report.heading"));
         titleLabel.setFont(titleLabel.getFont().deriveFont(Font.BOLD));        
         fontLabel = new JLabel(getMsg("report.font"));
-        fontCombo = new TRComboBox();
+        fontCombo = new TRComboBox<>();
         fontCombo.addActionListener((ActionEvent evt) -> {
             controller.changed();
         });

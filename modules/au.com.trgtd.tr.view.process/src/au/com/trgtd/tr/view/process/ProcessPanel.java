@@ -1315,13 +1315,13 @@ public final class ProcessPanel extends JPanel implements Observer, ProcessCooki
         contextLabel = new TRLabel(LBL_CONTEXT);
         contextCombo = new ContextsComboBox(new ContextsComboBoxModel(false));
         timeLabel = new TRLabel(LBL_TIME);
-        timeCombo = new TRComboBox(getTimeComboBoxModel());
+        timeCombo = new TRComboBox<>(getTimeComboBoxModel());
         energyLabel = new TRLabel(LBL_ENERGY);
-        energyCombo = new TRComboBox(getEnergyComboBoxModel());
+        energyCombo = new TRComboBox<>(getEnergyComboBoxModel());
         priorityLabel = new TRLabel(LBL_PRIORITY);
-        priorityCombo = new TRComboBox(getPriorityComboBoxModel());
+        priorityCombo = new TRComboBox<>(getPriorityComboBoxModel());
         statusLabel = new TRLabel(LBL_STATUS);
-        statusCombo = new TRComboBox(new StatusComboBoxModel());
+        statusCombo = new TRComboBox<>(new StatusComboBoxModel());
         recurrenceLabel = new TRLabel(LBL_RECURRENCE);
         recurrenceButton = new TRButton(LBL_CREATE);
         dueDateLabel = new TRLabel(LBL_DUE_DATE);

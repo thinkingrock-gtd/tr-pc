@@ -587,13 +587,13 @@ public final class ActionEditPanel extends JPanel {
         topicsModel = new TopicsComboBoxModel(false);
         topicCombo = new TopicsComboBox(topicsModel);
         statusLabel = new TRLabel();
-        statusCombo = new TRComboBox();
+        statusCombo = new TRComboBox<>();
         priorityLabel = new TRLabel();
         energyLabel = new TRLabel();
-        energyCombo = new TRComboBox();
+        energyCombo = new TRComboBox<>();
         timeLabel = new TRLabel();
-        timeCombo = new TRComboBox();
-        priorityCombo = new TRComboBox();
+        timeCombo = new TRComboBox<>();
+        priorityCombo = new TRComboBox<>();
         notesViewLabel = new NotesViewLabel();
         notesViewField = new NotesViewField();
         createdDateLabel = new TRLabel();

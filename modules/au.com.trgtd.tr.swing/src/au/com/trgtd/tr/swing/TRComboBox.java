@@ -21,19 +21,19 @@ import javax.swing.ComboBoxModel;
 import javax.swing.JComboBox;
 import javax.swing.UIManager;
 
-public class TRComboBox extends JComboBox {
+public class TRComboBox<E> extends JComboBox<E> {
 
     public TRComboBox() {
         this.setOpaque(false);        
 //      this.putClientProperty("JComponent.sizeVariant", "small");
     }
 
-    public TRComboBox(Object[] model) {
+    public TRComboBox(E[] model) {
         super(model);
         this.setOpaque(false);        
     }
 
-    public TRComboBox(ComboBoxModel model) {
+    public TRComboBox(ComboBoxModel<E> model) {
         super(model);
         this.setOpaque(false);        
     }

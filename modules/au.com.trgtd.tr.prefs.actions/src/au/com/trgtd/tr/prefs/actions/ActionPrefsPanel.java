@@ -99,14 +99,14 @@ final class ActionPrefsPanel extends JPanel {
         editCreateDateCheckBox = new JCheckBox(getMsg("CTL_EditCreateDate"));
         editCreateDateCheckBox.addActionListener(actionListener);
         encodingLabel = new TRLabel(getMsg("CTL_EmailEncoding"));
-        encodingCombo = new TRComboBox(getEncodingModel());
+        encodingCombo = new TRComboBox<>(getEncodingModel());
         actionStatesLabel = new TRLabel(getMsg("DefaultActionState"));
         states = new Vector<>();
         states.add(ActionPrefs.ActionState.INACTIVE);
         states.add(ActionPrefs.ActionState.DOASAP);
         states.add(ActionPrefs.ActionState.SCHEDULED);
         states.add(ActionPrefs.ActionState.DELEGATED);
-        actionStatesCombo = new TRComboBox(new DefaultComboBoxModel<>(states));
+        actionStatesCombo = new TRComboBox<>(new DefaultComboBoxModel<>(states));
         actionStatesCombo.setMaximumRowCount(states.size());
         schdTimeLabel = new TRLabel(getMsg("CTL_DefSchdTime"));
         schdTimeHrSpinner = new HourSpinner();

@@ -102,9 +102,9 @@ public class PeriodMonthlyPanel extends JPanel {
         daysButton.addActionListener(this::daysButtonAction);
         onTheRadio = new JRadioButton(getMsg("months.on.the"));
         onTheRadio.addActionListener(this::monthsRadioButtonAction);
-        nthCombo = new TRComboBox();
+        nthCombo = new TRComboBox<>();
         nthCombo.addActionListener(this::onTheNthComboAction);
-        dayCombo = new TRComboBox();
+        dayCombo = new TRComboBox<>();
         dayCombo.addActionListener(this::dayComboAction);
 
         buttonGroup = new ButtonGroup();

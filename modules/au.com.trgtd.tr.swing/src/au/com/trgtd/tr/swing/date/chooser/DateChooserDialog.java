@@ -176,7 +176,7 @@ public class DateChooserDialog extends JDialog implements ItemListener, MouseLis
 
         calendar = new GregorianCalendar();
 
-        month = new TRComboBox(MONTHS);
+        month = new TRComboBox<>(MONTHS);
         month.setPreferredSize(new Dimension(110, 23));
         month.addItemListener(this);
         month.addKeyListener(new KeyAdapter() {
@@ -209,7 +209,7 @@ public class DateChooserDialog extends JDialog implements ItemListener, MouseLis
         monthNext.addActionListener((ActionEvent e) -> {
             goNextMonth();
         });
-        year = new TRComboBox();
+        year = new TRComboBox<>();
         year.setPreferredSize(new Dimension(110, 23));
         for (int i = FIRST_YEAR; i <= LAST_YEAR; i++) {
             year.addItem(Integer.toString(i));
