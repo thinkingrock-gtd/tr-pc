@@ -48,7 +48,7 @@ final class ActionsPrefsPanel extends JPanel {
         colourCheck.setSelected(ActionsPrefs.isReportUseColour());
         strikeCheck.setSelected(ActionsPrefs.isReportStrikeDone());
         items = (Vector<Item>) (new ParamFont(null, null)).getItems();
-        fontCombo.setModel(new DefaultComboBoxModel(items));
+        fontCombo.setModel(new DefaultComboBoxModel<>(items));
         String font = ActionsPrefs.getReportFont();
         for (Item item : items) {
             if (item.value.equals(font)) {

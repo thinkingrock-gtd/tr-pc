@@ -443,5 +443,4 @@ public class ReviewActionsTableFormat implements AdvancedTableFormat, WritableTa
 //                
         return null;
     }
-    
 }

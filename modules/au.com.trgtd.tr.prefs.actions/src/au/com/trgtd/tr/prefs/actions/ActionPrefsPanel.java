@@ -106,7 +106,7 @@ final class ActionPrefsPanel extends JPanel {
         states.add(ActionPrefs.ActionState.DOASAP);
         states.add(ActionPrefs.ActionState.SCHEDULED);
         states.add(ActionPrefs.ActionState.DELEGATED);
-        actionStatesCombo = new TRComboBox(new DefaultComboBoxModel(states));
+        actionStatesCombo = new TRComboBox(new DefaultComboBoxModel<>(states));
         actionStatesCombo.setMaximumRowCount(states.size());
         schdTimeLabel = new TRLabel(getMsg("CTL_DefSchdTime"));
         schdTimeHrSpinner = new HourSpinner();
@@ -155,7 +155,7 @@ final class ActionPrefsPanel extends JPanel {
         Vector<String> encodings = new Vector<>();
         encodings.add("");
         encodings.addAll(Charset.availableCharsets().keySet());
-        return new DefaultComboBoxModel(encodings);
+        return new DefaultComboBoxModel<>(encodings);
     }
 
     private boolean isValidEncoding() {

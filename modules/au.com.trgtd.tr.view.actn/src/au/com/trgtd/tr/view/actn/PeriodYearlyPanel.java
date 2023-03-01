@@ -57,11 +57,11 @@ public class PeriodYearlyPanel extends JPanel {
     }
 
     private ComboBoxModel getDayComboModel() {
-        return new DefaultComboBoxModel(PeriodMonth.OnTheDay.values());
+        return new DefaultComboBoxModel<>(PeriodMonth.OnTheDay.values());
     }
 
     private ComboBoxModel getNthComboModel() {
-        return new DefaultComboBoxModel(PeriodMonth.OnTheNth.values());
+        return new DefaultComboBoxModel<>(PeriodMonth.OnTheNth.values());
     }
 
     private String getSelectedMonthsText() {

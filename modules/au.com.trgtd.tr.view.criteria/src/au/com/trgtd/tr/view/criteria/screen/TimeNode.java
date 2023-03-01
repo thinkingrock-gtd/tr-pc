@@ -120,7 +120,7 @@ final class TimeNode extends AbstractNode implements EditCookie, Observer {
     }
 
     private JComboBox getReplacementCombo(Data data) {
-        JComboBox cb = new JComboBox();
+        JComboBox cb = new JComboBox<>();
         cb.addItem(new NullItem());
         for (Value itemValue : data.getTimeCriterion().values.list()) {
             if (!itemValue.equals(value)) {

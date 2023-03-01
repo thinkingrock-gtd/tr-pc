@@ -91,7 +91,7 @@ final class ApplicationPanel extends javax.swing.JPanel {
                 versionCheckCombo.setSelectedIndex(ApplicationPrefs.VERSION_CHECK_PERIOD_NEVER);
             }
         });
-        versionCheckCombo = new JComboBox(new DefaultComboBoxModel(PERIODS));
+        versionCheckCombo = new JComboBox<>(new DefaultComboBoxModel<>(PERIODS));
         versionCheckCombo.setMaximumRowCount(PERIODS.length);
         idleCheckBox = new JCheckBox(msg("prefs.inactive.quit.label"));
         idleCheckBox.setHorizontalTextPosition(SwingConstants.TRAILING);

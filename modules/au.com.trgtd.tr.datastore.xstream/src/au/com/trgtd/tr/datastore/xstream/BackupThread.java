@@ -140,7 +140,7 @@ public class BackupThread extends Thread {
         FileFilter filter = (File file) -> file.isFile()
                 && file.getName().toLowerCase().matches(regex);
 
-        List<File> recoveryFiles = new ArrayList();
+        List<File> recoveryFiles = new ArrayList<>();
         Collections.addAll(recoveryFiles, dir.listFiles(filter));
         
         if (!recoveryFiles.isEmpty()) {

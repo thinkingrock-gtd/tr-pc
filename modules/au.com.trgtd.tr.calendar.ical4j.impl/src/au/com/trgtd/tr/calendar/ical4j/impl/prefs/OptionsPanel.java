@@ -92,7 +92,7 @@ public class OptionsPanel extends JPanel implements CalendarSynchronizerOptions 
 
     public void load() {
         initTimeZoneItems();
-        timezoneCombo.setModel(new DefaultComboBoxModel(tzlist));
+        timezoneCombo.setModel(new DefaultComboBoxModel<>(tzlist));
         timezoneCombo.setMaximumRowCount(Constants.COMBO_MAX_ROWS);
         timezoneCombo.setSelectedItem(Options.getTimeZoneID());
         folderField.setText(Options.getICalendarPath());

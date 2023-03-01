@@ -63,7 +63,7 @@ final class ImportThoughtsPrefsPanel extends JPanel {
         Vector<String> encodings = new Vector<>();
         encodings.add("");
         encodings.addAll(Charset.availableCharsets().keySet());
-        return new DefaultComboBoxModel(encodings);
+        return new DefaultComboBoxModel<>(encodings);
     }
 
     void load() {

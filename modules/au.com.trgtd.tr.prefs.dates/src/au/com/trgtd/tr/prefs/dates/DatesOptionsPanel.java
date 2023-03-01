@@ -46,13 +46,13 @@ final class DatesOptionsPanel extends JPanel {
 
     private JComponent getView() {
         dayLabel = new JLabel(getMsg("Dates.FirstDayOfWeek"));
-        dayCombo = new JComboBox();
+        dayCombo = new JComboBox<>();
         dayCombo.addActionListener((java.awt.event.ActionEvent evt) -> {
             controller.changed();
         });
         
         orderLabel = new JLabel(getMsg("Dates.Order"));
-        orderCombo = new JComboBox();
+        orderCombo = new JComboBox<>();
         orderCombo.addActionListener((java.awt.event.ActionEvent evt) -> {
             controller.changed();
         });
@@ -86,12 +86,12 @@ final class DatesOptionsPanel extends JPanel {
 
     private void doLoad() {
         initDayItems();
-        dayCombo.setModel(new DefaultComboBoxModel(days));
+        dayCombo.setModel(new DefaultComboBoxModel<>(days));
         dayCombo.setMaximumRowCount(days.size());
         dayCombo.setSelectedItem(getDayItem(DatesPrefs.getFirstDayOfWeek()));
 
         initOrderItems();
-        orderCombo.setModel(new DefaultComboBoxModel(orders));
+        orderCombo.setModel(new DefaultComboBoxModel<>(orders));
         orderCombo.setMaximumRowCount(orders.size());
         orderCombo.setSelectedItem(getOrderItem(DatesPrefs.getDateOrder()));
     }

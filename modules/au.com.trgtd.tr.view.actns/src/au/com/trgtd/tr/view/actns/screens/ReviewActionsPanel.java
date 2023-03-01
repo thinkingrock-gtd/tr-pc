@@ -123,7 +123,7 @@ public class ReviewActionsPanel extends JPanel implements ListSelectionListener,
 
         actionsEventList = new BasicEventList<>();
         actionsEventList.addAll(actionsList);
-        actionsFilterList = new FilterList(actionsEventList, filters.getMatcherEditor());
+        actionsFilterList = new FilterList<>(actionsEventList, filters.getMatcherEditor());
         actionsFilterList.addListEventListener((ListEvent<Action> e) -> {
             itemCountShower.showItemCount(e.getSourceList().size());
             // fix problem of number of selected rows increasing by clearing
@@ -191,7 +191,7 @@ public class ReviewActionsPanel extends JPanel implements ListSelectionListener,
 
         actionsTable.setDefaultRenderer(StyledString.class, new StyledStringRenderer());
 
-        tableSorter = new TableComparatorChooser(actionsTable, actionsSortedList, true);
+        tableSorter = new TableComparatorChooser<>(actionsTable, actionsSortedList, true);
 
         actionsTable.addKeyListener(new KeyAdapter() {
             @Override

@@ -60,7 +60,7 @@ public class FoundItems implements Observable {
 
     public List<FoundItem> getItems() {
         synchronized(this) {
-            return Collections.unmodifiableList(new ArrayList(list));
+            return Collections.unmodifiableList(new ArrayList<>(list));
         }
     }
 
