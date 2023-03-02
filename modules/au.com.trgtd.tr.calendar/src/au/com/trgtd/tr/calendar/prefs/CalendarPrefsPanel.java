@@ -132,7 +132,7 @@ final class CalendarPrefsPanel extends javax.swing.JPanel {
 
         synchronizerLabel = new JLabel(getMsg("CalendarPanel.importerLabel.text"));
 
-        synchronizerCombo = new TRComboBox();
+        synchronizerCombo = new TRComboBox<>();
         synchronizerCombo.addActionListener((ActionEvent evt) -> {
             synchronizerComboBoxActionPerformed();
         });

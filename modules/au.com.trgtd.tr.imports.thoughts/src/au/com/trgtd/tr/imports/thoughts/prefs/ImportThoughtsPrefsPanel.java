@@ -44,7 +44,7 @@ final class ImportThoughtsPrefsPanel extends JPanel {
 
     private JComponent getView() {
         encodingLabel = new JLabel(getMsg("Encoding"));
-        encodingCombo = new TRComboBox(getEncodingModel());
+        encodingCombo = new TRComboBox<>(getEncodingModel());
 
         JPanel panel = new JPanel(new MigLayout("", "0[]2[]0", "0[]0"));
         panel.add(encodingLabel, "align right");

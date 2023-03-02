@@ -73,7 +73,7 @@ public class OptionsPanel extends JPanel implements CalendarSynchronizerOptions 
             browse();
         });
         timezoneLabel = new TRLabel(getMsg("timezoneLabel"));
-        timezoneCombo = new TRComboBox();
+        timezoneCombo = new TRComboBox<>();
         timezoneCombo.addActionListener((ActionEvent evt) -> {
             changed = true;
         });

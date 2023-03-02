@@ -646,7 +646,7 @@ public final class ProjectPanel extends JPanel { // implements Observer {
         topicCombo = new TopicsComboBox(topicsModel);
         priorityLabel = new TRLabel();
         priorityLabel.setText(getMsg("LBL_Priority"));
-        priorityCombo = new TRComboBox();
+        priorityCombo = new TRComboBox<>();
         priorityCombo.setModel(getPriorityComboBoxModel());
         sequencingCheckBox = new TRCheckBox();
         sequencingCheckBox.setHorizontalTextPosition(TRCheckBox.LEFT);

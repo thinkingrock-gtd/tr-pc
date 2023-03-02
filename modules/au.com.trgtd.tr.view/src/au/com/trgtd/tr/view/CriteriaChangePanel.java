@@ -49,7 +49,7 @@ public class CriteriaChangePanel extends JPanel {
         }
 
         criteriaLabel = new JLabel(getMsg("CTL_Criteria"));
-        criteriaCombo = new TRComboBox(Criteria.values());
+        criteriaCombo = new TRComboBox<>(Criteria.values());
         criteriaCombo.setSelectedItem(Criteria.Priority);
         criteriaCombo.addActionListener((ActionEvent evt) -> {
             Criteria c = (Criteria)criteriaCombo.getSelectedItem();
@@ -66,7 +66,7 @@ public class CriteriaChangePanel extends JPanel {
         priorities = new DefaultComboBoxModel<>(data.getPriorityCriterion().values.list());
         times = new DefaultComboBoxModel<>(data.getTimeCriterion().values.list());
         energies = new DefaultComboBoxModel<>(data.getEnergyCriterion().values.list());
-        valueCombo = new TRComboBox(priorities);
+        valueCombo = new TRComboBox<>(priorities);
  
         setLayout(new MigLayout("insets 12px", "2[]2[]4[]2[200]2", "2[]2"));
 

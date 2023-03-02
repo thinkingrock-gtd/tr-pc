@@ -76,7 +76,7 @@ final class ExtractPanel extends JPanel {
         browseButton = new JButton(getMsg("Browse"));
         browseButton.addActionListener(this::browse);
         encodingLabel = new TRLabel(getMsg("Encoding"));
-        encodingCombo = new TRComboBox();
+        encodingCombo = new TRComboBox<>();
         encodingCombo.setEditable(true);
         encodingCombo.setModel(getEncodingModel());
     }

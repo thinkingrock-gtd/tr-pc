@@ -95,11 +95,11 @@ public class PeriodYearlyPanel extends JPanel {
         onTheCheckBox.addActionListener((ActionEvent evt) -> {
             onTheCheckBoxAction(evt);
         });
-        nthComboBox = new TRComboBox();
+        nthComboBox = new TRComboBox<>();
         nthComboBox.addActionListener((ActionEvent evt) -> {
             NthComboAction(evt);
         });
-        dayComboBox = new TRComboBox();
+        dayComboBox = new TRComboBox<>();
         dayComboBox.addActionListener((ActionEvent evt) -> {
             dayComboAction(evt);
         });

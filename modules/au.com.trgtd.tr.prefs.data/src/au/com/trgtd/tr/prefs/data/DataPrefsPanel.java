@@ -184,7 +184,7 @@ final class DataPrefsPanel extends JPanel implements ChangeListener {
         recoveryButtonGroup.add(recoveryKeepNbrRadio);
 
         backupLabel = new JLabel(Resources.getText("backup.period"));
-        backupCombo = new TRComboBox(new DefaultComboBoxModel(intervals));
+        backupCombo = new TRComboBox<>(new DefaultComboBoxModel<>(intervals));
         backupCombo.addActionListener(actionChangeListener);
         backupFolderLabel = new JLabel(Resources.getText("backup.folder"));
         backupFolderText = new JTextField();

@@ -212,7 +212,7 @@ public class ChangeStatusPanel extends JPanel {
     private JPanel getPanelAction() {
         if (panelAction == null) {
             statusLabel = new TRLabel(LBL_STATUS);
-            statusCombo = new TRComboBox(new StatusComboBoxModel());
+            statusCombo = new TRComboBox<>(new StatusComboBoxModel());
             statusCombo.addItemListener(new ItemListener() {
                 @Override
                 public void itemStateChanged(ItemEvent e) {
