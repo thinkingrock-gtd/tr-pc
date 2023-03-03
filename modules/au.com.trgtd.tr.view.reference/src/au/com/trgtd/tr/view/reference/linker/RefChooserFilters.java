@@ -18,7 +18,10 @@
 package au.com.trgtd.tr.view.reference.linker;
 
 import au.com.trgtd.tr.view.ViewUtils;
+import au.com.trgtd.tr.view.reference.filters.MatcherEditorSearchText;
+import au.com.trgtd.tr.view.reference.filters.MatcherEditorTopic;
 import ca.odell.glazedlists.BasicEventList;
+import ca.odell.glazedlists.EventList;
 import ca.odell.glazedlists.matchers.CompositeMatcherEditor;
 import ca.odell.glazedlists.matchers.MatcherEditor;
 import java.awt.Component;
@@ -28,8 +31,7 @@ import java.util.Vector;
 import javax.swing.JComponent;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import au.com.trgtd.tr.view.reference.filters.MatcherEditorSearchText;
-import au.com.trgtd.tr.view.reference.filters.MatcherEditorTopic;
+import tr.model.information.Information;
 
 /**
  * Filters for information references.
@@ -44,12 +46,12 @@ class RefChooserFilters {
         matcherEditorSearch = new MatcherEditorSearchText();
     }
     
-    public MatcherEditor getMatcherEditor() {
+    public MatcherEditor<Information> getMatcherEditor() {
         if (matcherEditor == null) {
-            BasicEventList<MatcherEditor> list = new BasicEventList<>();
+            EventList<MatcherEditor<Information>> list = new BasicEventList<>();
             list.add(matcherEditorTopics);
             list.add(matcherEditorSearch);
-            matcherEditor = new CompositeMatcherEditor(list);
+            matcherEditor = new CompositeMatcherEditor<>(list);
         }
         return matcherEditor;
     }
@@ -89,7 +91,7 @@ class RefChooserFilters {
 
     public final MatcherEditorTopic matcherEditorTopics;
     public final MatcherEditorSearchText matcherEditorSearch;
-    private MatcherEditor matcherEditor;
+    private MatcherEditor<Information> matcherEditor;
     private JComponent component;
     
 }

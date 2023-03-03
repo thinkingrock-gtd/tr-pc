@@ -219,7 +219,7 @@ public final class ProcessTopComponent extends Window implements ProcessNodeProv
             if (panel == null || processNode == null) {
                 getInstanceContent().set(Collections.EMPTY_LIST, null);
             } else {
-                Collection collection = new ArrayList();
+                Collection<ProcessNode> collection = new ArrayList<>();
                 collection.add(processNode);
                 getInstanceContent().set(collection, null);
             }

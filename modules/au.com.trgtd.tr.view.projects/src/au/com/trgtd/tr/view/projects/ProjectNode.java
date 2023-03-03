@@ -289,7 +289,7 @@ public class ProjectNode extends AbstractNode implements Observer, EditCookie,
     }
 
     @Override
-    protected void createPasteTypes(Transferable t, List s) {
+    protected void createPasteTypes(Transferable t, List<PasteType> s) {
         super.createPasteTypes(t, s);
         PasteType paste = getDropType(t, DnDConstants.ACTION_COPY, -1);
         if (paste != null) {

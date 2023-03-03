@@ -861,15 +861,15 @@ public final class ActionPanel extends JPanel implements Observer {
         return NbBundle.getMessage(ActionPanel.class, key, p1, p2);
     }
 
-    private ComboBoxModel getTimeComboBoxModel() {
+    private ComboBoxModel<Value> getTimeComboBoxModel() {
         return new TimeComboBoxModel();
     }
 
-    private ComboBoxModel getEnergyComboBoxModel() {
+    private ComboBoxModel<Value> getEnergyComboBoxModel() {
         return new EnergyComboBoxModel();
     }
 
-    private ComboBoxModel getPriorityComboBoxModel() {
+    private ComboBoxModel<Value> getPriorityComboBoxModel() {
         return new PriorityComboBoxModel();
     }
 
@@ -1644,8 +1644,8 @@ if (ass.getDate() == null) {
     private ActionStateASAP stateDoASAP;
     private ActionStateDelegated stateDelegate;
     private ActionStateScheduled stateSchedule;
-    private ComboBoxModel topicsModel;
-    private ComboBoxModel contextsModel;
+    private ComboBoxModel<Topic> topicsModel;
+    private ComboBoxModel<Context> contextsModel;
     private boolean updating;
     private DocumentListener docListenerDescription;
     private FocusAdapter focusAdapterDescription;
@@ -1682,8 +1682,8 @@ if (ass.getDate() == null) {
     private TRLabel successLabel;
     private MTextArea successText;
     private TRLabel contextLabel;
-    private TRComboBox contextCombo;
-    private TRComboBox topicCombo;
+    private TRComboBox<Context> contextCombo;
+    private TRComboBox<Topic> topicCombo;
     private TRLabel topicLabel;
     private DateField createdDateField;
     private TRLabel createdDateLabel;
@@ -1696,13 +1696,13 @@ if (ass.getDate() == null) {
     private TRLabel durationLabel;
     private MinuteSpinner durationMinuteSpinner;
     private TRButton emailButton;
-    private TRComboBox energyCombo;
+    private TRComboBox<Value> energyCombo;
     private TRLabel energyLabel;
     private DateField followupField;
     private TRLabel followupLabel;
     private NotesViewLabel notesViewLabel;
     private NotesViewField notesViewField;
-    private TRComboBox priorityCombo;
+    private TRComboBox<Value> priorityCombo;
     private TRLabel priorityLabel;
     private TRButton recurrenceButton;
     private TRLabel recurrenceLabel;
@@ -1712,9 +1712,9 @@ if (ass.getDate() == null) {
     private MinuteSpinner scheduledMinuteSpinner;
     private DateField startDateField;
     private TRLabel startDateLabel;
-    private TRComboBox statusCombo;
+    private TRComboBox<StatusEnum> statusCombo;
     private TRLabel statusLabel;
-    private TRComboBox timeCombo;
+    private TRComboBox<Value> timeCombo;
     private TRLabel timeLabel;
     private JPanel statusPanel;
     private ActorsComboBox delegateCombo;

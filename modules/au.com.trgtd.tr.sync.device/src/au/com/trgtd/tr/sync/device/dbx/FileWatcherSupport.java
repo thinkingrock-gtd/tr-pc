@@ -127,7 +127,7 @@ public class FileWatcherSupport {
                 while (key != null) {
                     
                     // we have a polled event, now we traverse it and receive all the states from it
-                    for (WatchEvent event : key.pollEvents()) {
+                    for (WatchEvent<?> event : key.pollEvents()) {
 
                         Log.log(LEVEL_DEBUG, "Received {0} event for file: {1}", 
                                 new Object[] {event.kind(), event.context()});

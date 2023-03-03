@@ -163,9 +163,9 @@ final class DatesOptionsPanel extends JPanel {
         return orders.get(0);
     }
 
-    private JComboBox dayCombo;
+    private JComboBox<ComboItem> dayCombo;
     private JLabel dayLabel;
-    private JComboBox orderCombo;
+    private JComboBox<ComboItem> orderCombo;
     private JLabel orderLabel;
 
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents

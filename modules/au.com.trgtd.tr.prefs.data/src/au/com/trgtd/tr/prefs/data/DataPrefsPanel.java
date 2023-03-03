@@ -313,7 +313,7 @@ final class DataPrefsPanel extends JPanel implements ChangeListener {
     private JRadioButton recoveryKeepNbrRadio;
     private JSpinner recoveryKeepNbrSpinner;
     private JLabel backupLabel;
-    private JComboBox backupCombo;
+    private JComboBox<Item> backupCombo;
     private JLabel backupFolderLabel;
     private JTextField backupFolderText;
     private JButton backupBrowseButton;

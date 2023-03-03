@@ -402,7 +402,7 @@ public class GoalNode extends AbstractNode
     }
 
     @Override
-    protected void createPasteTypes(Transferable t, List s) {
+    protected void createPasteTypes(Transferable t, List<PasteType> s) {
         super.createPasteTypes(t, s);
 
         PasteType pasteType = null;

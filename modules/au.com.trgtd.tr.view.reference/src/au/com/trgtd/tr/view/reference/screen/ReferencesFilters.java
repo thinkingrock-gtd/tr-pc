@@ -32,6 +32,7 @@ import au.com.trgtd.tr.view.reference.filters.MatcherEditorCreatedFrom;
 import au.com.trgtd.tr.view.reference.filters.MatcherEditorCreatedTo;
 import au.com.trgtd.tr.view.reference.filters.MatcherEditorSearch;
 import au.com.trgtd.tr.view.reference.filters.MatcherEditorTopic;
+import tr.model.information.Information;
 
 /**
  * Filters for information references.
@@ -48,14 +49,14 @@ public class ReferencesFilters {
         matcherEditorSearch = new MatcherEditorSearch();
     }
     
-    public MatcherEditor getMatcherEditor() {
+    public MatcherEditor<Information> getMatcherEditor() {
         if (matcherEditor == null) {
-            BasicEventList<MatcherEditor> list = new BasicEventList<>();
+            BasicEventList<MatcherEditor<Information>> list = new BasicEventList<>();
             list.add(matcherEditorCreatedFrom);
             list.add(matcherEditorCreatedTo);
             list.add(matcherEditorTopics);
             list.add(matcherEditorSearch);
-            matcherEditor = new CompositeMatcherEditor(list);
+            matcherEditor = new CompositeMatcherEditor<>(list);
         }
         return matcherEditor;
     }
@@ -107,7 +108,7 @@ public class ReferencesFilters {
     private final MatcherEditorCreatedTo matcherEditorCreatedTo;
     private final MatcherEditorTopic matcherEditorTopics;
     private final MatcherEditorSearch matcherEditorSearch;
-    private MatcherEditor matcherEditor;
+    private MatcherEditor<Information> matcherEditor;
     private JComponent component;
     
 }

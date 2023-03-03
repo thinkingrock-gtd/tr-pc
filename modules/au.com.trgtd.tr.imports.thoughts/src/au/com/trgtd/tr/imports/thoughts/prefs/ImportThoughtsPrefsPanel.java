@@ -59,7 +59,7 @@ final class ImportThoughtsPrefsPanel extends JPanel {
         return NbBundle.getMessage(getClass(), key);
     }
 
-    private ComboBoxModel getEncodingModel() {
+    private ComboBoxModel<String> getEncodingModel() {
         Vector<String> encodings = new Vector<>();
         encodings.add("");
         encodings.addAll(Charset.availableCharsets().keySet());
@@ -90,7 +90,7 @@ final class ImportThoughtsPrefsPanel extends JPanel {
         return encoding == null ? "" : encoding;
     }
 
-    private JComboBox encodingCombo;
+    private JComboBox<String> encodingCombo;
     private JLabel encodingLabel;
 
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents

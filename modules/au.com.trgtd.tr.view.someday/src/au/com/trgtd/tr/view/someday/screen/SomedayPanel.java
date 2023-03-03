@@ -231,7 +231,7 @@ public class SomedayPanel extends JPanel {
     private TRLabel tickleLabel;
     private DateField tickleField;
     private TRLabel topicLabel;
-    private JComboBox topicCombo;
+    private JComboBox<Topic> topicCombo;
     private TopicsComboBoxModel topicsModel;
     private FocusListener descrFocusListener;
     private ActionListener topicActionListener;

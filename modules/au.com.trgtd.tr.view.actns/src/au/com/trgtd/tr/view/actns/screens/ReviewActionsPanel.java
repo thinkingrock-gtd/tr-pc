@@ -262,9 +262,9 @@ public class ReviewActionsPanel extends JPanel implements ListSelectionListener,
     }
 
     private FilterDone getDoneFilter() {
-        MatcherEditor matcherEditor = filters.getMatcherEditor();
+        MatcherEditor<Action> matcherEditor = filters.getMatcherEditor();
         if (matcherEditor instanceof CompositeMatcherEditor cme) {
-            for (Object filter : cme.getMatcherEditors().toArray()) {
+            for (Object filter : cme.getMatcherEditors().toArray(Object[]::new)) {
                 if (filter instanceof FilterDone filterDone) {
                     return filterDone;
                 }

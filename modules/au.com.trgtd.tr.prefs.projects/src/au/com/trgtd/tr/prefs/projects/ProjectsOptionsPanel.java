@@ -92,7 +92,7 @@ final class ProjectsOptionsPanel extends JPanel {
         states.add(ProjectsPrefs.ActionState.DOASAP);
         states.add(ProjectsPrefs.ActionState.SCHEDULED);
         states.add(ProjectsPrefs.ActionState.DELEGATED);
-        actionStatesCombo = new TRComboBox(new DefaultComboBoxModel(states.toArray()));
+        actionStatesCombo = new TRComboBox<>(new DefaultComboBoxModel<>(states.toArray(ProjectsPrefs.ActionState[]::new)));
         actionStatesCombo.setMaximumRowCount(states.size());
         printFormatLabel = new JLabel(getMsg("print.format.Label"));
         printFormatCombo = new JComboBox<>(new PageSizeChoice[] { PageSizeChoice.Prompt, PageSizeChoice.A4, PageSizeChoice.Letter });
@@ -164,9 +164,9 @@ final class ProjectsOptionsPanel extends JPanel {
     private JCheckBox createDateCheckBox;
     private JCheckBox startDateCheckBox;
     private JLabel actionStatesLabel;
-    private JComboBox actionStatesCombo;
+    private JComboBox<ProjectsPrefs.ActionState> actionStatesCombo;
     private JLabel printFormatLabel;
-    private JComboBox printFormatCombo;
+    private JComboBox<PageSizeChoice> printFormatCombo;
 
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {

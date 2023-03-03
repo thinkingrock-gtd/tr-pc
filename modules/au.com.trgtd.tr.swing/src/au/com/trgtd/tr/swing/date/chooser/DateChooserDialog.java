@@ -102,7 +102,7 @@ public class DateChooserDialog extends JDialog implements ItemListener, MouseLis
     /* Headings grid. */
     private JPanel headGrid;
     /* Month selection control. */
-    private JComboBox month;
+    private JComboBox<String> month;
     /* Last month button. */
     private JButton monthLast;
     /* Next month button. */
@@ -112,7 +112,7 @@ public class DateChooserDialog extends JDialog implements ItemListener, MouseLis
     /* Next year button. */
     private JButton yearNext;
     /* Year selection control. */
-    private JComboBox year;
+    private JComboBox<String> year;
     /* "Clear" button. */
     private JButton clear;
     /* "Ok" button. */

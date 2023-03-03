@@ -176,9 +176,9 @@ final class GUIOptionsPanel extends JPanel {
     private static final String RIGHT = NbBundle.getMessage(clazz, "LBL_Right");
     private static Vector<ComboItem> actions;
     private static Vector<ComboItem> positions;
-    private JComboBox buttonsPositionCombo;
+    private JComboBox<ComboItem> buttonsPositionCombo;
     private JLabel buttonsPositionLabel;
-    private JComboBox initialActionCombo;
+    private JComboBox<ComboItem> initialActionCombo;
     private JLabel initialActionLabel;
 
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents

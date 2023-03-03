@@ -599,7 +599,7 @@ public final class ReviewActionsTopComponent extends Window implements ActionsPr
 
     public void provide(final List<Action> actions) {
         EventQueue.invokeLater(() -> {
-            Collection collection = new Vector();
+            Collection<Object> collection = new Vector<>();
             collection.add(panel);
             if (actions != null) {
                 for (Action action : actions) {

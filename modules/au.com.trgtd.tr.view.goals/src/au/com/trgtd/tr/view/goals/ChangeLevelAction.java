@@ -57,7 +57,7 @@ public class ChangeLevelAction extends CookieAction {
         return HelpCtx.DEFAULT_HELP;
     }
 
-    public Class[] cookieClasses() {
+    public Class<ChangeLevelCookie>[] cookieClasses() {
         return new Class[] {ChangeLevelCookie.class};
     }
 

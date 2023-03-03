@@ -200,7 +200,7 @@ public class ReferencePanel extends JPanel {
     private NotesViewField notesField;
     private JScrollPane notesScroll;
     private TRLabel topicLabel;
-    private JComboBox topicCombo;
+    private JComboBox<Topic> topicCombo;
     private TopicsComboBoxModel topicsModel;
     private FocusListener descrFocusListener;
     private ActionListener topicActionListener;

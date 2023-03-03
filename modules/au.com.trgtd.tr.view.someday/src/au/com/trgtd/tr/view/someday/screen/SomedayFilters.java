@@ -32,6 +32,7 @@ import au.com.trgtd.tr.view.someday.filters.MatcherEditorCreatedFrom;
 import au.com.trgtd.tr.view.someday.filters.MatcherEditorCreatedTo;
 import au.com.trgtd.tr.view.someday.filters.MatcherEditorSearch;
 import au.com.trgtd.tr.view.someday.filters.MatcherEditorTopic;
+import tr.model.future.Future;
 
 /**
  * Filters for future items.
@@ -48,14 +49,14 @@ public class SomedayFilters {
         matcherEditorSearch = new MatcherEditorSearch();
     }
     
-    public MatcherEditor getMatcherEditor() {
+    public MatcherEditor<Future> getMatcherEditor() {
         if (matcherEditor == null) {
-            BasicEventList<MatcherEditor> list = new BasicEventList<>();
+            BasicEventList<MatcherEditor<Future>> list = new BasicEventList<>();
             list.add(matcherEditorCreatedFrom);
             list.add(matcherEditorCreatedTo);
             list.add(matcherEditorTopics);
             list.add(matcherEditorSearch);
-            matcherEditor = new CompositeMatcherEditor(list);
+            matcherEditor = new CompositeMatcherEditor<>(list);
         }
         return matcherEditor;
     }
@@ -107,7 +108,7 @@ public class SomedayFilters {
     private final MatcherEditorCreatedTo matcherEditorCreatedTo;
     private final MatcherEditorTopic matcherEditorTopics;
     private final MatcherEditorSearch matcherEditorSearch;
-    private MatcherEditor matcherEditor;
+    private MatcherEditor<Future> matcherEditor;
     private JComponent component;
     
 }

@@ -66,7 +66,7 @@ public class ReferencesPanel extends JPanel implements ListSelectionListener, Ob
     /**
      * Creates a new instance for the given reference provider and filters.
      */
-    public ReferencesPanel(ReferenceNodeProvider refsProvider, MatcherEditor matcherEditor) {
+    public ReferencesPanel(ReferenceNodeProvider refsProvider, MatcherEditor<Information> matcherEditor) {
         super();
         this.refsProvider = refsProvider;
         this.refsMatcherEditor = matcherEditor;
@@ -87,7 +87,7 @@ public class ReferencesPanel extends JPanel implements ListSelectionListener, Ob
         refsEventList = new BasicEventList<>();
         refsEventList.addAll(refsList);
         
-        FilterList refsFilterList = new FilterList(refsEventList, refsMatcherEditor);
+        FilterList<Information> refsFilterList = new FilterList<>(refsEventList, refsMatcherEditor);
         
         data.getInformationManager().addObserver(this);
         
@@ -308,7 +308,7 @@ public class ReferencesPanel extends JPanel implements ListSelectionListener, Ob
     private final static Logger LOG = Logger.getLogger("tr.view.reference");
     
     private final ReferenceNodeProvider refsProvider;
-    private final MatcherEditor refsMatcherEditor;
+    private final MatcherEditor<Information> refsMatcherEditor;
     private final Data data;
     
     private JXTable refsTable;

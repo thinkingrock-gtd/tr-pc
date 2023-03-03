@@ -246,7 +246,7 @@ public class MatcherEditorTopic extends MatcherEditorBase
                     } else {
                         all = data.getTopicManager().list();
                     }
-                    MultiChoiceDialog d = new MultiChoiceDialog<>(TopicsComboBox.this, all, tm.getChosen(), true);
+                    MultiChoiceDialog<Topic> d = new MultiChoiceDialog<>(TopicsComboBox.this, all, tm.getChosen(), true);
                     d.setTitle(NbBundle.getMessage(getClass(), "filter-topic"));
                     d.setLocationRelativeTo(TopicsComboBox.this);
                     d.setVisible(true);
@@ -272,7 +272,7 @@ public class MatcherEditorTopic extends MatcherEditorBase
                     } else {
                         all = data.getTopicManager().list();
                     }
-                    MultiChoiceDialog d = new MultiChoiceDialog<>(TopicsComboBox.this, all, tm.getChosen(), true);
+                    MultiChoiceDialog<Topic> d = new MultiChoiceDialog<>(TopicsComboBox.this, all, tm.getChosen(), true);
                     d.setTitle(NbBundle.getMessage(getClass(), "filter-topic"));
                     d.setLocationRelativeTo(TopicsComboBox.this);
                     d.setVisible(true);

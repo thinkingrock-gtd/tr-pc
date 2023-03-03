@@ -104,7 +104,7 @@ final class ActionsPrefsPanel extends JPanel {
 
     private JLabel titleLabel;
     private JLabel fontLabel;
-    private JComboBox fontCombo;
+    private JComboBox<Item> fontCombo;
     private JCheckBox colourCheck;
     private JCheckBox strikeCheck;
     private Vector<Item> items;

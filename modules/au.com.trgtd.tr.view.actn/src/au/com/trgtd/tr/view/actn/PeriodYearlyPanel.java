@@ -56,11 +56,11 @@ public class PeriodYearlyPanel extends JPanel {
         setEnabled(true);
     }
 
-    private ComboBoxModel getDayComboModel() {
+    private ComboBoxModel<OnTheDay> getDayComboModel() {
         return new DefaultComboBoxModel<>(PeriodMonth.OnTheDay.values());
     }
 
-    private ComboBoxModel getNthComboModel() {
+    private ComboBoxModel<OnTheNth> getNthComboModel() {
         return new DefaultComboBoxModel<>(PeriodMonth.OnTheNth.values());
     }
 
@@ -152,10 +152,10 @@ public class PeriodYearlyPanel extends JPanel {
 
     private final Dialog parent;
     private final PeriodYear periodYear;
-    private JComboBox dayComboBox;
+    private JComboBox<OnTheDay> dayComboBox;
     private JLabel inLabel;
     private JButton monthsButton;
-    private JComboBox nthComboBox;
+    private JComboBox<OnTheNth> nthComboBox;
     private JCheckBox onTheCheckBox;
 
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents

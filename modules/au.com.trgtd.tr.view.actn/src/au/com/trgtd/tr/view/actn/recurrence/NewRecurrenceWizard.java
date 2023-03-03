@@ -52,7 +52,7 @@ public class NewRecurrenceWizard {
 
         Recurrence recurrence = new Recurrence(data.getNextID(), action);
 
-        WizardDescriptor.Iterator iterator = new NewRecurrenceWizardIterator(recurrence, action);
+        WizardDescriptor.Iterator<WizardDescriptor> iterator = new NewRecurrenceWizardIterator(recurrence, action);
         WizardDescriptor wizardDescriptor = new WizardDescriptor(iterator);
         // {0} will be replaced by WizardDescriptor.Panel.getComponent().getName()
         // {1} will be replaced by WizardDescriptor.Iterator.name()

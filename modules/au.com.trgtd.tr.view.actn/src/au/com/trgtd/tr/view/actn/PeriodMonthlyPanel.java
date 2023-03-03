@@ -60,11 +60,11 @@ public class PeriodMonthlyPanel extends JPanel {
         return periodMonth.getSelectedDaysText();        
     }
     
-    private ComboBoxModel getDayComboModel() {
+    private ComboBoxModel<OnTheDay> getDayComboModel() {
         return new DefaultComboBoxModel<>(PeriodMonth.OnTheDay.values());
     }
 
-    private ComboBoxModel getNthComboModel() {
+    private ComboBoxModel<OnTheNth> getNthComboModel() {
         return new DefaultComboBoxModel<>(PeriodMonth.OnTheNth.values());
     }
 
@@ -156,10 +156,10 @@ public class PeriodMonthlyPanel extends JPanel {
     private final Dialog parent;
     private final PeriodMonth periodMonth;
     private ButtonGroup buttonGroup;
-    private JComboBox dayCombo;
+    private JComboBox<OnTheDay> dayCombo;
     private JButton daysButton;
     private JRadioButton eachRadio;
-    private JComboBox nthCombo;
+    private JComboBox<OnTheNth> nthCombo;
     private JRadioButton onTheRadio;
     
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents

@@ -151,7 +151,7 @@ final class ActionPrefsPanel extends JPanel {
         add(schdDurMnsSpinner,      "align left, wrap");
     }
 
-    private ComboBoxModel getEncodingModel() {
+    private ComboBoxModel<String> getEncodingModel() {
         Vector<String> encodings = new Vector<>();
         encodings.add("");
         encodings.addAll(Charset.availableCharsets().keySet());
@@ -188,10 +188,10 @@ final class ActionPrefsPanel extends JPanel {
     private JCheckBox startDateCheckBox;
     private JCheckBox editCreateDateCheckBox;
     private JCheckBox noteEmailCheckBox;
-    private JComboBox encodingCombo;
+    private JComboBox<String> encodingCombo;
     private JLabel encodingLabel;
     private JLabel actionStatesLabel;
-    private JComboBox actionStatesCombo;
+    private JComboBox<ActionPrefs.ActionState> actionStatesCombo;
     private Vector<ActionPrefs.ActionState> states;
 
     private JLabel delegateModeLabel;

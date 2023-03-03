@@ -18,7 +18,10 @@
 package au.com.trgtd.tr.view.actns.screens;
 
 import au.com.trgtd.tr.view.ViewUtils;
+import au.com.trgtd.tr.view.actns.screens.filters.ActionsFilter;
+import au.com.trgtd.tr.view.filters.FilterCombo;
 import ca.odell.glazedlists.BasicEventList;
+import ca.odell.glazedlists.EventList;
 import ca.odell.glazedlists.matchers.CompositeMatcherEditor;
 import ca.odell.glazedlists.matchers.MatcherEditor;
 import java.awt.Dimension;
@@ -26,8 +29,7 @@ import java.awt.FlowLayout;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import org.openide.util.Utilities;
-import au.com.trgtd.tr.view.actns.screens.filters.ActionsFilter;
-import au.com.trgtd.tr.view.filters.FilterCombo;
+import tr.model.action.Action;
 
 /**
  * Filters for actions.
@@ -39,7 +41,7 @@ public class ReviewActionsFilters {
     private static final int LABEL_HEIGHT = 12;
     
     private final ActionsScreen screen;
-    private MatcherEditor matcherEditor;
+    private MatcherEditor<Action> matcherEditor;
     private JPanel component;
     
     /** Constructs a new instance. */
@@ -47,10 +49,10 @@ public class ReviewActionsFilters {
         this.screen = screen;
     }
     
-    public MatcherEditor getMatcherEditor() {
+    public MatcherEditor<Action> getMatcherEditor() {
         if (matcherEditor == null) {
-            BasicEventList<MatcherEditor> list = new BasicEventList<>();
-            for (MatcherEditor m : screen.getFilters()) {
+            EventList<MatcherEditor<Action>> list = new BasicEventList<>();
+            for (MatcherEditor<Action> m : screen.getFilters()) {
                 list.add(m);
             }
 //            for (ActionsFilter filter : screen.getFilters()) {
@@ -58,7 +60,7 @@ public class ReviewActionsFilters {
 //                    list.add(filter);
 //                }
 //            }
-            matcherEditor = new CompositeMatcherEditor(list);
+            matcherEditor = new CompositeMatcherEditor<>(list);
         }
         return matcherEditor;
     }
