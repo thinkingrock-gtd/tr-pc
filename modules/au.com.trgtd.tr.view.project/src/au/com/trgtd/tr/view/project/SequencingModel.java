@@ -19,14 +19,13 @@ package au.com.trgtd.tr.view.project;
 
 import java.util.List;
 import java.util.Vector;
-
 import javax.swing.DefaultComboBoxModel;
 import tr.model.project.Sequencing;
 
 /**
  * Sequencing ComboBoxModel.
  */ 
-public class SequencingModel extends DefaultComboBoxModel {
+public class SequencingModel extends DefaultComboBoxModel<Sequencing> {
     
     private List<Sequencing> types;
     
@@ -42,7 +41,7 @@ public class SequencingModel extends DefaultComboBoxModel {
      * Implement ListModel.getElementAt(int index).
      */
     @Override
-    public Object getElementAt(int index) {
+    public Sequencing getElementAt(int index) {
         return types.get(index);
     }
     

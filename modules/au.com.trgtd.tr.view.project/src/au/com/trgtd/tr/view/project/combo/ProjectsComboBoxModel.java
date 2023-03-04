@@ -29,11 +29,12 @@ import tr.model.DataLookup;
 import tr.model.project.Project;
 import au.com.trgtd.tr.util.Observable;
 import au.com.trgtd.tr.util.Observer;
+import au.com.trgtd.tr.view.project.combo.ProjectsComboBoxModel.ProjectItem;
 
 /**
  * Projects combo box model.
  */
-class ProjectsComboBoxModel extends DefaultComboBoxModel implements Observer {
+class ProjectsComboBoxModel extends DefaultComboBoxModel<ProjectItem> implements Observer {
     
     private List<ProjectItem> projectItems;
 
@@ -51,7 +52,7 @@ class ProjectsComboBoxModel extends DefaultComboBoxModel implements Observer {
      * Implement ListModel.getElementAt(int index).
      */
     @Override
-    public Object getElementAt(int index) {
+    public ProjectItem getElementAt(int index) {
         try {
             return projectItems.get(index);            
         } catch (IndexOutOfBoundsException ex) {

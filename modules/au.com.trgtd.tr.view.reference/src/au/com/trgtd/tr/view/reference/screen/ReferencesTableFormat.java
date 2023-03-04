@@ -39,7 +39,7 @@ import au.com.trgtd.tr.util.DateUtils;
  *
  * @author Jeremy Moore
  */
-public class ReferencesTableFormat implements AdvancedTableFormat {
+public class ReferencesTableFormat implements AdvancedTableFormat<Information> {
     
     private static Class clazz = ReferencesTableFormat.class;
     
@@ -57,7 +57,7 @@ public class ReferencesTableFormat implements AdvancedTableFormat {
         throw new IllegalStateException();
     }
     
-    public Object getColumnValue(Object baseObject, int column) {
+    public Object getColumnValue(Information baseObject, int column) {
         
         Information info = (Information)baseObject;
         

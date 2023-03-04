@@ -27,7 +27,7 @@ import tr.model.action.PeriodType;
  *
  * @author <a href="mailto:jimoore@netspace.net.au">Jeremy Moore</a>
  */
-public class PeriodTypeComboBox extends TRComboBox {
+public class PeriodTypeComboBox extends TRComboBox<PeriodType> {
 
     /**
      * Constructs a new default instance.

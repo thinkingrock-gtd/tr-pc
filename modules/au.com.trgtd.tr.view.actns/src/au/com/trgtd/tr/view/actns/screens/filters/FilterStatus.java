@@ -232,7 +232,7 @@ public class FilterStatus extends FilterChoice implements PropertyChangeListener
         }
     }
     
-    private class StatusComboBoxModel extends DefaultComboBoxModel {
+    private class StatusComboBoxModel extends DefaultComboBoxModel<Choice> {
         
         private final Choice all = new All();
         private final Multiple multiple = new Multiple();
@@ -268,7 +268,7 @@ public class FilterStatus extends FilterChoice implements PropertyChangeListener
             }
         }
         
-        public Object getElementAt(int index) {
+        public Choice getElementAt(int index) {
             return items[index];
         }
         
@@ -277,7 +277,7 @@ public class FilterStatus extends FilterChoice implements PropertyChangeListener
         }
     }
     
-    public class StatusComboBox extends FilterComboAbstract {
+    public class StatusComboBox extends FilterComboAbstract<Choice> {
         
         private final Vector<Choice> options = new Vector<>();
         private final ActionListener listener;
@@ -311,7 +311,7 @@ public class FilterStatus extends FilterChoice implements PropertyChangeListener
             public void actionPerformed(ActionEvent e) {
                 Object object = getSelectedItem();
                 if (object instanceof Multiple m) {
-                    MultiChoiceDialog d = new MultiChoiceDialog<>(StatusComboBox.this, options, m.getChosen(), true);
+                    MultiChoiceDialog<Choice> d = new MultiChoiceDialog<>(StatusComboBox.this, options, m.getChosen(), true);
                     d.setTitle(NbBundle.getMessage(getClass(), "filter-status"));
                     d.setLocationRelativeTo(StatusComboBox.this);
                     d.setVisible(true);
@@ -329,7 +329,7 @@ public class FilterStatus extends FilterChoice implements PropertyChangeListener
                 if (object instanceof ChoiceMultipleEdit) {
                     StatusComboBoxModel model = (StatusComboBoxModel)getModel();
                     Multiple m = model.multiple;
-                    MultiChoiceDialog d = new MultiChoiceDialog<>(StatusComboBox.this, options, m.getChosen(), true);
+                    MultiChoiceDialog<Choice> d = new MultiChoiceDialog<>(StatusComboBox.this, options, m.getChosen(), true);
                     d.setTitle(NbBundle.getMessage(getClass(), "filter-topic"));
                     d.setLocationRelativeTo(StatusComboBox.this);
                     d.setVisible(true);

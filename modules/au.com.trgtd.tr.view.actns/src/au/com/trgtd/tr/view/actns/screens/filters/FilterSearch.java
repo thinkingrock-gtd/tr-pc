@@ -187,7 +187,7 @@ public final class FilterSearch extends FilterChoice implements PropertyChangeLi
         }
     }
 
-    private class SearchComboBoxModel extends DefaultComboBoxModel {
+    private class SearchComboBoxModel extends DefaultComboBoxModel<String> {
 
         public final Vector<String> searches = new Vector<>();
 
@@ -203,7 +203,7 @@ public final class FilterSearch extends FilterChoice implements PropertyChangeLi
         }
 
         @Override
-        public Object getElementAt(int index) {
+        public String getElementAt(int index) {
             return searches.get(index);
         }
 
@@ -213,7 +213,7 @@ public final class FilterSearch extends FilterChoice implements PropertyChangeLi
         }
     }
 
-    private final class SearchComboBox extends FilterComboAbstract {
+    private final class SearchComboBox extends FilterComboAbstract<String> {
 
         public SearchComboBox() {
             super(new SearchComboBoxModel());

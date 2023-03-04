@@ -53,7 +53,7 @@ public class FilterComboDate extends DateCombo implements FilterCombo {
         firePropertyChange(FilterCombo.PROPERTY_VALUE, null, null);
     }
     
-    public JComboBox getJComboBox() {
+    public JComboBox<DateItem> getJComboBox() {
         return this;
     }
     

@@ -28,7 +28,7 @@ import tr.model.actor.Actor;
  *
  * @author Jeremy Moore
  */
-public class ActorsListCellRenderer extends JLabel implements ListCellRenderer {
+public class ActorsListCellRenderer extends JLabel implements ListCellRenderer<Actor> {
 
 //    public TopicsListCellRenderer() {
 //        setOpaque(true);
@@ -61,28 +61,27 @@ public class ActorsListCellRenderer extends JLabel implements ListCellRenderer {
 //        }
 //        return this;
 //    }
-    private final ListCellRenderer std;
+    private final ListCellRenderer<? super Actor> std;
 
-    public ActorsListCellRenderer(ListCellRenderer std) {
+    public ActorsListCellRenderer(ListCellRenderer<? super Actor> std) {
         if (std == null) {
             throw new NullPointerException("Standard renderer is null.");
         }
         this.std = std;
     }
 
-    public Component getListCellRendererComponent(JList list, Object value,
+    public Component getListCellRendererComponent(JList<? extends Actor> list, Actor actor,
             int index, boolean isSelected, boolean cellHasFocus) {
 
-        JLabel lbl = (JLabel)std.getListCellRendererComponent(list, value, index, isSelected, cellHasFocus);
+        JLabel lbl = (JLabel)std.getListCellRendererComponent(list, actor, index, isSelected, cellHasFocus);
 
 //        if (!isSelected) {
-            if (value instanceof Actor actor) {
+            if (actor != null) {
                 if (actor.isInactive()) {
                     lbl.setText("<HTML><STRIKE>" + actor.getName() + "</STRIKE></HTML>");
                 } else {
                     lbl.setText(actor.getName());
                 }
-
 //                component.setBackground(actor.getBackground());
 //                component.setForeground(actor.getForeground());
             }

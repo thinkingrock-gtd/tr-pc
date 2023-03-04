@@ -25,11 +25,12 @@ import tr.model.DataLookup;
 import tr.model.criteria.Criterion;
 import au.com.trgtd.tr.util.Observable;
 import au.com.trgtd.tr.util.Observer;
+import tr.model.criteria.Value;
 
 /**
  * Combo box model for priority critera.
  */
-public class PriorityComboBoxModel extends DefaultComboBoxModel implements Observer {
+public class PriorityComboBoxModel extends DefaultComboBoxModel<Value> implements Observer {
 
     private Criterion criterion;
     private Lookup.Result result;
@@ -69,7 +70,7 @@ public class PriorityComboBoxModel extends DefaultComboBoxModel implements Obser
      * Implement ListModel.getElementAt(int index).
      */
     @Override
-    public Object getElementAt(int index) {
+    public Value getElementAt(int index) {
         return criterion == null || !criterion.isUse() ? null : criterion.values.get(index);
     }
 

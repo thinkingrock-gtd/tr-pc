@@ -44,7 +44,7 @@ import tr.model.topic.Topic;
  *
  * @author Jeremy Moore
  */
-public class ReviewActionsTableFormat implements AdvancedTableFormat, WritableTableFormat {
+public class ReviewActionsTableFormat implements AdvancedTableFormat<Action>, WritableTableFormat<Action> {
     
     private final ActionsScreen screen;
     
@@ -65,16 +65,10 @@ public class ReviewActionsTableFormat implements AdvancedTableFormat, WritableTa
         }
     }
     
-    public Object getColumnValue(Object object, int column) {
-        
-        Action action;
-        if (object instanceof Action a) {
-            action = a;
-        } else {
-//            throw new IllegalStateException("Row data missing.");
+    public Object getColumnValue(Action action, int column) {
+        if (action == null)
             return null;
-        }
-        
+
         Project project = (Project)action.getParent();
         
         ActionsColumn field;
@@ -419,13 +413,13 @@ public class ReviewActionsTableFormat implements AdvancedTableFormat, WritableTa
         styledValue.setBackground(topic.getBackground());
         return styledValue;
     };
-    
-    public boolean isEditable(Object baseObject, int column) {
+
+    public boolean isEditable(Action baseObject, int column) {
 //        return screen.getColumns().get(column).getColumnIndex() == ActionsColumn.INDEX_DONE;
         return false;
     }
-    
-    public Object setColumnValue(Object baseObject, Object editedValue, int column) {
+
+    public Action setColumnValue(Action baseObject, Object editedValue, int column) {
 //        
 //        assert(screen.getColumns().get(column).getColumnIndex() == ActionsColumn.INDEX_DONE);
 //        assert(baseObject instanceof Action);

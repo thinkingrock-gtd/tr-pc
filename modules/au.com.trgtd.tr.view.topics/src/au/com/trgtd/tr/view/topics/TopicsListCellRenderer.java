@@ -28,7 +28,7 @@ import tr.model.topic.Topic;
  *
  * @author Jeremy Moore
  */
-public class TopicsListCellRenderer extends JLabel implements ListCellRenderer {
+public class TopicsListCellRenderer extends JLabel implements ListCellRenderer<Topic> {
 
 //    public TopicsListCellRenderer() {
 //        setOpaque(true);
@@ -61,26 +61,24 @@ public class TopicsListCellRenderer extends JLabel implements ListCellRenderer {
 //        }
 //        return this;
 //    }
-    private final ListCellRenderer std;
+    private final ListCellRenderer<? super Topic> std;
 
-    public TopicsListCellRenderer(ListCellRenderer std) {
+    public TopicsListCellRenderer(ListCellRenderer<? super Topic> std) {
         if (std == null) {
             throw new NullPointerException("Standard renderer is null.");
         }
         this.std = std;
     }
 
-    public Component getListCellRendererComponent(JList list, Object value,
+    public Component getListCellRendererComponent(JList<? extends Topic> list, Topic topic,
             int index, boolean isSelected, boolean cellHasFocus) {
 
-        Component c = std.getListCellRendererComponent(list, value, index, isSelected, cellHasFocus);
+        Component c = std.getListCellRendererComponent(list, topic, index, isSelected, cellHasFocus);
 
-        if (!isSelected) {
-            if (value instanceof Topic topic) {
-                ((JLabel)c).setText(topic.getName());
-                c.setBackground(topic.getBackground());
-                c.setForeground(topic.getForeground());
-            }
+        if (!isSelected && topic != null) {
+            ((JLabel) c).setText(topic.getName());
+            c.setBackground(topic.getBackground());
+            c.setForeground(topic.getForeground());
         }
         return c;
     }

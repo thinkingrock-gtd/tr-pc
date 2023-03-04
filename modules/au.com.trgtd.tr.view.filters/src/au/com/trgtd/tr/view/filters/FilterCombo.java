@@ -25,7 +25,7 @@ import javax.swing.JComboBox;
  *
  * @author Jeremy Moore
  */
-public interface FilterCombo {
+public interface FilterCombo<E> {
     
     /** Property for value selection changes. */
     public static final String PROPERTY_VALUE = "value";
@@ -42,7 +42,7 @@ public interface FilterCombo {
     
     public void startChangeEvents();
     
-    public JComboBox getJComboBox();
+    public JComboBox<E> getJComboBox();
     
     public void addValueChangeListener(PropertyChangeListener listener);
     
@@ -54,7 +54,7 @@ public interface FilterCombo {
     
     public void setSelectedIndex(int anIndex);
     
-    public Object getItemAt(int index);
+    public E getItemAt(int index);
     
     public int getItemCount();
     

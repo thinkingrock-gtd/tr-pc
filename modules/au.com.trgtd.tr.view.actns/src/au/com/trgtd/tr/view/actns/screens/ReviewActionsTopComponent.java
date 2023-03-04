@@ -88,8 +88,6 @@ import au.com.trgtd.tr.view.contexts.ContextChangeAction;
 import au.com.trgtd.tr.view.projects.PostponeActionAction;
 import au.com.trgtd.tr.view.projects.SetDoneAction;
 import au.com.trgtd.tr.view.topics.TopicChangeAction;
-import java.util.logging.Level;
-//import org.openide.actions.DeleteAction;
 
 /**
  * Top component for the review actions windows.

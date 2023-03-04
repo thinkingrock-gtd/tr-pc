@@ -22,13 +22,14 @@ import au.com.trgtd.tr.swing.TRComboBox;
 import java.awt.Font;
 import javax.swing.ComboBoxModel;
 import org.openide.util.NbBundle;
+import tr.model.goals.ctrl.LevelCtrl;
 
 /**
  * Combo box for topics.
  *
  * @author Jeremy Moore
  */
-public class LevelsComboBox extends TRComboBox {
+public class LevelsComboBox extends TRComboBox<LevelCtrl> {
 
     /**
      * Constructs a new default instance.
@@ -41,7 +42,7 @@ public class LevelsComboBox extends TRComboBox {
      * Constructs a new instance for the given data model.
      * @param model The topics combo box model.
      */
-    public LevelsComboBox(ComboBoxModel model) {
+    public LevelsComboBox(ComboBoxModel<LevelCtrl> model) {
         super(model);
         setFont(getFont().deriveFont(Font.PLAIN));
         setMaximumRowCount(Constants.COMBO_MAX_ROWS);
