@@ -22,13 +22,14 @@ import java.awt.Font;
 import javax.swing.ComboBoxModel;
 import org.openide.util.NbBundle;
 import au.com.trgtd.tr.swing.TRComboBox;
+import tr.model.topic.Topic;
 
 /**
  * Combo box for topics.
  *
  * @author Jeremy Moore
  */
-public class TopicsComboBox extends TRComboBox {
+public class TopicsComboBox extends TRComboBox<Topic> {
 
     /**
      * Constructs a new default instance.
@@ -41,7 +42,7 @@ public class TopicsComboBox extends TRComboBox {
      * Constructs a new instance for the given data model.
      * @param model The topics combo box model.
      */
-    public TopicsComboBox(ComboBoxModel model) {
+    public TopicsComboBox(ComboBoxModel<Topic> model) {
         super(model);
         setRenderer(new TopicsListCellRenderer(this.getRenderer()));
         setFont(getFont().deriveFont(Font.PLAIN));

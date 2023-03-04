@@ -25,11 +25,12 @@ import org.openide.util.LookupEvent;
 import tr.model.Data;
 import tr.model.DataLookup;
 import tr.model.criteria.Criterion;
+import tr.model.criteria.Value;
 
 /**
  * Combo box model for time criteria.
  */
-public class TimeComboBoxModel extends DefaultComboBoxModel implements Observer {
+public class TimeComboBoxModel extends DefaultComboBoxModel<Value> implements Observer {
 
     private Criterion criterion;
     private Lookup.Result result;
@@ -66,7 +67,7 @@ public class TimeComboBoxModel extends DefaultComboBoxModel implements Observer 
     }
 
     @Override
-    public Object getElementAt(int index) {
+    public Value getElementAt(int index) {
         return criterion == null || !criterion.isUse() ? null : criterion.values.get(index);
     }
 

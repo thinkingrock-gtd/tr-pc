@@ -29,7 +29,7 @@ import au.com.trgtd.tr.view.project.combo.ProjectsComboBoxModel.ProjectItem;
  *
  * @author Jeremy Moore
  */
-public class ProjectsComboBox extends TRComboBox {
+public class ProjectsComboBox extends TRComboBox<ProjectItem> {
 
     /** Constructs a new instance. */
     public ProjectsComboBox() {
@@ -65,21 +65,19 @@ public class ProjectsComboBox extends TRComboBox {
     }
 
     @Override
-    public Object getSelectedItem() {
+    public Project getSelectedItem() {
         Object item = super.getSelectedItem();
         if (item instanceof ProjectItem projectItem) {
             return projectItem.project;
+        } else if (item instanceof Project project) {
+            return project;
         }
-        return item;
+        return null;
     }
 
     @Override
-    public Object getItemAt(int index) {
-        Object item = super.getItemAt(index);
-        if (item instanceof ProjectItem projectItem) {
-            return projectItem.project;
-        }
-        return item;        
-    }    
-    
+    public ProjectItem getItemAt(int index) {
+        return super.getItemAt(index);
+    }
+
 }

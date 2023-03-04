@@ -33,7 +33,7 @@ import tr.model.topic.Topic;
  *
  * @author Jeremy Moore
  */
-class RefChooserTableFormat implements AdvancedTableFormat {
+class RefChooserTableFormat implements AdvancedTableFormat<Information> {
     
     private static Class clazz = RefChooserTableFormat.class;
     
@@ -49,8 +49,7 @@ class RefChooserTableFormat implements AdvancedTableFormat {
         throw new IllegalStateException();
     }
     
-    public Object getColumnValue(Object baseObject, int column) {       
-        Information info = (Information)baseObject;        
+    public Object getColumnValue(Information info, int column) {
         switch (column) {
             case 0: {
                 Color bg = info.getTopic().getBackground();

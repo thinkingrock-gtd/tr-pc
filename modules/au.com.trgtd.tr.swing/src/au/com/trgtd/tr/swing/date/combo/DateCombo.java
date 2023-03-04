@@ -36,7 +36,7 @@ import au.com.trgtd.tr.swing.date.chooser.DateChooser;
  *
  * @author Jeremy Moore
  */
-public class DateCombo extends TRComboBox implements ActionListener {
+public class DateCombo extends TRComboBox<DateItem> implements ActionListener {
     
     /** Property for the date selection. */
     public static final String PROPERTY_DATE = "date";

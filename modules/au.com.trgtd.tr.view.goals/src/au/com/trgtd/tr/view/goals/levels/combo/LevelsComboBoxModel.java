@@ -30,7 +30,7 @@ import tr.model.goals.ctrl.LevelsCtrlLookup;
  *
  * @author Jeremy Moore
  */
-public class LevelsComboBoxModel extends DefaultComboBoxModel implements PropertyChangeListener {
+public class LevelsComboBoxModel extends DefaultComboBoxModel<LevelCtrl> implements PropertyChangeListener {
     
     private final LevelsCtrl levelsCtrl;
     private List<LevelCtrl> levels;
@@ -46,7 +46,7 @@ public class LevelsComboBoxModel extends DefaultComboBoxModel implements Propert
     }
     
     @Override
-    public Object getElementAt(int index) {
+    public LevelCtrl getElementAt(int index) {
         synchronized(this) {
             return levels.get(index);
         }

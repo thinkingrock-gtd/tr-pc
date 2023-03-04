@@ -28,9 +28,9 @@ import javax.swing.JComboBox;
  *
  * @author Jeremy Moore
  */
-public abstract class FilterComboAbstract extends TRComboBox implements FilterCombo {
+public abstract class FilterComboAbstract<E> extends TRComboBox<E> implements FilterCombo<E> {
     
-    public FilterComboAbstract(ComboBoxModel model) {
+    public FilterComboAbstract(ComboBoxModel<E> model) {
         super(model);
         setPreferredSize(new Dimension(FilterCombo.WIDTH, FilterCombo.HEIGHT));
 //      putClientProperty("JComponent.sizeVariant", "small");
@@ -39,7 +39,7 @@ public abstract class FilterComboAbstract extends TRComboBox implements FilterCo
         
     }
     
-    public JComboBox getJComboBox() {
+    public JComboBox<E> getJComboBox() {
         return this;
     }
     

@@ -101,7 +101,7 @@ public class MatcherEditorSearch extends MatcherEditorBase
         }
     }
     
-    private class SearchComboBoxModel extends DefaultComboBoxModel {
+    private class SearchComboBoxModel extends DefaultComboBoxModel<String> {
         
         public final Vector<String> searches = new Vector<>();
         
@@ -117,7 +117,7 @@ public class MatcherEditorSearch extends MatcherEditorBase
         }
         
         @Override
-        public Object getElementAt(int index) {
+        public String getElementAt(int index) {
             return searches.get(index);
         }
         
@@ -133,7 +133,7 @@ public class MatcherEditorSearch extends MatcherEditorBase
         searchCombo.fireValueChange();
     }
     
-    private class SearchComboBox extends FilterComboAbstract {
+    private class SearchComboBox extends FilterComboAbstract<String> {
         
         public SearchComboBox() {
             super(new SearchComboBoxModel());

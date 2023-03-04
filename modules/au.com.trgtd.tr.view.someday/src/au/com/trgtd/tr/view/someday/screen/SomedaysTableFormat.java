@@ -39,7 +39,7 @@ import au.com.trgtd.tr.util.DateUtils;
  *
  * @author Jeremy Moore
  */
-public class SomedaysTableFormat implements AdvancedTableFormat {
+public class SomedaysTableFormat implements AdvancedTableFormat<Future> {
     
     private static Class clazz = SomedaysTableFormat.class;
     
@@ -58,10 +58,7 @@ public class SomedaysTableFormat implements AdvancedTableFormat {
         throw new IllegalStateException();
     }
     
-    public Object getColumnValue(Object baseObject, int column) {
-        
-        Future future = (Future)baseObject;
-        
+    public Object getColumnValue(Future future, int column) {
         Color bg = future.getTopic().getBackground();
         Color fg = future.getTopic().getForeground();
         

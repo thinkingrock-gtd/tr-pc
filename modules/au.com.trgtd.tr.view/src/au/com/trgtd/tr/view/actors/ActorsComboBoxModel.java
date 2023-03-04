@@ -38,7 +38,7 @@ import tr.model.util.Manager;
  *
  * @author Jeremy Moore
  */
-public final class ActorsComboBoxModel extends DefaultComboBoxModel implements Observer, LookupListener {
+public final class ActorsComboBoxModel extends DefaultComboBoxModel<Actor> implements Observer, LookupListener {
 
     public static final Actor ACTOR_CLR = new Actor(0);
     public static final Actor ACTOR_ADD = new Actor(1);
@@ -127,7 +127,7 @@ public final class ActorsComboBoxModel extends DefaultComboBoxModel implements O
      * @return 
      */
     @Override
-    public Object getElementAt(int index) {
+    public Actor getElementAt(int index) {
         return list.get(index);
     }
 
@@ -140,8 +140,8 @@ public final class ActorsComboBoxModel extends DefaultComboBoxModel implements O
     }
 
     @Override
-    public void addElement(Object anObject) {
-        super.addElement(anObject);
+    public void addElement(Actor anActor) {
+        super.addElement(anActor);
         fireContentsChanged(this, 0, getSize());
     }
 

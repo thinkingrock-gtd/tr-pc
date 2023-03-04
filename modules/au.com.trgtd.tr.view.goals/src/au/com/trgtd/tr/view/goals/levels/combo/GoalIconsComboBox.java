@@ -33,7 +33,7 @@ import tr.model.goals.ctrl.GoalIcons;
  *
  * @author Jeremy Moore
  */
-public class GoalIconsComboBox extends JComboBox {
+public class GoalIconsComboBox extends JComboBox<GoalIcon> {
 
     /**
      * Constructs a new default instance.
@@ -46,7 +46,7 @@ public class GoalIconsComboBox extends JComboBox {
 //      setToolTipText(NbBundle.getMessage(getClass(), "TTT_LevelsComboBox"));
     }
 
-    private static class GoalIconsComboBoxModel extends DefaultComboBoxModel {
+    private static class GoalIconsComboBoxModel extends DefaultComboBoxModel<GoalIcon>{
 
         private final GoalIcon[] goalIcons;
         
@@ -59,7 +59,7 @@ public class GoalIconsComboBox extends JComboBox {
         }
 
         @Override
-        public Object getElementAt(int index) {
+        public GoalIcon getElementAt(int index) {
             return goalIcons[index];
         }
 
@@ -69,11 +69,11 @@ public class GoalIconsComboBox extends JComboBox {
         }
     }
 
-    public static class GoalIconsRenderer extends JLabel implements ListCellRenderer {
+    public static class GoalIconsRenderer extends JLabel implements  ListCellRenderer<GoalIcon> {
 
-        private final ListCellRenderer std;
+        private final ListCellRenderer<? super GoalIcon> std;
 
-        public GoalIconsRenderer(ListCellRenderer std) {
+        public GoalIconsRenderer(ListCellRenderer<? super GoalIcon> std) {
             if (std == null) {
                 throw new NullPointerException("Standard renderer is null.");
             }
@@ -81,11 +81,12 @@ public class GoalIconsComboBox extends JComboBox {
         }
 
         @Override
-        public Component getListCellRendererComponent(JList list, Object value,
+        public Component getListCellRendererComponent(JList<? extends GoalIcon> list, GoalIcon goalIcon,
                 int index, boolean isSelected, boolean cellHasFocus) {
 
-            JLabel lbl = (JLabel)std.getListCellRendererComponent(list, value, index, isSelected, cellHasFocus);
-            if (value instanceof GoalIcon goalIcon) {
+            JLabel lbl = (JLabel)std.getListCellRendererComponent(list, goalIcon, index, isSelected, cellHasFocus);
+
+            if (goalIcon != null) {
                 lbl.setIcon(goalIcon.icon);
                 lbl.setText("");
             }

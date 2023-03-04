@@ -189,7 +189,7 @@ public class ChangeStatusPanel extends JPanel {
         }
     }
 
-    private class StatusComboBoxModel extends DefaultComboBoxModel {
+    private class StatusComboBoxModel extends DefaultComboBoxModel<StatusEnum> {
         private List<StatusEnum> states;
         public StatusComboBoxModel() {
             super();
@@ -200,7 +200,7 @@ public class ChangeStatusPanel extends JPanel {
             states.add(StatusEnum.DELEGATED);
         }
         @Override
-        public Object getElementAt(int index) {
+        public StatusEnum getElementAt(int index) {
             return states.get(index);
         }
         @Override
@@ -321,7 +321,7 @@ public class ChangeStatusPanel extends JPanel {
     private JPanel panelAction;
     private JPanel statusPanel;
     // Status
-    private JComboBox statusCombo;
+    private JComboBox<StatusEnum> statusCombo;
     private TRLabel statusLabel;
     // Scheduled
     private DateField scheduledDateField;

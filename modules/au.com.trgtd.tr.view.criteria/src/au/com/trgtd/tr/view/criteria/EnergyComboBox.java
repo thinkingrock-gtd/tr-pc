@@ -21,13 +21,14 @@ import au.com.trgtd.tr.appl.Constants;
 import au.com.trgtd.tr.swing.TRComboBox;
 import java.awt.Font;
 import javax.swing.ComboBoxModel;
+import tr.model.criteria.Value;
 
 /**
  * Combo box for energy criteria.
  *
  * @author Jeremy Moore
  */
-public class EnergyComboBox extends TRComboBox {
+public class EnergyComboBox extends TRComboBox<Value> {
 
     /**
      * Constructs a new default instance.
@@ -40,7 +41,7 @@ public class EnergyComboBox extends TRComboBox {
      * Constructs a new instance for the given data model.
      * @param model The combo box model.
      */
-    public EnergyComboBox(ComboBoxModel model) {
+    public EnergyComboBox(ComboBoxModel<Value> model) {
         super(model);
         setFont(getFont().deriveFont(Font.PLAIN));
         setMaximumRowCount(Constants.COMBO_MAX_ROWS);

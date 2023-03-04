@@ -129,7 +129,7 @@ public class FilterCriterionPriority extends FilterCriterion
         }
     }
     
-    private class PriorityComboBoxModel extends DefaultComboBoxModel implements Observer {
+    private class PriorityComboBoxModel extends DefaultComboBoxModel<Value> implements Observer {
         private final ValueAll all;
         private final ValueMultiple multiple;
         private final ValueMultipleEdit multipleEdit;
@@ -178,7 +178,7 @@ public class FilterCriterionPriority extends FilterCriterion
         }
         
         /** Implement ListModel.getElementAt(int index). */
-        public Object getElementAt(int index) {
+        public Value getElementAt(int index) {
             return values.get(index);
         }
         
@@ -194,7 +194,7 @@ public class FilterCriterionPriority extends FilterCriterion
         }
     }
     
-    public class PriorityCombo extends FilterComboAbstract {
+    public class PriorityCombo extends FilterComboAbstract<Value> {
         
         private final ActionListener listener;
         
@@ -230,7 +230,7 @@ public class FilterCriterionPriority extends FilterCriterion
                     } else {
                         all = data.getPriorityCriterion().values.list();
                     }
-                    MultiChoiceDialog d = new MultiChoiceDialog<>(PriorityCombo.this, all, m.getChosen(), false);
+                    MultiChoiceDialog<Value> d = new MultiChoiceDialog<>(PriorityCombo.this, all, m.getChosen(), false);
                     d.setTitle(NbBundle.getMessage(getClass(), "filter-priority"));
                     d.setLocationRelativeTo(PriorityCombo.this);
                     d.setVisible(true);
@@ -257,7 +257,7 @@ public class FilterCriterionPriority extends FilterCriterion
                     } else {
                         all = data.getPriorityCriterion().values.list();
                     }
-                    MultiChoiceDialog d = new MultiChoiceDialog<>(PriorityCombo.this, all, m.getChosen(), false);
+                    MultiChoiceDialog<Value> d = new MultiChoiceDialog<>(PriorityCombo.this, all, m.getChosen(), false);
                     d.setTitle(NbBundle.getMessage(getClass(), "filter-priority"));
                     d.setLocationRelativeTo(PriorityCombo.this);
                     d.setVisible(true);

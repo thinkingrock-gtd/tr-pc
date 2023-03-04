@@ -121,7 +121,7 @@ public class FilterContext extends FilterChoice implements PropertyChangeListene
         }
     }
     
-    private class ContextsComboBoxModel extends DefaultComboBoxModel implements Observer {
+    private class ContextsComboBoxModel extends DefaultComboBoxModel<Context> implements Observer {
         private final ContextAll contextAll;
         private final ContextMultiple contextMultiple;
         private final ContextMultipleEdit contextMultipleEdit;
@@ -171,7 +171,7 @@ public class FilterContext extends FilterChoice implements PropertyChangeListene
         
         /** Implement ListModel.getElementAt(int index). */
         @Override
-        public Object getElementAt(int index) {
+        public Context getElementAt(int index) {
             return contexts.get(index);
         }
         
@@ -188,7 +188,7 @@ public class FilterContext extends FilterChoice implements PropertyChangeListene
         }
     }
     
-    public class ContextsCombo extends FilterComboAbstract {
+    public class ContextsCombo extends FilterComboAbstract<Context> {
         
         private final ActionListener listener;
         
@@ -214,7 +214,7 @@ public class FilterContext extends FilterChoice implements PropertyChangeListene
         }
         
         @Override
-        public JComboBox getJComboBox() {
+        public JComboBox<Context> getJComboBox() {
             return this;
         }
         
@@ -229,7 +229,7 @@ public class FilterContext extends FilterChoice implements PropertyChangeListene
                     } else {
                         all = data.getContextManager().list();
                     }
-                    MultiChoiceDialog d = new MultiChoiceDialog<>(ContextsCombo.this, all, m.getChosen(), true);
+                    MultiChoiceDialog<Context> d = new MultiChoiceDialog<>(ContextsCombo.this, all, m.getChosen(), true);
                     d.setTitle(NbBundle.getMessage(getClass(), "filter-context"));
                     d.setLocationRelativeTo(ContextsCombo.this);
                     d.setVisible(true);
@@ -256,7 +256,7 @@ public class FilterContext extends FilterChoice implements PropertyChangeListene
                     } else {
                         all = data.getContextManager().list();
                     }
-                    MultiChoiceDialog d = new MultiChoiceDialog<>(ContextsCombo.this, all, m.getChosen(), true);
+                    MultiChoiceDialog<Context> d = new MultiChoiceDialog<>(ContextsCombo.this, all, m.getChosen(), true);
                     d.setTitle(NbBundle.getMessage(getClass(), "filter-context"));
                     d.setLocationRelativeTo(ContextsCombo.this);
                     d.setVisible(true);

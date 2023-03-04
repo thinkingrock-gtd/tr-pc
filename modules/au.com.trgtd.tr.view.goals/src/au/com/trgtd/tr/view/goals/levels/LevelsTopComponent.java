@@ -42,6 +42,7 @@ import org.openide.explorer.ExplorerManager;
 import org.openide.explorer.ExplorerUtils;
 import org.openide.explorer.view.OutlineView;
 import org.openide.nodes.Node.Property;
+import org.openide.nodes.PropertySupport;
 import org.openide.util.HelpCtx;
 import org.openide.util.ImageUtilities;
 import org.openide.util.Lookup;
@@ -85,7 +86,7 @@ public final class LevelsTopComponent extends Window implements ExplorerManager.
 
         LevelCtrl level = explorerManager.getExploredContext().getLookup().lookup(LevelCtrl.class);
 
-        Property[] props = new Property[] {
+        Property<PropertySupport.ReadOnly<?>>[] props = new Property[] {
             new PropertyGoalsIcon(level),
             new PropertyCanHaveProjects(level),
             new PropertyCanHaveStartDate(level),
