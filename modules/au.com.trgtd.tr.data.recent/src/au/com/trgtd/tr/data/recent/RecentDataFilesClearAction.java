@@ -29,6 +29,7 @@ import org.openide.util.actions.SystemAction;
  */
 public final class RecentDataFilesClearAction extends CallableSystemAction {
         
+    @Override
     public void performAction() {
         Prefs.setPaths(null, 0);
         
@@ -38,11 +39,13 @@ public final class RecentDataFilesClearAction extends CallableSystemAction {
         }
     }
     
+    @Override
     public String getName() {
         return NbBundle.getMessage(RecentDataFilesClearAction.class, "CTL_RecentDataFilesClearAction");
     }
     
     
+    @Override
     public HelpCtx getHelpCtx() {
         return HelpCtx.DEFAULT_HELP;
     }

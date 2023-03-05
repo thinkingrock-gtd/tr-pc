@@ -32,19 +32,23 @@ import tr.model.project.Project;
 public class EditAction extends CookieAction {
     
     /** Gets the display name. */
+    @Override
     public String getName() {
         return NbBundle.getMessage(getClass(), "CTL_EditAction");
     }
     
     /** Gets help context. */
+    @Override
     public HelpCtx getHelpCtx() {
         return HelpCtx.DEFAULT_HELP;
     }
     
+    @Override
     public Class[] cookieClasses() {
         return new Class[] { Action.class, Project.class };
     }
     
+    @Override
     public int mode() {
         return MODE_EXACTLY_ONE;
     }
@@ -54,6 +58,7 @@ public class EditAction extends CookieAction {
         return false;
     }
     
+    @Override
     public void performAction(Node[] nodes) {
         EditCookie cookie = (EditCookie)nodes[0].getCookie(EditCookie.class);
         if (cookie != null) {

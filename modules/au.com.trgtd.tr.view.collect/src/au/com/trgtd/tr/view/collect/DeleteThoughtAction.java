@@ -43,19 +43,23 @@ public class DeleteThoughtAction extends CookieAction {
     }    
     
     /** Gets the display name. */
+    @Override
     public String getName() {
         return NbBundle.getMessage(getClass(), "CTL_DeleteThoughtAction");
     }
     
     /** Gets help context. */
+    @Override
     public HelpCtx getHelpCtx() {
         return HelpCtx.DEFAULT_HELP;        
     }
     
+    @Override
     public Class[] cookieClasses() {
         return new Class[] { Thought.class };
     }
     
+    @Override
     public int mode() {
         return MODE_ALL;
     }
@@ -65,6 +69,7 @@ public class DeleteThoughtAction extends CookieAction {
         return false;
     }
     
+    @Override
     public void performAction(Node[] nodes) {
 
         Data data = (Data)DataLookup.instance().lookup(Data.class);

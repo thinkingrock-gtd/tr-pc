@@ -31,19 +31,23 @@ import tr.model.project.Project;
 public class PrintDetailAction extends CookieAction {
     
     /** Gets the display name. */
+    @Override
     public String getName() {
         return NbBundle.getMessage(getClass(), "CTL_PrintDetailAction");
     }
     
     /** Gets help context. */
+    @Override
     public HelpCtx getHelpCtx() {
         return HelpCtx.DEFAULT_HELP;
     }
     
+    @Override
     public Class[] cookieClasses() {
         return new Class[] { Project.class };
     }
     
+    @Override
     public int mode() {
         return MODE_EXACTLY_ONE;
     }
@@ -53,6 +57,7 @@ public class PrintDetailAction extends CookieAction {
         return false;
     }
     
+    @Override
     public void performAction(Node[] nodes) {
         PrintDetailCookie cookie = (PrintDetailCookie)nodes[0].getCookie(PrintDetailCookie.class);
         if (cookie != null) {

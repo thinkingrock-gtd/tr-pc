@@ -37,27 +37,33 @@ public class EditContextAction extends CookieAction {
     }
     
     /** Gets the display name. */
+    @Override
     public String getName() {
         return NbBundle.getMessage(getClass(), "CTL_EditContextAction");
     }
     
     /** Gets help context. */
+    @Override
     public HelpCtx getHelpCtx() {
         return HelpCtx.DEFAULT_HELP;
     }
     
+    @Override
     public Class[] cookieClasses() {
         return new Class[] { Context.class };
     }
     
+    @Override
     public int mode() {
         return MODE_EXACTLY_ONE;
     }
     
+    @Override
     protected boolean asynchronous() {
         return false;
     }
     
+    @Override
     public void performAction(Node[] nodes) {
         EditContextCookie cookie = (EditContextCookie)nodes[0].getCookie(EditContextCookie.class);
         if (cookie != null) {

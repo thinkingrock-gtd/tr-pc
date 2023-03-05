@@ -47,23 +47,28 @@ public class AddContextsAction extends CallableSystemAction implements InitialAc
     }
     
     /** Gets the action identifier. */
+    @Override
     public String getID() {
         return "AddContextsAction";
     }
     
+    @Override
     protected boolean asynchronous() {
         return false;
     }
     
     /** Gets the initial action name. */
+    @Override
     public String getName() {
         return NbBundle.getMessage(getClass(), "CTL_AddContextsAction");
     }
     
+    @Override
     public HelpCtx getHelpCtx() {
         return HelpCtx.DEFAULT_HELP;
     }
     
+    @Override
     public void performAction() {
         Data data = (Data)DataLookup.instance().lookup(Data.class);
         if (data == null) return;

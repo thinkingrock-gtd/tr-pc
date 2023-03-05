@@ -37,19 +37,23 @@ public class DeleteContextAction extends CookieAction {
     }
     
     /** Gets the display name. */
+    @Override
     public String getName() {
         return NbBundle.getMessage(getClass(), "CTL_DeleteContextAction");
     }
     
     /** Gets help context. */
+    @Override
     public HelpCtx getHelpCtx() {
         return HelpCtx.DEFAULT_HELP;
     }
     
+    @Override
     public Class[] cookieClasses() {
         return new Class[] { Context.class };
     }
     
+    @Override
     public int mode() {
         return MODE_ALL;
     }
@@ -59,6 +63,7 @@ public class DeleteContextAction extends CookieAction {
         return false;
     }
     
+    @Override
     public void performAction(Node[] nodes) {
         for (Node node : nodes) {
             DeleteContextCookie cookie = (DeleteContextCookie)node.getCookie(DeleteContextCookie.class);

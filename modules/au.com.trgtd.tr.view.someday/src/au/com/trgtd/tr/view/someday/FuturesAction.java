@@ -54,6 +54,7 @@ public class FuturesAction extends CallableSystemAction implements InitialAction
         });
     }
 
+    @Override
     public String getName() {
         return NbBundle.getMessage(getClass(), "CTL_FutureAction");
     }
@@ -69,6 +70,7 @@ public class FuturesAction extends CallableSystemAction implements InitialAction
     }
 
     /** Gets the initial action identifier. */
+    @Override
     public String getID() {
         return "future";
     }

@@ -50,16 +50,19 @@ public class ReportImpl extends au.com.trgtd.tr.extract.Extract {
     private ParamList paramPaper;
     
     /** Overridden to return the report ID. */
+    @Override
     public String getID() {
         return "tr.reports.project.detail";
     }
 
     /** Overridden to return the report name. */
+    @Override
     public String getName() {
         return getString("CTL_ReportAction");
     }
 
     /** Overridden to return report parameters. */
+    @Override
     public List<Param> getParams() {        
         List<Param> params = new Vector<>();
         List<Item> formatItems = new Vector<>();
@@ -71,6 +74,7 @@ public class ReportImpl extends au.com.trgtd.tr.extract.Extract {
     }
 
     /** Overridden to process the report. */
+    @Override
     public void process(Data data) throws Exception {
     }
 

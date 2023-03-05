@@ -70,6 +70,7 @@ public class ActorsListCellRenderer extends JLabel implements ListCellRenderer<A
         this.std = std;
     }
 
+    @Override
     public Component getListCellRendererComponent(JList<? extends Actor> list, Actor actor,
             int index, boolean isSelected, boolean cellHasFocus) {
 
