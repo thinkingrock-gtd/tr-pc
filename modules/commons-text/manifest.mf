@@ -1,5 +1,5 @@
 Manifest-Version: 1.0
-AutoUpdate-Show-In-Client: true
+AutoUpdate-Show-In-Client: false
 OpenIDE-Module: commons.text
 OpenIDE-Module-Localizing-Bundle: commons/text/Bundle.properties
 OpenIDE-Module-Specification-Version: 1.0

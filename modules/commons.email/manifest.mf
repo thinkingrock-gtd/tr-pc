@@ -1,5 +1,5 @@
 Manifest-Version: 1.0
-AutoUpdate-Show-In-Client: true
+AutoUpdate-Show-In-Client: false
 OpenIDE-Module: apache.commons.email
 OpenIDE-Module-Localizing-Bundle: apache/commons/email/Bundle.properties
 OpenIDE-Module-Specification-Version: 3.6.1
