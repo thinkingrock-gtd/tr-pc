@@ -57,6 +57,7 @@ public final class RecentDataFileOpenAction extends AbstractAction {
     /**
      * Perform the action to open the recent data file.
      */
+    @Override
     public void actionPerformed(ActionEvent actionEvent) {
 
         DataStore ds = (DataStore) DataStoreLookup.instance().lookup(DataStore.class);

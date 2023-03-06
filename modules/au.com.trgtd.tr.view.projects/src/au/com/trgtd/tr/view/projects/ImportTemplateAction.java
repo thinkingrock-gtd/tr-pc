@@ -21,7 +21,6 @@ import java.awt.EventQueue;
 import org.openide.util.HelpCtx;
 import org.openide.util.Lookup;
 import org.openide.util.LookupEvent;
-import org.openide.util.LookupListener;
 import org.openide.util.NbBundle;
 import org.openide.util.actions.CallableSystemAction;
 import tr.model.Data;
@@ -41,11 +40,13 @@ public final class ImportTemplateAction extends CallableSystemAction implements 
         });        
     }
     
+    @Override
     public void performAction() {
         ImportTemplate importer = new ImportTemplate();
         importer.process();
     }
 
+    @Override
     public String getName() {
         return NbBundle.getMessage(ImportTemplateAction.class, "CTL_ImportTemplateAction");
     }
@@ -56,6 +57,7 @@ public final class ImportTemplateAction extends CallableSystemAction implements 
         putValue("noIconInMenu", Boolean.TRUE);
     }
 
+    @Override
     public HelpCtx getHelpCtx() {
         return HelpCtx.DEFAULT_HELP;
     }
@@ -77,6 +79,7 @@ public final class ImportTemplateAction extends CallableSystemAction implements 
         });
     }
     
+    @Override
     public void update(Observable observable, Object arguement) {
         dataChanged();        
     }

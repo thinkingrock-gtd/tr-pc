@@ -37,21 +37,25 @@ public class FutureEditAction extends CookieAction {
     }
     
     /** Gets the display name. */
+    @Override
     public String getName() {
         return NbBundle.getMessage(getClass(), "CTL_FutureEditAction");
     }
     
     /** Gets help topic. */
+    @Override
     public HelpCtx getHelpCtx() {
 //      return HelpCtx.DEFAULT_HELP;
         return new HelpCtx("tr.view.future");
         
     }
     
+    @Override
     public Class[] cookieClasses() {
         return new Class[] { Future.class };
     }
     
+    @Override
     public int mode() {
         return MODE_EXACTLY_ONE;
     }
@@ -61,6 +65,7 @@ public class FutureEditAction extends CookieAction {
         return false;
     }
     
+    @Override
     public void performAction(Node[] nodes) {
         FutureEditCookie cookie = (FutureEditCookie)nodes[0].getCookie(FutureEditCookie.class);
         if (cookie != null) {

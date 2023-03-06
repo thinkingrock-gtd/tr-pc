@@ -48,19 +48,23 @@ public class ChangeLevelAction extends CookieAction {
     }
 
     /** Gets the display name. */
+    @Override
     public String getName() {
         return NbBundle.getMessage(getClass(), "CTL_ChangeLevelAction");
     }
 
     /** Gets help context. */
+    @Override
     public HelpCtx getHelpCtx() {
         return HelpCtx.DEFAULT_HELP;
     }
 
+    @Override
     public Class<ChangeLevelCookie>[] cookieClasses() {
         return new Class[] {ChangeLevelCookie.class};
     }
 
+    @Override
     public int mode() {
         return MODE_ALL;
     }
@@ -70,6 +74,7 @@ public class ChangeLevelAction extends CookieAction {
         return false;
     }
 
+    @Override
     public void performAction(Node[] nodes) {
         if (nodes == null || nodes.length == 0) {
             return;

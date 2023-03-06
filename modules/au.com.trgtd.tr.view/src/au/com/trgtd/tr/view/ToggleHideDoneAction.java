@@ -36,19 +36,23 @@ public class ToggleHideDoneAction extends CookieAction {
     }
     
     /** Gets the display name. */
+    @Override
     public String getName() {
         return NbBundle.getMessage(getClass(), "CTL_ToggleHideDoneAction");
     }
     
     /** Gets help context. */
+    @Override
     public HelpCtx getHelpCtx() {
         return HelpCtx.DEFAULT_HELP;
     }
     
+    @Override
     public Class[] cookieClasses() {
         return new Class[] { ToggleHideDoneCookie.class, Project.class };
     }
     
+    @Override
     public int mode() {
         return MODE_ALL;
     }
@@ -58,6 +62,7 @@ public class ToggleHideDoneAction extends CookieAction {
         return false;
     }
     
+    @Override
     public void performAction(Node[] nodes) {
         for (Node node : nodes) {
             ToggleHideDoneCookie cookie = node.getCookie(ToggleHideDoneCookie.class);

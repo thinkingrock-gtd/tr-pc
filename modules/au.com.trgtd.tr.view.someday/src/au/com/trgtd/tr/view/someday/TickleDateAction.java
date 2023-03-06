@@ -49,19 +49,23 @@ public class TickleDateAction extends CookieAction {
     }    
     
     /** Gets the display name. */
+    @Override
     public String getName() {
         return NbBundle.getMessage(getClass(), "CTL_TickleDateAction");
     }
     
     /** Gets help topic. */
+    @Override
     public HelpCtx getHelpCtx() {
         return HelpCtx.DEFAULT_HELP;
     }
     
+    @Override
     public Class[] cookieClasses() {
         return new Class[] { Future.class };
     }
     
+    @Override
     public int mode() {
         return MODE_ALL;
     }
@@ -71,6 +75,7 @@ public class TickleDateAction extends CookieAction {
         return false;
     }
     
+    @Override
     public void performAction(Node[] nodes) {
         Data data = (Data)DataLookup.instance().lookup(Data.class);
         if (data == null) return;

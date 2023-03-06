@@ -37,19 +37,23 @@ public class ToggleShowGoalsAction extends CookieAction {
     }
     
     /** Gets the display name. */
+    @Override
     public String getName() {
         return NbBundle.getMessage(getClass(), "CTL_ToggleShowGoalsAction");
     }
     
     /** Gets help context. */
+    @Override
     public HelpCtx getHelpCtx() {
         return HelpCtx.DEFAULT_HELP;
     }
     
+    @Override
     public Class[] cookieClasses() {
         return new Class[] { ToggleShowGoalsCookie.class, Project.class };
     }
     
+    @Override
     public int mode() {
         return MODE_ALL;
     }
@@ -59,6 +63,7 @@ public class ToggleShowGoalsAction extends CookieAction {
         return false;
     }
     
+    @Override
     public void performAction(Node[] nodes) {
         for (Node node : nodes) {
             ToggleShowGoalsCookie cookie = node.getCookie(ToggleShowGoalsCookie.class);

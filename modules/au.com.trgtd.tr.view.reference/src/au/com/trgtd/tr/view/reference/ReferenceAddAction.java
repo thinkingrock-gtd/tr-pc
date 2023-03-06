@@ -47,6 +47,7 @@ public class ReferenceAddAction extends CallableSystemAction implements InitialA
     }
     
     /** Gets the action identifier. */
+    @Override
     public String getID() {
         return "ReferenceAddAction";
     }
@@ -57,14 +58,17 @@ public class ReferenceAddAction extends CallableSystemAction implements InitialA
     }
     
     /** Gets the initial action name. */
+    @Override
     public String getName() {
         return NbBundle.getMessage(getClass(), "CTL_ReferenceAddAction");
     }
-    
+
+    @Override
     public HelpCtx getHelpCtx() {
         return HelpCtx.DEFAULT_HELP;
     }
-    
+
+    @Override
     public void performAction() {
         Data data = (Data)DataLookup.instance().lookup(Data.class);
         if (data == null) return;

@@ -30,6 +30,7 @@ import org.openide.util.actions.CookieAction;
  */
 public class EditAction extends CookieAction {
     
+    @Override
     public String getName() {
         return NbBundle.getMessage(getClass(), "CTL_EditAction");
     }
@@ -40,14 +41,17 @@ public class EditAction extends CookieAction {
     }
     
     /** Gets help context. */
+    @Override
     public HelpCtx getHelpCtx() {
         return HelpCtx.DEFAULT_HELP;
     }
     
+    @Override
     public Class[] cookieClasses() {
         return new Class[] { EditCookie.class };
     }
     
+    @Override
     public int mode() {
         return MODE_EXACTLY_ONE;
     }
@@ -66,6 +70,7 @@ public class EditAction extends CookieAction {
         return cookie != null && cookie.canEdit();
     }
 
+    @Override
     public void performAction(Node[] nodes) {
         if (nodes.length == 1) {
             EditCookie cookie = nodes[0].getCookie(EditCookie.class);

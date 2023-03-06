@@ -41,16 +41,19 @@ import tr.model.Data;
 public class ExportXML extends Extract {
     
     /** Overridden to return the extract ID. */
+    @Override
     public String getID() {
         return "actions-xml";
     }
     
     /** Overridden to return the export name. */
+    @Override
     public String getName() {
         return getString("CTL_ExportXMLAction");
     }
     
     /** Overridden to return report parameters. */
+    @Override
     public List<Param> getParams() {
         List<Param> params = new Vector<>();
         params.add(new ParamTopic("topic", getString("param-topic"), FormatType.XML));
@@ -126,6 +129,7 @@ public class ExportXML extends Extract {
     }
     
     /** Overriden to process the report. */
+    @Override
     public void process(Data data) throws Exception {
         
         List<Param> params = getParams();

@@ -62,6 +62,7 @@ public class PrintAction extends AbstractAction implements LookupListener, Conte
         return super.isEnabled();
     }
     
+    @Override
     public void actionPerformed(ActionEvent e) {
         Print printable = (Print)context.lookup(Print.class);
         if (printable != null) {
@@ -69,10 +70,12 @@ public class PrintAction extends AbstractAction implements LookupListener, Conte
         }
     }
     
+    @Override
     public void resultChanged(LookupEvent ev) {
         setEnabled(lookupResult.allItems().size() != 0);
     }
     
+    @Override
     public Action createContextAwareInstance(Lookup context) {
         return new PrintAction(context);
     }

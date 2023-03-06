@@ -47,6 +47,7 @@ public class AddTopicsAction extends CallableSystemAction implements InitialActi
     }
     
     /** Gets the action identifier. */
+    @Override
     public String getID() {
         return "AddTopicsAction";
     }
@@ -57,14 +58,17 @@ public class AddTopicsAction extends CallableSystemAction implements InitialActi
     }
     
     /** Gets the initial action name. */
+    @Override
     public String getName() {
         return NbBundle.getMessage(getClass(), "CTL_AddTopicsAction");
     }
     
+    @Override
     public HelpCtx getHelpCtx() {
         return HelpCtx.DEFAULT_HELP;
     }
     
+    @Override
     public void performAction() {
         Data data = (Data)DataLookup.instance().lookup(Data.class);
         if (data == null) return;

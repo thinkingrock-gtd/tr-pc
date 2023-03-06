@@ -48,19 +48,23 @@ public class ContextChangeAction extends CookieAction {
     }
 
     /** Gets the display name. */
+    @Override
     public String getName() {
         return NbBundle.getMessage(getClass(), "CTL_ChangeContextAction");
     }
     
     /** Gets help context. */
+    @Override
     public HelpCtx getHelpCtx() {
         return HelpCtx.DEFAULT_HELP;
     }
     
+    @Override
     public Class[] cookieClasses() {
         return new Class[] { ContextChangeCookie.class };
     }
     
+    @Override
     public int mode() {
         return MODE_ANY;
     }
@@ -70,6 +74,7 @@ public class ContextChangeAction extends CookieAction {
         return false;
     }
     
+    @Override
     public void performAction(Node[] nodes) {
         Data data = (Data)DataLookup.instance().lookup(Data.class);
         if (data == null) return;

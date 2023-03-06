@@ -40,19 +40,23 @@ public class FutureDeleteAction extends CookieAction {
     }
     
     /** Gets the display name. */
+    @Override
     public String getName() {
         return NbBundle.getMessage(getClass(), "CTL_FutureDeleteAction");
     }
     
     /** Gets help context. */
+    @Override
     public HelpCtx getHelpCtx() {
         return HelpCtx.DEFAULT_HELP;
     }
     
+    @Override
     public Class[] cookieClasses() {
         return new Class[] { Future.class };
     }
     
+    @Override
     public int mode() {
         return MODE_ALL;
     }
@@ -62,6 +66,7 @@ public class FutureDeleteAction extends CookieAction {
         return false;
     }
     
+    @Override
     public void performAction(Node[] nodes) {
         
         if (nodes == null || nodes.length == 0) return;

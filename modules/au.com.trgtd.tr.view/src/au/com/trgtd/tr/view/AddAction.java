@@ -36,11 +36,13 @@ public class AddAction extends CookieAction {
     }
 
     /** Gets the display name. */
+    @Override
     public String getName() {
         return NbBundle.getMessage(AddAction.class, "CTL_AddAction");
     }
 
     /** Gets help context. */
+    @Override
     public HelpCtx getHelpCtx() {
         return HelpCtx.DEFAULT_HELP;
     }
@@ -50,14 +52,17 @@ public class AddAction extends CookieAction {
         return false;
     }
 
+    @Override
     protected int mode() {
         return MODE_EXACTLY_ONE;
     }
 
+    @Override
     protected Class[] cookieClasses() {
         return new Class[] { AddCookie.class };
     }
 
+    @Override
     protected void performAction(Node[] nodes) {
         AddCookie cookie = nodes[0].getCookie(AddCookie.class);
         if (cookie != null) {

@@ -42,19 +42,23 @@ public class ReprocessAction extends CookieAction {
     }
 
     /** Gets the display name. */
+    @Override
     public String getName() {
         return NbBundle.getMessage(getClass(), "CTL_ReprocessAction");
     }
 
     /** Gets help context. */
+    @Override
     public HelpCtx getHelpCtx() {
         return HelpCtx.DEFAULT_HELP;
     }
 
+    @Override
     public Class[] cookieClasses() {
         return new Class[]{Action.class, Information.class, Future.class};
     }
 
+    @Override
     public int mode() {
 //      return MODE_EXACTLY_ONE;
         return MODE_ALL;
@@ -65,6 +69,7 @@ public class ReprocessAction extends CookieAction {
         return false;
     }
 
+    @Override
     public void performAction(Node[] nodes) {
         if (nodes == null || nodes.length == 0) {
             return;

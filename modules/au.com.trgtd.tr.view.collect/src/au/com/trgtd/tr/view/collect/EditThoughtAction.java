@@ -41,19 +41,23 @@ public class EditThoughtAction extends CookieAction {
     }    
 
     /** Gets the display name. */
+    @Override
     public String getName() {
         return NbBundle.getMessage(getClass(), "CTL_EditThoughtAction");
     }
     
     /** Gets help context. */
+    @Override
     public HelpCtx getHelpCtx() {
         return HelpCtx.DEFAULT_HELP;        
     }
     
+    @Override
     public Class[] cookieClasses() {
         return new Class[] { Thought.class };
     }
     
+    @Override
     public int mode() {
         return MODE_EXACTLY_ONE;
     }
@@ -63,6 +67,7 @@ public class EditThoughtAction extends CookieAction {
         return false;
     }
     
+    @Override
     public void performAction(Node[] nodes) {
         EditThoughtCookie cookie = (EditThoughtCookie)nodes[0].getCookie(EditThoughtCookie.class);
         if (cookie != null) {

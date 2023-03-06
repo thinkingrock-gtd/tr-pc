@@ -45,13 +45,16 @@ public final class RecentDataFilesAction extends CallableSystemAction {
         menu.initialize();            
     }
 
+    @Override
     public String getName() {
         return "";
     }
     
+    @Override
     public void performAction() {
     }
     
+    @Override
     public HelpCtx getHelpCtx() {
         return HelpCtx.DEFAULT_HELP;
     }

@@ -37,19 +37,23 @@ public class DeleteTopicAction extends CookieAction {
     }
     
     /** Gets the display name. */
+    @Override
     public String getName() {
         return NbBundle.getMessage(getClass(), "CTL_DeleteTopicAction");
     }
     
     /** Gets help topic. */
+    @Override
     public HelpCtx getHelpCtx() {
         return HelpCtx.DEFAULT_HELP;
     }
     
+    @Override
     public Class[] cookieClasses() {
         return new Class[] { Topic.class };
     }
     
+    @Override
     public int mode() {
         return MODE_ALL;
     }
@@ -59,6 +63,7 @@ public class DeleteTopicAction extends CookieAction {
         return false;
     }
     
+    @Override
     public void performAction(Node[] nodes) {
         for (Node node : nodes) {
             DeleteTopicCookie cookie = (DeleteTopicCookie)node.getCookie(DeleteTopicCookie.class);

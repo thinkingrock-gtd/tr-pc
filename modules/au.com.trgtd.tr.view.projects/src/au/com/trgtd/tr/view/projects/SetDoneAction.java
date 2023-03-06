@@ -32,6 +32,7 @@ import tr.model.action.Action;
 public class SetDoneAction extends CookieAction {
     
     /** Gets the display name. */
+    @Override
     public String getName() {
         return NbBundle.getMessage(getClass(), "CTL_SetDoneAction");
     }
@@ -42,14 +43,17 @@ public class SetDoneAction extends CookieAction {
     }
     
     /** Gets help context. */
+    @Override
     public HelpCtx getHelpCtx() {
         return HelpCtx.DEFAULT_HELP;
     }
     
+    @Override
     public Class[] cookieClasses() {
         return new Class[] { Action.class };
     }
     
+    @Override
     public int mode() {
         return MODE_ALL;
     }
@@ -59,6 +63,7 @@ public class SetDoneAction extends CookieAction {
         return false;
     }
     
+    @Override
     public void performAction(Node[] nodes) {
         for (Node node : nodes) {
             SetDoneCookie cookie = (SetDoneCookie)node.getCookie(SetDoneCookie.class);
