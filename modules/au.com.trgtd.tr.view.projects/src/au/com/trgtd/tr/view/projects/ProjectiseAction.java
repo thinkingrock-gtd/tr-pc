@@ -37,19 +37,23 @@ public class ProjectiseAction extends CookieAction {
     }
     
     /** Gets the display name. */
+    @Override
     public String getName() {
         return NbBundle.getMessage(getClass(), "CTL_ProjectiseAction");
     }
     
     /** Gets help context. */
+    @Override
     public HelpCtx getHelpCtx() {
         return HelpCtx.DEFAULT_HELP;
     }
     
+    @Override
     public Class[] cookieClasses() {
         return new Class[] { Action.class };
     }
     
+    @Override
     public int mode() {
         return MODE_EXACTLY_ONE;
     }
@@ -59,6 +63,7 @@ public class ProjectiseAction extends CookieAction {
         return false;
     }
     
+    @Override
     public void performAction(Node[] nodes) {
         if (nodes.length < 1) return;
         

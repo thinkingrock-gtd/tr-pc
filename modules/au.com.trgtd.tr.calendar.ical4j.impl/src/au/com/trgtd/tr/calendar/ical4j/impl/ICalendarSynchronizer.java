@@ -59,18 +59,22 @@ public class ICalendarSynchronizer implements CalendarSynchronizer {
     private static File futureFile;
     private static CalendarSynchronizerOptions options;
 
+    @Override
     public String getID() {
         return "au.com.trgtd.tr.calendar.synchronizer.default";
     }
 
+    @Override
     public String getName() {
         return NbBundle.getMessage(getClass(), "synchronizer.name");
     }
 
+    @Override
     public void syncToCalendar() {
         syncToCalendar(null);
     }
 
+    @Override
     public void syncToCalendar(String filename) {
         Data data = DataLookup.instance().lookup(Data.class);
         if (data == null) {
@@ -87,10 +91,12 @@ public class ICalendarSynchronizer implements CalendarSynchronizer {
         process(data, dir, filename, Options.getTimeZoneID());
     }
 
+    @Override
     public void syncFromCalendar() {
         throw new UnsupportedOperationException("Not supported yet.");
     }
 
+    @Override
     public CalendarSynchronizerOptions getOptions() {
         if (options == null) {
             options = new OptionsPanel();

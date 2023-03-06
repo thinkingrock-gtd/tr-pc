@@ -52,10 +52,12 @@ public class ReviewActionsTableFormat implements AdvancedTableFormat<Action>, Wr
         this.screen = screen;
     }
     
+    @Override
     public int getColumnCount() {
         return screen.getColumns().size();
     }
     
+    @Override
     public String getColumnName(int column) {
         try {
             return screen.getColumns().get(column).getColumnName();
@@ -65,6 +67,7 @@ public class ReviewActionsTableFormat implements AdvancedTableFormat<Action>, Wr
         }
     }
     
+    @Override
     public Object getColumnValue(Action action, int column) {
         if (action == null)
             return null;
@@ -276,6 +279,7 @@ public class ReviewActionsTableFormat implements AdvancedTableFormat<Action>, Wr
         return path;
     }
     
+    @Override
     public Class getColumnClass(int column) {
         try {
             return screen.getColumns().get(column).getColumnClass();
@@ -285,6 +289,7 @@ public class ReviewActionsTableFormat implements AdvancedTableFormat<Action>, Wr
         }
     }
     
+    @Override
     public Comparator getColumnComparator(int column) {
         try {
             return screen.getColumns().get(column).getColumnComparator();
@@ -414,11 +419,13 @@ public class ReviewActionsTableFormat implements AdvancedTableFormat<Action>, Wr
         return styledValue;
     };
 
+    @Override
     public boolean isEditable(Action baseObject, int column) {
 //        return screen.getColumns().get(column).getColumnIndex() == ActionsColumn.INDEX_DONE;
         return false;
     }
 
+    @Override
     public Action setColumnValue(Action baseObject, Object editedValue, int column) {
 //        
 //        assert(screen.getColumns().get(column).getColumnIndex() == ActionsColumn.INDEX_DONE);

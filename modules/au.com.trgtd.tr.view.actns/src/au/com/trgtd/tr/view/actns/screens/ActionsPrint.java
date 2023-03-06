@@ -82,16 +82,19 @@ public class ActionsPrint extends Extract {
     public List<String> sortorders;
     
     /** Overridden to get the report ID. */
+    @Override
     public String getID() {
         return "actions";
     }
     
     /** Overridden to get the report name */
+    @Override
     public String getName() {
         return "";
     }
     
     /** Overridden to get the report parameters. */
+    @Override
     public List<Param> getParams() {
         // get the parameters
         List<Param> params = new Vector<>();
@@ -118,6 +121,7 @@ public class ActionsPrint extends Extract {
         return params;
     }
     
+    @Override
     public void process(Data data) throws Exception {
         File xmlfile = getTmpFile("data.xml");
         URL xslfoURL = getClass().getResource("actions.fo.xml");

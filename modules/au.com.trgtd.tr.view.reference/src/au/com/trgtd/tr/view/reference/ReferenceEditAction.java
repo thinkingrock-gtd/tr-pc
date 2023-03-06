@@ -37,19 +37,23 @@ public class ReferenceEditAction extends CookieAction {
     }
     
     /** Gets the display name. */
+    @Override
     public String getName() {
         return NbBundle.getMessage(getClass(), "CTL_ReferenceEditAction");
     }
     
     /** Gets help topic. */
+    @Override
     public HelpCtx getHelpCtx() {
         return HelpCtx.DEFAULT_HELP;
     }
     
+    @Override
     public Class[] cookieClasses() {
         return new Class[] { Information.class };
     }
     
+    @Override
     public int mode() {
         return MODE_EXACTLY_ONE;
     }
@@ -59,6 +63,7 @@ public class ReferenceEditAction extends CookieAction {
         return false;
     }
     
+    @Override
     public void performAction(Node[] nodes) {
         ReferenceEditCookie cookie = (ReferenceEditCookie)nodes[0].getCookie(ReferenceEditCookie.class);
         if (cookie != null) {

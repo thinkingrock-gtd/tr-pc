@@ -31,19 +31,23 @@ import org.openide.util.actions.CookieAction;
 public class SelectAction extends CookieAction {
 
     /** Gets the display name. */
+    @Override
     public String getName() {
         return NbBundle.getMessage(getClass(), "select");
     }
 
     /** Gets help context. */
+    @Override
     public HelpCtx getHelpCtx() {
         return HelpCtx.DEFAULT_HELP;
     }
 
+    @Override
     public Class[] cookieClasses() {
         return new Class[] {SelectCookie.class};
     }
 
+    @Override
     public int mode() {
         return MODE_EXACTLY_ONE;
     }
@@ -53,6 +57,7 @@ public class SelectAction extends CookieAction {
         return false;
     }
 
+    @Override
     public void performAction(Node[] nodes) {
         if (nodes == null || nodes.length == 0) {
             return;

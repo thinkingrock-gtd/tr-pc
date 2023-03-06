@@ -82,10 +82,12 @@ public final class ArchiveAction extends CallableSystemAction implements LookupL
         r.allInstances();
     }
 
+    @Override
     public String getName() {
         return NbBundle.getMessage(getClass(), "CTL_ArchiveAction"); // No I18N
     }
 
+    @Override
     public HelpCtx getHelpCtx() {
         return new HelpCtx("tr.archive"); // No I18N
     }
@@ -96,6 +98,7 @@ public final class ArchiveAction extends CallableSystemAction implements LookupL
     }
 
     /** Save the current data store as another file. */
+    @Override
     public void performAction() {
 
         // get saved preferences

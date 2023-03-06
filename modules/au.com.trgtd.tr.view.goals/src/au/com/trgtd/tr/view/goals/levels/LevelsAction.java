@@ -51,6 +51,7 @@ public class LevelsAction extends CallableSystemAction {
         return "au/com/trgtd/tr/view/goals/resource/Levels.png";
     }
 
+    @Override
     public String getName() {
         return NbBundle.getMessage(getClass(), "CTL_LevelsAction");
     }
@@ -67,6 +68,7 @@ public class LevelsAction extends CallableSystemAction {
         return "levels";
     }
 
+    @Override
     public void performAction() {
         EventQueue.invokeLater(() -> {
             Data data = DataLookup.instance().lookup(Data.class);
@@ -93,6 +95,7 @@ public class LevelsAction extends CallableSystemAction {
         return false;
     }
 
+    @Override
     public HelpCtx getHelpCtx() {
         return new HelpCtx("tr.view.levels");
     }

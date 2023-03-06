@@ -68,6 +68,7 @@ public class RAAction extends CallableSystemAction implements InitialAction {
         instance = this;
     }
 
+    @Override
     public String getName() {
         return NbBundle.getMessage(getClass(), "CTL_RAAction");
     }
@@ -90,6 +91,7 @@ public class RAAction extends CallableSystemAction implements InitialAction {
     }
 
     /** Gets the initial action identifier. */
+    @Override
     public String getID() {
         return "actions";
     }

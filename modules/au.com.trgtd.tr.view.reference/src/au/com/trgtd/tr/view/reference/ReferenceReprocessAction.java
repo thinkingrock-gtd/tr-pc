@@ -37,19 +37,23 @@ public class ReferenceReprocessAction extends CookieAction {
     }
     
     /** Gets the display name. */
+    @Override
     public String getName() {
         return NbBundle.getMessage(getClass(), "CTL_ReferenceReprocessAction");
     }
     
     /** Gets help topic. */
+    @Override
     public HelpCtx getHelpCtx() {
         return HelpCtx.DEFAULT_HELP;
     }
     
+    @Override
     public Class[] cookieClasses() {
         return new Class[] { Information.class };
     }
     
+    @Override
     public int mode() {
         return MODE_EXACTLY_ONE;
     }
@@ -59,6 +63,7 @@ public class ReferenceReprocessAction extends CookieAction {
         return false;
     }
     
+    @Override
     public void performAction(Node[] nodes) {
         ReferenceReprocessCookie cookie = (ReferenceReprocessCookie)nodes[0].getCookie(ReferenceReprocessCookie.class);
         if (cookie != null) {

@@ -52,6 +52,7 @@ public class CollectThoughtsAction extends CallableSystemAction implements Initi
         return Resource.Collect;
     }
 
+    @Override
     public String getName() {
         return NbBundle.getMessage(getClass(), "CTL_CollectThoughtsAction");
     }
@@ -62,10 +63,12 @@ public class CollectThoughtsAction extends CallableSystemAction implements Initi
     }
 
     /** Gets the action identifier. */
+    @Override
     public String getID() {
         return "CollectThoughts";
     }
 
+    @Override
     public void performAction() {
         EventQueue.invokeLater(() -> {
             Data data = (Data) DataLookup.instance().lookup(Data.class);
@@ -92,6 +95,7 @@ public class CollectThoughtsAction extends CallableSystemAction implements Initi
         return false;
     }
 
+    @Override
     public HelpCtx getHelpCtx() {
         return new HelpCtx("tr.view.collect");
     }

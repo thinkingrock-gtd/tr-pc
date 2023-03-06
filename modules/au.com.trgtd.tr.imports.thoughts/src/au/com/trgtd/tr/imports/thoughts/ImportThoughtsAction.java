@@ -53,6 +53,7 @@ public final class ImportThoughtsAction extends CallableSystemAction {
     }
     
     /** Save the current datastore as another file. */
+    @Override
     public void performAction() {
         Data data = (Data)DataLookup.instance().lookup(Data.class);
         if (data == null) return;
@@ -71,6 +72,7 @@ public final class ImportThoughtsAction extends CallableSystemAction {
         collect.performAction();
     }
     
+    @Override
     public String getName() {
         return NbBundle.getMessage(ImportThoughtsAction.class, "CTL_ImportThoughtsAction");
     }
@@ -79,6 +81,7 @@ public final class ImportThoughtsAction extends CallableSystemAction {
         return HelpCtx.DEFAULT_HELP;
     }
     
+    @Override
     protected boolean asynchronous() {
         return false;
     }

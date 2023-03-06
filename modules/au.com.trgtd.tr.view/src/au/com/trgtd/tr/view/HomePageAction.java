@@ -48,6 +48,7 @@ public class HomePageAction extends AbstractAction {
         return true;
     }
     
+    @Override
     public void actionPerformed(ActionEvent e) {
         try {
             Open.open(new URL("https://trgtd.com.au"));
