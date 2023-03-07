@@ -112,10 +112,10 @@ public class MatcherEditorSearch extends MatcherEditorBase
             if (search == null) {
                 return;
             }
-            final String s = search.trim();
-            if (s.length() > 0 && !searches.contains(s)) {
-                searches.add(s);
-                fireContentsChanged(s, 0, searches.size());
+            final String trimmed = search.trim();
+            if (trimmed.length() > 0 && !searches.contains(trimmed)) {
+                searches.add(trimmed);
+                fireContentsChanged(trimmed, 0, searches.size());
             }
         }
 
