@@ -1,23 +1,24 @@
 /*
- * ThinkingRock, a project management tool for Personal Computers. 
+ * ThinkingRock, a project management tool for Personal Computers.
  * Copyright (C) 2006 Avente Pty Ltd
- * 
+ *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
  * (at your option) any later version.
- * 
+ *
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
- * 
+ *
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 package au.com.trgtd.tr.view.someday.filters;
 
 import au.com.trgtd.tr.swing.TRComboBox;
+import au.com.trgtd.tr.view.filters.FilterComboAbstract;
 import ca.odell.glazedlists.matchers.Matcher;
 import java.awt.Color;
 import java.awt.Component;
@@ -26,13 +27,13 @@ import java.awt.event.ActionListener;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.io.Serializable;
-import java.util.Vector;
+import java.util.ArrayList;
+import java.util.List;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JComboBox;
 import javax.swing.JTable;
 import org.openide.util.NbBundle;
 import tr.model.future.Future;
-import au.com.trgtd.tr.view.filters.FilterComboAbstract;
 
 /**
  * MatcherEditor the matches a search string.
@@ -41,86 +42,88 @@ import au.com.trgtd.tr.view.filters.FilterComboAbstract;
  */
 public class MatcherEditorSearch extends MatcherEditorBase
         implements PropertyChangeListener {
-    
+
     private final SearchComboBox searchCombo;
-    
-    /** Constructs a new instance. */
+
+    /**
+     * Constructs a new instance.
+     */
     public MatcherEditorSearch() {
         searchCombo = new SearchComboBox();
         searchCombo.addValueChangeListener(this);
     }
-    
+
+    @Override
     public Component getComponent() {
         return searchCombo;
     }
-    
-    public void propertyChange(PropertyChangeEvent e) {
-//        if (!e.getPropertyName().equals(FilterCombo.PROPERTY_VALUE)) {
-//            return;
-//        }
-        String string = (String)searchCombo.getSelectedItem();
+
+    @Override
+    public void propertyChange(final PropertyChangeEvent e) {
+        final String string = (String) searchCombo.getSelectedItem();
         if (string == null || string.trim().length() == 0) {
             fireMatchAll();
         } else {
             fireChanged(new SearchMatcher(string));
         }
     }
-    
+
+    @Override
     public String getLabel() {
         return NbBundle.getMessage(getClass(), "filter-search");
     }
-    
+
+    @Override
     public Serializable getSerializable() {
-        return (Serializable)searchCombo.getSelectedItem();
+        return (Serializable) searchCombo.getSelectedItem();
     }
-    
-    public void setSerializable(Serializable serializable) {
+
+    @Override
+    public void setSerializable(final Serializable serializable) {
         searchCombo.setSelectedItem(serializable);
     }
-    
+
     private static class SearchMatcher implements Matcher<Future> {
-        
+
         private final String search;
-        
+
         public SearchMatcher() {
             this.search = null;
         }
-        
-        public SearchMatcher(String search) {
+
+        public SearchMatcher(final String search) {
             this.search = search.toLowerCase();
         }
-        
-        public boolean matches(Future future) {
+
+        @Override
+        public boolean matches(final Future future) {
             if (future.getDescription().toLowerCase().contains(search)) {
                 return true;
             }
-            if (future.getNotes().toLowerCase().contains(search)) {
-                return true;
-            }
-            return false;
+            return future.getNotes().toLowerCase().contains(search);
         }
     }
-    
+
     private class SearchComboBoxModel extends DefaultComboBoxModel<String> {
-        
-        public final Vector<String> searches = new Vector<>();
-        
-        public void addSearch(String search) {
+
+        public final List<String> searches = new ArrayList<>();
+
+        public void addSearch(final String search) {
             if (search == null) {
                 return;
             }
-            search = search.trim();
-            if (search.length() > 0 && !searches.contains(search)) {
-                searches.add(search);
-                fireContentsChanged(search, 0, searches.size());
+            final String s = search.trim();
+            if (s.length() > 0 && !searches.contains(s)) {
+                searches.add(s);
+                fireContentsChanged(s, 0, searches.size());
             }
         }
-        
+
         @Override
         public String getElementAt(int index) {
             return searches.get(index);
         }
-        
+
         @Override
         public int getSize() {
             return searches.size();
@@ -132,61 +135,55 @@ public class MatcherEditorSearch extends MatcherEditorBase
         searchCombo.setSelectedItem(null);
         searchCombo.fireValueChange();
     }
-    
+
     private class SearchComboBox extends FilterComboAbstract<String> {
-        
+
+        public String string;
+
         public SearchComboBox() {
             super(new SearchComboBoxModel());
             setEditable(true);
             addActionListener(listener);
         }
-        
+
+        @Override
         public void stopChangeEvents() {
             removeActionListener(listener);
         }
-        
+
+        @Override
         public void startChangeEvents() {
             addActionListener(listener);
         }
-        
-        private ActionListener listener = (ActionEvent e) -> {
+
+        private final ActionListener listener = (ActionEvent e) -> {
             setString(null);
-            Object object = getSelectedItem();
-            if (object instanceof String str) {
-                String string1 = str.trim();
-                if (string1.length() > 0) {
-                    setString(string1);
+            if (getSelectedItem() instanceof String str) {
+                final String trimmed = str.trim();
+                if (trimmed.length() > 0) {
+                    setString(trimmed);
                 }
             }
         };
-        
-        public String string;
-// remove these comments to change to OR instead of AND
-//      public String[] strings;
-        
-        private void setString(String string) {
+
+        private void setString(final String string) {
             if (string == null || string.trim().length() == 0) {
                 this.string = null;
-// remove these comments to change to OR instead of AND
-//              this.strings = null;
             } else {
                 this.string = string.trim().toLowerCase();
-// remove these comments to change to OR instead of AND
-//              this.strings = this.string.split("\\s+");
-                SearchComboBoxModel model = (SearchComboBoxModel)this.getModel();
+                SearchComboBoxModel model = (SearchComboBoxModel) this.getModel();
                 model.addSearch(string);
             }
             fireValueChange();
         }
-        
-        public Component getTableCellRendererComponent(JTable table, Object value,
-                boolean isSelected, boolean hasFocus, int row, int column) {
+
+        public Component getTableCellRendererComponent(
+                final JTable table, final Object value, boolean isSelected,
+                boolean hasFocus, int row, int column) {
             JComboBox dummy = new TRComboBox<>();
             dummy.setEnabled(true);
             dummy.setBackground(Color.white);
             return dummy;
         }
     }
-    
 }
-
