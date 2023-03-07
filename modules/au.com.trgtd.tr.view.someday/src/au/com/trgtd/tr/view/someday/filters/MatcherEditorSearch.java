@@ -45,9 +45,6 @@ public class MatcherEditorSearch extends MatcherEditorBase
 
     private final SearchComboBox searchCombo;
 
-    /**
-     * Constructs a new instance.
-     */
     public MatcherEditorSearch() {
         searchCombo = new SearchComboBox();
         searchCombo.addValueChangeListener(this);
@@ -61,7 +58,7 @@ public class MatcherEditorSearch extends MatcherEditorBase
     @Override
     public void propertyChange(final PropertyChangeEvent e) {
         final String string = (String) searchCombo.getSelectedItem();
-        if (string == null || string.trim().length() == 0) {
+        if (string == null || string.trim().isEmpty()) {
             fireMatchAll();
         } else {
             fireChanged(new SearchMatcher(string));
@@ -113,7 +110,7 @@ public class MatcherEditorSearch extends MatcherEditorBase
                 return;
             }
             final String trimmed = search.trim();
-            if (trimmed.length() > 0 && !searches.contains(trimmed)) {
+            if (!trimmed.isEmpty() && !searches.contains(trimmed)) {
                 searches.add(trimmed);
                 fireContentsChanged(trimmed, 0, searches.size());
             }
@@ -160,27 +157,27 @@ public class MatcherEditorSearch extends MatcherEditorBase
             setString(null);
             if (getSelectedItem() instanceof String str) {
                 final String trimmed = str.trim();
-                if (trimmed.length() > 0) {
+                if (!trimmed.isEmpty()) {
                     setString(trimmed);
                 }
             }
         };
 
         private void setString(final String string) {
-            if (string == null || string.trim().length() == 0) {
+            if (string == null || string.trim().isEmpty()) {
                 this.string = null;
             } else {
                 this.string = string.trim().toLowerCase();
-                SearchComboBoxModel model = (SearchComboBoxModel) this.getModel();
+                final SearchComboBoxModel model = (SearchComboBoxModel) this.getModel();
                 model.addSearch(string);
             }
             fireValueChange();
         }
 
         public Component getTableCellRendererComponent(
-                final JTable table, final Object value, boolean isSelected,
-                boolean hasFocus, int row, int column) {
-            JComboBox dummy = new TRComboBox<>();
+                final JTable table, final Object value,
+                boolean isSelected, boolean hasFocus, int row, int column) {
+            final JComboBox dummy = new TRComboBox<>();
             dummy.setEnabled(true);
             dummy.setBackground(Color.white);
             return dummy;
