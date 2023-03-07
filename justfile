@@ -3,19 +3,21 @@
 
 repodir := `pwd`
 
+netbeans-plat-version := "17"
+
 alias verify-ci := verify-tr
 
 # Builds the entire project - also downloading the harness if needed
 build:
-    ant build -Dnbplatform.default.netbeans.dest.dir={{repodir}}/netbeans-plat/16/ide
+    ant build -Dnbplatform.default.netbeans.dest.dir={{repodir}}/netbeans-plat/{{ netbeans-plat-version }}/ide
 
 # Creates the zipped application code in dist/trgtd.zip
 build-zip:
-    ant build-zip -Dnbplatform.default.netbeans.dest.dir={{repodir}}/netbeans-plat/16/ide
+    ant build-zip -Dnbplatform.default.netbeans.dest.dir={{repodir}}/netbeans-plat/{{ netbeans-plat-version }}/ide
 
 # Verifies a single module
 verify-module module: build
-    cd modules/{{module}} && ant test -Dnbplatform.default.netbeans.dest.dir={{repodir}}/netbeans-plat/16/ide
+    cd modules/{{module}} && ant test -Dnbplatform.default.netbeans.dest.dir={{repodir}}/netbeans-plat/{{ netbeans-plat-version}}/ide
 
 # Verifies modules with headless tests
 verify-headless: verify-tr verify-deps
