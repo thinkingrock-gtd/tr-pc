@@ -17,7 +17,6 @@
  */
 package tr.model.action;
 
-import java.util.Calendar;
 import java.util.Date;
 
 import au.com.trgtd.tr.util.ObservableImpl;

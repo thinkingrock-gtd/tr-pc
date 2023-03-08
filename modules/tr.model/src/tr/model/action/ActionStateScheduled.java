@@ -18,7 +18,6 @@
 package tr.model.action;
 
 import au.com.trgtd.tr.prefs.actions.ActionPrefs;
-import au.com.trgtd.tr.util.DateUtils;
 import au.com.trgtd.tr.util.Observable;
 import au.com.trgtd.tr.util.Observer;
 import au.com.trgtd.tr.util.Utils;

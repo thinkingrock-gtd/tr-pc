@@ -17,7 +17,6 @@
  */
 package au.com.trgtd.tr.sync.device.v100.message.parse;
 
-import au.com.trgtd.tr.sync.device.Constants;
 import au.com.trgtd.tr.sync.device.v100.message.receive.RecvMsg;
 
 /**

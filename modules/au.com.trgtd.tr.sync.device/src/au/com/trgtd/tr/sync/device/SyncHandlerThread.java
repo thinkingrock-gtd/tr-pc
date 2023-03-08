@@ -19,7 +19,6 @@ package au.com.trgtd.tr.sync.device;
 
 import au.com.trgtd.tr.sync.device.exception.VersionException;
 import au.com.trgtd.tr.sync.device.handshake.SyncHSMsg;
-import au.com.trgtd.tr.sync.device.handshake.SyncHSMsgCancel;
 import au.com.trgtd.tr.sync.device.handshake.SyncHSReceiver;
 import au.com.trgtd.tr.sync.device.handshake.SyncHSSender;
 import au.com.trgtd.tr.sync.device.socket.receive.ISocketReceiver;

@@ -25,7 +25,6 @@ import au.com.trgtd.tr.view.projects.goals.ToggleShowGoalsAction;
 import java.awt.datatransfer.Transferable;
 import java.io.IOException;
 import org.openide.actions.PasteAction;
-import org.openide.explorer.view.TreeView;
 import org.openide.nodes.Node;
 import org.openide.nodes.NodeTransfer;
 import org.openide.util.actions.SystemAction;

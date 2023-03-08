@@ -18,7 +18,6 @@
 package au.com.trgtd.tr.reports.done;
 
 import au.com.trgtd.tr.resource.Icons;
-import javax.swing.ImageIcon;
 import org.openide.util.HelpCtx;
 import org.openide.util.NbBundle;
 import tr.extract.reports.ReportAction;

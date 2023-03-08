@@ -35,7 +35,6 @@ import tr.model.goals.ctrl.LevelCtrl;
 import tr.model.goals.dao.GoalsDAO;
 import tr.model.goals.dao.GoalsDAOLookup;
 import tr.model.goals.dto.GoalDTO;
-import tr.model.project.Project;
 
 public class GoalsCtrlImpl extends CtrlImpl implements GoalsCtrl, PropertyChangeListener {
 
