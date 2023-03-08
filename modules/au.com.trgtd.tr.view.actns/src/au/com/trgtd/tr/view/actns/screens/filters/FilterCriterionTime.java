@@ -35,7 +35,6 @@ import java.util.logging.Logger;
 import javax.swing.DefaultComboBoxModel;
 import org.openide.util.Lookup;
 import org.openide.util.LookupEvent;
-import org.openide.util.LookupListener;
 import org.openide.util.NbBundle;
 import org.openide.util.Utilities;
 import tr.model.Data;

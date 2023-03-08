@@ -19,7 +19,6 @@ package au.com.trgtd.tr.view.ui.view;
 
 import au.com.trgtd.tr.util.Observable;
 import au.com.trgtd.tr.util.Observer;
-import au.com.trgtd.tr.view.ViewUtils;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Component;

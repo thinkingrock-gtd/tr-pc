@@ -18,9 +18,7 @@
 package au.com.trgtd.tr.resource;
 
 import java.net.URL;
-import org.openide.filesystems.FileStateInvalidException;
 import org.openide.filesystems.FileUtil;
-import org.openide.util.Exceptions;
 
 /**
  * ThinkingRock resources.

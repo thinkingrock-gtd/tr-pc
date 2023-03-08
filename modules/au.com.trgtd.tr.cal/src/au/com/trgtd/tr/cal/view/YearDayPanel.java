@@ -22,8 +22,6 @@ import au.com.trgtd.tr.cal.utils.DateUtils;
 import au.com.trgtd.tr.cal.utils.Fonts;
 import java.awt.BorderLayout;
 import java.awt.Color;
-import java.awt.event.ComponentAdapter;
-import java.awt.event.ComponentEvent;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;

@@ -17,8 +17,6 @@
  */
 package tr.model.action;
 
-import au.com.trgtd.tr.util.Observable;
-
 /**
  * Interface for named action selectors.
  *

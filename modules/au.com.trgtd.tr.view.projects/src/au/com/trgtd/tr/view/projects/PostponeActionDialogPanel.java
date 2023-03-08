@@ -20,7 +20,6 @@ package au.com.trgtd.tr.view.projects;
 import au.com.trgtd.tr.swing.date.field.DateField;
 import au.com.trgtd.tr.view.projects.PostponeActionAction.Periods;
 import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.util.Date;
 import javax.swing.ButtonGroup;
 import javax.swing.JPanel;

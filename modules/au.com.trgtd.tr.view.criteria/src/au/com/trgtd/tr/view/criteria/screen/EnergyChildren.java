@@ -27,7 +27,6 @@ import org.openide.explorer.view.OutlineView;
 import org.openide.nodes.Children;
 import org.openide.nodes.Index;
 import org.openide.nodes.Node;
-import org.openide.util.Exceptions;
 import tr.model.Data;
 import tr.model.DataLookup;
 import tr.model.criteria.Value;

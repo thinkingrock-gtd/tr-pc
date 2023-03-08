@@ -18,7 +18,6 @@
 package tr.model.goals.ctrl;
 
 import java.util.List;
-import tr.model.project.Project;
 
 /**
  * Goals controller keeps a map of controllers for all goals (keyed
