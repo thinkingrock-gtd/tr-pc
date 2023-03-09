@@ -70,7 +70,7 @@ public class AddTopicsAction extends CallableSystemAction implements InitialActi
     
     @Override
     public void performAction() {
-        Data data = (Data)DataLookup.instance().lookup(Data.class);
+        Data data = DataLookup.instance().lookup(Data.class);
         if (data == null) return;
         
         new TopicDialog(data).showCreateDialog();

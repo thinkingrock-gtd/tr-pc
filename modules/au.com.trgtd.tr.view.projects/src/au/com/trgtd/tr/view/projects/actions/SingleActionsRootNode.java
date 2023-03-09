@@ -91,7 +91,7 @@ public class SingleActionsRootNode extends ProjectNode {
         final Node dropNode = NodeTransfer.node(t, MASK_ANY);
         if (dropNode != null && dropNode instanceof TransferNode) {
             final TransferNode transferNode = (TransferNode)dropNode;
-            Action dropAction = (Action)dropNode.getLookup().lookup(Action.class);
+            Action dropAction = dropNode.getLookup().lookup(Action.class);
             if (dropAction != null) {
                 final Action transferAction = (transferNode.isMoveTransfer()) ? dropAction : (Action)dropAction.copy(getData());
                 if (transferAction != null && root.canAdd(transferAction)) {

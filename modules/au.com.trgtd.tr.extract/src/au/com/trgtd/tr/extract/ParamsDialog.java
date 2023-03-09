@@ -44,6 +44,7 @@ import au.com.trgtd.tr.swing.date.combo.DateCombo;
 import au.com.trgtd.tr.swing.date.combo.DateItem;
 import au.com.trgtd.tr.swing.date.combo.DateType;
 import java.util.ArrayList;
+import javax.swing.AbstractButton;
 
 /**
  * Parameters dialog.
@@ -156,7 +157,7 @@ public class ParamsDialog extends JDialog {
         JCheckBox rememberCheckBox = new JCheckBox(org.openide.util.NbBundle.getMessage(ParamsDialog.class, "Remember_options"));
         rememberCheckBox.setSelected(false);
         rememberCheckBox.addActionListener((ActionEvent evt) -> {
-            remember = ((JCheckBox) evt.getSource()).isSelected();
+            remember = ((AbstractButton) evt.getSource()).isSelected();
         });
 
         JPanel north = new JPanel();

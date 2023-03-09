@@ -59,7 +59,7 @@ public class PrintOutlineAction extends CookieAction {
     
     @Override
     public void performAction(Node[] nodes) {
-        PrintOutlineCookie cookie = (PrintOutlineCookie)nodes[0].getCookie(PrintOutlineCookie.class);
+        PrintOutlineCookie cookie = nodes[0].getCookie(PrintOutlineCookie.class);
         if (cookie != null) {
             cookie.printOutline();
         }

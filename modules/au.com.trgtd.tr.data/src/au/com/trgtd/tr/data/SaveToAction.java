@@ -66,7 +66,7 @@ public final class SaveToAction extends CallableSystemAction {
 
     private void enableDisable() {
         EventQueue.invokeLater(() -> {
-            Data data = (Data)DataLookup.instance().lookup(Data.class);
+            Data data = DataLookup.instance().lookup(Data.class);
             setEnabled(data != null);
         });
     }
@@ -74,7 +74,7 @@ public final class SaveToAction extends CallableSystemAction {
     /** Save the current data store to another file. */
     @Override
     public void performAction() {
-        DataStore ds = (DataStore)DataStoreLookup.instance().lookup(DataStore.class);
+        DataStore ds = DataStoreLookup.instance().lookup(DataStore.class);
         if (ds == null) return;
         
         saveData(ds);

@@ -51,7 +51,7 @@ public class CollectThoughtsPanel extends JPanel {
     public CollectThoughtsPanel(ThoughtNodeProvider thoughtProvider) {
         super();
         this.thoughtProvider = thoughtProvider;
-        data = (Data)DataLookup.instance().lookup(Data.class);
+        data = DataLookup.instance().lookup(Data.class);
         tableModel = new CollectThoughtsTableModel(data);
         initComponents();
     }

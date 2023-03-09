@@ -44,7 +44,7 @@ public class EnergyComboBoxModel extends DefaultComboBoxModel<Value> implements 
     }
 
     private void initialise() {
-        Data data = (Data) DataLookup.instance().lookup(Data.class);
+        Data data = DataLookup.instance().lookup(Data.class);
         if (data == null) {
             criterion = null;
             return;

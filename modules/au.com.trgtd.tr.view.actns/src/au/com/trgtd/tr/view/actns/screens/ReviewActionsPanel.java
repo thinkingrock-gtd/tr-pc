@@ -88,7 +88,7 @@ public class ReviewActionsPanel extends JPanel implements ListSelectionListener,
         this.filters = filters;
         this.tcReviewActions = tcReviewActions;
         this.actionsProvider = actionsProvider;
-        data = (Data) DataLookup.instance().lookup(Data.class);
+        data = DataLookup.instance().lookup(Data.class);
         tcSingleActions = RASingleActionsTopComponent.findInstance();
         tcProjectsTree = RAProjectsTreeTopComponent.findInstance();
         initComponents();
@@ -255,7 +255,7 @@ public class ReviewActionsPanel extends JPanel implements ListSelectionListener,
     }
     
     private void addThoughts() {
-        AddThoughtsAction action = (AddThoughtsAction) SystemAction.get(AddThoughtsAction.class);
+        AddThoughtsAction action = SystemAction.get(AddThoughtsAction.class);
         if (action != null) {
             action.performAction();
         }

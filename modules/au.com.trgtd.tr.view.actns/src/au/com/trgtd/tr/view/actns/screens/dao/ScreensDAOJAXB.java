@@ -86,7 +86,7 @@ final class ScreensDAOJAXB implements ScreensDAO {
     }
 
     private File getFile() {
-        DataStore ds = (DataStore) DataStoreLookup.instance().lookup(DataStore.class);
+        DataStore ds = DataStoreLookup.instance().lookup(DataStore.class);
         if (ds != null) {
             try {
                 File parent = (new File(ds.getPath())).getParentFile();

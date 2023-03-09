@@ -66,7 +66,7 @@ public class DeleteContextAction extends CookieAction {
     @Override
     public void performAction(Node[] nodes) {
         for (Node node : nodes) {
-            DeleteContextCookie cookie = (DeleteContextCookie)node.getCookie(DeleteContextCookie.class);
+            DeleteContextCookie cookie = node.getCookie(DeleteContextCookie.class);
             if (cookie != null) {
                 cookie.deleteContext();
             }

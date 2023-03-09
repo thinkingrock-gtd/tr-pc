@@ -501,25 +501,25 @@ public final class Recurrence extends ObservableImpl implements Notable {
         int days = 0;
         switch (start.get(Calendar.DAY_OF_WEEK)) {
             case Calendar.MONDAY:
-                days = weekdays + (((int) (weekdays / 5)) * 2);
+                days = weekdays + (( (weekdays / 5)) * 2);
                 break;
             case Calendar.TUESDAY:
-                days = weekdays + (((int) ((weekdays + 1) / 5)) * 2);
+                days = weekdays + (( ((weekdays + 1) / 5)) * 2);
                 break;
             case Calendar.WEDNESDAY:
-                days = weekdays + (((int) ((weekdays + 2) / 5)) * 2);
+                days = weekdays + (( ((weekdays + 2) / 5)) * 2);
                 break;
             case Calendar.THURSDAY:
-                days = weekdays + (((int) ((weekdays + 3) / 5)) * 2);
+                days = weekdays + (( ((weekdays + 3) / 5)) * 2);
                 break;
             case Calendar.FRIDAY:
-                days = weekdays + (((int) ((weekdays + 4) / 5)) * 2);
+                days = weekdays + (( ((weekdays + 4) / 5)) * 2);
                 break;
             case Calendar.SATURDAY:
-                days = weekdays + (((int) ((weekdays - 1) / 5)) * 2) + 1;
+                days = weekdays + (( ((weekdays - 1) / 5)) * 2) + 1;
                 break;
             case Calendar.SUNDAY:
-                days = weekdays + (((int) ((weekdays - 1) / 5)) * 2);
+                days = weekdays + (( ((weekdays - 1) / 5)) * 2);
                 break;
         }
         start.add(Calendar.DAY_OF_YEAR, days);
@@ -527,7 +527,7 @@ public final class Recurrence extends ObservableImpl implements Notable {
     }
 
     private Data getData() {
-        Data data = (Data) DataLookup.instance().lookup(Data.class);
+        Data data = DataLookup.instance().lookup(Data.class);
         if (data == null) {
             LOG.severe("Data instance could not be obtained.");
         }

@@ -28,6 +28,7 @@ import org.openide.explorer.view.OutlineView;
 import org.openide.nodes.Children;
 import org.openide.nodes.Index;
 import org.openide.nodes.Node;
+import tr.model.goals.ctrl.Ctrl;
 import tr.model.goals.ctrl.GoalCtrl;
 import tr.model.goals.ctrl.LevelCtrl;
 
@@ -181,7 +182,7 @@ public class GoalChildren extends Children.Keys<Object> implements PropertyChang
 
             int row = view.getOutline().getSelectedRow();
 
-            goalCtrl.moveAfterSubgoal(((GoalCtrl)src).getID(), ((GoalCtrl)dst).getID());
+            goalCtrl.moveAfterSubgoal(((Ctrl)src).getID(), ((Ctrl)dst).getID());
 
             view.getOutline().setRowSelectionInterval(row + 1, row + 1);
             fireChangeEvent();
@@ -200,7 +201,7 @@ public class GoalChildren extends Children.Keys<Object> implements PropertyChang
 
             int row = view.getOutline().getSelectedRow();
 
-            goalCtrl.moveBeforeSubgoal(((GoalCtrl)src).getID(), ((GoalCtrl)dst).getID());
+            goalCtrl.moveBeforeSubgoal(((Ctrl)src).getID(), ((Ctrl)dst).getID());
 
             view.getOutline().setRowSelectionInterval(row - 1, row - 1);
             fireChangeEvent();

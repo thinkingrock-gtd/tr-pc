@@ -57,7 +57,7 @@ public class ParamProject extends Param {
         items = new Vector<>();
         items.add(new Item(allText, "all"));            
         
-        Data data = (Data)DataLookup.instance().lookup(Data.class);
+        Data data = DataLookup.instance().lookup(Data.class);
         if (data == null) return;
         
         // process top level projects

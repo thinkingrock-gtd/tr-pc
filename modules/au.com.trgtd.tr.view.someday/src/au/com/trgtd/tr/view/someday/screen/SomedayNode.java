@@ -66,7 +66,7 @@ public class SomedayNode extends AbstractNode
     public void editFuture() {
         if (future == null) return;
         
-        Data data = (Data)DataLookup.instance().lookup(Data.class);
+        Data data = DataLookup.instance().lookup(Data.class);
         if (data == null) return;
         
         SomedayTopComponent rtc = SomedayTopComponent.findInstance();
@@ -79,7 +79,7 @@ public class SomedayNode extends AbstractNode
     public void deleteFuture() {
         if (future == null) return;
         
-        Data data = (Data)DataLookup.instance().lookup(Data.class);
+        Data data = DataLookup.instance().lookup(Data.class);
         if (data == null) return;
         
         data.getFutureManager().remove(future);
@@ -121,7 +121,7 @@ public class SomedayNode extends AbstractNode
         if (future == null) {
             return;
         }
-        Data data = (Data) DataLookup.instance().lookup(Data.class);
+        Data data = DataLookup.instance().lookup(Data.class);
         if (data == null) {
             return;
         }

@@ -50,8 +50,7 @@ public class SingleActionsLookup extends ProxyLookup {
      * @return The single actions tree or null.
      */
     public static SingleActionsTopComponent lookup() {        
-        return (SingleActionsTopComponent)instance.lookup(
-                SingleActionsTopComponent.class);
+        return instance.lookup(SingleActionsTopComponent.class);
     }
     
 }

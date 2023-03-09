@@ -66,7 +66,7 @@ public class DeleteTopicAction extends CookieAction {
     @Override
     public void performAction(Node[] nodes) {
         for (Node node : nodes) {
-            DeleteTopicCookie cookie = (DeleteTopicCookie)node.getCookie(DeleteTopicCookie.class);
+            DeleteTopicCookie cookie = node.getCookie(DeleteTopicCookie.class);
             if (cookie != null) {
                 cookie.deleteTopic();
             }

@@ -86,7 +86,7 @@ public class CollectThoughtsTableModel extends AbstractTableModel implements Obs
      * @return The thought corresponding to the row.
      */
     public Thought getValueAt(int row) {
-        return (Thought) unprocessedThoughts.get(row);
+        return unprocessedThoughts.get(row);
     }
 
     /**
@@ -132,7 +132,7 @@ public class CollectThoughtsTableModel extends AbstractTableModel implements Obs
             case 0:
                 return Icons.Thought;
             case 1:
-                thought = (Thought) unprocessedThoughts.get(row);
+                thought = unprocessedThoughts.get(row);
                 topic = thought.getTopic();
                 ss = new StyledString();
                 ss.setString(thought.getDescription());
@@ -140,7 +140,7 @@ public class CollectThoughtsTableModel extends AbstractTableModel implements Obs
                 ss.setBackground(topic.getBackground());
                 return ss;
             case 2:
-                thought = (Thought) unprocessedThoughts.get(row);
+                thought = unprocessedThoughts.get(row);
                 topic = thought.getTopic();
                 ss = new StyledString();
                 ss.setString(topic.getName());

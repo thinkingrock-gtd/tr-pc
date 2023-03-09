@@ -144,7 +144,7 @@ public class FilterContext extends FilterChoice implements PropertyChangeListene
             if (contextManager != null) {
                 contextManager.removeObserver(this);
             }
-            Data data = (Data)DataLookup.instance().lookup(Data.class);
+            Data data = DataLookup.instance().lookup(Data.class);
             if (data == null) {
                 contextManager = null;
                 contexts = new Vector<>();
@@ -223,7 +223,7 @@ public class FilterContext extends FilterChoice implements PropertyChangeListene
                 Object object = getSelectedItem();
                 if (object instanceof ContextMultiple m) {
                     Vector<Context> all;
-                    Data data = (Data)DataLookup.instance().lookup(Data.class);
+                    Data data = DataLookup.instance().lookup(Data.class);
                     if (data == null) {
                         all = new Vector<>();
                     } else {
@@ -250,7 +250,7 @@ public class FilterContext extends FilterChoice implements PropertyChangeListene
                     ContextsComboBoxModel model = (ContextsComboBoxModel)getModel();
                     ContextMultiple m = model.contextMultiple;
                     Vector<Context> all;
-                    Data data = (Data)DataLookup.instance().lookup(Data.class);
+                    Data data = DataLookup.instance().lookup(Data.class);
                     if (data == null) {
                         all = new Vector<>();
                     } else {
@@ -336,7 +336,7 @@ public class FilterContext extends FilterChoice implements PropertyChangeListene
         if (name == null) {
             return null;
         }
-        Data data = (Data)DataLookup.instance().lookup(Data.class);
+        Data data = DataLookup.instance().lookup(Data.class);
         Manager<Context> contextManager = data.getContextManager();
         for (Context context : contextManager.list()) {
             if (context.getName().equals(name)) {

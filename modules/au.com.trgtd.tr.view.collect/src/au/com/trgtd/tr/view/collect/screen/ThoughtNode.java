@@ -72,7 +72,7 @@ public class ThoughtNode extends AbstractNode
 
     @Override
     public void editThought() {
-        Data data = (Data)DataLookup.instance().lookup(Data.class);
+        Data data = DataLookup.instance().lookup(Data.class);
         if (data != null) {
             new ThoughtDialog(data).showModifyDialog(thought);
         }
@@ -91,7 +91,7 @@ public class ThoughtNode extends AbstractNode
 
     @Override
     public void processToReference() {
-        Data data = (Data)DataLookup.instance().lookup(Data.class);
+        Data data = DataLookup.instance().lookup(Data.class);
         if (data == null) {
             return;
         }
@@ -105,7 +105,7 @@ public class ThoughtNode extends AbstractNode
 
     @Override
     public void processToSomeday() {
-        Data data = (Data)DataLookup.instance().lookup(Data.class);
+        Data data = DataLookup.instance().lookup(Data.class);
         if (data == null) {
             return;
         }

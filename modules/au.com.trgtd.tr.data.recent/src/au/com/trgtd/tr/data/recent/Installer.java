@@ -62,7 +62,7 @@ public class Installer extends ModuleInstall {
     private synchronized void storeDataFilePath() {
         LOG.info("Change of data file.");
         
-        DataStore ds = (DataStore)DataStoreLookup.instance().lookup(DataStore.class);
+        DataStore ds = DataStoreLookup.instance().lookup(DataStore.class);
         if (ds == null) {
             LOG.info("Datastore was not found.");
             return;
@@ -92,7 +92,7 @@ public class Installer extends ModuleInstall {
     
     private synchronized void refreshRecentFilesMenu() {
         if (action == null) {
-            action = (RecentDataFilesAction)SystemAction.get(RecentDataFilesAction.class);
+            action = SystemAction.get(RecentDataFilesAction.class);
         }
         action.refreshMenu();
     }

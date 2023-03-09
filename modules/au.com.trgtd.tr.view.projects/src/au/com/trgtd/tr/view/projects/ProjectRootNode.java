@@ -91,7 +91,7 @@ public class ProjectRootNode extends ProjectNode {
         if (dropNode != null && dropNode instanceof TransferNode) {
             final TransferNode transferNode = (TransferNode) dropNode;
             final boolean isMove = isMoveTransfer(type) || transferNode.isMoveTransfer();
-            Project p = (Project) dropNode.getLookup().lookup(Project.class);
+            Project p = dropNode.getLookup().lookup(Project.class);
             if (p != null) {
                 final Project transferProject = (isMove) ? p : (Project) p.copy(getData());
                 if (transferProject != null && project.canAdd(transferProject)) {

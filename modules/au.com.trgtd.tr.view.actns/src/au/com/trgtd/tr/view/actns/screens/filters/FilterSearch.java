@@ -112,7 +112,7 @@ public final class FilterSearch extends FilterChoice implements PropertyChangeLi
             return false;
         }
         SearchComboBox thisSearchCombo = (SearchComboBox) combo;
-        SearchComboBox thatSearchCombo = (SearchComboBox) ((FilterSearch) object).combo;
+        SearchComboBox thatSearchCombo = (SearchComboBox) ((FilterChoice) object).combo;
 //        String thisString = (thisSearchCombo == null) ? null : thisSearchCombo.string;
 //        String thatString = (thatSearchCombo == null) ? null : thatSearchCombo.string;
         String thisString = (thisSearchCombo == null) ? null : thisSearchCombo.getSearchString();

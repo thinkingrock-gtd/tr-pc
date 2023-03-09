@@ -85,7 +85,7 @@ public class FilterCriterionEnergy extends FilterCriterion implements PropertyCh
     }
     
     protected Value getValue(String id) {
-        Data data = (Data)DataLookup.instance().lookup(Data.class);
+        Data data = DataLookup.instance().lookup(Data.class);
         Manager<Value> manager = data.getEnergyCriterion().values;
         for (Value value : manager.list()) {
             try {
@@ -155,7 +155,7 @@ public class FilterCriterionEnergy extends FilterCriterion implements PropertyCh
                 valueManager.removeObserver(this);
             }
             
-            Data data = (Data)DataLookup.instance().lookup(Data.class);
+            Data data = DataLookup.instance().lookup(Data.class);
             if (data == null) {
                 valueManager = null;
                 values = new Vector<>();
@@ -226,7 +226,7 @@ public class FilterCriterionEnergy extends FilterCriterion implements PropertyCh
                 Object object = getSelectedItem();
                 if (object instanceof ValueMultiple m) {
                     Vector<Value> all;
-                    Data data = (Data)DataLookup.instance().lookup(Data.class);
+                    Data data = DataLookup.instance().lookup(Data.class);
                     if (data == null) {
                         all = new Vector<>();
                     } else {
@@ -253,7 +253,7 @@ public class FilterCriterionEnergy extends FilterCriterion implements PropertyCh
                     EnergyComboBoxModel model = (EnergyComboBoxModel)getModel();
                     ValueMultiple m = model.multiple;
                     Vector<Value> all;
-                    Data data = (Data)DataLookup.instance().lookup(Data.class);
+                    Data data = DataLookup.instance().lookup(Data.class);
                     if (data == null) {
                         all = new Vector<>();
                     } else {

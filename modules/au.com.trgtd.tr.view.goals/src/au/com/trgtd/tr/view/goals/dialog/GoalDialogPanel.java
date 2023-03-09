@@ -37,6 +37,7 @@ import javax.swing.JComponent;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
+import javax.swing.text.JTextComponent;
 import net.miginfocom.swing.MigLayout;
 import org.openide.util.NbBundle;
 import tr.model.goals.ctrl.GoalsCtrl;
@@ -284,7 +285,7 @@ public class GoalDialogPanel extends JPanel {
 
     private class DescrVerifier extends InputVerifier {
         public boolean verify(JComponent input) {
-            boolean valid = ((JTextField) input).getText().trim().length() > 0;
+            boolean valid = ((JTextComponent) input).getText().trim().length() > 0;
             selectButton.setEnabled(valid);
             return valid;
         }

@@ -49,7 +49,7 @@ public class ProjectsTreeLookup extends ProxyLookup {
      * @return The projects tree or null.
      */
     public static ProjectsTreeTopComponent lookup() {
-        return (ProjectsTreeTopComponent)instance.lookup(
+        return instance.lookup(
                 ProjectsTreeTopComponent.class);
     }
     

@@ -43,7 +43,7 @@ public class CriteriaChangePanel extends JPanel {
     }
 
     private void initView() {
-        Data data = (Data) DataLookup.instance().lookup(Data.class);
+        Data data = DataLookup.instance().lookup(Data.class);
         if (data == null) {
             return;
         }

@@ -66,7 +66,7 @@ public class SetDoneAction extends CookieAction {
     @Override
     public void performAction(Node[] nodes) {
         for (Node node : nodes) {
-            SetDoneCookie cookie = (SetDoneCookie)node.getCookie(SetDoneCookie.class);
+            SetDoneCookie cookie = node.getCookie(SetDoneCookie.class);
             if (cookie != null) {
                 cookie.setDone();
             }            

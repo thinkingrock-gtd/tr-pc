@@ -90,7 +90,7 @@ final class TimeNode extends AbstractNode implements EditCookie, Observer {
     }
 
     public void delete() {
-        final Data data = (Data) DataLookup.instance().lookup(Data.class);
+        final Data data = DataLookup.instance().lookup(Data.class);
         if (data == null) {
             return;
         }

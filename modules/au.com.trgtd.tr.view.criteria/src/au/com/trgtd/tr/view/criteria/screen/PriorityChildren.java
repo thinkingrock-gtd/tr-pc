@@ -46,7 +46,7 @@ public class PriorityChildren extends Children.Keys<Value> implements Observer {
         this.view = view;
         
         this.em = em;
-        Data data = (Data) DataLookup.instance().lookup(Data.class);
+        Data data = DataLookup.instance().lookup(Data.class);
         this.values = (data == null) ? null : data.getPriorityCriterion().values;
         this.index = new IndexImpl();
     }

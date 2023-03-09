@@ -96,7 +96,7 @@ public class RenderableMessage implements Renderable {
             if (bodytext == null) {
                 bodytext = (String) part.getContent();
             } else {
-                bodytext += "\n" + (String) part.getContent();
+                bodytext += "\n" + part.getContent();
             }
             return true;
         }
@@ -108,7 +108,7 @@ public class RenderableMessage implements Renderable {
             if (bodytext == null) {
                 bodytext = HTML.html2text((String) part.getContent());
             } else {
-                bodytext += HTML.html2text("<p>" + (String) part.getContent() + "</p>");
+                bodytext += HTML.html2text("<p>" + part.getContent() + "</p>");
             }
             return true;
         }

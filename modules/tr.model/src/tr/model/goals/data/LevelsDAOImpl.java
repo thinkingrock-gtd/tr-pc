@@ -235,10 +235,10 @@ public class LevelsDAOImpl extends DAOImpl implements LevelsDAO {
     private HashMap<Integer, LevelDTO> levelDTOMap;
 
     private LevelsDAOImpl() {
-        data = (Data) DataLookup.instance().lookup(Data.class);
+        data = DataLookup.instance().lookup(Data.class);
         Lookup.Result dlr = DataLookup.instance().lookupResult(Data.class);
         dlr.addLookupListener((LookupEvent lookupEvent) -> {
-            data = (Data)DataLookup.instance().lookup(Data.class);
+            data = DataLookup.instance().lookup(Data.class);
             initialise();
             firePropertyChange(PROP_DATA, 0, 1);
         });

@@ -113,7 +113,7 @@ public class ChangeStatusAction extends CookieAction {
 
     private void changeStatus(Node[] nodes, ActionState state) {
         for (Node node : nodes) {
-            ChangeStatusCookie cookie = (ChangeStatusCookie) node.getCookie(ChangeStatusCookie.class);
+            ChangeStatusCookie cookie = node.getCookie(ChangeStatusCookie.class);
             if (cookie != null) {
                 cookie.changeStatus(state.copy());
             }

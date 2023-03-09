@@ -51,7 +51,7 @@ public final class HelpCSAction extends CallableSystemAction {
         HelpCtx helpCtx = tc.getHelpCtx();
         if (helpCtx == null) return;
         
-        Help help = (Help)Lookup.getDefault().lookup(Help.class);
+        Help help = Lookup.getDefault().lookup(Help.class);
         if (help == null) return;
         
         help.showHelp(helpCtx);

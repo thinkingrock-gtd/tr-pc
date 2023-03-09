@@ -29,7 +29,7 @@ public class Installer extends ModuleInstall {
     
     @Override
     public void restored() {
-        InitialAction a = (InitialAction)SystemAction.get(ProcessThoughtsAction.class);
+        InitialAction a = SystemAction.get(ProcessThoughtsAction.class);
         InitialActionLookup.instance().add(a);
     }
     

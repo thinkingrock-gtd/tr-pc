@@ -65,7 +65,7 @@ public class EditTopicAction extends CookieAction {
     
     @Override
     public void performAction(Node[] nodes) {
-        EditTopicCookie cookie = (EditTopicCookie)nodes[0].getCookie(EditTopicCookie.class);
+        EditTopicCookie cookie = nodes[0].getCookie(EditTopicCookie.class);
         if (cookie != null) {
             cookie.editTopic();
         }

@@ -80,7 +80,7 @@ public class ReprocessAction extends CookieAction {
         // not allowed if there are any recurrent actions
         boolean anyRecurrentActions = false;
         for (Node node : nodes) {
-            ReprocessCookie cookie = (ReprocessCookie) node.getCookie(ReprocessCookie.class);
+            ReprocessCookie cookie = node.getCookie(ReprocessCookie.class);
             if (cookie != null) {
                 if (cookie.isRecurrent()) {
                     anyRecurrentActions = true;
@@ -130,7 +130,7 @@ public class ReprocessAction extends CookieAction {
         }
 
         for (Node node : nodes) {
-            ReprocessCookie cookie = (ReprocessCookie) node.getCookie(ReprocessCookie.class);
+            ReprocessCookie cookie = node.getCookie(ReprocessCookie.class);
             if (cookie != null) {
                 cookie.reprocess();
             }

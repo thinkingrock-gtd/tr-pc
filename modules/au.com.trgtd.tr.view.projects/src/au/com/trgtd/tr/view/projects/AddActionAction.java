@@ -83,7 +83,7 @@ public class AddActionAction extends CookieAction {
     }
 
     protected void performAction(Node[] nodes) {
-        AddActionCookie cookie = (AddActionCookie)nodes[0].getCookie(AddActionCookie.class);
+        AddActionCookie cookie = nodes[0].getCookie(AddActionCookie.class);
         if (cookie != null) {
             cookie.addAction();
         }

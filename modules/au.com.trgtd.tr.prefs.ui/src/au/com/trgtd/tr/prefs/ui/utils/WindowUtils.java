@@ -27,6 +27,7 @@ import org.openide.util.Lookup;
 import org.openide.windows.TopComponent;
 import org.openide.windows.WindowManager;
 import au.com.trgtd.tr.prefs.ui.GUIPrefs;
+import java.awt.event.ActionListener;
 
 /**
  * Utilities for TR Windows.
@@ -49,7 +50,7 @@ public class WindowUtils {
     public static synchronized void closeWindows() {       
         TopComponent.Registry reg = WindowManager.getDefault().getRegistry();
 
-        TopComponent[] tcs = (TopComponent[])reg.getOpened().toArray(TC_ARRAY);
+        TopComponent[] tcs = reg.getOpened().toArray(TC_ARRAY);
 
         int n = 0;
 
@@ -62,7 +63,7 @@ public class WindowUtils {
                 }
                 tc.close();
             }            
-            tcs = (TopComponent[])reg.getOpened().toArray(TC_ARRAY);
+            tcs = reg.getOpened().toArray(TC_ARRAY);
             if (tcs.length <= n) {
                 return;
             }
@@ -82,7 +83,7 @@ public class WindowUtils {
             for (Iterator iter = c.iterator(); iter.hasNext(); ) {
                 InitialAction action = (InitialAction)iter.next();
                 if (action.getID().equals(id)) {
-                    ((Action)action).actionPerformed(null);
+                    ((ActionListener)action).actionPerformed(null);
                     return;
                 }
             }
@@ -97,7 +98,7 @@ public class WindowUtils {
         for (Iterator iter = c.iterator(); iter.hasNext(); ) {
             InitialAction action = (InitialAction)iter.next();
             if (action.getID().equals(id)) {
-                ((Action)action).actionPerformed(null);
+                ((ActionListener)action).actionPerformed(null);
                 return;
             }
         }

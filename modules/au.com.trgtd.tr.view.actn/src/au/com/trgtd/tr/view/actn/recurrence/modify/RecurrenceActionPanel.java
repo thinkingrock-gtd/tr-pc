@@ -31,7 +31,7 @@ import tr.model.topic.Topic;
 public final class RecurrenceActionPanel extends JPanel {
 
     public RecurrenceActionPanel() {
-        this.data = (Data) DataLookup.instance().lookup(Data.class);
+        this.data = DataLookup.instance().lookup(Data.class);
         initComponents();
     }
 

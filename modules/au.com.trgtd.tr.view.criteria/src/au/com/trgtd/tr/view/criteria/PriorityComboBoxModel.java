@@ -44,7 +44,7 @@ public class PriorityComboBoxModel extends DefaultComboBoxModel<Value> implement
     }
 
     private void initialise() {
-        Data data = (Data) DataLookup.instance().lookup(Data.class);
+        Data data = DataLookup.instance().lookup(Data.class);
         if (data == null) {
             criterion = null;
             return;

@@ -31,7 +31,7 @@ public class Installer extends ModuleInstall {
     
     /** Adds the contexts action to the lookup of initial actions. */
     public void restored() {
-        InitialAction action = (InitialAction)SystemAction.get(ContextsAction.class);
+        InitialAction action = SystemAction.get(ContextsAction.class);
         InitialActionLookup.instance().add(action);
     }
     

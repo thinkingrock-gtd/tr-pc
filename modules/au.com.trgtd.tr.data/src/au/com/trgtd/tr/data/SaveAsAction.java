@@ -67,7 +67,7 @@ public final class SaveAsAction extends CallableSystemAction { // implements Obs
 
     private void enableDisable() {
         EventQueue.invokeLater(() -> {
-            Data data = (Data)DataLookup.instance().lookup(Data.class);
+            Data data = DataLookup.instance().lookup(Data.class);
             setEnabled(data != null);
         });
     }
@@ -75,7 +75,7 @@ public final class SaveAsAction extends CallableSystemAction { // implements Obs
     /** Save the current data-store as another file. */
     @Override
     public void performAction() {
-        DataStore ds = (DataStore)DataStoreLookup.instance().lookup(DataStore.class);
+        DataStore ds = DataStoreLookup.instance().lookup(DataStore.class);
         if (ds == null) {
             LOG.severe("Datastore was not found.");
             return;

@@ -47,7 +47,7 @@ public abstract class ReportAction extends CallableSystemAction {
     }
     
     private void enableDisable() {
-        Data data = (Data)DataLookup.instance().lookup(Data.class);
+        Data data = DataLookup.instance().lookup(Data.class);
         setEnabled(data != null);
     }
     

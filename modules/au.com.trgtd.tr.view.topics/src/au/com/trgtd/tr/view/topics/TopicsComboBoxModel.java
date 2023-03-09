@@ -64,7 +64,7 @@ public class TopicsComboBoxModel extends DefaultComboBoxModel<Topic> implements 
     }
     
     private void initialise() {
-        Data data = (Data)DataLookup.instance().lookup(Data.class);
+        Data data = DataLookup.instance().lookup(Data.class);
         if (data == null) {
             topics = new Vector<>();
             return;

@@ -62,7 +62,7 @@ final class ActivatorTaskThread extends Thread {
     }
     
     private void process() {
-        data = (Data)DataLookup.instance().lookup(Data.class);
+        data = DataLookup.instance().lookup(Data.class);
         if (data == null) {
             LOG.severe("Data instance could not be obtained."); // No I18N
             return;

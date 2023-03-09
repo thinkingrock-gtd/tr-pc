@@ -114,7 +114,7 @@ public class LinkNewProjectDialog extends JDialog {
     /* Handle OK. */
     private void ok() {
 //      mResult = Result.OK;
-        Data data = (Data) DataLookup.instance().lookup(Data.class);
+        Data data = DataLookup.instance().lookup(Data.class);
         if (data != null) {
             data.getRootProjects().add(mProject);
             mGoal.insertGoalProject(mProject.getID());
@@ -155,7 +155,7 @@ public class LinkNewProjectDialog extends JDialog {
     }
     
     private Project createProject() {
-        Data data = (Data) DataLookup.instance().lookup(Data.class);
+        Data data = DataLookup.instance().lookup(Data.class);
         if (data == null) {
             return null;
         }

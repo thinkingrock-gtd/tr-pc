@@ -33,7 +33,7 @@ public final class RecentDataFilesClearAction extends CallableSystemAction {
     public void performAction() {
         Prefs.setPaths(null, 0);
         
-        RecentDataFilesAction action = (RecentDataFilesAction)SystemAction.get(RecentDataFilesAction.class);
+        RecentDataFilesAction action = SystemAction.get(RecentDataFilesAction.class);
         if (action != null) {
             action.refreshMenu();
         }

@@ -69,7 +69,7 @@ public class Services {
     private void dataChanged() {
         actionsObservable.removeObservers();
         
-        Data data = (Data)DataLookup.instance().lookup(Data.class);
+        Data data = DataLookup.instance().lookup(Data.class);
         if (data != null) {
             data.getRootActions().addObserver(actionsObserver);
             data.getRootProjects().addObserver(actionsObserver);
@@ -81,7 +81,7 @@ public class Services {
      * @return a list containing all single actions.
      */
     public List<Action> getSingleActions() {
-        Data data = (Data)DataLookup.instance().lookup(Data.class);
+        Data data = DataLookup.instance().lookup(Data.class);
         if (data == null) {
             return Collections.emptyList();
         }
@@ -94,7 +94,7 @@ public class Services {
      * @return a list containing project actions.
      */
     public List<Action> getProjectActions() {
-        Data data = (Data)DataLookup.instance().lookup(Data.class);
+        Data data = DataLookup.instance().lookup(Data.class);
         if (data == null) {
             return Collections.emptyList();
         }
@@ -114,7 +114,7 @@ public class Services {
      * @return a list containing all projects.
      */
     public List<Project> getProjectsInPathOrder() {        
-        Data data = (Data)DataLookup.instance().lookup(Data.class);
+        Data data = DataLookup.instance().lookup(Data.class);
         if (data == null) {
             return Collections.emptyList();
         }
@@ -150,7 +150,7 @@ public class Services {
      */
     public List<Project> getProjects() {
         
-        Data data = (Data)DataLookup.instance().lookup(Data.class);
+        Data data = DataLookup.instance().lookup(Data.class);
         if (data == null) {
             return Collections.emptyList();
         }
@@ -167,7 +167,7 @@ public class Services {
      * @return a list containing future projects.
      */
     public List<Project> getFutureProjects() {
-        Data data = (Data)DataLookup.instance().lookup(Data.class);
+        Data data = DataLookup.instance().lookup(Data.class);
         if (data == null) {
             return Collections.emptyList();
         }
@@ -181,7 +181,7 @@ public class Services {
      * @return a list containing future project actions.
      */
     public List<Action> getFutureActions() {
-        Data data = (Data)DataLookup.instance().lookup(Data.class);
+        Data data = DataLookup.instance().lookup(Data.class);
         if (data == null) {
             return Collections.emptyList();
         }
@@ -243,7 +243,7 @@ public class Services {
      * @return a list containing processed thoughts.
      */
     public List<Thought> getThoughtsProcessed() {
-        Data data = (Data)DataLookup.instance().lookup(Data.class);
+        Data data = DataLookup.instance().lookup(Data.class);
         if (data == null) {
             return Collections.emptyList();
         }
@@ -261,7 +261,7 @@ public class Services {
      * @return a list containing unprocessed thoughts.
      */
     public List<Thought> getThoughtsUnprocessed() {
-        Data data = (Data)DataLookup.instance().lookup(Data.class);
+        Data data = DataLookup.instance().lookup(Data.class);
         if (data == null) {
             return Collections.emptyList();
         }
@@ -279,7 +279,7 @@ public class Services {
      * @return a list containing all thoughts.
      */
     public List<Thought> getThoughtsAll() {
-        Data data = (Data)DataLookup.instance().lookup(Data.class);
+        Data data = DataLookup.instance().lookup(Data.class);
         if (data == null) {
             return Collections.emptyList();
         }
@@ -291,7 +291,7 @@ public class Services {
      * @return a list containing all references.
      */
     public List<Information> getReferences() {
-        Data data = (Data)DataLookup.instance().lookup(Data.class);
+        Data data = DataLookup.instance().lookup(Data.class);
         if (data == null) {
             return Collections.emptyList();
         }
@@ -303,7 +303,7 @@ public class Services {
      * @return a list containing all someday/maybe items.
      */
     public List<Future> getSomedayMaybes() {
-        Data data = (Data)DataLookup.instance().lookup(Data.class);
+        Data data = DataLookup.instance().lookup(Data.class);
         if (data == null) {
             return Collections.emptyList();
         }
@@ -340,7 +340,7 @@ public class Services {
      * @return True if the delegate is in use in the specified actions.
      */
     public boolean isUsed(Actor actor, boolean includeDone) {
-        Data data = (Data)DataLookup.instance().lookup(Data.class);
+        Data data = DataLookup.instance().lookup(Data.class);
         if (data == null) {
             return true; // as a precaution
         }
@@ -371,7 +371,7 @@ public class Services {
     }
 
     public Actor getActor(String name) {
-        Data data = (Data)DataLookup.instance().lookup(Data.class);
+        Data data = DataLookup.instance().lookup(Data.class);
         if (data != null) {
             for (Actor actor : data.getActorManager().list()) {
                 if (actor.getName().equalsIgnoreCase(name)) {
@@ -409,7 +409,7 @@ public class Services {
      * @return The topic.
      */
     public Topic getTopic(Integer id) {
-        Data data = (Data)DataLookup.instance().lookup(Data.class);
+        Data data = DataLookup.instance().lookup(Data.class);
         if (data == null || id == null) {
             return Topic.getDefault();
         }
@@ -430,7 +430,7 @@ public class Services {
         if (StringUtils.isBlank(name)) {
             return Topic.getDefault();
         }
-        Data data = (Data)DataLookup.instance().lookup(Data.class);
+        Data data = DataLookup.instance().lookup(Data.class);
         if (data == null) {
             return Topic.getDefault();
         }
@@ -451,7 +451,7 @@ public class Services {
         if (StringUtils.isBlank(name)) {
             return null;
         }
-        Data data = (Data)DataLookup.instance().lookup(Data.class);
+        Data data = DataLookup.instance().lookup(Data.class);
         if (data == null) {
             return null;
         }
@@ -472,7 +472,7 @@ public class Services {
         if (StringUtils.isBlank(name)) {
             return null;
         }
-        Data data = (Data)DataLookup.instance().lookup(Data.class);
+        Data data = DataLookup.instance().lookup(Data.class);
         if (data == null) {
             return null;
         }
@@ -493,7 +493,7 @@ public class Services {
         if (StringUtils.isBlank(name)) {
             return null;
         }
-        Data data = (Data)DataLookup.instance().lookup(Data.class);
+        Data data = DataLookup.instance().lookup(Data.class);
         if (data == null) {
             return null;
         }

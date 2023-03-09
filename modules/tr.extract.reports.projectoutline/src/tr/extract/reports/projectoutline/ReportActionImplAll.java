@@ -39,7 +39,7 @@ public final class ReportActionImplAll extends ReportAction {
     /* Save the current data store as another file. */
     @Override
     public void performAction() {
-        Data data = (Data)DataLookup.instance().lookup(Data.class);
+        Data data = DataLookup.instance().lookup(Data.class);
         if (data == null) return;
         
         try {

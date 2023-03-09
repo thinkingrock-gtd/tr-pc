@@ -71,7 +71,7 @@ public class ProcessToReferenceAction extends CookieAction {
     @Override
     public void performAction(Node[] nodes) {
         for (Node node : nodes) {
-            ProcessToReferenceCookie cookie = (ProcessToReferenceCookie) node.getCookie(ProcessToReferenceCookie.class);
+            ProcessToReferenceCookie cookie = node.getCookie(ProcessToReferenceCookie.class);
             if (cookie != null) {
                 cookie.processToReference();
             }

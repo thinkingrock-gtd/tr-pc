@@ -163,7 +163,7 @@ public class MatcherEditorTopic extends MatcherEditorBase
             if (topicManager != null) {
                 topicManager.removeObserver(this);
             }
-            Data data = (Data)DataLookup.instance().lookup(Data.class);
+            Data data = DataLookup.instance().lookup(Data.class);
             if (data == null) {
                 topicManager = null;
                 topics = new Vector<>();
@@ -240,7 +240,7 @@ public class MatcherEditorTopic extends MatcherEditorBase
                 Object object = getSelectedItem();
                 if (object instanceof TopicMultiple tm) {
                     Vector<Topic> all;
-                    Data data = (Data)DataLookup.instance().lookup(Data.class);
+                    Data data = DataLookup.instance().lookup(Data.class);
                     if (data == null) {
                         all = new Vector<>();
                     } else {
@@ -266,7 +266,7 @@ public class MatcherEditorTopic extends MatcherEditorBase
                 if (object instanceof TopicMultipleEdit) {
                     TopicMultiple tm = comboModel.multiple;
                     Vector<Topic> all;
-                    Data data = (Data)DataLookup.instance().lookup(Data.class);
+                    Data data = DataLookup.instance().lookup(Data.class);
                     if (data == null) {
                         all = new Vector<>();
                     } else {

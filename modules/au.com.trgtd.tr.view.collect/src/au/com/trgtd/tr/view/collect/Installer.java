@@ -32,7 +32,7 @@ public class Installer extends ModuleInstall {
     /** Adds the collect thoughts action to the lookup of initial actions. */
     @Override
     public void restored() {
-        InitialAction action = (InitialAction)SystemAction.get(CollectThoughtsAction.class);
+        InitialAction action = SystemAction.get(CollectThoughtsAction.class);
         InitialActionLookup.instance().add(action);
     }
     

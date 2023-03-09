@@ -52,7 +52,7 @@ public class NewRecurrenceWizardPanel3 implements WizardDescriptor.Panel,
     }
 
     public void readSettings(Object settings) {
-        ((NewRecurrenceVisualPanel3) panel).loadValues();
+        (panel).loadValues();
     }
 
     public void storeSettings(Object settings) {

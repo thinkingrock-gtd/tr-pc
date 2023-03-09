@@ -58,7 +58,7 @@ public final class CreateTemplate {
      */
     public void create(Project project) {
         
-        Data data = (Data)DataLookup.instance().lookup(Data.class);
+        Data data = DataLookup.instance().lookup(Data.class);
         if (data == null) {
             LOG.severe("Data not found.");            
             return;

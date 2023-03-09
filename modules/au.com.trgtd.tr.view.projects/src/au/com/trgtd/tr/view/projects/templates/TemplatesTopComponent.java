@@ -94,7 +94,7 @@ public final class TemplatesTopComponent extends Window
             });
         }
         
-        Data data = (Data)DataLookup.instance().lookup(Data.class);
+        Data data = DataLookup.instance().lookup(Data.class);
         if (data == null) return;
         
         manager.setRootContext(new TemplatesRootNode(data.getRootTemplates(), false));

@@ -65,7 +65,7 @@ public class FuturesAction extends CallableSystemAction implements InitialAction
     }
 
     private void enableDisable() {
-        Data data = (Data) DataLookup.instance().lookup(Data.class);
+        Data data = DataLookup.instance().lookup(Data.class);
         setEnabled(data != null);
     }
 

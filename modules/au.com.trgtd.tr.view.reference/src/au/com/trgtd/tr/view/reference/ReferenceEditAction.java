@@ -65,7 +65,7 @@ public class ReferenceEditAction extends CookieAction {
     
     @Override
     public void performAction(Node[] nodes) {
-        ReferenceEditCookie cookie = (ReferenceEditCookie)nodes[0].getCookie(ReferenceEditCookie.class);
+        ReferenceEditCookie cookie = nodes[0].getCookie(ReferenceEditCookie.class);
         if (cookie != null) {
             cookie.editReference();
         }

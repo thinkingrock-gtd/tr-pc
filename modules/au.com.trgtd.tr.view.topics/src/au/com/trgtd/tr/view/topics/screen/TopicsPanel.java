@@ -68,7 +68,7 @@ public class TopicsPanel extends JPanel implements ListSelectionListener, Observ
     public TopicsPanel(TopicNodeProvider topicProvider) {
         super();
         this.topicProvider = topicProvider;
-        this.data = (Data)DataLookup.instance().lookup(Data.class);
+        this.data = DataLookup.instance().lookup(Data.class);
         initTable();
         initPanel();
     }

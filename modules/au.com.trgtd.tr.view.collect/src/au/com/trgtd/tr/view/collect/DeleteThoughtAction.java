@@ -72,13 +72,13 @@ public class DeleteThoughtAction extends CookieAction {
     @Override
     public void performAction(Node[] nodes) {
 
-        Data data = (Data)DataLookup.instance().lookup(Data.class);
+        Data data = DataLookup.instance().lookup(Data.class);
         if (data != null) {
             data.getThoughtManager().setSilent(true);
         }
 
         for (Node node : nodes) {
-            DeleteThoughtCookie cookie = (DeleteThoughtCookie)node.getCookie(DeleteThoughtCookie.class);
+            DeleteThoughtCookie cookie = node.getCookie(DeleteThoughtCookie.class);
             if (cookie != null) {
                 cookie.deleteThought();
             }

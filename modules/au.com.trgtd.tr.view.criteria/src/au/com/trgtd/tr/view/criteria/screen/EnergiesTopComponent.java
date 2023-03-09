@@ -112,7 +112,7 @@ public final class EnergiesTopComponent extends Window implements ExplorerManage
         outlineView.getOutline().setRowSelectionAllowed(true);
 
         // do not show headings
-        JTableHeader header = ((JTable) outlineView.getOutline()).getTableHeader();
+        JTableHeader header = (outlineView.getOutline()).getTableHeader();
         header.setMaximumSize(new Dimension(0,0));
         header.setMinimumSize(new Dimension(0,0));
         header.setPreferredSize(new Dimension(0,0));
@@ -143,7 +143,7 @@ public final class EnergiesTopComponent extends Window implements ExplorerManage
             // already associated - ignore
         }
 
-        final Data data = (Data) DataLookup.instance().lookup(Data.class);
+        final Data data = DataLookup.instance().lookup(Data.class);
 
         usedCbx = new JCheckBox(NbBundle.getMessage(getClass(), "use.energy.criteria"));
         usedCbx.addActionListener((ActionEvent ae) -> {

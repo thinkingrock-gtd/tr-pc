@@ -71,7 +71,7 @@ public class ExpandAction extends CookieAction {
             return;
         }
         for (Node node : nodes) {
-            ExpandCookie cookie = (ExpandCookie)node.getCookie(ExpandCookie.class);
+            ExpandCookie cookie = node.getCookie(ExpandCookie.class);
             if (cookie != null) {
                 cookie.expand();
             }

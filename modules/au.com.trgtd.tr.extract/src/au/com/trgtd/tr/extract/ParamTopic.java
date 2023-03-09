@@ -57,7 +57,7 @@ public class ParamTopic extends Param {
         items = new Vector<>();
         items.add(new Item(org.openide.util.NbBundle.getMessage(ParamTopic.class, "All"),"all"));
         
-        Data data = (Data)DataLookup.instance().lookup(Data.class);
+        Data data = DataLookup.instance().lookup(Data.class);
         if (data == null) return;
         
         Vector<Topic> topics = data.getTopicManager().list();        

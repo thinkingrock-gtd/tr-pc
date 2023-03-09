@@ -71,7 +71,7 @@ public class ParamContext extends Param {
         items = new Vector<>();
         items.add(new Item(NbBundle.getMessage(ParamContext.class, "All"),"all"));
         
-        Data data = (Data)DataLookup.instance().lookup(Data.class);
+        Data data = DataLookup.instance().lookup(Data.class);
         if (data == null) return;
                 
         Vector<Context> contexts = data.getContextManager().list();        

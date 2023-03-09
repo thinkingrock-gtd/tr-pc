@@ -97,7 +97,7 @@ public final class FutureTopComponent extends Window
             });
         }
         
-        Data data = (Data)DataLookup.instance().lookup(Data.class);
+        Data data = DataLookup.instance().lookup(Data.class);
         if (data == null) return;
         
         manager.setRootContext(new FutureRootNode(data.getRootFutures(), false));
@@ -342,7 +342,7 @@ public final class FutureTopComponent extends Window
         try {
             manager.setSelectedNodes(new Node[]{node});
 
-            ViewCookie cookie = (ViewCookie) node.getCookie(ViewCookie.class);
+            ViewCookie cookie = node.getCookie(ViewCookie.class);
             if (cookie != null) {
                 cookie.view();
             }
@@ -372,7 +372,7 @@ public final class FutureTopComponent extends Window
         try {
             manager.setSelectedNodes(new Node[]{node});
 
-            ViewCookie cookie = (ViewCookie) node.getCookie(ViewCookie.class);
+            ViewCookie cookie = node.getCookie(ViewCookie.class);
             if (cookie != null) {
                 cookie.view();
             }

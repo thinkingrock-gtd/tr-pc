@@ -113,7 +113,7 @@ public abstract class Extract {
             return new File(path, filename);            
         }
         // no user preference path so use path of data file
-        DataStore ds = (DataStore) DataStoreLookup.instance().lookup(DataStore.class);
+        DataStore ds = DataStoreLookup.instance().lookup(DataStore.class);
         if (ds != null) {
             File dataFile = new File(ds.getPath());
             if (dataFile.isFile()) {

@@ -88,7 +88,7 @@ public class FilterCriterionTime extends FilterCriterion implements PropertyChan
     }
     
     protected Value getValue(String id) {
-        Data data = (Data)DataLookup.instance().lookup(Data.class);
+        Data data = DataLookup.instance().lookup(Data.class);
         Manager<Value> manager = data.getTimeCriterion().values;
         for (Value value : manager.list()) {
             try {
@@ -154,7 +154,7 @@ public class FilterCriterionTime extends FilterCriterion implements PropertyChan
             if (valueManager != null) {
                 valueManager.removeObserver(this);
             }
-            Data data = (Data)DataLookup.instance().lookup(Data.class);
+            Data data = DataLookup.instance().lookup(Data.class);
             if (data == null) {
                 valueManager = null;
                 values = new Vector<>();
@@ -225,7 +225,7 @@ public class FilterCriterionTime extends FilterCriterion implements PropertyChan
                 Object object = getSelectedItem();
                 if (object instanceof ValueMultiple m) {
                     Vector<Value> all;
-                    Data data = (Data)DataLookup.instance().lookup(Data.class);
+                    Data data = DataLookup.instance().lookup(Data.class);
                     if (data == null) {
                         all = new Vector<>();
                     } else {
@@ -252,7 +252,7 @@ public class FilterCriterionTime extends FilterCriterion implements PropertyChan
                     TimeComboBoxModel model = (TimeComboBoxModel)getModel();
                     ValueMultiple m = model.multiple;
                     Vector<Value> all;
-                    Data data = (Data)DataLookup.instance().lookup(Data.class);
+                    Data data = DataLookup.instance().lookup(Data.class);
                     if (data == null) {
                         all = new Vector<>();
                     } else {

@@ -43,7 +43,7 @@ public final class NewRecurrenceVisualPanel1 extends JPanel {
     }
 
     public void initPanel() {
-        Data data = (Data)DataLookup.instance().lookup(Data.class);
+        Data data = DataLookup.instance().lookup(Data.class);
         if (data == null) {
             return;
         }        

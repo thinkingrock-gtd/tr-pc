@@ -69,7 +69,7 @@ public class EditThoughtAction extends CookieAction {
     
     @Override
     public void performAction(Node[] nodes) {
-        EditThoughtCookie cookie = (EditThoughtCookie)nodes[0].getCookie(EditThoughtCookie.class);
+        EditThoughtCookie cookie = nodes[0].getCookie(EditThoughtCookie.class);
         if (cookie != null) {
             cookie.editThought();
         }

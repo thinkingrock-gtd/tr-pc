@@ -65,7 +65,7 @@ public class ProjectsAction extends CallableSystemAction implements InitialActio
     }
 
     private void enableDisable() {
-        Data data = (Data) DataLookup.instance().lookup(Data.class);
+        Data data = DataLookup.instance().lookup(Data.class);
         setEnabled(data != null);
     }
 
@@ -78,7 +78,7 @@ public class ProjectsAction extends CallableSystemAction implements InitialActio
     @Override
     public void performAction() {
         EventQueue.invokeLater(() -> {
-            Data data = (Data) DataLookup.instance().lookup(Data.class);
+            Data data = DataLookup.instance().lookup(Data.class);
             if (data == null) {
                 return;
             }

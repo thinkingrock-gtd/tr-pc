@@ -93,7 +93,7 @@ public class DeleteAction extends CookieAction {
         String t;
         String m;
         if (nodes.length == 1) {
-            DeleteCookie cookie = (DeleteCookie) nodes[0].getCookie(DeleteCookie.class);
+            DeleteCookie cookie = nodes[0].getCookie(DeleteCookie.class);
             m = NbBundle.getMessage(getClass(), "confirm.single.delete.message", cookie.toString());
             t = NbBundle.getMessage(getClass(), "confirm.single.delete.title");
         } else {
@@ -106,7 +106,7 @@ public class DeleteAction extends CookieAction {
             return;
         }
         for (Node node : nodes) {
-            DeleteCookie cookie = (DeleteCookie) node.getCookie(DeleteCookie.class);
+            DeleteCookie cookie = node.getCookie(DeleteCookie.class);
             if (cookie != null) {
                 cookie.delete();
             }

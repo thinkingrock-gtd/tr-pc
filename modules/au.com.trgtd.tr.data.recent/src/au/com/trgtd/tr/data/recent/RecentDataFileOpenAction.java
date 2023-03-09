@@ -60,7 +60,7 @@ public final class RecentDataFileOpenAction extends AbstractAction {
     @Override
     public void actionPerformed(ActionEvent actionEvent) {
 
-        DataStore ds = (DataStore) DataStoreLookup.instance().lookup(DataStore.class);
+        DataStore ds = DataStoreLookup.instance().lookup(DataStore.class);
         if (ds == null) {
             LOG.severe("Datastore was not found.");
             return;
@@ -86,7 +86,7 @@ public final class RecentDataFileOpenAction extends AbstractAction {
         }
 
         // save review actions screens and force reload
-        DAOProvider screensDAOProvider = (DAOProvider)DAOProviderLookup.instance().lookup(DAOProvider.class);
+        DAOProvider screensDAOProvider = DAOProviderLookup.instance().lookup(DAOProvider.class);
         if (screensDAOProvider != null) {
             try {
                 LOG.info("Saving actions screens.");                

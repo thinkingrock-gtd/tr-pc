@@ -41,7 +41,7 @@ public class ProcessAction extends CookieAction {
     }
 
     private void enableDisable() {
-        Data data = (Data) DataLookup.instance().lookup(Data.class);
+        Data data = DataLookup.instance().lookup(Data.class);
         setEnabled(data != null);
     }
 
@@ -81,7 +81,7 @@ public class ProcessAction extends CookieAction {
 
     @Override
     public void performAction(Node[] nodes) {
-        ProcessCookie cookie = (ProcessCookie) nodes[0].getCookie(ProcessCookie.class);
+        ProcessCookie cookie = nodes[0].getCookie(ProcessCookie.class);
         if (cookie != null) {
             cookie.process();
         }

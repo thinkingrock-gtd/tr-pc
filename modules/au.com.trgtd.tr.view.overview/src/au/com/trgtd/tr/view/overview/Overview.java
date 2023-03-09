@@ -160,7 +160,7 @@ public class Overview extends ObservableImpl {
         }
         @Override
         public void handleEvent(Event evt) {
-            Data data = (Data)DataLookup.instance().lookup(Data.class);
+            Data data = DataLookup.instance().lookup(Data.class);
             if (screen == Screen.NEW || data != null) {
                 notifyObservers(Overview.this, screen);
             }
@@ -176,7 +176,7 @@ public class Overview extends ObservableImpl {
         }
         @Override
         public void handleEvent(Event evt) {
-            Data data = (Data)DataLookup.instance().lookup(Data.class);
+            Data data = DataLookup.instance().lookup(Data.class);
             if (screen == Screen.NEW || data != null) {
                 canvas.setCursor(HAND_CURSOR);
             }
@@ -192,7 +192,7 @@ public class Overview extends ObservableImpl {
         }
         @Override
         public void handleEvent(Event evt) {
-            Data data = (Data)DataLookup.instance().lookup(Data.class);
+            Data data = DataLookup.instance().lookup(Data.class);
             if (screen == Screen.NEW || data != null) {
                 canvas.setCursor(HAND_CURSOR);
             }
