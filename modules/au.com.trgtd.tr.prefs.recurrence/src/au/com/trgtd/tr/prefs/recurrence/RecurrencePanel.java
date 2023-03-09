@@ -98,11 +98,11 @@ final class RecurrencePanel extends javax.swing.JPanel {
     }
 
     void store() {
-        RecurrencePrefs.setNbrFutureWeekday(((Integer)weekdayField.getValue()).intValue());
-        RecurrencePrefs.setNbrFutureDay(((Integer)dayField.getValue()).intValue());
-        RecurrencePrefs.setNbrFutureWeek(((Integer)weekField.getValue()).intValue());
-        RecurrencePrefs.setNbrFutureMonth(((Integer)monthField.getValue()).intValue());
-        RecurrencePrefs.setNbrFutureYear(((Integer)yearField.getValue()).intValue());
+        RecurrencePrefs.setNbrFutureWeekday(((Number)weekdayField.getValue()).intValue());
+        RecurrencePrefs.setNbrFutureDay(((Number)dayField.getValue()).intValue());
+        RecurrencePrefs.setNbrFutureWeek(((Number)weekField.getValue()).intValue());
+        RecurrencePrefs.setNbrFutureMonth(((Number)monthField.getValue()).intValue());
+        RecurrencePrefs.setNbrFutureYear(((Number)yearField.getValue()).intValue());
     }
 
     boolean valid() {
