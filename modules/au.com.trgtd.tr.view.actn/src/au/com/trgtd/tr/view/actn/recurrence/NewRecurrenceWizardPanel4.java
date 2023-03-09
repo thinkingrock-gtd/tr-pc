@@ -86,7 +86,7 @@ public class NewRecurrenceWizardPanel4 implements WizardDescriptor.Panel,
     }
 
     public void readSettings(Object settings) {
-        (panel).initPanel();
+        panel.initPanel();
     }
 
     public void storeSettings(Object settings) {
