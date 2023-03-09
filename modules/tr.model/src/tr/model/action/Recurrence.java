@@ -501,7 +501,7 @@ public final class Recurrence extends ObservableImpl implements Notable {
         int days = 0;
         switch (start.get(Calendar.DAY_OF_WEEK)) {
             case Calendar.MONDAY:
-                days = weekdays + (( (weekdays / 5)) * 2);
+                days = weekdays + ( ((weekdays + 0) / 5) * 2);
                 break;
             case Calendar.TUESDAY:
                 days = weekdays + ( ((weekdays + 1) / 5) * 2);
