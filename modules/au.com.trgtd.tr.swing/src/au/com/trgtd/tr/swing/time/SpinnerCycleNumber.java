@@ -108,7 +108,7 @@ public class SpinnerCycleNumber extends JSpinner {
     
     /* Gets the last value set in the model (as apposed to the text value). */
     private int getLastValue() {
-        return ((Number)super.getValue()).intValue();
+        return ((Number) super.getValue()).intValue();
     }
     
     /**
