@@ -98,7 +98,7 @@ public class WindowUtils {
         for (Iterator iter = c.iterator(); iter.hasNext(); ) {
             InitialAction action = (InitialAction)iter.next();
             if (action.getID().equals(id)) {
-                ((ActionListener)action).actionPerformed(null);
+                ((ActionListener) action).actionPerformed(null);
                 return;
             }
         }
