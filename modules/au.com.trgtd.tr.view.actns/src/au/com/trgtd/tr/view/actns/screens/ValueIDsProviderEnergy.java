@@ -51,7 +51,7 @@ public class ValueIDsProviderEnergy implements ValueIDsProvider, Observer {
     private void initialise() {
         ids = new Vector<>();
         
-        Data data = (Data)DataLookup.instance().lookup(Data.class);
+        Data data = DataLookup.instance().lookup(Data.class);
         if (data == null) return;
         
         for (Value v : data.getEnergyCriterion().values.list()) {

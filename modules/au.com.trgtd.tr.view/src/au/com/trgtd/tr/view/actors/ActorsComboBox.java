@@ -82,7 +82,7 @@ public class ActorsComboBox extends TRComboBox<Actor> implements ActionListener 
     }
 
     private Data getData() {
-        return (Data) DataLookup.instance().lookup(Data.class);
+        return DataLookup.instance().lookup(Data.class);
     }
 
     private void handleEdit(String str) {

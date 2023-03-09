@@ -52,7 +52,7 @@ public class ModifyRecurrenceWizard {
      * @param action The action that has the recurrence.
      */
     public void start(Action action) {
-        data = (Data) DataLookup.instance().lookup(Data.class);
+        data = DataLookup.instance().lookup(Data.class);
         if (data == null) {
             return;
         }

@@ -63,7 +63,7 @@ public class ReferenceNode extends AbstractNode
     public void editReference() {
         if (info == null) return;
         
-        Data data = (Data)DataLookup.instance().lookup(Data.class);
+        Data data = DataLookup.instance().lookup(Data.class);
         if (data == null) return;
         
         ReferenceTopComponent rtc = ReferenceTopComponent.findInstance();
@@ -75,7 +75,7 @@ public class ReferenceNode extends AbstractNode
     public void deleteReference() {
         if (info == null) return;
         
-        Data data = (Data)DataLookup.instance().lookup(Data.class);
+        Data data = DataLookup.instance().lookup(Data.class);
         if (data == null) return;
         
         data.getInformationManager().remove(info);
@@ -84,7 +84,7 @@ public class ReferenceNode extends AbstractNode
     public void reprocessReference() {
         if (info == null) return;
         
-        Data data = (Data)DataLookup.instance().lookup(Data.class);
+        Data data = DataLookup.instance().lookup(Data.class);
         if (data == null) return;
         
         data.getInformationManager().remove(info);
@@ -103,7 +103,7 @@ public class ReferenceNode extends AbstractNode
         }
         
         // got to process thoughts screen
-        ProcessThoughtsAction pta = (ProcessThoughtsAction)SystemAction.get(ProcessThoughtsAction.class);
+        ProcessThoughtsAction pta = SystemAction.get(ProcessThoughtsAction.class);
         pta.performAction();
     }
     

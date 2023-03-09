@@ -212,7 +212,7 @@ public class Data extends ObservableImpl implements IDGenerator, Observer {
 
     public final Criterion getTimeCriterion() {
         if (timeCriterion == null) {
-            IDGenerator idGenerator = (IDGenerator) this;
+            IDGenerator idGenerator = this;
 //          timeCriterion = new Criterion(NbBundle.getMessage(Data.class, "Time"));
             timeCriterion = new Criterion("Time");
             timeCriterion.setUse(false);
@@ -239,7 +239,7 @@ public class Data extends ObservableImpl implements IDGenerator, Observer {
 
     public final Criterion getEnergyCriterion() {
         if (energyCriterion == null) {
-            IDGenerator idGenerator = (IDGenerator) this;
+            IDGenerator idGenerator = this;
 //          energyCriterion = new Criterion(NbBundle.getMessage(Data.class, "Energy"));
             energyCriterion = new Criterion("Energy");
             energyCriterion.setUse(false);
@@ -257,7 +257,7 @@ public class Data extends ObservableImpl implements IDGenerator, Observer {
 
     public final Criterion getPriorityCriterion() {
         if (priorityCriterion == null) {
-            IDGenerator idGenerator = (IDGenerator) this;
+            IDGenerator idGenerator = this;
 //          priorityCriterion = new Criterion(NbBundle.getMessage(Data.class, "Priority"));
             priorityCriterion = new Criterion("Priority");
             priorityCriterion.setUse(false);

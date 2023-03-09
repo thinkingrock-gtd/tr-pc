@@ -71,7 +71,7 @@ public class ContextNode extends AbstractNode implements EditContextCookie, Dele
     public void editContext() {
         if (context == null) return;
         
-        Data data = (Data)DataLookup.instance().lookup(Data.class);
+        Data data = DataLookup.instance().lookup(Data.class);
         if (data == null) return;
         
         // The default context can not be edited.
@@ -86,7 +86,7 @@ public class ContextNode extends AbstractNode implements EditContextCookie, Dele
     public void deleteContext() {
         if (context == null) return;
         
-        Data data = (Data)DataLookup.instance().lookup(Data.class);
+        Data data = DataLookup.instance().lookup(Data.class);
         if (data == null) return;
         
         // The default context can not be deleted.

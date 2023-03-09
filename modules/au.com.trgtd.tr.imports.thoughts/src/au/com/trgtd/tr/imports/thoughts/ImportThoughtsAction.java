@@ -48,14 +48,14 @@ public final class ImportThoughtsAction extends CallableSystemAction {
     }
     
     private void enableDisable() {
-        Data data = (Data)DataLookup.instance().lookup(Data.class);
+        Data data = DataLookup.instance().lookup(Data.class);
         setEnabled(data != null);
     }
     
     /** Save the current datastore as another file. */
     @Override
     public void performAction() {
-        Data data = (Data)DataLookup.instance().lookup(Data.class);
+        Data data = DataLookup.instance().lookup(Data.class);
         if (data == null) return;
         
         try {
@@ -68,7 +68,7 @@ public final class ImportThoughtsAction extends CallableSystemAction {
     }
     
     private void activateCollectThoughts() {
-        CollectThoughtsAction collect = (CollectThoughtsAction)SystemAction.get(CollectThoughtsAction.class);
+        CollectThoughtsAction collect = SystemAction.get(CollectThoughtsAction.class);
         collect.performAction();
     }
     

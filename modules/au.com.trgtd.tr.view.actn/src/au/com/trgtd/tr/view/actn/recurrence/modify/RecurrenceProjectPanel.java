@@ -26,7 +26,7 @@ import tr.model.project.Project;
 public final class RecurrenceProjectPanel extends JPanel {
 
     public RecurrenceProjectPanel() {
-        this.data = (Data) DataLookup.instance().lookup(Data.class);
+        this.data = DataLookup.instance().lookup(Data.class);
         initComponents();
     }
 
@@ -96,7 +96,7 @@ public final class RecurrenceProjectPanel extends JPanel {
 
     private void projectComboActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_projectComboActionPerformed
         if (projectCombo.isEnabled()) {
-            recurrence.setProject((Project) projectCombo.getSelectedItem());
+            recurrence.setProject(projectCombo.getSelectedItem());
         }
     }//GEN-LAST:event_projectComboActionPerformed
 

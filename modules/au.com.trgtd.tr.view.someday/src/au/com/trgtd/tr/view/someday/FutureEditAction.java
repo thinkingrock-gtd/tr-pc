@@ -67,7 +67,7 @@ public class FutureEditAction extends CookieAction {
     
     @Override
     public void performAction(Node[] nodes) {
-        FutureEditCookie cookie = (FutureEditCookie)nodes[0].getCookie(FutureEditCookie.class);
+        FutureEditCookie cookie = nodes[0].getCookie(FutureEditCookie.class);
         if (cookie != null) {
             cookie.editFuture();
         }

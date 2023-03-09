@@ -40,7 +40,7 @@ public class DataServices {
      * @return true if such an action is found.
      */
     public boolean exists(Predicate<Action> p) {
-        Data data = (Data) DataLookup.instance().lookup(Data.class);
+        Data data = DataLookup.instance().lookup(Data.class);
         if (data == null) {
             return false;
         }

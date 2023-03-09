@@ -68,7 +68,7 @@ public class ContextsPanel extends JPanel implements ListSelectionListener, Obse
     public ContextsPanel(ContextNodeProvider contextProvider) {
         super();
         this.contextProvider = contextProvider;
-        this.data = (Data)DataLookup.instance().lookup(Data.class);
+        this.data = DataLookup.instance().lookup(Data.class);
         initTable();
         initPanel();
     }

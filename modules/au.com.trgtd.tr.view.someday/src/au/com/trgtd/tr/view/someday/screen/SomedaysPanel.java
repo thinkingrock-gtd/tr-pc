@@ -70,7 +70,7 @@ public class SomedaysPanel extends JPanel implements ListSelectionListener, Obse
         super();
         this.refsProvider = futuresProvider;
         this.refsMatcherEditor = matcherEditor;
-        this.data = (Data)DataLookup.instance().lookup(Data.class);
+        this.data = DataLookup.instance().lookup(Data.class);
         initComponents();
     }
     

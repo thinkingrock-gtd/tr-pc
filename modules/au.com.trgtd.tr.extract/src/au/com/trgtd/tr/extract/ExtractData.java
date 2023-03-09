@@ -122,7 +122,7 @@ public class ExtractData {
         formatType = format;
         
         // save datastore data
-        DataStore ds = (DataStore)DataStoreLookup.instance().lookup(DataStore.class);
+        DataStore ds = DataStoreLookup.instance().lookup(DataStore.class);
         if (ds != null) {
             try {
                 ds.store();
@@ -252,7 +252,7 @@ public class ExtractData {
         
         // Set the default topic key to the managed default topic key
         if (!data.getTopicManager().isEmpty()) {
-            Topic def = (Topic)data.getTopicManager().get(0);
+            Topic def = data.getTopicManager().get(0);
             Topic.getDefault().key = def.key;
         }
     }
@@ -271,7 +271,7 @@ public class ExtractData {
         
         // Set the default context key to the managed default context key
         if (!data.getContextManager().isEmpty()) {
-            Context def = (Context)data.getContextManager().get(0);
+            Context def = data.getContextManager().get(0);
             Context.getDefault().key = def.key;
         }
     }

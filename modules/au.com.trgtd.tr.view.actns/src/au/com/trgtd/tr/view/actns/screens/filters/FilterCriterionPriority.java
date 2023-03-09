@@ -87,7 +87,7 @@ public class FilterCriterionPriority extends FilterCriterion
     }
     
     protected Value getValue(String id) {
-        Data data = (Data)DataLookup.instance().lookup(Data.class);
+        Data data = DataLookup.instance().lookup(Data.class);
         Manager<Value> manager = data.getPriorityCriterion().values;
         for (Value value : manager.list()) {
             try {
@@ -153,7 +153,7 @@ public class FilterCriterionPriority extends FilterCriterion
             if (valueManager != null) {
                 valueManager.removeObserver(this);
             }
-            Data data = (Data)DataLookup.instance().lookup(Data.class);
+            Data data = DataLookup.instance().lookup(Data.class);
             if (data == null) {
                 valueManager = null;
                 values = new Vector<>();
@@ -224,7 +224,7 @@ public class FilterCriterionPriority extends FilterCriterion
                 Object object = getSelectedItem();
                 if (object instanceof ValueMultiple m) {
                     Vector<Value> all;
-                    Data data = (Data)DataLookup.instance().lookup(Data.class);
+                    Data data = DataLookup.instance().lookup(Data.class);
                     if (data == null) {
                         all = new Vector<>();
                     } else {
@@ -251,7 +251,7 @@ public class FilterCriterionPriority extends FilterCriterion
                     PriorityComboBoxModel model = (PriorityComboBoxModel)getModel();
                     ValueMultiple m = model.multiple;
                     Vector<Value> all;
-                    Data data = (Data)DataLookup.instance().lookup(Data.class);
+                    Data data = DataLookup.instance().lookup(Data.class);
                     if (data == null) {
                         all = new Vector<>();
                     } else {

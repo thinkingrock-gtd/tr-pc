@@ -77,7 +77,7 @@ public class TopicChangeAction extends CookieAction {
     
     @Override
     public void performAction(Node[] nodes) {
-        Data data = (Data)DataLookup.instance().lookup(Data.class);
+        Data data = DataLookup.instance().lookup(Data.class);
         if (data == null) return;
         
         Frame frame = WindowManager.getDefault().getMainWindow();
@@ -121,7 +121,7 @@ public class TopicChangeAction extends CookieAction {
         if (nodes == null) return;
         
         for (Node node : nodes) {
-            TopicChangeCookie cookie = (TopicChangeCookie)node.getCookie(TopicChangeCookie.class);
+            TopicChangeCookie cookie = node.getCookie(TopicChangeCookie.class);
             if (cookie != null) {
                 cookie.setTopic(topic);
             }

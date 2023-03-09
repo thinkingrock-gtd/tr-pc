@@ -469,7 +469,7 @@ public class GoalsDAOImpl extends DAOImpl implements GoalsDAO {
 
     private void initialise() {
         synchronized (this) {
-            data = (Data) DataLookup.instance().lookup(Data.class);
+            data = DataLookup.instance().lookup(Data.class);
             Lookup.Result lookupResult = DataLookup.instance().lookupResult(Data.class);
             lookupResult.addLookupListener((LookupEvent lookupEvent) -> {
                 initialise();

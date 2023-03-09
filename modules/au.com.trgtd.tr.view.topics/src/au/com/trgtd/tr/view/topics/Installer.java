@@ -32,7 +32,7 @@ public class Installer extends ModuleInstall {
     /** Adds the topics action to the lookup of initial actions. */
     @Override
     public void restored() {
-        InitialAction action = (InitialAction)SystemAction.get(TopicsAction.class);
+        InitialAction action = SystemAction.get(TopicsAction.class);
         InitialActionLookup.instance().add(action);
     }
     

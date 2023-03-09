@@ -85,7 +85,7 @@ public class FutureDeleteAction extends CookieAction {
         }
         
         for (Node node : nodes) {
-            FutureDeleteCookie cookie = (FutureDeleteCookie)node.getCookie(FutureDeleteCookie.class);
+            FutureDeleteCookie cookie = node.getCookie(FutureDeleteCookie.class);
             if (cookie != null) {
                 cookie.deleteFuture();
             }

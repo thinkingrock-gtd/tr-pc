@@ -40,7 +40,7 @@ public class TimeChildren extends Children.Keys<Value> implements Observer {
 
     public TimeChildren(ExplorerManager em) {
         this.em = em;
-        Data data = (Data) DataLookup.instance().lookup(Data.class);
+        Data data = DataLookup.instance().lookup(Data.class);
         this.values = (data == null) ? null : data.getTimeCriterion().values;
         this.index = new IndexImpl();
     }

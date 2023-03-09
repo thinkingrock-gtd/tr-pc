@@ -75,7 +75,7 @@ public class ProcessAction extends CookieAction {
         WindowUtils.closeWindows();
 
         for (Node node : nodes) {
-            ProcessCookie cookie = (ProcessCookie) node.getCookie(ProcessCookie.class);
+            ProcessCookie cookie = node.getCookie(ProcessCookie.class);
             if (cookie != null) {
                 cookie.process();
             }

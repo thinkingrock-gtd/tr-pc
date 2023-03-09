@@ -52,7 +52,7 @@ public class ProjectsComboBox extends TRComboBox<ProjectItem> {
         }
         if (object instanceof Project project) {
             for (int i = 1; i < getItemCount(); i++) {
-                ProjectItem item = (ProjectItem) super.getItemAt(i);
+                ProjectItem item = super.getItemAt(i);
                 if (project.equals(item.project)) {
                     setSelectedIndex(i);
                     return;

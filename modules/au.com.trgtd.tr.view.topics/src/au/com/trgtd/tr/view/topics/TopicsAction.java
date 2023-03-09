@@ -61,7 +61,7 @@ public class TopicsAction extends CallableSystemAction implements InitialAction 
     
     private void enableDisable() {
         EventQueue.invokeLater(() -> {
-            Data data = (Data)DataLookup.instance().lookup(Data.class);
+            Data data = DataLookup.instance().lookup(Data.class);
             setEnabled(data != null);
         });
     }
@@ -78,7 +78,7 @@ public class TopicsAction extends CallableSystemAction implements InitialAction 
     @Override
     public void performAction() {
         EventQueue.invokeLater(() -> {
-            Data data = (Data)DataLookup.instance().lookup(Data.class);
+            Data data = DataLookup.instance().lookup(Data.class);
             if (data == null) {
                 return;
             }

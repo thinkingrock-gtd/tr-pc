@@ -98,7 +98,7 @@ public final class ActionPanel extends JPanel implements Observer {
     }
 
     private Data getData() {
-        return (Data) DataLookup.instance().lookup(Data.class);
+        return DataLookup.instance().lookup(Data.class);
     }
 
     @Override

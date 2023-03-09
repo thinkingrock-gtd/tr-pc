@@ -89,7 +89,7 @@ public class FilterStatus extends FilterChoice implements PropertyChangeListener
             }
             String[] values = new String[m.getChosen().size()];
             for (int i = 0; i < values.length; i++) {
-                values[i] = ((Choice)m.getChosen().get(i)).getID();
+                values[i] = (m.getChosen().get(i)).getID();
             }
             return values;
         }

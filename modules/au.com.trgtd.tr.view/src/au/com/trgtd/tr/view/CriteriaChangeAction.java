@@ -75,7 +75,7 @@ public class CriteriaChangeAction extends CookieAction {
     
     @Override
     public void performAction(Node[] nodes) {
-        Data data = (Data)DataLookup.instance().lookup(Data.class);
+        Data data = DataLookup.instance().lookup(Data.class);
         if (data == null) return;
 
         Frame frame = WindowManager.getDefault().getMainWindow();
@@ -112,7 +112,7 @@ public class CriteriaChangeAction extends CookieAction {
             return;
         }
         for (Node node : nodes) {
-            CriteriaChangeCookie cookie = (CriteriaChangeCookie)node.getCookie(CriteriaChangeCookie.class);
+            CriteriaChangeCookie cookie = node.getCookie(CriteriaChangeCookie.class);
             if (cookie != null) {
                 cookie.changeCriteria(criteria, value);
             }

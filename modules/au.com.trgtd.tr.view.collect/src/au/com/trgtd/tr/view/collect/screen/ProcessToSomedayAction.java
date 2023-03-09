@@ -67,7 +67,7 @@ public class ProcessToSomedayAction extends CookieAction {
     @Override
     public void performAction(Node[] nodes) {
         for (Node node : nodes) {
-            ProcessToSomedayCookie cookie = (ProcessToSomedayCookie) node.getCookie(ProcessToSomedayCookie.class);
+            ProcessToSomedayCookie cookie = node.getCookie(ProcessToSomedayCookie.class);
             if (cookie != null) {
                 cookie.processToSomeday();
             }

@@ -65,7 +65,7 @@ public final class ModifyRecurrenceVisualPanelModProject1 extends JPanel {
     }
 
     public Project getNewProject() {
-        return (Project) projectNewComboBox.getSelectedItem();
+        return projectNewComboBox.getSelectedItem();
     }
 
     private void moveChanged() {

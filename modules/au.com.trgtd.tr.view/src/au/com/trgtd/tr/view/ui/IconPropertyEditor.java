@@ -39,7 +39,7 @@ public class IconPropertyEditor extends PropertyEditorSupport {
         if (icon != null) {
             int w = icon.getIconWidth();
             int h = icon.getIconHeight();
-            int yOffset = r.height > h ? (int)(r.height - h) / 2 : 0;
+            int yOffset = r.height > h ? (r.height - h) / 2 : 0;
             Graphics g2 = g.create(r.x, r.y, r.width, r.height);
             g2.drawImage(icon.getImage(), r.x, r.y + yOffset, w, h, null);
         }

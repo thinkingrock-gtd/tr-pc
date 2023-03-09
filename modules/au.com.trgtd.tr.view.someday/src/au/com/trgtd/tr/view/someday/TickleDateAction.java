@@ -77,7 +77,7 @@ public class TickleDateAction extends CookieAction {
     
     @Override
     public void performAction(Node[] nodes) {
-        Data data = (Data)DataLookup.instance().lookup(Data.class);
+        Data data = DataLookup.instance().lookup(Data.class);
         if (data == null) return;
         
         Frame frame = WindowManager.getDefault().getMainWindow();
@@ -116,7 +116,7 @@ public class TickleDateAction extends CookieAction {
             return;
         }        
         for (Node node : nodes) {
-            TickleDateCookie cookie = (TickleDateCookie)node.getCookie(TickleDateCookie.class);
+            TickleDateCookie cookie = node.getCookie(TickleDateCookie.class);
             if (cookie != null) {
                 cookie.changeTickleDate(date);
             }

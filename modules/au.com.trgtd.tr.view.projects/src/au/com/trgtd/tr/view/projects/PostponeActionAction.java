@@ -85,7 +85,7 @@ public class PostponeActionAction extends CookieAction {
     
     @Override
     public void performAction(Node[] nodes) {
-        Data data = (Data)DataLookup.instance().lookup(Data.class);
+        Data data = DataLookup.instance().lookup(Data.class);
         if (data == null) {
             return;
         }
@@ -133,7 +133,7 @@ public class PostponeActionAction extends CookieAction {
             return;
         }        
         for (Node node : nodes) {
-            PostponeActionCookie cookie = (PostponeActionCookie)node.getCookie(PostponeActionCookie.class);
+            PostponeActionCookie cookie = node.getCookie(PostponeActionCookie.class);
             if (cookie != null) {
                 cookie.postponeAction(n, periods);
             }
@@ -142,7 +142,7 @@ public class PostponeActionAction extends CookieAction {
 
     private void postponeSpecific(Node[] nodes, Date date) {
         for (Node node : nodes) {
-            PostponeActionCookie cookie = (PostponeActionCookie)node.getCookie(PostponeActionCookie.class);
+            PostponeActionCookie cookie = node.getCookie(PostponeActionCookie.class);
             if (cookie != null) {
                 cookie.postponeAction(date);
             }

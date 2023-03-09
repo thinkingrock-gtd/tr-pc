@@ -65,7 +65,7 @@ public class ReferenceReprocessAction extends CookieAction {
     
     @Override
     public void performAction(Node[] nodes) {
-        ReferenceReprocessCookie cookie = (ReferenceReprocessCookie)nodes[0].getCookie(ReferenceReprocessCookie.class);
+        ReferenceReprocessCookie cookie = nodes[0].getCookie(ReferenceReprocessCookie.class);
         if (cookie != null) {
             cookie.reprocessReference();
         }

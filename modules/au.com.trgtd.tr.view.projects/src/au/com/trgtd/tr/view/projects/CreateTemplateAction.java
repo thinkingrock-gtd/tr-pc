@@ -60,7 +60,7 @@ public class CreateTemplateAction extends CookieAction {
     
     @Override
     public void performAction(Node[] nodes) {
-        CreateTemplateCookie cookie = (CreateTemplateCookie)nodes[0].getCookie(CreateTemplateCookie.class);
+        CreateTemplateCookie cookie = nodes[0].getCookie(CreateTemplateCookie.class);
         if (cookie != null) {
             cookie.createTemplate();
         }

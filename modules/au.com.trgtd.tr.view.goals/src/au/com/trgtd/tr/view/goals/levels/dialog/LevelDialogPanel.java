@@ -28,6 +28,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.UIManager;
+import javax.swing.text.JTextComponent;
 import net.miginfocom.swing.MigLayout;
 import org.openide.DialogDisplayer;
 import org.openide.NotifyDescriptor;
@@ -221,7 +222,7 @@ public class LevelDialogPanel extends JPanel {
     private class DescrVerifier extends InputVerifier {
         @Override
         public boolean verify(JComponent input) {
-            String text = ((JTextField) input).getText().trim();
+            String text = ((JTextComponent) input).getText().trim();
             boolean valid = text.trim().length() > 0;
             okButton.setEnabled(valid);
             messageLabel.setText(valid ? "" : "Description must be entered.");

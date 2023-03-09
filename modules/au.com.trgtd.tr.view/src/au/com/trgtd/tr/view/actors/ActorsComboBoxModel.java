@@ -76,7 +76,7 @@ public final class ActorsComboBoxModel extends DefaultComboBoxModel<Actor> imple
     private synchronized void initModel() {
         stopObserving();
 
-        Data data = (Data)DataLookup.instance().lookup(Data.class);
+        Data data = DataLookup.instance().lookup(Data.class);
         if (data == null) {
             mngr = null;
             list = Collections.emptyList();

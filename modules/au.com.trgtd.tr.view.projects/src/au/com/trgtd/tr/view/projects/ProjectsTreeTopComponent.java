@@ -106,7 +106,7 @@ public class ProjectsTreeTopComponent extends TopComponent
             });
         }
 
-        Data data = (Data) DataLookup.instance().lookup(Data.class);
+        Data data = DataLookup.instance().lookup(Data.class);
         if (data == null) {
             return;
         }
@@ -331,7 +331,7 @@ public class ProjectsTreeTopComponent extends TopComponent
 
         try {
             manager.setExploredContextAndSelection(node, new Node[]{node});
-            ViewCookie cookie = (ViewCookie) node.getCookie(ViewCookie.class);
+            ViewCookie cookie = node.getCookie(ViewCookie.class);
             if (cookie != null) {
                 cookie.view();
             }
@@ -363,7 +363,7 @@ public class ProjectsTreeTopComponent extends TopComponent
         try {
             manager.setExploredContextAndSelection(node, new Node[]{node});
 
-            ViewCookie cookie = (ViewCookie) node.getCookie(ViewCookie.class);
+            ViewCookie cookie = node.getCookie(ViewCookie.class);
             if (cookie != null) {
                 cookie.view();
             }
@@ -386,7 +386,7 @@ public class ProjectsTreeTopComponent extends TopComponent
 
         try {
             manager.setSelectedNodes(new Node[]{node});
-            EditCookie cookie = (EditCookie) node.getCookie(EditCookie.class);
+            EditCookie cookie = node.getCookie(EditCookie.class);
             if (cookie != null) {
                 cookie.edit();
             }
@@ -409,7 +409,7 @@ public class ProjectsTreeTopComponent extends TopComponent
 
         try {
             manager.setSelectedNodes(new Node[]{node});
-            EditCookie cookie = (EditCookie) node.getCookie(EditCookie.class);
+            EditCookie cookie = node.getCookie(EditCookie.class);
             if (cookie != null) {
                 cookie.edit();
             }

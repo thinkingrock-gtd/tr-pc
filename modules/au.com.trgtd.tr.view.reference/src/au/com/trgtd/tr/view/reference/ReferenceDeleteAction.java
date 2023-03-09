@@ -85,7 +85,7 @@ public class ReferenceDeleteAction extends CookieAction {
         }
         
         for (Node node : nodes) {
-            ReferenceDeleteCookie cookie = (ReferenceDeleteCookie)node.getCookie(ReferenceDeleteCookie.class);
+            ReferenceDeleteCookie cookie = node.getCookie(ReferenceDeleteCookie.class);
             if (cookie != null) {
                 cookie.deleteReference();
             }

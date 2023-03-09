@@ -60,7 +60,7 @@ public class PrintAction extends CookieAction {
     
     @Override
     public void performAction(Node[] nodes) {
-        PrintCookie cookie = (PrintCookie)nodes[0].getCookie(PrintCookie.class);
+        PrintCookie cookie = nodes[0].getCookie(PrintCookie.class);
         if (cookie != null) {
             cookie.print();
         }

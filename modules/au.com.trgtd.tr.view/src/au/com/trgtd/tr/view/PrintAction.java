@@ -64,7 +64,7 @@ public class PrintAction extends AbstractAction implements LookupListener, Conte
     
     @Override
     public void actionPerformed(ActionEvent e) {
-        Print printable = (Print)context.lookup(Print.class);
+        Print printable = context.lookup(Print.class);
         if (printable != null) {
             printable.print();
         }

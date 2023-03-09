@@ -43,7 +43,7 @@ public class AddThoughtsAction extends CallableSystemAction implements InitialAc
     }
 
     private void enableDisable() {
-        Data data = (Data) DataLookup.instance().lookup(Data.class);
+        Data data = DataLookup.instance().lookup(Data.class);
         setEnabled(data != null);
     }
 
@@ -76,7 +76,7 @@ public class AddThoughtsAction extends CallableSystemAction implements InitialAc
 
     @Override
     public void performAction() {
-        Data data = (Data) DataLookup.instance().lookup(Data.class);
+        Data data = DataLookup.instance().lookup(Data.class);
         if (data != null) {
             new ThoughtDialog(data).showCreateDialog();
         }

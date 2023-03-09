@@ -36,7 +36,7 @@ public final class HelpAction extends CallableSystemAction {
     /** Perform the action to show help for the active screen. */
     @Override
     public void performAction() {
-        Help help = (Help) Lookup.getDefault().lookup(Help.class);
+        Help help = Lookup.getDefault().lookup(Help.class);
         if (help == null) {
             return;
         }

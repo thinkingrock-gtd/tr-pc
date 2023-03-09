@@ -76,7 +76,7 @@ public class ContextChangeAction extends CookieAction {
     
     @Override
     public void performAction(Node[] nodes) {
-        Data data = (Data)DataLookup.instance().lookup(Data.class);
+        Data data = DataLookup.instance().lookup(Data.class);
         if (data == null) return;
         
         final JDialog jd = new JDialog((Frame)null, getName(), true);
@@ -118,7 +118,7 @@ public class ContextChangeAction extends CookieAction {
         if (nodes == null) return;
         
         for (Node node : nodes) {
-            ContextChangeCookie cookie = (ContextChangeCookie)node.getCookie(ContextChangeCookie.class);
+            ContextChangeCookie cookie = node.getCookie(ContextChangeCookie.class);
             if (cookie != null) {
                 cookie.setContext(context);
             }

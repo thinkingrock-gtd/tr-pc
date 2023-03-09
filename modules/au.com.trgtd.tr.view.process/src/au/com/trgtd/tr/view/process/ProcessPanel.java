@@ -113,7 +113,7 @@ public final class ProcessPanel extends JPanel implements Observer, ProcessCooki
         this.processNodeProvider = processNodeProvider;
         processNode = new ProcessNode(this, this, this);
         processNodeDelegationResponse = new ProcessNode(this, this);
-        data = (Data) DataLookup.instance().lookup(Data.class);
+        data = DataLookup.instance().lookup(Data.class);
         projects = data.getRootProjects();
         singleActions = data.getRootActions();
         referenceManager = data.getInformationManager();

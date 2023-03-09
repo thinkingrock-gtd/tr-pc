@@ -66,7 +66,7 @@ public class ReferencesAction extends CallableSystemAction implements InitialAct
     }
 
     private void enableDisable() {
-        Data data = (Data) DataLookup.instance().lookup(Data.class);
+        Data data = DataLookup.instance().lookup(Data.class);
         setEnabled(data != null);
     }
 

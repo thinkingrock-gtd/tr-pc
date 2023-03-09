@@ -65,7 +65,7 @@ public class EditContextAction extends CookieAction {
     
     @Override
     public void performAction(Node[] nodes) {
-        EditContextCookie cookie = (EditContextCookie)nodes[0].getCookie(EditContextCookie.class);
+        EditContextCookie cookie = nodes[0].getCookie(EditContextCookie.class);
         if (cookie != null) {
             cookie.editContext();
         }

@@ -181,7 +181,7 @@ public class BackupThread extends Thread {
     }
 
     private File getDataFile() {
-        DataStore ds = (DataStore) DataStoreLookup.instance().lookup(DataStore.class);
+        DataStore ds = DataStoreLookup.instance().lookup(DataStore.class);
         if (ds == null) {
             return null;
         }

@@ -67,7 +67,7 @@ public class ProjectiseAction extends CookieAction {
     public void performAction(Node[] nodes) {
         if (nodes.length < 1) return;
         
-        ProjectiseCookie cookie = (ProjectiseCookie)nodes[0].getCookie(ProjectiseCookie.class);
+        ProjectiseCookie cookie = nodes[0].getCookie(ProjectiseCookie.class);
         if (cookie != null) {
             cookie.projectise();
         }

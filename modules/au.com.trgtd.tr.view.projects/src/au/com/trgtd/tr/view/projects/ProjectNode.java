@@ -176,7 +176,7 @@ public class ProjectNode extends AbstractNode implements Observer, EditCookie,
         if (dropNode != null && dropNode instanceof TransferNode) {
             final TransferNode transferNode = (TransferNode) dropNode;
             final boolean isMove = isMoveTransfer(type) || transferNode.isMoveTransfer();
-            final Action dropAction = (Action) dropNode.getLookup().lookup(Action.class);
+            final Action dropAction = dropNode.getLookup().lookup(Action.class);
             if (dropAction != null) {
                 final Action transferAction = (isMove) ? dropAction : (Action) dropAction.copy(getData());
                 if (transferAction != null && project.canAdd(transferAction)) {
@@ -194,7 +194,7 @@ public class ProjectNode extends AbstractNode implements Observer, EditCookie,
                     };
                 }
             }
-            Project p = (Project) dropNode.getLookup().lookup(Project.class);
+            Project p = dropNode.getLookup().lookup(Project.class);
             if (p != null) {
                 final Project transferProject = (isMove) ? p : (Project) p.copy(getData());
                 if (transferProject != null && project.canAdd(transferProject)) {
@@ -571,7 +571,7 @@ public class ProjectNode extends AbstractNode implements Observer, EditCookie,
     }
 
     protected Data getData() {
-        return (Data) DataLookup.instance().lookup(Data.class);
+        return DataLookup.instance().lookup(Data.class);
     }
 
     @Override
@@ -599,7 +599,7 @@ public class ProjectNode extends AbstractNode implements Observer, EditCookie,
     }
 
     private void addNewAction(Action sibling) {
-        Data data = (Data) DataLookup.instance().lookup(Data.class);
+        Data data = DataLookup.instance().lookup(Data.class);
         if (data == null) {
             return;
         }
@@ -661,7 +661,7 @@ public class ProjectNode extends AbstractNode implements Observer, EditCookie,
 
         getTreeView().requestFocus();
 
-        EditCookie cookie = (EditCookie) node.getCookie(EditCookie.class);
+        EditCookie cookie = node.getCookie(EditCookie.class);
         if (cookie != null) {
             cookie.edit();
         }
@@ -682,7 +682,7 @@ public class ProjectNode extends AbstractNode implements Observer, EditCookie,
     }
 
     private void addNewProject(Action sibling) {
-        Data data = (Data) DataLookup.instance().lookup(Data.class);
+        Data data = DataLookup.instance().lookup(Data.class);
         if (data == null) {
             return;
         }
@@ -738,7 +738,7 @@ public class ProjectNode extends AbstractNode implements Observer, EditCookie,
 
         getTreeView().requestFocus();
 
-        EditCookie cookie = (EditCookie) node.getCookie(EditCookie.class);
+        EditCookie cookie = node.getCookie(EditCookie.class);
         if (cookie != null) {
             cookie.edit();
         }

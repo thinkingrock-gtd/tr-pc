@@ -61,7 +61,7 @@ public class ContextsComboBoxModel extends DefaultComboBoxModel<Context> impleme
     }
 
     private void initialise() {
-        Data data = (Data) DataLookup.instance().lookup(Data.class);
+        Data data = DataLookup.instance().lookup(Data.class);
         if (data == null) {
             contexts = new Vector<>();
             return;

@@ -79,7 +79,7 @@ public class ProjectChangeAction extends CookieAction {
         // not allowed if there are any recurrent actions
         boolean anyRecurrentActions = false;
         for (Node node : nodes) {
-            ReprocessCookie cookie = (ReprocessCookie) node.getCookie(ReprocessCookie.class);
+            ReprocessCookie cookie = node.getCookie(ReprocessCookie.class);
             if (cookie != null) {
                 if (cookie.isRecurrent()) {
                     anyRecurrentActions = true;
@@ -125,7 +125,7 @@ public class ProjectChangeAction extends CookieAction {
             return;
         }
         for (Node node : nodes) {
-            ProjectChangeCookie cookie = (ProjectChangeCookie) node.getCookie(ProjectChangeCookie.class);
+            ProjectChangeCookie cookie = node.getCookie(ProjectChangeCookie.class);
             if (cookie != null) {
                 cookie.changeProject(project);
             }

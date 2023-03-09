@@ -69,7 +69,7 @@ public final class ImportTemplateAction extends CallableSystemAction implements 
 
     private void dataChanged() {
         EventQueue.invokeLater(() -> {
-            Data data = (Data)DataLookup.instance().lookup(Data.class);
+            Data data = DataLookup.instance().lookup(Data.class);
             if (data == null) {
                 setEnabled(false);
             } else {

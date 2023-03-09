@@ -99,7 +99,7 @@ public class SingleActionsTopComponent extends Window
             });
         }
 
-        Data data = (Data) DataLookup.instance().lookup(Data.class);
+        Data data = DataLookup.instance().lookup(Data.class);
         if (data == null) {
             return;
         }
@@ -351,7 +351,7 @@ public class SingleActionsTopComponent extends Window
         try {
             manager.setSelectedNodes(new Node[]{node});
 
-            ViewCookie cookie = (ViewCookie) node.getCookie(ViewCookie.class);
+            ViewCookie cookie = node.getCookie(ViewCookie.class);
             if (cookie != null) {
                 cookie.view();
             }
@@ -380,7 +380,7 @@ public class SingleActionsTopComponent extends Window
         requestVisible();
         try {
             manager.setSelectedNodes(new Node[]{node});
-            EditCookie cookie = (EditCookie) node.getCookie(EditCookie.class);
+            EditCookie cookie = node.getCookie(EditCookie.class);
             if (cookie != null) {
                 cookie.edit();
             }
@@ -401,7 +401,7 @@ public class SingleActionsTopComponent extends Window
         requestVisible();
         try {
             manager.setSelectedNodes(new Node[]{node});
-            EditCookie cookie = (EditCookie) node.getCookie(EditCookie.class);
+            EditCookie cookie = node.getCookie(EditCookie.class);
             if (cookie != null) {
                 cookie.edit();
             }

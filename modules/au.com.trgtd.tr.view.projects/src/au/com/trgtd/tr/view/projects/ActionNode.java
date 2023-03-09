@@ -303,7 +303,7 @@ public class ActionNode extends AbstractNode implements EditCookie,
         if (action == null) {
             return;
         }
-        Data data = (Data) DataLookup.instance().lookup(Data.class);
+        Data data = DataLookup.instance().lookup(Data.class);
         if (data == null) {
             return;
         }
@@ -339,7 +339,7 @@ public class ActionNode extends AbstractNode implements EditCookie,
         if (action == null) {
             return;
         }
-        Data data = (Data) DataLookup.instance().lookup(Data.class);
+        Data data = DataLookup.instance().lookup(Data.class);
         if (data == null) {
             return;
         }
@@ -677,7 +677,7 @@ public class ActionNode extends AbstractNode implements EditCookie,
 
         if (project == null) {
             // move to single actions
-            Data data = (Data) DataLookup.instance().lookup(Data.class);
+            Data data = DataLookup.instance().lookup(Data.class);
             if (data != null) {
                 action.removeFromParent();
                 data.getRootActions().add(action);

@@ -111,8 +111,7 @@ public class AddProjectAction extends CookieAction {
     }
     
     protected void performAction(Node[] nodes) {
-        AddProjectCookie cookie =
-                (AddProjectCookie)nodes[0].getCookie(AddProjectCookie.class);
+        AddProjectCookie cookie = nodes[0].getCookie(AddProjectCookie.class);
         if (cookie != null) {
             cookie.addProject();
         }

@@ -147,7 +147,7 @@ public class FilterTopic extends FilterChoice implements PropertyChangeListener 
         if (name == null) {
             return null;
         }
-        Data data = (Data)DataLookup.instance().lookup(Data.class);
+        Data data = DataLookup.instance().lookup(Data.class);
         Manager<Topic> manager = data.getTopicManager();
         for (Topic topic : manager.list()) {
             if (topic.getName().equals(name)) {
@@ -217,7 +217,7 @@ public class FilterTopic extends FilterChoice implements PropertyChangeListener 
             if (topicManager != null) {
                 topicManager.removeObserver(this);
             }
-            Data data = (Data)DataLookup.instance().lookup(Data.class);
+            Data data = DataLookup.instance().lookup(Data.class);
             if (data == null) {
                 topicManager = null;
                 topics = new Vector<>();
@@ -288,7 +288,7 @@ public class FilterTopic extends FilterChoice implements PropertyChangeListener 
                 Object object = getSelectedItem();
                 if (object instanceof TopicMultiple tm) {
                     Vector<Topic> all;
-                    Data data = (Data)DataLookup.instance().lookup(Data.class);
+                    Data data = DataLookup.instance().lookup(Data.class);
                     if (data == null) {
                         all = new Vector<>();
                     } else {
@@ -315,7 +315,7 @@ public class FilterTopic extends FilterChoice implements PropertyChangeListener 
                     TopicsComboBoxModel model = (TopicsComboBoxModel)getModel();
                     TopicMultiple tm = model.multiple;
                     Vector<Topic> all;
-                    Data data = (Data)DataLookup.instance().lookup(Data.class);
+                    Data data = DataLookup.instance().lookup(Data.class);
                     if (data == null) {
                         all = new Vector<>();
                     } else {

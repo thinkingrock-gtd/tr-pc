@@ -59,7 +59,7 @@ public class PrintDetailAction extends CookieAction {
     
     @Override
     public void performAction(Node[] nodes) {
-        PrintDetailCookie cookie = (PrintDetailCookie)nodes[0].getCookie(PrintDetailCookie.class);
+        PrintDetailCookie cookie = nodes[0].getCookie(PrintDetailCookie.class);
         if (cookie != null) {
             cookie.printDetail();
         }

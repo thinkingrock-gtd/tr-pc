@@ -66,7 +66,7 @@ public class TopicMap {
             } else {
                 map.clear();
             }
-            data = (Data) DataLookup.instance().lookup(Data.class);
+            data = DataLookup.instance().lookup(Data.class);
             if (data == null) {
                 return;
             }

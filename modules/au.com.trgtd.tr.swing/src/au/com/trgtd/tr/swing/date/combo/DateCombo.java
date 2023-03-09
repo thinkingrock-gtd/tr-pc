@@ -156,7 +156,7 @@ public class DateCombo extends TRComboBox<DateItem> implements ActionListener {
             return chosen;
         }
         for (int i = 0; i < getItemCount(); i++) {
-            DateItem item = (DateItem)getItemAt(i);
+            DateItem item = getItemAt(i);
             if (item.type == type && item.value == value) {
                 return item;
             }

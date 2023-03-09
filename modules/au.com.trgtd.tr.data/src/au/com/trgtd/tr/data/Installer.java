@@ -97,7 +97,7 @@ public class Installer extends ModuleInstall {
 
     @Override
     public void close() {
-        DataStore ds = (DataStore) DataStoreLookup.instance().lookup(DataStore.class);
+        DataStore ds = DataStoreLookup.instance().lookup(DataStore.class);
         if (ds != null) {
             ds.stopDaemon();
             try {

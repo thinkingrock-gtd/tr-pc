@@ -77,7 +77,7 @@ public class MatcherEditorSearchText extends MatcherEditorBase {
 
     @Override
     public Serializable getSerializable() {
-        return (Serializable) searchText.getText();
+        return searchText.getText();
     }
 
     @Override

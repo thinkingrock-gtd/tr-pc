@@ -146,7 +146,7 @@ final class ProjectsOptionsPanel extends JPanel {
         ProjectsPrefs.setDefaultActionDueDate(defaultActionDueDateCheckBox.isSelected());
         ProjectsPrefs.setNewActionState((ProjectsPrefs.ActionState) actionStatesCombo.getSelectedItem());
         ProjectsPrefs.setEditCreateDate(createDateCheckBox.isSelected());
-        ProjectsPrefs.setPrintFormat(((PageSizeChoice)printFormatCombo.getSelectedItem()).name());
+        ProjectsPrefs.setPrintFormat(((Enum<PageSizeChoice>)printFormatCombo.getSelectedItem()).name());
     }
 
     boolean valid() {

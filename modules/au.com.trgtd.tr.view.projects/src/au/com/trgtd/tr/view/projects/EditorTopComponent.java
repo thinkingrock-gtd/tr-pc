@@ -114,7 +114,7 @@ public final class EditorTopComponent extends Window implements Lookup.Provider 
         if (initialised) {
             return;
         }
-        Data data = (Data) DataLookup.instance().lookup(Data.class);
+        Data data = DataLookup.instance().lookup(Data.class);
         if (data == null) {
             LOG.severe("Data model could not be found.");
             return;
@@ -128,7 +128,7 @@ public final class EditorTopComponent extends Window implements Lookup.Provider 
     @Override
     protected void componentOpened() {
         super.componentOpened();
-        Data data = (Data) DataLookup.instance().lookup(Data.class);
+        Data data = DataLookup.instance().lookup(Data.class);
         if (data != null) {
             view(data.getRootProjects());
         }
@@ -459,11 +459,11 @@ public final class EditorTopComponent extends Window implements Lookup.Provider 
 
     @Override
     public void takeFocus() {
-        ActionNode actionNode = (ActionNode) lookup.lookup(ActionNode.class);
+        ActionNode actionNode = lookup.lookup(ActionNode.class);
         if (actionNode != null) {
             actionPanel.requestFocusInWindow();
         } else {
-            ProjectNode projectNode = (ProjectNode) lookup.lookup(ProjectNode.class);
+            ProjectNode projectNode = lookup.lookup(ProjectNode.class);
             if (projectNode != null) {
                 projectPanel.requestFocusInWindow();
             }

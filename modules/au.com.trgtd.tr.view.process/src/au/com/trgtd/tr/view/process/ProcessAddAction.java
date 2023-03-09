@@ -44,7 +44,7 @@ public class ProcessAddAction extends CookieAction {
     }
 
     private void enableDisable() {
-        Data data = (Data) DataLookup.instance().lookup(Data.class);
+        Data data = DataLookup.instance().lookup(Data.class);
         setEnabled(data != null);
     }
 
@@ -87,7 +87,7 @@ public class ProcessAddAction extends CookieAction {
         if (null == nodes || nodes.length < 1) {
             return false;
         }
-        ProcessAddCookie cookie = (ProcessAddCookie) nodes[0].getCookie(ProcessAddCookie.class);
+        ProcessAddCookie cookie = nodes[0].getCookie(ProcessAddCookie.class);
         return cookie != null && cookie.canProcessAdd();
     }
 
@@ -96,7 +96,7 @@ public class ProcessAddAction extends CookieAction {
         if (null == nodes || nodes.length < 1) {
             return;
         }
-        ProcessAddCookie cookie = (ProcessAddCookie) nodes[0].getCookie(ProcessAddCookie.class);
+        ProcessAddCookie cookie = nodes[0].getCookie(ProcessAddCookie.class);
         if (cookie != null) {
             cookie.processAdd();
         }

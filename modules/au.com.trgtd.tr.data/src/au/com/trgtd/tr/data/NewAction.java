@@ -59,7 +59,7 @@ public final class NewAction extends CallableSystemAction {
     @Override
     public void performAction() {
 
-        DataStore ds = (DataStore) DataStoreLookup.instance().lookup(DataStore.class);
+        DataStore ds = DataStoreLookup.instance().lookup(DataStore.class);
         if (ds == null) {
             LOG.severe("Datastore was not found."); // No I18N
             return;
@@ -91,7 +91,7 @@ public final class NewAction extends CallableSystemAction {
         }
         
         // save review actions screens and force reload
-        DAOProvider screensDAOProvider = (DAOProvider)DAOProviderLookup.instance().lookup(DAOProvider.class);
+        DAOProvider screensDAOProvider = DAOProviderLookup.instance().lookup(DAOProvider.class);
         if (screensDAOProvider != null) {
             try {
                 LOG.info("Saving actions screens.");                

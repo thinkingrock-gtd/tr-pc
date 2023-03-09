@@ -54,7 +54,7 @@ final class RecurrenceTaskThread extends Thread {
     }
     
     private void process() {
-        Data data = (Data)DataLookup.instance().lookup(Data.class);
+        Data data = DataLookup.instance().lookup(Data.class);
         if (data == null) {
             LOG.severe("Data instance could not be obtained.");
             return;

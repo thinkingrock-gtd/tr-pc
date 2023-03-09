@@ -59,7 +59,7 @@ public class ExportTemplateAction extends CookieAction {
     
     @Override
     public void performAction(Node[] nodes) {
-        ExportTemplateCookie cookie = (ExportTemplateCookie)nodes[0].getCookie(ExportTemplateCookie.class);
+        ExportTemplateCookie cookie = nodes[0].getCookie(ExportTemplateCookie.class);
         if (cookie != null) {
             cookie.exportTemplate();
         }

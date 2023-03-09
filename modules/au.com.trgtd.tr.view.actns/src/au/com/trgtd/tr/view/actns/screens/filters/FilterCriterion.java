@@ -61,7 +61,7 @@ public abstract class FilterCriterion extends FilterChoice
             }
             String[] values = new String[m.getChosen().size()];
             for (int i = 0; i < values.length; i++) {
-                values[i] = String.valueOf(((Value)m.getChosen().get(i)).getID());
+                values[i] = String.valueOf((m.getChosen().get(i)).getID());
             }
             return values;
         }
@@ -105,7 +105,7 @@ public abstract class FilterCriterion extends FilterChoice
             return false;
         }
         Value thisValue = (Value)combo.getSelectedItem();
-        Value thatValue = (Value)((FilterCriterion)object).combo.getSelectedItem();
+        Value thatValue = (Value) ((FilterChoice) object).combo.getSelectedItem();
         return Utils.equal(thisValue, thatValue);
     }
     

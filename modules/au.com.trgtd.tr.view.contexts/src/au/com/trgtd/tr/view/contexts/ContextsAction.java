@@ -61,7 +61,7 @@ public class ContextsAction extends CallableSystemAction implements InitialActio
 
     private void enableDisable() {
         EventQueue.invokeLater(() -> {
-            Data data = (Data) DataLookup.instance().lookup(Data.class);
+            Data data = DataLookup.instance().lookup(Data.class);
             setEnabled(data != null);
         });
     }
@@ -75,7 +75,7 @@ public class ContextsAction extends CallableSystemAction implements InitialActio
     @Override
     public void performAction() {
         EventQueue.invokeLater(() -> {
-            Data data = (Data) DataLookup.instance().lookup(Data.class);
+            Data data = DataLookup.instance().lookup(Data.class);
             if (data == null) {
                 return;
             }

@@ -31,6 +31,7 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.UIManager;
+import javax.swing.text.JTextComponent;
 import net.miginfocom.swing.MigLayout;
 import org.openide.util.NbBundle;
 import tr.model.actor.Actor;
@@ -148,7 +149,7 @@ public class ActorDialogPanel extends JPanel {
     private class EmailVerifier extends InputVerifier {
         @Override
         public boolean verify(JComponent input) {
-            String text = ((JTextField)input).getText().trim();
+            String text = ((JTextComponent) input).getText().trim();
             boolean valid = text.length() == 0 || UtilsEmail.isEmailAddress(text);
             okButton.setEnabled(valid);
             msgLabel.setText(valid ? "" : "Email address does not have a valid format.");
@@ -159,7 +160,7 @@ public class ActorDialogPanel extends JPanel {
     private class NameVerifier extends InputVerifier {
         @Override
         public boolean verify(JComponent input) {
-            String text = ((JTextField)input).getText().trim();
+            String text = ((JTextComponent) input).getText().trim();
             boolean valid = text.trim().length() > 0;
             okButton.setEnabled(valid);
             msgLabel.setText(valid ? "" : "Delegate name must be entered.");

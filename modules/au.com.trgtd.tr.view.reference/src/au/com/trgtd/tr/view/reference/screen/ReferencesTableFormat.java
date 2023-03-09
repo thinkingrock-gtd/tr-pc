@@ -59,7 +59,7 @@ public class ReferencesTableFormat implements AdvancedTableFormat<Information> {
     
     public Object getColumnValue(Information baseObject, int column) {
         
-        Information info = (Information)baseObject;
+        Information info = baseObject;
         
         Color bg = info.getTopic().getBackground();
         Color fg = info.getTopic().getForeground();

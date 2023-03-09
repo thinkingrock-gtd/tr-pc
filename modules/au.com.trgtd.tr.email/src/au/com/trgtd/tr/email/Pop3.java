@@ -817,7 +817,7 @@ public class Pop3 {
 
             // boucle sur les parties d'un message...
             for (int i = 0, n = multipart.getCount(); i < n; i++) {
-                Part part = (Part) multipart.getBodyPart(i);
+                Part part = multipart.getBodyPart(i);
                 String disposition = part.getDisposition();
                 if ((disposition != null) && (disposition.equals(Part.ATTACHMENT) || disposition.equals(Part.INLINE))) {
                     String filename = MimeUtility.decodeText(part.getFileName()); // pour Lotus Notes...
@@ -861,7 +861,7 @@ public class Pop3 {
 
             // boucle sur les parties d'un message...
             for (int i = 0, n = multipart.getCount(); i < n; i++) {
-                Part part = (Part) multipart.getBodyPart(i);
+                Part part = multipart.getBodyPart(i);
                 String disposition = part.getDisposition();
                 String ctype = part.getContentType();
                 ContentType xctype = new ContentType(ctype.toLowerCase());
@@ -940,7 +940,7 @@ public class Pop3 {
 
             // boucle sur les parties d'un message...
             for (int i = 0, n = multipart.getCount(); i < n; i++) {
-                Part part = (Part) multipart.getBodyPart(i);
+                Part part = multipart.getBodyPart(i);
                 Object content = part.getContent();
                 if (content instanceof Multipart mp) {
                     body = getBodyHandleMultipart(mp);
@@ -999,7 +999,7 @@ public class Pop3 {
 
             // boucle sur les parties d'un message...
             for (int i = 0, n = multipart.getCount(); i < n; i++) {
-                Part part = (Part) multipart.getBodyPart(i);
+                Part part = multipart.getBodyPart(i);
                 Object content = part.getContent();
                 if (content instanceof Multipart mp) {
                     body = getBodyHandleMultipart(mp, contentType);

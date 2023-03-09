@@ -70,7 +70,7 @@ public class ReferencesPanel extends JPanel implements ListSelectionListener, Ob
         super();
         this.refsProvider = refsProvider;
         this.refsMatcherEditor = matcherEditor;
-        this.data = (Data)DataLookup.instance().lookup(Data.class);
+        this.data = DataLookup.instance().lookup(Data.class);
         initComponents();
     }
     
