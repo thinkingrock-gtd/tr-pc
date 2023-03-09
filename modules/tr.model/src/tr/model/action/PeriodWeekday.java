@@ -107,25 +107,25 @@ public class PeriodWeekday extends Period {
         int days = 0;
         switch (calendar.get(Calendar.DAY_OF_WEEK)) {
             case Calendar.MONDAY:
-                days = weekdays + (( (weekdays / 5)) * 2);
+                days = weekdays + ( ((weekdays + 0) / 5) * 2);
                 break;
             case Calendar.TUESDAY:
-                days = weekdays + (( ((weekdays + 1) / 5)) * 2);
+                days = weekdays + ( ((weekdays + 1) / 5) * 2);
                 break;
             case Calendar.WEDNESDAY:
-                days = weekdays + (( ((weekdays + 2) / 5)) * 2);
+                days = weekdays + ( ((weekdays + 2) / 5) * 2);
                 break;
             case Calendar.THURSDAY:
-                days = weekdays + (( ((weekdays + 3) / 5)) * 2);
+                days = weekdays + ( ((weekdays + 3) / 5) * 2);
                 break;
             case Calendar.FRIDAY:
-                days = weekdays + (( ((weekdays + 4) / 5)) * 2);
+                days = weekdays + ( ((weekdays + 4) / 5) * 2);
                 break;
             case Calendar.SATURDAY:
-                days = weekdays + (( ((weekdays - 1) / 5)) * 2) + 1;
+                days = weekdays + ( ((weekdays - 1) / 5) * 2) + 1;
                 break;
             case Calendar.SUNDAY:
-                days = weekdays + (( ((weekdays - 1) / 5)) * 2);
+                days = weekdays + ( ((weekdays - 1) / 5) * 2);
                 break;
         }
 
@@ -143,25 +143,25 @@ public class PeriodWeekday extends Period {
         int days = 0;
         switch (calendar.get(Calendar.DAY_OF_WEEK)) {
             case Calendar.FRIDAY:
-                days = weekdays + (( (weekdays / 5)) * 2);
+                days = weekdays + ( ((weekdays + 0) / 5) * 2);
                 break;
             case Calendar.THURSDAY:
-                days = weekdays + (( ((weekdays + 1) / 5)) * 2);
+                days = weekdays + ( ((weekdays + 1) / 5) * 2);
                 break;
             case Calendar.WEDNESDAY:
-                days = weekdays + (( ((weekdays + 2) / 5)) * 2);
+                days = weekdays + ( ((weekdays + 2) / 5) * 2);
                 break;
             case Calendar.TUESDAY:
-                days = weekdays + (( ((weekdays + 3) / 5)) * 2);
+                days = weekdays + ( ((weekdays + 3) / 5) * 2);
                 break;
             case Calendar.MONDAY:
-                days = weekdays + (( ((weekdays + 4) / 5)) * 2);
+                days = weekdays + ( ((weekdays + 4) / 5) * 2);
                 break;
             case Calendar.SUNDAY:
-                days = weekdays + (( ((weekdays - 1) / 5)) * 2) + 1;
+                days = weekdays + ( ((weekdays - 1) / 5) * 2) + 1;
                 break;
             case Calendar.SATURDAY:
-                days = weekdays + (( ((weekdays - 1) / 5)) * 2);
+                days = weekdays + ( ((weekdays - 1) / 5) * 2);
                 break;
         }
 

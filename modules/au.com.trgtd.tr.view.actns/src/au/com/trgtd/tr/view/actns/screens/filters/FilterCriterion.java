@@ -105,7 +105,7 @@ public abstract class FilterCriterion extends FilterChoice
             return false;
         }
         Value thisValue = (Value)combo.getSelectedItem();
-        Value thatValue = (Value)((FilterChoice)object).combo.getSelectedItem();
+        Value thatValue = (Value) ((FilterChoice) object).combo.getSelectedItem();
         return Utils.equal(thisValue, thatValue);
     }
     

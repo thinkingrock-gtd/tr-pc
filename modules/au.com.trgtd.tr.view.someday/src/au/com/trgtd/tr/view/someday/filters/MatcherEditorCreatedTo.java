@@ -72,7 +72,7 @@ public class MatcherEditorCreatedTo extends MatcherEditorBase
     }
     
     public Serializable getSerializable() {
-        return (Serializable)dateCombo.getSelectedItem();
+        return (Serializable) dateCombo.getSelectedItem();
     }
     
     public void setSerializable(Serializable serializable) {

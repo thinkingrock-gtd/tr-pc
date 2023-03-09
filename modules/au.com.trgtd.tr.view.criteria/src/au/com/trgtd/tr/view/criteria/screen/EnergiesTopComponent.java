@@ -112,7 +112,7 @@ public final class EnergiesTopComponent extends Window implements ExplorerManage
         outlineView.getOutline().setRowSelectionAllowed(true);
 
         // do not show headings
-        JTableHeader header = (outlineView.getOutline()).getTableHeader();
+        JTableHeader header = outlineView.getOutline().getTableHeader();
         header.setMaximumSize(new Dimension(0,0));
         header.setMinimumSize(new Dimension(0,0));
         header.setPreferredSize(new Dimension(0,0));

@@ -516,10 +516,10 @@ public final class Recurrence extends ObservableImpl implements Notable {
                 days = weekdays + ( ((weekdays + 4) / 5) * 2);
                 break;
             case Calendar.SATURDAY:
-                days = weekdays + (( ((weekdays - 1) / 5)) * 2) + 1;
+                days = weekdays + ( ((weekdays - 1) / 5) * 2) + 1;
                 break;
             case Calendar.SUNDAY:
-                days = weekdays + (( ((weekdays - 1) / 5)) * 2);
+                days = weekdays + ( ((weekdays - 1) / 5) * 2);
                 break;
         }
         start.add(Calendar.DAY_OF_YEAR, days);

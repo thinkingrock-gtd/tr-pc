@@ -182,7 +182,7 @@ public class GoalChildren extends Children.Keys<Object> implements PropertyChang
 
             int row = view.getOutline().getSelectedRow();
 
-            goalCtrl.moveAfterSubgoal(((Ctrl)src).getID(), ((Ctrl)dst).getID());
+            goalCtrl.moveAfterSubgoal(((Ctrl) src).getID(), ((Ctrl) dst).getID());
 
             view.getOutline().setRowSelectionInterval(row + 1, row + 1);
             fireChangeEvent();
@@ -201,7 +201,7 @@ public class GoalChildren extends Children.Keys<Object> implements PropertyChang
 
             int row = view.getOutline().getSelectedRow();
 
-            goalCtrl.moveBeforeSubgoal(((Ctrl)src).getID(), ((Ctrl)dst).getID());
+            goalCtrl.moveBeforeSubgoal(((Ctrl) src).getID(), ((Ctrl) dst).getID());
 
             view.getOutline().setRowSelectionInterval(row - 1, row - 1);
             fireChangeEvent();
