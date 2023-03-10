@@ -141,3 +141,21 @@ verify-ui:
 # Shows some diagnostics used by ant
 diagnostics:
     ant -diagnostics
+
+
+# Clears the cache of the local development version of ThinkingRock
+[linux]
+[macos]
+clear-cache-dev:
+	rm -rI ./build/testuserdir/var/cache/
+
+# Clears the cache of production versions of ThinkingRock
+[linux]
+clear-cache-prod:
+	rm -rI ~/.cache/trgtd/
+
+# Clears the cache of production versions of ThinkingRock
+[macos]
+clear-cache-prod:
+	rm -rI ~/Library/Caches/trgtd/
+
