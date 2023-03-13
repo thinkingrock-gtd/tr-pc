@@ -1,9 +1,12 @@
+set windows-shell := ["powershell.exe", "-NoLogo", "-Command"]
+
 @_list:
     just --list --unsorted
 
 repodir := `pwd`
 
 netbeans-plat-version := "17"
+win_appdata_dir := env_var('APPDATA')
 
 alias verify-ci := verify-tr
 
@@ -149,6 +152,11 @@ diagnostics:
 clear-cache-dev:
 	rm -rI ./build/testuserdir/var/cache/
 
+# Clears the cache of the local development version of ThinkingRock
+[windows]
+clear-cache-dev:
+	rm -r -fo ./build/testuserdir/var/cache/
+
 # Clears the cache of production versions of ThinkingRock
 [linux]
 clear-cache-prod:
@@ -159,3 +167,7 @@ clear-cache-prod:
 clear-cache-prod:
 	rm -rI ~/Library/Caches/trgtd/
 
+# Clears the cache of production versions of ThinkingRock
+[windows]
+clear-cache-prod:
+	rm -r -fo {{win_appdata_dir}}\..\Local\trgtd\Cache\
