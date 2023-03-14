@@ -27,6 +27,7 @@ verify: verify-headless verify-ui
 
 # Verifies thinking rock modules (only headless)
 verify-tr:
+    just verify-module au.com.trgtd.tr.appl
     just verify-module au.com.trgtd.tr.archive
     just verify-module au.com.trgtd.tr.cal
     just verify-module au.com.trgtd.tr.calendar
@@ -36,7 +37,6 @@ verify-tr:
     just verify-module au.com.trgtd.tr.data.recent
     just verify-module au.com.trgtd.tr.datastore
     just verify-module au.com.trgtd.tr.datastore.xstream
-    just verify-module au.com.trgtd.tr.datastore.xstream2
     just verify-module au.com.trgtd.tr.email
     just verify-module au.com.trgtd.tr.export
     just verify-module au.com.trgtd.tr.export.actions
@@ -47,11 +47,16 @@ verify-tr:
     just verify-module au.com.trgtd.tr.find
     just verify-module au.com.trgtd.tr.imports
     just verify-module au.com.trgtd.tr.imports.thoughts
+    just verify-module au.com.trgtd.tr.l10n.de_DE
+    just verify-module au.com.trgtd.tr.l10n.fr_FR
+    just verify-module au.com.trgtd.tr.l10n.en_US
+    just verify-module au.com.trgtd.tr.l10n.es_ES
     just verify-module au.com.trgtd.tr.prefs.actions
     just verify-module au.com.trgtd.tr.prefs.data
     just verify-module au.com.trgtd.tr.prefs.dates
     just verify-module au.com.trgtd.tr.prefs.projects
     just verify-module au.com.trgtd.tr.prefs.recurrence
+    just verify-module au.com.trgtd.tr.prefs.ui
     just verify-module au.com.trgtd.tr.report.project.detail
     just verify-module au.com.trgtd.tr.report.project.outline
     just verify-module au.com.trgtd.tr.report.projects.future
@@ -71,6 +76,7 @@ verify-tr:
     just verify-module au.com.trgtd.tr.sync.iphone
     just verify-module au.com.trgtd.tr.task.activation
     just verify-module au.com.trgtd.tr.task.messages
+    just verify-module au.com.trgtd.tr.task.recurrence
     just verify-module au.com.trgtd.tr.util
     just verify-module au.com.trgtd.tr.view
     just verify-module au.com.trgtd.tr.view.actn
@@ -82,6 +88,7 @@ verify-tr:
     just verify-module au.com.trgtd.tr.view.delegates
     just verify-module au.com.trgtd.tr.view.filters
     just verify-module au.com.trgtd.tr.view.goals
+    just verify-module au.com.trgtd.tr.view.overview
     just verify-module au.com.trgtd.tr.view.process
     just verify-module au.com.trgtd.tr.view.project
     just verify-module au.com.trgtd.tr.view.projects
@@ -93,19 +100,17 @@ verify-tr:
     just verify-module tr.extract.reports.projectoutline
     just verify-module tr.model
 
-# The following modules don't have test. Need to be included if they get any.
-# just verify-module au.com.trgtd.tr.appl
-# just verify-module au.com.trgtd.tr.extract.clean
-# just verify-module au.com.trgtd.tr.i18n
-# just verify-module au.com.trgtd.tr.l10n.nl_NL
-# just verify-module au.com.trgtd.tr.prefs.ui
-# just verify-module au.com.trgtd.tr.task.recurrence
-# just verify-module au.com.trgtd.tr.updates
-# just verify-module au.com.trgtd.tr.view.overview
-# just verify-module au.com.trgtd.tr.l10n.de_DE
-# just verify-module au.com.trgtd.tr.l10n.en_US
-# just verify-module au.com.trgtd.tr.l10n.es_ES
-# just verify-module au.com.trgtd.tr.l10n.fr_FR
+# The following modules are not active:
+# - Export/Report Cleanup - Preferences for removing old export and report files - doesn't build
+#   just verify-module au.com.trgtd.tr.extract.clean
+# - TR Languages - Planned to replace previous localization modules - not implemented yet
+#   just verify-module au.com.trgtd.tr.i18n
+# - Dutch Translation - missing the OverviewSVGProvider_nl_NL.java class
+#   just verify-module au.com.trgtd.tr.l10n.nl_NL
+# - TR Update Center - no code
+#   just verify-module au.com.trgtd.tr.updates
+# - XStream2 seems to be am unfinished modified copy of au.com.trgtd.tr.datastore.xstream
+#   just verify-module au.com.trgtd.tr.datastore.xstream2
 
 
 # Verifies the modules of external dependencies
