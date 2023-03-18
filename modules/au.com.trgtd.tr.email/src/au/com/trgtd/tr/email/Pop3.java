@@ -445,9 +445,6 @@ public class Pop3 {
                 props.put("mail.pop3.socketFactory.class", "javax.net.ssl.SSLSocketFactory");
                 props.put("mail.pop3.socketFactory.fallback", "true");
             } else if (c_protocol.equals(IMAP)) {
-                //props.put("mail.imap.auth.login.disable", "false");
-                //props.put("mail.imap.auth.plain.disable", "true");
-                //props.put("mail.imap.fetchsize", "" + 16384);
                 props.put("mail.imap.socketFactory.port", "" + c_port);
                 props.put("mail.imap.socketFactory.class", "javax.net.ssl.SSLSocketFactory");
                 props.put("mail.imap.socketFactory.fallback", "true");
@@ -1214,9 +1211,6 @@ public class Pop3 {
         private int c_size = -1;
         private String c_header = "";
 
-        /**
-         * Constructeur...
-         */
         public FileBinary(String _file) {
             this.c_file = _file;
             this.attach(_file);
@@ -1352,11 +1346,8 @@ public class Pop3 {
                 return '-';
             }
         }
-    } // fin classe FileBinary
+    }
 
-    /**
-     * main...
-     */
     public static void main(String[] args) {
         //Pop3 pop = new Pop3("c:\\temp", "pop.xxx.fr", "xxxx", "xxxx"); // protcole pop3 par defaut!
         Pop3 pop = new Pop3("c:\\temp", "xxxx.org", "xxxx", "xxxx", IMAPS_PORT, IMAP);
@@ -1368,128 +1359,11 @@ public class Pop3 {
         try {
             System.err.println("Start Job --- Pop3");
 
-            // dÈbut lecture d'un fichier eml (texte)
-            /*
-            MimeMessage mime_mess = Pop3.Tools.getMimeMessage("c:\\temp\\002b01c7xxxa36c95f0$bb64668a@unixxxip85.eml");
-
-            System.out.println("\tFrom : " + mime_mess.getFrom()[0]);
-            System.out.println("\tSubject : " + mime_mess.getSubject());
-            System.out.println("\tDate : " + mime_mess.getSentDate());
-            Address[] address = mime_mess.getReplyTo();
-            System.out.println("\tReplyTo : " + MimeUtility.decodeText(address[0].toString()));
-
-            Vector vec_file_mess = Pop3.Tools.getFile(mime_mess);
-            if (!vec_file_mess.isEmpty())
-            {
-            for (int j=0; j<vec_file_mess.size(); j++)
-            {
-            String a_file = (String) vec_file_mess.elementAt(j);
-
-            // copier les fichiers hors du dossier temporaire!!!
-            System.out.println("\tPathFileName : " + a_file);
-            }
-            }
-            else System.out.println("\tPas de fichier en attachement!");
-
-            // le body
-            try
-            {
-            String body = Pop3.Tools.getBody(mime_mess);
-            System.out.println("\n\tBody : " + body);
-            }
-            catch(Exception e) { System.out.println("\n\tBody : " + e); }
-
-            // body html pour les mail au format html uniquement...
-            try
-            {
-            String bodyhtml = Pop3.Tools.getBodyHtml(mime_mess);
-            System.out.println("\n\tBodyHtml: " + bodyhtml);
-            }
-            catch(Exception e) { System.out.println("\n\tBodyHtml : " + e); }
-             */
             // fin lecture d'un fichier eml (texte)
             // POP3 mode : INBOX par defaut
             // IMAP4 mode : INBOX par defaut, dispo normalement : Drafts, Sent, Trash
             Message[] pop_message = pop.getMail(true); //  dossier courant "INBOX", true debug
 
-            /*
-            // IMAP4 liste tous les dossiers du folder courant
-            //UIDFolder ufolder = (UIDFolder) pop.getFolder();
-            //System.err.println("MESSAGE UID :" + ufolder.getUID(pop_message[i]));
-
-            Folder[] xfolders = pop.getRootFolders();
-            if (xfolders ==null || xfolders.length == 0) System.err.println("***  IMAP Root Folder : ?? ");
-            else
-            {
-            System.err.println("**** IMAP Root Folder : ");
-            for (int i=0, n=xfolders.length; i<n; i++)
-            System.err.println("\tFolder : -"+i+" "+xfolders[i].getName());
-            }
-
-            // dossier courant
-            xfolders = pop.getFolders();
-            if (xfolders ==null || xfolders.length == 0) System.err.println("***  NO Folder in current folder!");
-            else
-            {
-            System.err.println("**** Folder : ");
-            for (int i=0, n=xfolders.length; i<n; i++)
-            System.err.println("\tFolder : -"+i+" "+xfolders[i].getName());
-            }
-
-            // change de dossier...
-            //pop_message = pop.getMail("Test"+pop.getSep()+"SubTest", true); //  dossier courant "INBOX", true debug
-            pop_message = pop.getMail("Test", true); //  dossier courant "INBOX", true debug
-
-            xfolders = pop.getRootFolders();
-            if (xfolders ==null || xfolders.length == 0) System.err.println("***  IMAP Root Folder : ?? ");
-            else
-            {
-            System.err.println("**** IMAP Root Folder : ");
-            for (int i=0, n=xfolders.length; i<n; i++)
-            System.err.println("\tFolder : -"+i+" "+xfolders[i].getName());
-            }
-
-            // dossier courant
-            xfolders = pop.getFolders();
-            if (xfolders ==null || xfolders.length == 0) System.err.println("***  NO Folder in current folder!");
-            else
-            {
-            System.err.println("**** Folder : ");
-            for (int i=0, n=xfolders.length; i<n; i++)
-            System.err.println("\tFolder : -"+i+" "+xfolders[i].getName());
-            }
-
-            Folder[] subcr_folder = pop.getSubscribedFolder();
-            if (subcr_folder == null || subcr_folder.length == 0) System.err.println("*** NO Folder Subcribe in current folder!");
-            else
-            {
-            for (int i=0, n=subcr_folder.length; i<n; i++)
-            System.err.println("************ Folder Subcribe : -"+i+" "+xfolders[i].getName());
-            }
-
-            Folder[] unsubcr_folder = pop.getUnSubscribedFolder();
-            if (unsubcr_folder == null || unsubcr_folder.length == 0) System.err.println("*** NO Folder UnSubcribe in current folder!");
-            else
-            {
-            for (int i=0, n=unsubcr_folder.length; i<n; i++)
-            System.err.println("************ Folder UnSubcribe : -"+i+" "+xfolders[i].getName());
-            }
-             */
-            // IMAP4 crÈation, copie & destruction (PERMANENT) de dossier
-            /*
-            System.out.println("*** DELETE FOLDER : "+ pop.deleteFolder("Test"));
-            System.out.println("*** CREATE FOLDER : "+ pop.createFolder("Test"));
-            System.out.println("*** COPY FOLDER : "+ pop.copyFolderMessages("Trash", "Test"));
-             */
-            //System.out.println("*** SUBCRIBE/UNSUBCRIBE FOLDER : "+ pop.setSubscribed("Test", false));
-            //System.out.println("*** RENAME FOLDER : "+  pop.renameFolder("Test", "Testy"));
-            //System.out.println("*** DELETE FOLDER : "+ pop.deleteFolder("Testy"));
-            //System.out.println("*** COPY FOLDER : "+ pop.copyFolderMessages("Test", "SubTest"));
-            // IMAP4 liste tous les dossiers de Test
-            //pop_message = pop.getMail("Test", true); // on change de dossier courant pour root
-            //System.out.println("*** CREATE FOLDER : "+ pop.createFolder("Test.SubTest"));
-            //System.out.println("*** SUBCRIBE/UNSUBCRIBE FOLDER : "+ pop.setSubscribed("Test.SubTest", true));
-            //System.out.println("*** DELETE FOLDER : "+ pop.deleteFolder("Test.SubTest"));
             for (int i = 0, n = pop_message.length; i < n; i++) {
                 //pop_message[i].writeTo(System.out);
 
@@ -1498,98 +1372,9 @@ public class Pop3 {
                 System.err.println("\tDate : " + pop_message[i].getSentDate());
                 Address[] add = pop_message[i].getReplyTo();
                 System.err.println("\tReplyTo : " + add[0].toString());
-                /*
-                MimeMessage mess = (MimeMessage) pop_message[i];
-
-                String[] strTo = mess.getHeader("To");
-                if (strTo !=null) // ?
-                for (int j=0, m=strTo.length; j<m; j++)
-                System.out.println("\tTo : " + strTo[j]);
-
-                String[] strReceived = mess.getHeader("Received");
-                if (strReceived !=null) // impossible
-                for (int j=0, m=strReceived.length; j<m; j++)
-                System.out.println("\tReceived : " + strReceived[j]);
-
-                System.out.println("\tMessage-ID : " + mess.getMessageID());
-
-
-                //Enumeration e = mess.getAllHeaders();
-                //while (e.hasMoreElements())
-                //{
-                //        Header header = (Header) e.nextElement();
-                //        System.out.println(header.getName() +" : "+header.getValue());
-                //}
-
-
-                // le body
-                try
-                {
-                String body = Pop3.Tools.getBody(pop_message[i]);
-                System.out.println("\n\tBody : " + body);
-                }
-                catch(Exception e) { System.out.println("\n\tBody : " + e); }
-
-
-                // body html pour les mail au format html uniquement...
-                try
-                {
-                String bodyhtml = Pop3.Tools.getBodyHtml(pop_message[i]);
-                System.out.println("\n\tBodyHtml: " + bodyhtml);
-                }
-                catch(Exception e) { System.out.println("\n\tBodyHtml : " + e); }
-
-                // les fichiers en attachement..
-                Vector vec_file = Pop3.Tools.getFile(pop_message[i]);
-                if (!vec_file.isEmpty())
-                {
-                for (int j=0; j<vec_file.size(); j++)
-                {
-                String a_file = (String) vec_file.elementAt(j);
-
-                // copier les fichiers hors du dossier temporaire!!!
-                System.out.println("\tPathFileName : " + a_file);
-
-                Pop3.FileBinary fb = new Pop3.FileBinary(a_file);
-                System.out.println("\t isPdf : " + fb.isPdf());
-                System.out.println("\t isMSOffice : " + fb.isMSOffice());
-
-                }
-                }
-                else System.out.println("\tPas de fichier en attachement!");
-
-                // les fichiers embarquÈs (dans l'html ou autre...)
-                Vector vec_file_embed = Pop3.Tools.getFileEmbed(pop_message[i], "image/jpeg");
-                if (!vec_file_embed.isEmpty())
-                {
-                for (int j=0; j<vec_file_embed.size(); j++)
-                {
-                String a_file = (String) vec_file_embed.elementAt(j);
-                // copier les fichiers hors du dossier temporaire!!!
-                System.out.println("\tPathFileName Embed: " + a_file);
-                }
-                }
-                else System.out.println("\tPas de fichier embarquÈ!");
-
-                System.out.println();
-
-                // lecture des Flags IMAP4
-                System.out.println("Count read : "+pop.countMessageRead());
-                System.out.println("isNew : "+pop.isNew(i));
-                System.out.println("isRead : "+pop.isRead(i));
-
-                // sauve le message dans un rÈpertoire dÈdier...
-                //Pop3.Tools.saveELM(mess, new File("c:\\temp"));
-
-                System.out.println("isConnected : " + pop.store.isConnected()); // Noop
-
-                // on se prepare ‡ effacer les mails!
-                //pop_message[i].setFlag(Flags.Flag.DELETED, false); // true
-                 */
 
                 System.out.println();
                 System.out.println();
-
             }
 
             System.out.println("End Job --- Pop3");
@@ -1605,4 +1390,4 @@ public class Pop3 {
             }
         }
     }
-} // fin de classe
+}
