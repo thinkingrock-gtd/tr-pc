@@ -165,7 +165,7 @@ public class DayGridPanel extends JLayeredPane {
         EventGroup lastGroup = null;
         EventPanel lastEvent = null;
         for (EventPanel event : events) {
-            if (lastEvent != null && sameStart(event, lastEvent)) {
+            if (lastEvent != null && sameStart(event, lastEvent) && lastGroup != null) {
                 lastGroup.add(event);
             } else {
                 lastGroup = new EventGroup();
@@ -178,7 +178,7 @@ public class DayGridPanel extends JLayeredPane {
         // set group indentations
         lastGroup = null;
         for (EventGroup thisGroup : groups) {
-            if (thisGroup.overlaps(lastGroup)) {
+            if (lastGroup != null && thisGroup.overlaps(lastGroup)) {
                 lastGroup.incrIndentRight();
                 thisGroup.setIndentLeft(lastGroup.indentLeft() + 1);
             }
