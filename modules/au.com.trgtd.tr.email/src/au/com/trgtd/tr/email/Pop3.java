@@ -60,6 +60,8 @@ import javax.mail.internet.MimeUtility;
 
 import com.sun.mail.imap.IMAPSSLStore;
 import com.sun.mail.pop3.POP3SSLStore;
+import java.io.FileNotFoundException;
+import org.openide.util.Exceptions;
 
 /**
  * Classe permettant de rÈcupÈrer des mails sur un serveur Pop3 ou Imap4 (avec SSL ou non) <br>
@@ -1215,19 +1217,15 @@ public class Pop3 {
         }
 
         private void attach(String c_file) {
-            RandomAccessFile c_raf = null;
-            try {
-                c_raf = new RandomAccessFile(c_file, "rw");
+            try (RandomAccessFile c_raf =new RandomAccessFile(c_file, "rw")) {
                 c_size = (int) c_raf.length();
                 c_b = new byte[((c_size < 80) ? c_size : 80)];
                 c_raf.readFully(c_b);
                 c_header = new String(c_b, 0, c_b.length, "8859_1");
-                c_raf.close();
-            } catch (Throwable t) {
-                try {
-                    c_raf.close();
-                } catch (Exception h) {
-                }
+            } catch (FileNotFoundException ex) {
+                Exceptions.printStackTrace(ex);
+            } catch (IOException ex) {
+                Exceptions.printStackTrace(ex);
             }
         }
 
