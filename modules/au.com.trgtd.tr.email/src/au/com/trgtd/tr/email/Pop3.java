@@ -1112,10 +1112,8 @@ public class Pop3 {
          * Retourne un objet Long reprÈsentant un Message-ID
          */
         public static Long getMessageID() {
-            Long c_id = new Long(0);
             double d = java.lang.Math.random();
-            c_id = new Long((long) (d * Long.MAX_VALUE));
-            return c_id;
+            return (long) (d * Long.MAX_VALUE);
         }
 
         /**
