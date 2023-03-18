@@ -1295,48 +1295,27 @@ public class Pop3 {
         }
 
         public boolean isWord() {
-            if (c_file.lastIndexOf("doc") != -1) {
-                return true;
-            }
-            return false;
+            return c_file.lastIndexOf("doc") != -1;
         }
 
         public boolean isExcel() {
-            if (c_file.lastIndexOf("xls") != -1) {
-                return true;
-            }
-            return false;
+            return c_file.lastIndexOf("xls") != -1;
         }
 
         public boolean isPPoint() {
-            if (c_file.lastIndexOf("ppt") != -1) {
-                return true;
-            }
-            return false;
+            return c_file.lastIndexOf("ppt") != -1;
         }
 
         public boolean isHtml() {
-            if (c_file.lastIndexOf("htm") != -1 || c_file.lastIndexOf("html") != -1) {
-                return true;
-            }
-            return false;
+            return c_file.lastIndexOf("htm") != -1 || c_file.lastIndexOf("html") != -1;
         }
 
         public boolean isTxt() {
-            if (c_file.lastIndexOf("txt") != -1) {
-                return true;
-            }
-            return false;
+            return c_file.lastIndexOf("txt") != -1;
         }
 
         public boolean isSuffixe(String _ext) {
-            if (_ext == null) {
-                return false;
-            }
-            if (c_file.lastIndexOf(_ext) != -1) {
-                return true;
-            }
-            return false;
+            return _ext != null && c_file.lastIndexOf(_ext) != -1;
         }
 
         private String tohexString(byte abyte0[], int i, int j) {
