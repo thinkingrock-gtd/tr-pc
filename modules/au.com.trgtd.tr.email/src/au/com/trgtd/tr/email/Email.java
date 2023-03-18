@@ -179,6 +179,7 @@ public class Email extends Thread {
 
                 msgs.add(msg);
                 if (lookForLast) {
+                    @SuppressWarnings("null")
                     String msgUID = pop3folder.getUID(msg);
                     if (msgUID != null && msgUID.equals(lastUID)) {
                         lastUIDIndex = msgs.size() - 1;
