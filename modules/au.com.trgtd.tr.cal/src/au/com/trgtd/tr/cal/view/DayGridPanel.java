@@ -444,10 +444,7 @@ public class DayGridPanel extends JLayeredPane {
             if (thatEnd.before(thisBeg)) {
                 return false;
             }
-            if (thatBeg.after(thisEnd)) {
-                return false;
-            }
-            return true;
+            return !thatBeg.after(thisEnd);
         }
 
         private final Comparator<EventPanel> descEndComparator = (EventPanel event1, EventPanel event2) -> {
