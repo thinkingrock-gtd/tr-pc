@@ -395,29 +395,26 @@ public class Pop3 {
 
         // only for Microsoft Exchange...
         //props.put("mail.pop3.forgettopheaders", "true");
-
         // Setup mail server port
-        if (c_protocol.equals(POP)) {
-            props.put("mail.pop3.port", "" + c_port);
-            if (TLS) {
-                props.put("mail.pop3.starttls.enable", "true");
-            }
-            if (c_timeout != 0) {
-                props.put("mail.pop3.connectiontimeout", "" + c_timeout);
-                props.put("mail.pop3.timeout", "" + c_timeout);
-            }
-        } else if (c_protocol.equals(IMAP)) {
-            props.put("mail.imap.port", "" + c_port);
-
-            if (TLS) {
-                props.put("mail.imap.starttls.enable", "true");
-            }
-            if (c_timeout != 0) {
-                props.put("mail.imap.connectiontimeout", "" + c_timeout);
-                props.put("mail.imap.timeout", "" + c_timeout);
-            }
-        } else {
-            throw new MessagingException("Unknow Protocol : " + c_protocol);
+        switch (c_protocol) {
+            case POP:
+                props.put("mail.pop3.port", "" + c_port);
+                if (TLS) {
+                    props.put("mail.pop3.starttls.enable", "true");
+                }   if (c_timeout != 0) {
+                    props.put("mail.pop3.connectiontimeout", "" + c_timeout);
+                    props.put("mail.pop3.timeout", "" + c_timeout);
+                }   break;
+            case IMAP:
+                props.put("mail.imap.port", "" + c_port);
+                if (TLS) {
+                    props.put("mail.imap.starttls.enable", "true");
+                }   if (c_timeout != 0) {
+                    props.put("mail.imap.connectiontimeout", "" + c_timeout);
+                    props.put("mail.imap.timeout", "" + c_timeout);
+                }   break;
+            default:
+                throw new MessagingException("Unknow Protocol : " + c_protocol);
         }
 
         // mode debug
