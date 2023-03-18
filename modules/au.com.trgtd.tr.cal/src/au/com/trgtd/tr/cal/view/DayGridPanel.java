@@ -435,10 +435,8 @@ public class DayGridPanel extends JLayeredPane {
             return eventEnd(events.get(0).getEvent());
         }
 
-        public boolean overlaps(EventGroup thatGroup) {
-            if (null == thatGroup) {
-                return false;
-            }
+        private boolean overlaps(EventGroup thatGroup) {
+            assert(thatGroup != null);
             Date thisBeg = starts();
             Date thisEnd = ends();
             Date thatBeg = thatGroup.starts();
