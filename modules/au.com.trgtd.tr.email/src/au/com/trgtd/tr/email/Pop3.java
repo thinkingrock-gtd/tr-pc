@@ -22,11 +22,14 @@
  */
 package au.com.trgtd.tr.email;
 
+import com.sun.mail.imap.IMAPSSLStore;
+import com.sun.mail.pop3.POP3SSLStore;
 import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -40,9 +43,9 @@ import java.util.ArrayList;
 import java.util.Enumeration;
 import java.util.Properties;
 import java.util.Vector;
-
 import javax.mail.Address;
 import javax.mail.Flags;
+import javax.mail.Flags.Flag;
 import javax.mail.Folder;
 import javax.mail.Header;
 import javax.mail.Message;
@@ -53,45 +56,42 @@ import javax.mail.Part;
 import javax.mail.Session;
 import javax.mail.Store;
 import javax.mail.URLName;
-import javax.mail.Flags.Flag;
 import javax.mail.internet.ContentType;
 import javax.mail.internet.MimeMessage;
 import javax.mail.internet.MimeUtility;
-
-import com.sun.mail.imap.IMAPSSLStore;
-import com.sun.mail.pop3.POP3SSLStore;
-import java.io.FileNotFoundException;
 import org.openide.util.Exceptions;
 
 /**
- * Classe permettant de rÈcupÈrer des mails sur un serveur Pop3 ou Imap4 (avec SSL ou non) <br>
+ * Classe permettant de rÈcupÈrer des mails sur un serveur Pop3 ou Imap4 (avec
+ * SSL ou non) <br>
  * les fichiers en attachement sont dÈposÈs sur un disk! <br>
- *   <br>
- *  http://java.sun.com/products/javamail/  <br>
- *  - mail.jar 1.4 (pop3.jar, smtp.jar, imap.jar, mailapi.jar, dsn.jar) <br>
- *  - activation.jar  <br>
- *   <br>
- *  Port 110 --> POP3<br>
- *  Port 995 --> POP3-SSL<br>
- *  Port 143 --> IMAP<br>
- *  Port 993 --> IMAP-SSL <br>
- *   <br>
- *  Defaut Folder : INBOX, Drafts, Sent, Trash <br>
- *   <br><br>
+ * <br>
+ * http://java.sun.com/products/javamail/  <br>
+ * - mail.jar 1.4 (pop3.jar, smtp.jar, imap.jar, mailapi.jar, dsn.jar) <br>
+ * - activation.jar  <br>
+ * <br>
+ * Port 110 --> POP3<br>
+ * Port 995 --> POP3-SSL<br>
+ * Port 143 --> IMAP<br>
+ * Port 993 --> IMAP-SSL <br>
+ * <br>
+ * Defaut Folder : INBOX, Drafts, Sent, Trash <br>
+ * <br><br>
  * <br>
  * SSL explication et exemple : <br>
- *  <br>
+ * <br>
  * Url : https://altern.org/ <br>
  * Exporter le certificat du site web dans fichier ex : altern.cer  <br>
- *  <br> <br>
- * Importer le certificat dans le magasin cacerts, \j2sdk1.4.x_xx\jre\lib\security\ <br>
+ * <br> <br>
+ * Importer le certificat dans le magasin cacerts,
+ * \j2sdk1.4.x_xx\jre\lib\security\ <br>
  * $> keytool -import -keystore cacerts -file altern.cer <br>
- *  <br> <br>
+ * <br> <br>
  * Le mot de passe du magasin global est par dÈfaut : 'changeit' <br>
  *
  ***
  *
- * @author  Franck Andriano, nexus6@altern.org
+ * @author Franck Andriano, nexus6@altern.org
  * @version 2.0 2007
  */
 public class Pop3 {
@@ -101,11 +101,11 @@ public class Pop3 {
      */
     public static String c_dir = "/tmp/";
     /**
-     *  file separator system...
+     * file separator system...
      */
     public static String a_sep = System.getProperty("file.separator");
     /**
-     *  line separator system...
+     * line separator system...
      */
     public static String a_line = System.getProperty("line.separator");
     /**
@@ -133,11 +133,13 @@ public class Pop3 {
      */
     private Folder folder = null;
     /**
-     * Array Folder liÈ ‡ un autre folder (liste sous dossier IMAP abonnÈ ou non)
+     * Array Folder liÈ ‡ un autre folder (liste sous dossier IMAP abonnÈ ou
+     * non)
      */
     private Folder folders[] = null;
     /**
-     * Array Folder, dossiers racines IMAP (liste dossiers racines IMAP abonnÈ ou non)
+     * Array Folder, dossiers racines IMAP (liste dossiers racines IMAP abonnÈ
+     * ou non)
      */
     private Folder defaut_folders[] = null;
     /**
@@ -194,10 +196,10 @@ public class Pop3 {
     /**
      * Constructeur simple! (POP3 & port 110 par defaut)
      *
-     * @param _dir            Dossier des fichiers en attachement
-     * @param _host             Nom du serveur pop3
-     * @param _username       Nom de l'utilisateur
-     * @param _password       Mot de passe du compte
+     * @param _dir Dossier des fichiers en attachement
+     * @param _host Nom du serveur pop3
+     * @param _username Nom de l'utilisateur
+     * @param _password Mot de passe du compte
      */
     public Pop3(String _dir, String _host, String _username, String _password) {
         this(_dir, _host, _username, _password, 110, POP);
@@ -206,10 +208,10 @@ public class Pop3 {
     /**
      * Constructeur complet!
      *
-     * @param _dir            Dossier des fichiers en attachement
-     * @param _host             Nom du serveur pop3
-     * @param _username           Nom de l'utilisateur
-     * @param _password           Mot de passe du compte
+     * @param _dir Dossier des fichiers en attachement
+     * @param _host Nom du serveur pop3
+     * @param _username Nom de l'utilisateur
+     * @param _password Mot de passe du compte
      */
     public Pop3(String _dir, String _host, String _username, String _password, int _port, String _protocol) {
         Pop3.c_dir = _dir;
@@ -267,7 +269,7 @@ public class Pop3 {
     /**
      * Determine si TLS, STARTTLS command first
      *
-     * @param _ttls :  si true active TLS
+     * @param _ttls : si true active TLS
      */
     public void setTLS(boolean _tls) {
         TLS = _tls;
@@ -276,7 +278,8 @@ public class Pop3 {
     /**
      * MÈthode getMail, rÈcupËre des mails simples et multiparts !
      *
-     * @throws NoSuchProviderException, MessagingException Si une erreur survient.
+     * @throws NoSuchProviderException, MessagingException Si une erreur
+     * survient.
      */
     public Message[] getMail() throws NoSuchProviderException, MessagingException {
         return getMail("INBOX", c_debug);
@@ -285,8 +288,9 @@ public class Pop3 {
     /**
      * MÈthode getMail, rÈcupËre des mails simples et multiparts !
      *
-     * @param  boolean      mode debug true ou false
-     * @exception NoSuchProviderException, MessagingException Si une erreur survient.
+     * @param boolean mode debug true ou false
+     * @exception NoSuchProviderException, MessagingException Si une erreur
+     * survient.
      */
     public Message[] getMail(boolean sDebug) throws NoSuchProviderException, MessagingException {
         return getMail("INBOX", sDebug);
@@ -295,8 +299,9 @@ public class Pop3 {
     /**
      * MÈthode getMail, rÈcupËre des mails simples et multiparts !
      *
-     * @param  String     box INBOX, TRASH...
-     * @throws NoSuchProviderException, MessagingException Si une erreur survient.
+     * @param String box INBOX, TRASH...
+     * @throws NoSuchProviderException, MessagingException Si une erreur
+     * survient.
      */
     public Message[] getMail(String box) throws NoSuchProviderException, MessagingException {
         return getMail(box, false);
@@ -305,8 +310,8 @@ public class Pop3 {
     /**
      * MÈthode getMail, rÈcupËre des mails simples et multiparts !
      *
-     * @param  String     box INBOX, TRASH...
-     * @param  boolean      mode debug true ou false
+     * @param String box INBOX, TRASH...
+     * @param boolean mode debug true ou false
      * @throws MessagingException MessagingException Si une erreur survient.
      */
     public Message[] getMail(String box, boolean sDebug) throws NoSuchProviderException, MessagingException {
@@ -401,18 +406,22 @@ public class Pop3 {
                 props.put("mail.pop3.port", "" + c_port);
                 if (TLS) {
                     props.put("mail.pop3.starttls.enable", "true");
-                }   if (c_timeout != 0) {
+                }
+                if (c_timeout != 0) {
                     props.put("mail.pop3.connectiontimeout", "" + c_timeout);
                     props.put("mail.pop3.timeout", "" + c_timeout);
-                }   break;
+                }
+                break;
             case IMAP:
                 props.put("mail.imap.port", "" + c_port);
                 if (TLS) {
                     props.put("mail.imap.starttls.enable", "true");
-                }   if (c_timeout != 0) {
+                }
+                if (c_timeout != 0) {
                     props.put("mail.imap.connectiontimeout", "" + c_timeout);
                     props.put("mail.imap.timeout", "" + c_timeout);
-                }   break;
+                }
+                break;
             default:
                 throw new MessagingException("Unknow Protocol : " + c_protocol);
         }
@@ -423,11 +432,10 @@ public class Pop3 {
         }
 
         //props.put("mail.transport.protocol", c_protocol);
-
         if (SSL) {
             // add new provider
             try {
-                    Security.addProvider(Security.getProvider("SunJSSE"));
+                Security.addProvider(Security.getProvider("SunJSSE"));
             } catch (SecurityException se) {
                 throw new MessagingException("" + se);
             }
@@ -451,7 +459,7 @@ public class Pop3 {
     /**
      * DÈfini l'option de dÈbuggage
      *
-     * @param _debug   BoolÈan de l'option de dÈbuggage
+     * @param _debug BoolÈan de l'option de dÈbuggage
      */
     public void setDebug(boolean _debug) {
         c_debug = _debug;
@@ -459,6 +467,7 @@ public class Pop3 {
 
     /**
      * Indique le timeout sur la socket.
+     *
      * @param timeout Timeout en milliseconds.
      */
     public void setSocketTimeout(int timeout) {
@@ -468,7 +477,7 @@ public class Pop3 {
     /**
      * MÈthode close qui ferme une session pop3
      *
-     * @param _del                  On efface les messages ?
+     * @param _del On efface les messages ?
      * @throws MessagingException MessagingException Si une erreur survient.
      */
     public void close(boolean _del) throws MessagingException {
@@ -479,7 +488,8 @@ public class Pop3 {
     }
 
     /**
-     * Determine si la connexion au un serveur POP3 ou IMAP4 est sÈcurisÈe par SSL.
+     * Determine si la connexion au un serveur POP3 ou IMAP4 est sÈcurisÈe par
+     * SSL.
      *
      * @param _ssl : si true active une connexion SSL
      */
@@ -626,7 +636,8 @@ public class Pop3 {
     }
 
     /**
-     * Renomme un dossier IMAP, copie des messages avant destruction de la source (ATTENTION permanent!)
+     * Renomme un dossier IMAP, copie des messages avant destruction de la
+     * source (ATTENTION permanent!)
      *
      * @param _srcFolder Dossier ‡ renomer
      * @param _destFolder Dissier cible
@@ -658,7 +669,8 @@ public class Pop3 {
     }
 
     /**
-     * S'abonner ou se dÈsabonner ‡ un dossier IMAP (Subscrib / UnSubcrib Folder IMAP)
+     * S'abonner ou se dÈsabonner ‡ un dossier IMAP (Subscrib / UnSubcrib Folder
+     * IMAP)
      *
      * @param _folder
      * @return
@@ -719,7 +731,7 @@ public class Pop3 {
     /**
      * Retourne l'objet Folder[] courant
      *
-     * @return char  separateur de dossier
+     * @return char separateur de dossier
      */
     public char getSep() {
         return this.c_separator;
@@ -760,7 +772,8 @@ public class Pop3 {
         /**
          * MÈthode saveFile, sauve un fichier sur le disk!
          *
-         * @param filename Chemin complet du fichier ! (sinon rÈpertoire courant)
+         * @param filename Chemin complet du fichier ! (sinon rÈpertoire
+         * courant)
          * @param input Flux du fichier...
          * @exception IOException Si une erreur d'Ècriture survient.
          */
@@ -778,7 +791,8 @@ public class Pop3 {
                 int aByte;
                 while ((aByte = bis.read()) != -1) {
                     bos.write(aByte);
-                }   bos.flush();
+                }
+                bos.flush();
             }
             bis.close();
 
@@ -788,10 +802,11 @@ public class Pop3 {
         /**
          * MÈthode getFile, rÈcupËre les fichiers attachÈ au message
          *
-         * @param pop_message     Objet Message passÈ en paramËtre
-         * @exception Exception       Exception Si une erreur survient.
+         * @param pop_message Objet Message passÈ en paramËtre
+         * @exception Exception Exception Si une erreur survient.
          *
-         * @return Vector        Retourne un Vector contenant les chemin complet des fichiers
+         * @return Vector Retourne un Vector contenant les chemin complet des
+         * fichiers
          */
         public static Vector<String> getFile(Message pop_message) throws Exception {
             Vector<String> vec = new Vector<>();
@@ -805,10 +820,11 @@ public class Pop3 {
         /**
          * MÈthode qui le corps d'un message multipart...
          *
-         * @param multipart             Objet multipart
-         * @exception                 MessagingException, IOException Si une erreur survient.
+         * @param multipart Objet multipart
+         * @exception MessagingException, IOException Si une erreur survient.
          *
-         * @return Vector        Retourne un Vector contenant les chemin complet des fichiers
+         * @return Vector Retourne un Vector contenant les chemin complet des
+         * fichiers
          */
         public static Vector<String> getFileHandleMultipart(Multipart multipart) throws MessagingException, IOException {
             Vector<String> vec = new Vector<>();
@@ -827,13 +843,15 @@ public class Pop3 {
         }
 
         /**
-         * MÈthode getFile, rÈcupËre les fichiers attachÈs au message avec un ContentType dÈfinie
+         * MÈthode getFile, rÈcupËre les fichiers attachÈs au message avec un
+         * ContentType dÈfinie
          *
-         * @param pop_message         Objet Message passÈ en paramËtre
-         * @param contentType            String contenant un Content Type
-         * @exception Exception       Exception Si une erreur survient.
+         * @param pop_message Objet Message passÈ en paramËtre
+         * @param contentType String contenant un Content Type
+         * @exception Exception Exception Si une erreur survient.
          *
-         * @return Vector                Retourne un Vector contenant les chemin complet des fichiers
+         * @return Vector Retourne un Vector contenant les chemin complet des
+         * fichiers
          */
         public static Vector<String> getFileEmbed(Message pop_message, String _contentType) throws Exception {
             Vector<String> vec = new Vector<>();
@@ -845,14 +863,16 @@ public class Pop3 {
         }
 
         /**
-         * MÈthode qui rÈcupËre les fichiers attachÈs au message avec un ContentType dÈfinie
-         * (exemple : images 'image/jpeg' contenu dans un mail html avec images embarquÈes...)
+         * MÈthode qui rÈcupËre les fichiers attachÈs au message avec un
+         * ContentType dÈfinie (exemple : images 'image/jpeg' contenu dans un
+         * mail html avec images embarquÈes...)
          *
-         * @param multipart             Objet multipart
-         * @param contentType            String contenant un Content Type
-         * @exception                 MessagingException, IOException Si une erreur survient.
+         * @param multipart Objet multipart
+         * @param contentType String contenant un Content Type
+         * @exception MessagingException, IOException Si une erreur survient.
          *
-         * @return Vector                Retourne un Vector contenant les chemin complet des fichiers
+         * @return Vector Retourne un Vector contenant les chemin complet des
+         * fichiers
          */
         public static Vector<String> getFileHandleMultipart(Multipart multipart, String _contentType) throws MessagingException, IOException {
             Vector<String> vec = new Vector<>();
@@ -879,10 +899,10 @@ public class Pop3 {
         /**
          * MÈthode getBody, rÈcupËre le corps du mail sans les headers
          *
-         * @param pop_message     Objet Message passÈ en paramËtre
-         * @exception Exception       Exception Si une erreur survient.
+         * @param pop_message Objet Message passÈ en paramËtre
+         * @exception Exception Exception Si une erreur survient.
          *
-         * @return String        Retourne un String contenant le corps (texte) du mail
+         * @return String Retourne un String contenant le corps (texte) du mail
          */
         public static String getBody(Message pop_message) throws Exception {
             String body;
@@ -898,9 +918,10 @@ public class Pop3 {
         /**
          * MÈthode qui rÈcupËre le corps d'un message multipart...
          *
-         * @param multipart          Objet multipart
-         * @exception          MessagingException, IOException Si une erreur survient.
-         * @return String          Retourne un String contenant le corps (texte ASCII) du mail
+         * @param multipart Objet multipart
+         * @exception MessagingException, IOException Si une erreur survient.
+         * @return String Retourne un String contenant le corps (texte ASCII) du
+         * mail
          */
         public static String getBodyHandlePart(Part part) throws MessagingException, IOException {
             String body = null;
@@ -917,8 +938,6 @@ public class Pop3 {
                 body = sb.toString();
             } else {
 
-
-
                 throw new MessagingException("No text/plain in the message!");
             }
 
@@ -928,9 +947,10 @@ public class Pop3 {
         /**
          * MÈthode qui rÈcupËre le corps d'un message multipart...
          *
-         * @param multipart          Objet multipart
-         * @exception                   MessagingException, IOException Si une erreur survient.
-         * @return String          Retourne un String contenant le corps (texte ASCII) du mail
+         * @param multipart Objet multipart
+         * @exception MessagingException, IOException Si une erreur survient.
+         * @return String Retourne un String contenant le corps (texte ASCII) du
+         * mail
          */
         public static String getBodyHandleMultipart(Multipart multipart) throws MessagingException, IOException {
             String body = null;
@@ -968,10 +988,10 @@ public class Pop3 {
         /**
          * MÈthode getBodyHtml, rÈcupËre le corps du mail en html
          *
-         * @param pop_message     Objet Message passÈ en paramËtre
-         * @exception Exception      Exception Si une erreur survient.
+         * @param pop_message Objet Message passÈ en paramËtre
+         * @exception Exception Exception Si une erreur survient.
          *
-         * @return String        Retourne un String contenant le corps (texte) du mail
+         * @return String Retourne un String contenant le corps (texte) du mail
          */
         public static String getBodyHtml(Message pop_message) throws Exception {
             String body = null;
@@ -983,13 +1003,15 @@ public class Pop3 {
         }
 
         /**
-         * MÈthode qui rÈcupËre content type spÈcifique d'un message multipart...
-         * (retourne uniquement un String, pour par exemple rÈcupÈrer le corp en HTML)
+         * MÈthode qui rÈcupËre content type spÈcifique d'un message
+         * multipart... (retourne uniquement un String, pour par exemple
+         * rÈcupÈrer le corp en HTML)
          *
-         * @param multipart        Objet multipart
-         * @param String         String ContentType, exemple text/html
-         * @exception                 MessagingException, IOException Si une erreur survient.
-         * @return String        Retourne un String contenant le corps (texte ASCII) du mail
+         * @param multipart Objet multipart
+         * @param String String ContentType, exemple text/html
+         * @exception MessagingException, IOException Si une erreur survient.
+         * @return String Retourne un String contenant le corps (texte ASCII) du
+         * mail
          */
         public static String getBodyHandleMultipart(Multipart multipart, String contentType) throws MessagingException, IOException {
             String body = null;
@@ -1027,9 +1049,10 @@ public class Pop3 {
         /**
          * MÈthode qui rÈcupËre le corps d'un mail
          *
-         * @param part          Objet Part (partie d'un mail multipart)
-         * @exception                   MessagingException, IOException Si une erreur survient.
-         * @return BufferedReader      Retourne un BufferedReader contenant le corps (texte ASCII) du mail
+         * @param part Objet Part (partie d'un mail multipart)
+         * @exception MessagingException, IOException Si une erreur survient.
+         * @return BufferedReader Retourne un BufferedReader contenant le corps
+         * (texte ASCII) du mail
          */
         public static BufferedReader getTextReader(Part part) throws MessagingException {
             try {
@@ -1107,11 +1130,13 @@ public class Pop3 {
         }
 
         /**
-         * MÈthode qui lit un fichier texte .eml et retourne qui un objet MimeMessage
+         * MÈthode qui lit un fichier texte .eml et retourne qui un objet
+         * MimeMessage
          *
-         * @param  String             chemin fichier .eml
-         * @return MimeMessage         objet
-         * @throws MessagingException Si un problËme de convertion ‡ la lecture du fichier arrive
+         * @param String chemin fichier .eml
+         * @return MimeMessage objet
+         * @throws MessagingException Si un problËme de convertion ‡ la lecture
+         * du fichier arrive
          * @throws IOException
          */
         public static MimeMessage getMimeMessage(String file_eml) throws MessagingException, IOException {
@@ -1119,11 +1144,13 @@ public class Pop3 {
         }
 
         /**
-         * MÈthode qui lit un fichier texte .eml et retourne qui un objet MimeMessage
+         * MÈthode qui lit un fichier texte .eml et retourne qui un objet
+         * MimeMessage
          *
-         * @param  File          fichier .eml
+         * @param File fichier .eml
          * @return MimeMessage objet
-         * @throws MessagingException Si un problËme de convertion ‡ la lecture du fichier arrive
+         * @throws MessagingException Si un problËme de convertion ‡ la lecture
+         * du fichier arrive
          * @throws IOException
          */
         public static MimeMessage getMimeMessage(File f_eml) throws MessagingException, IOException {
@@ -1131,8 +1158,8 @@ public class Pop3 {
         }
 
         /**
-         * MÈthode qui encode le Message-ID pour Ítre compatible
-         * avec un nom de fichier Window ou Unix (enlËve certains mÈta caractËres)
+         * MÈthode qui encode le Message-ID pour Ítre compatible avec un nom de
+         * fichier Window ou Unix (enlËve certains mÈta caractËres)
          *
          * @param str
          * @return Le message ID encodÈ
@@ -1205,7 +1232,7 @@ public class Pop3 {
         }
 
         private void attach(String c_file) {
-            try (RandomAccessFile c_raf =new RandomAccessFile(c_file, "rw")) {
+            try (RandomAccessFile c_raf = new RandomAccessFile(c_file, "rw")) {
                 c_size = (int) c_raf.length();
                 c_b = new byte[((c_size < 80) ? c_size : 80)];
                 c_raf.readFully(c_b);
@@ -1342,7 +1369,7 @@ public class Pop3 {
             System.err.println("Start Job --- Pop3");
 
             // dÈbut lecture d'un fichier eml (texte)
-      /*
+            /*
             MimeMessage mime_mess = Pop3.Tools.getMimeMessage("c:\\temp\\002b01c7xxxa36c95f0$bb64668a@unixxxip85.eml");
 
             System.out.println("\tFrom : " + mime_mess.getFrom()[0]);
@@ -1381,7 +1408,6 @@ public class Pop3 {
             catch(Exception e) { System.out.println("\n\tBodyHtml : " + e); }
              */
             // fin lecture d'un fichier eml (texte)
-
             // POP3 mode : INBOX par defaut
             // IMAP4 mode : INBOX par defaut, dispo normalement : Drafts, Sent, Trash
             Message[] pop_message = pop.getMail(true); //  dossier courant "INBOX", true debug
@@ -1449,26 +1475,21 @@ public class Pop3 {
             System.err.println("************ Folder UnSubcribe : -"+i+" "+xfolders[i].getName());
             }
              */
-
             // IMAP4 crÈation, copie & destruction (PERMANENT) de dossier
-      /*
+            /*
             System.out.println("*** DELETE FOLDER : "+ pop.deleteFolder("Test"));
             System.out.println("*** CREATE FOLDER : "+ pop.createFolder("Test"));
             System.out.println("*** COPY FOLDER : "+ pop.copyFolderMessages("Trash", "Test"));
              */
-
             //System.out.println("*** SUBCRIBE/UNSUBCRIBE FOLDER : "+ pop.setSubscribed("Test", false));
             //System.out.println("*** RENAME FOLDER : "+  pop.renameFolder("Test", "Testy"));
             //System.out.println("*** DELETE FOLDER : "+ pop.deleteFolder("Testy"));
             //System.out.println("*** COPY FOLDER : "+ pop.copyFolderMessages("Test", "SubTest"));
-
             // IMAP4 liste tous les dossiers de Test
             //pop_message = pop.getMail("Test", true); // on change de dossier courant pour root
             //System.out.println("*** CREATE FOLDER : "+ pop.createFolder("Test.SubTest"));
             //System.out.println("*** SUBCRIBE/UNSUBCRIBE FOLDER : "+ pop.setSubscribed("Test.SubTest", true));
             //System.out.println("*** DELETE FOLDER : "+ pop.deleteFolder("Test.SubTest"));
-
-
             for (int i = 0, n = pop_message.length; i < n; i++) {
                 //pop_message[i].writeTo(System.out);
 
