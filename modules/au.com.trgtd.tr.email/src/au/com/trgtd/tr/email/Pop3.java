@@ -1081,7 +1081,7 @@ public class Pop3 {
          */
         public static void saveELM(MimeMessage mess, File file_dest) throws MessagingException, IOException {
             String message_id = encodeMessageID(mess.getMessageID());
-            if ("".equals(message_id)) {
+            if (message_id.isEmpty()) {
                 message_id = "" + getMessageID(); // pas de Message-ID ???
             }
             try (PrintWriter out = new PrintWriter(new FileWriter(file_dest.getAbsolutePath() + a_sep + message_id + ".eml"), true)) {
@@ -1090,21 +1090,17 @@ public class Pop3 {
                     Header header = (Header) e.nextElement();
                     out.println(header.getName() + ": " + header.getValue());
                 }
-
                 out.println();
 
                 InputStream in = mess.getInputStream();
                 BufferedReader a_br = new BufferedReader(new InputStreamReader(in, "8859_1"));
-                String a_str = "";
-                String a_strAux = "";
+                StringBuilder a_str = new StringBuilder();
+                String a_strAux;
                 while ((a_strAux = a_br.readLine()) != null) {
-                    a_str += a_strAux + "\n";
+                    a_str.append(a_strAux).append("\n");
                 }
-                out.println(a_str);
-
+                out.println(a_str.toString());
                 out.println();
-
-                // flush & ferme le flux...
                 out.flush();
             }
         }
