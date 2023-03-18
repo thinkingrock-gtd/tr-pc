@@ -48,7 +48,7 @@ import static tr.model.util.delegation.DelegationData.Type.RESPONSE;
  *
  * @author Jeremy Moore
  */
-public class Email extends Thread {
+public class Email {
 
     private static final Logger LOG = Logger.getLogger("tr.email");
 
