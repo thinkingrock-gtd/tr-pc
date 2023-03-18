@@ -637,7 +637,7 @@ public class Pop3 {
         if (_srcFolder == null || _destFolder == null) {
             return false;
         }
-        Folder targetF = null;
+        Folder targetF;
         Folder sourceF = store.getFolder(_srcFolder);
         sourceF.open(Folder.READ_ONLY);
         if (sourceF.exists() && sourceF.isOpen() && createFolder(_destFolder)) {
@@ -885,7 +885,7 @@ public class Pop3 {
          * @return String        Retourne un String contenant le corps (texte) du mail
          */
         public static String getBody(Message pop_message) throws Exception {
-            String body = null;
+            String body;
             Object content = pop_message.getContent();
             if (content instanceof Multipart mp) {
                 body = getBodyHandleMultipart(mp);
@@ -1045,8 +1045,7 @@ public class Pop3 {
                     xjcharset = MimeUtility.javaCharset("ASCII");
                 }
 
-                InputStreamReader inReader = null;
-
+                InputStreamReader inReader;
                 try {
                     inReader = new InputStreamReader(xis, xjcharset);
                 } catch (UnsupportedEncodingException ex) {
