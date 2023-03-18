@@ -209,9 +209,6 @@ public class ICalendarSynchronizer implements CalendarSynchronizer {
                 if (startDate != null) {
                     sb.append("Start: ").append(Constants.DATE_FORMAT_FIXED.format(startDate)).append("\r\n");
                 }
-                if (dueDate != null) {
-                    sb.append("Due: ").append(Constants.DATE_FORMAT_FIXED.format(dueDate)).append("\r\n");
-                }
                 String notes = sb.toString() + getNotes(project);
                 iCalProject.createAllDayEvent(uid, dueDate, descr, notes, null, priority);
             }
