@@ -1139,10 +1139,7 @@ public class Pop3 {
          * @throws IOException
          */
         public static MimeMessage getMimeMessage(File f_eml) throws MessagingException, IOException {
-            MimeMessage message = null;
-            InputStream source = new FileInputStream(f_eml);
-            message = new MimeMessage(null, source);
-            return message;
+            return new MimeMessage(null, new FileInputStream(f_eml));
         }
 
         /**
