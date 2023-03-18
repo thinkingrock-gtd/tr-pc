@@ -52,7 +52,9 @@ public class Email extends Thread {
 
     private static final Logger LOG = Logger.getLogger("tr.email");
 
+    // Suppress default constructor for noninstantiability
     private Email() {
+        throw new AssertionError();
     }
 
     public static void retrieve() {
