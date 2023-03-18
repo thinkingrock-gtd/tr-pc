@@ -772,15 +772,14 @@ public class Pop3 {
             File file = new File(c_dir + _filename);
             FileOutputStream fos = new FileOutputStream(file);
 
-            BufferedOutputStream bos = new BufferedOutputStream(fos);
-            BufferedInputStream bis = new BufferedInputStream(_input);
-            int aByte;
-            while ((aByte = bis.read()) != -1) {
-                bos.write(aByte);
+            BufferedInputStream bis;
+            try (BufferedOutputStream bos = new BufferedOutputStream(fos)) {
+                bis = new BufferedInputStream(_input);
+                int aByte;
+                while ((aByte = bis.read()) != -1) {
+                    bos.write(aByte);
+                }   bos.flush();
             }
-
-            bos.flush();
-            bos.close();
             bis.close();
 
             return (c_dir + _filename);
