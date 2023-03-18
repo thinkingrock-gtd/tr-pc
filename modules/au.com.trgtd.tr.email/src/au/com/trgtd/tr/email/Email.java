@@ -248,9 +248,9 @@ public class Email extends Thread {
                 file = new File(attachDir, name + "-" + (n++) + "." + extn);
             }
 
-            FileOutputStream fos = new FileOutputStream(file);
-            fos.write(attach.getContent());
-            fos.close();
+            try (FileOutputStream fos = new FileOutputStream(file)) {
+                fos.write(attach.getContent());
+            }
 
             String url = file.toURL().toExternalForm();
             sbNotes.append("[").append(url).append("|").append(file.getName()).append("]\n");
