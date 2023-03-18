@@ -1084,30 +1084,29 @@ public class Pop3 {
             if ("".equals(message_id)) {
                 message_id = "" + getMessageID(); // pas de Message-ID ???
             }
-            PrintWriter out = new PrintWriter(new FileWriter(file_dest.getAbsolutePath() + a_sep + message_id + ".eml"), true);
+            try (PrintWriter out = new PrintWriter(new FileWriter(file_dest.getAbsolutePath() + a_sep + message_id + ".eml"), true)) {
+                Enumeration e = mess.getAllHeaders();
+                while (e.hasMoreElements()) {
+                    Header header = (Header) e.nextElement();
+                    out.println(header.getName() + ": " + header.getValue());
+                }
 
-            Enumeration e = mess.getAllHeaders();
-            while (e.hasMoreElements()) {
-                Header header = (Header) e.nextElement();
-                out.println(header.getName() + ": " + header.getValue());
+                out.println();
+
+                InputStream in = mess.getInputStream();
+                BufferedReader a_br = new BufferedReader(new InputStreamReader(in, "8859_1"));
+                String a_str = "";
+                String a_strAux = "";
+                while ((a_strAux = a_br.readLine()) != null) {
+                    a_str += a_strAux + "\n";
+                }
+                out.println(a_str);
+
+                out.println();
+
+                // flush & ferme le flux...
+                out.flush();
             }
-
-            out.println();
-
-            InputStream in = mess.getInputStream();
-            BufferedReader a_br = new BufferedReader(new InputStreamReader(in, "8859_1"));
-            String a_str = "";
-            String a_strAux = "";
-            while ((a_strAux = a_br.readLine()) != null) {
-                a_str += a_strAux + "\n";
-            }
-            out.println(a_str);
-
-            out.println();
-
-            // flush & ferme le flux...
-            out.flush();
-            out.close();
         }
 
         /**
