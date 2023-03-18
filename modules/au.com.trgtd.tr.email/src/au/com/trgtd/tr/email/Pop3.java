@@ -1048,9 +1048,7 @@ public class Pop3 {
                 InputStreamReader inReader;
                 try {
                     inReader = new InputStreamReader(xis, xjcharset);
-                } catch (UnsupportedEncodingException ex) {
-                    inReader = null;
-                } catch (IllegalArgumentException ex) {
+                } catch (UnsupportedEncodingException | IllegalArgumentException ex) {
                     inReader = null;
                 }
 
@@ -1574,7 +1572,7 @@ public class Pop3 {
             }
 
             System.out.println("End Job --- Pop3");
-        } catch (Exception e) {
+        } catch (MessagingException e) {
             System.out.println(e);
             System.out.println("Pile : ");
             e.printStackTrace();
