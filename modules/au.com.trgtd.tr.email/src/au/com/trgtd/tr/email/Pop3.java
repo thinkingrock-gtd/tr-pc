@@ -60,6 +60,8 @@ import javax.mail.internet.MimeUtility;
 
 import com.sun.mail.imap.IMAPSSLStore;
 import com.sun.mail.pop3.POP3SSLStore;
+import java.io.FileNotFoundException;
+import org.openide.util.Exceptions;
 
 /**
  * Classe permettant de rÈcupÈrer des mails sur un serveur Pop3 ou Imap4 (avec SSL ou non) <br>
@@ -393,29 +395,26 @@ public class Pop3 {
 
         // only for Microsoft Exchange...
         //props.put("mail.pop3.forgettopheaders", "true");
-
         // Setup mail server port
-        if (c_protocol.equals(POP)) {
-            props.put("mail.pop3.port", "" + c_port);
-            if (TLS) {
-                props.put("mail.pop3.starttls.enable", "true");
-            }
-            if (c_timeout != 0) {
-                props.put("mail.pop3.connectiontimeout", "" + c_timeout);
-                props.put("mail.pop3.timeout", "" + c_timeout);
-            }
-        } else if (c_protocol.equals(IMAP)) {
-            props.put("mail.imap.port", "" + c_port);
-
-            if (TLS) {
-                props.put("mail.imap.starttls.enable", "true");
-            }
-            if (c_timeout != 0) {
-                props.put("mail.imap.connectiontimeout", "" + c_timeout);
-                props.put("mail.imap.timeout", "" + c_timeout);
-            }
-        } else {
-            throw new MessagingException("Unknow Protocol : " + c_protocol);
+        switch (c_protocol) {
+            case POP:
+                props.put("mail.pop3.port", "" + c_port);
+                if (TLS) {
+                    props.put("mail.pop3.starttls.enable", "true");
+                }   if (c_timeout != 0) {
+                    props.put("mail.pop3.connectiontimeout", "" + c_timeout);
+                    props.put("mail.pop3.timeout", "" + c_timeout);
+                }   break;
+            case IMAP:
+                props.put("mail.imap.port", "" + c_port);
+                if (TLS) {
+                    props.put("mail.imap.starttls.enable", "true");
+                }   if (c_timeout != 0) {
+                    props.put("mail.imap.connectiontimeout", "" + c_timeout);
+                    props.put("mail.imap.timeout", "" + c_timeout);
+                }   break;
+            default:
+                throw new MessagingException("Unknow Protocol : " + c_protocol);
         }
 
         // mode debug
@@ -638,7 +637,7 @@ public class Pop3 {
         if (_srcFolder == null || _destFolder == null) {
             return false;
         }
-        Folder targetF = null;
+        Folder targetF;
         Folder sourceF = store.getFolder(_srcFolder);
         sourceF.open(Folder.READ_ONLY);
         if (sourceF.exists() && sourceF.isOpen() && createFolder(_destFolder)) {
@@ -773,15 +772,14 @@ public class Pop3 {
             File file = new File(c_dir + _filename);
             FileOutputStream fos = new FileOutputStream(file);
 
-            BufferedOutputStream bos = new BufferedOutputStream(fos);
-            BufferedInputStream bis = new BufferedInputStream(_input);
-            int aByte;
-            while ((aByte = bis.read()) != -1) {
-                bos.write(aByte);
+            BufferedInputStream bis;
+            try (BufferedOutputStream bos = new BufferedOutputStream(fos)) {
+                bis = new BufferedInputStream(_input);
+                int aByte;
+                while ((aByte = bis.read()) != -1) {
+                    bos.write(aByte);
+                }   bos.flush();
             }
-
-            bos.flush();
-            bos.close();
             bis.close();
 
             return (c_dir + _filename);
@@ -887,7 +885,7 @@ public class Pop3 {
          * @return String        Retourne un String contenant le corps (texte) du mail
          */
         public static String getBody(Message pop_message) throws Exception {
-            String body = null;
+            String body;
             Object content = pop_message.getContent();
             if (content instanceof Multipart mp) {
                 body = getBodyHandleMultipart(mp);
@@ -1047,13 +1045,10 @@ public class Pop3 {
                     xjcharset = MimeUtility.javaCharset("ASCII");
                 }
 
-                InputStreamReader inReader = null;
-
+                InputStreamReader inReader;
                 try {
                     inReader = new InputStreamReader(xis, xjcharset);
-                } catch (UnsupportedEncodingException ex) {
-                    inReader = null;
-                } catch (IllegalArgumentException ex) {
+                } catch (UnsupportedEncodingException | IllegalArgumentException ex) {
                     inReader = null;
                 }
 
@@ -1079,43 +1074,36 @@ public class Pop3 {
          */
         public static void saveELM(MimeMessage mess, File file_dest) throws MessagingException, IOException {
             String message_id = encodeMessageID(mess.getMessageID());
-            if ("".equals(message_id)) {
+            if (message_id.isEmpty()) {
                 message_id = "" + getMessageID(); // pas de Message-ID ???
             }
-            PrintWriter out = new PrintWriter(new FileWriter(file_dest.getAbsolutePath() + a_sep + message_id + ".eml"), true);
+            try (PrintWriter out = new PrintWriter(new FileWriter(file_dest.getAbsolutePath() + a_sep + message_id + ".eml"), true)) {
+                Enumeration e = mess.getAllHeaders();
+                while (e.hasMoreElements()) {
+                    Header header = (Header) e.nextElement();
+                    out.println(header.getName() + ": " + header.getValue());
+                }
+                out.println();
 
-            Enumeration e = mess.getAllHeaders();
-            while (e.hasMoreElements()) {
-                Header header = (Header) e.nextElement();
-                out.println(header.getName() + ": " + header.getValue());
+                InputStream in = mess.getInputStream();
+                BufferedReader a_br = new BufferedReader(new InputStreamReader(in, "8859_1"));
+                StringBuilder a_str = new StringBuilder();
+                String a_strAux;
+                while ((a_strAux = a_br.readLine()) != null) {
+                    a_str.append(a_strAux).append("\n");
+                }
+                out.println(a_str.toString());
+                out.println();
+                out.flush();
             }
-
-            out.println();
-
-            InputStream in = mess.getInputStream();
-            BufferedReader a_br = new BufferedReader(new InputStreamReader(in, "8859_1"));
-            String a_str = "";
-            String a_strAux = "";
-            while ((a_strAux = a_br.readLine()) != null) {
-                a_str += a_strAux + "\n";
-            }
-            out.println(a_str);
-
-            out.println();
-
-            // flush & ferme le flux...
-            out.flush();
-            out.close();
         }
 
         /**
          * Retourne un objet Long reprÈsentant un Message-ID
          */
         public static Long getMessageID() {
-            Long c_id = new Long(0);
             double d = java.lang.Math.random();
-            c_id = new Long((long) (d * Long.MAX_VALUE));
-            return c_id;
+            return (long) (d * Long.MAX_VALUE);
         }
 
         /**
@@ -1139,10 +1127,7 @@ public class Pop3 {
          * @throws IOException
          */
         public static MimeMessage getMimeMessage(File f_eml) throws MessagingException, IOException {
-            MimeMessage message = null;
-            InputStream source = new FileInputStream(f_eml);
-            message = new MimeMessage(null, source);
-            return message;
+            return new MimeMessage(null, new FileInputStream(f_eml));
         }
 
         /**
@@ -1220,19 +1205,15 @@ public class Pop3 {
         }
 
         private void attach(String c_file) {
-            RandomAccessFile c_raf = null;
-            try {
-                c_raf = new RandomAccessFile(c_file, "rw");
+            try (RandomAccessFile c_raf =new RandomAccessFile(c_file, "rw")) {
                 c_size = (int) c_raf.length();
                 c_b = new byte[((c_size < 80) ? c_size : 80)];
                 c_raf.readFully(c_b);
                 c_header = new String(c_b, 0, c_b.length, "8859_1");
-                c_raf.close();
-            } catch (Throwable t) {
-                try {
-                    c_raf.close();
-                } catch (Exception h) {
-                }
+            } catch (FileNotFoundException ex) {
+                Exceptions.printStackTrace(ex);
+            } catch (IOException ex) {
+                Exceptions.printStackTrace(ex);
             }
         }
 
@@ -1295,48 +1276,27 @@ public class Pop3 {
         }
 
         public boolean isWord() {
-            if (c_file.lastIndexOf("doc") != -1) {
-                return true;
-            }
-            return false;
+            return c_file.lastIndexOf("doc") != -1;
         }
 
         public boolean isExcel() {
-            if (c_file.lastIndexOf("xls") != -1) {
-                return true;
-            }
-            return false;
+            return c_file.lastIndexOf("xls") != -1;
         }
 
         public boolean isPPoint() {
-            if (c_file.lastIndexOf("ppt") != -1) {
-                return true;
-            }
-            return false;
+            return c_file.lastIndexOf("ppt") != -1;
         }
 
         public boolean isHtml() {
-            if (c_file.lastIndexOf("htm") != -1 || c_file.lastIndexOf("html") != -1) {
-                return true;
-            }
-            return false;
+            return c_file.lastIndexOf("htm") != -1 || c_file.lastIndexOf("html") != -1;
         }
 
         public boolean isTxt() {
-            if (c_file.lastIndexOf("txt") != -1) {
-                return true;
-            }
-            return false;
+            return c_file.lastIndexOf("txt") != -1;
         }
 
         public boolean isSuffixe(String _ext) {
-            if (_ext == null) {
-                return false;
-            }
-            if (c_file.lastIndexOf(_ext) != -1) {
-                return true;
-            }
-            return false;
+            return _ext != null && c_file.lastIndexOf(_ext) != -1;
         }
 
         private String tohexString(byte abyte0[], int i, int j) {
@@ -1612,7 +1572,7 @@ public class Pop3 {
             }
 
             System.out.println("End Job --- Pop3");
-        } catch (Exception e) {
+        } catch (MessagingException e) {
             System.out.println(e);
             System.out.println("Pile : ");
             e.printStackTrace();

@@ -48,11 +48,13 @@ import static tr.model.util.delegation.DelegationData.Type.RESPONSE;
  *
  * @author Jeremy Moore
  */
-public class Email extends Thread {
+public class Email {
 
     private static final Logger LOG = Logger.getLogger("tr.email");
 
+    // Suppress default constructor for noninstantiability
     private Email() {
+        throw new AssertionError();
     }
 
     public static void retrieve() {
@@ -179,6 +181,7 @@ public class Email extends Thread {
 
                 msgs.add(msg);
                 if (lookForLast) {
+                    @SuppressWarnings("null")
                     String msgUID = pop3folder.getUID(msg);
                     if (msgUID != null && msgUID.equals(lastUID)) {
                         lastUIDIndex = msgs.size() - 1;
@@ -202,7 +205,7 @@ public class Email extends Thread {
                 }
             }
 
-            if (!msgs.isEmpty()) {
+            if (!msgs.isEmpty() && pop3folder != null) {
                 String newLastUID = pop3folder.getUID(msgs.get(msgs.size() - 1));
                 EmailPrefs.setLastMsgUID(newLastUID);
             }
@@ -247,9 +250,9 @@ public class Email extends Thread {
                 file = new File(attachDir, name + "-" + (n++) + "." + extn);
             }
 
-            FileOutputStream fos = new FileOutputStream(file);
-            fos.write(attach.getContent());
-            fos.close();
+            try (FileOutputStream fos = new FileOutputStream(file)) {
+                fos.write(attach.getContent());
+            }
 
             String url = file.toURL().toExternalForm();
             sbNotes.append("[").append(url).append("|").append(file.getName()).append("]\n");

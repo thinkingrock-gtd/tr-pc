@@ -165,7 +165,7 @@ public class DayGridPanel extends JLayeredPane {
         EventGroup lastGroup = null;
         EventPanel lastEvent = null;
         for (EventPanel event : events) {
-            if (lastEvent != null && sameStart(event, lastEvent)) {
+            if (lastEvent != null && sameStart(event, lastEvent) && lastGroup != null) {
                 lastGroup.add(event);
             } else {
                 lastGroup = new EventGroup();
@@ -178,7 +178,7 @@ public class DayGridPanel extends JLayeredPane {
         // set group indentations
         lastGroup = null;
         for (EventGroup thisGroup : groups) {
-            if (thisGroup.overlaps(lastGroup)) {
+            if (lastGroup != null && thisGroup.overlaps(lastGroup)) {
                 lastGroup.incrIndentRight();
                 thisGroup.setIndentLeft(lastGroup.indentLeft() + 1);
             }
@@ -435,10 +435,8 @@ public class DayGridPanel extends JLayeredPane {
             return eventEnd(events.get(0).getEvent());
         }
 
-        public boolean overlaps(EventGroup thatGroup) {
-            if (null == thatGroup) {
-                return false;
-            }
+        private boolean overlaps(EventGroup thatGroup) {
+            assert(thatGroup != null);
             Date thisBeg = starts();
             Date thisEnd = ends();
             Date thatBeg = thatGroup.starts();
@@ -446,10 +444,7 @@ public class DayGridPanel extends JLayeredPane {
             if (thatEnd.before(thisBeg)) {
                 return false;
             }
-            if (thatBeg.after(thisEnd)) {
-                return false;
-            }
-            return true;
+            return !thatBeg.after(thisEnd);
         }
 
         private final Comparator<EventPanel> descEndComparator = (EventPanel event1, EventPanel event2) -> {
