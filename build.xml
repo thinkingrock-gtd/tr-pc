@@ -4,17 +4,6 @@
     <description>Builds trgtd distributions.</description>
     <import file="nbproject/build-impl.xml"/>
 
-    <target name="build-zip" depends="suite.build-zip" description="">
-        <!-- workaround to force replace files in the zip file -->
-        <touch file="${app.launcher}"/>
-        <zip destfile="${dist.dir}/${app.name}.zip" update="true">
-            <!-- add harness/etc/trgtd.icns in the zip file -->
-            <zipfileset file="${app.icon.icns}" prefix="${branding.token}/harness/etc"/>
-            <!-- replace bin/trgtd launcher in the zip file -->
-            <zipfileset file="${app.launcher}" prefix="${branding.token}/bin" filemode="755"/>
-        </zip>
-    </target>
-    
     <target name="-bundle-osx" depends="build,build-launchers" description="Builds an application bundle for MacOSX.">
 
         <!-- create app directories -->
