@@ -12,4 +12,4 @@ jobs:
       - uses: actions/add-to-project@v0.5.0
         with:
           project-url: https://github.com/orgs/thinkingrock-gtd/projects/2
-          github-token: ${{ secrets.PAT_PROJ_REPO }}
+          github-token: ${{ secrets.PAT_REPO_PROJ }}
