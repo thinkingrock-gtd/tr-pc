@@ -42,9 +42,6 @@ import javax.swing.JLayeredPane;
 public class DayGridPanel extends JLayeredPane {
 
     private interface Colors {
-//      Color AZURE_1 = new Color(240, 255, 255);
-//      Color AZURE_2 = new Color(224, 238, 238);
-//      Color AZURE_3 = new Color(193, 205, 205);
         Color AZURE_X = new Color(241, 255, 255);
         Color BRDR_LINE = new Color(8 * 26, 8 * 26, 8 * 26);
         Color HOUR_LINE = new Color(8 * 26, 8 * 26, 8 * 26);
@@ -165,7 +162,7 @@ public class DayGridPanel extends JLayeredPane {
         EventGroup lastGroup = null;
         EventPanel lastEvent = null;
         for (EventPanel event : events) {
-            if (lastEvent != null && sameStart(event, lastEvent)) {
+            if (lastEvent != null && sameStart(event, lastEvent) && lastGroup != null) {
                 lastGroup.add(event);
             } else {
                 lastGroup = new EventGroup();
@@ -178,7 +175,7 @@ public class DayGridPanel extends JLayeredPane {
         // set group indentations
         lastGroup = null;
         for (EventGroup thisGroup : groups) {
-            if (thisGroup.overlaps(lastGroup)) {
+            if (lastGroup != null && thisGroup.overlaps(lastGroup)) {
                 lastGroup.incrIndentRight();
                 thisGroup.setIndentLeft(lastGroup.indentLeft() + 1);
             }
@@ -237,10 +234,6 @@ public class DayGridPanel extends JLayeredPane {
     private Date eventEnd(CalEvent event) {
         return EventUtils.getEnd(event, dateCtlr.getDate()); 
     }
-    
-//    private int eventMins(CalEvent event) {
-//        return EventUtils.getMins(event, dateCtlr.getDate()); 
-//    }
 
     private int eventY1(CalEvent event) {
         double gridMins = getGridMins();
@@ -288,28 +281,6 @@ public class DayGridPanel extends JLayeredPane {
         return (int) Math.round((30 / gridMins) * getHeight());
     }
     
-//    private int eventH(CalEvent event) {
-//        double evntMins = eventMins(event);
-//        double gridMins = getGridMins();
-//        if (gridMins < 1) {
-//            return 0;
-//        }
-//        return (int)Math.round((evntMins / gridMins) * getHeight());
-//    }
-//
-//    private int eventY(CalEvent event) {
-//        return eventY(eventStart(event));
-//    }
-//
-//    private int eventY(Date start) {
-//        double gridMins = getGridMins();
-//        if (gridMins < 1) {
-//            return 0;
-//        }
-//        double startMins = DateUtils.getTimeInMins(start);
-//        return (int) Math.round((startMins / gridMins) * getHeight());
-//    }
-
     private int getGridHours() {
         return 1 + endHr - begHr;
     }
@@ -435,10 +406,8 @@ public class DayGridPanel extends JLayeredPane {
             return eventEnd(events.get(0).getEvent());
         }
 
-        public boolean overlaps(EventGroup thatGroup) {
-            if (null == thatGroup) {
-                return false;
-            }
+        private boolean overlaps(EventGroup thatGroup) {
+            assert(thatGroup != null);
             Date thisBeg = starts();
             Date thisEnd = ends();
             Date thatBeg = thatGroup.starts();
@@ -446,10 +415,7 @@ public class DayGridPanel extends JLayeredPane {
             if (thatEnd.before(thisBeg)) {
                 return false;
             }
-            if (thatBeg.after(thisEnd)) {
-                return false;
-            }
-            return true;
+            return !thatBeg.after(thisEnd);
         }
 
         private final Comparator<EventPanel> descEndComparator = (EventPanel event1, EventPanel event2) -> {

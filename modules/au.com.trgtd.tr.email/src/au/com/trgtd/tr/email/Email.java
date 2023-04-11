@@ -22,8 +22,6 @@ import au.com.trgtd.tr.email.utils.Attachment;
 import au.com.trgtd.tr.email.utils.Renderable;
 import au.com.trgtd.tr.email.utils.RenderableFactory;
 import au.com.trgtd.tr.services.Services;
-import tr.model.util.delegation.DelegationData;
-import tr.model.util.delegation.DelegationUtils;
 import au.com.trgtd.tr.util.UtilsFile;
 import com.sun.mail.pop3.POP3Folder;
 import java.io.File;
@@ -40,19 +38,23 @@ import tr.model.Data;
 import tr.model.DataLookup;
 import tr.model.action.Action;
 import tr.model.thought.Thought;
+import tr.model.util.delegation.DelegationData;
 import static tr.model.util.delegation.DelegationData.Type.DELEGATION;
 import static tr.model.util.delegation.DelegationData.Type.RESPONSE;
+import tr.model.util.delegation.DelegationUtils;
 
 /**
  * Email.
  *
  * @author Jeremy Moore
  */
-public class Email extends Thread {
+public class Email {
 
     private static final Logger LOG = Logger.getLogger("tr.email");
 
+    // Suppress default constructor for noninstantiability
     private Email() {
+        throw new AssertionError();
     }
 
     public static void retrieve() {
@@ -167,7 +169,6 @@ public class Email extends Thread {
             }
 
             List<Message> msgs = new ArrayList<>(email.getMessageCount());
-
             String lastUID = EmailPrefs.getLastMsgUID();
             boolean lookForLast = (lastUID != null && pop3folder != null);
             int lastUIDIndex = -1;
@@ -179,6 +180,7 @@ public class Email extends Thread {
 
                 msgs.add(msg);
                 if (lookForLast) {
+                    @SuppressWarnings("null")
                     String msgUID = pop3folder.getUID(msg);
                     if (msgUID != null && msgUID.equals(lastUID)) {
                         lastUIDIndex = msgs.size() - 1;
@@ -202,7 +204,7 @@ public class Email extends Thread {
                 }
             }
 
-            if (!msgs.isEmpty()) {
+            if (!msgs.isEmpty() && pop3folder != null) {
                 String newLastUID = pop3folder.getUID(msgs.get(msgs.size() - 1));
                 EmailPrefs.setLastMsgUID(newLastUID);
             }
@@ -247,9 +249,9 @@ public class Email extends Thread {
                 file = new File(attachDir, name + "-" + (n++) + "." + extn);
             }
 
-            FileOutputStream fos = new FileOutputStream(file);
-            fos.write(attach.getContent());
-            fos.close();
+            try (FileOutputStream fos = new FileOutputStream(file)) {
+                fos.write(attach.getContent());
+            }
 
             String url = file.toURL().toExternalForm();
             sbNotes.append("[").append(url).append("|").append(file.getName()).append("]\n");
@@ -258,9 +260,9 @@ public class Email extends Thread {
     }
 
     final static String HAND = "\u261E";
-    final static String TODO = "\u00D7";    
+    final static String TODO = "\u00D7";
     final static String DONE = "\u2713";
-    
+
     private static void createThought(Data data, String subject, String body) {
 
         DelegationData dd = parseDelegatedData(body);
@@ -270,15 +272,15 @@ public class Email extends Thread {
             thought.setDescription(subject);
             thought.setNotes(body);
             data.getThoughtManager().add(thought);
-            return;            
-        } 
+            return;
+        }
 
         body = DelegationUtils.removeSerializedStrings(body);
-        
+
         if (dd.type == DELEGATION) {
             LOG.info("Delegation email.");
             // Create and attach a new action to store delegated action details.
-            // Note that the delegated action ID is stored in the thought. 
+            // Note that the delegated action ID is stored in the thought.
             Action action = new Action(data);
             action.setDescription(subject);
             action.setNotes(dd.reply + "\n\n" + body);
@@ -287,7 +289,7 @@ public class Email extends Thread {
             action.setStartDate(dd.start);
             action.setTopic(Services.instance.getTopicByName(dd.topic));
             action.setTime(Services.instance.getTimeByName(dd.time));
-            action.setEnergy(Services.instance.getEnergyByName(dd.energy));            
+            action.setEnergy(Services.instance.getEnergyByName(dd.energy));
             action.setPriority(Services.instance.getPriorityByName(dd.priority));
             Thought thought = new Thought(data.getNextID());
             thought.setDescription(HAND + " " + subject);
@@ -295,8 +297,8 @@ public class Email extends Thread {
             thought.setTopic(action.getTopic());
             thought.setDelegationType(DELEGATION);
             thought.setDelegationReply(dd.reply);
-            thought.setDelegationActionID(dd.id);                        
-            thought.setAction(action);            
+            thought.setDelegationActionID(dd.id);
+            thought.setAction(action);
             data.getThoughtManager().add(thought);
         } else if (dd.done != null) {
             LOG.info("Delegation done response email.");
@@ -306,7 +308,7 @@ public class Email extends Thread {
             thought.setDelegationType(RESPONSE);
             thought.setDelegationDone(dd.done);
             thought.setDelegationReply(dd.reply);
-            thought.setDelegationActionID(dd.id);            
+            thought.setDelegationActionID(dd.id);
             data.getThoughtManager().add(thought);
         } else {
             LOG.info("Delegation not done response email.");
@@ -316,7 +318,7 @@ public class Email extends Thread {
             thought.setDelegationType(RESPONSE);
             thought.setDelegationDone(null);
             thought.setDelegationReply(dd.reply);
-            thought.setDelegationActionID(dd.id);            
+            thought.setDelegationActionID(dd.id);
             data.getThoughtManager().add(thought);
         }
     }
