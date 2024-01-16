@@ -31,7 +31,7 @@ This issue will be solved in #33.
 
 #### Run
 - open a terminal window (Xterm, Konsole, Dos prompt, PowerShell...) and navigate to the root of the git clone tr-pc
-- run `ant build-zip -Dnbplatform.default.netbeans.dest.dir=${path_to_repo}/netbeans-plat/19/ide` (replace `${path_to_repo}` with the absolte path to the checked out `tr-pc` repository)
+- run `ant build-zip -Dnbplatform.default.netbeans.dest.dir=${path_to_repo}/netbeans-plat/20/ide` (replace `${path_to_repo}` with the absolte path to the checked out `tr-pc` repository)
 - you will find a zip file *trgtd.zip* inside the folder *dist*.
   Unzip it, navigate inside into the bin and start the respective binary for your OS.
 - with `just` installed, you can simply run `just build-zip`
