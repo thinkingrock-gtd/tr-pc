@@ -4,7 +4,7 @@
 **/dist/
 **/private/
 
-nbproject/packaging/
+# nbproject/packaging/
 nbproject/**/tr-updates.zip
 
 netbeans-plat/

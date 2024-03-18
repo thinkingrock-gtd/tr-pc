@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<installer-gui-script minSpecVersion="1">
+    <pkg-ref id="au.com.trgtd.tr">
+        <bundle-version/>
+    </pkg-ref>
+    <title>ThinkingRock Application</title>
+    <license file="tr-license.txt"/>
+    <options customize="never" require-scripts="false"/>
+    <choices-outline>
+        <line choice="default">
+            <line choice="au.com.trgtd.tr"/>
+        </line>
+    </choices-outline>
+    <choice id="default"/>
+    <choice id="au.com.trgtd.tr" visible="false">
+        <pkg-ref id="au.com.trgtd.tr"/>
+    </choice>
+    <pkg-ref id="au.com.trgtd.tr" version="4.0.0" onConclusion="none" installKBytes="143006">#temp.pkg</pkg-ref>
+    <product version="4.0.0"/>
+</installer-gui-script>
