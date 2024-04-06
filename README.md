@@ -29,7 +29,10 @@ This issue will be solved in #33.
 - [Apache Ant](https://ant.apache.org/manual/install.html) is installed
 - Optional: [just](https://github.com/casey/just) is installed
 
-#### Run
+#### Run TR directly from sources
+- with 'just' installed, simply run `just run`
+
+### Build artefacts and run
 - open a terminal window (Xterm, Konsole, Dos prompt, PowerShell...) and navigate to the root of the git clone tr-pc
 - run `ant build-zip -Dnbplatform.default.netbeans.dest.dir=${path_to_repo}/netbeans-plat/20/ide` (replace `${path_to_repo}` with the absolte path to the checked out `tr-pc` repository)
 - you will find a zip file *trgtd.zip* inside the folder *dist*.
