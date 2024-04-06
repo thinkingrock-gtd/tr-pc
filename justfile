@@ -170,3 +170,11 @@ clear-cache-prod:
 [windows]
 clear-cache-prod:
 	rm -r -fo env_var('APPDATA')\..\Local\trgtd\Cache\
+
+# Starts the ThinkingRock application from sources
+run:
+	ant -f ./modules/au.com.trgtd.tr.calendar \
+	    -Dant.build.javac.target=17 \
+	    -Dant.build.javac.source=17 \
+	    -Dcontinue.after.failing.tests=true \
+	    run
