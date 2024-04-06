@@ -30,7 +30,7 @@ This issue will be solved in #33.
 - Optional: [just](https://github.com/casey/just) is installed
 
 #### Run TR directly from sources
-- with 'just' installed, simply run `just run`
+- with 'just' installed, simply run `just run` (after having run `just build` at least once before)
 
 ### Build artefacts and run
 - open a terminal window (Xterm, Konsole, Dos prompt, PowerShell...) and navigate to the root of the git clone tr-pc
