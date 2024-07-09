@@ -6,6 +6,7 @@ set windows-shell := ["powershell.exe", "-NoLogo", "-Command"]
 repodir := `pwd`
 
 netbeans-plat-version := "21"
+java-version := "17"
 
 alias verify-ci := verify-tr
 
