@@ -6,6 +6,7 @@ set windows-shell := ["powershell.exe", "-NoLogo", "-Command"]
 repodir := `pwd`
 
 netbeans-plat-version := "21"
+java-version := "17"
 
 alias verify-ci := verify-tr
 
@@ -170,3 +171,11 @@ clear-cache-prod:
 [windows]
 clear-cache-prod:
 	rm -r -fo env_var('APPDATA')\..\Local\trgtd\Cache\
+
+# Starts the ThinkingRock application from sources
+run:
+	ant -f ./modules/au.com.trgtd.tr.calendar \
+	    -Dant.build.javac.target={{ java-version }} \
+	    -Dant.build.javac.source={{ java-version }} \
+	    -Dcontinue.after.failing.tests=true \
+	    run
