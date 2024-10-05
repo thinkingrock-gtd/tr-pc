@@ -12,7 +12,7 @@ val auTrProjects = listOf(
     "calendar.ical4j",
     "calendar.ical4j.impl",
     "data",
-//    "data.recent",
+    "data.recent",
     "datastore",
     "datastore.xstream",
 //    //"datastore.xstream2", // broken?
