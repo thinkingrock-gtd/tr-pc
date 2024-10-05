@@ -83,7 +83,7 @@ val auTrProjects = listOf(
 ).map { "au.com.trgtd.tr.$it" }
 
 val trProjects = listOf(
-//    "extract.reports",
+    "extract.reports",
 //    "extract.reports.projectdetails",
 //    "extract.reports.projectoutline",
     "model",
