@@ -49,7 +49,7 @@ val auTrProjects = listOf(
 //    "report.projects.future",
 //    "report.sa",
 //    "reports.actions.delegated",
-//    "reports.actions.doasap",
+    "reports.actions.doasap",
     "reports.actions.scheduled",
     "reports.done",
     "reports.pocketmod",
