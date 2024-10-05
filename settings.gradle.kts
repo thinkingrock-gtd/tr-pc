@@ -82,18 +82,18 @@ val auTrProjects = listOf(
 //    "view.topics",
 ).map { "au.com.trgtd.tr.$it" }
 
-//val trProjects = listOf(
+val trProjects = listOf(
 //    "extract.reports",
 //    "extract.reports.projectdetails",
 //    "extract.reports.projectoutline",
-//    "model",
-//).map { "tr.$it" }
+    "model",
+).map { "tr.$it" }
 
 //val 3pDeps = listOf(
 //)
 
 include(auTrProjects)
-//include(trProjects)
+include(trProjects)
 //include(3pDeps)
 
 defineProjectPaths()
@@ -101,7 +101,7 @@ defineProjectPaths()
 fun defineProjectPaths() {
     setOf(
         auTrProjects,
-//        trProjects,
+        trProjects,
 //	3pDeps,
     ).forEach { projects ->
         projects.forEach { projectName ->
