@@ -67,7 +67,7 @@ val auTrProjects = listOf(
     "view.actn",
 //    "view.actns",
 //    "view.calendar",
-//    "view.collect",
+    "view.collect",
     "view.contexts",
     "view.criteria",
 //    "view.delegates",
