@@ -56,7 +56,7 @@ val auTrProjects = listOf(
 //    "reports.reference",
 //    "reports.someday",
 //    "reports.weekly",
-//    "runtime",
+    "runtime",
 //    "services",
 //    "sync.device",
 //    "sync.iphone",
