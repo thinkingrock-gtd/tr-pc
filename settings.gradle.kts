@@ -77,7 +77,7 @@ val auTrProjects = listOf(
     "view.project",
     "view.projects",
     "view.process",
-//    "view.reference",
+    "view.reference",
     "view.someday",
     "view.topics",
 ).map { "au.com.trgtd.tr.$it" }
