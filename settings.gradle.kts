@@ -51,7 +51,7 @@ val auTrProjects = listOf(
 //    "reports.actions.delegated",
 //    "reports.actions.doasap",
 //    "reports.actions.scheduled",
-//    "reports.done",
+    "reports.done",
     "reports.pocketmod",
     "reports.reference",
     "reports.someday",
