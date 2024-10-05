@@ -5,7 +5,7 @@ plugins {
 rootProject.name = "ThinkingRock"
 
 val auTrProjects = listOf(
-//    "appl",
+    "appl",
 //    "archive",
 //    "cal",
 //    "calendar",
