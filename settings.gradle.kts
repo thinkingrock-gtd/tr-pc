@@ -72,7 +72,7 @@ val auTrProjects = listOf(
     "view.criteria",
 //    "view.delegates",
 //    "view.filters",
-//    "view.goals",
+    "view.goals",
 //    "view.overview",
     "view.project",
 //    "view.projects",
