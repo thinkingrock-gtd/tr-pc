@@ -45,7 +45,7 @@ val auTrProjects = listOf(
     "task.recurrence",
 //    "util",
     "report.project.detail",
-//    "report.project.outline",
+    "report.project.outline",
 //    "report.projects.future",
 //    "report.sa",
 //    "reports.actions.delegated",
