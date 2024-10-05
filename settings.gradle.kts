@@ -13,7 +13,7 @@ val auTrProjects = listOf(
 //    "calendar.ical4j.impl",
 //    "data",
 //    "data.recent",
-//    "datastore",
+    "datastore",
 //    "datastore.xstream",
 //    //"datastore.xstream2", // broken?
 //    "email",
