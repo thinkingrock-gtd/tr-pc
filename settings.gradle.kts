@@ -33,7 +33,7 @@ val auTrProjects = listOf(
 //    "l10n.es_ES",
 //    "l10n.fr_FR",
 //    "l10n.nl_NL",
-//    "prefs.actions",
+    "prefs.actions",
 //    "prefs.data",
     "prefs.dates",
 //    "prefs.projects",
