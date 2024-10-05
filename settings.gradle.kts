@@ -23,7 +23,7 @@ val auTrProjects = listOf(
     "export.references",
     "export.someday",
     "extract",
-//    "find",
+    "find",
 //    "i18n",
 //    "imports",
 //    "imports.thoughts",
