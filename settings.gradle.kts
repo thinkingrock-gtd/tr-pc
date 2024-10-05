@@ -40,7 +40,7 @@ val auTrProjects = listOf(
 //    "prefs.recurrence",
 //    "prefs.ui",
     "resource",
-//    "swing",
+    "swing",
 //    "task.activation",
 //    "task.recurrence",
 //    "util",
