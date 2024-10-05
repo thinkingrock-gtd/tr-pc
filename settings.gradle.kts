@@ -19,7 +19,7 @@ val auTrProjects = listOf(
     "email",
     "export",
     "export.actions",
-//    "export.data",
+    "export.data",
 //    "export.references",
 //    "export.someday",
     "extract",
