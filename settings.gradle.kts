@@ -73,7 +73,7 @@ val auTrProjects = listOf(
 //    "view.delegates",
     "view.filters",
     "view.goals",
-//    "view.overview",
+    "view.overview",
     "view.project",
     "view.projects",
     "view.process",
