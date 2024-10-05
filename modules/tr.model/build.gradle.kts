@@ -1,7 +1,7 @@
 description = "TR-Model"
 
 plugins {
-    id("java-library")      
+    id("java-library")
     id("au.com.trgtd.migration.antpathsourceset")
 }
 
