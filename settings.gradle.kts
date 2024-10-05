@@ -36,7 +36,7 @@ val auTrProjects = listOf(
     "prefs.actions",
 //    "prefs.data",
     "prefs.dates",
-//    "prefs.projects",
+    "prefs.projects",
 //    "prefs.recurrence",
 //    "prefs.ui",
     "resource",
