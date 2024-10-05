@@ -6,7 +6,7 @@ rootProject.name = "ThinkingRock"
 
 val auTrProjects = listOf(
     "appl",
-//    "archive",
+    "archive",
 //    "cal",
     "calendar",
     "calendar.ical4j",
