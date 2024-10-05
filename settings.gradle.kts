@@ -14,7 +14,7 @@ val auTrProjects = listOf(
 //    "data",
 //    "data.recent",
     "datastore",
-//    "datastore.xstream",
+    "datastore.xstream",
 //    //"datastore.xstream2", // broken?
 //    "email",
 //    "export",
