@@ -58,7 +58,7 @@ val auTrProjects = listOf(
     "runtime",
     "services",
     "sync.device",
-//    "sync.iphone",
+    "sync.iphone",
     "task.messages",
     "updates",
     "util",
