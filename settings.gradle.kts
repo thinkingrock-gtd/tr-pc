@@ -63,7 +63,7 @@ val auTrProjects = listOf(
 //    "task.messages",
 //    "updates",
       "util",
-//    "view",
+    "view",
 //    "view.actn",
 //    "view.actns",
 //    "view.calendar",
