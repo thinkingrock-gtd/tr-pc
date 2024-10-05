@@ -8,7 +8,7 @@ val auTrProjects = listOf(
     "appl",
 //    "archive",
 //    "cal",
-//    "calendar",
+    "calendar",
 //    "calendar.ical4j",
 //    "calendar.ical4j.impl",
 //    "data",
