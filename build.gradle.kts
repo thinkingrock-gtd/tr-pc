@@ -15,7 +15,7 @@ subprojects {
     apply(plugin = "java")
 
     repositories {
-        mavenCentral()  
+        mavenCentral()
 
         maven {
             url = uri("https://netbeans.apidesign.org/maven2")
@@ -50,22 +50,23 @@ subprojects {
 }
 
 
-tasks{
+tasks {
     val downloadNetBeans = register("downloadNetBeans") {
         description = "Ensures netbeans-$netbeansVersion-bin.zip has been downloaded to the build directory"
         group = "prepare"
 
-	doLast {
+        doLast {
             download.run {
                 src("https://archive.apache.org/dist/netbeans/netbeans/$netbeansVersion/netbeans-$netbeansVersion-bin.zip")
                 dest(layout.buildDirectory)
                 overwrite(true)
-		onlyIfModified(true)
+                onlyIfModified(true)
             }
         }
     }
     register<Copy>("unpackNetBeans") {
-        description = "Ensures the required netbeans-$netbeansVersion modules have been extracted to the netbeans-plat directory"
+        description =
+            "Ensures the required netbeans-$netbeansVersion modules have been extracted to the netbeans-plat directory"
         group = "prepare"
 
         val netbeansZip = zipTree(file(layout.buildDirectory).resolve("netbeans-$netbeansVersion-bin.zip"))
