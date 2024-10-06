@@ -37,7 +37,7 @@ public class OverviewSVGProvider_fr_FRTest {
 //    @Test // TODO fixme
     public void testGetURL() {
         assertEquals(
-                "nbfs://nbhost/SystemFxileSystem/Overview/overview_fr_FR.svg",
+                "nbfs://nbhost/SystemFileSystem/Overview/overview_fr_FR.svg",
                 instance.getURL().toString()
         );
     }
