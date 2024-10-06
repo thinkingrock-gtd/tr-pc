@@ -26,6 +26,6 @@ public class ExportTextTest {
 
     @Test
     public void testGetID() {
-        assertEquals("actions-text", instance.getID());
+        assertEquals("actions-textFAILING", instance.getID());
     }
 }
