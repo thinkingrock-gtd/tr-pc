@@ -12,3 +12,4 @@ netbeans-plat/
 .idea/
 **/*.iml
 
+.gradle

@@ -1,0 +1,77 @@
+[versions]
+apache-commons-email = "1.6.0"
+apache-commons-lang3 = "3.12.0"
+apache-commons-text = "1.12.0"
+batik = "1.6-1"
+ddmlib = "22.5.3"
+download-plugin = "5.6.0"
+fop = "0.95-1"
+glazedlists = "1.11.0"
+ical4j = "1.0.5.2"
+itext = "2.1.7"
+jackson-databind = "2.2.3"
+jasperreports = "5.1.0"
+java = "17"
+javax-mail = "1.4.7"
+jaxb-api = "2.3.0"
+jmdns = "3.4.2-r353-1"
+junit-jupiter = "5.10.1"
+junit4 = "4.13.2"
+kotlin = "2.0.20"
+miglayout-swing = "4.1"
+minimal-json = "0.9.4"
+netbeans-ide = "22"
+netbeans-api = "RELEASE220"
+netbeans-ext-swing = "RELEASE802"
+super-csv = "2.4.0"
+swingx = "1.6.5-1"
+xstream = "1.4.19"
+
+[libraries]
+apache-commons-email = { module = "org.apache.commons:commons-email", version.ref = "apache-commons-email" }
+apache-commons-lang3 = { module = "org.apache.commons:commons-lang3", version.ref = "apache-commons-lang3" }
+apache-commons-text = { module = "org.apache.commons:commons-text", version.ref = "apache-commons-text" }
+batik-swing = { module = "batik:batik-swing", version.ref = "batik" }
+ddmlib = { module = "com.android.tools.ddms:ddmlib", version.ref = "ddmlib" }
+fop = { module = "org.apache.xmlgraphics:fop", version.ref = "fop" }
+glazedlists = { module = "com.glazedlists:glazedlists", version.ref = "glazedlists" }
+ical4j = { module = "org.mnode.ical4j:ical4j", version.ref = "ical4j" }
+itext = { module = "com.lowagie:itext", version.ref = "itext" }
+jackson-databind = { module = "com.fasterxml.jackson.core:jackson-databind", version.ref = "jackson-databind" }
+jasperreports = { module = "net.sf.jasperreports:jasperreports", version.ref = "jasperreports" }
+javax-mail = { module = "javax.mail:mail", version.ref = "javax-mail" }
+jaxb-api = { module = "javax.xml.bind:jaxb-api", version.ref = "jaxb-api" }
+jmdns = { module = "com.github.rickyclarkson:jmdns", version.ref = "jmdns" }
+junit-jupiter = { module = "org.junit.jupiter:junit-jupiter", version.ref = "junit-jupiter" }
+junit-vintage-engine = { module = "org.junit.vintage:junit-vintage-engine", version.ref = "junit-jupiter" }
+junit4 = { module = "junit:junit", version.ref = "junit4" }
+miglayout-swing = { module = "com.miglayout:miglayout-swing", version.ref = "miglayout-swing" }
+minimaljson = { module = "com.eclipsesource.minimal-json:minimal-json", version.ref = "minimal-json" }
+netbeans-api-progress = { module = "org.netbeans.api:org-netbeans-api-progress", version.ref = "netbeans-api" }
+netbeans-api-core-multitabs = { module = "org.netbeans.api:org-netbeans-core-multitabs", version.ref = "netbeans-api" }
+netbeans-api-jdesktop-layout = { module = "org.netbeans.api:org-jdesktop-layout", version.ref = "netbeans-ext-swing" }
+netbeans-api-modules-javahelp = { module = "org.netbeans.api:org-netbeans-modules-javahelp", version.ref = "netbeans-api" }
+netbeans-api-modules-netbinox = { module = "org.netbeans.api:org-netbeans-modules-netbinox", version.ref = "netbeans-api" }
+netbeans-api-modules-options-api = { module = "org.netbeans.api:org-netbeans-modules-options-api", version.ref = "netbeans-api" }
+netbeans-api-openide-awt = { module = "org.netbeans.api:org-openide-awt", version.ref = "netbeans-api" }
+netbeans-api-openide-dialogs = { module = "org.netbeans.api:org-openide-dialogs", version.ref = "netbeans-api" }
+netbeans-api-openide-filesystems = { module = "org.netbeans.api:org-openide-filesystems", version.ref = "netbeans-api" }
+netbeans-api-openide-filesystems-compat8 = { module = "org.netbeans.api:org-openide-filesystems-compat8", version.ref = "netbeans-api" }
+netbeans-api-openide-nodes = { module = "org.netbeans.api:org-openide-nodes", version.ref = "netbeans-api" }
+netbeans-api-openide-util = { module = "org.netbeans.api:org-openide-util", version.ref = "netbeans-api" }
+netbeans-api-openide-util-ui = { module = "org.netbeans.api:org-openide-util-ui", version.ref = "netbeans-api" }
+netbeans-api-openide-windows = { module = "org.netbeans.api:org-openide-windows", version.ref = "netbeans-api" }
+netbeans-cluster-harness = { module = "org.netbeans.cluster:harness", version.ref = "netbeans-api" }
+netbeans-cluster-platform = { module = "org.netbeans.cluster:platform", version.ref = "netbeans-api" }
+netbeans-modules-ide-kit = { module = "org.netbeans.modules:org-netbeans-modules-ide-kit", version.ref = "netbeans-api" }
+netbeans-modules-core-multitabs-project = { module = "org.netbeans.modules:org-netbeans-core-multitabs-project", version.ref = "netbeans-api" }
+netbeans-modules-core-windows = { module = "org.netbeans.modules:org-netbeans-core-windows", version.ref = "netbeans-api" }
+netbeans-modules-projectapi-nb = { module = "org.netbeans.modules:org-netbeans-modules-projectapi-nb", version.ref = "netbeans-api" }
+supercsv = { module = "net.sf.supercsv:super-csv", version.ref = "super-csv" }
+swingx = { module = "org.swinglabs.swingx:swingx-core", version.ref = "swingx" }
+xstream = { module = "com.thoughtworks.xstream:xstream", version.ref = "xstream" }
+
+plugin-kotlin = { module = "org.jetbrains.kotlin:kotlin-gradle-plugin", version.ref = "kotlin" }
+
+[plugins]
+download = { id = "de.undercouch.download", version.ref = "download-plugin" }
