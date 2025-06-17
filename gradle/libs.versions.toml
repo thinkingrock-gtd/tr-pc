@@ -22,7 +22,6 @@ miglayout-swing = "4.1"
 minimal-json = "0.9.4"
 netbeans-ide = "22"
 netbeans-api = "RELEASE220"
-netbeans-ext-swing = "RELEASE802"
 super-csv = "2.4.0"
 swingx = "1.6.5-1"
 xstream = "1.4.19"
@@ -49,7 +48,6 @@ miglayout-swing = { module = "com.miglayout:miglayout-swing", version.ref = "mig
 minimaljson = { module = "com.eclipsesource.minimal-json:minimal-json", version.ref = "minimal-json" }
 netbeans-api-progress = { module = "org.netbeans.api:org-netbeans-api-progress", version.ref = "netbeans-api" }
 netbeans-api-core-multitabs = { module = "org.netbeans.api:org-netbeans-core-multitabs", version.ref = "netbeans-api" }
-netbeans-api-jdesktop-layout = { module = "org.netbeans.api:org-jdesktop-layout", version.ref = "netbeans-ext-swing" }
 netbeans-api-modules-javahelp = { module = "org.netbeans.api:org-netbeans-modules-javahelp", version.ref = "netbeans-api" }
 netbeans-api-modules-netbinox = { module = "org.netbeans.api:org-netbeans-modules-netbinox", version.ref = "netbeans-api" }
 netbeans-api-modules-options-api = { module = "org.netbeans.api:org-netbeans-modules-options-api", version.ref = "netbeans-api" }
