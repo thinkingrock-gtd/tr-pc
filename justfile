@@ -67,3 +67,22 @@ run:
 ## Starts the ThinkingRock application from sources - not ready yet
 #run:
 #	./gradlew :au.com.trgtd.tr.appl:runNetBeans
+
+# Renames all gradle (.kts) files to .kts_ to convince Netbeans from opening the project as ant project
+[linux]
+disable-gradle:
+	#!/usr/bin/env bash
+	set -euo pipefail
+	find . -name "*.kts" -type f | while read -r file; do
+		mv "$file" "${file}_"
+	done
+
+# Renames all disabled gradle (.kts_) files back to .kts to allow the CI gradle build to run
+[linux]
+enable-gradle:
+	#!/usr/bin/env bash
+	set -euo pipefail
+	find . -name "*.kts_" -type f | while read -r file; do
+		mv "$file" "${file%_}"
+	done
+
