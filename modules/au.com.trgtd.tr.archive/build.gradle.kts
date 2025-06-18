@@ -14,6 +14,5 @@ dependencies {
     implementation(project(":au.com.trgtd.tr.swing"))
     implementation(project(":tr.model"))
 
-    implementation(libs.netbeans.api.jdesktop.layout)
     implementation(libs.netbeans.api.openide.awt)
 }
