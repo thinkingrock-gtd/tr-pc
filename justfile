@@ -19,12 +19,14 @@ build-zip:
     ant build-zip -Dnbplatform.default.netbeans.dest.dir={{repodir}}/netbeans-plat/{{ netbeans-plat-version }}/ide
 
 # Verifies modules with headless tests
-verify-headless *args:
+verify-headless *args: enable-gradle
     ./gradlew check {{args}}
+    just disable-gradle
 
 # Verifies all modules - including UI tests
-verify *args:
+verify *args: enable-gradle
     ./gradlew check -Dtest.profile=allTests {{args}}
+    just disable-gradle
 
 # Shows some diagnostics used by ant
 diagnostics:
