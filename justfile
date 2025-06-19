@@ -72,6 +72,7 @@ run:
 
 # Renames all gradle (.kts) files to .kts_ to convince Netbeans from opening the project as ant project
 [linux]
+[macos]
 disable-gradle:
 	#!/usr/bin/env bash
 	set -euo pipefail
@@ -81,6 +82,7 @@ disable-gradle:
 
 # Renames all disabled gradle (.kts_) files back to .kts to allow the CI gradle build to run
 [linux]
+[macos]
 enable-gradle:
 	#!/usr/bin/env bash
 	set -euo pipefail
