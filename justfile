@@ -5,7 +5,7 @@ set windows-shell := ["powershell.exe", "-NoLogo", "-Command"]
 
 repodir := `pwd`
 
-netbeans-plat-version := "22"
+netbeans-plat-version := "25"
 java-version := "17"
 
 alias verify-ci := verify-headless
@@ -19,12 +19,14 @@ build-zip:
     ant build-zip -Dnbplatform.default.netbeans.dest.dir={{repodir}}/netbeans-plat/{{ netbeans-plat-version }}/ide
 
 # Verifies modules with headless tests
-verify-headless *args:
+verify-headless *args: enable-gradle
     ./gradlew check {{args}}
+    just disable-gradle
 
 # Verifies all modules - including UI tests
-verify *args:
+verify *args: enable-gradle
     ./gradlew check -Dtest.profile=allTests {{args}}
+    just disable-gradle
 
 # Shows some diagnostics used by ant
 diagnostics:
@@ -67,3 +69,24 @@ run:
 ## Starts the ThinkingRock application from sources - not ready yet
 #run:
 #	./gradlew :au.com.trgtd.tr.appl:runNetBeans
+
+# Renames all gradle (.kts) files to .kts_ to convince Netbeans from opening the project as ant project
+[linux]
+[macos]
+disable-gradle:
+	#!/usr/bin/env bash
+	set -euo pipefail
+	find . -name "*.kts" -type f | while read -r file; do
+		mv "$file" "${file}_"
+	done
+
+# Renames all disabled gradle (.kts_) files back to .kts to allow the CI gradle build to run
+[linux]
+[macos]
+enable-gradle:
+	#!/usr/bin/env bash
+	set -euo pipefail
+	find . -name "*.kts_" -type f | while read -r file; do
+		mv "$file" "${file%_}"
+	done
+
