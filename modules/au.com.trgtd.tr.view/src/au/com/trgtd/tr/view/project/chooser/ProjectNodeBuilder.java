@@ -33,7 +33,7 @@ class ProjectNodeBuilder {
      */
     ProjectNodeBuilder(String filterText) {
         String trimmed = filterText == null ? "" : filterText.trim();
-        this.filter = trimmed.isEmpty() ? null : trimmed;
+        this.filter = trimmed.isEmpty() ? null : trimmed.toLowerCase();
     }
 
     /**
@@ -76,6 +76,6 @@ class ProjectNodeBuilder {
 
     private boolean matches(Project project) {
         String description = project.getDescription();
-        return description != null && description.contains(filter);
+        return description != null && description.toLowerCase().contains(filter);
     }
 }
