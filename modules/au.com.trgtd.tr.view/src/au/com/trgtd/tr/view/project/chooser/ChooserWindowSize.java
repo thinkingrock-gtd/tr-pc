@@ -31,6 +31,13 @@ class ChooserWindowSize {
     /** How much of the screen the window may take up on its own account. */
     private static final double SCREEN_SHARE = 0.8;
 
+    /**
+     * How far a window manager may deviate from the size it was given, for
+     * instance to fit window decorations, before it counts as the user having
+     * resized the window. Dragging a window is a much coarser gesture.
+     */
+    private static final int WINDOW_MANAGER_ALLOWANCE = 32;
+
     private ChooserWindowSize() {
     }
 
@@ -68,7 +75,11 @@ class ChooserWindowSize {
      * none has been given yet.
      */
     static boolean isUserSize(Dimension current, Dimension applied) {
-        return false;
+        if (applied == null) {
+            return false;
+        }
+        return Math.abs(current.width - applied.width) > WINDOW_MANAGER_ALLOWANCE
+                || Math.abs(current.height - applied.height) > WINDOW_MANAGER_ALLOWANCE;
     }
 
     /** Clamps the given value, letting the maximum win over the minimum. */
