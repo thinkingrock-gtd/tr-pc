@@ -207,6 +207,7 @@ public class ProjectChooserDialog extends JDialog implements ActionListener {
             setLocationRelativeTo(component);
         }
 
+        panel.resetFilter();
         panel.refreshModel();
         panel.setSelected(project);
 

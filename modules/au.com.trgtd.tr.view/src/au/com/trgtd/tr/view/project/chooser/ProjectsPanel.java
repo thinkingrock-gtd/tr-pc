@@ -18,10 +18,13 @@
 package au.com.trgtd.tr.view.project.chooser;
 
 import au.com.trgtd.tr.resource.Icons;
+import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.InputEvent;
+import java.awt.event.ItemEvent;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseAdapter;
@@ -33,12 +36,20 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Vector;
+import javax.swing.AbstractAction;
+import javax.swing.BorderFactory;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JCheckBox;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JTextField;
 import javax.swing.JToolBar;
 import javax.swing.JTree;
+import javax.swing.KeyStroke;
+import javax.swing.event.DocumentEvent;
+import javax.swing.event.DocumentListener;
 import javax.swing.tree.DefaultMutableTreeNode;
 import javax.swing.tree.DefaultTreeModel;
 import javax.swing.tree.TreePath;
@@ -57,10 +68,13 @@ import tr.model.project.Project;
 public class ProjectsPanel extends JPanel {
 
     private static final Class CLASS = ProjectsPanel.class;
+    private static final String ACTION_FOCUS_FILTER = "focus.filter";
     private List<ActionListener> actionListeners;
     private Map<Integer, Boolean> mapProjectSorts;    
     private Map<Integer, Boolean> mapFutureSorts;
     private final boolean currentOnly;
+    private JTextField filterField;
+    private JCheckBox extendedBox;
     
     /** Creates new form ProjectsPanel */
     public ProjectsPanel() {
@@ -76,6 +90,78 @@ public class ProjectsPanel extends JPanel {
         }
         mapProjectSorts = new HashMap<>();
         mapFutureSorts = new HashMap<>();
+        add(getFilterPanel(), BorderLayout.NORTH);
+    }
+
+    /**
+     * Creates the panel holding the filter field, which reduces both trees to
+     * the projects matching the entered text while it is being typed.
+     */
+    private JPanel getFilterPanel() {
+        filterField = new JTextField();
+        filterField.setToolTipText(NbBundle.getMessage(CLASS, "filter.tooltip")
+                + (Utilities.isMac() ? " (⌘F)" : " (Ctrl+F)"));
+        // Handling the enter key here keeps it from reaching the dialog's
+        // default button, which would accept a possibly empty selection.
+        filterField.addActionListener((ActionEvent arg0) -> {
+            selectFirstMatch();
+        });
+        filterField.getDocument().addDocumentListener(new DocumentListener() {
+            @Override
+            public void insertUpdate(DocumentEvent e) {
+                refreshModel();
+            }
+            @Override
+            public void removeUpdate(DocumentEvent e) {
+                refreshModel();
+            }
+            @Override
+            public void changedUpdate(DocumentEvent e) {
+                refreshModel();
+            }
+        });
+        JLabel label = new JLabel(NbBundle.getMessage(CLASS, "filter.label"));
+        label.setDisplayedMnemonic(KeyEvent.VK_F);
+        label.setLabelFor(filterField);
+        registerFilterShortcut();
+        extendedBox = new JCheckBox(NbBundle.getMessage(CLASS, "filter.extended.label"));
+        extendedBox.setToolTipText(NbBundle.getMessage(CLASS, "filter.extended.tooltip"));
+        extendedBox.setMnemonic(KeyEvent.VK_E);
+        // An item listener also reacts to the state being set programmatically.
+        extendedBox.addItemListener((ItemEvent arg0) -> {
+            refreshModel();
+        });
+        JPanel panel = new JPanel(new BorderLayout(4, 0));
+        panel.setBorder(BorderFactory.createEmptyBorder(4, 4, 0, 4));
+        panel.add(label, BorderLayout.WEST);
+        panel.add(filterField, BorderLayout.CENTER);
+        panel.add(extendedBox, BorderLayout.EAST);
+        return panel;
+    }
+
+    /**
+     * Gets the project fields that the filter searches.
+     */
+    private ProjectSearchScope getSearchScope() {
+        return extendedBox.isSelected() ? ProjectSearchScope.EXTENDED : ProjectSearchScope.NAME;
+    }
+
+    /**
+     * Binds the platform find shortcut to the filter field, so that the focus
+     * can go back there from anywhere in the chooser. The focus stays in the
+     * tree otherwise, which is where the keyboard selection happens.
+     */
+    private void registerFilterShortcut() {
+        int modifier = Utilities.isMac() ? InputEvent.META_DOWN_MASK : InputEvent.CTRL_DOWN_MASK;
+        KeyStroke stroke = KeyStroke.getKeyStroke(KeyEvent.VK_F, modifier);
+        getInputMap(WHEN_IN_FOCUSED_WINDOW).put(stroke, ACTION_FOCUS_FILTER);
+        getActionMap().put(ACTION_FOCUS_FILTER, new AbstractAction() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                filterField.requestFocusInWindow();
+                filterField.selectAll();
+            }
+        });
     }
 
     private JToolBar getProjectsToolbar() {
@@ -260,18 +346,81 @@ public class ProjectsPanel extends JPanel {
         if (data == null) {
             return;
         }                
-        DefaultMutableTreeNode top;
-        top = (DefaultMutableTreeNode)projectsTree.getModel().getRoot();
-        top.removeAllChildren();                
-        createNodes(top, data.getRootProjects());                
-        refreshSorts(mapProjectSorts, projectsTree);        
-        ((DefaultTreeModel)projectsTree.getModel()).reload(top);
+        ProjectNodeBuilder builder = new ProjectNodeBuilder(filterField.getText(), getSearchScope());
+        refreshTree(projectsTree, data.getRootProjects(), builder, mapProjectSorts);
+        refreshTree(futureTree, data.getRootFutures(), builder, mapFutureSorts);
+    }
 
-        top = (DefaultMutableTreeNode)futureTree.getModel().getRoot();
-        top.removeAllChildren();        
-        createNodes(top, data.getRootFutures());                
-        refreshSorts(mapFutureSorts, futureTree);        
-        ((DefaultTreeModel)futureTree.getModel()).reload(top);             
+    /**
+     * Rebuilds the nodes of the given tree from the given root project, keeping
+     * the sort order and the selected project, and expands the tree while a
+     * filter is in effect.
+     */
+    private void refreshTree(JTree tree, Project rootProject, ProjectNodeBuilder builder,
+            Map<Integer, Boolean> sortsMap) {
+        Integer selectedProjectID = getSelectedProjectID(tree);
+        DefaultMutableTreeNode top = (DefaultMutableTreeNode)tree.getModel().getRoot();
+        top.removeAllChildren();
+        builder.addChildNodes(top, rootProject);
+        refreshSorts(sortsMap, tree);
+        ((DefaultTreeModel)tree.getModel()).reload(top);
+        if (builder.isFiltering()) {
+            expand(top, tree);
+        }
+        selectProject(tree, selectedProjectID);
+    }
+
+    /**
+     * Removes the filter, so that a reused chooser starts without one.
+     */
+    public void resetFilter() {
+        filterField.setText("");
+    }
+
+    /**
+     * Selects the first project matching the filter in the visible tree and
+     * moves the focus there, so that the selection can be refined with the
+     * keyboard.
+     */
+    private void selectFirstMatch() {
+        JTree tree = tabbedPane.getSelectedIndex() == 1 ? futureTree : projectsTree;
+        ProjectNodeBuilder builder = new ProjectNodeBuilder(filterField.getText(), getSearchScope());
+        if (builder.isFiltering()) {
+            DefaultMutableTreeNode root = (DefaultMutableTreeNode)tree.getModel().getRoot();
+            DefaultMutableTreeNode match = builder.findFirstMatch(root);
+            if (match != null) {
+                tree.setSelectionPath(new TreePath(match.getPath()));
+            }
+        }
+        tree.requestFocusInWindow();
+    }
+
+    /**
+     * Gets the ID of the selected project of the given tree.
+     * @return The project ID, or null if no project is selected.
+     */
+    private Integer getSelectedProjectID(JTree tree) {
+        DefaultMutableTreeNode node = (DefaultMutableTreeNode)tree.getLastSelectedPathComponent();
+        if (node == null) {
+            return null;
+        }
+        Object object = node.getUserObject();
+        return object instanceof Project project ? project.getID() : null;
+    }
+
+    /**
+     * Selects the project with the given ID in the given tree, if the tree
+     * still contains it. Does nothing for a null ID.
+     */
+    private void selectProject(JTree tree, Integer projectID) {
+        if (projectID == null) {
+            return;
+        }
+        DefaultMutableTreeNode root = (DefaultMutableTreeNode)tree.getModel().getRoot();
+        DefaultMutableTreeNode node = findNode(projectID, root);
+        if (node != null) {
+            tree.setSelectionPath(new TreePath(node.getPath()));
+        }
     }
     
     private void refreshSorts(Map<Integer, Boolean> map, JTree tree) {
@@ -290,12 +439,7 @@ public class ProjectsPanel extends JPanel {
     }
     
     private JTree getProjectsTree() {
-//        Data data = DataLookup.instance().lookup(Data.class);
-//        if (data == null) {
-//            return null;
-//        }
         DefaultMutableTreeNode top = new DefaultMutableTreeNode(NbBundle.getMessage(CLASS, "projects"));
-//      createNodes(top, data.getRootProjects());
         final JTree tree = new JTree(top);
         tree.getSelectionModel().setSelectionMode(TreeSelectionModel.SINGLE_TREE_SELECTION);
         tree.setCellRenderer(new ProjectTreeCellRenderer(Icons.Project, Icons.ProjectOpen));
@@ -336,12 +480,7 @@ public class ProjectsPanel extends JPanel {
     }
 
     private JTree getFutureProjectsTree() {
-        Data data = DataLookup.instance().lookup(Data.class);
-        if (data == null) {
-            return null;
-        }
         DefaultMutableTreeNode top = new DefaultMutableTreeNode(NbBundle.getMessage(CLASS, "future.projects"));
-        createNodes(top, data.getRootFutures());
         final JTree tree = new JTree(top);
         tree.setCellRenderer(new ProjectTreeCellRenderer(Icons.ProjectFuture, Icons.ProjectFutureOpen));
         tree.setRootVisible(true);
@@ -378,16 +517,6 @@ public class ProjectsPanel extends JPanel {
             }            
         });
         return tree;
-    }
-
-    private void createNodes(DefaultMutableTreeNode node, Project project) {
-        for (Project subProject : project.getChildren(Project.class)) {
-            if (!subProject.isDone()) {
-                DefaultMutableTreeNode subNode = new DefaultMutableTreeNode(subProject);
-                createNodes(subNode, subProject);
-                node.add(subNode);                
-            }
-        }
     }
 
     public void setSelected(Project project) {
