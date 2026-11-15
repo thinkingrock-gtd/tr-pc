@@ -118,6 +118,40 @@ public class ProjectNodeBuilderTest {
     }
 
     @Test
+    public void ignoresSurroundingWhitespaceOfTheFilterText() {
+        Project root = project("root");
+        root.add(project("needle"));
+        root.add(project("beta"));
+
+        assertEquals(""
+                + "Projects\n"
+                + "  needle\n",
+                build(root, "  needle  "));
+    }
+
+    @Test
+    public void treatsAProjectWithoutDescriptionAsNoMatch() {
+        Project root = project("root");
+        root.add(project(null));
+        root.add(project("needle"));
+
+        assertEquals(""
+                + "Projects\n"
+                + "  needle\n",
+                build(root, "needle"));
+    }
+
+    @Test
+    public void keepsOnlyTheRootNodeWhenNothingMatches() {
+        Project root = project("root");
+        Project alpha = project("alpha");
+        root.add(alpha);
+        alpha.add(project("alpha child"));
+
+        assertEquals("Projects\n", build(root, "no such project"));
+    }
+
+    @Test
     public void isNotFilteringWithoutFilterText() {
         assertFalse("null is no filter", new ProjectNodeBuilder(null).isFiltering());
         assertFalse("empty is no filter", new ProjectNodeBuilder("").isFiltering());
