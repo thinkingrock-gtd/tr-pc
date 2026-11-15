@@ -21,6 +21,7 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertSame;
+import static org.junit.Assert.assertTrue;
 
 import java.awt.Component;
 import java.awt.Container;
@@ -30,6 +31,7 @@ import java.util.List;
 import javax.swing.JTextField;
 import javax.swing.JTree;
 import javax.swing.tree.DefaultMutableTreeNode;
+import javax.swing.tree.TreePath;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -125,6 +127,29 @@ public class ProjectsPanelTest {
         filterField(panel).setText("other");
 
         assertNull("Accept must not return an invisible project", panel.getSelected());
+    }
+
+    @Test
+    public void expandsTheTreeWhileFilteringSoThatDeepMatchesAreVisible() {
+        Data data = new Data();
+        Project alpha = project(data, "alpha");
+        data.getRootProjects().add(alpha);
+        Project nested = project(data, "nested");
+        alpha.add(nested);
+        nested.add(project(data, "needle"));
+        DataLookup.instance().setData(data);
+        ProjectsPanel panel = new ProjectsPanel();
+        panel.refreshModel();
+
+        filterField(panel).setText("needle");
+
+        JTree tree = find(panel, JTree.class).get(0);
+        DefaultMutableTreeNode root = (DefaultMutableTreeNode) tree.getModel().getRoot();
+        DefaultMutableTreeNode alphaNode = (DefaultMutableTreeNode) root.getFirstChild();
+        DefaultMutableTreeNode nestedNode = (DefaultMutableTreeNode) alphaNode.getFirstChild();
+        assertTrue("root expanded", tree.isExpanded(new TreePath(root.getPath())));
+        assertTrue("alpha expanded", tree.isExpanded(new TreePath(alphaNode.getPath())));
+        assertTrue("nested expanded", tree.isExpanded(new TreePath(nestedNode.getPath())));
     }
 
     private static Project project(Data data, String description) {
