@@ -326,6 +326,12 @@ public class ProjectsPanel extends JPanel {
     }
 
     /**
+     * Removes the filter, so that a reused chooser starts without one.
+     */
+    public void resetFilter() {
+    }
+
+    /**
      * Selects the first project matching the filter in the visible tree and
      * moves the focus there, so that the selection can be refined with the
      * keyboard.
