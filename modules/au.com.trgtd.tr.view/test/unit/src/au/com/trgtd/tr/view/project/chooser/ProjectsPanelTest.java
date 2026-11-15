@@ -19,6 +19,7 @@ package au.com.trgtd.tr.view.project.chooser;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertSame;
 
 import java.awt.Component;
 import java.awt.Container;
@@ -91,6 +92,22 @@ public class ProjectsPanelTest {
                 + "Future Projects\n"
                 + "  needle future\n",
                 render(trees.get(1)));
+    }
+
+    @Test
+    public void keepsTheSelectedProjectWhenItStillMatchesTheFilter() {
+        Data data = new Data();
+        Project needle = project(data, "needle project");
+        data.getRootProjects().add(needle);
+        data.getRootProjects().add(project(data, "other project"));
+        DataLookup.instance().setData(data);
+        ProjectsPanel panel = new ProjectsPanel();
+        panel.refreshModel();
+        panel.setSelected(needle);
+
+        filterField(panel).setText("needle");
+
+        assertSame(needle, panel.getSelected());
     }
 
     private static Project project(Data data, String description) {
