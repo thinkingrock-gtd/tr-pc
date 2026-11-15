@@ -26,16 +26,22 @@ import static org.junit.Assert.assertTrue;
 import java.awt.Component;
 import java.awt.Container;
 import java.awt.event.ActionEvent;
+import java.awt.event.InputEvent;
+import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 import java.util.Enumeration;
 import java.util.List;
+import javax.swing.JComponent;
+import javax.swing.JLabel;
 import javax.swing.JTextField;
 import javax.swing.JTree;
+import javax.swing.KeyStroke;
 import javax.swing.tree.DefaultMutableTreeNode;
 import javax.swing.tree.TreePath;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+import org.openide.util.Utilities;
 import tr.model.Data;
 import tr.model.DataLookup;
 import tr.model.project.Project;
@@ -192,6 +198,27 @@ public class ProjectsPanelTest {
                 + "  needle project\n"
                 + "  other project\n",
                 render(find(panel, JTree.class).get(0)));
+    }
+
+    @Test
+    public void aMnemonicAndAShortcutLeadBackToTheFilterField() {
+        ProjectsPanel panel = new ProjectsPanel();
+        JTextField field = filterField(panel);
+
+        JLabel filterLabel = null;
+        for (JLabel label : find(panel, JLabel.class)) {
+            if (label.getLabelFor() == field) {
+                filterLabel = label;
+            }
+        }
+        assertNotNull("expected a label tied to the filter field", filterLabel);
+        assertEquals("mnemonic F", KeyEvent.VK_F, filterLabel.getDisplayedMnemonic());
+
+        int modifier = Utilities.isMac() ? InputEvent.META_DOWN_MASK : InputEvent.CTRL_DOWN_MASK;
+        KeyStroke stroke = KeyStroke.getKeyStroke(KeyEvent.VK_F, modifier);
+        Object actionKey = panel.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).get(stroke);
+        assertNotNull("the shortcut must be bound in the focused window", actionKey);
+        assertNotNull("the bound action must be registered", panel.getActionMap().get(actionKey));
     }
 
     private static Project project(Data data, String description) {
