@@ -297,18 +297,50 @@ public class ProjectsPanel extends JPanel {
             return;
         }                
         ProjectNodeBuilder builder = new ProjectNodeBuilder(filterField.getText());
+        Integer selectedProject = getSelectedProjectID(projectsTree);
+        Integer selectedFuture = getSelectedProjectID(futureTree);
         DefaultMutableTreeNode top;
         top = (DefaultMutableTreeNode)projectsTree.getModel().getRoot();
         top.removeAllChildren();                
         builder.addChildNodes(top, data.getRootProjects());                
         refreshSorts(mapProjectSorts, projectsTree);        
         ((DefaultTreeModel)projectsTree.getModel()).reload(top);
+        selectProject(projectsTree, selectedProject);
 
         top = (DefaultMutableTreeNode)futureTree.getModel().getRoot();
         top.removeAllChildren();        
         builder.addChildNodes(top, data.getRootFutures());                
         refreshSorts(mapFutureSorts, futureTree);        
         ((DefaultTreeModel)futureTree.getModel()).reload(top);             
+        selectProject(futureTree, selectedFuture);
+    }
+
+    /**
+     * Gets the ID of the selected project of the given tree.
+     * @return The project ID, or null if no project is selected.
+     */
+    private Integer getSelectedProjectID(JTree tree) {
+        DefaultMutableTreeNode node = (DefaultMutableTreeNode)tree.getLastSelectedPathComponent();
+        if (node == null) {
+            return null;
+        }
+        Object object = node.getUserObject();
+        return object instanceof Project project ? project.getID() : null;
+    }
+
+    /**
+     * Selects the project with the given ID in the given tree, if the tree
+     * still contains it. Does nothing for a null ID.
+     */
+    private void selectProject(JTree tree, Integer projectID) {
+        if (projectID == null) {
+            return;
+        }
+        DefaultMutableTreeNode root = (DefaultMutableTreeNode)tree.getModel().getRoot();
+        DefaultMutableTreeNode node = findNode(projectID, root);
+        if (node != null) {
+            tree.setSelectionPath(new TreePath(node.getPath()));
+        }
     }
     
     private void refreshSorts(Map<Integer, Boolean> map, JTree tree) {
