@@ -36,6 +36,6 @@ class ChooserWindowSize {
      * @param available The usable area of the screen the window is on.
      */
     static Dimension sizeFor(Dimension content, Dimension userSize, Rectangle available) {
-        return new Dimension();
+        return new Dimension(content);
     }
 }
