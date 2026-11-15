@@ -74,7 +74,15 @@ class ProjectNodeBuilder {
         }
     }
 
-    private boolean matches(Project project) {
+    /**
+     * Determines whether the given project matches the filter text.
+     * @return true if it matches, or false if it does not or if no filter text
+     * is in effect.
+     */
+    boolean matches(Project project) {
+        if (filter == null) {
+            return false;
+        }
         String description = project.getDescription();
         return description != null && description.toLowerCase().contains(filter);
     }

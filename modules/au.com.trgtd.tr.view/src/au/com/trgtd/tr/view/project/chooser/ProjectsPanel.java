@@ -93,6 +93,11 @@ public class ProjectsPanel extends JPanel {
     private JPanel getFilterPanel() {
         filterField = new JTextField();
         filterField.setToolTipText(NbBundle.getMessage(CLASS, "filter.tooltip"));
+        // Handling the enter key here keeps it from reaching the dialog's
+        // default button, which would accept a possibly empty selection.
+        filterField.addActionListener((ActionEvent arg0) -> {
+            selectFirstMatch();
+        });
         filterField.getDocument().addDocumentListener(new DocumentListener() {
             @Override
             public void insertUpdate(DocumentEvent e) {
@@ -318,6 +323,38 @@ public class ProjectsPanel extends JPanel {
             expand(top, tree);
         }
         selectProject(tree, selectedProjectID);
+    }
+
+    /**
+     * Selects the first project matching the filter in the visible tree and
+     * moves the focus there, so that the selection can be refined with the
+     * keyboard.
+     */
+    private void selectFirstMatch() {
+        JTree tree = tabbedPane.getSelectedIndex() == 1 ? futureTree : projectsTree;
+        ProjectNodeBuilder builder = new ProjectNodeBuilder(filterField.getText());
+        if (builder.isFiltering()) {
+            DefaultMutableTreeNode root = (DefaultMutableTreeNode)tree.getModel().getRoot();
+            DefaultMutableTreeNode match = findFirstMatch(root, builder);
+            if (match != null) {
+                tree.setSelectionPath(new TreePath(match.getPath()));
+            }
+        }
+        tree.requestFocusInWindow();
+    }
+
+    private DefaultMutableTreeNode findFirstMatch(DefaultMutableTreeNode node, ProjectNodeBuilder builder) {
+        Object object = node.getUserObject();
+        if (object instanceof Project project && builder.matches(project)) {
+            return node;
+        }
+        for (Enumeration e = node.children(); e.hasMoreElements(); ) {
+            DefaultMutableTreeNode match = findFirstMatch((DefaultMutableTreeNode)e.nextElement(), builder);
+            if (match != null) {
+                return match;
+            }
+        }
+        return null;
     }
 
     /**
