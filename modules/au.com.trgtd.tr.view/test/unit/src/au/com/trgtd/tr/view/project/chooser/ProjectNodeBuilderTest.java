@@ -106,6 +106,18 @@ public class ProjectNodeBuilderTest {
     }
 
     @Test
+    public void matchesIgnoringCase() {
+        Project root = project("root");
+        root.add(project("Gartenhaus"));
+        root.add(project("beta"));
+
+        assertEquals(""
+                + "Projects\n"
+                + "  Gartenhaus\n",
+                build(root, "garten"));
+    }
+
+    @Test
     public void isNotFilteringWithoutFilterText() {
         assertFalse("null is no filter", new ProjectNodeBuilder(null).isFiltering());
         assertFalse("empty is no filter", new ProjectNodeBuilder("").isFiltering());
