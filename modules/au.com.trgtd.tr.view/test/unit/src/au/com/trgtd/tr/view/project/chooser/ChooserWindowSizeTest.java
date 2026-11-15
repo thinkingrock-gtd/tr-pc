@@ -18,7 +18,9 @@
 package au.com.trgtd.tr.view.project.chooser;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotSame;
+import static org.junit.Assert.assertTrue;
 
 import java.awt.Dimension;
 import java.awt.Rectangle;
@@ -78,6 +80,23 @@ public class ChooserWindowSizeTest {
                 new Dimension(700, 500), null, new Rectangle(0, 0, 320, 240));
 
         assertEquals(new Dimension(256, 192), size);
+    }
+
+    @Test
+    public void treatsASmallDifferenceAsTheWindowManagerAndNotAsTheUser() {
+        Dimension applied = new Dimension(800, 524);
+
+        assertFalse("the same size is nobody's doing",
+                ChooserWindowSize.isUserSize(new Dimension(800, 524), applied));
+        assertFalse("five pixels less is a window manager adjusting decorations",
+                ChooserWindowSize.isUserSize(new Dimension(800, 519), applied));
+        assertTrue("dragging the window is unmistakable",
+                ChooserWindowSize.isUserSize(new Dimension(1200, 524), applied));
+    }
+
+    @Test
+    public void withoutAnAppliedSizeNothingCountsAsTheUsersDoing() {
+        assertFalse(ChooserWindowSize.isUserSize(new Dimension(800, 524), null));
     }
 
     @Test
