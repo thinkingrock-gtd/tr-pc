@@ -174,6 +174,26 @@ public class ProjectsPanelTest {
         assertTrue("Enter must not accept the dialog", accepted.isEmpty());
     }
 
+    @Test
+    public void resetFilterClearsTheFilterAndShowsAllProjectsAgain() {
+        Data data = new Data();
+        data.getRootProjects().add(project(data, "needle project"));
+        data.getRootProjects().add(project(data, "other project"));
+        DataLookup.instance().setData(data);
+        ProjectsPanel panel = new ProjectsPanel();
+        panel.refreshModel();
+        filterField(panel).setText("needle");
+
+        panel.resetFilter();
+
+        assertEquals("", filterField(panel).getText());
+        assertEquals(""
+                + "Projects\n"
+                + "  needle project\n"
+                + "  other project\n",
+                render(find(panel, JTree.class).get(0)));
+    }
+
     private static Project project(Data data, String description) {
         Project project = new Project(data);
         project.setDescription(description);
