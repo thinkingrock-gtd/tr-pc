@@ -36,7 +36,13 @@ enum ProjectSearchScope {
     EXTENDED {
         @Override
         String textOf(Project project) {
-            return join(project.getDescription());
+            return join(
+                    project.getDescription(),
+                    project.getPurpose(),
+                    project.getVision(),
+                    project.getBrainstorming(),
+                    project.getOrganising(),
+                    project.getNotes());
         }
     };
 
