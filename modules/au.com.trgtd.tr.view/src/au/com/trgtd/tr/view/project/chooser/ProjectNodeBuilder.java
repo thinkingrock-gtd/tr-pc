@@ -17,6 +17,8 @@
  */
 package au.com.trgtd.tr.view.project.chooser;
 
+import java.util.List;
+import java.util.Vector;
 import javax.swing.tree.DefaultMutableTreeNode;
 import tr.model.project.Project;
 
@@ -25,15 +27,23 @@ import tr.model.project.Project;
  */
 class ProjectNodeBuilder {
 
-    private final String filter;
+    private final List<String> terms;
 
     /**
      * Constructs a new instance.
      * @param filterText The filter text, or null or blank for no filtering.
+     * Whitespace separates the text into terms that all have to be found.
      */
     ProjectNodeBuilder(String filterText) {
-        String trimmed = filterText == null ? "" : filterText.trim();
-        this.filter = trimmed.isEmpty() ? null : trimmed.toLowerCase();
+        List<String> list = new Vector<>();
+        if (filterText != null) {
+            for (String term : filterText.toLowerCase().split("\\s+")) {
+                if (!term.isEmpty()) {
+                    list.add(term);
+                }
+            }
+        }
+        this.terms = list;
     }
 
     /**
@@ -41,7 +51,7 @@ class ProjectNodeBuilder {
      * @return true if the nodes are reduced to the matching projects.
      */
     boolean isFiltering() {
-        return filter != null;
+        return !terms.isEmpty();
     }
 
     /**
@@ -52,38 +62,63 @@ class ProjectNodeBuilder {
      * @param project The project whose sub-projects are to be added.
      */
     void addChildNodes(DefaultMutableTreeNode parentNode, Project project) {
-        addChildNodes(parentNode, project, !isFiltering());
+        addChildNodes(parentNode, project, "");
     }
 
     /**
-     * @param included true if the sub-projects are to be included regardless of
-     * the filter, because the filter is not in effect or because one of their
-     * ancestors matches it.
+     * @param ancestorText The names of the projects on the way down to the
+     * given project, which count towards the terms of the filter as well.
      */
-    private void addChildNodes(DefaultMutableTreeNode parentNode, Project project, boolean included) {
+    private void addChildNodes(DefaultMutableTreeNode parentNode, Project project, String ancestorText) {
         for (Project subProject : project.getChildren(Project.class)) {
             if (subProject.isDone()) {
                 continue;
             }
-            boolean subIncluded = included || matches(subProject);
+            String pathText = append(ancestorText, subProject);
             DefaultMutableTreeNode subNode = new DefaultMutableTreeNode(subProject);
-            addChildNodes(subNode, subProject, subIncluded);
-            if (subIncluded || subNode.getChildCount() > 0) {
+            addChildNodes(subNode, subProject, pathText);
+            if (matches(pathText) || subNode.getChildCount() > 0) {
                 parentNode.add(subNode);
             }
         }
     }
 
+    /** Appends the lower cased name of the given project to the given text. */
+    private static String append(String ancestorText, Project project) {
+        String description = project.getDescription();
+        if (description == null) {
+            return ancestorText;
+        }
+        if (ancestorText.isEmpty()) {
+            return description.toLowerCase();
+        }
+        return ancestorText + ' ' + description.toLowerCase();
+    }
+
     /**
-     * Determines whether the given project matches the filter text.
+     * Determines whether every term of the filter occurs in the given names of
+     * a project and its ancestors. Any text matches when no filter is in
+     * effect, because then nothing is filtered out.
+     */
+    private boolean matches(String pathText) {
+        for (String term : terms) {
+            if (!pathText.contains(term)) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    /**
+     * Determines whether the given project matches the filter text on its own.
      * @return true if it matches, or false if it does not or if no filter text
      * is in effect.
      */
     boolean matches(Project project) {
-        if (filter == null) {
+        if (terms.isEmpty()) {
             return false;
         }
         String description = project.getDescription();
-        return description != null && description.toLowerCase().contains(filter);
+        return description != null && matches(description.toLowerCase());
     }
 }
