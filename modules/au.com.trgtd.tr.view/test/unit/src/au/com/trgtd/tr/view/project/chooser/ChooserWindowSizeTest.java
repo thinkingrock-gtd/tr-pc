@@ -18,6 +18,7 @@
 package au.com.trgtd.tr.view.project.chooser;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotSame;
 
 import java.awt.Dimension;
 import java.awt.Rectangle;
@@ -69,5 +70,22 @@ public class ChooserWindowSizeTest {
                 new Dimension(700, 500), new Dimension(4000, 3000), SCREEN);
 
         assertEquals("but not more than the screen", new Dimension(1920, 1080), beyond);
+    }
+
+    @Test
+    public void aScreenSmallerThanTheMinimumWinsOverIt() {
+        Dimension size = ChooserWindowSize.sizeFor(
+                new Dimension(700, 500), null, new Rectangle(0, 0, 320, 240));
+
+        assertEquals(new Dimension(256, 192), size);
+    }
+
+    @Test
+    public void doesNotHandBackOneOfTheGivenDimensions() {
+        Dimension content = new Dimension(700, 500);
+        Dimension userSize = new Dimension(900, 650);
+
+        assertNotSame(content, ChooserWindowSize.sizeFor(content, null, SCREEN));
+        assertNotSame(userSize, ChooserWindowSize.sizeFor(content, userSize, SCREEN));
     }
 }
