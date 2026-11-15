@@ -407,16 +407,6 @@ public class ProjectsPanel extends JPanel {
         return tree;
     }
 
-    private void createNodes(DefaultMutableTreeNode node, Project project) {
-        for (Project subProject : project.getChildren(Project.class)) {
-            if (!subProject.isDone()) {
-                DefaultMutableTreeNode subNode = new DefaultMutableTreeNode(subProject);
-                createNodes(subNode, subProject);
-                node.add(subNode);                
-            }
-        }
-    }
-
     public void setSelected(Project project) {
         if (project == null) {
             tabbedPane.setSelectedIndex(0);
