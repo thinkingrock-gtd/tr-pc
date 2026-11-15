@@ -47,7 +47,7 @@ public class ProjectsPanelTest {
     public void bothTreesAreCreatedWhenNoDataIsAvailable() {
         ProjectsPanel panel = new ProjectsPanel();
 
-        List<JTree> trees = findTrees(panel);
+        List<JTree> trees = find(panel, JTree.class);
 
         assertEquals("expected a projects tree and a future projects tree", 2, trees.size());
         for (JTree tree : trees) {
@@ -65,18 +65,19 @@ public class ProjectsPanelTest {
         panel.refreshModel();
     }
 
-    private static List<JTree> findTrees(Container container) {
-        List<JTree> trees = new ArrayList<>();
-        collectTrees(container, trees);
-        return trees;
+    /** Finds the descendants of the given container that are of the given type. */
+    private static <T extends Component> List<T> find(Container container, Class<T> type) {
+        List<T> found = new ArrayList<>();
+        collect(container, type, found);
+        return found;
     }
 
-    private static void collectTrees(Container container, List<JTree> trees) {
+    private static <T extends Component> void collect(Container container, Class<T> type, List<T> found) {
         for (Component component : container.getComponents()) {
-            if (component instanceof JTree tree) {
-                trees.add(tree);
+            if (type.isInstance(component)) {
+                found.add(type.cast(component));
             } else if (component instanceof Container child) {
-                collectTrees(child, trees);
+                collect(child, type, found);
             }
         }
     }
