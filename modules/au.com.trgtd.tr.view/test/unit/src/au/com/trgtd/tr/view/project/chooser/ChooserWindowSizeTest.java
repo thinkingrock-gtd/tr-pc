@@ -48,4 +48,12 @@ public class ChooserWindowSizeTest {
 
         assertEquals(new Dimension(1536, 864), size);
     }
+
+    @Test
+    public void prefersTheSizeTheUserHasGivenTheWindow() {
+        Dimension size = ChooserWindowSize.sizeFor(
+                new Dimension(700, 500), new Dimension(900, 650), SCREEN);
+
+        assertEquals(new Dimension(900, 650), size);
+    }
 }
