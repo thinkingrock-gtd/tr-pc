@@ -41,4 +41,11 @@ public class ChooserWindowSizeTest {
 
         assertEquals(new Dimension(400, 400), size);
     }
+
+    @Test
+    public void neverGrowsBeyondFourFifthsOfTheScreen() {
+        Dimension size = ChooserWindowSize.sizeFor(new Dimension(4000, 3000), null, SCREEN);
+
+        assertEquals(new Dimension(1536, 864), size);
+    }
 }
