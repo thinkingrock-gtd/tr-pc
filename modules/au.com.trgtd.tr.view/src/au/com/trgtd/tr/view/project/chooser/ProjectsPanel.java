@@ -23,6 +23,7 @@ import java.awt.Dimension;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.InputEvent;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseAdapter;
@@ -34,6 +35,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Vector;
+import javax.swing.AbstractAction;
 import javax.swing.BorderFactory;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
@@ -43,6 +45,7 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.JToolBar;
 import javax.swing.JTree;
+import javax.swing.KeyStroke;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 import javax.swing.tree.DefaultMutableTreeNode;
@@ -63,6 +66,7 @@ import tr.model.project.Project;
 public class ProjectsPanel extends JPanel {
 
     private static final Class CLASS = ProjectsPanel.class;
+    private static final String ACTION_FOCUS_FILTER = "focus.filter";
     private List<ActionListener> actionListeners;
     private Map<Integer, Boolean> mapProjectSorts;    
     private Map<Integer, Boolean> mapFutureSorts;
@@ -92,7 +96,8 @@ public class ProjectsPanel extends JPanel {
      */
     private JPanel getFilterPanel() {
         filterField = new JTextField();
-        filterField.setToolTipText(NbBundle.getMessage(CLASS, "filter.tooltip"));
+        filterField.setToolTipText(NbBundle.getMessage(CLASS, "filter.tooltip")
+                + (Utilities.isMac() ? " (⌘F)" : " (Ctrl+F)"));
         // Handling the enter key here keeps it from reaching the dialog's
         // default button, which would accept a possibly empty selection.
         filterField.addActionListener((ActionEvent arg0) -> {
@@ -112,11 +117,33 @@ public class ProjectsPanel extends JPanel {
                 refreshModel();
             }
         });
+        JLabel label = new JLabel(NbBundle.getMessage(CLASS, "filter.label"));
+        label.setDisplayedMnemonic(KeyEvent.VK_F);
+        label.setLabelFor(filterField);
+        registerFilterShortcut();
         JPanel panel = new JPanel(new BorderLayout(4, 0));
         panel.setBorder(BorderFactory.createEmptyBorder(4, 4, 0, 4));
-        panel.add(new JLabel(NbBundle.getMessage(CLASS, "filter.label")), BorderLayout.WEST);
+        panel.add(label, BorderLayout.WEST);
         panel.add(filterField, BorderLayout.CENTER);
         return panel;
+    }
+
+    /**
+     * Binds the platform find shortcut to the filter field, so that the focus
+     * can go back there from anywhere in the chooser. The focus stays in the
+     * tree otherwise, which is where the keyboard selection happens.
+     */
+    private void registerFilterShortcut() {
+        int modifier = Utilities.isMac() ? InputEvent.META_DOWN_MASK : InputEvent.CTRL_DOWN_MASK;
+        KeyStroke stroke = KeyStroke.getKeyStroke(KeyEvent.VK_F, modifier);
+        getInputMap(WHEN_IN_FOCUSED_WINDOW).put(stroke, ACTION_FOCUS_FILTER);
+        getActionMap().put(ACTION_FOCUS_FILTER, new AbstractAction() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                filterField.requestFocusInWindow();
+                filterField.selectAll();
+            }
+        });
     }
 
     private JToolBar getProjectsToolbar() {
