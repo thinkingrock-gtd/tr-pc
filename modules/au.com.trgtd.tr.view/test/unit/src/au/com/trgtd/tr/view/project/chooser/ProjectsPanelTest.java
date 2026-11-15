@@ -298,6 +298,58 @@ public class ProjectsPanelTest {
         return boxes.get(0);
     }
 
+    @Test
+    public void aLongNameDeepInTheTreeCountsAsMuchAsOneAtTheTop() {
+        int deep = widthForSizing(3);
+        int top = widthForSizing(0);
+
+        assertTrue("a collapsed branch must count too, deep=" + deep + " top=" + top,
+                deep >= top);
+    }
+
+    @Test
+    public void measuringLeavesTheTreeCollapsedAgain() {
+        Data data = new Data();
+        Project parent = project(data, "parent");
+        data.getRootProjects().add(parent);
+        parent.add(project(data, "child"));
+        DataLookup.instance().setData(data);
+        ProjectsPanel panel = new ProjectsPanel();
+        panel.refreshModel();
+        JTree tree = find(panel, JTree.class).get(0);
+        DefaultMutableTreeNode root = (DefaultMutableTreeNode) tree.getModel().getRoot();
+        DefaultMutableTreeNode parentNode = (DefaultMutableTreeNode) root.getFirstChild();
+
+        panel.expandAllForSizing();
+        assertTrue("expanded for measuring", tree.isExpanded(new TreePath(parentNode.getPath())));
+
+        panel.restoreExpansion();
+
+        assertFalse("collapsed again afterwards",
+                tree.isExpanded(new TreePath(parentNode.getPath())));
+    }
+
+    /** The width the panel needs when the given nesting depth holds a long name. */
+    private static int widthForSizing(int depth) {
+        Data data = new Data();
+        Project parent = data.getRootProjects();
+        for (int i = 0; i < depth; i++) {
+            Project level = project(data, "level " + i);
+            parent.add(level);
+            parent = level;
+        }
+        parent.add(project(data,
+                "A very very long project name that is certainly wider than four hundred pixels"));
+        DataLookup.instance().setData(data);
+        ProjectsPanel panel = new ProjectsPanel();
+        panel.refreshModel();
+
+        panel.expandAllForSizing();
+        int width = panel.getPreferredSize().width;
+        panel.restoreExpansion();
+        return width;
+    }
+
     private static Project project(Data data, String description) {
         Project project = new Project(data);
         project.setDescription(description);
