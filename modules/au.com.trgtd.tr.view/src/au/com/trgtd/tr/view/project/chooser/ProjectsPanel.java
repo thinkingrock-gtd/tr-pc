@@ -305,6 +305,9 @@ public class ProjectsPanel extends JPanel {
         builder.addChildNodes(top, data.getRootProjects());                
         refreshSorts(mapProjectSorts, projectsTree);        
         ((DefaultTreeModel)projectsTree.getModel()).reload(top);
+        if (builder.isFiltering()) {
+            expand(top, projectsTree);
+        }
         selectProject(projectsTree, selectedProject);
 
         top = (DefaultMutableTreeNode)futureTree.getModel().getRoot();
@@ -312,6 +315,9 @@ public class ProjectsPanel extends JPanel {
         builder.addChildNodes(top, data.getRootFutures());                
         refreshSorts(mapFutureSorts, futureTree);        
         ((DefaultTreeModel)futureTree.getModel()).reload(top);             
+        if (builder.isFiltering()) {
+            expand(top, futureTree);
+        }
         selectProject(futureTree, selectedFuture);
     }
 
