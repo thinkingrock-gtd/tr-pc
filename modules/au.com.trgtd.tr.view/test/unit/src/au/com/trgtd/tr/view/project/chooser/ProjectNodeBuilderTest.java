@@ -168,6 +168,22 @@ public class ProjectNodeBuilderTest {
     }
 
     @Test
+    public void theExtendedScopeAlsoSearchesTheOtherProjectFields() {
+        Project root = project("root");
+        Project alpha = project("alpha");
+        alpha.setNotes("mentions the needle");
+        root.add(alpha);
+        root.add(project("beta"));
+
+        assertEquals("the name scope only looks at the name",
+                "Projects\n", build(root, "needle"));
+        assertEquals(""
+                + "Projects\n"
+                + "  alpha\n",
+                build(root, "needle", ProjectSearchScope.EXTENDED));
+    }
+
+    @Test
     public void isNotFilteringWithoutFilterText() {
         assertFalse("null is no filter", new ProjectNodeBuilder(null).isFiltering());
         assertFalse("empty is no filter", new ProjectNodeBuilder("").isFiltering());
@@ -182,8 +198,12 @@ public class ProjectNodeBuilderTest {
 
     /** Builds the nodes for the given root project and renders them as indented lines. */
     private static String build(Project rootProject, String filterText) {
+        return build(rootProject, filterText, ProjectSearchScope.NAME);
+    }
+
+    private static String build(Project rootProject, String filterText, ProjectSearchScope scope) {
         DefaultMutableTreeNode rootNode = new DefaultMutableTreeNode("Projects");
-        new ProjectNodeBuilder(filterText).addChildNodes(rootNode, rootProject);
+        new ProjectNodeBuilder(filterText, scope).addChildNodes(rootNode, rootProject);
         StringBuilder sb = new StringBuilder();
         render(rootNode, 0, sb);
         return sb.toString();
