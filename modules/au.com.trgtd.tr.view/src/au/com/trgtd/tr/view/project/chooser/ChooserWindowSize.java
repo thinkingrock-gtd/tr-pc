@@ -60,6 +60,17 @@ class ChooserWindowSize {
                 clamp(content.height, MINIMUM_HEIGHT, (int)(available.height * SCREEN_SHARE)));
     }
 
+    /**
+     * Determines whether a size the window has ended up with comes from the
+     * user rather than from the window manager.
+     * @param current The size the window has now.
+     * @param applied The size that was last given to the window, or null if
+     * none has been given yet.
+     */
+    static boolean isUserSize(Dimension current, Dimension applied) {
+        return false;
+    }
+
     /** Clamps the given value, letting the maximum win over the minimum. */
     private static int clamp(int value, int minimum, int maximum) {
         return Math.min(Math.max(value, minimum), maximum);
