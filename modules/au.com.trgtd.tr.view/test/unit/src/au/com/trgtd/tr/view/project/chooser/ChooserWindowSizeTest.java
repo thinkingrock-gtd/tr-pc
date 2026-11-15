@@ -34,4 +34,11 @@ public class ChooserWindowSizeTest {
 
         assertEquals(new Dimension(700, 500), size);
     }
+
+    @Test
+    public void neverGetsSmallerThanTheMinimum() {
+        Dimension size = ChooserWindowSize.sizeFor(new Dimension(120, 80), null, SCREEN);
+
+        assertEquals(new Dimension(400, 400), size);
+    }
 }
