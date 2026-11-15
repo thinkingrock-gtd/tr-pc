@@ -24,6 +24,7 @@ import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.InputEvent;
+import java.awt.event.ItemEvent;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseAdapter;
@@ -40,6 +41,7 @@ import javax.swing.BorderFactory;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JCheckBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
@@ -72,6 +74,7 @@ public class ProjectsPanel extends JPanel {
     private Map<Integer, Boolean> mapFutureSorts;
     private final boolean currentOnly;
     private JTextField filterField;
+    private JCheckBox extendedBox;
     
     /** Creates new form ProjectsPanel */
     public ProjectsPanel() {
@@ -121,11 +124,26 @@ public class ProjectsPanel extends JPanel {
         label.setDisplayedMnemonic(KeyEvent.VK_F);
         label.setLabelFor(filterField);
         registerFilterShortcut();
+        extendedBox = new JCheckBox(NbBundle.getMessage(CLASS, "filter.extended.label"));
+        extendedBox.setToolTipText(NbBundle.getMessage(CLASS, "filter.extended.tooltip"));
+        extendedBox.setMnemonic(KeyEvent.VK_E);
+        // An item listener also reacts to the state being set programmatically.
+        extendedBox.addItemListener((ItemEvent arg0) -> {
+            refreshModel();
+        });
         JPanel panel = new JPanel(new BorderLayout(4, 0));
         panel.setBorder(BorderFactory.createEmptyBorder(4, 4, 0, 4));
         panel.add(label, BorderLayout.WEST);
         panel.add(filterField, BorderLayout.CENTER);
+        panel.add(extendedBox, BorderLayout.EAST);
         return panel;
+    }
+
+    /**
+     * Gets the project fields that the filter searches.
+     */
+    private ProjectSearchScope getSearchScope() {
+        return extendedBox.isSelected() ? ProjectSearchScope.EXTENDED : ProjectSearchScope.NAME;
     }
 
     /**
@@ -328,7 +346,7 @@ public class ProjectsPanel extends JPanel {
         if (data == null) {
             return;
         }                
-        ProjectNodeBuilder builder = new ProjectNodeBuilder(filterField.getText());
+        ProjectNodeBuilder builder = new ProjectNodeBuilder(filterField.getText(), getSearchScope());
         refreshTree(projectsTree, data.getRootProjects(), builder, mapProjectSorts);
         refreshTree(futureTree, data.getRootFutures(), builder, mapFutureSorts);
     }
@@ -366,7 +384,7 @@ public class ProjectsPanel extends JPanel {
      */
     private void selectFirstMatch() {
         JTree tree = tabbedPane.getSelectedIndex() == 1 ? futureTree : projectsTree;
-        ProjectNodeBuilder builder = new ProjectNodeBuilder(filterField.getText());
+        ProjectNodeBuilder builder = new ProjectNodeBuilder(filterField.getText(), getSearchScope());
         if (builder.isFiltering()) {
             DefaultMutableTreeNode root = (DefaultMutableTreeNode)tree.getModel().getRoot();
             DefaultMutableTreeNode match = builder.findFirstMatch(root);
