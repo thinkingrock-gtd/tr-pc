@@ -29,6 +29,7 @@ import tr.model.project.Project;
 class ProjectNodeBuilder {
 
     private final List<String> terms;
+    private final ProjectSearchScope scope;
 
     /**
      * Constructs a new instance.
@@ -37,6 +38,7 @@ class ProjectNodeBuilder {
      * found.
      */
     ProjectNodeBuilder(String filterText) {
+        this.scope = ProjectSearchScope.NAME;
         this.terms = filterText == null ? List.of()
                 : Arrays.stream(filterText.toLowerCase().split("\\s+"))
                         .filter(term -> !term.isEmpty())
@@ -60,47 +62,56 @@ class ProjectNodeBuilder {
      * @param project The project whose sub-projects are to be added.
      */
     void addChildNodes(DefaultMutableTreeNode parentNode, Project project) {
-        addChildNodes(parentNode, project, "");
+        addChildNodes(parentNode, project, new boolean[terms.size()]);
     }
 
     /**
-     * @param ancestorText The names of the projects on the way down to the
-     * given project, which count towards the terms of the filter as well.
+     * @param satisfied The terms that the projects on the way down to the given
+     * project have already satisfied.
      */
-    private void addChildNodes(DefaultMutableTreeNode parentNode, Project project, String ancestorText) {
+    private void addChildNodes(DefaultMutableTreeNode parentNode, Project project, boolean[] satisfied) {
         for (Project subProject : project.getChildren(Project.class)) {
             if (subProject.isDone()) {
                 continue;
             }
-            String pathText = append(ancestorText, subProject);
+            boolean[] subSatisfied = satisfy(satisfied, subProject);
             DefaultMutableTreeNode subNode = new DefaultMutableTreeNode(subProject);
-            addChildNodes(subNode, subProject, pathText);
-            if (matches(pathText) || subNode.getChildCount() > 0) {
+            addChildNodes(subNode, subProject, subSatisfied);
+            if (allSatisfied(subSatisfied) || subNode.getChildCount() > 0) {
                 parentNode.add(subNode);
             }
         }
     }
 
-    /** Appends the lower cased name of the given project to the given text. */
-    private static String append(String ancestorText, Project project) {
-        String description = project.getDescription();
-        if (description == null) {
-            return ancestorText;
+    /**
+     * Adds the terms that the given project satisfies to the ones its ancestors
+     * satisfy already. A term thus counts as found as soon as any project on
+     * the way down holds it, which is what keeps the sub-projects of a match
+     * reachable.
+     * @return A new array, leaving the given one untouched.
+     */
+    private boolean[] satisfy(boolean[] ancestorsSatisfied, Project project) {
+        boolean[] satisfied = ancestorsSatisfied.clone();
+        String text = null;
+        for (int i = 0; i < satisfied.length; i++) {
+            if (satisfied[i]) {
+                continue;
+            }
+            if (text == null) {
+                text = scope.textOf(project);
+            }
+            satisfied[i] = text.contains(terms.get(i));
         }
-        if (ancestorText.isEmpty()) {
-            return description.toLowerCase();
-        }
-        return ancestorText + ' ' + description.toLowerCase();
+        return satisfied;
     }
 
     /**
-     * Determines whether every term of the filter occurs in the given names of
-     * a project and its ancestors. Any text matches when no filter is in
-     * effect, because then nothing is filtered out.
+     * Determines whether all terms are satisfied. Holds trivially when no
+     * filter is in effect, because then nothing is filtered out.
      */
-    private boolean matches(String pathText) {
-        for (String term : terms) {
-            if (!pathText.contains(term)) {
+    private static boolean allSatisfied(boolean[] satisfied) {
+        for (boolean termSatisfied : satisfied) {
+            if (!termSatisfied) {
                 return false;
             }
         }
@@ -114,19 +125,19 @@ class ProjectNodeBuilder {
      * @return The node, or null if the tree holds no match.
      */
     DefaultMutableTreeNode findFirstMatch(DefaultMutableTreeNode rootNode) {
-        return findFirstMatch(rootNode, "");
+        return findFirstMatch(rootNode, new boolean[terms.size()]);
     }
 
-    private DefaultMutableTreeNode findFirstMatch(DefaultMutableTreeNode node, String ancestorText) {
-        String pathText = ancestorText;
+    private DefaultMutableTreeNode findFirstMatch(DefaultMutableTreeNode node, boolean[] ancestorsSatisfied) {
+        boolean[] satisfied = ancestorsSatisfied;
         if (node.getUserObject() instanceof Project project) {
-            pathText = append(ancestorText, project);
-            if (matches(pathText)) {
+            satisfied = satisfy(ancestorsSatisfied, project);
+            if (allSatisfied(satisfied)) {
                 return node;
             }
         }
         for (Enumeration e = node.children(); e.hasMoreElements(); ) {
-            DefaultMutableTreeNode match = findFirstMatch((DefaultMutableTreeNode)e.nextElement(), pathText);
+            DefaultMutableTreeNode match = findFirstMatch((DefaultMutableTreeNode)e.nextElement(), satisfied);
             if (match != null) {
                 return match;
             }
