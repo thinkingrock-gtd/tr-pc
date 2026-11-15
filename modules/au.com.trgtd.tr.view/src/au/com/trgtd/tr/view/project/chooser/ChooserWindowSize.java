@@ -49,9 +49,10 @@ class ChooserWindowSize {
      * @param available The usable area of the screen the window is on.
      */
     static Dimension sizeFor(Dimension content, Dimension userSize, Rectangle available) {
+        Dimension wanted = userSize == null ? content : userSize;
         return new Dimension(
-                clamp(content.width, MINIMUM_WIDTH, (int)(available.width * SCREEN_SHARE)),
-                clamp(content.height, MINIMUM_HEIGHT, (int)(available.height * SCREEN_SHARE)));
+                clamp(wanted.width, MINIMUM_WIDTH, (int)(available.width * SCREEN_SHARE)),
+                clamp(wanted.height, MINIMUM_HEIGHT, (int)(available.height * SCREEN_SHARE)));
     }
 
     /** Clamps the given value, letting the maximum win over the minimum. */
