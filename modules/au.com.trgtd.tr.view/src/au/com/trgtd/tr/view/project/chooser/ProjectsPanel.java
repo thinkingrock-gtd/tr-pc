@@ -644,7 +644,6 @@ public class ProjectsPanel extends JPanel {
         futureScrollPane = new javax.swing.JScrollPane();
         futureTree = this.getFutureProjectsTree();
 
-        setPreferredSize(new java.awt.Dimension(400, 600));
         setLayout(new java.awt.BorderLayout());
 
         tabbedPane.setName(""); // NOI18N

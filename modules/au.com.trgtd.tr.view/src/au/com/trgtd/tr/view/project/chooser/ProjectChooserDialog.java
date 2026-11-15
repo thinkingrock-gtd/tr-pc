@@ -23,8 +23,14 @@ import java.awt.Container;
 import java.awt.Dialog;
 import java.awt.Dimension;
 import java.awt.Frame;
+import java.awt.GraphicsConfiguration;
+import java.awt.Insets;
+import java.awt.Rectangle;
+import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.ComponentAdapter;
+import java.awt.event.ComponentEvent;
 import java.awt.event.KeyEvent;
 import javax.swing.JButton;
 import javax.swing.JComponent;
@@ -50,6 +56,10 @@ public class ProjectChooserDialog extends JDialog implements ActionListener {
     private boolean okay;
     private boolean cancel;
     private boolean currentOnly;
+    /** The size the user has given the window, or null if never resized. */
+    private Dimension userSize;
+    /** The last size set by applySize(), to tell it from a resize by the user. */
+    private Dimension appliedSize;
     
     private void construct() {
         // Escape key to cancel
@@ -101,9 +111,50 @@ public class ProjectChooserDialog extends JDialog implements ActionListener {
         dialog.add(fillWestPanel, BorderLayout.WEST);
         dialog.add(fillEastPanel, BorderLayout.EAST);
 
+        setMinimumSize(ChooserWindowSize.minimum());
         pack();
 
         setResizable(true);
+
+        // Tells a resize by the user apart from the ones applied below.
+        addComponentListener(new ComponentAdapter() {
+            @Override
+            public void componentResized(ComponentEvent e) {
+                if (isVisible() && !getSize().equals(appliedSize)) {
+                    userSize = getSize();
+                }
+            }
+        });
+    }
+
+    /**
+     * Sizes the window to its content, within the bounds of the screen it is
+     * shown on, or to the size the user has given it. Has to run after the
+     * trees have been filled, as an empty tree needs next to no space.
+     */
+    private void applySize() {
+        pack();
+        appliedSize = ChooserWindowSize.sizeFor(getSize(), userSize, getAvailableScreenBounds());
+        setSize(appliedSize);
+    }
+
+    /**
+     * Gets the screen area that is free for windows, which leaves out a task
+     * bar or dock. Uses the screen this dialog is on, which is the one of its
+     * owner window as long as it has not been shown yet.
+     */
+    private Rectangle getAvailableScreenBounds() {
+        GraphicsConfiguration configuration = getGraphicsConfiguration();
+        if (configuration == null) {
+            return new Rectangle(Toolkit.getDefaultToolkit().getScreenSize());
+        }
+        Rectangle bounds = configuration.getBounds();
+        Insets insets = Toolkit.getDefaultToolkit().getScreenInsets(configuration);
+        return new Rectangle(
+                bounds.x + insets.left,
+                bounds.y + insets.top,
+                bounds.width - insets.left - insets.right,
+                bounds.height - insets.top - insets.bottom);
     }
 
     /**
@@ -203,13 +254,17 @@ public class ProjectChooserDialog extends JDialog implements ActionListener {
     public Project select(Project project, Component component) {
         okay = false;
         cancel = false;
-        if (component != null) {
-            setLocationRelativeTo(component);
-        }
 
         panel.resetFilter();
         panel.refreshModel();
         panel.setSelected(project);
+
+        // The size has to be settled before the window is centred on the
+        // component, or the centring is off by the difference.
+        applySize();
+        if (component != null) {
+            setLocationRelativeTo(component);
+        }
 
         setVisible(true);
         
