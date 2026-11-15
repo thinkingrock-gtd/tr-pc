@@ -184,6 +184,46 @@ public class ProjectNodeBuilderTest {
     }
 
     @Test
+    public void theExtendedScopeCoversEveryTextFieldOfAProject() {
+        Project root = project("root");
+        Project purpose = project("purpose project");
+        purpose.setPurpose("needle");
+        root.add(purpose);
+        Project vision = project("vision project");
+        vision.setVision("needle");
+        root.add(vision);
+        Project brainstorming = project("brainstorming project");
+        brainstorming.setBrainstorming("needle");
+        root.add(brainstorming);
+        Project organising = project("organising project");
+        organising.setOrganising("needle");
+        root.add(organising);
+        Project notes = project("notes project");
+        notes.setNotes("needle");
+        root.add(notes);
+        root.add(project("untouched project"));
+
+        assertEquals(""
+                + "Projects\n"
+                + "  purpose project\n"
+                + "  vision project\n"
+                + "  brainstorming project\n"
+                + "  organising project\n"
+                + "  notes project\n",
+                build(root, "needle", ProjectSearchScope.EXTENDED));
+    }
+
+    @Test
+    public void aTermMustNotMatchAcrossTwoFields() {
+        Project root = project("root");
+        Project split = project("al");
+        split.setNotes("pha");
+        root.add(split);
+
+        assertEquals("Projects\n", build(root, "alpha", ProjectSearchScope.EXTENDED));
+    }
+
+    @Test
     public void isNotFilteringWithoutFilterText() {
         assertFalse("null is no filter", new ProjectNodeBuilder(null).isFiltering());
         assertFalse("empty is no filter", new ProjectNodeBuilder("").isFiltering());
