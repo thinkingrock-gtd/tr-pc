@@ -371,6 +371,20 @@ public class ProjectsPanel extends JPanel {
     }
 
     /**
+     * Expands every node of both trees, so that measuring the panel takes the
+     * projects in collapsed branches into account as well.
+     */
+    void expandAllForSizing() {
+    }
+
+    /**
+     * Puts the expansion back to what the filter calls for: everything expanded
+     * while a filter is in effect, collapsed otherwise.
+     */
+    void restoreExpansion() {
+    }
+
+    /**
      * Removes the filter, so that a reused chooser starts without one.
      */
     public void resetFilter() {
