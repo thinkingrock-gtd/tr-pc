@@ -17,6 +17,7 @@
  */
 package au.com.trgtd.tr.view.project.chooser;
 
+import java.util.Enumeration;
 import java.util.List;
 import java.util.Vector;
 import javax.swing.tree.DefaultMutableTreeNode;
@@ -110,15 +111,29 @@ class ProjectNodeBuilder {
     }
 
     /**
-     * Determines whether the given project matches the filter text on its own.
-     * @return true if it matches, or false if it does not or if no filter text
-     * is in effect.
+     * Finds the first node of the given tree that matches the filter, as
+     * opposed to being present only to show the hierarchy of a match.
+     * @param rootNode The root node of a tree built by this instance.
+     * @return The node, or null if the tree holds no match.
      */
-    boolean matches(Project project) {
-        if (terms.isEmpty()) {
-            return false;
+    DefaultMutableTreeNode findFirstMatch(DefaultMutableTreeNode rootNode) {
+        return findFirstMatch(rootNode, "");
+    }
+
+    private DefaultMutableTreeNode findFirstMatch(DefaultMutableTreeNode node, String ancestorText) {
+        String pathText = ancestorText;
+        if (node.getUserObject() instanceof Project project) {
+            pathText = append(ancestorText, project);
+            if (matches(pathText)) {
+                return node;
+            }
         }
-        String description = project.getDescription();
-        return description != null && matches(description.toLowerCase());
+        for (Enumeration e = node.children(); e.hasMoreElements(); ) {
+            DefaultMutableTreeNode match = findFirstMatch((DefaultMutableTreeNode)e.nextElement(), pathText);
+            if (match != null) {
+                return match;
+            }
+        }
+        return null;
     }
 }

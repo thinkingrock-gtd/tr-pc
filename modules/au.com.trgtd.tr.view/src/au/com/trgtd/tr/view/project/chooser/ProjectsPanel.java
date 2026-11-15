@@ -369,26 +369,12 @@ public class ProjectsPanel extends JPanel {
         ProjectNodeBuilder builder = new ProjectNodeBuilder(filterField.getText());
         if (builder.isFiltering()) {
             DefaultMutableTreeNode root = (DefaultMutableTreeNode)tree.getModel().getRoot();
-            DefaultMutableTreeNode match = findFirstMatch(root, builder);
+            DefaultMutableTreeNode match = builder.findFirstMatch(root);
             if (match != null) {
                 tree.setSelectionPath(new TreePath(match.getPath()));
             }
         }
         tree.requestFocusInWindow();
-    }
-
-    private DefaultMutableTreeNode findFirstMatch(DefaultMutableTreeNode node, ProjectNodeBuilder builder) {
-        Object object = node.getUserObject();
-        if (object instanceof Project project && builder.matches(project)) {
-            return node;
-        }
-        for (Enumeration e = node.children(); e.hasMoreElements(); ) {
-            DefaultMutableTreeNode match = findFirstMatch((DefaultMutableTreeNode)e.nextElement(), builder);
-            if (match != null) {
-                return match;
-            }
-        }
-        return null;
     }
 
     /**
