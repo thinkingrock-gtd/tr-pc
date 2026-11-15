@@ -267,6 +267,31 @@ public class ProjectsPanelTest {
                 render(tree));
     }
 
+    @Test
+    public void theExtendedSearchBoxHasAMnemonic() {
+        ProjectsPanel panel = new ProjectsPanel();
+
+        assertEquals("mnemonic E", KeyEvent.VK_E, extendedSearchBox(panel).getMnemonic());
+    }
+
+    /** The search mode is meant to outlast a single use of the chooser. */
+    @Test
+    public void resetFilterKeepsTheExtendedSearchSetting() {
+        Data data = new Data();
+        data.getRootProjects().add(project(data, "alpha"));
+        DataLookup.instance().setData(data);
+        ProjectsPanel panel = new ProjectsPanel();
+        panel.refreshModel();
+        JCheckBox extended = extendedSearchBox(panel);
+        extended.setSelected(true);
+        filterField(panel).setText("alpha");
+
+        panel.resetFilter();
+
+        assertEquals("", filterField(panel).getText());
+        assertTrue("the extended search stays on", extended.isSelected());
+    }
+
     private static JCheckBox extendedSearchBox(ProjectsPanel panel) {
         List<JCheckBox> boxes = find(panel, JCheckBox.class);
         assertEquals("expected exactly one check box", 1, boxes.size());
