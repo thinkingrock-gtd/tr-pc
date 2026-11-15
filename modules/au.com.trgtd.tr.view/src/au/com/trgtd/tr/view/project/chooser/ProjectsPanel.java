@@ -297,28 +297,27 @@ public class ProjectsPanel extends JPanel {
             return;
         }                
         ProjectNodeBuilder builder = new ProjectNodeBuilder(filterField.getText());
-        Integer selectedProject = getSelectedProjectID(projectsTree);
-        Integer selectedFuture = getSelectedProjectID(futureTree);
-        DefaultMutableTreeNode top;
-        top = (DefaultMutableTreeNode)projectsTree.getModel().getRoot();
-        top.removeAllChildren();                
-        builder.addChildNodes(top, data.getRootProjects());                
-        refreshSorts(mapProjectSorts, projectsTree);        
-        ((DefaultTreeModel)projectsTree.getModel()).reload(top);
-        if (builder.isFiltering()) {
-            expand(top, projectsTree);
-        }
-        selectProject(projectsTree, selectedProject);
+        refreshTree(projectsTree, data.getRootProjects(), builder, mapProjectSorts);
+        refreshTree(futureTree, data.getRootFutures(), builder, mapFutureSorts);
+    }
 
-        top = (DefaultMutableTreeNode)futureTree.getModel().getRoot();
-        top.removeAllChildren();        
-        builder.addChildNodes(top, data.getRootFutures());                
-        refreshSorts(mapFutureSorts, futureTree);        
-        ((DefaultTreeModel)futureTree.getModel()).reload(top);             
+    /**
+     * Rebuilds the nodes of the given tree from the given root project, keeping
+     * the sort order and the selected project, and expands the tree while a
+     * filter is in effect.
+     */
+    private void refreshTree(JTree tree, Project rootProject, ProjectNodeBuilder builder,
+            Map<Integer, Boolean> sortsMap) {
+        Integer selectedProjectID = getSelectedProjectID(tree);
+        DefaultMutableTreeNode top = (DefaultMutableTreeNode)tree.getModel().getRoot();
+        top.removeAllChildren();
+        builder.addChildNodes(top, rootProject);
+        refreshSorts(sortsMap, tree);
+        ((DefaultTreeModel)tree.getModel()).reload(top);
         if (builder.isFiltering()) {
-            expand(top, futureTree);
+            expand(top, tree);
         }
-        selectProject(futureTree, selectedFuture);
+        selectProject(tree, selectedProjectID);
     }
 
     /**
