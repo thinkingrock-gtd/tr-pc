@@ -201,6 +201,24 @@ public class ProjectsPanelTest {
     }
 
     @Test
+    public void enterSelectsTheNarrowedChildWhenSeveralTermsAreUsed() {
+        Data data = new Data();
+        Project haus = project(data, "Haus");
+        data.getRootProjects().add(haus);
+        haus.add(project(data, "Dach"));
+        DataLookup.instance().setData(data);
+        ProjectsPanel panel = new ProjectsPanel();
+        panel.refreshModel();
+
+        JTextField field = filterField(panel);
+        field.setText("haus dach");
+        field.postActionEvent();
+
+        assertNotNull("a match should be selected", panel.getSelected());
+        assertEquals("Dach", panel.getSelected().getDescription());
+    }
+
+    @Test
     public void aMnemonicAndAShortcutLeadBackToTheFilterField() {
         ProjectsPanel panel = new ProjectsPanel();
         JTextField field = filterField(panel);
