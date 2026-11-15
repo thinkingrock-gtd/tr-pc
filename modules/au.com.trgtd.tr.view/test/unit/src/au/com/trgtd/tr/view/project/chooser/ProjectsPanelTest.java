@@ -18,6 +18,7 @@
 package au.com.trgtd.tr.view.project.chooser;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertSame;
@@ -31,6 +32,7 @@ import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 import java.util.Enumeration;
 import java.util.List;
+import javax.swing.JCheckBox;
 import javax.swing.JComponent;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
@@ -237,6 +239,38 @@ public class ProjectsPanelTest {
         Object actionKey = panel.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).get(stroke);
         assertNotNull("the shortcut must be bound in the focused window", actionKey);
         assertNotNull("the bound action must be registered", panel.getActionMap().get(actionKey));
+    }
+
+    @Test
+    public void theExtendedSearchIsOffByDefaultAndWidensTheSearchWhenTurnedOn() {
+        Data data = new Data();
+        Project alpha = project(data, "alpha");
+        alpha.setNotes("mentions the needle");
+        data.getRootProjects().add(alpha);
+        data.getRootProjects().add(project(data, "beta"));
+        DataLookup.instance().setData(data);
+        ProjectsPanel panel = new ProjectsPanel();
+        panel.refreshModel();
+        JTree tree = find(panel, JTree.class).get(0);
+
+        JCheckBox extended = extendedSearchBox(panel);
+        assertFalse("the extended search must be off by default", extended.isSelected());
+
+        filterField(panel).setText("needle");
+        assertEquals("the name alone does not match", "Projects\n", render(tree));
+
+        extended.setSelected(true);
+
+        assertEquals(""
+                + "Projects\n"
+                + "  alpha\n",
+                render(tree));
+    }
+
+    private static JCheckBox extendedSearchBox(ProjectsPanel panel) {
+        List<JCheckBox> boxes = find(panel, JCheckBox.class);
+        assertEquals("expected exactly one check box", 1, boxes.size());
+        return boxes.get(0);
     }
 
     private static Project project(Data data, String description) {
