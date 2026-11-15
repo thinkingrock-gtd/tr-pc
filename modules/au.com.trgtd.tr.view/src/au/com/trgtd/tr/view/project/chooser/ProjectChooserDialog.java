@@ -120,7 +120,7 @@ public class ProjectChooserDialog extends JDialog implements ActionListener {
         addComponentListener(new ComponentAdapter() {
             @Override
             public void componentResized(ComponentEvent e) {
-                if (isVisible() && !getSize().equals(appliedSize)) {
+                if (isVisible() && ChooserWindowSize.isUserSize(getSize(), appliedSize)) {
                     userSize = getSize();
                 }
             }
