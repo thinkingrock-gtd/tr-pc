@@ -18,6 +18,7 @@
 package au.com.trgtd.tr.view.project.chooser;
 
 import au.com.trgtd.tr.resource.Icons;
+import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
@@ -33,12 +34,17 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Vector;
+import javax.swing.BorderFactory;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JTextField;
 import javax.swing.JToolBar;
 import javax.swing.JTree;
+import javax.swing.event.DocumentEvent;
+import javax.swing.event.DocumentListener;
 import javax.swing.tree.DefaultMutableTreeNode;
 import javax.swing.tree.DefaultTreeModel;
 import javax.swing.tree.TreePath;
@@ -61,6 +67,7 @@ public class ProjectsPanel extends JPanel {
     private Map<Integer, Boolean> mapProjectSorts;    
     private Map<Integer, Boolean> mapFutureSorts;
     private final boolean currentOnly;
+    private JTextField filterField;
     
     /** Creates new form ProjectsPanel */
     public ProjectsPanel() {
@@ -76,6 +83,35 @@ public class ProjectsPanel extends JPanel {
         }
         mapProjectSorts = new HashMap<>();
         mapFutureSorts = new HashMap<>();
+        add(getFilterPanel(), BorderLayout.NORTH);
+    }
+
+    /**
+     * Creates the panel holding the filter field, which reduces both trees to
+     * the projects matching the entered text while it is being typed.
+     */
+    private JPanel getFilterPanel() {
+        filterField = new JTextField();
+        filterField.setToolTipText(NbBundle.getMessage(CLASS, "filter.tooltip"));
+        filterField.getDocument().addDocumentListener(new DocumentListener() {
+            @Override
+            public void insertUpdate(DocumentEvent e) {
+                refreshModel();
+            }
+            @Override
+            public void removeUpdate(DocumentEvent e) {
+                refreshModel();
+            }
+            @Override
+            public void changedUpdate(DocumentEvent e) {
+                refreshModel();
+            }
+        });
+        JPanel panel = new JPanel(new BorderLayout(4, 0));
+        panel.setBorder(BorderFactory.createEmptyBorder(4, 4, 0, 4));
+        panel.add(new JLabel(NbBundle.getMessage(CLASS, "filter.label")), BorderLayout.WEST);
+        panel.add(filterField, BorderLayout.CENTER);
+        return panel;
     }
 
     private JToolBar getProjectsToolbar() {
@@ -260,16 +296,17 @@ public class ProjectsPanel extends JPanel {
         if (data == null) {
             return;
         }                
+        ProjectNodeBuilder builder = new ProjectNodeBuilder(filterField.getText());
         DefaultMutableTreeNode top;
         top = (DefaultMutableTreeNode)projectsTree.getModel().getRoot();
         top.removeAllChildren();                
-        createNodes(top, data.getRootProjects());                
+        builder.addChildNodes(top, data.getRootProjects());                
         refreshSorts(mapProjectSorts, projectsTree);        
         ((DefaultTreeModel)projectsTree.getModel()).reload(top);
 
         top = (DefaultMutableTreeNode)futureTree.getModel().getRoot();
         top.removeAllChildren();        
-        createNodes(top, data.getRootFutures());                
+        builder.addChildNodes(top, data.getRootFutures());                
         refreshSorts(mapFutureSorts, futureTree);        
         ((DefaultTreeModel)futureTree.getModel()).reload(top);             
     }
