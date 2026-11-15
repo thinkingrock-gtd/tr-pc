@@ -19,6 +19,7 @@ package au.com.trgtd.tr.view.project.chooser;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertSame;
 
 import java.awt.Component;
@@ -108,6 +109,22 @@ public class ProjectsPanelTest {
         filterField(panel).setText("needle");
 
         assertSame(needle, panel.getSelected());
+    }
+
+    @Test
+    public void clearsTheSelectionWhenTheSelectedProjectIsFilteredOut() {
+        Data data = new Data();
+        Project needle = project(data, "needle project");
+        data.getRootProjects().add(needle);
+        data.getRootProjects().add(project(data, "other project"));
+        DataLookup.instance().setData(data);
+        ProjectsPanel panel = new ProjectsPanel();
+        panel.refreshModel();
+        panel.setSelected(needle);
+
+        filterField(panel).setText("other");
+
+        assertNull("Accept must not return an invisible project", panel.getSelected());
     }
 
     private static Project project(Data data, String description) {
