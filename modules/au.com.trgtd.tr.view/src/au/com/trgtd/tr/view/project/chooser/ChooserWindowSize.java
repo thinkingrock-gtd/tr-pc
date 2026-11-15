@@ -28,6 +28,9 @@ class ChooserWindowSize {
     private static final int MINIMUM_WIDTH = 400;
     private static final int MINIMUM_HEIGHT = 400;
 
+    /** How much of the screen the window may take up on its own account. */
+    private static final double SCREEN_SHARE = 0.8;
+
     private ChooserWindowSize() {
     }
 
@@ -47,7 +50,12 @@ class ChooserWindowSize {
      */
     static Dimension sizeFor(Dimension content, Dimension userSize, Rectangle available) {
         return new Dimension(
-                Math.max(content.width, MINIMUM_WIDTH),
-                Math.max(content.height, MINIMUM_HEIGHT));
+                clamp(content.width, MINIMUM_WIDTH, (int)(available.width * SCREEN_SHARE)),
+                clamp(content.height, MINIMUM_HEIGHT, (int)(available.height * SCREEN_SHARE)));
+    }
+
+    /** Clamps the given value, letting the maximum win over the minimum. */
+    private static int clamp(int value, int minimum, int maximum) {
+        return Math.min(Math.max(value, minimum), maximum);
     }
 }
