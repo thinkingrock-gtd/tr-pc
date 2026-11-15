@@ -25,6 +25,7 @@ import static org.junit.Assert.assertTrue;
 
 import java.awt.Component;
 import java.awt.Container;
+import java.awt.event.ActionEvent;
 import java.util.ArrayList;
 import java.util.Enumeration;
 import java.util.List;
@@ -150,6 +151,27 @@ public class ProjectsPanelTest {
         assertTrue("root expanded", tree.isExpanded(new TreePath(root.getPath())));
         assertTrue("alpha expanded", tree.isExpanded(new TreePath(alphaNode.getPath())));
         assertTrue("nested expanded", tree.isExpanded(new TreePath(nestedNode.getPath())));
+    }
+
+    @Test
+    public void enterInTheFilterFieldSelectsTheFirstMatchWithoutAccepting() {
+        Data data = new Data();
+        Project alpha = project(data, "alpha");
+        data.getRootProjects().add(alpha);
+        alpha.add(project(data, "needle project"));
+        DataLookup.instance().setData(data);
+        ProjectsPanel panel = new ProjectsPanel();
+        panel.refreshModel();
+        List<ActionEvent> accepted = new ArrayList<>();
+        panel.addActionListener(accepted::add);
+
+        JTextField field = filterField(panel);
+        field.setText("needle");
+        field.postActionEvent();
+
+        assertNotNull("a match should be selected", panel.getSelected());
+        assertEquals("needle project", panel.getSelected().getDescription());
+        assertTrue("Enter must not accept the dialog", accepted.isEmpty());
     }
 
     private static Project project(Data data, String description) {
