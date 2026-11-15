@@ -375,6 +375,8 @@ public class ProjectsPanel extends JPanel {
      * projects in collapsed branches into account as well.
      */
     void expandAllForSizing() {
+        expand((DefaultMutableTreeNode)projectsTree.getModel().getRoot(), projectsTree);
+        expand((DefaultMutableTreeNode)futureTree.getModel().getRoot(), futureTree);
     }
 
     /**
@@ -382,6 +384,25 @@ public class ProjectsPanel extends JPanel {
      * while a filter is in effect, collapsed otherwise.
      */
     void restoreExpansion() {
+        restoreExpansion(projectsTree);
+        restoreExpansion(futureTree);
+    }
+
+    private void restoreExpansion(JTree tree) {
+        DefaultMutableTreeNode root = (DefaultMutableTreeNode)tree.getModel().getRoot();
+        if (isFiltering()) {
+            expand(root, tree);
+            return;
+        }
+        // Collapsing the children keeps the root itself expanded, which is the
+        // state a reloaded tree model leaves behind.
+        for (Enumeration e = root.children(); e.hasMoreElements(); ) {
+            collapse((DefaultMutableTreeNode)e.nextElement(), tree);
+        }
+    }
+
+    private boolean isFiltering() {
+        return new ProjectNodeBuilder(filterField.getText(), getSearchScope()).isFiltering();
     }
 
     /**
