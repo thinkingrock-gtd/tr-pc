@@ -290,12 +290,7 @@ public class ProjectsPanel extends JPanel {
     }
     
     private JTree getProjectsTree() {
-//        Data data = DataLookup.instance().lookup(Data.class);
-//        if (data == null) {
-//            return null;
-//        }
         DefaultMutableTreeNode top = new DefaultMutableTreeNode(NbBundle.getMessage(CLASS, "projects"));
-//      createNodes(top, data.getRootProjects());
         final JTree tree = new JTree(top);
         tree.getSelectionModel().setSelectionMode(TreeSelectionModel.SINGLE_TREE_SELECTION);
         tree.setCellRenderer(new ProjectTreeCellRenderer(Icons.Project, Icons.ProjectOpen));
@@ -336,12 +331,7 @@ public class ProjectsPanel extends JPanel {
     }
 
     private JTree getFutureProjectsTree() {
-        Data data = DataLookup.instance().lookup(Data.class);
-        if (data == null) {
-            return null;
-        }
         DefaultMutableTreeNode top = new DefaultMutableTreeNode(NbBundle.getMessage(CLASS, "future.projects"));
-        createNodes(top, data.getRootFutures());
         final JTree tree = new JTree(top);
         tree.setCellRenderer(new ProjectTreeCellRenderer(Icons.ProjectFuture, Icons.ProjectFutureOpen));
         tree.setRootVisible(true);
