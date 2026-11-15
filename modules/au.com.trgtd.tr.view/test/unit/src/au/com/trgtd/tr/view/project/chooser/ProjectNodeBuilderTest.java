@@ -152,6 +152,22 @@ public class ProjectNodeBuilderTest {
     }
 
     @Test
+    public void narrowsTheChildrenOfAMatchingProjectWithAFurtherTerm() {
+        Project root = project("root");
+        Project haus = project("Haus");
+        root.add(haus);
+        haus.add(project("Dach"));
+        haus.add(project("Keller"));
+        root.add(project("Garten"));
+
+        assertEquals(""
+                + "Projects\n"
+                + "  Haus\n"
+                + "    Dach\n",
+                build(root, "haus dach"));
+    }
+
+    @Test
     public void isNotFilteringWithoutFilterText() {
         assertFalse("null is no filter", new ProjectNodeBuilder(null).isFiltering());
         assertFalse("empty is no filter", new ProjectNodeBuilder("").isFiltering());
