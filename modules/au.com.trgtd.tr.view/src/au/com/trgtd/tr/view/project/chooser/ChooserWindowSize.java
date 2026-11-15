@@ -25,7 +25,17 @@ import java.awt.Rectangle;
  */
 class ChooserWindowSize {
 
+    private static final int MINIMUM_WIDTH = 400;
+    private static final int MINIMUM_HEIGHT = 400;
+
     private ChooserWindowSize() {
+    }
+
+    /**
+     * Gets the size below which the chooser window is of no use any more.
+     */
+    static Dimension minimum() {
+        return new Dimension(MINIMUM_WIDTH, MINIMUM_HEIGHT);
     }
 
     /**
@@ -36,6 +46,8 @@ class ChooserWindowSize {
      * @param available The usable area of the screen the window is on.
      */
     static Dimension sizeFor(Dimension content, Dimension userSize, Rectangle available) {
-        return new Dimension(content);
+        return new Dimension(
+                Math.max(content.width, MINIMUM_WIDTH),
+                Math.max(content.height, MINIMUM_HEIGHT));
     }
 }
