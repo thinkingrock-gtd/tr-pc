@@ -329,6 +329,7 @@ public class ProjectsPanel extends JPanel {
      * Removes the filter, so that a reused chooser starts without one.
      */
     public void resetFilter() {
+        filterField.setText("");
     }
 
     /**
