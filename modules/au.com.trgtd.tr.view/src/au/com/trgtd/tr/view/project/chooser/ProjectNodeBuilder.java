@@ -17,9 +17,9 @@
  */
 package au.com.trgtd.tr.view.project.chooser;
 
+import java.util.Arrays;
 import java.util.Enumeration;
 import java.util.List;
-import java.util.Vector;
 import javax.swing.tree.DefaultMutableTreeNode;
 import tr.model.project.Project;
 
@@ -33,18 +33,15 @@ class ProjectNodeBuilder {
     /**
      * Constructs a new instance.
      * @param filterText The filter text, or null or blank for no filtering.
-     * Whitespace separates the text into terms that all have to be found.
+     * Whitespace separates the text into the distinct terms that all have to be
+     * found.
      */
     ProjectNodeBuilder(String filterText) {
-        List<String> list = new Vector<>();
-        if (filterText != null) {
-            for (String term : filterText.toLowerCase().split("\\s+")) {
-                if (!term.isEmpty()) {
-                    list.add(term);
-                }
-            }
-        }
-        this.terms = list;
+        this.terms = filterText == null ? List.of()
+                : Arrays.stream(filterText.toLowerCase().split("\\s+"))
+                        .filter(term -> !term.isEmpty())
+                        .distinct()
+                        .toList();
     }
 
     /**
