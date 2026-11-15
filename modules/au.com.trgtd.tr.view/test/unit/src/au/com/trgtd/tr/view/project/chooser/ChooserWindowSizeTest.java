@@ -56,4 +56,18 @@ public class ChooserWindowSizeTest {
 
         assertEquals(new Dimension(900, 650), size);
     }
+
+    @Test
+    public void letsTheUserGoBeyondTheScreenShareButNotBeyondTheScreen() {
+        Dimension stretched = ChooserWindowSize.sizeFor(
+                new Dimension(700, 500), new Dimension(1800, 1000), SCREEN);
+
+        assertEquals("the user may claim more than the automatic share",
+                new Dimension(1800, 1000), stretched);
+
+        Dimension beyond = ChooserWindowSize.sizeFor(
+                new Dimension(700, 500), new Dimension(4000, 3000), SCREEN);
+
+        assertEquals("but not more than the screen", new Dimension(1920, 1080), beyond);
+    }
 }
