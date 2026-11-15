@@ -38,7 +38,18 @@ class ProjectNodeBuilder {
      * found.
      */
     ProjectNodeBuilder(String filterText) {
-        this.scope = ProjectSearchScope.NAME;
+        this(filterText, ProjectSearchScope.NAME);
+    }
+
+    /**
+     * Constructs a new instance.
+     * @param filterText The filter text, or null or blank for no filtering.
+     * Whitespace separates the text into the distinct terms that all have to be
+     * found.
+     * @param scope The project fields to search.
+     */
+    ProjectNodeBuilder(String filterText, ProjectSearchScope scope) {
+        this.scope = scope;
         this.terms = filterText == null ? List.of()
                 : Arrays.stream(filterText.toLowerCase().split("\\s+"))
                         .filter(term -> !term.isEmpty())

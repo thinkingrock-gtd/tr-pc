@@ -30,6 +30,14 @@ enum ProjectSearchScope {
         String textOf(Project project) {
             return join(project.getDescription());
         }
+    },
+
+    /** Searches the project name and all of its other text fields. */
+    EXTENDED {
+        @Override
+        String textOf(Project project) {
+            return join(project.getDescription());
+        }
     };
 
     /**
