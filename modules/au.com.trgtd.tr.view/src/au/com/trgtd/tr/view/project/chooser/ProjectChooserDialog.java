@@ -133,8 +133,13 @@ public class ProjectChooserDialog extends JDialog implements ActionListener {
      * trees have been filled, as an empty tree needs next to no space.
      */
     private void applySize() {
+        // Measured while fully expanded, as a collapsed branch contributes no
+        // width. The window is not on screen yet, so nothing of this shows.
+        panel.expandAllForSizing();
         pack();
-        appliedSize = ChooserWindowSize.sizeFor(getSize(), userSize, getAvailableScreenBounds());
+        Dimension content = getSize();
+        panel.restoreExpansion();
+        appliedSize = ChooserWindowSize.sizeFor(content, userSize, getAvailableScreenBounds());
         setSize(appliedSize);
     }
 
