@@ -39,6 +39,15 @@ This issue will be solved in #33.
   Unzip it, navigate inside into the bin and start the respective binary for your OS.
 - with `just` installed, you can simply run `just build-zip`
 
+#### Windows launcher icon
+The NetBeans harness ships generic Windows launchers (`trgtd.exe`, `trgtd64.exe`) with the default NetBeans icon.
+To embed the ThinkingRock icon (`branding/core/core.jar/org/netbeans/core/startup/app.ico`),
+the build uses [rcedit](https://github.com/electron/rcedit/releases) if it is available:
+- have `rcedit-x64.exe` (or `rcedit.exe`) on the `PATH`, or pass `-Drcedit.executable=/path/to/rcedit-x64.exe` to ant
+- on Linux/macOS, [wine](https://www.winehq.org/) must be installed additionally
+
+Without rcedit, the build still succeeds but prints a warning, and the launchers keep the default icon.
+
 ### Run From NetBeans
 
 #### Precondition
