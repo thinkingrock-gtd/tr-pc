@@ -1,8 +1,74 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<project name="ThinkingRock" basedir=".">
+<project name="ThinkingRock" basedir="." xmlns:if="ant:if" xmlns:unless="ant:unless">
     <description>Builds trgtd distributions.</description>
     <import file="nbproject/build-impl.xml"/>
+
+    <!--
+        Windows launcher icon (#144)
+
+        The NetBeans harness copies its generic launchers (app.exe, app64.exe) without touching their icon.
+        We override build-launchers to embed our own icon into the copied launchers using rcedit
+        (https://github.com/electron/rcedit), so the icon is also part of build-zip and anything built on top of it.
+
+        rcedit is optional: Provide the path to the rcedit executable with -Drcedit.executable=...
+        (or have rcedit-x64.exe/rcedit.exe on the PATH). On non-Windows hosts it is run through wine.
+        If rcedit is not available, the step is skipped with a warning and the default NetBeans icon remains.
+    -->
+    <property name="app.icon.ico" location="branding/core/core.jar/org/netbeans/core/startup/app.ico"/>
+
+    <target name="build-launchers" depends="suite.build-launchers,-replace-windows-icon"
+            description="Creates the launchers and embeds the application icon into the Windows launchers."/>
+
+    <target name="-init-rcedit">
+        <property environment="env"/>
+        <condition property="rcedit.executable" value="rcedit-x64.exe">
+            <available file="rcedit-x64.exe" filepath="${env.PATH}"/>
+        </condition>
+        <condition property="rcedit.executable" value="rcedit.exe">
+            <available file="rcedit.exe" filepath="${env.PATH}"/>
+        </condition>
+        <condition property="rcedit.available">
+            <and>
+                <isset property="rcedit.executable"/>
+                <or>
+                    <available file="${rcedit.executable}"/>
+                    <available file="${rcedit.executable}" filepath="${env.PATH}"/>
+                </or>
+                <or>
+                    <os family="windows"/>
+                    <available file="wine" filepath="${env.PATH}"/>
+                </or>
+            </and>
+        </condition>
+        <condition property="rcedit.on.windows">
+            <os family="windows"/>
+        </condition>
+        <condition property="rcedit.command" value="${rcedit.executable}" else="wine">
+            <isset property="rcedit.on.windows"/>
+        </condition>
+    </target>
+
+    <target name="-replace-windows-icon" depends="-init-rcedit,-warn-no-rcedit" if="rcedit.available">
+        <macrodef name="set-launcher-icon">
+            <attribute name="exe"/>
+            <sequential>
+                <exec executable="${rcedit.command}" failonerror="true">
+                    <arg value="${rcedit.executable}" unless:set="rcedit.on.windows"/>
+                    <arg file="@{exe}"/>
+                    <arg value="--set-icon"/>
+                    <arg file="${app.icon.ico}"/>
+                </exec>
+            </sequential>
+        </macrodef>
+        <set-launcher-icon exe="${build.launcher.dir}/bin/${app.name}.exe"/>
+        <set-launcher-icon exe="${build.launcher.dir}/bin/${app.name}64.exe"/>
+        <echo>Embedded ${app.icon.ico} into the Windows launchers.</echo>
+    </target>
+
+    <target name="-warn-no-rcedit" depends="-init-rcedit" unless="rcedit.available">
+        <echo level="warning">rcedit not available - Windows launchers keep the default NetBeans icon. Set -Drcedit.executable=/path/to/rcedit-x64.exe (on non-Windows hosts, wine is required as well).</echo>
+    </target>
 
     <target name="-bundle-osx" depends="build,build-launchers" description="Builds an application bundle for MacOSX.">
 
